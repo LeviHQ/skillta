@@ -28,7 +28,7 @@ export default function RoadmapDetail() {
     html2pdf()
       .set({
         margin: [10, 10],
-        filename: `${career.title}-Roadmap-SkillPilot.pdf`,
+        filename: `${career.title}-Roadmap-SkillTa.pdf`,
         html2canvas: { scale: 2, useCORS: true, backgroundColor: "#111318" },
         jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
       })
