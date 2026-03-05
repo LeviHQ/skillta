@@ -1,14 +1,18 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { quizQuestions, QuizQuestion } from "@/data/quizQuestions";
-import { QuizAnswers } from "@/data/careers";
+import { quizQuestions } from "@/data/quizQuestions";
+import { QuizAnswers, calculateCareerScores } from "@/data/careers";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useAuth } from "@/contexts/AuthContext";
+import SignInModal from "@/components/SignInModal";
 
 export default function Quiz() {
   const navigate = useNavigate();
+  const { user, saveQuizResult } = useAuth();
   const [currentQ, setCurrentQ] = useState(0);
   const [answers, setAnswers] = useState<QuizAnswers>({});
+  const [showSignIn, setShowSignIn] = useState(false);
 
   const question = quizQuestions[currentQ];
   const progress = ((currentQ + 1) / quizQuestions.length) * 100;
@@ -18,14 +22,45 @@ export default function Quiz() {
     setAnswers((prev) => ({ ...prev, [question.id]: value }));
   };
 
-  const next = () => {
+  const next = async () => {
     if (currentQ < quizQuestions.length - 1) {
       setCurrentQ((p) => p + 1);
     } else {
-      // Store answers and navigate to results
-      sessionStorage.setItem("quizAnswers", JSON.stringify(answers));
-      navigate("/results");
+      // Quiz complete - check if signed in
+      if (!user) {
+        // Show sign-in modal but still allow proceeding
+        sessionStorage.setItem("quizAnswers", JSON.stringify(answers));
+        setShowSignIn(true);
+        return;
+      }
+      await finishQuiz();
     }
+  };
+
+  const finishQuiz = async () => {
+    sessionStorage.setItem("quizAnswers", JSON.stringify(answers));
+    // Save to Firebase if signed in
+    if (user) {
+      const results = calculateCareerScores(answers);
+      const top = results[0];
+      await saveQuizResult({
+        answers: answers as Record<number, string>,
+        topCareer: top.career.id,
+        topMatchPercentage: top.matchPercentage,
+        allResults: results.slice(0, 5).map((r) => ({
+          careerId: r.career.id,
+          title: r.career.title,
+          matchPercentage: r.matchPercentage,
+        })),
+      });
+    }
+    navigate("/results");
+  };
+
+  const handleSignInClose = () => {
+    setShowSignIn(false);
+    // After closing sign-in modal, proceed to results anyway
+    navigate("/results");
   };
 
   const prev = () => {
@@ -33,93 +68,101 @@ export default function Quiz() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-hero relative">
-      <div className="absolute inset-0 grid-pattern opacity-30" />
+    <>
+      <div className="min-h-screen bg-gradient-hero relative">
+        <div className="absolute inset-0 grid-pattern opacity-30" />
 
-      <div className="container mx-auto px-6 py-12 relative z-10">
-        {/* Progress */}
-        <div className="max-w-2xl mx-auto mb-8">
-          <div className="flex items-center justify-between mb-3">
-            <span className="text-sm text-muted-foreground">
-              Question {currentQ + 1} of {quizQuestions.length}
-            </span>
-            <span className="text-sm font-mono text-primary">{Math.round(progress)}%</span>
+        <div className="container mx-auto px-6 py-12 relative z-10">
+          {/* Progress */}
+          <div className="max-w-2xl mx-auto mb-8">
+            <div className="flex items-center justify-between mb-3">
+              <span className="text-sm text-muted-foreground">
+                Question {currentQ + 1} of {quizQuestions.length}
+              </span>
+              <span className="text-sm font-mono text-primary">{Math.round(progress)}%</span>
+            </div>
+            <div className="h-2 rounded-full bg-secondary overflow-hidden">
+              <motion.div
+                className="h-full bg-gradient-primary rounded-full"
+                initial={{ width: 0 }}
+                animate={{ width: `${progress}%` }}
+                transition={{ duration: 0.4, ease: "easeOut" }}
+              />
+            </div>
           </div>
-          <div className="h-2 rounded-full bg-secondary overflow-hidden">
-            <motion.div
-              className="h-full bg-gradient-primary rounded-full"
-              initial={{ width: 0 }}
-              animate={{ width: `${progress}%` }}
-              transition={{ duration: 0.4, ease: "easeOut" }}
-            />
-          </div>
-        </div>
 
-        {/* Question */}
-        <div className="max-w-2xl mx-auto">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={question.id}
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -30 }}
-              transition={{ duration: 0.3 }}
-            >
-              <div className="text-center mb-10">
-                <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-3">
-                  {question.question}
-                </h2>
-                {question.subtitle && (
-                  <p className="text-muted-foreground">{question.subtitle}</p>
-                )}
-              </div>
+          {/* Question */}
+          <div className="max-w-2xl mx-auto">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={question.id}
+                initial={{ opacity: 0, x: 30 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -30 }}
+                transition={{ duration: 0.3 }}
+              >
+                <div className="text-center mb-10">
+                  <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-3">
+                    {question.question}
+                  </h2>
+                  {question.subtitle && (
+                    <p className="text-muted-foreground">{question.subtitle}</p>
+                  )}
+                </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {question.options.map((option) => {
-                  const isSelected = answers[question.id] === option.value;
-                  return (
-                    <motion.button
-                      key={option.value}
-                      onClick={() => selectAnswer(option.value)}
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                      className={`p-5 rounded-xl border text-left transition-all ${
-                        isSelected
-                          ? "border-primary bg-primary/10 shadow-glow"
-                          : "border-border bg-card hover:border-muted-foreground/30"
-                      }`}
-                    >
-                      <div className="text-2xl mb-2">{option.icon}</div>
-                      <p className={`text-sm font-medium ${isSelected ? "text-primary" : "text-foreground"}`}>
-                        {option.label}
-                      </p>
-                    </motion.button>
-                  );
-                })}
-              </div>
-            </motion.div>
-          </AnimatePresence>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {question.options.map((option) => {
+                    const isSelected = answers[question.id] === option.value;
+                    return (
+                      <motion.button
+                        key={option.value}
+                        onClick={() => selectAnswer(option.value)}
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                        className={`p-5 rounded-xl border text-left transition-all ${
+                          isSelected
+                            ? "border-primary bg-primary/10 shadow-glow"
+                            : "border-border bg-card hover:border-muted-foreground/30"
+                        }`}
+                      >
+                        <div className="text-2xl mb-2">{option.icon}</div>
+                        <p className={`text-sm font-medium ${isSelected ? "text-primary" : "text-foreground"}`}>
+                          {option.label}
+                        </p>
+                      </motion.button>
+                    );
+                  })}
+                </div>
+              </motion.div>
+            </AnimatePresence>
 
-          {/* Navigation */}
-          <div className="flex items-center justify-between mt-10">
-            <button
-              onClick={prev}
-              disabled={currentQ === 0}
-              className="flex items-center gap-2 px-5 py-3 rounded-lg border border-border text-sm font-medium text-muted-foreground hover:text-foreground disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
-            >
-              <ChevronLeft className="w-4 h-4" /> Previous
-            </button>
-            <button
-              onClick={next}
-              disabled={!isAnswered}
-              className="flex items-center gap-2 px-6 py-3 rounded-lg bg-gradient-primary text-primary-foreground text-sm font-semibold disabled:opacity-30 disabled:cursor-not-allowed hover:opacity-90 transition-opacity"
-            >
-              {currentQ === quizQuestions.length - 1 ? "See Results" : "Next"}
-              <ChevronRight className="w-4 h-4" />
-            </button>
+            {/* Navigation */}
+            <div className="flex items-center justify-between mt-10">
+              <button
+                onClick={prev}
+                disabled={currentQ === 0}
+                className="flex items-center gap-2 px-5 py-3 rounded-lg border border-border text-sm font-medium text-muted-foreground hover:text-foreground disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+              >
+                <ChevronLeft className="w-4 h-4" /> Previous
+              </button>
+              <button
+                onClick={next}
+                disabled={!isAnswered}
+                className="flex items-center gap-2 px-6 py-3 rounded-lg bg-gradient-primary text-primary-foreground text-sm font-semibold disabled:opacity-30 disabled:cursor-not-allowed hover:opacity-90 transition-opacity"
+              >
+                {currentQ === quizQuestions.length - 1 ? "See Results" : "Next"}
+                <ChevronRight className="w-4 h-4" />
+              </button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+
+      <SignInModal
+        open={showSignIn}
+        onClose={handleSignInClose}
+        message="Sign in to save your quiz results and get personalized recommendations. You can also continue without signing in."
+      />
+    </>
   );
 }
