@@ -12,7 +12,7 @@ export default function Footer() {
                 <Compass className="w-4 h-4 text-primary-foreground" />
               </div>
               <span className="text-lg font-bold text-foreground">
-                Skill<span className="text-gradient">Pilot</span>
+                Skill<span className="text-gradient">Ta</span>
               </span>
             </Link>
             <p className="text-muted-foreground text-sm max-w-md">
