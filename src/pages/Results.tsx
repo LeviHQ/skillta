@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { calculateCareerScores, QuizAnswers, Career } from "@/data/careers";
 import { ArrowRight, Star, Clock, TrendingUp, DollarSign, AlertTriangle } from "lucide-react";
+import { useAuth } from "@/contexts/AuthContext";
 
 interface CareerResult {
   career: Career;
@@ -12,7 +13,9 @@ interface CareerResult {
 
 export default function Results() {
   const navigate = useNavigate();
+  const { user, saveQuizResult } = useAuth();
   const [results, setResults] = useState<CareerResult[]>([]);
+  const [saved, setSaved] = useState(false);
 
   useEffect(() => {
     const stored = sessionStorage.getItem("quizAnswers");
@@ -21,8 +24,24 @@ export default function Results() {
       return;
     }
     const answers: QuizAnswers = JSON.parse(stored);
-    setResults(calculateCareerScores(answers));
-  }, [navigate]);
+    const computed = calculateCareerScores(answers);
+    setResults(computed);
+
+    // Auto-save if user just signed in (quiz page didn't save yet)
+    if (user && !saved) {
+      const top = computed[0];
+      saveQuizResult({
+        answers,
+        topCareer: top.career.id,
+        topMatchPercentage: top.matchPercentage,
+        allResults: computed.slice(0, 5).map((r) => ({
+          careerId: r.career.id,
+          title: r.career.title,
+          matchPercentage: r.matchPercentage,
+        })),
+      }).then(() => setSaved(true));
+    }
+  }, [navigate, user]);
 
   if (results.length === 0) return null;
 
@@ -38,6 +57,25 @@ export default function Results() {
     <div className="min-h-screen bg-gradient-hero relative">
       <div className="absolute inset-0 grid-pattern opacity-30" />
       <div className="container mx-auto px-6 py-12 relative z-10">
+
+        {/* Signed in banner */}
+        {user && (
+          <motion.div
+            className="max-w-3xl mx-auto mb-6"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+          >
+            <div className="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary/10 border border-primary/20">
+              {user.photoURL && <img src={user.photoURL} alt="" className="w-6 h-6 rounded-full" />}
+              <p className="text-sm text-primary">
+                ✓ Results saved to your dashboard, {user.displayName?.split(" ")[0]}!
+              </p>
+              <Link to="/dashboard" className="ml-auto text-xs font-semibold text-primary hover:underline">
+                Go to Dashboard →
+              </Link>
+            </div>
+          </motion.div>
+        )}
 
         {/* Top Result */}
         <motion.div
@@ -205,6 +243,14 @@ export default function Results() {
           >
             Retake Quiz
           </Link>
+          {user && (
+            <Link
+              to="/dashboard"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl border border-primary/30 text-primary font-semibold hover:bg-primary/10 transition-colors"
+            >
+              Go to Dashboard
+            </Link>
+          )}
         </motion.div>
 
         {/* Other Matches */}

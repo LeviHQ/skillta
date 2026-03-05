@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Sparkles, Map, BookOpen, Shield, TrendingUp, Zap } from "lucide-react";
+import { ArrowRight, Sparkles, Map, BookOpen, Shield, TrendingUp, Zap, LogIn, UserPlus } from "lucide-react";
 import { careers } from "@/data/careers";
+import { useAuth } from "@/contexts/AuthContext";
+import SignInModal from "@/components/SignInModal";
 
 const features = [
   { icon: Sparkles, title: "AI Career Quiz", description: "10 smart questions to discover your ideal tech career path", color: "text-primary" },
@@ -12,13 +15,10 @@ const features = [
   { icon: Zap, title: "Download as PDF", description: "Save your personalized roadmap and share it anywhere", color: "text-primary" },
 ];
 
-const fadeInUp = {
-  initial: { opacity: 0, y: 30 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.6 },
-};
-
 export default function Index() {
+  const { user } = useAuth();
+  const [showSignIn, setShowSignIn] = useState(false);
+
   return (
     <div>
       {/* Hero */}
@@ -73,6 +73,64 @@ export default function Index() {
           </motion.div>
         </div>
       </section>
+
+      {/* Sign In CTA - Only for non-signed-in users */}
+      {!user && (
+        <section className="py-16 bg-card/30 border-y border-border">
+          <div className="container mx-auto px-6">
+            <motion.div
+              className="max-w-3xl mx-auto flex flex-col md:flex-row items-center gap-8 p-8 rounded-2xl bg-gradient-card border border-primary/20 shadow-glow"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              <div className="flex-1">
+                <div className="flex items-center gap-2 mb-3">
+                  <UserPlus className="w-5 h-5 text-primary" />
+                  <h2 className="text-xl font-bold text-foreground">Join SkillTa</h2>
+                </div>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Sign in with Google to save your quiz results, track your career journey, and get
+                  personalized recommendations. It takes just one click!
+                </p>
+              </div>
+              <button
+                onClick={() => setShowSignIn(true)}
+                className="flex items-center gap-3 px-8 py-4 rounded-xl bg-gradient-primary text-primary-foreground font-semibold hover:opacity-90 transition-opacity whitespace-nowrap"
+              >
+                <LogIn className="w-5 h-5" />
+                Sign In with Google
+              </button>
+            </motion.div>
+          </div>
+        </section>
+      )}
+
+      {/* Signed-in user dashboard link */}
+      {user && (
+        <section className="py-10 bg-card/30 border-y border-border">
+          <div className="container mx-auto px-6">
+            <motion.div
+              className="max-w-3xl mx-auto flex items-center gap-4 p-6 rounded-2xl bg-gradient-card border border-primary/20"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              {user.photoURL && <img src={user.photoURL} alt="" className="w-10 h-10 rounded-full border border-primary/30" />}
+              <div className="flex-1">
+                <p className="text-sm font-semibold text-foreground">Welcome back, {user.displayName?.split(" ")[0]}!</p>
+                <p className="text-xs text-muted-foreground">Check your dashboard for saved results and recommendations.</p>
+              </div>
+              <Link
+                to="/dashboard"
+                className="px-5 py-2.5 rounded-xl bg-gradient-primary text-primary-foreground text-sm font-semibold hover:opacity-90 transition-opacity"
+              >
+                Dashboard →
+              </Link>
+            </motion.div>
+          </div>
+        </section>
+      )}
 
       {/* Features */}
       <section className="py-24 bg-background">
@@ -188,6 +246,8 @@ export default function Index() {
           </motion.div>
         </div>
       </section>
+
+      <SignInModal open={showSignIn} onClose={() => setShowSignIn(false)} />
     </div>
   );
 }
