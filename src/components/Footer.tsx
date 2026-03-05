@@ -8,9 +8,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="md:col-span-2">
             <Link to="/" className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 rounded-lg bg-gradient-primary flex items-center justify-center">
-                <Compass className="w-4 h-4 text-primary-foreground" />
-              </div>
+              <img src={logo} alt="SkillTa Logo" className="w-8 h-8 rounded-lg object-contain" />
               <span className="text-lg font-bold text-foreground">
                 Skill<span className="text-gradient">Ta</span>
               </span>

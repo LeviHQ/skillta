@@ -19,9 +19,7 @@ export default function Navbar() {
     <nav className="fixed top-0 left-0 right-0 z-50 glass no-print">
       <div className="container mx-auto px-6 h-16 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2 group">
-          <div className="w-8 h-8 rounded-lg bg-gradient-primary flex items-center justify-center">
-            <Compass className="w-4 h-4 text-primary-foreground" />
-          </div>
+          <img src={logo} alt="SkillTa Logo" className="w-8 h-8 rounded-lg object-contain" />
           <span className="text-lg font-bold text-foreground">
             Skill<span className="text-gradient">Ta</span>
           </span>
