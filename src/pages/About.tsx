@@ -44,7 +44,7 @@ export default function About() {
           <div className="text-center p-8 rounded-2xl bg-gradient-card border border-border">
             <h2 className="text-2xl font-bold text-foreground mb-3">Built with ❤️ for the tech community</h2>
             <p className="text-sm text-muted-foreground max-w-lg mx-auto">
-              SkillPilot is free to use and always will be for core features. Our goal is to make quality career guidance accessible to everyone, regardless of background.
+              SkillTa is free to use and always will be for core features. Our goal is to make quality career guidance accessible to everyone, regardless of background. Our goal is to make quality career guidance accessible to everyone, regardless of background.
             </p>
           </div>
         </motion.div>

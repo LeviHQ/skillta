@@ -37,7 +37,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="border-t border-border mt-8 pt-8 text-center">
-          <p className="text-xs text-muted-foreground">© 2026 SkillPilot. Built to help you find your path in tech.</p>
+          <p className="text-xs text-muted-foreground"><p className="text-xs text-muted-foreground">© 2026 SkillTa. Built to help you find your path in tech.</p></p>
         </div>
       </div>
     </footer>
