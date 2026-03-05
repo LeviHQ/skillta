@@ -13,7 +13,7 @@ export default function About() {
         >
           <div className="text-center mb-16">
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              About <span className="text-gradient">SkillPilot</span>
+              About <span className="text-gradient">SkillTa</span>
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               We believe everyone deserves clarity about their career path. SkillPilot uses AI to match your unique traits with the perfect tech career.
