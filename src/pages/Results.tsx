@@ -31,7 +31,7 @@ export default function Results() {
     if (user && !saved) {
       const top = computed[0];
       saveQuizResult({
-        answers,
+        answers: answers as Record<number, string>,
         topCareer: top.career.id,
         topMatchPercentage: top.matchPercentage,
         allResults: computed.slice(0, 5).map((r) => ({

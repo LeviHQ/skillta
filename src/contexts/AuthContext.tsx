@@ -5,7 +5,7 @@ import { doc, setDoc, getDoc, collection, addDoc, query, orderBy, getDocs, serve
 
 interface QuizResult {
   id?: string;
-  answers: Record<string, string>;
+  answers: Record<number, string>;
   topCareer: string;
   topMatchPercentage: number;
   allResults: { careerId: string; title: string; matchPercentage: number }[];

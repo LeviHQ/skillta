@@ -44,7 +44,7 @@ export default function Quiz() {
       const results = calculateCareerScores(answers);
       const top = results[0];
       await saveQuizResult({
-        answers,
+        answers: answers as Record<number, string>,
         topCareer: top.career.id,
         topMatchPercentage: top.matchPercentage,
         allResults: results.slice(0, 5).map((r) => ({
