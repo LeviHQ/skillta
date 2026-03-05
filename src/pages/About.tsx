@@ -13,10 +13,10 @@ export default function About() {
         >
           <div className="text-center mb-16">
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              About <span className="text-gradient">SkillPilot</span>
+              About <span className="text-gradient">SkillTa</span>
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              We believe everyone deserves clarity about their career path. SkillPilot uses AI to match your unique traits with the perfect tech career.
+              We believe everyone deserves clarity about their career path. SkillTa uses AI to match your unique traits with the perfect tech career.
             </p>
           </div>
 
@@ -44,7 +44,7 @@ export default function About() {
           <div className="text-center p-8 rounded-2xl bg-gradient-card border border-border">
             <h2 className="text-2xl font-bold text-foreground mb-3">Built with ❤️ for the tech community</h2>
             <p className="text-sm text-muted-foreground max-w-lg mx-auto">
-              SkillPilot is free to use and always will be for core features. Our goal is to make quality career guidance accessible to everyone, regardless of background.
+              SkillTa is free to use and always will be for core features. Our goal is to make quality career guidance accessible to everyone, regardless of background. Our goal is to make quality career guidance accessible to everyone, regardless of background.
             </p>
           </div>
         </motion.div>

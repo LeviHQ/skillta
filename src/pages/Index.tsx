@@ -87,7 +87,7 @@ export default function Index() {
               Everything You Need to <span className="text-gradient">Navigate Tech</span>
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              From discovery to your first job — SkillPilot guides you every step of the way.
+              From discovery to your first job — SkillTa guides you every step of the way.
             </p>
           </motion.div>
 

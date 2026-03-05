@@ -12,7 +12,7 @@ export default function Footer() {
                 <Compass className="w-4 h-4 text-primary-foreground" />
               </div>
               <span className="text-lg font-bold text-foreground">
-                Skill<span className="text-gradient">Pilot</span>
+                Skill<span className="text-gradient">Ta</span>
               </span>
             </Link>
             <p className="text-muted-foreground text-sm max-w-md">
@@ -37,7 +37,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="border-t border-border mt-8 pt-8 text-center">
-          <p className="text-xs text-muted-foreground">© 2026 SkillPilot. Built to help you find your path in tech.</p>
+          <p className="text-xs text-muted-foreground"><p className="text-xs text-muted-foreground">© 2026 SkillTa. Built to help you find your path in tech.</p></p>
         </div>
       </div>
     </footer>
