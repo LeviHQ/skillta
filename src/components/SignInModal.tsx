@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
@@ -11,13 +12,48 @@ interface SignInModalProps {
 
 export default function SignInModal({ open, onClose, message }: SignInModalProps) {
   const { signInWithGoogle } = useAuth();
+  const [isSigningIn, setIsSigningIn] = useState(false);
+  const [authError, setAuthError] = useState<string | null>(null);
+  const [showOpenTabHint, setShowOpenTabHint] = useState(false);
+
+  const handleClose = () => {
+    setAuthError(null);
+    setIsSigningIn(false);
+    setShowOpenTabHint(false);
+    onClose();
+  };
 
   const handleSignIn = async () => {
+    setAuthError(null);
+    setShowOpenTabHint(false);
+    setIsSigningIn(true);
+
     try {
       await signInWithGoogle();
-      onClose();
-    } catch (error) {
-      console.error("Sign in failed:", error);
+      handleClose();
+    } catch (error: any) {
+      const code = error?.code as string | undefined;
+      const isIframe = window.self !== window.top;
+      const shouldSuggestNewTab =
+        isIframe &&
+        (code === "auth/popup-closed-by-user" || code === "auth/popup-blocked" || code === "auth/cancelled-popup-request");
+
+      if (code === "auth/unauthorized-domain") {
+        setAuthError(`Firebase authorized domain me "${window.location.hostname}" add karo, phir sign in chalega.`);
+      } else if (code === "auth/operation-not-allowed") {
+        setAuthError("Firebase Console me Google provider enable nahi hai. Pehle usse ON karo.");
+      } else if (code === "auth/popup-blocked") {
+        setAuthError("Browser ne popup block kar diya. Popups allow karke dubara try karo.");
+      } else if (code === "auth/popup-closed-by-user" || code === "auth/cancelled-popup-request") {
+        setAuthError("Google sign-in popup jaldi close ho gaya. Please dubara try karo.");
+      } else {
+        setAuthError("Sign in fail hua. Please ek baar dubara try karo.");
+      }
+
+      setShowOpenTabHint(shouldSuggestNewTab);
+      console.error("Google sign in failed:", error);
+    } finally {
+      setIsSigningIn(false);
     }
   };
 
@@ -30,7 +66,7 @@ export default function SignInModal({ open, onClose, message }: SignInModalProps
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
         >
-          <div className="absolute inset-0 bg-background/80 backdrop-blur-sm" onClick={onClose} />
+          <div className="absolute inset-0 bg-background/80 backdrop-blur-sm" onClick={handleClose} />
           <motion.div
             className="relative w-full max-w-md p-8 rounded-2xl bg-gradient-card border border-border shadow-glow"
             initial={{ scale: 0.9, opacity: 0 }}
@@ -39,7 +75,7 @@ export default function SignInModal({ open, onClose, message }: SignInModalProps
             transition={{ type: "spring", stiffness: 300, damping: 25 }}
           >
             <button
-              onClick={onClose}
+              onClick={handleClose}
               className="absolute top-4 right-4 text-muted-foreground hover:text-foreground transition-colors"
             >
               <X className="w-5 h-5" />
@@ -56,7 +92,8 @@ export default function SignInModal({ open, onClose, message }: SignInModalProps
 
               <button
                 onClick={handleSignIn}
-                className="w-full flex items-center justify-center gap-3 px-6 py-4 rounded-xl border border-border bg-card hover:bg-secondary transition-colors group"
+                disabled={isSigningIn}
+                className="w-full flex items-center justify-center gap-3 px-6 py-4 rounded-xl border border-border bg-card hover:bg-secondary disabled:opacity-60 disabled:cursor-not-allowed transition-colors group"
               >
                 <svg className="w-5 h-5" viewBox="0 0 24 24">
                   <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" />
@@ -65,9 +102,20 @@ export default function SignInModal({ open, onClose, message }: SignInModalProps
                   <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" />
                 </svg>
                 <span className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors">
-                  Continue with Google
+                  {isSigningIn ? "Signing in..." : "Continue with Google"}
                 </span>
               </button>
+
+              {authError && <p className="text-xs text-destructive mt-4 leading-relaxed">{authError}</p>}
+
+              {showOpenTabHint && (
+                <button
+                  onClick={() => window.open(window.location.href, "_blank", "noopener,noreferrer")}
+                  className="mt-3 text-xs text-primary hover:underline"
+                >
+                  Agar preview me issue aa raha hai to app ko new tab me kholkar sign in karo.
+                </button>
+              )}
 
               <p className="text-xs text-muted-foreground mt-6">
                 By signing in, you agree to our Terms of Service and Privacy Policy.
