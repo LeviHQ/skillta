@@ -28,10 +28,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    // Check for redirect result on load
+    getRedirectResult(auth).catch(() => {});
+    
     const unsub = onAuthStateChanged(auth, async (u) => {
       setUser(u);
       if (u) {
-        // Save/update user profile in Firestore
         const userRef = doc(db, "users", u.uid);
         const userSnap = await getDoc(userRef);
         if (!userSnap.exists()) {
@@ -49,7 +51,17 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const signInWithGoogle = async () => {
-    await signInWithPopup(auth, googleProvider);
+    try {
+      // Try popup first
+      await signInWithPopup(auth, googleProvider);
+    } catch (error: any) {
+      // If popup blocked/closed, fall back to redirect
+      if (error?.code === 'auth/popup-blocked' || error?.code === 'auth/popup-closed-by-user' || error?.code === 'auth/cancelled-popup-request') {
+        await signInWithRedirect(auth, googleProvider);
+      } else {
+        throw error;
+      }
+    }
   };
 
   const signOut = async () => {
