@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState, ReactNode } from "react";
-import { User, onAuthStateChanged, signInWithPopup, signOut as firebaseSignOut } from "firebase/auth";
+import { User, onAuthStateChanged, signInWithPopup, signInWithRedirect, getRedirectResult, signOut as firebaseSignOut } from "firebase/auth";
 import { auth, googleProvider, db } from "@/lib/firebase";
 import { doc, setDoc, getDoc, collection, addDoc, query, orderBy, getDocs, serverTimestamp } from "firebase/firestore";
 
