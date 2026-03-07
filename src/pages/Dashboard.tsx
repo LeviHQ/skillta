@@ -7,6 +7,8 @@ import {
   User, LogOut, TrendingUp, Clock, Star, ArrowRight,
   BarChart3, History, Sparkles, Target, BookOpen
 } from "lucide-react";
+import SEOHead from "@/components/SEOHead";
+import { PAGE_SEO } from "@/lib/seo";
 
 interface QuizResult {
   id?: string;
