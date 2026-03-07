@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { careers } from "@/data/careers";
 import { ArrowRight } from "lucide-react";
+import SEOHead from "@/components/SEOHead";
+import { PAGE_SEO, getBreadcrumbSchema } from "@/lib/seo";
 
 export default function RoadmapLibrary() {
   return (
