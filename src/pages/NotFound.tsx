@@ -11,12 +11,18 @@ const NotFound = () => {
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-muted">
+      <SEOHead title="Page Not Found | SkillTa" description="The page you're looking for doesn't exist." path={location.pathname} noIndex />
       <div className="text-center">
         <h1 className="mb-4 text-4xl font-bold">404</h1>
         <p className="mb-4 text-xl text-muted-foreground">Oops! Page not found</p>
-        <a href="/" className="text-primary underline hover:text-primary/90">
+        <Link to="/" className="text-primary underline hover:text-primary/90">
           Return to Home
-        </a>
+        </Link>
+        <div className="mt-4 flex gap-3 justify-center">
+          <Link to="/quiz" className="text-sm text-muted-foreground hover:text-primary">Career Quiz</Link>
+          <Link to="/roadmaps" className="text-sm text-muted-foreground hover:text-primary">Roadmaps</Link>
+          <Link to="/about" className="text-sm text-muted-foreground hover:text-primary">About</Link>
+        </div>
       </div>
     </div>
   );

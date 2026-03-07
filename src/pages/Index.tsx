@@ -25,6 +25,10 @@ export default function Index() {
 
   return (
     <div>
+      <SEOHead
+        {...PAGE_SEO.home}
+        jsonLd={[getWebApplicationSchema(), getEducationalOrgSchema()]}
+      />
       {/* Hero */}
       <section className="relative min-h-[90vh] flex items-center bg-gradient-hero overflow-hidden">
         <div className="absolute inset-0 grid-pattern opacity-40" />

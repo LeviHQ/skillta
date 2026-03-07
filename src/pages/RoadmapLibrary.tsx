@@ -8,7 +8,10 @@ import { PAGE_SEO, getBreadcrumbSchema } from "@/lib/seo";
 export default function RoadmapLibrary() {
   return (
     <div className="min-h-screen bg-gradient-hero relative">
-      <div className="absolute inset-0 grid-pattern opacity-30" />
+      <SEOHead
+        {...PAGE_SEO.roadmaps}
+        jsonLd={getBreadcrumbSchema([{ name: "Home", path: "/" }, { name: "Roadmaps", path: "/roadmaps" }])}
+      />
       <div className="container mx-auto px-6 py-16 relative z-10">
         <motion.div
           className="text-center mb-16"

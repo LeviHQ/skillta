@@ -57,7 +57,7 @@ export default function Results() {
 
   return (
     <div className="min-h-screen bg-gradient-hero relative">
-      <div className="absolute inset-0 grid-pattern opacity-30" />
+      <SEOHead {...PAGE_SEO.results} />
       <div className="container mx-auto px-6 py-12 relative z-10">
 
         {/* Signed in banner */}

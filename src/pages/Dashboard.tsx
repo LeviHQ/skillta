@@ -56,7 +56,7 @@ export default function Dashboard() {
 
   return (
     <div className="min-h-screen bg-gradient-hero relative">
-      <div className="absolute inset-0 grid-pattern opacity-20" />
+      <SEOHead {...PAGE_SEO.dashboard} />
       <div className="container mx-auto px-6 py-8 relative z-10">
 
         {/* Header */}

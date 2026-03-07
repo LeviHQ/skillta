@@ -71,6 +71,7 @@ export default function Quiz() {
 
   return (
     <>
+      <SEOHead {...PAGE_SEO.quiz} />
       <div className="min-h-screen bg-gradient-hero relative">
         <div className="absolute inset-0 grid-pattern opacity-30" />
 
