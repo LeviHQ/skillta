@@ -4,6 +4,8 @@ import { motion } from "framer-motion";
 import { calculateCareerScores, QuizAnswers, Career } from "@/data/careers";
 import { ArrowRight, Star, Clock, TrendingUp, DollarSign, AlertTriangle } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
+import SEOHead from "@/components/SEOHead";
+import { PAGE_SEO } from "@/lib/seo";
 
 interface CareerResult {
   career: Career;
@@ -55,7 +57,7 @@ export default function Results() {
 
   return (
     <div className="min-h-screen bg-gradient-hero relative">
-      <div className="absolute inset-0 grid-pattern opacity-30" />
+      <SEOHead {...PAGE_SEO.results} />
       <div className="container mx-auto px-6 py-12 relative z-10">
 
         {/* Signed in banner */}

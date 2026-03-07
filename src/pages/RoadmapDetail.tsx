@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 import { careers } from "@/data/careers";
 import { ArrowLeft, Download, Clock, TrendingUp, DollarSign, AlertTriangle, BookOpen, Wrench, FolderOpen } from "lucide-react";
 import { useRef } from "react";
+import SEOHead from "@/components/SEOHead";
+import { getCourseSchema, getBreadcrumbSchema } from "@/lib/seo";
 
 export default function RoadmapDetail() {
   const { careerId } = useParams();
@@ -54,7 +56,20 @@ export default function RoadmapDetail() {
 
   return (
     <div className="min-h-screen bg-gradient-hero relative">
-      <div className="absolute inset-0 grid-pattern opacity-30" />
+      <SEOHead
+        title={`${career.title} Roadmap — Step-by-Step Learning Path | SkillTa`}
+        description={`Complete ${career.title} roadmap: ${career.tagline}. Learn ${career.requiredSkills.slice(0, 4).join(", ")} and more. Includes resources, projects, salary info & reality check.`}
+        keywords={`${career.title.toLowerCase()} roadmap, how to become a ${career.title.toLowerCase()}, ${career.requiredSkills.slice(0, 3).join(", ").toLowerCase()}`}
+        path={`/roadmaps/${career.id}`}
+        jsonLd={[
+          getCourseSchema(career),
+          getBreadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Roadmaps", path: "/roadmaps" },
+            { name: career.title, path: `/roadmaps/${career.id}` },
+          ]),
+        ]}
+      />
       <div className="container mx-auto px-6 py-12 relative z-10">
 
         {/* Back + Download */}

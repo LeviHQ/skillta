@@ -7,6 +7,8 @@ import {
   User, LogOut, TrendingUp, Clock, Star, ArrowRight,
   BarChart3, History, Sparkles, Target, BookOpen
 } from "lucide-react";
+import SEOHead from "@/components/SEOHead";
+import { PAGE_SEO } from "@/lib/seo";
 
 interface QuizResult {
   id?: string;
@@ -54,7 +56,7 @@ export default function Dashboard() {
 
   return (
     <div className="min-h-screen bg-gradient-hero relative">
-      <div className="absolute inset-0 grid-pattern opacity-20" />
+      <SEOHead {...PAGE_SEO.dashboard} />
       <div className="container mx-auto px-6 py-8 relative z-10">
 
         {/* Header */}

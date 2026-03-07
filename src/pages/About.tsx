@@ -1,10 +1,14 @@
 import { motion } from "framer-motion";
 import { Compass, Target, Heart, Lightbulb } from "lucide-react";
-
+import SEOHead from "@/components/SEOHead";
+import { PAGE_SEO, getBreadcrumbSchema } from "@/lib/seo";
 export default function About() {
   return (
     <div className="min-h-screen bg-gradient-hero relative">
-      <div className="absolute inset-0 grid-pattern opacity-30" />
+      <SEOHead
+        {...PAGE_SEO.about}
+        jsonLd={getBreadcrumbSchema([{ name: "Home", path: "/" }, { name: "About", path: "/about" }])}
+      />
       <div className="container mx-auto px-6 py-16 relative z-10">
         <motion.div
           className="max-w-3xl mx-auto"
