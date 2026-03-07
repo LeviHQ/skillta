@@ -5,6 +5,8 @@ import { ArrowRight, Sparkles, Map, BookOpen, Shield, TrendingUp, Zap, LogIn, Us
 import { careers } from "@/data/careers";
 import { useAuth } from "@/contexts/AuthContext";
 import SignInModal from "@/components/SignInModal";
+import TestimonialSection from "@/components/TestimonialSection";
+import FAQSection from "@/components/FAQSection";
 
 const features = [
   { icon: Sparkles, title: "AI Career Quiz", description: "10 smart questions to discover your ideal tech career path", color: "text-primary" },
@@ -220,6 +222,12 @@ export default function Index() {
           </div>
         </div>
       </section>
+
+      {/* Testimonials */}
+      <TestimonialSection />
+
+      {/* FAQ */}
+      <FAQSection />
 
       {/* CTA */}
       <section className="py-24 bg-background">
