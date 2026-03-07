@@ -223,6 +223,12 @@ export default function Index() {
         </div>
       </section>
 
+      {/* Testimonials */}
+      <TestimonialSection />
+
+      {/* FAQ */}
+      <FAQSection />
+
       {/* CTA */}
       <section className="py-24 bg-background">
         <div className="container mx-auto px-6">
