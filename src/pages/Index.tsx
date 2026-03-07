@@ -7,6 +7,8 @@ import { useAuth } from "@/contexts/AuthContext";
 import SignInModal from "@/components/SignInModal";
 import TestimonialSection from "@/components/TestimonialSection";
 import FAQSection from "@/components/FAQSection";
+import SEOHead from "@/components/SEOHead";
+import { PAGE_SEO, getWebApplicationSchema, getEducationalOrgSchema } from "@/lib/seo";
 
 const features = [
   { icon: Sparkles, title: "AI Career Quiz", description: "10 smart questions to discover your ideal tech career path", color: "text-primary" },
