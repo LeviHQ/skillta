@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Compass, Target, Heart, Lightbulb } from "lucide-react";
-
+import SEOHead from "@/components/SEOHead";
+import { PAGE_SEO, getBreadcrumbSchema } from "@/lib/seo";
 export default function About() {
   return (
     <div className="min-h-screen bg-gradient-hero relative">
