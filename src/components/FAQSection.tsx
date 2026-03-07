@@ -77,7 +77,7 @@ export default function FAQSection() {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.05 }}
               >
-                <AccordionItem className="border border-border rounded-lg px-6 bg-card/50 hover:bg-card/70 transition-colors">
+                <AccordionItem value={`faq-${i}`} className="border border-border rounded-lg px-6 bg-card/50 hover:bg-card/70 transition-colors">
                   <AccordionTrigger className="text-left font-semibold text-foreground hover:text-primary">
                     {faq.question}
                   </AccordionTrigger>
