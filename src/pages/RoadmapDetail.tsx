@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 import { careers } from "@/data/careers";
 import { ArrowLeft, Download, Clock, TrendingUp, DollarSign, AlertTriangle, BookOpen, Wrench, FolderOpen } from "lucide-react";
 import { useRef } from "react";
+import SEOHead from "@/components/SEOHead";
+import { getCourseSchema, getBreadcrumbSchema } from "@/lib/seo";
 
 export default function RoadmapDetail() {
   const { careerId } = useParams();
