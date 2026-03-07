@@ -6,6 +6,8 @@ import { QuizAnswers, calculateCareerScores } from "@/data/careers";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 import SignInModal from "@/components/SignInModal";
+import SEOHead from "@/components/SEOHead";
+import { PAGE_SEO } from "@/lib/seo";
 
 export default function Quiz() {
   const navigate = useNavigate();
