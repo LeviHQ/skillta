@@ -141,6 +141,9 @@ export default function Index() {
         </section>
       )}
 
+      {/* Who Is It For */}
+      <WhoIsItForSection />
+
       {/* Features */}
       <section className="py-24 bg-background">
         <div className="container mx-auto px-6">
