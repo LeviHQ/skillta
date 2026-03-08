@@ -16,9 +16,24 @@ const navLinks = [
 
 export default function Navbar() {
   const location = useLocation();
+  const navigate = useNavigate();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [showSignIn, setShowSignIn] = useState(false);
   const { user } = useAuth();
+
+  const handleNavClick = (path: string) => {
+    if (path.startsWith("/#")) {
+      const id = path.slice(2);
+      if (location.pathname === "/") {
+        document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+      } else {
+        navigate("/");
+        setTimeout(() => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" }), 300);
+      }
+      return true;
+    }
+    return false;
+  };
 
   return (
     <>

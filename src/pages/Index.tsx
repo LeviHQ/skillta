@@ -234,6 +234,9 @@ export default function Index() {
         </div>
       </section>
 
+      {/* Pricing */}
+      <PricingSection />
+
       {/* Testimonials */}
       <TestimonialSection />
 
