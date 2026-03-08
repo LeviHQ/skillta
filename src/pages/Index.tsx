@@ -6,6 +6,7 @@ import { careers } from "@/data/careers";
 import { useAuth } from "@/contexts/AuthContext";
 import SignInModal from "@/components/SignInModal";
 import TestimonialSection from "@/components/TestimonialSection";
+import PricingSection from "@/components/PricingSection";
 import WhoIsItForSection from "@/components/WhoIsItForSection";
 import FAQSection from "@/components/FAQSection";
 import SEOHead from "@/components/SEOHead";
