@@ -1,4 +1,4 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { Menu, X, User, LayoutDashboard } from "lucide-react";
@@ -10,14 +10,30 @@ const navLinks = [
   { label: "Home", path: "/" },
   { label: "Career Quiz", path: "/quiz" },
   { label: "Roadmap Library", path: "/roadmaps" },
+  { label: "Pricing", path: "/#pricing" },
   { label: "About", path: "/about" },
 ];
 
 export default function Navbar() {
   const location = useLocation();
+  const navigate = useNavigate();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [showSignIn, setShowSignIn] = useState(false);
   const { user } = useAuth();
+
+  const handleNavClick = (path: string) => {
+    if (path.startsWith("/#")) {
+      const id = path.slice(2);
+      if (location.pathname === "/") {
+        document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+      } else {
+        navigate("/");
+        setTimeout(() => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" }), 300);
+      }
+      return true;
+    }
+    return false;
+  };
 
   return (
     <>
@@ -32,26 +48,39 @@ export default function Navbar() {
 
           {/* Desktop */}
           <div className="hidden md:flex items-center gap-1">
-            {navLinks.map((link) => (
-              <Link
-                key={link.path}
-                to={link.path}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors relative ${
-                  location.pathname === link.path
-                    ? "text-primary"
-                    : "text-muted-foreground hover:text-foreground"
-                }`}
-              >
-                {link.label}
-                {location.pathname === link.path && (
-                  <motion.div
-                    layoutId="activeNav"
-                    className="absolute inset-0 bg-primary/10 rounded-lg -z-10"
-                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                  />
-                )}
-              </Link>
-            ))}
+            {navLinks.map((link) => {
+              const isHash = link.path.startsWith("/#");
+              const isActive = isHash
+                ? location.pathname === "/" && location.hash === `#${link.path.slice(2)}`
+                : location.pathname === link.path;
+
+              return isHash ? (
+                <button
+                  key={link.path}
+                  onClick={() => handleNavClick(link.path)}
+                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors relative text-muted-foreground hover:text-foreground`}
+                >
+                  {link.label}
+                </button>
+              ) : (
+                <Link
+                  key={link.path}
+                  to={link.path}
+                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors relative ${
+                    isActive ? "text-primary" : "text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  {link.label}
+                  {isActive && (
+                    <motion.div
+                      layoutId="activeNav"
+                      className="absolute inset-0 bg-primary/10 rounded-lg -z-10"
+                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                    />
+                  )}
+                </Link>
+              );
+            })}
           </div>
 
           <div className="hidden md:flex items-center gap-3">
@@ -102,20 +131,31 @@ export default function Navbar() {
             className="md:hidden glass border-t border-border"
           >
             <div className="container mx-auto px-6 py-4 flex flex-col gap-2">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.path}
-                  to={link.path}
-                  onClick={() => setMobileOpen(false)}
-                  className={`px-4 py-3 rounded-lg text-sm font-medium transition-colors ${
-                    location.pathname === link.path
-                      ? "text-primary bg-primary/10"
-                      : "text-muted-foreground hover:text-foreground"
-                  }`}
-                >
-                  {link.label}
-                </Link>
-              ))}
+              {navLinks.map((link) => {
+                const isHash = link.path.startsWith("/#");
+                return isHash ? (
+                  <button
+                    key={link.path}
+                    onClick={() => { handleNavClick(link.path); setMobileOpen(false); }}
+                    className="px-4 py-3 rounded-lg text-sm font-medium transition-colors text-muted-foreground hover:text-foreground text-left"
+                  >
+                    {link.label}
+                  </button>
+                ) : (
+                  <Link
+                    key={link.path}
+                    to={link.path}
+                    onClick={() => setMobileOpen(false)}
+                    className={`px-4 py-3 rounded-lg text-sm font-medium transition-colors ${
+                      location.pathname === link.path
+                        ? "text-primary bg-primary/10"
+                        : "text-muted-foreground hover:text-foreground"
+                    }`}
+                  >
+                    {link.label}
+                  </Link>
+                );
+              })}
               {user ? (
                 <Link
                   to="/dashboard"
