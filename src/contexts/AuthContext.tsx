@@ -48,8 +48,30 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     return unsub;
   }, []);
 
+  const sendWelcomeEmail = async (user: User) => {
+    try {
+      const { data, error } = await supabase.functions.invoke('send-welcome-email', {
+        body: {
+          email: user.email,
+          displayName: user.displayName || user.email?.split('@')[0],
+        },
+      });
+      if (error) {
+        console.error('Welcome email error:', error);
+      } else {
+        console.log('Welcome email sent successfully:', data);
+      }
+    } catch (err) {
+      console.error('Failed to send welcome email:', err);
+    }
+  };
+
   const signInWithGoogle = async () => {
-    await signInWithPopup(auth, googleProvider);
+    const result = await signInWithPopup(auth, googleProvider);
+    // Send welcome email on every sign-in
+    if (result.user) {
+      sendWelcomeEmail(result.user);
+    }
   };
 
   const signOut = async () => {
