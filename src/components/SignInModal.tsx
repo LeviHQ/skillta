@@ -113,7 +113,7 @@ export default function SignInModal({ open, onClose, message }: SignInModalProps
                   onClick={() => window.open(window.location.href, "_blank", "noopener,noreferrer")}
                   className="mt-3 text-xs text-primary hover:underline"
                 >
-                  Agar preview me issue aa raha hai to app ko new tab me kholkar sign in karo.
+                  If you're having trouble in preview, try opening the app in a new tab to sign in.
                 </button>
               )}
 
