@@ -8,9 +8,7 @@ import SignInModal from "@/components/SignInModal";
 import SEOHead from "@/components/SEOHead";
 import { PAGE_SEO } from "@/lib/seo";
 
-export interface QuizAnswers {
-  [questionId: string]: string;
-}
+import { QuizAnswers } from "@/data/careers";
 
 export default function Quiz() {
   const navigate = useNavigate();
