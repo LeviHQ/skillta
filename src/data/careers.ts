@@ -955,6 +955,7 @@ export const careers: Career[] = [
     ],
     realityCheck: { difficulty: 5, learningTime: "12-18 months (entry) → 4-6 years (expert)", competition: "Low", entryBarrier: "High", salaryExpectation: "Good pay with lower competition. Automotive and medical embedded pay premium. Hardware experience required for many roles.", honestNote: "You need actual hardware to practice — it's not free like web dev. Debugging hardware issues is painful. But embedded systems power everything from cars to pacemakers, and the impact is massive." },
   },
+  ...additionalCareers,
 ];
 
 // Scoring algorithm
