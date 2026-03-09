@@ -130,7 +130,7 @@ export default function RoadmapDetail() {
     container.innerHTML = pdfHTML;
     document.body.appendChild(container);
 
-    await html2pdf()
+    await (html2pdf() as any)
       .set({
         margin: [12, 14],
         filename: `${career.title}-Roadmap-SkillTa.pdf`,
