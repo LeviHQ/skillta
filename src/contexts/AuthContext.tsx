@@ -2,6 +2,7 @@ import { createContext, useContext, useEffect, useState, ReactNode } from "react
 import { User, onAuthStateChanged, signInWithPopup, signOut as firebaseSignOut } from "firebase/auth";
 import { auth, googleProvider, db } from "@/lib/firebase";
 import { doc, setDoc, getDoc, collection, addDoc, query, orderBy, getDocs, serverTimestamp } from "firebase/firestore";
+import { supabase } from "@/integrations/supabase/client";
 
 interface QuizResult {
   id?: string;
@@ -47,8 +48,30 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     return unsub;
   }, []);
 
+  const sendWelcomeEmail = async (user: User) => {
+    try {
+      const { data, error } = await supabase.functions.invoke('send-welcome-email', {
+        body: {
+          email: user.email,
+          displayName: user.displayName || user.email?.split('@')[0],
+        },
+      });
+      if (error) {
+        console.error('Welcome email error:', error);
+      } else {
+        console.log('Welcome email sent successfully:', data);
+      }
+    } catch (err) {
+      console.error('Failed to send welcome email:', err);
+    }
+  };
+
   const signInWithGoogle = async () => {
-    await signInWithPopup(auth, googleProvider);
+    const result = await signInWithPopup(auth, googleProvider);
+    // Send welcome email on every sign-in
+    if (result.user) {
+      sendWelcomeEmail(result.user);
+    }
   };
 
   const signOut = async () => {
