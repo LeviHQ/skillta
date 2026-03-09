@@ -995,7 +995,7 @@ export function calculateCareerScores(answers: QuizAnswers): { career: Career; s
     if (answerValue === "experimental" || answerValue === "adaptive") { scoreMap["fullstack-developer"] += 2; scoreMap["game-developer"] += 2; scoreMap["blockchain-developer"] += 2; }
 
     // === PATIENCE & LEARNING ===
-    if (answerValue === "high" && answerValue !== "money") { scoreMap["data-scientist"] += 1; scoreMap["ai-ml-engineer"] += 1; scoreMap["embedded-systems"] += 1; }
+    if (answerValue === "high") { scoreMap["data-scientist"] += 1; scoreMap["ai-ml-engineer"] += 1; scoreMap["embedded-systems"] += 1; }
     if (answerValue === "medium") { scoreMap["frontend-developer"] += 1; scoreMap["backend-developer"] += 1; scoreMap["mobile-developer"] += 1; }
     if (answerValue === "low") { scoreMap["frontend-developer"] += 2; scoreMap["uiux-designer"] += 1; scoreMap["technical-writer"] += 1; }
 
