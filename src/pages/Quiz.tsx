@@ -11,7 +11,7 @@ import { PAGE_SEO } from "@/lib/seo";
 
 export default function Quiz() {
   const navigate = useNavigate();
-  const { user, saveQuizResult } = useAuth();
+  const { user } = useAuth();
   const [currentQ, setCurrentQ] = useState(0);
   const [answers, setAnswers] = useState<QuizAnswers>({});
   const [showSignIn, setShowSignIn] = useState(false);
