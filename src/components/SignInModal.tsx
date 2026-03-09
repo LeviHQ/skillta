@@ -39,15 +39,15 @@ export default function SignInModal({ open, onClose, message }: SignInModalProps
         (code === "auth/popup-closed-by-user" || code === "auth/popup-blocked" || code === "auth/cancelled-popup-request");
 
       if (code === "auth/unauthorized-domain") {
-        setAuthError(`Firebase authorized domain me "${window.location.hostname}" add karo, phir sign in chalega.`);
+        setAuthError(`This domain "${window.location.hostname}" is not authorized in Firebase. Please add it to your authorized domains.`);
       } else if (code === "auth/operation-not-allowed") {
-        setAuthError("Firebase Console me Google provider enable nahi hai. Pehle usse ON karo.");
+        setAuthError("Google sign-in is not enabled. Please enable the Google provider in Firebase Console.");
       } else if (code === "auth/popup-blocked") {
-        setAuthError("Browser ne popup block kar diya. Popups allow karke dubara try karo.");
+        setAuthError("The sign-in popup was blocked by your browser. Please allow popups and try again.");
       } else if (code === "auth/popup-closed-by-user" || code === "auth/cancelled-popup-request") {
-        setAuthError("Google sign-in popup jaldi close ho gaya. Please dubara try karo.");
+        setAuthError("The sign-in popup was closed too quickly. Please try again.");
       } else {
-        setAuthError("Sign in fail hua. Please ek baar dubara try karo.");
+        setAuthError("Sign in failed. Please try again.");
       }
 
       setShowOpenTabHint(shouldSuggestNewTab);
