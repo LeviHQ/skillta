@@ -1,13 +1,16 @@
-import { useState } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { quizQuestions } from "@/data/quizQuestions";
-import { QuizAnswers } from "@/data/careers";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { getRandomQuestions, QuizQuestion } from "@/data/quizQuestionBank";
+import { ChevronLeft, ChevronRight, Shuffle } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 import SignInModal from "@/components/SignInModal";
 import SEOHead from "@/components/SEOHead";
 import { PAGE_SEO } from "@/lib/seo";
+
+export interface QuizAnswers {
+  [questionId: string]: string;
+}
 
 export default function Quiz() {
   const navigate = useNavigate();
