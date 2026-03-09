@@ -41,7 +41,9 @@ export default function Results() {
           title: r.career.title,
           matchPercentage: r.matchPercentage,
         })),
-      }).then(() => setSaved(true));
+      })
+        .then(() => setSaved(true))
+        .catch((err) => console.error("Failed to save quiz result on results page:", err));
     }
   }, [navigate, user]);
 
