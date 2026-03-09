@@ -1,41 +1,152 @@
 import { Link } from "react-router-dom";
+import { Github, Twitter, Linkedin, Mail, Heart, ArrowUpRight } from "lucide-react";
 import logo from "@/assets/logo.png";
 
 export default function Footer() {
+  const currentYear = new Date().getFullYear();
+
   return (
-    <footer className="border-t border-border bg-card/50 no-print">
-      <div className="container mx-auto px-6 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div className="md:col-span-2">
-            <Link to="/" className="flex items-center gap-2 mb-4">
-              <img src={logo} alt="SkillTa Logo" className="w-8 h-8 rounded-lg object-contain" />
-              <span className="text-lg font-bold text-foreground">
+    <footer className="border-t border-border bg-card/80 backdrop-blur-sm no-print">
+      <div className="container mx-auto px-6 py-14">
+        {/* Main Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-12 gap-10 md:gap-8">
+          {/* Brand Column */}
+          <div className="col-span-2 md:col-span-4">
+            <Link to="/" className="flex items-center gap-2.5 mb-5 group">
+              <img
+                src={logo}
+                alt="SkillTa Logo"
+                className="w-9 h-9 rounded-lg object-contain transition-transform group-hover:scale-110"
+              />
+              <span className="text-xl font-bold text-foreground tracking-tight">
                 Skill<span className="text-gradient">Ta</span>
               </span>
             </Link>
-            <p className="text-muted-foreground text-sm max-w-md">
+            <p className="text-muted-foreground text-sm leading-relaxed max-w-xs mb-6">
               AI-powered career guidance to help you discover the perfect tech career path. Take the quiz, get your roadmap, start your journey.
             </p>
-          </div>
-          <div>
-            <h4 className="font-semibold text-foreground mb-3 text-sm">Explore</h4>
-            <div className="flex flex-col gap-2">
-              <Link to="/quiz" className="text-sm text-muted-foreground hover:text-primary transition-colors">Career Quiz</Link>
-              <Link to="/roadmaps" className="text-sm text-muted-foreground hover:text-primary transition-colors">Roadmap Library</Link>
-              <Link to="/about" className="text-sm text-muted-foreground hover:text-primary transition-colors">About</Link>
+            {/* Social Links */}
+            <div className="flex items-center gap-3">
+              <a
+                href="https://twitter.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-9 h-9 rounded-lg bg-muted/50 flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all"
+                aria-label="Twitter"
+              >
+                <Twitter className="w-4 h-4" />
+              </a>
+              <a
+                href="https://github.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-9 h-9 rounded-lg bg-muted/50 flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all"
+                aria-label="GitHub"
+              >
+                <Github className="w-4 h-4" />
+              </a>
+              <a
+                href="https://linkedin.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-9 h-9 rounded-lg bg-muted/50 flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all"
+                aria-label="LinkedIn"
+              >
+                <Linkedin className="w-4 h-4" />
+              </a>
+              <a
+                href="mailto:support@skillta.app"
+                className="w-9 h-9 rounded-lg bg-muted/50 flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all"
+                aria-label="Email"
+              >
+                <Mail className="w-4 h-4" />
+              </a>
             </div>
           </div>
-          <div>
-            <h4 className="font-semibold text-foreground mb-3 text-sm">Popular Paths</h4>
-            <div className="flex flex-col gap-2">
-              <Link to="/roadmaps/frontend-developer" className="text-sm text-muted-foreground hover:text-primary transition-colors">Frontend Development</Link>
-              <Link to="/roadmaps/backend-developer" className="text-sm text-muted-foreground hover:text-primary transition-colors">Backend Development</Link>
-              <Link to="/roadmaps/data-scientist" className="text-sm text-muted-foreground hover:text-primary transition-colors">Data Science</Link>
-            </div>
+
+          {/* Product Column */}
+          <div className="col-span-1 md:col-span-2">
+            <h4 className="font-semibold text-foreground mb-4 text-xs uppercase tracking-widest">
+              Product
+            </h4>
+            <nav className="flex flex-col gap-3">
+              <Link to="/quiz" className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-1 group">
+                Career Quiz
+                <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+              </Link>
+              <Link to="/roadmaps" className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-1 group">
+                Roadmap Library
+                <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+              </Link>
+              <Link to="/dashboard" className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-1 group">
+                Dashboard
+                <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+              </Link>
+            </nav>
+          </div>
+
+          {/* Popular Paths Column */}
+          <div className="col-span-1 md:col-span-3">
+            <h4 className="font-semibold text-foreground mb-4 text-xs uppercase tracking-widest">
+              Popular Paths
+            </h4>
+            <nav className="flex flex-col gap-3">
+              <Link to="/roadmaps/frontend-developer" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                Frontend Development
+              </Link>
+              <Link to="/roadmaps/backend-developer" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                Backend Development
+              </Link>
+              <Link to="/roadmaps/data-scientist" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                Data Science
+              </Link>
+              <Link to="/roadmaps/cybersecurity-analyst" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                Cybersecurity
+              </Link>
+            </nav>
+          </div>
+
+          {/* Company Column */}
+          <div className="col-span-1 md:col-span-3">
+            <h4 className="font-semibold text-foreground mb-4 text-xs uppercase tracking-widest">
+              Company
+            </h4>
+            <nav className="flex flex-col gap-3">
+              <Link to="/about" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                About Us
+              </Link>
+              <Link to="/terms" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                Terms of Service
+              </Link>
+              <Link to="/privacy" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                Privacy Policy
+              </Link>
+              <a href="mailto:support@skillta.app" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                Contact Us
+              </a>
+            </nav>
           </div>
         </div>
-        <div className="border-t border-border mt-8 pt-8 text-center">
-          <p className="text-xs text-muted-foreground"><p className="text-xs text-muted-foreground">© 2026 SkillTa. Built to help you find your path in tech.</p></p>
+
+        {/* Divider */}
+        <div className="border-t border-border mt-12 pt-8">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+            <p className="text-xs text-muted-foreground">
+              © {currentYear} SkillTa. All rights reserved.
+            </p>
+            <p className="text-xs text-muted-foreground flex items-center gap-1">
+              Made with <Heart className="w-3 h-3 text-red-500 fill-red-500" /> to help you find your path in tech
+            </p>
+            <div className="flex items-center gap-4">
+              <Link to="/terms" className="text-xs text-muted-foreground hover:text-primary transition-colors">
+                Terms
+              </Link>
+              <span className="text-muted-foreground/30">·</span>
+              <Link to="/privacy" className="text-xs text-muted-foreground hover:text-primary transition-colors">
+                Privacy
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </footer>
