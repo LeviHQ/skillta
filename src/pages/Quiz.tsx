@@ -39,27 +39,9 @@ export default function Quiz() {
     }
   };
 
-  const finishQuiz = async () => {
+  const finishQuiz = () => {
     sessionStorage.setItem("quizAnswers", JSON.stringify(answers));
-    // Save to Firebase if signed in (don't block navigation on failure)
-    if (user) {
-      try {
-        const results = calculateCareerScores(answers);
-        const top = results[0];
-        await saveQuizResult({
-          answers: answers as Record<number, string>,
-          topCareer: top.career.id,
-          topMatchPercentage: top.matchPercentage,
-          allResults: results.slice(0, 5).map((r) => ({
-            careerId: r.career.id,
-            title: r.career.title,
-            matchPercentage: r.matchPercentage,
-          })),
-        });
-      } catch (err) {
-        console.error("Failed to save quiz result:", err);
-      }
-    }
+    // Always navigate immediately; results page handles signed-in auto-save.
     navigate("/results");
   };
 
