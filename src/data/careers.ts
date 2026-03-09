@@ -1,3 +1,5 @@
+import { additionalCareers } from "./additionalCareers";
+
 export interface Career {
   id: string;
   title: string;
@@ -953,6 +955,7 @@ export const careers: Career[] = [
     ],
     realityCheck: { difficulty: 5, learningTime: "12-18 months (entry) → 4-6 years (expert)", competition: "Low", entryBarrier: "High", salaryExpectation: "Good pay with lower competition. Automotive and medical embedded pay premium. Hardware experience required for many roles.", honestNote: "You need actual hardware to practice — it's not free like web dev. Debugging hardware issues is painful. But embedded systems power everything from cars to pacemakers, and the impact is massive." },
   },
+  ...additionalCareers,
 ];
 
 // Scoring algorithm
@@ -967,10 +970,10 @@ export function calculateCareerScores(answers: QuizAnswers): { career: Career; s
 
   // Interest
   const interest = answers[1];
-  if (interest === "backend") { scoreMap["backend-developer"] += 5; scoreMap["devops-engineer"] += 3; scoreMap["fullstack-developer"] += 3; scoreMap["cloud-architect"] += 2; scoreMap["site-reliability-engineer"] += 2; scoreMap["data-engineer"] += 2; }
-  if (interest === "frontend") { scoreMap["frontend-developer"] += 5; scoreMap["uiux-designer"] += 4; scoreMap["mobile-developer"] += 3; scoreMap["fullstack-developer"] += 3; scoreMap["game-developer"] += 2; }
-  if (interest === "data") { scoreMap["data-scientist"] += 5; scoreMap["ai-ml-engineer"] += 4; scoreMap["data-engineer"] += 4; scoreMap["backend-developer"] += 2; }
-  if (interest === "security") { scoreMap["cybersecurity-specialist"] += 5; scoreMap["devops-engineer"] += 2; scoreMap["site-reliability-engineer"] += 3; scoreMap["cloud-architect"] += 2; }
+  if (interest === "backend") { scoreMap["backend-developer"] += 5; scoreMap["devops-engineer"] += 3; scoreMap["fullstack-developer"] += 3; scoreMap["cloud-architect"] += 2; scoreMap["site-reliability-engineer"] += 2; scoreMap["data-engineer"] += 2; scoreMap["platform-engineer"] += 3; scoreMap["api-developer"] += 4; }
+  if (interest === "frontend") { scoreMap["frontend-developer"] += 5; scoreMap["uiux-designer"] += 4; scoreMap["mobile-developer"] += 3; scoreMap["fullstack-developer"] += 3; scoreMap["game-developer"] += 2; scoreMap["ios-developer"] += 3; scoreMap["android-developer"] += 3; scoreMap["flutter-developer"] += 3; }
+  if (interest === "data") { scoreMap["data-scientist"] += 5; scoreMap["ai-ml-engineer"] += 4; scoreMap["data-engineer"] += 4; scoreMap["backend-developer"] += 2; scoreMap["data-analyst"] += 4; scoreMap["business-intelligence-analyst"] += 3; scoreMap["mlops-engineer"] += 3; }
+  if (interest === "security") { scoreMap["cybersecurity-specialist"] += 5; scoreMap["devops-engineer"] += 2; scoreMap["site-reliability-engineer"] += 3; scoreMap["cloud-architect"] += 2; scoreMap["penetration-tester"] += 5; scoreMap["digital-forensics-analyst"] += 4; }
 
   // Math
   const math = answers[2];
