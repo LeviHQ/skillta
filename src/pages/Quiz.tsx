@@ -1,13 +1,14 @@
-import { useState } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { quizQuestions } from "@/data/quizQuestions";
-import { QuizAnswers } from "@/data/careers";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { getRandomQuestions, QuizQuestion } from "@/data/quizQuestionBank";
+import { ChevronLeft, ChevronRight, Shuffle } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 import SignInModal from "@/components/SignInModal";
 import SEOHead from "@/components/SEOHead";
 import { PAGE_SEO } from "@/lib/seo";
+
+import { QuizAnswers } from "@/data/careers";
 
 export default function Quiz() {
   const navigate = useNavigate();
@@ -15,6 +16,18 @@ export default function Quiz() {
   const [currentQ, setCurrentQ] = useState(0);
   const [answers, setAnswers] = useState<QuizAnswers>({});
   const [showSignIn, setShowSignIn] = useState(false);
+  
+  // Generate random questions once on mount
+  const quizQuestions = useMemo(() => {
+    // Check if we have saved questions in session (in case of page refresh)
+    const saved = sessionStorage.getItem("currentQuizQuestions");
+    if (saved) {
+      return JSON.parse(saved) as QuizQuestion[];
+    }
+    const questions = getRandomQuestions();
+    sessionStorage.setItem("currentQuizQuestions", JSON.stringify(questions));
+    return questions;
+  }, []);
 
   const question = quizQuestions[currentQ];
   const progress = ((currentQ + 1) / quizQuestions.length) * 100;
@@ -41,6 +54,8 @@ export default function Quiz() {
 
   const finishQuiz = () => {
     sessionStorage.setItem("quizAnswers", JSON.stringify(answers));
+    // Clear the saved questions
+    sessionStorage.removeItem("currentQuizQuestions");
     // Always navigate immediately; results page handles signed-in auto-save.
     navigate("/results");
   };
@@ -55,6 +70,14 @@ export default function Quiz() {
     if (currentQ > 0) setCurrentQ((p) => p - 1);
   };
 
+  const resetQuiz = () => {
+    if (confirm("Start a new quiz with different questions? Your current progress will be lost.")) {
+      sessionStorage.removeItem("currentQuizQuestions");
+      sessionStorage.removeItem("quizAnswers");
+      window.location.reload();
+    }
+  };
+
   return (
     <>
       <SEOHead {...PAGE_SEO.quiz} />
@@ -65,10 +88,24 @@ export default function Quiz() {
           {/* Progress */}
           <div className="max-w-2xl mx-auto mb-8">
             <div className="flex items-center justify-between mb-3">
-              <span className="text-sm text-muted-foreground">
-                Question {currentQ + 1} of {quizQuestions.length}
-              </span>
-              <span className="text-sm font-mono text-primary">{Math.round(progress)}%</span>
+              <div className="flex items-center gap-3">
+                <span className="text-sm text-muted-foreground">
+                  Question {currentQ + 1} of {quizQuestions.length}
+                </span>
+                <button
+                  onClick={resetQuiz}
+                  className="text-xs text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1"
+                  title="Get different questions"
+                >
+                  <Shuffle className="w-3 h-3" /> New Quiz
+                </button>
+              </div>
+              <div className="flex items-center gap-3">
+                <span className="text-xs px-2 py-1 rounded-md bg-primary/10 text-primary">
+                  {question.category === "nature" ? "🧠 Nature" : question.category === "skill" ? "⚡ Skill" : "🎯 Helper"}
+                </span>
+                <span className="text-sm font-mono text-primary">{Math.round(progress)}%</span>
+              </div>
             </div>
             <div className="h-2 rounded-full bg-secondary overflow-hidden">
               <motion.div

@@ -958,91 +958,100 @@ export const careers: Career[] = [
   ...additionalCareers,
 ];
 
-// Scoring algorithm
+// Scoring algorithm - works with dynamic question bank (string IDs)
 export interface QuizAnswers {
-  [questionId: number]: string;
+  [questionId: string]: string;
 }
 
 export function calculateCareerScores(answers: QuizAnswers): { career: Career; score: number; matchPercentage: number }[] {
   const scoreMap: Record<string, number> = {};
-
   careers.forEach(c => { scoreMap[c.id] = 0; });
 
-  // Interest
-  const interest = answers[1];
-  if (interest === "backend") { scoreMap["backend-developer"] += 5; scoreMap["devops-engineer"] += 3; scoreMap["fullstack-developer"] += 3; scoreMap["cloud-architect"] += 2; scoreMap["site-reliability-engineer"] += 2; scoreMap["data-engineer"] += 2; scoreMap["platform-engineer"] += 3; scoreMap["api-developer"] += 4; }
-  if (interest === "frontend") { scoreMap["frontend-developer"] += 5; scoreMap["uiux-designer"] += 4; scoreMap["mobile-developer"] += 3; scoreMap["fullstack-developer"] += 3; scoreMap["game-developer"] += 2; scoreMap["ios-developer"] += 3; scoreMap["android-developer"] += 3; scoreMap["flutter-developer"] += 3; }
-  if (interest === "data") { scoreMap["data-scientist"] += 5; scoreMap["ai-ml-engineer"] += 4; scoreMap["data-engineer"] += 4; scoreMap["backend-developer"] += 2; scoreMap["data-analyst"] += 4; scoreMap["business-intelligence-analyst"] += 3; scoreMap["mlops-engineer"] += 3; }
-  if (interest === "security") { scoreMap["cybersecurity-specialist"] += 5; scoreMap["devops-engineer"] += 2; scoreMap["site-reliability-engineer"] += 3; scoreMap["cloud-architect"] += 2; scoreMap["penetration-tester"] += 5; scoreMap["digital-forensics-analyst"] += 4; }
+  // Dynamic scoring: iterate through all answers and apply rules based on answer values
+  Object.values(answers).forEach(answerValue => {
+    // === CORE INTEREST SIGNALS ===
+    if (answerValue === "backend") { scoreMap["backend-developer"] += 5; scoreMap["cloud-architect"] += 3; scoreMap["data-engineer"] += 2; scoreMap["platform-engineer"] += 3; scoreMap["api-developer"] += 4; scoreMap["site-reliability-engineer"] += 2; }
+    if (answerValue === "frontend") { scoreMap["frontend-developer"] += 5; scoreMap["uiux-designer"] += 3; scoreMap["mobile-developer"] += 2; scoreMap["ios-developer"] += 2; scoreMap["android-developer"] += 2; scoreMap["flutter-developer"] += 2; }
+    if (answerValue === "data" || answerValue === "analytics") { scoreMap["data-scientist"] += 5; scoreMap["data-engineer"] += 4; scoreMap["ai-ml-engineer"] += 3; scoreMap["data-analyst"] += 4; scoreMap["business-intelligence-analyst"] += 3; scoreMap["mlops-engineer"] += 3; }
+    if (answerValue === "security") { scoreMap["cybersecurity-specialist"] += 5; scoreMap["penetration-tester"] += 5; scoreMap["digital-forensics-analyst"] += 4; }
 
-  // Math
-  const math = answers[2];
-  if (math === "high") { scoreMap["data-scientist"] += 4; scoreMap["ai-ml-engineer"] += 4; scoreMap["embedded-systems"] += 3; scoreMap["backend-developer"] += 2; scoreMap["cybersecurity-specialist"] += 2; }
-  if (math === "medium") { scoreMap["backend-developer"] += 2; scoreMap["frontend-developer"] += 2; scoreMap["devops-engineer"] += 2; scoreMap["fullstack-developer"] += 2; scoreMap["data-engineer"] += 2; }
-  if (math === "low") { scoreMap["frontend-developer"] += 3; scoreMap["uiux-designer"] += 3; scoreMap["qa-automation"] += 2; scoreMap["technical-writer"] += 3; scoreMap["product-manager-tech"] += 2; }
-  if (math === "willing") { scoreMap["data-scientist"] += 2; scoreMap["backend-developer"] += 2; scoreMap["mobile-developer"] += 2; scoreMap["game-developer"] += 2; scoreMap["blockchain-developer"] += 2; }
+    // === MOTIVATION & PRIORITIES ===
+    if (answerValue === "money") { scoreMap["data-scientist"] += 2; scoreMap["devops-engineer"] += 3; scoreMap["cloud-architect"] += 3; scoreMap["ai-ml-engineer"] += 3; scoreMap["solutions-architect"] += 3; scoreMap["site-reliability-engineer"] += 3; }
+    if (answerValue === "impact") { scoreMap["frontend-developer"] += 2; scoreMap["uiux-designer"] += 3; scoreMap["product-manager-tech"] += 3; scoreMap["mobile-developer"] += 2; }
+    if (answerValue === "balance") { scoreMap["frontend-developer"] += 3; scoreMap["qa-automation"] += 3; scoreMap["technical-writer"] += 3; scoreMap["uiux-designer"] += 2; }
+    if (answerValue === "growth") { scoreMap["data-scientist"] += 3; scoreMap["cybersecurity-specialist"] += 3; scoreMap["blockchain-developer"] += 3; scoreMap["ai-ml-engineer"] += 2; }
 
-  // Logic
-  const logic = answers[3];
-  if (logic === "systematic") { scoreMap["backend-developer"] += 3; scoreMap["devops-engineer"] += 3; scoreMap["qa-automation"] += 3; scoreMap["data-engineer"] += 3; scoreMap["site-reliability-engineer"] += 3; scoreMap["embedded-systems"] += 2; }
-  if (logic === "visual") { scoreMap["frontend-developer"] += 3; scoreMap["uiux-designer"] += 4; scoreMap["mobile-developer"] += 2; scoreMap["game-developer"] += 3; }
-  if (logic === "experimental") { scoreMap["cybersecurity-specialist"] += 3; scoreMap["data-scientist"] += 2; scoreMap["frontend-developer"] += 2; scoreMap["blockchain-developer"] += 3; scoreMap["ai-ml-engineer"] += 2; }
-  if (logic === "collaborative") { scoreMap["uiux-designer"] += 3; scoreMap["devops-engineer"] += 2; scoreMap["qa-automation"] += 2; scoreMap["product-manager-tech"] += 4; scoreMap["technical-writer"] += 2; }
+    // === WORK ENVIRONMENT ===
+    if (answerValue === "remote") { scoreMap["frontend-developer"] += 2; scoreMap["backend-developer"] += 2; scoreMap["technical-writer"] += 3; scoreMap["fullstack-developer"] += 2; }
+    if (answerValue === "freelance") { scoreMap["frontend-developer"] += 3; scoreMap["uiux-designer"] += 3; scoreMap["mobile-developer"] += 3; scoreMap["fullstack-developer"] += 3; }
+    if (answerValue === "office") { scoreMap["embedded-systems"] += 3; scoreMap["product-manager-tech"] += 2; scoreMap["cybersecurity-specialist"] += 2; }
+    if (answerValue === "hybrid") { Object.keys(scoreMap).forEach(k => scoreMap[k] += 1); }
 
-  // Creativity
-  const creativity = answers[4];
-  if (creativity === "high") { scoreMap["uiux-designer"] += 5; scoreMap["frontend-developer"] += 4; scoreMap["mobile-developer"] += 3; scoreMap["game-developer"] += 4; }
-  if (creativity === "low") { scoreMap["backend-developer"] += 3; scoreMap["data-scientist"] += 3; scoreMap["devops-engineer"] += 2; scoreMap["data-engineer"] += 3; scoreMap["embedded-systems"] += 2; }
-  if (creativity === "technical") { scoreMap["backend-developer"] += 3; scoreMap["devops-engineer"] += 3; scoreMap["cybersecurity-specialist"] += 2; scoreMap["cloud-architect"] += 3; scoreMap["site-reliability-engineer"] += 3; }
-  if (creativity === "medium") { scoreMap["frontend-developer"] += 2; scoreMap["mobile-developer"] += 2; scoreMap["qa-automation"] += 2; scoreMap["fullstack-developer"] += 2; scoreMap["technical-writer"] += 2; }
+    // === PERSONALITY TRAITS ===
+    if (answerValue === "solo" || answerValue === "introvert") { scoreMap["backend-developer"] += 2; scoreMap["data-engineer"] += 2; scoreMap["embedded-systems"] += 2; }
+    if (answerValue === "collaborative" || answerValue === "social") { scoreMap["product-manager-tech"] += 3; scoreMap["uiux-designer"] += 2; scoreMap["scrum-master"] += 3; }
+    if (answerValue === "systematic" || answerValue === "analytical") { scoreMap["backend-developer"] += 3; scoreMap["data-scientist"] += 3; scoreMap["cybersecurity-specialist"] += 2; scoreMap["qa-automation"] += 2; }
+    if (answerValue === "visual" || answerValue === "creative") { scoreMap["frontend-developer"] += 3; scoreMap["uiux-designer"] += 4; scoreMap["game-developer"] += 3; }
+    if (answerValue === "experimental" || answerValue === "adaptive") { scoreMap["fullstack-developer"] += 2; scoreMap["game-developer"] += 2; scoreMap["blockchain-developer"] += 2; }
 
-  // Workstyle
-  const workstyle = answers[5];
-  if (workstyle === "remote") { scoreMap["frontend-developer"] += 2; scoreMap["backend-developer"] += 2; scoreMap["data-scientist"] += 2; scoreMap["technical-writer"] += 3; scoreMap["fullstack-developer"] += 2; }
-  if (workstyle === "freelance") { scoreMap["frontend-developer"] += 3; scoreMap["uiux-designer"] += 3; scoreMap["mobile-developer"] += 3; scoreMap["fullstack-developer"] += 3; scoreMap["blockchain-developer"] += 2; }
-  if (workstyle === "office") { scoreMap["devops-engineer"] += 1; scoreMap["cybersecurity-specialist"] += 2; scoreMap["embedded-systems"] += 3; scoreMap["product-manager-tech"] += 2; }
-  if (workstyle === "hybrid") { Object.keys(scoreMap).forEach(k => scoreMap[k] += 1); }
+    // === PATIENCE & LEARNING ===
+    if (answerValue === "high") { scoreMap["data-scientist"] += 1; scoreMap["ai-ml-engineer"] += 1; scoreMap["embedded-systems"] += 1; }
+    if (answerValue === "medium") { scoreMap["frontend-developer"] += 1; scoreMap["backend-developer"] += 1; scoreMap["mobile-developer"] += 1; }
+    if (answerValue === "low") { scoreMap["frontend-developer"] += 2; scoreMap["uiux-designer"] += 1; scoreMap["technical-writer"] += 1; }
 
-  // Patience
-  const patience = answers[6];
-  if (patience === "high") { scoreMap["data-scientist"] += 3; scoreMap["cybersecurity-specialist"] += 3; scoreMap["devops-engineer"] += 2; scoreMap["ai-ml-engineer"] += 3; scoreMap["embedded-systems"] += 3; scoreMap["cloud-architect"] += 2; }
-  if (patience === "medium") { scoreMap["backend-developer"] += 2; scoreMap["frontend-developer"] += 2; scoreMap["mobile-developer"] += 2; scoreMap["fullstack-developer"] += 2; scoreMap["data-engineer"] += 2; }
-  if (patience === "low") { scoreMap["frontend-developer"] += 3; scoreMap["uiux-designer"] += 2; scoreMap["qa-automation"] += 2; scoreMap["technical-writer"] += 2; }
-  if (patience === "conditional") { scoreMap["mobile-developer"] += 2; scoreMap["frontend-developer"] += 2; scoreMap["game-developer"] += 2; scoreMap["product-manager-tech"] += 2; }
+    // === PROJECT TYPES ===
+    if (answerValue === "apps" || answerValue === "mobile") { scoreMap["mobile-developer"] += 5; scoreMap["frontend-developer"] += 3; scoreMap["ios-developer"] += 4; scoreMap["android-developer"] += 4; scoreMap["flutter-developer"] += 4; scoreMap["fullstack-developer"] += 3; }
+    if (answerValue === "automation") { scoreMap["devops-engineer"] += 4; scoreMap["qa-automation"] += 3; scoreMap["site-reliability-engineer"] += 4; scoreMap["platform-engineer"] += 3; }
+    if (answerValue === "quality" || answerValue === "thorough") { scoreMap["qa-automation"] += 5; scoreMap["cybersecurity-specialist"] += 2; }
 
-  // Communication
-  const communication = answers[7];
-  if (communication === "high") { scoreMap["uiux-designer"] += 3; scoreMap["devops-engineer"] += 2; scoreMap["product-manager-tech"] += 5; scoreMap["technical-writer"] += 4; }
-  if (communication === "written") { scoreMap["data-scientist"] += 2; scoreMap["qa-automation"] += 2; scoreMap["backend-developer"] += 2; scoreMap["technical-writer"] += 4; }
-  if (communication === "low") { scoreMap["backend-developer"] += 3; scoreMap["data-scientist"] += 2; scoreMap["embedded-systems"] += 3; scoreMap["data-engineer"] += 2; }
-  if (communication === "growing") { scoreMap["frontend-developer"] += 2; scoreMap["mobile-developer"] += 2; scoreMap["fullstack-developer"] += 2; scoreMap["game-developer"] += 2; }
+    // === TECH PREFERENCES ===
+    if (answerValue === "ui" || answerValue === "frameworks") { scoreMap["frontend-developer"] += 4; scoreMap["mobile-developer"] += 3; scoreMap["fullstack-developer"] += 2; }
+    if (answerValue === "database" || answerValue === "data_tools") { scoreMap["backend-developer"] += 3; scoreMap["data-engineer"] += 4; scoreMap["database-administrator"] += 5; }
+    if (answerValue === "ml" || answerValue === "ai_tools") { scoreMap["ai-ml-engineer"] += 5; scoreMap["data-scientist"] += 3; scoreMap["mlops-engineer"] += 4; }
+    if (answerValue === "performance" || answerValue === "cloud") { scoreMap["cloud-architect"] += 4; scoreMap["devops-engineer"] += 3; scoreMap["site-reliability-engineer"] += 3; }
 
-  // Project type
-  const projectType = answers[8];
-  if (projectType === "apps") { scoreMap["frontend-developer"] += 3; scoreMap["mobile-developer"] += 4; scoreMap["backend-developer"] += 2; scoreMap["fullstack-developer"] += 4; scoreMap["game-developer"] += 3; }
-  if (projectType === "analytics") { scoreMap["data-scientist"] += 4; scoreMap["data-engineer"] += 3; scoreMap["ai-ml-engineer"] += 3; scoreMap["backend-developer"] += 2; }
-  if (projectType === "automation") { scoreMap["devops-engineer"] += 4; scoreMap["qa-automation"] += 3; scoreMap["site-reliability-engineer"] += 3; scoreMap["backend-developer"] += 2; scoreMap["cloud-architect"] += 2; }
-  if (projectType === "quality") { scoreMap["qa-automation"] += 5; scoreMap["cybersecurity-specialist"] += 2; scoreMap["site-reliability-engineer"] += 2; }
+    // === MATH COMFORT ===
+    if (answerValue === "willing") { scoreMap["data-scientist"] += 2; scoreMap["game-developer"] += 2; scoreMap["blockchain-developer"] += 2; }
 
-  // Detail orientation
-  const detail = answers[9];
-  if (detail === "high") { scoreMap["uiux-designer"] += 3; scoreMap["frontend-developer"] += 3; scoreMap["qa-automation"] += 3; scoreMap["technical-writer"] += 3; scoreMap["embedded-systems"] += 2; }
-  if (detail === "low") { scoreMap["backend-developer"] += 2; scoreMap["devops-engineer"] += 2; scoreMap["product-manager-tech"] += 2; }
-  if (detail === "balanced") { scoreMap["mobile-developer"] += 2; scoreMap["data-scientist"] += 2; scoreMap["fullstack-developer"] += 2; scoreMap["game-developer"] += 2; }
-  if (detail === "efficiency") { scoreMap["devops-engineer"] += 3; scoreMap["backend-developer"] += 3; scoreMap["cloud-architect"] += 3; scoreMap["site-reliability-engineer"] += 3; scoreMap["data-engineer"] += 2; }
+    // === COMMUNICATION ===
+    if (answerValue === "written") { scoreMap["technical-writer"] += 4; scoreMap["data-scientist"] += 2; scoreMap["backend-developer"] += 2; }
+    if (answerValue === "growing") { scoreMap["frontend-developer"] += 2; scoreMap["fullstack-developer"] += 2; }
 
-  // Motivation
-  const motivation = answers[10];
-  if (motivation === "money") { scoreMap["data-scientist"] += 2; scoreMap["devops-engineer"] += 3; scoreMap["backend-developer"] += 2; scoreMap["cloud-architect"] += 3; scoreMap["ai-ml-engineer"] += 3; scoreMap["site-reliability-engineer"] += 3; }
-  if (motivation === "impact") { scoreMap["frontend-developer"] += 2; scoreMap["uiux-designer"] += 3; scoreMap["mobile-developer"] += 2; scoreMap["product-manager-tech"] += 3; scoreMap["game-developer"] += 2; }
-  if (motivation === "balance") { scoreMap["frontend-developer"] += 3; scoreMap["qa-automation"] += 3; scoreMap["uiux-designer"] += 2; scoreMap["technical-writer"] += 3; }
-  if (motivation === "growth") { scoreMap["data-scientist"] += 3; scoreMap["cybersecurity-specialist"] += 3; scoreMap["devops-engineer"] += 2; scoreMap["blockchain-developer"] += 3; scoreMap["ai-ml-engineer"] += 2; }
+    // === CAREER HELPER SIGNALS ===
+    if (answerValue === "web") { scoreMap["frontend-developer"] += 3; scoreMap["fullstack-developer"] += 3; scoreMap["backend-developer"] += 2; }
+    if (answerValue === "fintech") { scoreMap["backend-developer"] += 3; scoreMap["blockchain-developer"] += 4; scoreMap["cybersecurity-specialist"] += 2; }
+    if (answerValue === "healthcare") { scoreMap["data-scientist"] += 3; scoreMap["embedded-systems"] += 3; scoreMap["ai-ml-engineer"] += 2; }
+    if (answerValue === "entertainment") { scoreMap["game-developer"] += 5; scoreMap["frontend-developer"] += 2; scoreMap["mobile-developer"] += 2; scoreMap["ar-vr-developer"] += 4; }
+    if (answerValue === "ecommerce") { scoreMap["fullstack-developer"] += 3; scoreMap["frontend-developer"] += 3; scoreMap["backend-developer"] += 2; }
+    if (answerValue === "startup") { scoreMap["fullstack-developer"] += 4; scoreMap["mobile-developer"] += 2; scoreMap["frontend-developer"] += 2; }
+    if (answerValue === "enterprise") { scoreMap["cloud-architect"] += 3; scoreMap["solutions-architect"] += 4; scoreMap["devops-engineer"] += 2; }
+    if (answerValue === "specialist") { scoreMap["ai-ml-engineer"] += 2; scoreMap["cybersecurity-specialist"] += 2; scoreMap["embedded-systems"] += 2; }
+    if (answerValue === "generalist" || answerValue === "fullstack") { scoreMap["fullstack-developer"] += 4; scoreMap["product-manager-tech"] += 2; }
+    if (answerValue === "beginner") { scoreMap["frontend-developer"] += 3; scoreMap["qa-automation"] += 2; scoreMap["technical-writer"] += 2; }
+    if (answerValue === "experienced") { scoreMap["cloud-architect"] += 2; scoreMap["solutions-architect"] += 3; scoreMap["site-reliability-engineer"] += 2; }
+    if (answerValue === "self_taught") { scoreMap["frontend-developer"] += 3; scoreMap["fullstack-developer"] += 2; scoreMap["mobile-developer"] += 2; }
+    if (answerValue === "modern") { scoreMap["frontend-developer"] += 2; scoreMap["fullstack-developer"] += 2; scoreMap["mobile-developer"] += 2; scoreMap["devops-engineer"] += 2; }
+    if (answerValue === "thrives") { scoreMap["devops-engineer"] += 2; scoreMap["site-reliability-engineer"] += 3; scoreMap["cybersecurity-specialist"] += 2; }
+    if (answerValue === "aspiring_leader") { scoreMap["product-manager-tech"] += 4; scoreMap["solutions-architect"] += 3; }
+    if (answerValue === "tech_lead") { scoreMap["backend-developer"] += 2; scoreMap["fullstack-developer"] += 2; scoreMap["cloud-architect"] += 2; }
+    if (answerValue === "ic") { scoreMap["embedded-systems"] += 2; scoreMap["data-scientist"] += 2; scoreMap["ai-ml-engineer"] += 2; }
+    if (answerValue === "backend_arch") { scoreMap["backend-developer"] += 3; scoreMap["solutions-architect"] += 3; scoreMap["cloud-architect"] += 3; }
+    if (answerValue === "frontend_arch") { scoreMap["frontend-developer"] += 3; scoreMap["uiux-designer"] += 2; }
+    if (answerValue === "data_arch") { scoreMap["data-engineer"] += 4; scoreMap["data-scientist"] += 2; }
+    if (answerValue === "infra_arch") { scoreMap["devops-engineer"] += 3; scoreMap["cybersecurity-specialist"] += 3; scoreMap["cloud-architect"] += 3; }
+    if (answerValue === "design") { scoreMap["uiux-designer"] += 3; scoreMap["frontend-developer"] += 2; }
+    if (answerValue === "consumer") { scoreMap["frontend-developer"] += 2; scoreMap["mobile-developer"] += 2; }
+    if (answerValue === "practical") { scoreMap["fullstack-developer"] += 2; scoreMap["devops-engineer"] += 2; }
+    if (answerValue === "loves") { scoreMap["backend-developer"] += 2; scoreMap["ai-ml-engineer"] += 2; }
+    if (answerValue === "cs_degree") { scoreMap["ai-ml-engineer"] += 2; scoreMap["data-scientist"] += 2; scoreMap["embedded-systems"] += 2; }
+    if (answerValue === "non_tech") { scoreMap["uiux-designer"] += 3; scoreMap["product-manager-tech"] += 3; scoreMap["technical-writer"] += 3; }
+  });
 
-  const maxPossible = 40; // approximate max score
+  const maxPossible = 50; // approximate max score
   const results = careers.map(career => ({
     career,
-    score: scoreMap[career.id],
-    matchPercentage: Math.min(Math.round((scoreMap[career.id] / maxPossible) * 100), 98),
+    score: scoreMap[career.id] || 0,
+    matchPercentage: Math.min(Math.round(((scoreMap[career.id] || 0) / maxPossible) * 100), 98),
   }));
 
   return results.sort((a, b) => b.score - a.score);
