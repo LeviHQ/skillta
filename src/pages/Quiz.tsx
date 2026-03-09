@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { quizQuestions } from "@/data/quizQuestions";
-import { QuizAnswers, calculateCareerScores } from "@/data/careers";
+import { QuizAnswers } from "@/data/careers";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 import SignInModal from "@/components/SignInModal";
