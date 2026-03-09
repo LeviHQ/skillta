@@ -48,12 +48,12 @@ export function InstallPrompt() {
   }
 
   return (
-    <div className="fixed bottom-4 left-4 right-4 md:left-auto md:right-4 md:max-w-sm bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg shadow-lg p-4 z-50 flex items-center gap-3">
+    <div className="fixed bottom-4 left-4 right-4 md:left-auto md:right-4 md:max-w-sm bg-background border border-border rounded-lg shadow-lg p-4 z-50 flex items-center gap-3">
       <div className="flex-1">
-        <p className="font-medium text-sm text-slate-900 dark:text-white">
+        <p className="font-medium text-sm text-foreground">
           Install SkillTa
         </p>
-        <p className="text-xs text-slate-600 dark:text-slate-400 mt-1">
+        <p className="text-xs text-muted-foreground mt-1">
           Add to your home screen for quick access
         </p>
       </div>
