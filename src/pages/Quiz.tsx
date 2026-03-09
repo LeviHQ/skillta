@@ -90,10 +90,24 @@ export default function Quiz() {
           {/* Progress */}
           <div className="max-w-2xl mx-auto mb-8">
             <div className="flex items-center justify-between mb-3">
-              <span className="text-sm text-muted-foreground">
-                Question {currentQ + 1} of {quizQuestions.length}
-              </span>
-              <span className="text-sm font-mono text-primary">{Math.round(progress)}%</span>
+              <div className="flex items-center gap-3">
+                <span className="text-sm text-muted-foreground">
+                  Question {currentQ + 1} of {quizQuestions.length}
+                </span>
+                <button
+                  onClick={resetQuiz}
+                  className="text-xs text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1"
+                  title="Get different questions"
+                >
+                  <Shuffle className="w-3 h-3" /> New Quiz
+                </button>
+              </div>
+              <div className="flex items-center gap-3">
+                <span className="text-xs px-2 py-1 rounded-md bg-primary/10 text-primary">
+                  {question.category === "nature" ? "🧠 Nature" : question.category === "skill" ? "⚡ Skill" : "🎯 Helper"}
+                </span>
+                <span className="text-sm font-mono text-primary">{Math.round(progress)}%</span>
+              </div>
             </div>
             <div className="h-2 rounded-full bg-secondary overflow-hidden">
               <motion.div
