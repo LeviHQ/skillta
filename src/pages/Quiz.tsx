@@ -18,6 +18,18 @@ export default function Quiz() {
   const [currentQ, setCurrentQ] = useState(0);
   const [answers, setAnswers] = useState<QuizAnswers>({});
   const [showSignIn, setShowSignIn] = useState(false);
+  
+  // Generate random questions once on mount
+  const quizQuestions = useMemo(() => {
+    // Check if we have saved questions in session (in case of page refresh)
+    const saved = sessionStorage.getItem("currentQuizQuestions");
+    if (saved) {
+      return JSON.parse(saved) as QuizQuestion[];
+    }
+    const questions = getRandomQuestions();
+    sessionStorage.setItem("currentQuizQuestions", JSON.stringify(questions));
+    return questions;
+  }, []);
 
   const question = quizQuestions[currentQ];
   const progress = ((currentQ + 1) / quizQuestions.length) * 100;
@@ -44,6 +56,8 @@ export default function Quiz() {
 
   const finishQuiz = () => {
     sessionStorage.setItem("quizAnswers", JSON.stringify(answers));
+    // Clear the saved questions
+    sessionStorage.removeItem("currentQuizQuestions");
     // Always navigate immediately; results page handles signed-in auto-save.
     navigate("/results");
   };
@@ -56,6 +70,14 @@ export default function Quiz() {
 
   const prev = () => {
     if (currentQ > 0) setCurrentQ((p) => p - 1);
+  };
+
+  const resetQuiz = () => {
+    if (confirm("Start a new quiz with different questions? Your current progress will be lost.")) {
+      sessionStorage.removeItem("currentQuizQuestions");
+      sessionStorage.removeItem("quizAnswers");
+      window.location.reload();
+    }
   };
 
   return (
