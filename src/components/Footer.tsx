@@ -121,9 +121,9 @@ export default function Footer() {
               <Link to="/privacy" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                 Privacy Policy
               </Link>
-              <a href="mailto:support@skillta.app" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+              <Link to="/contact" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                 Contact Us
-              </a>
+              </Link>
             </nav>
           </div>
         </div>
