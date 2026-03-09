@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Download, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import logo from "@/assets/logo.png";
 
 export function InstallPrompt() {
   const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
@@ -49,6 +50,7 @@ export function InstallPrompt() {
 
   return (
     <div className="fixed bottom-4 left-4 right-4 md:left-auto md:right-4 md:max-w-sm bg-background border border-border rounded-lg shadow-lg p-4 z-50 flex items-center gap-3">
+      <img src={logo} alt="SkillTa" className="w-12 h-12 rounded-lg flex-shrink-0" />
       <div className="flex-1">
         <p className="font-medium text-sm text-foreground">
           Install SkillTa
