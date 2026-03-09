@@ -26,6 +26,7 @@ const App = () => (
         <TooltipProvider>
         <Toaster />
         <Sonner />
+        <InstallPrompt />
         <BrowserRouter>
           <Navbar />
           <main className="min-h-screen pt-16">
