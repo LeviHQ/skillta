@@ -29,99 +29,99 @@ export default function RoadmapDetail() {
 
     // Build a clean, print-friendly HTML string
     const phasesHTML = career.roadmap.map((phase, i) => `
-      <div style="margin-bottom:18px; page-break-inside:avoid; border:1.5px solid #e2e8f0; border-radius:12px; padding:18px 20px; background:#f8fafc;">
+      <div style="margin-bottom:18px; page-break-inside:avoid; border:1.5px solid #334155; border-radius:12px; padding:18px 20px; background:#1e293b;">
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
           <div style="display:flex; align-items:center; gap:10px;">
             <span style="display:inline-flex; align-items:center; justify-content:center; width:32px; height:32px; border-radius:50%; background:#6366f1; color:#fff; font-weight:700; font-size:14px;">${phase.phase}</span>
-            <span style="font-size:16px; font-weight:700; color:#1e293b;">${phase.title}</span>
+            <span style="font-size:16px; font-weight:700; color:#f1f5f9;">${phase.title}</span>
           </div>
-          <span style="font-size:11px; color:#64748b; background:#e2e8f0; padding:3px 10px; border-radius:6px; font-family:monospace;">${phase.duration}</span>
+          <span style="font-size:11px; color:#94a3b8; background:#334155; padding:3px 10px; border-radius:6px; font-family:monospace;">${phase.duration}</span>
         </div>
         ${phase.items.map(item => `
           <div style="margin-bottom:6px; padding-left:42px;">
-            <span style="font-size:13px; font-weight:600; color:#334155;">🔧 ${item.name}</span>
-            <span style="font-size:11px; color:#64748b; margin-left:6px;">${item.description}</span>
+            <span style="font-size:13px; font-weight:600; color:#e2e8f0;">🔧 ${item.name}</span>
+            <span style="font-size:11px; color:#94a3b8; margin-left:6px;">${item.description}</span>
           </div>
         `).join("")}
         <div style="padding-left:42px; margin-top:10px;">
-          <p style="font-size:10px; font-weight:700; color:#3b82f6; text-transform:uppercase; margin-bottom:4px;">📚 Resources</p>
+          <p style="font-size:10px; font-weight:700; color:#818cf8; text-transform:uppercase; margin-bottom:4px;">📚 Resources</p>
           <div style="display:flex; flex-wrap:wrap; gap:4px;">
-            ${phase.resources.map(r => `<span style="font-size:10px; background:#dbeafe; color:#1d4ed8; padding:2px 8px; border-radius:4px;">${r}</span>`).join("")}
+            ${phase.resources.map(r => `<span style="font-size:10px; background:#312e81; color:#a5b4fc; padding:2px 8px; border-radius:4px;">${r}</span>`).join("")}
           </div>
         </div>
         <div style="padding-left:42px; margin-top:8px;">
-          <p style="font-size:10px; font-weight:700; color:#22c55e; text-transform:uppercase; margin-bottom:4px;">🚀 Projects</p>
+          <p style="font-size:10px; font-weight:700; color:#34d399; text-transform:uppercase; margin-bottom:4px;">🚀 Projects</p>
           <div style="display:flex; flex-wrap:wrap; gap:4px;">
-            ${phase.projects.map(p => `<span style="font-size:10px; background:#dcfce7; color:#15803d; padding:2px 8px; border-radius:4px;">${p}</span>`).join("")}
+            ${phase.projects.map(p => `<span style="font-size:10px; background:#064e3b; color:#6ee7b7; padding:2px 8px; border-radius:4px;">${p}</span>`).join("")}
           </div>
         </div>
       </div>
     `).join("");
 
     const pdfHTML = `
-      <div style="font-family:'Segoe UI',Arial,sans-serif; color:#1e293b; padding:0;">
+      <div style="font-family:'Segoe UI',Arial,sans-serif; color:#e2e8f0; padding:0; background:#0f172a;">
         <!-- Header -->
-        <div style="text-align:center; margin-bottom:24px; padding-bottom:18px; border-bottom:2px solid #e2e8f0;">
+        <div style="text-align:center; margin-bottom:24px; padding-bottom:18px; border-bottom:2px solid #334155;">
           <div style="font-size:36px; margin-bottom:6px;">${career.icon}</div>
-          <h1 style="font-size:28px; font-weight:800; color:#6366f1; margin:0 0 4px;">${career.title}</h1>
-          <p style="font-size:13px; color:#64748b; margin:0 0 8px;">${career.tagline}</p>
-          <p style="font-size:11px; color:#94a3b8; max-width:480px; margin:0 auto;">${career.description}</p>
+          <h1 style="font-size:28px; font-weight:800; color:#818cf8; margin:0 0 4px;">${career.title}</h1>
+          <p style="font-size:13px; color:#94a3b8; margin:0 0 8px;">${career.tagline}</p>
+          <p style="font-size:11px; color:#64748b; max-width:480px; margin:0 auto;">${career.description}</p>
         </div>
 
         <!-- Quick Stats -->
         <div style="display:flex; gap:10px; justify-content:center; margin-bottom:28px;">
-          <div style="flex:1; text-align:center; padding:10px; border:1px solid #e2e8f0; border-radius:10px; background:#f1f5f9;">
-            <p style="font-size:10px; color:#64748b; margin:0;">Timeline</p>
-            <p style="font-size:13px; font-weight:700; color:#1e293b; margin:2px 0 0;">${career.estimatedTime}</p>
+          <div style="flex:1; text-align:center; padding:10px; border:1px solid #334155; border-radius:10px; background:#1e293b;">
+            <p style="font-size:10px; color:#94a3b8; margin:0;">Timeline</p>
+            <p style="font-size:13px; font-weight:700; color:#f1f5f9; margin:2px 0 0;">${career.estimatedTime}</p>
           </div>
-          <div style="flex:1; text-align:center; padding:10px; border:1px solid #e2e8f0; border-radius:10px; background:#f1f5f9;">
-            <p style="font-size:10px; color:#64748b; margin:0;">Demand</p>
-            <p style="font-size:13px; font-weight:700; color:#1e293b; margin:2px 0 0;">${career.demandLevel}</p>
+          <div style="flex:1; text-align:center; padding:10px; border:1px solid #334155; border-radius:10px; background:#1e293b;">
+            <p style="font-size:10px; color:#94a3b8; margin:0;">Demand</p>
+            <p style="font-size:13px; font-weight:700; color:#f1f5f9; margin:2px 0 0;">${career.demandLevel}</p>
           </div>
-          <div style="flex:1; text-align:center; padding:10px; border:1px solid #e2e8f0; border-radius:10px; background:#f1f5f9;">
-            <p style="font-size:10px; color:#64748b; margin:0;">Difficulty</p>
-            <p style="font-size:13px; font-weight:700; color:#1e293b; margin:2px 0 0;">${career.learningDifficulty}</p>
+          <div style="flex:1; text-align:center; padding:10px; border:1px solid #334155; border-radius:10px; background:#1e293b;">
+            <p style="font-size:10px; color:#94a3b8; margin:0;">Difficulty</p>
+            <p style="font-size:13px; font-weight:700; color:#f1f5f9; margin:2px 0 0;">${career.learningDifficulty}</p>
           </div>
-          <div style="flex:1; text-align:center; padding:10px; border:1px solid #e2e8f0; border-radius:10px; background:#f1f5f9;">
-            <p style="font-size:10px; color:#64748b; margin:0;">Entry Barrier</p>
-            <p style="font-size:13px; font-weight:700; color:#1e293b; margin:2px 0 0;">${career.realityCheck.entryBarrier}</p>
+          <div style="flex:1; text-align:center; padding:10px; border:1px solid #334155; border-radius:10px; background:#1e293b;">
+            <p style="font-size:10px; color:#94a3b8; margin:0;">Entry Barrier</p>
+            <p style="font-size:13px; font-weight:700; color:#f1f5f9; margin:2px 0 0;">${career.realityCheck.entryBarrier}</p>
           </div>
         </div>
 
         <!-- Roadmap -->
-        <h2 style="text-align:center; font-size:20px; font-weight:700; color:#1e293b; margin-bottom:16px;">📍 Learning Roadmap</h2>
+        <h2 style="text-align:center; font-size:20px; font-weight:700; color:#f1f5f9; margin-bottom:16px;">📍 Learning Roadmap</h2>
         ${phasesHTML}
 
         <!-- Reality Check -->
-        <div style="page-break-inside:avoid; margin-top:24px; padding:18px 20px; border:1.5px solid #fbbf24; border-radius:12px; background:#fffbeb;">
-          <h2 style="font-size:17px; font-weight:700; color:#92400e; margin:0 0 12px;">⚠️ Reality Check</h2>
+        <div style="page-break-inside:avoid; margin-top:24px; padding:18px 20px; border:1.5px solid #854d0e; border-radius:12px; background:#1c1917;">
+          <h2 style="font-size:17px; font-weight:700; color:#fbbf24; margin:0 0 12px;">⚠️ Reality Check</h2>
           <div style="display:flex; gap:16px; margin-bottom:10px;">
-            <div><p style="font-size:10px; color:#92400e; margin:0;">Competition</p><p style="font-size:13px; font-weight:600; color:#78350f; margin:2px 0 0;">${career.realityCheck.competition}</p></div>
-            <div><p style="font-size:10px; color:#92400e; margin:0;">Entry Barrier</p><p style="font-size:13px; font-weight:600; color:#78350f; margin:2px 0 0;">${career.realityCheck.entryBarrier}</p></div>
+            <div><p style="font-size:10px; color:#fbbf24; margin:0;">Competition</p><p style="font-size:13px; font-weight:600; color:#fde68a; margin:2px 0 0;">${career.realityCheck.competition}</p></div>
+            <div><p style="font-size:10px; color:#fbbf24; margin:0;">Entry Barrier</p><p style="font-size:13px; font-weight:600; color:#fde68a; margin:2px 0 0;">${career.realityCheck.entryBarrier}</p></div>
           </div>
-          <p style="font-size:11px; color:#78350f; margin:0 0 6px;"><strong>Salary:</strong> ${career.realityCheck.salaryExpectation}</p>
-          <p style="font-size:11px; color:#92400e; font-style:italic; border-left:3px solid #fbbf24; padding-left:10px; margin:0;">${career.realityCheck.honestNote}</p>
+          <p style="font-size:11px; color:#fde68a; margin:0 0 6px;"><strong>Salary:</strong> ${career.realityCheck.salaryExpectation}</p>
+          <p style="font-size:11px; color:#fbbf24; font-style:italic; border-left:3px solid #fbbf24; padding-left:10px; margin:0;">${career.realityCheck.honestNote}</p>
         </div>
 
         <!-- Salary -->
-        <div style="page-break-inside:avoid; margin-top:18px; padding:18px 20px; border:1.5px solid #e2e8f0; border-radius:12px; background:#f0fdf4;">
-          <h2 style="font-size:17px; font-weight:700; color:#166534; margin:0 0 10px;">💰 Salary Range</h2>
+        <div style="page-break-inside:avoid; margin-top:18px; padding:18px 20px; border:1.5px solid #334155; border-radius:12px; background:#042f2e;">
+          <h2 style="font-size:17px; font-weight:700; color:#34d399; margin:0 0 10px;">💰 Salary Range</h2>
           <div style="display:flex; gap:12px; margin-bottom:8px;">
-            <div style="flex:1; padding:8px 12px; background:#dcfce7; border-radius:8px;">
-              <p style="font-size:10px; color:#15803d; margin:0;">🇮🇳 India</p>
-              <p style="font-size:12px; font-weight:600; color:#166534; margin:2px 0 0;">${career.salaryIndia}</p>
+            <div style="flex:1; padding:8px 12px; background:#064e3b; border-radius:8px;">
+              <p style="font-size:10px; color:#6ee7b7; margin:0;">🇮🇳 India</p>
+              <p style="font-size:12px; font-weight:600; color:#a7f3d0; margin:2px 0 0;">${career.salaryIndia}</p>
             </div>
-            <div style="flex:1; padding:8px 12px; background:#dcfce7; border-radius:8px;">
-              <p style="font-size:10px; color:#15803d; margin:0;">🌍 Global</p>
-              <p style="font-size:12px; font-weight:600; color:#166534; margin:2px 0 0;">${career.salaryGlobal}</p>
+            <div style="flex:1; padding:8px 12px; background:#064e3b; border-radius:8px;">
+              <p style="font-size:10px; color:#6ee7b7; margin:0;">🌍 Global</p>
+              <p style="font-size:12px; font-weight:600; color:#a7f3d0; margin:2px 0 0;">${career.salaryGlobal}</p>
             </div>
           </div>
-          <p style="font-size:11px; color:#166534; margin:0;">${career.growthPotential}</p>
+          <p style="font-size:11px; color:#6ee7b7; margin:0;">${career.growthPotential}</p>
         </div>
 
         <!-- Footer -->
-        <div style="text-align:center; margin-top:24px; padding-top:14px; border-top:1px solid #e2e8f0;">
-          <p style="font-size:10px; color:#94a3b8; margin:0;">Generated by SkillTa — skillta.app</p>
+        <div style="text-align:center; margin-top:24px; padding-top:14px; border-top:1px solid #334155;">
+          <p style="font-size:10px; color:#64748b; margin:0;">Generated by SkillTa — skillta.app</p>
         </div>
       </div>
     `;
@@ -134,7 +134,7 @@ export default function RoadmapDetail() {
       .set({
         margin: [12, 14],
         filename: `${career.title}-Roadmap-SkillTa.pdf`,
-        html2canvas: { scale: 2, useCORS: true, backgroundColor: "#ffffff" },
+        html2canvas: { scale: 2, useCORS: true, backgroundColor: "#0f172a" },
         jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
         pagebreak: { mode: ["avoid-all", "css", "legacy"] },
       })
