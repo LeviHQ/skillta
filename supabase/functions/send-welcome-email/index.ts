@@ -217,7 +217,7 @@ serve(async (req) => {
         'Authorization': `Bearer ${RESEND_API_KEY}`,
       },
       body: JSON.stringify({
-        from: 'SkillTa <onboarding@resend.dev>',
+        from: "SkillTa Team <hello@skillta.tech>",
         to: [email],
         subject: `Welcome to SkillTa, ${userName}! 🚀 Your Tech Career Journey Starts Now`,
         html: htmlContent,
