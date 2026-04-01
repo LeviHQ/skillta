@@ -15,7 +15,7 @@ export function getBaseUrl(): string {
   if (typeof window !== "undefined") {
     return window.location.origin;
   }
-  return "https://skillta.app";
+  return "https://skillta.tech";
 }
 
 export interface PageSEO {

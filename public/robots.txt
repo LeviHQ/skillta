@@ -6,7 +6,7 @@ Disallow: /dashboard
 Disallow: /results
 
 # Sitemap
-Sitemap: https://skillta.app/sitemap.xml
+Sitemap: https://skillta.tech/sitemap.xml
 
 # Allow social crawlers
 User-agent: Googlebot
