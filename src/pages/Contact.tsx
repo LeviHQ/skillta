@@ -75,8 +75,8 @@ export default function Contact() {
                   </div>
                   <div>
                     <h3 className="text-sm font-semibold text-foreground">Email Us</h3>
-                    <a href="mailto:support@skillta.app" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                      support@skillta.app
+                    <a href="mailto:support@skillta.tech" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                      support@skillta.tech
                     </a>
                   </div>
                 </div>

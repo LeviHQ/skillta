@@ -55,7 +55,7 @@ export default function Footer() {
                 <Linkedin className="w-4 h-4" />
               </a>
               <a
-                href="mailto:support@skillta.app"
+                href="mailto:support@skillta.tech"
                 className="w-9 h-9 rounded-lg bg-muted/50 flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all"
                 aria-label="Email"
               >
