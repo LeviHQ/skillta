@@ -309,7 +309,7 @@ export default function Dashboard() {
               <div className="space-y-3">
                 {history.map((h, i) => {
                   const c = careers.find((cr) => cr.id === h.topCareer);
-                  const date = h.createdAt?.toDate ? h.createdAt.toDate() : new Date();
+                  const date = h.createdAt ? new Date(h.createdAt) : new Date();
                   return (
                     <div
                       key={h.id || i}
