@@ -36,13 +36,11 @@ serve(async (req) => {
       <td align="center">
         <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="background-color:#ffffff;border-radius:16px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,0.08);">
           
-          <!-- Header with gradient -->
+          <!-- Header -->
           <tr>
             <td style="background:linear-gradient(135deg,#26c6b0,#7c3aed);padding:40px 40px 30px;text-align:center;">
-              <div style="width:64px;height:64px;background:rgba(255,255,255,0.2);border-radius:16px;display:inline-flex;align-items:center;justify-content:center;margin-bottom:16px;">
-                <span style="font-size:32px;font-weight:800;color:#ffffff;line-height:64px;">S</span>
-              </div>
-              <h1 style="margin:0;font-size:28px;font-weight:700;color:#ffffff;letter-spacing:-0.5px;">
+              <img src="https://skillta.tech/logo.png" alt="SkillTa" width="56" height="56" style="display:block;margin:0 auto 16px;border-radius:14px;" />
+              <h1 style="margin:0;font-size:26px;font-weight:700;color:#ffffff;letter-spacing:-0.5px;">
                 Welcome to SkillTa! 🚀
               </h1>
               <p style="margin:8px 0 0;font-size:14px;color:rgba(255,255,255,0.85);font-weight:400;">
@@ -63,12 +61,12 @@ serve(async (req) => {
             </td>
           </tr>
 
-          <!-- Benefits Section -->
+          <!-- What You Get -->
           <tr>
             <td style="padding:0 40px 28px;">
               <div style="background:#f8f9fc;border-radius:12px;padding:24px;">
                 <p style="margin:0 0 16px;font-size:16px;font-weight:700;color:#1a1a2e;">
-                  🎯 Here's what you get with SkillTa:
+                  🎯 Here's what you can explore:
                 </p>
                 <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
                   <tr>
@@ -89,7 +87,7 @@ serve(async (req) => {
                         <tr>
                           <td style="width:28px;vertical-align:top;padding-top:2px;">✅</td>
                           <td style="font-size:14px;color:#555770;line-height:1.6;">
-                            <strong style="color:#1a1a2e;">18+ Career Roadmaps</strong> — Step-by-step guides from beginner to expert
+                            <strong style="color:#1a1a2e;">50+ Career Roadmaps</strong> — Step-by-step guides from beginner to expert
                           </td>
                         </tr>
                       </table>
@@ -139,46 +137,9 @@ serve(async (req) => {
           <!-- CTA Button -->
           <tr>
             <td style="padding:0 40px 28px;text-align:center;">
-              <a href="https://skillta.vercel.app/quiz" style="display:inline-block;background:linear-gradient(135deg,#26c6b0,#7c3aed);color:#ffffff;text-decoration:none;font-size:16px;font-weight:600;padding:14px 36px;border-radius:10px;letter-spacing:0.3px;">
+              <a href="https://skillta.tech/quiz" style="display:inline-block;background:linear-gradient(135deg,#26c6b0,#7c3aed);color:#ffffff;text-decoration:none;font-size:16px;font-weight:600;padding:14px 36px;border-radius:10px;letter-spacing:0.3px;">
                 Take Your Career Quiz Now →
               </a>
-            </td>
-          </tr>
-
-          <!-- Pricing Plans -->
-          <tr>
-            <td style="padding:0 40px 28px;">
-              <p style="margin:0 0 16px;font-size:16px;font-weight:700;color:#1a1a2e;text-align:center;">
-                💎 Our Plans
-              </p>
-              <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
-                <tr>
-                  <!-- Free -->
-                  <td width="33%" style="padding:0 4px;vertical-align:top;">
-                    <div style="background:#f8f9fc;border-radius:10px;padding:16px;text-align:center;border:1px solid #e8e9f0;">
-                      <p style="margin:0;font-size:12px;font-weight:600;color:#555770;text-transform:uppercase;letter-spacing:1px;">Free</p>
-                      <p style="margin:6px 0 8px;font-size:22px;font-weight:800;color:#1a1a2e;">$0<span style="font-size:12px;font-weight:400;color:#888;">/mo</span></p>
-                      <p style="margin:0;font-size:11px;color:#777;line-height:1.5;">Basic guidance<br/>Limited AI responses<br/>Few career paths</p>
-                    </div>
-                  </td>
-                  <!-- Pro -->
-                  <td width="33%" style="padding:0 4px;vertical-align:top;">
-                    <div style="background:linear-gradient(135deg,#26c6b0,#7c3aed);border-radius:10px;padding:16px;text-align:center;">
-                      <p style="margin:0;font-size:10px;font-weight:700;color:#ffffff;background:rgba(255,255,255,0.2);display:inline-block;padding:2px 8px;border-radius:20px;">⭐ POPULAR</p>
-                      <p style="margin:6px 0 8px;font-size:22px;font-weight:800;color:#ffffff;">$3<span style="font-size:12px;font-weight:400;color:rgba(255,255,255,0.8);">/mo</span></p>
-                      <p style="margin:0;font-size:11px;color:rgba(255,255,255,0.85);line-height:1.5;">Unlimited questions<br/>Full roadmaps<br/>Skill recommendations</p>
-                    </div>
-                  </td>
-                  <!-- Premium -->
-                  <td width="33%" style="padding:0 4px;vertical-align:top;">
-                    <div style="background:#f8f9fc;border-radius:10px;padding:16px;text-align:center;border:1px solid #e8e9f0;">
-                      <p style="margin:0;font-size:12px;font-weight:600;color:#555770;text-transform:uppercase;letter-spacing:1px;">Premium</p>
-                      <p style="margin:6px 0 8px;font-size:22px;font-weight:800;color:#1a1a2e;">$7<span style="font-size:12px;font-weight:400;color:#888;">/mo</span></p>
-                      <p style="margin:0;font-size:11px;color:#777;line-height:1.5;">Everything in Pro<br/>Resume tips<br/>Interview prep</p>
-                    </div>
-                  </td>
-                </tr>
-              </table>
             </td>
           </tr>
 
@@ -186,7 +147,7 @@ serve(async (req) => {
           <tr>
             <td style="background:#f8f9fc;padding:28px 40px;text-align:center;border-top:1px solid #e8e9f0;">
               <p style="margin:0 0 8px;font-size:15px;font-weight:600;color:#1a1a2e;">
-                Best of luck on your journey with SkillTa! 🌟
+                Best of luck on your journey! 🌟
               </p>
               <p style="margin:0 0 16px;font-size:13px;color:#777;line-height:1.6;">
                 We're here to help you navigate the tech world<br/>and find the career you love.
@@ -197,7 +158,7 @@ serve(async (req) => {
               <div style="margin-top:20px;padding-top:16px;border-top:1px solid #e0e0e8;">
                 <p style="margin:0;font-size:11px;color:#aaa;">
                   © 2025 SkillTa. All rights reserved.<br/>
-                  <a href="https://skillta.vercel.app" style="color:#26c6b0;text-decoration:none;">skillta.vercel.app</a>
+                  <a href="https://skillta.tech" style="color:#26c6b0;text-decoration:none;">skillta.tech</a>
                 </p>
               </div>
             </td>
@@ -219,7 +180,7 @@ serve(async (req) => {
       body: JSON.stringify({
         from: "SkillTa <hello@skillta.tech>",
         to: [email],
-        subject: `Welcome to SkillTa, ${userName}! 🚀 Your Tech Career Journey Starts Now`,
+        subject: `Welcome aboard, ${userName}! Your SkillTa account is ready`,
         html: htmlContent,
       }),
     });
