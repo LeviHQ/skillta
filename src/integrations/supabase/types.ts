@@ -14,7 +14,63 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      profiles: {
+        Row: {
+          created_at: string
+          display_name: string | null
+          email: string | null
+          firebase_uid: string
+          id: string
+          photo_url: string | null
+        }
+        Insert: {
+          created_at?: string
+          display_name?: string | null
+          email?: string | null
+          firebase_uid: string
+          id?: string
+          photo_url?: string | null
+        }
+        Update: {
+          created_at?: string
+          display_name?: string | null
+          email?: string | null
+          firebase_uid?: string
+          id?: string
+          photo_url?: string | null
+        }
+        Relationships: []
+      }
+      quiz_results: {
+        Row: {
+          all_results: Json
+          answers: Json
+          created_at: string
+          firebase_uid: string
+          id: string
+          top_career: string
+          top_match_percentage: number
+        }
+        Insert: {
+          all_results?: Json
+          answers?: Json
+          created_at?: string
+          firebase_uid: string
+          id?: string
+          top_career: string
+          top_match_percentage: number
+        }
+        Update: {
+          all_results?: Json
+          answers?: Json
+          created_at?: string
+          firebase_uid?: string
+          id?: string
+          top_career?: string
+          top_match_percentage?: number
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
