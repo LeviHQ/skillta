@@ -1,7 +1,6 @@
 import { createContext, useContext, useEffect, useState, ReactNode } from "react";
 import { User, onAuthStateChanged, signInWithPopup, signOut as firebaseSignOut } from "firebase/auth";
-import { auth, googleProvider, db } from "@/lib/firebase";
-import { doc, setDoc, getDoc, collection, addDoc, query, orderBy, getDocs, serverTimestamp } from "firebase/firestore";
+import { auth, googleProvider } from "@/lib/firebase";
 import { supabase } from "@/integrations/supabase/client";
 
 interface QuizResult {
@@ -10,7 +9,7 @@ interface QuizResult {
   topCareer: string;
   topMatchPercentage: number;
   allResults: { careerId: string; title: string; matchPercentage: number }[];
-  createdAt: any;
+  createdAt: string;
 }
 
 interface AuthContextType {
@@ -32,14 +31,19 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const unsub = onAuthStateChanged(auth, async (u) => {
       setUser(u);
       if (u) {
-        const userRef = doc(db, "users", u.uid);
-        const userSnap = await getDoc(userRef);
-        if (!userSnap.exists()) {
-          await setDoc(userRef, {
-            displayName: u.displayName,
+        // Upsert profile in Supabase
+        const { data: existing } = await supabase
+          .from("profiles")
+          .select("id")
+          .eq("firebase_uid", u.uid)
+          .maybeSingle();
+
+        if (!existing) {
+          await supabase.from("profiles").insert({
+            firebase_uid: u.uid,
+            display_name: u.displayName,
             email: u.email,
-            photoURL: u.photoURL,
-            createdAt: serverTimestamp(),
+            photo_url: u.photoURL,
           });
         }
       }
@@ -68,7 +72,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const signInWithGoogle = async () => {
     const result = await signInWithPopup(auth, googleProvider);
-    // Send welcome email on every sign-in
     if (result.user) {
       sendWelcomeEmail(result.user);
     }
@@ -80,19 +83,40 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const saveQuizResult = async (result: Omit<QuizResult, "id" | "createdAt">) => {
     if (!user) return;
-    const colRef = collection(db, "users", user.uid, "quizResults");
-    await addDoc(colRef, {
-      ...result,
-      createdAt: serverTimestamp(),
+    const { error } = await supabase.from("quiz_results").insert({
+      firebase_uid: user.uid,
+      answers: result.answers,
+      top_career: result.topCareer,
+      top_match_percentage: result.topMatchPercentage,
+      all_results: result.allResults,
     });
+    if (error) {
+      console.error("Failed to save quiz result:", error);
+      throw error;
+    }
   };
 
   const getQuizHistory = async (): Promise<QuizResult[]> => {
     if (!user) return [];
-    const colRef = collection(db, "users", user.uid, "quizResults");
-    const q = query(colRef, orderBy("createdAt", "desc"));
-    const snap = await getDocs(q);
-    return snap.docs.map((d) => ({ id: d.id, ...d.data() } as QuizResult));
+    const { data, error } = await supabase
+      .from("quiz_results")
+      .select("*")
+      .eq("firebase_uid", user.uid)
+      .order("created_at", { ascending: false });
+
+    if (error) {
+      console.error("Failed to fetch quiz history:", error);
+      return [];
+    }
+
+    return (data || []).map((row: any) => ({
+      id: row.id,
+      answers: row.answers,
+      topCareer: row.top_career,
+      topMatchPercentage: row.top_match_percentage,
+      allResults: row.all_results,
+      createdAt: row.created_at,
+    }));
   };
 
   return (
