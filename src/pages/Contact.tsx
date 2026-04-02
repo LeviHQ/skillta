@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import SEOHead from "@/components/SEOHead";
+import { PAGE_SEO, getBreadcrumbSchema } from "@/lib/seo";
 import { z } from "zod";
 
 const contactSchema = z.object({

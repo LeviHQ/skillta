@@ -38,7 +38,7 @@ export default function Index() {
     <div>
       <SEOHead
         {...PAGE_SEO.home}
-        jsonLd={[getWebApplicationSchema(), getEducationalOrgSchema()]}
+        jsonLd={[getWebApplicationSchema(), getEducationalOrgSchema(), getWebsiteSchema(), getHowToSchema(), getFAQSchema(homeFaqs)]}
       />
       {/* Hero */}
       <section className="relative min-h-[90vh] flex items-center bg-gradient-hero overflow-hidden">
