@@ -2,8 +2,8 @@
 export const SITE_CONFIG = {
   name: "SkillTa",
   tagline: "Find Your Perfect Tech Career Path",
-  description: "AI-powered career guidance for tech. Take our quiz to discover your ideal career path — frontend, backend, data science, cybersecurity & more. Get a personalized roadmap.",
-  keywords: "tech career roadmap, how to become a developer, best tech careers, career guidance for programmers, learn to code, tech career quiz, career path finder",
+  description: "AI-powered career guidance for tech. Take our quiz to discover your ideal career path — frontend, backend, data science, cybersecurity & more. Get a personalized roadmap with 50+ career paths.",
+  keywords: "tech career roadmap, how to become a developer, best tech careers 2025, career guidance for programmers, learn to code, tech career quiz, career path finder, which tech career is right for me, career aptitude test, software developer roadmap",
   author: "SkillTa",
   twitterHandle: "@skillta_app",
   locale: "en_US",
@@ -29,15 +29,15 @@ export interface PageSEO {
 
 export const PAGE_SEO: Record<string, PageSEO> = {
   home: {
-    title: "SkillTa — Find Your Perfect Tech Career Path",
-    description: "AI-powered career guidance for tech. Take our quiz to discover your ideal career path — frontend, backend, data science, cybersecurity & more. Get a personalized roadmap.",
-    keywords: "tech career quiz, career path finder, best tech careers 2024, learn to code, career guidance for programmers, tech career roadmap",
+    title: "SkillTa — Find Your Perfect Tech Career Path | AI Career Quiz & Roadmaps",
+    description: "Confused about which tech career to choose? Take SkillTa's free AI-powered career quiz and get a personalized roadmap for 50+ tech careers including frontend, backend, data science, cybersecurity, AI/ML & more.",
+    keywords: "tech career quiz, career path finder, best tech careers 2025, learn to code, career guidance for programmers, tech career roadmap, which tech career is right for me, free career test, software developer roadmap, career aptitude test",
     path: "/",
   },
   quiz: {
-    title: "Career Quiz — Discover Your Ideal Tech Career | SkillTa",
-    description: "Answer 10 smart questions to find your perfect tech career match. Our AI-powered quiz analyzes your skills, interests, and personality to recommend the best path.",
-    keywords: "tech career quiz, which tech career is right for me, career aptitude test, coding career quiz",
+    title: "Free AI Career Quiz — Discover Your Ideal Tech Career | SkillTa",
+    description: "Answer 10 smart questions to find your perfect tech career match. Our AI analyzes your skills, interests & personality to recommend the best career path with a complete learning roadmap. 100% free.",
+    keywords: "tech career quiz, which tech career is right for me, career aptitude test, coding career quiz, free career test, AI career recommendation, tech skills assessment",
     path: "/quiz",
   },
   results: {
@@ -48,22 +48,38 @@ export const PAGE_SEO: Record<string, PageSEO> = {
     noIndex: true,
   },
   roadmaps: {
-    title: "Tech Career Roadmaps — Step-by-Step Learning Paths | SkillTa",
-    description: "Browse curated roadmaps for 9+ tech careers including frontend, backend, data science, cybersecurity, and more. Each roadmap includes resources, projects, and timelines.",
-    keywords: "tech career roadmap, learning path, how to become a developer, frontend roadmap, backend roadmap, data science roadmap",
+    title: "50+ Tech Career Roadmaps — Step-by-Step Learning Paths | SkillTa",
+    description: "Browse curated roadmaps for 50+ tech careers including frontend, backend, data science, cybersecurity, AI/ML, DevOps, game dev & more. Each roadmap includes free resources, projects, salary info & timelines.",
+    keywords: "tech career roadmap, learning path, how to become a developer, frontend roadmap, backend roadmap, data science roadmap, cybersecurity roadmap, DevOps roadmap, career learning path free",
     path: "/roadmaps",
   },
   about: {
-    title: "About SkillTa — AI-Powered Career Guidance for Tech",
-    description: "SkillTa helps aspiring tech professionals find their ideal career path with honest, data-driven guidance. Learn about our mission, team, and vision.",
-    keywords: "about skillta, tech career guidance, career mentoring platform",
+    title: "About SkillTa — Free AI-Powered Career Guidance for Tech",
+    description: "SkillTa helps aspiring tech professionals find their ideal career path with honest, data-driven AI guidance. Free career quiz, 50+ roadmaps, and personalized recommendations.",
+    keywords: "about skillta, tech career guidance, career mentoring platform, free tech career quiz",
     path: "/about",
+  },
+  contact: {
+    title: "Contact SkillTa — Get in Touch With Our Team",
+    description: "Have questions, feedback, or partnership ideas? Reach out to the SkillTa team. We respond within 24-48 hours.",
+    keywords: "contact skillta, tech career help, career guidance support",
+    path: "/contact",
   },
   dashboard: {
     title: "Dashboard — Your Career Journey | SkillTa",
     description: "Track your quiz results, view personalized career recommendations, and monitor your progress on your tech career journey.",
     path: "/dashboard",
     noIndex: true,
+  },
+  privacy: {
+    title: "Privacy Policy — SkillTa",
+    description: "Learn how SkillTa collects, uses, and protects your personal data. Your privacy matters to us.",
+    path: "/privacy",
+  },
+  terms: {
+    title: "Terms of Service — SkillTa",
+    description: "Read the Terms of Service for SkillTa, the AI-powered tech career guidance platform.",
+    path: "/terms",
   },
 };
 
@@ -98,9 +114,25 @@ export function getEducationalOrgSchema() {
     "@type": "EducationalOrganization",
     name: SITE_CONFIG.name,
     url: baseUrl,
-    description: "AI-powered career guidance platform for tech professionals",
+    description: "Free AI-powered career guidance platform helping people discover their ideal tech career path with personalized roadmaps",
     sameAs: [],
     logo: `${baseUrl}/favicon.png`,
+  };
+}
+
+export function getWebsiteSchema() {
+  const baseUrl = getBaseUrl();
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: SITE_CONFIG.name,
+    url: baseUrl,
+    description: SITE_CONFIG.description,
+    potentialAction: {
+      "@type": "SearchAction",
+      target: `${baseUrl}/roadmaps?q={search_term_string}`,
+      "query-input": "required name=search_term_string",
+    },
   };
 }
 
@@ -147,5 +179,38 @@ export function getCourseSchema(career: { title: string; description: string; id
     },
     url: `${baseUrl}/roadmaps/${career.id}`,
     isAccessibleForFree: true,
+  };
+}
+
+export function getHowToSchema() {
+  const baseUrl = getBaseUrl();
+  return {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: "How to Find Your Perfect Tech Career",
+    description: "Use SkillTa's AI-powered quiz to discover your ideal tech career path in under 5 minutes",
+    step: [
+      {
+        "@type": "HowToStep",
+        position: 1,
+        name: "Take the AI Career Quiz",
+        text: "Answer 10 smart questions about your interests, skills, and personality",
+        url: `${baseUrl}/quiz`,
+      },
+      {
+        "@type": "HowToStep",
+        position: 2,
+        name: "Get Your Career Match",
+        text: "Receive a personalized career recommendation with match percentage and detailed analysis",
+      },
+      {
+        "@type": "HowToStep",
+        position: 3,
+        name: "Follow Your Roadmap",
+        text: "Get a step-by-step learning path with free resources, project ideas, and timelines",
+        url: `${baseUrl}/roadmaps`,
+      },
+    ],
+    totalTime: "PT5M",
   };
 }

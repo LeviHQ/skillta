@@ -1,12 +1,13 @@
 import { Link } from "react-router-dom";
 import SEOHead from "@/components/SEOHead";
+import { PAGE_SEO, getBreadcrumbSchema } from "@/lib/seo";
 
 export default function Privacy() {
   return (
     <>
       <SEOHead
-        title="Privacy Policy — SkillTa"
-        description="Learn how SkillTa collects, uses, and protects your personal data."
+        {...PAGE_SEO.privacy}
+        jsonLd={getBreadcrumbSchema([{ name: "Home", path: "/" }, { name: "Privacy Policy", path: "/privacy" }])}
       />
       <div className="min-h-screen py-16 px-4">
         <div className="container mx-auto max-w-3xl">
