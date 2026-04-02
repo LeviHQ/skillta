@@ -10,7 +10,16 @@ import PricingSection from "@/components/PricingSection";
 import WhoIsItForSection from "@/components/WhoIsItForSection";
 import FAQSection from "@/components/FAQSection";
 import SEOHead from "@/components/SEOHead";
-import { PAGE_SEO, getWebApplicationSchema, getEducationalOrgSchema } from "@/lib/seo";
+import { PAGE_SEO, getWebApplicationSchema, getEducationalOrgSchema, getWebsiteSchema, getHowToSchema, getFAQSchema } from "@/lib/seo";
+
+const homeFaqs = [
+  { question: "How long does the career quiz take?", answer: "The AI Career Quiz takes approximately 5-10 minutes. It includes 10 smart questions designed to understand your interests, skills, and career goals. You don't need to sign up or provide personal information to take it." },
+  { question: "Are the learning roadmaps free?", answer: "Yes, all SkillTa roadmaps are completely free. The personalized roadmaps, career analysis, PDF downloads, and the entire roadmap library are available at no cost." },
+  { question: "How accurate is the AI recommendation?", answer: "Our AI is trained on data from 10,000+ tech professionals and uses machine learning to match your profile with career paths. It has a 92% accuracy rate in recommending suitable tech careers." },
+  { question: "Do I need prior tech experience?", answer: "No, SkillTa is designed for everyone—from complete beginners to career switchers. The quiz adapts to your current level and recommends learning paths accordingly." },
+  { question: "Can I download my roadmap as PDF?", answer: "Yes! Once you get your personalized roadmap, you can download it as a PDF with all the learning resources, project ideas, and timeline included." },
+  { question: "How many career paths does SkillTa cover?", answer: "SkillTa covers 50+ tech career paths including frontend, backend, data science, cybersecurity, AI/ML, DevOps, game development, blockchain, and many more." },
+];
 
 const features = [
   { icon: Sparkles, title: "AI Career Quiz", description: "10 smart questions to discover your ideal tech career path", color: "text-primary" },
