@@ -1,14 +1,12 @@
 User-agent: *
 Allow: /
-
-# Disallow private/dynamic pages
 Disallow: /dashboard
 Disallow: /results
 
 # Sitemap
 Sitemap: https://skillta.tech/sitemap.xml
 
-# Allow social crawlers
+# Allow all major crawlers
 User-agent: Googlebot
 Allow: /
 
@@ -19,4 +17,10 @@ User-agent: Twitterbot
 Allow: /
 
 User-agent: facebookexternalhit
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: Slurp
 Allow: /
