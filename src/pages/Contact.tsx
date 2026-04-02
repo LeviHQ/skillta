@@ -50,8 +50,8 @@ export default function Contact() {
   return (
     <>
       <SEOHead
-        title="Contact Us — SkillTa"
-        description="Get in touch with the SkillTa team. We'd love to hear your feedback, questions, or partnership ideas."
+        {...PAGE_SEO.contact}
+        jsonLd={getBreadcrumbSchema([{ name: "Home", path: "/" }, { name: "Contact", path: "/contact" }])}
       />
       <div className="min-h-screen py-16 px-4">
         <div className="container mx-auto max-w-5xl">
