@@ -1,5 +1,6 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { Check, Star, Clock, Shield, BookOpen, Sparkles } from "lucide-react";
+import { Check, Star, Clock, Shield, BookOpen, Sparkles, MessageSquareHeart, X } from "lucide-react";
 
 const plans = [
   {
@@ -59,6 +60,8 @@ const trustItems = [
 ];
 
 export default function PricingSection() {
+  const [showModal, setShowModal] = useState(false);
+
   return (
     <section id="pricing" className="py-24 bg-background">
       <div className="container mx-auto px-6">
@@ -127,12 +130,12 @@ export default function PricingSection() {
               </ul>
 
               <button
+                onClick={() => plan.name !== "Free" && setShowModal(true)}
                 className={`w-full py-3 rounded-xl font-semibold text-sm transition-all ${
                   plan.highlighted
                     ? "bg-gradient-primary text-primary-foreground hover:opacity-90"
                     : "border border-border text-foreground hover:border-primary/40 hover:bg-secondary"
                 }`}
-                disabled={plan.badge === "Coming Soon"}
               >
                 {plan.cta}
               </button>
@@ -156,6 +159,65 @@ export default function PricingSection() {
           ))}
         </motion.div>
       </div>
+
+      {/* Premium Coming Soon Modal */}
+      {showModal && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4"
+          onClick={() => setShowModal(false)}
+        >
+          <div className="absolute inset-0 bg-background/80 backdrop-blur-sm" />
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.9 }}
+            transition={{ duration: 0.25, ease: "easeOut" }}
+            className="relative w-full max-w-md rounded-2xl border border-border bg-card p-8 shadow-card z-10"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={() => setShowModal(false)}
+              className="absolute right-4 top-4 rounded-full p-1.5 text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors"
+            >
+              <X className="w-4 h-4" />
+            </button>
+
+            <div className="flex flex-col items-center text-center">
+              <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mb-5">
+                <MessageSquareHeart className="w-7 h-7 text-primary" />
+              </div>
+
+              <h3 className="text-xl font-bold text-foreground mb-2">
+                We're Building Something Special! 🚀
+              </h3>
+
+              <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+                SkillTa is currently in its <span className="text-primary font-semibold">early launch phase</span> and the premium plans aren't live yet. We're working hard to bring you the best career guidance experience possible.
+              </p>
+
+              <div className="w-full rounded-xl border border-border bg-secondary/30 p-4 mb-6">
+                <p className="text-sm text-foreground/80 leading-relaxed">
+                  💬 Your feedback means the world to us! Help us shape SkillTa by sharing what features matter most to you. We'll bring premium plans very soon — tailored to what <span className="font-semibold text-primary">you</span> actually need.
+                </p>
+              </div>
+
+              <a
+                href="https://skillta.tech/contact"
+                className="w-full py-3 rounded-xl font-semibold text-sm bg-gradient-primary text-primary-foreground hover:opacity-90 transition-all text-center block mb-3"
+              >
+                Share Your Feedback ✨
+              </a>
+
+              <button
+                onClick={() => setShowModal(false)}
+                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+              >
+                Maybe later
+              </button>
+            </div>
+          </motion.div>
+        </div>
+      )}
     </section>
   );
 }
