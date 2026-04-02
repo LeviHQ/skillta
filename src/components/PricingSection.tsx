@@ -1,5 +1,6 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { Check, Star, Clock, Shield, BookOpen, Sparkles } from "lucide-react";
+import { Check, Star, Clock, Shield, BookOpen, Sparkles, MessageSquareHeart, X } from "lucide-react";
 
 const plans = [
   {
