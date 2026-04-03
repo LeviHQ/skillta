@@ -60,6 +60,14 @@ export default function Footer() {
                 Roadmap Library
                 <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
               </Link>
+              <Link to="/compare" className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-1 group">
+                Compare Careers
+                <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+              </Link>
+              <Link to="/blog" className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-1 group">
+                Blog & Guides
+                <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+              </Link>
               <Link to="/dashboard" className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-1 group">
                 Dashboard
                 <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
