@@ -81,6 +81,18 @@ export const PAGE_SEO: Record<string, PageSEO> = {
     description: "Read the Terms of Service for SkillTa, the AI-powered tech career guidance platform.",
     path: "/terms",
   },
+  compare: {
+    title: "Compare Tech Careers Side by Side — Salary, Skills & Demand | SkillTa",
+    description: "Can't decide between two tech careers? Compare salary, difficulty, required skills, job demand, and learning time side by side. 50+ careers to compare — Frontend vs Backend, Data Science vs Cybersecurity & more.",
+    keywords: "compare tech careers, frontend vs backend, data science vs cybersecurity, career comparison tool, tech career salary comparison, which tech career is better, career comparison 2025",
+    path: "/compare",
+  },
+  blog: {
+    title: "Tech Career Blog — Guides, Salary Insights & Career Tips | SkillTa",
+    description: "Expert articles on tech careers, salary guides, career comparisons, and step-by-step learning roadmaps. Everything you need to choose and succeed in your tech career.",
+    keywords: "tech career blog, career guidance articles, tech salary guide, coding career tips, developer career advice, best tech careers 2025, learn coding blog",
+    path: "/blog",
+  },
 };
 
 // Generate JSON-LD structured data
