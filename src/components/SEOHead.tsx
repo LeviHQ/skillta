@@ -10,6 +10,7 @@ interface SEOHeadProps {
   noIndex?: boolean;
   jsonLd?: object | object[];
   image?: string;
+  publishedTime?: string;
 }
 
 export default function SEOHead({
@@ -21,6 +22,7 @@ export default function SEOHead({
   noIndex = false,
   jsonLd,
   image,
+  publishedTime,
 }: SEOHeadProps) {
   const baseUrl = getBaseUrl();
   const canonicalUrl = `${baseUrl}${path}`;
@@ -40,6 +42,13 @@ export default function SEOHead({
       <meta name="author" content={SITE_CONFIG.author} />
       <link rel="canonical" href={canonicalUrl} />
       {noIndex && <meta name="robots" content="noindex, nofollow" />}
+      {!noIndex && <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />}
+
+      {/* Geo & Language */}
+      <meta name="language" content="English" />
+      <meta name="revisit-after" content="3 days" />
+      <meta name="rating" content="general" />
+      <meta name="distribution" content="global" />
 
       {/* Open Graph */}
       <meta property="og:type" content={type} />
@@ -49,9 +58,12 @@ export default function SEOHead({
       <meta property="og:image" content={ogImage} />
       <meta property="og:site_name" content={SITE_CONFIG.name} />
       <meta property="og:locale" content={SITE_CONFIG.locale} />
+      {publishedTime && <meta property="article:published_time" content={publishedTime} />}
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:site" content={SITE_CONFIG.twitterHandle} />
+      <meta name="twitter:creator" content={SITE_CONFIG.twitterHandle} />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={ogImage} />
