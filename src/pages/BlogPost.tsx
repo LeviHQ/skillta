@@ -1,7 +1,7 @@
 import { useParams, Link, Navigate } from "react-router-dom";
 import { blogPosts } from "@/data/blogPosts";
 import SEOHead from "@/components/SEOHead";
-import { getBreadcrumbSchema, getBaseUrl } from "@/lib/seo";
+import { getBreadcrumbSchema, getArticleSchema } from "@/lib/seo";
 import { ArrowLeft, Calendar, Clock, BookOpen } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import { motion } from "framer-motion";
