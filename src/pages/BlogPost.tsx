@@ -22,6 +22,7 @@ export default function BlogPost() {
         keywords={post.keywords}
         path={`/blog/${post.slug}`}
         type="article"
+        publishedTime={post.date}
         jsonLd={[
           articleSchema,
           getBreadcrumbSchema([
