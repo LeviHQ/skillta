@@ -39,7 +39,7 @@ export default function Index() {
     <div>
       <SEOHead
         {...PAGE_SEO.home}
-        jsonLd={[getWebApplicationSchema(), getEducationalOrgSchema(), getWebsiteSchema(), getHowToSchema(), getFAQSchema(homeFaqs)]}
+        jsonLd={[getWebApplicationSchema(), getEducationalOrgSchema(), getWebsiteSchema(), getHowToSchema(), getFAQSchema(homeFaqs), getOrganizationSchema(), getSoftwareAppSchema(), getItemListSchema()]}
       />
       {/* Hero */}
       <HeroSection />
