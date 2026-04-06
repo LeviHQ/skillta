@@ -11,7 +11,7 @@ import PricingSection from "@/components/PricingSection";
 import WhoIsItForSection from "@/components/WhoIsItForSection";
 import FAQSection from "@/components/FAQSection";
 import SEOHead from "@/components/SEOHead";
-import { PAGE_SEO, getWebApplicationSchema, getEducationalOrgSchema, getWebsiteSchema, getHowToSchema, getFAQSchema } from "@/lib/seo";
+import { PAGE_SEO, getWebApplicationSchema, getEducationalOrgSchema, getWebsiteSchema, getHowToSchema, getFAQSchema, getOrganizationSchema, getSoftwareAppSchema, getItemListSchema } from "@/lib/seo";
 
 const homeFaqs = [
   { question: "How long does the career quiz take?", answer: "The AI Career Quiz takes approximately 5-10 minutes. It includes 10 smart questions designed to understand your interests, skills, and career goals. You don't need to sign up or provide personal information to take it." },
