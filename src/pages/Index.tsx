@@ -42,57 +42,7 @@ export default function Index() {
         jsonLd={[getWebApplicationSchema(), getEducationalOrgSchema(), getWebsiteSchema(), getHowToSchema(), getFAQSchema(homeFaqs)]}
       />
       {/* Hero */}
-      <section className="relative min-h-[90vh] flex items-center bg-gradient-hero overflow-hidden">
-        <div className="absolute inset-0 grid-pattern opacity-40" />
-        <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 left-1/4 w-80 h-80 bg-accent/5 rounded-full blur-3xl" />
-
-        <div className="container mx-auto px-6 relative z-10">
-          <motion.div
-            className="max-w-3xl mx-auto text-center"
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-          >
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.2 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border bg-card/50 text-sm text-muted-foreground mb-8"
-            >
-              <Sparkles className="w-4 h-4 text-primary" />
-              AI-Powered Career Guidance
-            </motion.div>
-
-            <h1 className="text-5xl md:text-7xl font-bold leading-tight mb-6">
-              Find Your Perfect
-              <br />
-              <span className="text-gradient">Tech Career</span>
-            </h1>
-
-            <p className="text-lg md:text-xl text-muted-foreground mb-10 max-w-2xl mx-auto leading-relaxed">
-              Confused about which tech path to choose? Take our AI-powered quiz and get a
-              personalized career recommendation with a complete learning roadmap.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                to="/quiz"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-gradient-primary text-primary-foreground font-semibold text-lg hover:opacity-90 transition-all shadow-glow animate-pulse-glow"
-              >
-                Take the Career Quiz
-                <ArrowRight className="w-5 h-5" />
-              </Link>
-              <Link
-                to="/roadmaps"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl border border-border bg-card/50 text-foreground font-semibold text-lg hover:bg-secondary transition-colors"
-              >
-                Browse Roadmaps
-              </Link>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+      <HeroSection />
 
       {/* Sign In CTA - Only for non-signed-in users */}
       {!user && (
