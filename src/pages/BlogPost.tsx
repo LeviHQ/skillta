@@ -1,7 +1,7 @@
 import { useParams, Link, Navigate } from "react-router-dom";
 import { blogPosts } from "@/data/blogPosts";
 import SEOHead from "@/components/SEOHead";
-import { getBreadcrumbSchema, getBaseUrl } from "@/lib/seo";
+import { getBreadcrumbSchema, getArticleSchema } from "@/lib/seo";
 import { ArrowLeft, Calendar, Clock, BookOpen } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import { motion } from "framer-motion";
@@ -12,29 +12,7 @@ export default function BlogPost() {
 
   if (!post) return <Navigate to="/blog" replace />;
 
-  const baseUrl = getBaseUrl();
-
-  const articleSchema = {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    headline: post.title,
-    description: post.description,
-    datePublished: post.date,
-    dateModified: post.date,
-    author: {
-      "@type": "Organization",
-      name: "SkillTa",
-      url: baseUrl,
-    },
-    publisher: {
-      "@type": "Organization",
-      name: "SkillTa",
-      url: baseUrl,
-      logo: { "@type": "ImageObject", url: `${baseUrl}/favicon.png` },
-    },
-    mainEntityOfPage: `${baseUrl}/blog/${post.slug}`,
-    keywords: post.keywords,
-  };
+  const articleSchema = getArticleSchema(post);
 
   return (
     <div className="min-h-screen bg-background">
@@ -44,6 +22,7 @@ export default function BlogPost() {
         keywords={post.keywords}
         path={`/blog/${post.slug}`}
         type="article"
+        publishedTime={post.date}
         jsonLd={[
           articleSchema,
           getBreadcrumbSchema([
