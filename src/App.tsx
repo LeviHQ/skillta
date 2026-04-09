@@ -10,6 +10,7 @@ import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import SaathiChatbot from "./components/SaathiChatbot";
 import Index from "./pages/Index";
 import Quiz from "./pages/Quiz";
 import Results from "./pages/Results";
@@ -56,6 +57,7 @@ const App = () => (
             </Routes>
           </main>
           <Footer />
+          <SaathiChatbot />
         </BrowserRouter>
         <Analytics />
         <SpeedInsights />
