@@ -100,11 +100,11 @@ export default function HeroSection() {
               Discover Your
             </motion.span>
             <br />
-            <span className="relative inline-block h-[1.2em] overflow-hidden align-bottom">
+            <span className="relative inline-block h-[1.2em] min-w-[280px] md:min-w-[420px] lg:min-w-[520px] overflow-hidden align-bottom">
               <AnimatePresence mode="wait">
                 <motion.span
                   key={wordIndex}
-                  className="text-gradient inline-block"
+                  className="text-gradient absolute left-0 right-0 inline-block"
                   initial={{ y: 50, opacity: 0, rotateX: -40 }}
                   animate={{ y: 0, opacity: 1, rotateX: 0 }}
                   exit={{ y: -50, opacity: 0, rotateX: 40 }}
