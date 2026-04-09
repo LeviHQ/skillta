@@ -57,6 +57,7 @@ const App = () => (
             </Routes>
           </main>
           <Footer />
+          <SaathiChatbot />
         </BrowserRouter>
         <Analytics />
         <SpeedInsights />
