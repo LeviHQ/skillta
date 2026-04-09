@@ -14,135 +14,135 @@ type ChatNode = {
 const chatTree: Record<string, ChatNode> = {
   root: {
     id: "root",
-    message: "Namaste! 🙏 Main hoon Saathi, tumhara SkillTa guide. Kaise help kar sakta hoon?",
+    message: "Hey there! 👋 I'm Saathi, your SkillTa guide. How can I help you today?",
     options: [
-      { label: "🧭 Career guidance chahiye", nextId: "career" },
-      { label: "📝 Quiz kaise dein?", nextId: "quiz_help" },
-      { label: "🗺️ Roadmap dekhna hai", nextId: "roadmap_help" },
-      { label: "📊 Dashboard kahan hai?", nextId: "dashboard_help" },
-      { label: "💰 Pricing jaanna hai", nextId: "pricing_help" },
-      { label: "🤔 Kuch aur problem hai", nextId: "other" },
+      { label: "🧭 Career guidance", nextId: "career" },
+      { label: "📝 How to take the quiz?", nextId: "quiz_help" },
+      { label: "🗺️ View roadmaps", nextId: "roadmap_help" },
+      { label: "📊 Where's my dashboard?", nextId: "dashboard_help" },
+      { label: "💰 Pricing info", nextId: "pricing_help" },
+      { label: "🤔 Something else", nextId: "other" },
     ],
   },
   career: {
     id: "career",
-    message: "Career guidance ke liye humara AI-powered Career Quiz best hai! 15 questions mein tumhara perfect career match milega. 🎯",
+    message: "For career guidance, our AI-powered Career Quiz is the best place to start! 10 questions to find your perfect career match. 🎯",
     options: [
-      { label: "Quiz start karna hai", nextId: "quiz_go" },
-      { label: "Pehle careers explore karunga", nextId: "roadmap_go" },
-      { label: "Compare karna hai careers ko", nextId: "compare_go" },
+      { label: "Start the quiz", nextId: "quiz_go" },
+      { label: "Explore careers first", nextId: "roadmap_go" },
+      { label: "Compare careers", nextId: "compare_go" },
     ],
   },
   quiz_help: {
     id: "quiz_help",
-    message: "Quiz dena bahut easy hai! 🎮 Bas 15 objective questions hain — koi right ya wrong answer nahi, sirf tumhari preferences matter karti hain.",
+    message: "Taking the quiz is super easy! 🎮 Just 10 objective questions — no right or wrong answers, only your preferences matter.",
     options: [
-      { label: "Chalein quiz pe!", nextId: "quiz_go" },
-      { label: "Results kaise dekhein?", nextId: "results_help" },
-      { label: "Sign in zaroori hai kya?", nextId: "signin_help" },
+      { label: "Let's go to the quiz!", nextId: "quiz_go" },
+      { label: "How do I see results?", nextId: "results_help" },
+      { label: "Do I need to sign in?", nextId: "signin_help" },
     ],
   },
   quiz_go: {
     id: "quiz_go",
-    message: "Perfect! Quiz page pe le chalta hoon. ✨ All the best!",
-    action: { label: "🚀 Quiz Start Karein", path: "/quiz" },
+    message: "Perfect! Let me take you to the quiz page. ✨ Good luck!",
+    action: { label: "🚀 Start Quiz", path: "/quiz" },
   },
   results_help: {
     id: "results_help",
-    message: "Quiz complete karne ke baad results page pe automatically redirect ho jaoge. Wahan tumhare top career matches percentage ke saath dikhenge! 📊",
+    message: "After completing the quiz, you'll be automatically redirected to the results page. Your top career matches will be shown with match percentages! 📊",
     options: [
-      { label: "Quiz dena hai ab", nextId: "quiz_go" },
-      { label: "Dashboard mein saved hai?", nextId: "dashboard_help" },
+      { label: "Take the quiz now", nextId: "quiz_go" },
+      { label: "Are results saved?", nextId: "dashboard_help" },
     ],
   },
   signin_help: {
     id: "signin_help",
-    message: "Quiz dene ke liye sign in zaroori nahi hai! 🎉 Lekin agar results save karne hain aur dashboard access chahiye toh sign in karo Google se.",
+    message: "Sign in is NOT required to take the quiz! 🎉 But if you want to save your results and access the dashboard, sign in with Google.",
     options: [
-      { label: "Chalein quiz dete hain", nextId: "quiz_go" },
-      { label: "Dashboard dikhao", nextId: "dashboard_go" },
+      { label: "Let's take the quiz", nextId: "quiz_go" },
+      { label: "Show me the dashboard", nextId: "dashboard_go" },
     ],
   },
   roadmap_help: {
     id: "roadmap_help",
-    message: "Roadmap Library mein 50+ tech careers ke complete step-by-step roadmaps hain — skills, tools, timeline sab kuch! 🗺️",
+    message: "The Roadmap Library has 50+ tech career roadmaps with complete step-by-step guides — skills, tools, timeline, everything! 🗺️",
     options: [
-      { label: "Roadmaps dekhein", nextId: "roadmap_go" },
-      { label: "Pehle quiz se match karunga", nextId: "quiz_go" },
+      { label: "View roadmaps", nextId: "roadmap_go" },
+      { label: "Find my match via quiz first", nextId: "quiz_go" },
     ],
   },
   roadmap_go: {
     id: "roadmap_go",
-    message: "Chal rahe hain Roadmap Library pe! Explore karo aur apna path choose karo. 💪",
+    message: "Let's head to the Roadmap Library! Explore and choose your path. 💪",
     action: { label: "🗺️ Roadmap Library", path: "/roadmaps" },
   },
   compare_go: {
     id: "compare_go",
-    message: "Compare page pe 2 careers ko side-by-side dekh sakte ho — salary, skills, demand sab! ⚖️",
+    message: "On the Compare page you can view 2 careers side-by-side — salary, skills, demand and more! ⚖️",
     action: { label: "⚖️ Compare Careers", path: "/compare" },
   },
   dashboard_help: {
     id: "dashboard_help",
-    message: "Dashboard mein tumhare saved quiz results, career matches aur progress sab milega. Bas sign in hona chahiye! 🔐",
+    message: "Your Dashboard holds your saved quiz results, career matches and progress — just make sure you're signed in! 🔐",
     options: [
-      { label: "Dashboard pe jaayein", nextId: "dashboard_go" },
-      { label: "Sign in kaise karein?", nextId: "signin_help" },
+      { label: "Go to dashboard", nextId: "dashboard_go" },
+      { label: "How do I sign in?", nextId: "signin_help" },
     ],
   },
   dashboard_go: {
     id: "dashboard_go",
-    message: "Dashboard ready hai! 🎯 Sign in ho toh direct access milega.",
+    message: "Dashboard is ready! 🎯 You'll get direct access once signed in.",
     action: { label: "📊 Dashboard", path: "/dashboard" },
   },
   pricing_help: {
     id: "pricing_help",
-    message: "SkillTa ka quiz aur basic features FREE hain! Premium plans mein advanced roadmaps aur AI mentoring milta hai. 💎",
+    message: "SkillTa's quiz and basic features are completely FREE! Premium plans offer advanced roadmaps and AI mentoring. 💎",
     options: [
-      { label: "Pricing section dekhein", nextId: "pricing_go" },
-      { label: "Free mein kya milta hai?", nextId: "free_features" },
+      { label: "View pricing", nextId: "pricing_go" },
+      { label: "What's free?", nextId: "free_features" },
     ],
   },
   pricing_go: {
     id: "pricing_go",
-    message: "Homepage pe pricing section hai, le chalta hoon! 💰",
-    action: { label: "💰 Pricing Dekhein", path: "/#pricing" },
+    message: "Let me take you to the pricing section! 💰",
+    action: { label: "💰 View Pricing", path: "/#pricing" },
   },
   free_features: {
     id: "free_features",
-    message: "Free mein milta hai: Career Quiz, Top 3 Matches, Roadmap Library, aur Blog/Resources! 🎁 Bahut kuch explore kar sakte ho bina paisa diye.",
+    message: "Free tier includes: Career Quiz, Top 3 Matches, Roadmap Library, and Blog/Resources! 🎁 Plenty to explore without paying a thing.",
     options: [
-      { label: "Quiz dena hai free mein", nextId: "quiz_go" },
-      { label: "Blog dekhein", nextId: "blog_go" },
+      { label: "Take the free quiz", nextId: "quiz_go" },
+      { label: "Read the blog", nextId: "blog_go" },
     ],
   },
   blog_go: {
     id: "blog_go",
-    message: "Blog mein latest tech career articles, tips aur guides milenge. Padho aur grow karo! 📚",
-    action: { label: "📚 Blog Padhein", path: "/blog" },
+    message: "The blog has the latest tech career articles, tips and guides. Read and grow! 📚",
+    action: { label: "📚 Read Blog", path: "/blog" },
   },
   other: {
     id: "other",
-    message: "Koi baat nahi! Batao kya dhundh rahe ho? 🤗",
+    message: "No problem! What are you looking for? 🤗",
     options: [
-      { label: "Contact/Support chahiye", nextId: "contact_go" },
-      { label: "About SkillTa jaanna hai", nextId: "about_go" },
-      { label: "Blog articles dekhne hain", nextId: "blog_go" },
+      { label: "Contact / Support", nextId: "contact_go" },
+      { label: "About SkillTa", nextId: "about_go" },
+      { label: "Blog articles", nextId: "blog_go" },
       { label: "Terms & Privacy", nextId: "legal" },
     ],
   },
   contact_go: {
     id: "contact_go",
-    message: "Contact page pe humse baat kar sakte ho! 📬 Hum jaldi reply karte hain.",
+    message: "You can reach us on the Contact page! 📬 We reply quickly.",
     action: { label: "📬 Contact Us", path: "/contact" },
   },
   about_go: {
     id: "about_go",
-    message: "About page pe SkillTa ka mission, team aur vision sab milega! 🌟",
+    message: "The About page has SkillTa's mission, team and vision! 🌟",
     action: { label: "🌟 About SkillTa", path: "/about" },
   },
   legal: {
     id: "legal",
-    message: "Kya dekhna hai? 📄",
+    message: "What would you like to view? 📄",
     options: [
       { label: "Terms of Service", nextId: "terms_go" },
       { label: "Privacy Policy", nextId: "privacy_go" },
@@ -150,12 +150,12 @@ const chatTree: Record<string, ChatNode> = {
   },
   terms_go: {
     id: "terms_go",
-    message: "Terms of Service page pe le chalta hoon! 📜",
+    message: "Let me take you to the Terms of Service! 📜",
     action: { label: "📜 Terms", path: "/terms" },
   },
   privacy_go: {
     id: "privacy_go",
-    message: "Privacy Policy dekhne chalo! 🔒",
+    message: "Let's check the Privacy Policy! 🔒",
     action: { label: "🔒 Privacy Policy", path: "/privacy" },
   },
 };
@@ -215,7 +215,7 @@ export default function SaathiChatbot() {
     setSolved(true);
     setMessages((prev) => [
       ...prev,
-      { type: "bot", text: "Glad I could help! 🎉 SkillTa use karte raho aur apna best career discover karo. All the best! 🚀✨" },
+      { type: "bot", text: "Glad I could help! 🎉 Keep using SkillTa and discover your best career path. All the best! 🚀✨" },
     ]);
   };
 
