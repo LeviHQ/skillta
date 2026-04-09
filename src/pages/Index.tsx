@@ -203,31 +203,6 @@ export default function Index() {
       {/* FAQ */}
       <FAQSection />
 
-      {/* CTA */}
-      <section className="py-24 bg-background">
-        <div className="container mx-auto px-6">
-          <motion.div
-            className="max-w-2xl mx-auto text-center p-12 rounded-3xl bg-gradient-card border border-border relative overflow-hidden"
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-          >
-            <div className="absolute inset-0 bg-gradient-primary opacity-5" />
-            <div className="relative z-10">
-              <h2 className="text-3xl font-bold mb-4">Ready to Find Your Path?</h2>
-              <p className="text-muted-foreground mb-8">
-                It takes less than 5 minutes. No sign-up required.
-              </p>
-              <Link
-                to="/quiz"
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-gradient-primary text-primary-foreground font-semibold text-lg hover:opacity-90 transition-opacity"
-              >
-                Start the Quiz <ArrowRight className="w-5 h-5" />
-              </Link>
-            </div>
-          </motion.div>
-        </div>
-      </section>
 
       <SignInModal open={showSignIn} onClose={() => setShowSignIn(false)} />
     </div>
