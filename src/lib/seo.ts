@@ -201,10 +201,18 @@ export function getSoftwareAppSchema() {
 export function getItemListSchema() {
   const baseUrl = getBaseUrl();
   const careers = [
-    "Frontend Developer", "Backend Developer", "Full Stack Developer",
-    "Data Scientist", "AI/ML Engineer", "Cybersecurity Specialist",
-    "DevOps Engineer", "Mobile Developer", "Cloud Architect",
-    "Game Developer", "Blockchain Developer", "UI/UX Designer",
+    { name: "Frontend Developer", id: "frontend-developer" },
+    { name: "Backend Developer", id: "backend-developer" },
+    { name: "Full Stack Developer", id: "fullstack-developer" },
+    { name: "Data Scientist", id: "data-scientist" },
+    { name: "AI/ML Engineer", id: "ai-ml-engineer" },
+    { name: "Cybersecurity Specialist", id: "cybersecurity-specialist" },
+    { name: "DevOps Engineer", id: "devops-engineer" },
+    { name: "Mobile Developer", id: "mobile-developer" },
+    { name: "Cloud Architect", id: "cloud-architect" },
+    { name: "Game Developer", id: "game-developer" },
+    { name: "Blockchain Developer", id: "blockchain-developer" },
+    { name: "UI/UX Designer", id: "uiux-designer" },
   ];
   return {
     "@context": "https://schema.org",
@@ -215,8 +223,8 @@ export function getItemListSchema() {
     itemListElement: careers.map((career, i) => ({
       "@type": "ListItem",
       position: i + 1,
-      name: career,
-      url: `${baseUrl}/roadmaps/${career.toLowerCase().replace(/ /g, "-")}`,
+      name: career.name,
+      url: `${baseUrl}/roadmaps/${career.id}`,
     })),
   };
 }
