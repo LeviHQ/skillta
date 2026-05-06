@@ -1,6 +1,7 @@
 // Centralized SEO configuration — domain-agnostic
 export const SITE_CONFIG = {
   name: "SkillTa",
+  url: "https://skillta.tech",
   tagline: "Find Your Perfect Tech Career Path",
   description: "AI-powered career guidance for tech. Take our free quiz to discover your ideal career path — frontend, backend, data science, AI/ML, cybersecurity & more. Get a personalized roadmap with 50+ career paths, salary insights & free resources.",
   keywords: "tech career quiz, career path finder, best tech careers 2026, learn to code, career guidance for programmers, tech career roadmap, which tech career is right for me, free career test, software developer roadmap, career aptitude test, ai engineer roadmap, how to become developer, tech career after 12th, programming language to learn, web development roadmap, tech job no experience",
@@ -8,14 +9,12 @@ export const SITE_CONFIG = {
   twitterHandle: "@SkilltaTech",
   locale: "en_US",
   themeColor: "#6366f1",
+  ogImage: "/og-image.png",
 };
 
-// Dynamically resolve base URL from current window location
+// Keep one production canonical host to avoid duplicate-canonical/indexing issues.
 export function getBaseUrl(): string {
-  if (typeof window !== "undefined") {
-    return window.location.origin;
-  }
-  return "https://skillta.tech";
+  return SITE_CONFIG.url;
 }
 
 export interface PageSEO {
@@ -202,10 +201,18 @@ export function getSoftwareAppSchema() {
 export function getItemListSchema() {
   const baseUrl = getBaseUrl();
   const careers = [
-    "Frontend Developer", "Backend Developer", "Full Stack Developer",
-    "Data Scientist", "AI/ML Engineer", "Cybersecurity Specialist",
-    "DevOps Engineer", "Mobile Developer", "Cloud Architect",
-    "Game Developer", "Blockchain Developer", "UI/UX Designer",
+    { name: "Frontend Developer", id: "frontend-developer" },
+    { name: "Backend Developer", id: "backend-developer" },
+    { name: "Full Stack Developer", id: "fullstack-developer" },
+    { name: "Data Scientist", id: "data-scientist" },
+    { name: "AI/ML Engineer", id: "ai-ml-engineer" },
+    { name: "Cybersecurity Specialist", id: "cybersecurity-specialist" },
+    { name: "DevOps Engineer", id: "devops-engineer" },
+    { name: "Mobile Developer", id: "mobile-developer" },
+    { name: "Cloud Architect", id: "cloud-architect" },
+    { name: "Game Developer", id: "game-developer" },
+    { name: "Blockchain Developer", id: "blockchain-developer" },
+    { name: "UI/UX Designer", id: "uiux-designer" },
   ];
   return {
     "@context": "https://schema.org",
@@ -216,8 +223,8 @@ export function getItemListSchema() {
     itemListElement: careers.map((career, i) => ({
       "@type": "ListItem",
       position: i + 1,
-      name: career,
-      url: `${baseUrl}/roadmaps/${career.toLowerCase().replace(/ /g, "-")}`,
+      name: career.name,
+      url: `${baseUrl}/roadmaps/${career.id}`,
     })),
   };
 }

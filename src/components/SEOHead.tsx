@@ -26,7 +26,7 @@ export default function SEOHead({
 }: SEOHeadProps) {
   const baseUrl = getBaseUrl();
   const canonicalUrl = `${baseUrl}${path}`;
-  const ogImage = image || `${baseUrl}/favicon.png`;
+  const ogImage = image || `${baseUrl}${SITE_CONFIG.ogImage}`;
 
   const jsonLdArray = jsonLd
     ? Array.isArray(jsonLd)
@@ -40,6 +40,7 @@ export default function SEOHead({
       <meta name="description" content={description} />
       {keywords && <meta name="keywords" content={keywords} />}
       <meta name="author" content={SITE_CONFIG.author} />
+      <meta name="googlebot" content={noIndex ? "noindex, nofollow" : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"} />
       <link rel="canonical" href={canonicalUrl} />
       {noIndex && <meta name="robots" content="noindex, nofollow" />}
       {!noIndex && <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />}
