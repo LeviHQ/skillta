@@ -47,8 +47,11 @@ export function PlanProvider({ children }: { children: ReactNode }) {
     }
     try {
       const raw = localStorage.getItem(planKey(user.uid));
-      if (raw) setPlan(JSON.parse(raw));
-      else setPlan(null);
+      if (raw) {
+        setPlan(JSON.parse(raw));
+      } else {
+        setPlan(null);
+      }
       const u = localStorage.getItem(usageKey(user.uid));
       setTodayUsage(u ? parseInt(u, 10) : 0);
     } catch {
