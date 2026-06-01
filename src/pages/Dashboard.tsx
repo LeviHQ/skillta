@@ -2,10 +2,11 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useAuth } from "@/contexts/AuthContext";
+import { usePlan } from "@/contexts/PlanContext";
 import { careers } from "@/data/careers";
 import {
   User, LogOut, TrendingUp, Clock, Star, ArrowRight,
-  BarChart3, History, Sparkles, Target, BookOpen
+  BarChart3, History, Sparkles, Target, BookOpen, CreditCard, Zap, XCircle, CheckCircle2
 } from "lucide-react";
 import SEOHead from "@/components/SEOHead";
 import { PAGE_SEO } from "@/lib/seo";
