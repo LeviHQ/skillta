@@ -109,12 +109,16 @@ export default function PricingSection() {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto items-stretch">
-          {plans.map((plan, i) => (
+          {plans.map((tier, i) => {
+            const isFreeActive = tier.name === "Free" && plan?.name === "Free";
+            return (
             <motion.div
-              key={plan.name}
+              key={tier.name}
               className={`relative rounded-2xl border p-8 flex flex-col transition-all ${
-                plan.highlighted
+                tier.highlighted
                   ? "border-primary/50 bg-gradient-card shadow-glow scale-[1.03] z-10"
+                  : isFreeActive
+                  ? "border-primary/40 bg-card"
                   : "border-border bg-card hover:border-primary/30"
               }`}
               initial={{ opacity: 0, y: 30 }}
@@ -123,34 +127,39 @@ export default function PricingSection() {
               transition={{ delay: i * 0.12 }}
               whileHover={{ y: -4, transition: { duration: 0.2 } }}
             >
-              {plan.badge && (
+              {tier.badge && (
                 <div
                   className={`absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full text-xs font-bold ${
-                    plan.badge === "Most Popular"
+                    tier.badge === "Most Popular"
                       ? "bg-primary text-primary-foreground"
                       : "bg-accent text-accent-foreground"
                   }`}
                 >
                   <div className="flex items-center gap-1">
-                    {plan.badge === "Most Popular" && <Star className="w-3 h-3" />}
-                    {plan.badge === "Coming Soon" && <Clock className="w-3 h-3" />}
-                    {plan.badge}
+                    {tier.badge === "Most Popular" && <Star className="w-3 h-3" />}
+                    {tier.badge === "Coming Soon" && <Clock className="w-3 h-3" />}
+                    {tier.badge}
                   </div>
+                </div>
+              )}
+              {isFreeActive && !tier.badge && (
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full text-xs font-bold bg-primary/15 border border-primary/40 text-primary flex items-center gap-1">
+                  <CheckCircle2 className="w-3 h-3" /> Your Plan
                 </div>
               )}
 
               <div className="mb-6">
-                <h3 className="text-xl font-bold text-foreground mb-1">{plan.name}</h3>
-                <p className="text-sm text-muted-foreground">{plan.description}</p>
+                <h3 className="text-xl font-bold text-foreground mb-1">{tier.name}</h3>
+                <p className="text-sm text-muted-foreground">{tier.description}</p>
               </div>
 
               <div className="mb-8">
-                <span className="text-4xl font-bold text-foreground">{plan.price}</span>
-                <span className="text-muted-foreground text-sm">{plan.period}</span>
+                <span className="text-4xl font-bold text-foreground">{tier.price}</span>
+                <span className="text-muted-foreground text-sm">{tier.period}</span>
               </div>
 
               <ul className="space-y-3 mb-8 flex-1">
-                {plan.features.map((feature) => (
+                {tier.features.map((feature) => (
                   <li key={feature} className="flex items-start gap-3 text-sm">
                     <Check className="w-4 h-4 text-primary mt-0.5 shrink-0" />
                     <span className="text-muted-foreground">{feature}</span>
@@ -158,18 +167,28 @@ export default function PricingSection() {
                 ))}
               </ul>
 
-              <button
-                onClick={() => plan.name !== "Free" && setShowModal(true)}
-                className={`w-full py-3 rounded-xl font-semibold text-sm transition-all ${
-                  plan.highlighted
-                    ? "bg-gradient-primary text-primary-foreground hover:opacity-90"
-                    : "border border-border text-foreground hover:border-primary/40 hover:bg-secondary"
-                }`}
-              >
-                {plan.cta}
-              </button>
+              {isFreeActive ? (
+                <div className="w-full py-3 rounded-xl font-semibold text-sm text-center bg-primary/10 border border-primary/30 text-primary">
+                  Active till {freeExpiry}
+                </div>
+              ) : (
+                <button
+                  onClick={() => {
+                    if (tier.name === "Free") handleFreeClick();
+                    else setShowModal(true);
+                  }}
+                  className={`w-full py-3 rounded-xl font-semibold text-sm transition-all ${
+                    tier.highlighted
+                      ? "bg-gradient-primary text-primary-foreground hover:opacity-90"
+                      : "border border-border text-foreground hover:border-primary/40 hover:bg-secondary"
+                  }`}
+                >
+                  {tier.cta}
+                </button>
+              )}
             </motion.div>
-          ))}
+            );
+          })}
         </div>
 
         {/* Trust bar */}
