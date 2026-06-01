@@ -16,6 +16,7 @@ interface CareerResult {
 export default function Results() {
   const navigate = useNavigate();
   const { user, saveQuizResult } = useAuth();
+  const { incrementUsage } = (require("@/contexts/PlanContext") as typeof import("@/contexts/PlanContext")).usePlan();
   const [results, setResults] = useState<CareerResult[]>([]);
   const [saved, setSaved] = useState(false);
 
