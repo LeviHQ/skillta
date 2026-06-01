@@ -87,17 +87,24 @@ export default function Navbar() {
 
           <div className="hidden md:flex items-center gap-3">
             {user ? (
-              <Link
-                to="/dashboard"
-                className="flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-primary text-primary-foreground text-sm font-semibold hover:opacity-90 transition-opacity"
-              >
-                {user.photoURL ? (
-                  <img src={user.photoURL} alt="" className="w-5 h-5 rounded-full" />
-                ) : (
-                  <LayoutDashboard className="w-4 h-4" />
+              <>
+                {plan && (
+                  <span className="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-primary/15 text-primary border border-primary/30">
+                    {plan.name} Plan
+                  </span>
                 )}
-                Dashboard
-              </Link>
+                <Link
+                  to="/dashboard"
+                  className="flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-primary text-primary-foreground text-sm font-semibold hover:opacity-90 transition-opacity"
+                >
+                  {user.photoURL ? (
+                    <img src={user.photoURL} alt="" className="w-5 h-5 rounded-full" />
+                  ) : (
+                    <LayoutDashboard className="w-4 h-4" />
+                  )}
+                  Dashboard
+                </Link>
+              </>
             ) : (
               <>
                 <button
