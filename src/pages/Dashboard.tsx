@@ -77,9 +77,16 @@ export default function Dashboard() {
               </div>
             )}
             <div>
-              <h1 className="text-2xl md:text-3xl font-bold text-foreground">
-                Welcome back, <span className="text-gradient">{user.displayName?.split(" ")[0] || "User"}</span>
-              </h1>
+              <div className="flex items-center gap-2 flex-wrap">
+                <h1 className="text-2xl md:text-3xl font-bold text-foreground">
+                  Welcome back, <span className="text-gradient">{user.displayName?.split(" ")[0] || "User"}</span>
+                </h1>
+                {plan && (
+                  <span className="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-primary/15 text-primary border border-primary/30">
+                    {plan.name} Plan
+                  </span>
+                )}
+              </div>
               <p className="text-sm text-muted-foreground">{user.email}</p>
             </div>
           </div>
