@@ -44,8 +44,10 @@ export default function Results() {
           matchPercentage: r.matchPercentage,
         })),
       })
-        .then(() => setSaved(true))
+        .then(() => { setSaved(true); incrementUsage(); })
         .catch((err) => console.error("Failed to save quiz result on results page:", err));
+    } else if (!saved && !user) {
+      // Track usage even when not signed in is unnecessary; skip
     }
   }, [navigate, user]);
 
