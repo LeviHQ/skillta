@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Menu, X, User, LayoutDashboard } from "lucide-react";
 import logo from "@/assets/logo.png";
 import { useAuth } from "@/contexts/AuthContext";
+import { usePlan } from "@/contexts/PlanContext";
 import SignInModal from "./SignInModal";
 
 const navLinks = [
