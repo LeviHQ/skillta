@@ -21,6 +21,7 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [showSignIn, setShowSignIn] = useState(false);
   const { user } = useAuth();
+  const { plan } = usePlan();
 
   const handleNavClick = (path: string) => {
     if (path.startsWith("/#")) {
