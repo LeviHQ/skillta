@@ -279,7 +279,7 @@ export default function PricingSection() {
         open={showCongrats}
         onClose={() => setShowCongrats(false)}
         planName="Free"
-        expiresAt={plan?.expiresAt}
+        expiresAt={congratsExpiry || plan?.expiresAt}
       />
     </section>
   );
