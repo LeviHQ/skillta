@@ -266,6 +266,19 @@ export default function PricingSection() {
           </motion.div>
         </div>
       )}
+
+      <SignInModal
+        open={showSignIn}
+        onClose={() => setShowSignIn(false)}
+        message="Sign in to activate your free SkillTa plan and get started."
+        onSuccess={handleSignInSuccess}
+      />
+      <CongratsModal
+        open={showCongrats}
+        onClose={() => setShowCongrats(false)}
+        planName="Free"
+        expiresAt={plan?.expiresAt}
+      />
     </section>
   );
 }
