@@ -33,6 +33,7 @@ const App = () => (
   <HelmetProvider>
     <QueryClientProvider client={queryClient}>
       <AuthProvider>
+        <PlanProvider>
         <TooltipProvider>
         <Toaster />
         <Sonner />
@@ -63,6 +64,7 @@ const App = () => (
         <Analytics />
         <SpeedInsights />
         </TooltipProvider>
+        </PlanProvider>
       </AuthProvider>
     </QueryClientProvider>
   </HelmetProvider>
