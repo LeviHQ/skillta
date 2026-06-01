@@ -65,6 +65,31 @@ const trustItems = [
 
 export default function PricingSection() {
   const [showModal, setShowModal] = useState(false);
+  const [showSignIn, setShowSignIn] = useState(false);
+  const [showCongrats, setShowCongrats] = useState(false);
+  const { user } = useAuth();
+  const { plan, activateFreePlan } = usePlan();
+
+  const handleFreeClick = () => {
+    if (!user) {
+      setShowSignIn(true);
+    } else if (!plan) {
+      const p = activateFreePlan();
+      setShowCongrats(true);
+    }
+  };
+
+  const handleSignInSuccess = () => {
+    // Activate after a tick so plan context picks up new user
+    setTimeout(() => {
+      activateFreePlan();
+      setShowCongrats(true);
+    }, 400);
+  };
+
+  const freeExpiry = plan?.name === "Free"
+    ? new Date(plan.expiresAt).toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" })
+    : null;
 
   return (
     <section id="pricing" className="py-24 bg-background">
