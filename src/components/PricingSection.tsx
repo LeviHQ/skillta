@@ -67,6 +67,7 @@ export default function PricingSection() {
   const [showModal, setShowModal] = useState(false);
   const [showSignIn, setShowSignIn] = useState(false);
   const [showCongrats, setShowCongrats] = useState(false);
+  const [congratsExpiry, setCongratsExpiry] = useState<string | undefined>(undefined);
   const { user } = useAuth();
   const { plan, activateFreePlan } = usePlan();
 
@@ -75,14 +76,15 @@ export default function PricingSection() {
       setShowSignIn(true);
     } else if (!plan) {
       const p = activateFreePlan();
+      setCongratsExpiry(p.expiresAt);
       setShowCongrats(true);
     }
   };
 
   const handleSignInSuccess = () => {
-    // Activate after a tick so plan context picks up new user
     setTimeout(() => {
-      activateFreePlan();
+      const p = activateFreePlan();
+      setCongratsExpiry(p.expiresAt);
       setShowCongrats(true);
     }, 400);
   };
