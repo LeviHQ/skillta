@@ -68,8 +68,22 @@ export default function PricingSection() {
   const [showSignIn, setShowSignIn] = useState(false);
   const [showCongrats, setShowCongrats] = useState(false);
   const [congratsExpiry, setCongratsExpiry] = useState<string | undefined>(undefined);
+  const [pendingActivation, setPendingActivation] = useState(false);
   const { user } = useAuth();
   const { plan, activateFreePlan } = usePlan();
+
+  // After Google sign-in, once user becomes available, activate Free plan.
+  useEffect(() => {
+    if (pendingActivation && user && !plan) {
+      const p = activateFreePlan();
+      setCongratsExpiry(p.expiresAt);
+      setShowCongrats(true);
+      setPendingActivation(false);
+    } else if (pendingActivation && user && plan) {
+      // Already had a plan
+      setPendingActivation(false);
+    }
+  }, [pendingActivation, user, plan, activateFreePlan]);
 
   const handleFreeClick = () => {
     if (!user) {
@@ -82,11 +96,7 @@ export default function PricingSection() {
   };
 
   const handleSignInSuccess = () => {
-    setTimeout(() => {
-      const p = activateFreePlan();
-      setCongratsExpiry(p.expiresAt);
-      setShowCongrats(true);
-    }, 400);
+    setPendingActivation(true);
   };
 
   const freeExpiry = plan?.name === "Free"
