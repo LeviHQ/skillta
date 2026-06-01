@@ -98,6 +98,83 @@ export default function Dashboard() {
           </button>
         </motion.div>
 
+
+        {/* Subscription / Plan Section */}
+        <motion.div
+          className="mb-10"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.05 }}
+        >
+          <div className="p-6 rounded-2xl bg-gradient-card border border-border">
+            <div className="flex items-center justify-between flex-wrap gap-3 mb-5">
+              <div className="flex items-center gap-2">
+                <CreditCard className="w-5 h-5 text-primary" />
+                <h2 className="text-lg font-bold text-foreground">Your Subscription</h2>
+              </div>
+              {plan && (
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-primary/15 text-primary border border-primary/30">
+                  <CheckCircle2 className="w-3.5 h-3.5" /> Active
+                </span>
+              )}
+            </div>
+
+            {plan ? (
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="p-4 rounded-xl bg-secondary/40 border border-border">
+                  <p className="text-xs text-muted-foreground mb-1">Current Plan</p>
+                  <p className="text-xl font-bold text-foreground">{plan.name}</p>
+                  <p className="text-xs text-muted-foreground mt-1">
+                    Active till {new Date(plan.expiresAt).toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" })}
+                  </p>
+                </div>
+
+                <div className="p-4 rounded-xl bg-secondary/40 border border-border">
+                  <div className="flex items-center justify-between mb-2">
+                    <p className="text-xs text-muted-foreground">Today's Usage</p>
+                    <Zap className="w-4 h-4 text-warning" />
+                  </div>
+                  <p className="text-xl font-bold text-foreground">
+                    {todayUsage} <span className="text-sm font-normal text-muted-foreground">/ {dailyLimit}</span>
+                  </p>
+                  <div className="mt-2 h-1.5 rounded-full bg-secondary overflow-hidden">
+                    <div
+                      className="h-full bg-gradient-primary rounded-full transition-all"
+                      style={{ width: `${Math.min(100, (todayUsage / dailyLimit) * 100)}%` }}
+                    />
+                  </div>
+                </div>
+
+                <div className="p-4 rounded-xl bg-secondary/40 border border-border flex flex-col gap-2">
+                  <p className="text-xs text-muted-foreground mb-1">Manage</p>
+                  <Link
+                    to="/#pricing"
+                    className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-gradient-primary text-primary-foreground text-xs font-semibold hover:opacity-90 transition-opacity"
+                  >
+                    <Sparkles className="w-3.5 h-3.5" /> Upgrade Plan
+                  </Link>
+                  <button
+                    onClick={() => setShowCancelConfirm(true)}
+                    className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg border border-border text-xs font-semibold text-muted-foreground hover:text-destructive hover:border-destructive/40 transition-colors"
+                  >
+                    <XCircle className="w-3.5 h-3.5" /> Cancel Plan
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <div className="text-center py-6">
+                <p className="text-sm text-muted-foreground mb-4">You don't have an active plan yet.</p>
+                <Link
+                  to="/#pricing"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-primary text-primary-foreground text-sm font-semibold hover:opacity-90"
+                >
+                  Choose a Plan <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
+            )}
+          </div>
+        </motion.div>
+
         {/* Stats Cards */}
         <motion.div
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-10"
