@@ -435,6 +435,46 @@ export default function Dashboard() {
           </div>
         </motion.div>
       </div>
+
+      {/* Cancel confirmation */}
+      {showCancelConfirm && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+          <div
+            className="absolute inset-0 bg-background/85 backdrop-blur-sm"
+            onClick={() => setShowCancelConfirm(false)}
+          />
+          <motion.div
+            initial={{ scale: 0.9, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            className="relative w-full max-w-sm p-6 rounded-2xl bg-card border border-border shadow-glow text-center"
+          >
+            <div className="w-12 h-12 mx-auto mb-4 rounded-full bg-destructive/10 flex items-center justify-center">
+              <XCircle className="w-6 h-6 text-destructive" />
+            </div>
+            <h3 className="text-lg font-bold text-foreground mb-2">Cancel your plan?</h3>
+            <p className="text-sm text-muted-foreground mb-6">
+              You'll lose access to your {plan?.name} plan benefits. You can reactivate anytime.
+            </p>
+            <div className="flex gap-3">
+              <button
+                onClick={() => setShowCancelConfirm(false)}
+                className="flex-1 py-2.5 rounded-xl border border-border text-sm font-medium text-foreground hover:bg-secondary"
+              >
+                Keep Plan
+              </button>
+              <button
+                onClick={() => {
+                  cancelPlan();
+                  setShowCancelConfirm(false);
+                }}
+                className="flex-1 py-2.5 rounded-xl bg-destructive text-destructive-foreground text-sm font-semibold hover:opacity-90"
+              >
+                Cancel Plan
+              </button>
+            </div>
+          </motion.div>
+        </div>
+      )}
     </div>
   );
 }
