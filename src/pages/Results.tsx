@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { calculateCareerScores, QuizAnswers, Career } from "@/data/careers";
 import { ArrowRight, Star, Clock, TrendingUp, DollarSign, AlertTriangle } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
+import { usePlan } from "@/contexts/PlanContext";
 import SEOHead from "@/components/SEOHead";
 import { PAGE_SEO } from "@/lib/seo";
 
