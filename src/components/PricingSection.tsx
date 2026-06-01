@@ -1,6 +1,10 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Check, Star, Clock, Shield, BookOpen, Sparkles, MessageSquareHeart, X } from "lucide-react";
+import { Check, Star, Clock, Shield, BookOpen, Sparkles, MessageSquareHeart, X, CheckCircle2 } from "lucide-react";
+import { useAuth } from "@/contexts/AuthContext";
+import { usePlan } from "@/contexts/PlanContext";
+import SignInModal from "./SignInModal";
+import CongratsModal from "./CongratsModal";
 
 const plans = [
   {
