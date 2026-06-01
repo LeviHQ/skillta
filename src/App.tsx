@@ -5,6 +5,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "@/contexts/AuthContext";
+import { PlanProvider } from "@/contexts/PlanContext";
 import { InstallPrompt } from "@/components/InstallPrompt";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
@@ -32,6 +33,7 @@ const App = () => (
   <HelmetProvider>
     <QueryClientProvider client={queryClient}>
       <AuthProvider>
+        <PlanProvider>
         <TooltipProvider>
         <Toaster />
         <Sonner />
@@ -62,6 +64,7 @@ const App = () => (
         <Analytics />
         <SpeedInsights />
         </TooltipProvider>
+        </PlanProvider>
       </AuthProvider>
     </QueryClientProvider>
   </HelmetProvider>

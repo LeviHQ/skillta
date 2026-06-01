@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { calculateCareerScores, QuizAnswers, Career } from "@/data/careers";
 import { ArrowRight, Star, Clock, TrendingUp, DollarSign, AlertTriangle } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
+import { usePlan } from "@/contexts/PlanContext";
 import SEOHead from "@/components/SEOHead";
 import { PAGE_SEO } from "@/lib/seo";
 
@@ -16,6 +17,7 @@ interface CareerResult {
 export default function Results() {
   const navigate = useNavigate();
   const { user, saveQuizResult } = useAuth();
+  const { incrementUsage } = usePlan();
   const [results, setResults] = useState<CareerResult[]>([]);
   const [saved, setSaved] = useState(false);
 
@@ -42,8 +44,10 @@ export default function Results() {
           matchPercentage: r.matchPercentage,
         })),
       })
-        .then(() => setSaved(true))
+        .then(() => { setSaved(true); incrementUsage(); })
         .catch((err) => console.error("Failed to save quiz result on results page:", err));
+    } else if (!saved && !user) {
+      // Track usage even when not signed in is unnecessary; skip
     }
   }, [navigate, user]);
 

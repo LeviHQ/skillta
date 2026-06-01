@@ -8,9 +8,10 @@ interface SignInModalProps {
   open: boolean;
   onClose: () => void;
   message?: string;
+  onSuccess?: () => void;
 }
 
-export default function SignInModal({ open, onClose, message }: SignInModalProps) {
+export default function SignInModal({ open, onClose, message, onSuccess }: SignInModalProps) {
   const { signInWithGoogle } = useAuth();
   const [isSigningIn, setIsSigningIn] = useState(false);
   const [authError, setAuthError] = useState<string | null>(null);
@@ -31,6 +32,7 @@ export default function SignInModal({ open, onClose, message }: SignInModalProps
     try {
       await signInWithGoogle();
       handleClose();
+      onSuccess?.();
     } catch (error: any) {
       const code = error?.code as string | undefined;
       const isIframe = window.self !== window.top;

@@ -2,10 +2,11 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useAuth } from "@/contexts/AuthContext";
+import { usePlan } from "@/contexts/PlanContext";
 import { careers } from "@/data/careers";
 import {
   User, LogOut, TrendingUp, Clock, Star, ArrowRight,
-  BarChart3, History, Sparkles, Target, BookOpen
+  BarChart3, History, Sparkles, Target, BookOpen, CreditCard, Zap, XCircle, CheckCircle2
 } from "lucide-react";
 import SEOHead from "@/components/SEOHead";
 import { PAGE_SEO } from "@/lib/seo";
@@ -21,9 +22,11 @@ interface QuizResult {
 
 export default function Dashboard() {
   const { user, signOut, getQuizHistory } = useAuth();
+  const { plan, cancelPlan, todayUsage, dailyLimit } = usePlan();
   const navigate = useNavigate();
   const [history, setHistory] = useState<QuizResult[]>([]);
   const [loading, setLoading] = useState(true);
+  const [showCancelConfirm, setShowCancelConfirm] = useState(false);
 
   useEffect(() => {
     if (!user) {
@@ -74,9 +77,16 @@ export default function Dashboard() {
               </div>
             )}
             <div>
-              <h1 className="text-2xl md:text-3xl font-bold text-foreground">
-                Welcome back, <span className="text-gradient">{user.displayName?.split(" ")[0] || "User"}</span>
-              </h1>
+              <div className="flex items-center gap-2 flex-wrap">
+                <h1 className="text-2xl md:text-3xl font-bold text-foreground">
+                  Welcome back, <span className="text-gradient">{user.displayName?.split(" ")[0] || "User"}</span>
+                </h1>
+                {plan && (
+                  <span className="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-primary/15 text-primary border border-primary/30">
+                    {plan.name} Plan
+                  </span>
+                )}
+              </div>
               <p className="text-sm text-muted-foreground">{user.email}</p>
             </div>
           </div>
@@ -86,6 +96,83 @@ export default function Dashboard() {
           >
             <LogOut className="w-4 h-4" /> Sign Out
           </button>
+        </motion.div>
+
+
+        {/* Subscription / Plan Section */}
+        <motion.div
+          className="mb-10"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.05 }}
+        >
+          <div className="p-6 rounded-2xl bg-gradient-card border border-border">
+            <div className="flex items-center justify-between flex-wrap gap-3 mb-5">
+              <div className="flex items-center gap-2">
+                <CreditCard className="w-5 h-5 text-primary" />
+                <h2 className="text-lg font-bold text-foreground">Your Subscription</h2>
+              </div>
+              {plan && (
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-primary/15 text-primary border border-primary/30">
+                  <CheckCircle2 className="w-3.5 h-3.5" /> Active
+                </span>
+              )}
+            </div>
+
+            {plan ? (
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="p-4 rounded-xl bg-secondary/40 border border-border">
+                  <p className="text-xs text-muted-foreground mb-1">Current Plan</p>
+                  <p className="text-xl font-bold text-foreground">{plan.name}</p>
+                  <p className="text-xs text-muted-foreground mt-1">
+                    Active till {new Date(plan.expiresAt).toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" })}
+                  </p>
+                </div>
+
+                <div className="p-4 rounded-xl bg-secondary/40 border border-border">
+                  <div className="flex items-center justify-between mb-2">
+                    <p className="text-xs text-muted-foreground">Today's Usage</p>
+                    <Zap className="w-4 h-4 text-warning" />
+                  </div>
+                  <p className="text-xl font-bold text-foreground">
+                    {todayUsage} <span className="text-sm font-normal text-muted-foreground">/ {dailyLimit}</span>
+                  </p>
+                  <div className="mt-2 h-1.5 rounded-full bg-secondary overflow-hidden">
+                    <div
+                      className="h-full bg-gradient-primary rounded-full transition-all"
+                      style={{ width: `${Math.min(100, (todayUsage / dailyLimit) * 100)}%` }}
+                    />
+                  </div>
+                </div>
+
+                <div className="p-4 rounded-xl bg-secondary/40 border border-border flex flex-col gap-2">
+                  <p className="text-xs text-muted-foreground mb-1">Manage</p>
+                  <Link
+                    to="/#pricing"
+                    className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-gradient-primary text-primary-foreground text-xs font-semibold hover:opacity-90 transition-opacity"
+                  >
+                    <Sparkles className="w-3.5 h-3.5" /> Upgrade Plan
+                  </Link>
+                  <button
+                    onClick={() => setShowCancelConfirm(true)}
+                    className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg border border-border text-xs font-semibold text-muted-foreground hover:text-destructive hover:border-destructive/40 transition-colors"
+                  >
+                    <XCircle className="w-3.5 h-3.5" /> Cancel Plan
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <div className="text-center py-6">
+                <p className="text-sm text-muted-foreground mb-4">You don't have an active plan yet.</p>
+                <Link
+                  to="/#pricing"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-primary text-primary-foreground text-sm font-semibold hover:opacity-90"
+                >
+                  Choose a Plan <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
+            )}
+          </div>
         </motion.div>
 
         {/* Stats Cards */}
@@ -348,6 +435,46 @@ export default function Dashboard() {
           </div>
         </motion.div>
       </div>
+
+      {/* Cancel confirmation */}
+      {showCancelConfirm && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+          <div
+            className="absolute inset-0 bg-background/85 backdrop-blur-sm"
+            onClick={() => setShowCancelConfirm(false)}
+          />
+          <motion.div
+            initial={{ scale: 0.9, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            className="relative w-full max-w-sm p-6 rounded-2xl bg-card border border-border shadow-glow text-center"
+          >
+            <div className="w-12 h-12 mx-auto mb-4 rounded-full bg-destructive/10 flex items-center justify-center">
+              <XCircle className="w-6 h-6 text-destructive" />
+            </div>
+            <h3 className="text-lg font-bold text-foreground mb-2">Cancel your plan?</h3>
+            <p className="text-sm text-muted-foreground mb-6">
+              You'll lose access to your {plan?.name} plan benefits. You can reactivate anytime.
+            </p>
+            <div className="flex gap-3">
+              <button
+                onClick={() => setShowCancelConfirm(false)}
+                className="flex-1 py-2.5 rounded-xl border border-border text-sm font-medium text-foreground hover:bg-secondary"
+              >
+                Keep Plan
+              </button>
+              <button
+                onClick={() => {
+                  cancelPlan();
+                  setShowCancelConfirm(false);
+                }}
+                className="flex-1 py-2.5 rounded-xl bg-destructive text-destructive-foreground text-sm font-semibold hover:opacity-90"
+              >
+                Cancel Plan
+              </button>
+            </div>
+          </motion.div>
+        </div>
+      )}
     </div>
   );
 }
