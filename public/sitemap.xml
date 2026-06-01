@@ -1,418 +1,418 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://skillta.tech/</loc>
-    <lastmod>2026-05-06</lastmod>
+    <loc>https://www.skillta.tech/</loc>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://skillta.tech/quiz</loc>
-    <lastmod>2026-05-06</lastmod>
+    <loc>https://www.skillta.tech/quiz</loc>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://skillta.tech/roadmaps</loc>
-    <lastmod>2026-05-06</lastmod>
+    <loc>https://www.skillta.tech/roadmaps</loc>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://skillta.tech/compare</loc>
-    <lastmod>2026-05-06</lastmod>
+    <loc>https://www.skillta.tech/compare</loc>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://skillta.tech/blog</loc>
-    <lastmod>2026-05-06</lastmod>
+    <loc>https://www.skillta.tech/blog</loc>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://skillta.tech/about</loc>
-    <lastmod>2026-05-06</lastmod>
+    <loc>https://www.skillta.tech/about</loc>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://skillta.tech/contact</loc>
-    <lastmod>2026-05-06</lastmod>
+    <loc>https://www.skillta.tech/contact</loc>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://skillta.tech/privacy</loc>
-    <lastmod>2026-05-06</lastmod>
+    <loc>https://www.skillta.tech/privacy</loc>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://skillta.tech/terms</loc>
-    <lastmod>2026-05-06</lastmod>
+    <loc>https://www.skillta.tech/terms</loc>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <!-- Blog Posts -->
   <url>
-    <loc>https://skillta.tech/blog/how-to-choose-right-tech-career-2025</loc>
-    <lastmod>2025-12-15</lastmod>
+    <loc>https://www.skillta.tech/blog/how-to-choose-right-tech-career-2025</loc>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://skillta.tech/blog/frontend-vs-backend-developer-which-is-better</loc>
-    <lastmod>2025-12-10</lastmod>
+    <loc>https://www.skillta.tech/blog/frontend-vs-backend-developer-which-is-better</loc>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://skillta.tech/blog/top-10-highest-paying-tech-careers-india-2025</loc>
-    <lastmod>2025-12-05</lastmod>
+    <loc>https://www.skillta.tech/blog/top-10-highest-paying-tech-careers-india-2025</loc>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://skillta.tech/blog/complete-roadmap-to-become-developer-from-scratch</loc>
-    <lastmod>2025-11-28</lastmod>
+    <loc>https://www.skillta.tech/blog/complete-roadmap-to-become-developer-from-scratch</loc>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://skillta.tech/blog/data-science-vs-cybersecurity-career-comparison</loc>
-    <lastmod>2025-11-20</lastmod>
+    <loc>https://www.skillta.tech/blog/data-science-vs-cybersecurity-career-comparison</loc>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://skillta.tech/blog/ai-engineer-roadmap-2026-complete-guide</loc>
-    <lastmod>2026-03-28</lastmod>
+    <loc>https://www.skillta.tech/blog/ai-engineer-roadmap-2026-complete-guide</loc>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://skillta.tech/blog/best-programming-languages-to-learn-2026</loc>
-    <lastmod>2026-03-20</lastmod>
+    <loc>https://www.skillta.tech/blog/best-programming-languages-to-learn-2026</loc>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://skillta.tech/blog/how-to-get-first-tech-job-no-experience-2026</loc>
-    <lastmod>2026-03-15</lastmod>
+    <loc>https://www.skillta.tech/blog/how-to-get-first-tech-job-no-experience-2026</loc>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://skillta.tech/blog/web-development-roadmap-2026-beginner-to-advanced</loc>
-    <lastmod>2026-03-10</lastmod>
+    <loc>https://www.skillta.tech/blog/web-development-roadmap-2026-beginner-to-advanced</loc>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://skillta.tech/blog/tech-career-after-12th-india-2026</loc>
-    <lastmod>2026-03-05</lastmod>
+    <loc>https://www.skillta.tech/blog/tech-career-after-12th-india-2026</loc>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <!-- Career Roadmap Pages -->
   <url>
-    <loc>https://skillta.tech/roadmaps/frontend-developer</loc>
-    <lastmod>2026-05-06</lastmod>
+    <loc>https://www.skillta.tech/roadmaps/frontend-developer</loc>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://skillta.tech/roadmaps/backend-developer</loc>
-    <lastmod>2026-05-06</lastmod>
+    <loc>https://www.skillta.tech/roadmaps/backend-developer</loc>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://skillta.tech/roadmaps/data-scientist</loc>
-    <lastmod>2026-05-06</lastmod>
+    <loc>https://www.skillta.tech/roadmaps/data-scientist</loc>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://skillta.tech/roadmaps/cybersecurity-specialist</loc>
-    <lastmod>2026-05-06</lastmod>
+    <loc>https://www.skillta.tech/roadmaps/cybersecurity-specialist</loc>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://skillta.tech/roadmaps/uiux-designer</loc>
-    <lastmod>2026-05-06</lastmod>
+    <loc>https://www.skillta.tech/roadmaps/uiux-designer</loc>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://skillta.tech/roadmaps/devops-engineer</loc>
-    <lastmod>2026-05-06</lastmod>
+    <loc>https://www.skillta.tech/roadmaps/devops-engineer</loc>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://skillta.tech/roadmaps/qa-automation</loc>
-    <lastmod>2026-05-06</lastmod>
+    <loc>https://www.skillta.tech/roadmaps/qa-automation</loc>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://skillta.tech/roadmaps/mobile-developer</loc>
-    <lastmod>2026-05-06</lastmod>
+    <loc>https://www.skillta.tech/roadmaps/mobile-developer</loc>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://skillta.tech/roadmaps/fullstack-developer</loc>
-    <lastmod>2026-05-06</lastmod>
+    <loc>https://www.skillta.tech/roadmaps/fullstack-developer</loc>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://skillta.tech/roadmaps/cloud-architect</loc>
-    <lastmod>2026-05-06</lastmod>
+    <loc>https://www.skillta.tech/roadmaps/cloud-architect</loc>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://skillta.tech/roadmaps/ai-ml-engineer</loc>
-    <lastmod>2026-05-06</lastmod>
+    <loc>https://www.skillta.tech/roadmaps/ai-ml-engineer</loc>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://skillta.tech/roadmaps/blockchain-developer</loc>
-    <lastmod>2026-05-06</lastmod>
+    <loc>https://www.skillta.tech/roadmaps/blockchain-developer</loc>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://skillta.tech/roadmaps/game-developer</loc>
-    <lastmod>2026-05-06</lastmod>
+    <loc>https://www.skillta.tech/roadmaps/game-developer</loc>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://skillta.tech/roadmaps/data-engineer</loc>
-    <lastmod>2026-05-06</lastmod>
+    <loc>https://www.skillta.tech/roadmaps/data-engineer</loc>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://skillta.tech/roadmaps/technical-writer</loc>
-    <lastmod>2026-05-06</lastmod>
+    <loc>https://www.skillta.tech/roadmaps/technical-writer</loc>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://skillta.tech/roadmaps/site-reliability-engineer</loc>
-    <lastmod>2026-05-06</lastmod>
+    <loc>https://www.skillta.tech/roadmaps/site-reliability-engineer</loc>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://skillta.tech/roadmaps/product-manager-tech</loc>
-    <lastmod>2026-05-06</lastmod>
+    <loc>https://www.skillta.tech/roadmaps/product-manager-tech</loc>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://skillta.tech/roadmaps/embedded-systems</loc>
-    <lastmod>2026-05-06</lastmod>
+    <loc>https://www.skillta.tech/roadmaps/embedded-systems</loc>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://skillta.tech/roadmaps/solutions-architect</loc>
-    <lastmod>2026-05-06</lastmod>
+    <loc>https://www.skillta.tech/roadmaps/solutions-architect</loc>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://skillta.tech/roadmaps/database-administrator</loc>
-    <lastmod>2026-05-06</lastmod>
+    <loc>https://www.skillta.tech/roadmaps/database-administrator</loc>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://skillta.tech/roadmaps/network-engineer</loc>
-    <lastmod>2026-05-06</lastmod>
+    <loc>https://www.skillta.tech/roadmaps/network-engineer</loc>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://skillta.tech/roadmaps/platform-engineer</loc>
-    <lastmod>2026-05-06</lastmod>
+    <loc>https://www.skillta.tech/roadmaps/platform-engineer</loc>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://skillta.tech/roadmaps/mlops-engineer</loc>
-    <lastmod>2026-05-06</lastmod>
+    <loc>https://www.skillta.tech/roadmaps/mlops-engineer</loc>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://skillta.tech/roadmaps/data-analyst</loc>
-    <lastmod>2026-05-06</lastmod>
+    <loc>https://www.skillta.tech/roadmaps/data-analyst</loc>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://skillta.tech/roadmaps/business-intelligence-analyst</loc>
-    <lastmod>2026-05-06</lastmod>
+    <loc>https://www.skillta.tech/roadmaps/business-intelligence-analyst</loc>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://skillta.tech/roadmaps/ar-vr-developer</loc>
-    <lastmod>2026-05-06</lastmod>
+    <loc>https://www.skillta.tech/roadmaps/ar-vr-developer</loc>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://skillta.tech/roadmaps/robotics-engineer</loc>
-    <lastmod>2026-05-06</lastmod>
+    <loc>https://www.skillta.tech/roadmaps/robotics-engineer</loc>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://skillta.tech/roadmaps/computer-vision-engineer</loc>
-    <lastmod>2026-05-06</lastmod>
+    <loc>https://www.skillta.tech/roadmaps/computer-vision-engineer</loc>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://skillta.tech/roadmaps/nlp-engineer</loc>
-    <lastmod>2026-05-06</lastmod>
+    <loc>https://www.skillta.tech/roadmaps/nlp-engineer</loc>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://skillta.tech/roadmaps/ios-developer</loc>
-    <lastmod>2026-05-06</lastmod>
+    <loc>https://www.skillta.tech/roadmaps/ios-developer</loc>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://skillta.tech/roadmaps/android-developer</loc>
-    <lastmod>2026-05-06</lastmod>
+    <loc>https://www.skillta.tech/roadmaps/android-developer</loc>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://skillta.tech/roadmaps/flutter-developer</loc>
-    <lastmod>2026-05-06</lastmod>
+    <loc>https://www.skillta.tech/roadmaps/flutter-developer</loc>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://skillta.tech/roadmaps/wordpress-developer</loc>
-    <lastmod>2026-05-06</lastmod>
+    <loc>https://www.skillta.tech/roadmaps/wordpress-developer</loc>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://skillta.tech/roadmaps/low-code-developer</loc>
-    <lastmod>2026-05-06</lastmod>
+    <loc>https://www.skillta.tech/roadmaps/low-code-developer</loc>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://skillta.tech/roadmaps/iot-developer</loc>
-    <lastmod>2026-05-06</lastmod>
+    <loc>https://www.skillta.tech/roadmaps/iot-developer</loc>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://skillta.tech/roadmaps/penetration-tester</loc>
-    <lastmod>2026-05-06</lastmod>
+    <loc>https://www.skillta.tech/roadmaps/penetration-tester</loc>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://skillta.tech/roadmaps/digital-forensics-analyst</loc>
-    <lastmod>2026-05-06</lastmod>
+    <loc>https://www.skillta.tech/roadmaps/digital-forensics-analyst</loc>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://skillta.tech/roadmaps/salesforce-developer</loc>
-    <lastmod>2026-05-06</lastmod>
+    <loc>https://www.skillta.tech/roadmaps/salesforce-developer</loc>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://skillta.tech/roadmaps/developer-advocate</loc>
-    <lastmod>2026-05-06</lastmod>
+    <loc>https://www.skillta.tech/roadmaps/developer-advocate</loc>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://skillta.tech/roadmaps/engineering-manager</loc>
-    <lastmod>2026-05-06</lastmod>
+    <loc>https://www.skillta.tech/roadmaps/engineering-manager</loc>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://skillta.tech/roadmaps/api-developer</loc>
-    <lastmod>2026-05-06</lastmod>
+    <loc>https://www.skillta.tech/roadmaps/api-developer</loc>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://skillta.tech/roadmaps/seo-specialist</loc>
-    <lastmod>2026-05-06</lastmod>
+    <loc>https://www.skillta.tech/roadmaps/seo-specialist</loc>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://skillta.tech/roadmaps/systems-administrator</loc>
-    <lastmod>2026-05-06</lastmod>
+    <loc>https://www.skillta.tech/roadmaps/systems-administrator</loc>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://skillta.tech/roadmaps/scrum-master</loc>
-    <lastmod>2026-05-06</lastmod>
+    <loc>https://www.skillta.tech/roadmaps/scrum-master</loc>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://skillta.tech/roadmaps/it-support-specialist</loc>
-    <lastmod>2026-05-06</lastmod>
+    <loc>https://www.skillta.tech/roadmaps/it-support-specialist</loc>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://skillta.tech/roadmaps/graphics-programmer</loc>
-    <lastmod>2026-05-06</lastmod>
+    <loc>https://www.skillta.tech/roadmaps/graphics-programmer</loc>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://skillta.tech/roadmaps/quantitative-developer</loc>
-    <lastmod>2026-05-06</lastmod>
+    <loc>https://www.skillta.tech/roadmaps/quantitative-developer</loc>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://skillta.tech/roadmaps/bioinformatics-engineer</loc>
-    <lastmod>2026-05-06</lastmod>
+    <loc>https://www.skillta.tech/roadmaps/bioinformatics-engineer</loc>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://skillta.tech/roadmaps/accessibility-specialist</loc>
-    <lastmod>2026-05-06</lastmod>
+    <loc>https://www.skillta.tech/roadmaps/accessibility-specialist</loc>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://skillta.tech/roadmaps/solutions-engineer</loc>
-    <lastmod>2026-05-06</lastmod>
+    <loc>https://www.skillta.tech/roadmaps/solutions-engineer</loc>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
