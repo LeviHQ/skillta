@@ -15,7 +15,7 @@ const plans = [
     badge: null,
     features: [
       "Basic career guidance questions",
-      "Limited AI responses (5–10/day)",
+      "Limited AI responses (3/day)",
       "Access to a few career paths",
       "Basic career roadmap view",
     ],
