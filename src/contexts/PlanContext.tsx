@@ -28,7 +28,7 @@ const usageKey = (uid: string) => {
 };
 
 const PLAN_LIMITS: Record<PlanName, number> = {
-  Free: 10,
+  Free: 3,
   Pro: 999,
   Premium: 9999,
 };
@@ -62,7 +62,7 @@ export function PlanProvider({ children }: { children: ReactNode }) {
   const activateFreePlan = useCallback((): UserPlan => {
     const now = new Date();
     const expires = new Date(now);
-    expires.setFullYear(expires.getFullYear() + 1);
+    expires.setMonth(expires.getMonth() + 1);
     const newPlan: UserPlan = {
       name: "Free",
       activatedAt: now.toISOString(),

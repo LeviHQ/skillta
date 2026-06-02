@@ -2,9 +2,11 @@ import { useState, useEffect, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { getRandomQuestions, QuizQuestion } from "@/data/quizQuestionBank";
-import { ChevronLeft, ChevronRight, Shuffle } from "lucide-react";
+import { ChevronLeft, ChevronRight, Shuffle, Lock } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
+import { usePlan } from "@/contexts/PlanContext";
 import SignInModal from "@/components/SignInModal";
+import LimitReachedModal from "@/components/LimitReachedModal";
 import SEOHead from "@/components/SEOHead";
 import { PAGE_SEO } from "@/lib/seo";
 
@@ -13,9 +15,18 @@ import { QuizAnswers } from "@/data/careers";
 export default function Quiz() {
   const navigate = useNavigate();
   const { user } = useAuth();
+  const { plan, todayUsage, dailyLimit } = usePlan();
   const [currentQ, setCurrentQ] = useState(0);
   const [answers, setAnswers] = useState<QuizAnswers>({});
   const [showSignIn, setShowSignIn] = useState(false);
+  const [showLimitModal, setShowLimitModal] = useState(false);
+
+  const limitReached = !!plan && todayUsage >= dailyLimit;
+
+  // Auto-show limit modal when user opens quiz at limit
+  useEffect(() => {
+    if (limitReached) setShowLimitModal(true);
+  }, [limitReached]);
   
   // Generate random questions once on mount
   const quizQuestions = useMemo(() => {
@@ -38,6 +49,10 @@ export default function Quiz() {
   };
 
   const next = async () => {
+    if (limitReached) {
+      setShowLimitModal(true);
+      return;
+    }
     if (currentQ < quizQuestions.length - 1) {
       setCurrentQ((p) => p + 1);
     } else {
@@ -173,11 +188,19 @@ export default function Quiz() {
               </button>
               <button
                 onClick={next}
-                disabled={!isAnswered}
-                className="flex items-center gap-2 px-6 py-3 rounded-lg bg-gradient-primary text-primary-foreground text-sm font-semibold disabled:opacity-30 disabled:cursor-not-allowed hover:opacity-90 transition-opacity"
+                disabled={!isAnswered || limitReached}
+                className="flex items-center gap-2 px-6 py-3 rounded-lg bg-gradient-primary text-primary-foreground text-sm font-semibold disabled:opacity-40 disabled:cursor-not-allowed hover:opacity-90 transition-opacity"
               >
-                {currentQ === quizQuestions.length - 1 ? "See Results" : "Next"}
-                <ChevronRight className="w-4 h-4" />
+                {limitReached ? (
+                  <>
+                    <Lock className="w-4 h-4" /> You can use on next day
+                  </>
+                ) : (
+                  <>
+                    {currentQ === quizQuestions.length - 1 ? "See Results" : "Next"}
+                    <ChevronRight className="w-4 h-4" />
+                  </>
+                )}
               </button>
             </div>
           </div>
@@ -188,6 +211,11 @@ export default function Quiz() {
         open={showSignIn}
         onClose={handleSignInClose}
         message="Sign in to save your quiz results and get personalized recommendations. You can also continue without signing in."
+      />
+      <LimitReachedModal
+        open={showLimitModal}
+        onClose={() => setShowLimitModal(false)}
+        dailyLimit={dailyLimit}
       />
     </>
   );
