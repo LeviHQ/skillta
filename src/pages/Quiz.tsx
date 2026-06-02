@@ -200,10 +200,14 @@ export default function Quiz() {
               </button>
               <button
                 onClick={next}
-                disabled={!isAnswered || limitReached}
+                disabled={!isAnswered || locked}
                 className="flex items-center gap-2 px-6 py-3 rounded-lg bg-gradient-primary text-primary-foreground text-sm font-semibold disabled:opacity-40 disabled:cursor-not-allowed hover:opacity-90 transition-opacity"
               >
-                {limitReached ? (
+                {noPlan ? (
+                  <>
+                    <Lock className="w-4 h-4" /> Subscription required
+                  </>
+                ) : limitReached ? (
                   <>
                     <Lock className="w-4 h-4" /> You can use on next day
                   </>
@@ -228,6 +232,21 @@ export default function Quiz() {
         open={showLimitModal}
         onClose={() => setShowLimitModal(false)}
         dailyLimit={dailyLimit}
+      />
+      <SubscribeRequiredModal
+        open={showSubscribeModal}
+        onClose={() => setShowSubscribeModal(false)}
+        onGetStartedFree={() => {
+          const p = activateFreePlan();
+          setCongratsExpiry(p.expiresAt);
+          setShowCongrats(true);
+        }}
+      />
+      <CongratsModal
+        open={showCongrats}
+        onClose={() => setShowCongrats(false)}
+        planName="Free"
+        expiresAt={congratsExpiry}
       />
     </>
   );
