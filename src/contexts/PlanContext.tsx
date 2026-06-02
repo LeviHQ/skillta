@@ -62,7 +62,7 @@ export function PlanProvider({ children }: { children: ReactNode }) {
   const activateFreePlan = useCallback((): UserPlan => {
     const now = new Date();
     const expires = new Date(now);
-    expires.setFullYear(expires.getFullYear() + 1);
+    expires.setMonth(expires.getMonth() + 1);
     const newPlan: UserPlan = {
       name: "Free",
       activatedAt: now.toISOString(),
