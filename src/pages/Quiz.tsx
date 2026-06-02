@@ -49,6 +49,10 @@ export default function Quiz() {
   };
 
   const next = async () => {
+    if (limitReached) {
+      setShowLimitModal(true);
+      return;
+    }
     if (currentQ < quizQuestions.length - 1) {
       setCurrentQ((p) => p + 1);
     } else {
