@@ -28,7 +28,7 @@ const usageKey = (uid: string) => {
 };
 
 const PLAN_LIMITS: Record<PlanName, number> = {
-  Free: 10,
+  Free: 3,
   Pro: 999,
   Premium: 9999,
 };
