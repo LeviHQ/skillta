@@ -188,11 +188,19 @@ export default function Quiz() {
               </button>
               <button
                 onClick={next}
-                disabled={!isAnswered}
-                className="flex items-center gap-2 px-6 py-3 rounded-lg bg-gradient-primary text-primary-foreground text-sm font-semibold disabled:opacity-30 disabled:cursor-not-allowed hover:opacity-90 transition-opacity"
+                disabled={!isAnswered || limitReached}
+                className="flex items-center gap-2 px-6 py-3 rounded-lg bg-gradient-primary text-primary-foreground text-sm font-semibold disabled:opacity-40 disabled:cursor-not-allowed hover:opacity-90 transition-opacity"
               >
-                {currentQ === quizQuestions.length - 1 ? "See Results" : "Next"}
-                <ChevronRight className="w-4 h-4" />
+                {limitReached ? (
+                  <>
+                    <Lock className="w-4 h-4" /> You can use on next day
+                  </>
+                ) : (
+                  <>
+                    {currentQ === quizQuestions.length - 1 ? "See Results" : "Next"}
+                    <ChevronRight className="w-4 h-4" />
+                  </>
+                )}
               </button>
             </div>
           </div>
@@ -203,6 +211,11 @@ export default function Quiz() {
         open={showSignIn}
         onClose={handleSignInClose}
         message="Sign in to save your quiz results and get personalized recommendations. You can also continue without signing in."
+      />
+      <LimitReachedModal
+        open={showLimitModal}
+        onClose={() => setShowLimitModal(false)}
+        dailyLimit={dailyLimit}
       />
     </>
   );
