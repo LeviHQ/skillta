@@ -57,6 +57,10 @@ export default function Quiz() {
   };
 
   const next = async () => {
+    if (noPlan) {
+      setShowSubscribeModal(true);
+      return;
+    }
     if (limitReached) {
       setShowLimitModal(true);
       return;
