@@ -7,6 +7,8 @@ import { useAuth } from "@/contexts/AuthContext";
 import { usePlan } from "@/contexts/PlanContext";
 import SignInModal from "@/components/SignInModal";
 import LimitReachedModal from "@/components/LimitReachedModal";
+import SubscribeRequiredModal from "@/components/SubscribeRequiredModal";
+import CongratsModal from "@/components/CongratsModal";
 import SEOHead from "@/components/SEOHead";
 import { PAGE_SEO } from "@/lib/seo";
 
@@ -15,18 +17,24 @@ import { QuizAnswers } from "@/data/careers";
 export default function Quiz() {
   const navigate = useNavigate();
   const { user } = useAuth();
-  const { plan, todayUsage, dailyLimit } = usePlan();
+  const { plan, todayUsage, dailyLimit, activateFreePlan } = usePlan();
   const [currentQ, setCurrentQ] = useState(0);
   const [answers, setAnswers] = useState<QuizAnswers>({});
   const [showSignIn, setShowSignIn] = useState(false);
   const [showLimitModal, setShowLimitModal] = useState(false);
+  const [showSubscribeModal, setShowSubscribeModal] = useState(false);
+  const [showCongrats, setShowCongrats] = useState(false);
+  const [congratsExpiry, setCongratsExpiry] = useState<string | undefined>();
 
+  const noPlan = !!user && !plan;
   const limitReached = !!plan && todayUsage >= dailyLimit;
+  const locked = noPlan || limitReached;
 
-  // Auto-show limit modal when user opens quiz at limit
+  // Auto-show appropriate modal
   useEffect(() => {
-    if (limitReached) setShowLimitModal(true);
-  }, [limitReached]);
+    if (noPlan) setShowSubscribeModal(true);
+    else if (limitReached) setShowLimitModal(true);
+  }, [noPlan, limitReached]);
   
   // Generate random questions once on mount
   const quizQuestions = useMemo(() => {
