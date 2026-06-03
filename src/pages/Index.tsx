@@ -8,6 +8,8 @@ import { useAuth } from "@/contexts/AuthContext";
 import SignInModal from "@/components/SignInModal";
 import TestimonialSection from "@/components/TestimonialSection";
 import PricingSection from "@/components/PricingSection";
+import HowToUseSection from "@/components/HowToUseSection";
+import AccuracySection from "@/components/AccuracySection";
 import WhoIsItForSection from "@/components/WhoIsItForSection";
 import FAQSection from "@/components/FAQSection";
 import SEOHead from "@/components/SEOHead";
@@ -196,6 +198,12 @@ export default function Index() {
 
       {/* Pricing */}
       <PricingSection />
+
+      {/* How to use */}
+      <HowToUseSection />
+
+      {/* Accuracy */}
+      <AccuracySection />
 
       {/* Testimonials */}
       <TestimonialSection />
