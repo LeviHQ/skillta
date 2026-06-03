@@ -231,7 +231,7 @@ export default function SaathiChatbot() {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             onClick={() => setIsOpen(true)}
-            className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-gradient-to-br from-primary to-accent text-primary-foreground shadow-lg shadow-primary/30 flex items-center justify-center no-print"
+            className="fixed bottom-28 right-6 md:bottom-24 z-50 w-14 h-14 rounded-full bg-gradient-to-br from-primary to-accent text-primary-foreground shadow-lg shadow-primary/30 flex items-center justify-center no-print"
             aria-label="Open Saathi chatbot"
           >
             <Sparkles className="w-6 h-6" />
