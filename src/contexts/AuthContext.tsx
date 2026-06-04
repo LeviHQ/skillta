@@ -59,11 +59,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const sendWelcomeEmail = async (user: User) => {
     try {
+      const token = await user.getIdToken();
       const { data, error } = await supabase.functions.invoke('send-welcome-email', {
         body: {
-          email: user.email,
           displayName: user.displayName || user.email?.split('@')[0],
         },
+        headers: { Authorization: `Bearer ${token}` },
       });
       if (error) {
         console.error('Welcome email error:', error);
