@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useState, ReactNode, useCallback } from "react";
+import { User } from "firebase/auth";
 import { useAuth } from "./AuthContext";
 import { supabase } from "@/integrations/supabase/client";
 
@@ -12,21 +13,16 @@ export interface UserPlan {
 
 interface PlanContextType {
   plan: UserPlan | null;
-  activateFreePlan: () => UserPlan;
-  cancelPlan: () => void;
+  activateFreePlan: () => Promise<UserPlan | null>;
+  cancelPlan: () => Promise<void>;
   todayUsage: number;
   dailyLimit: number;
   incrementUsage: () => void;
   isExpired: boolean;
+  refreshPlan: () => Promise<void>;
 }
 
 const PlanContext = createContext<PlanContextType | null>(null);
-
-const planKey = (uid: string) => `skillta_plan_${uid}`;
-const usageKey = (uid: string) => {
-  const today = new Date().toISOString().slice(0, 10);
-  return `skillta_usage_${uid}_${today}`;
-};
 
 const PLAN_LIMITS: Record<PlanName, number> = {
   Free: 3,
@@ -34,103 +30,91 @@ const PLAN_LIMITS: Record<PlanName, number> = {
   Premium: 9999,
 };
 
-const ONE_MONTH_MS = 1000 * 60 * 60 * 24 * 31; // ~1 month tolerance
-
-function normalizePlan(p: UserPlan): UserPlan {
-  // Migration: cap expiry to 1 month from activatedAt for Free plans
-  // (older versions used 1 year by mistake)
-  if (p.name !== "Free") return p;
-  const activated = new Date(p.activatedAt).getTime();
-  const expires = new Date(p.expiresAt).getTime();
-  if (expires - activated > ONE_MONTH_MS + 1000) {
-    const fixed = new Date(p.activatedAt);
-    fixed.setMonth(fixed.getMonth() + 1);
-    return { ...p, expiresAt: fixed.toISOString() };
-  }
-  return p;
+async function callFirebaseData(user: User, body: Record<string, unknown>) {
+  const token = await user.getIdToken();
+  const { data, error } = await supabase.functions.invoke("firebase-data", {
+    body,
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  if (error) throw error;
+  return data;
 }
 
 export function PlanProvider({ children }: { children: ReactNode }) {
   const { user } = useAuth();
   const [plan, setPlan] = useState<UserPlan | null>(null);
   const [todayUsage, setTodayUsage] = useState(0);
+  const [serverLimit, setServerLimit] = useState<number>(PLAN_LIMITS.Free);
 
-  // Load plan + usage when user changes
-  useEffect(() => {
+  const refreshPlan = useCallback(async () => {
     if (!user) {
       setPlan(null);
       setTodayUsage(0);
+      setServerLimit(PLAN_LIMITS.Free);
       return;
     }
     try {
-      const raw = localStorage.getItem(planKey(user.uid));
-      if (raw) {
-        const parsed = JSON.parse(raw) as UserPlan;
-        const fixed = normalizePlan(parsed);
-        if (fixed.expiresAt !== parsed.expiresAt) {
-          localStorage.setItem(planKey(user.uid), JSON.stringify(fixed));
-        }
-        setPlan(fixed);
-      } else {
-        setPlan(null);
-      }
-      const u = localStorage.getItem(usageKey(user.uid));
-      setTodayUsage(u ? parseInt(u, 10) : 0);
-    } catch {
+      const data = await callFirebaseData(user, { action: "getPlan" });
+      setPlan(data?.plan ?? null);
+      setTodayUsage(typeof data?.usage === "number" ? data.usage : 0);
+      setServerLimit(typeof data?.dailyLimit === "number" ? data.dailyLimit : PLAN_LIMITS.Free);
+    } catch (err) {
+      console.error("Failed to fetch plan", err);
       setPlan(null);
     }
   }, [user]);
 
-  const activateFreePlan = useCallback((): UserPlan => {
-    const now = new Date();
-    const expires = new Date(now);
-    expires.setMonth(expires.getMonth() + 1);
-    const newPlan: UserPlan = {
-      name: "Free",
-      activatedAt: now.toISOString(),
-      expiresAt: expires.toISOString(),
-    };
-    if (user) {
-      localStorage.setItem(planKey(user.uid), JSON.stringify(newPlan));
-      // Fire-and-forget receipt email
-      if (user.email) {
+  useEffect(() => {
+    refreshPlan();
+  }, [refreshPlan]);
+
+  const activateFreePlan = useCallback(async (): Promise<UserPlan | null> => {
+    if (!user) return null;
+    try {
+      const data = await callFirebaseData(user, { action: "activatePlan", planName: "Free" });
+      const newPlan: UserPlan = data.plan;
+      setPlan(newPlan);
+      setServerLimit(typeof data?.dailyLimit === "number" ? data.dailyLimit : PLAN_LIMITS.Free);
+      // Fire-and-forget receipt email (server pulls plan from DB)
+      try {
+        const token = await user.getIdToken();
         supabase.functions
           .invoke("send-plan-receipt", {
-            body: {
-              email: user.email,
-              displayName: user.displayName,
-              planName: newPlan.name,
-              activatedAt: newPlan.activatedAt,
-              expiresAt: newPlan.expiresAt,
-              dailyLimit: PLAN_LIMITS[newPlan.name],
-            },
+            body: {},
+            headers: { Authorization: `Bearer ${token}` },
           })
           .catch((e) => console.error("Plan receipt email failed", e));
+      } catch (e) {
+        console.error("Plan receipt email failed", e);
       }
+      return newPlan;
+    } catch (err) {
+      console.error("Failed to activate plan", err);
+      return null;
     }
-    setPlan(newPlan);
-    return newPlan;
   }, [user]);
 
-  const cancelPlan = useCallback(() => {
+  const cancelPlan = useCallback(async () => {
     if (!user) return;
-    localStorage.removeItem(planKey(user.uid));
-    setPlan(null);
+    try {
+      await callFirebaseData(user, { action: "cancelPlan" });
+      setPlan(null);
+    } catch (err) {
+      console.error("Failed to cancel plan", err);
+    }
   }, [user]);
 
+  // Optimistic UI bump; server is the source of truth and rejects over-limit saves.
   const incrementUsage = useCallback(() => {
-    if (!user) return;
-    const next = todayUsage + 1;
-    localStorage.setItem(usageKey(user.uid), String(next));
-    setTodayUsage(next);
-  }, [user, todayUsage]);
+    setTodayUsage((n) => n + 1);
+  }, []);
 
   const isExpired = plan ? new Date(plan.expiresAt).getTime() < Date.now() : false;
-  const dailyLimit = plan ? PLAN_LIMITS[plan.name] : PLAN_LIMITS.Free;
+  const dailyLimit = plan ? PLAN_LIMITS[plan.name] : serverLimit;
 
   return (
     <PlanContext.Provider
-      value={{ plan, activateFreePlan, cancelPlan, todayUsage, dailyLimit, incrementUsage, isExpired }}
+      value={{ plan, activateFreePlan, cancelPlan, todayUsage, dailyLimit, incrementUsage, isExpired, refreshPlan }}
     >
       {children}
     </PlanContext.Provider>
