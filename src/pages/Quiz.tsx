@@ -236,10 +236,12 @@ export default function Quiz() {
       <SubscribeRequiredModal
         open={showSubscribeModal}
         onClose={() => setShowSubscribeModal(false)}
-        onGetStartedFree={() => {
-          const p = activateFreePlan();
-          setCongratsExpiry(p.expiresAt);
-          setShowCongrats(true);
+        onGetStartedFree={async () => {
+          const p = await activateFreePlan();
+          if (p) {
+            setCongratsExpiry(p.expiresAt);
+            setShowCongrats(true);
+          }
         }}
       />
       <CongratsModal
