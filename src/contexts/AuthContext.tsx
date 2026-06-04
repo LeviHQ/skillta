@@ -23,6 +23,16 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | null>(null);
 
+async function callFirebaseData(user: User, body: Record<string, unknown>) {
+  const token = await user.getIdToken();
+  const { data, error } = await supabase.functions.invoke("firebase-data", {
+    body,
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  if (error) throw error;
+  return data;
+}
+
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
@@ -31,20 +41,15 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const unsub = onAuthStateChanged(auth, async (u) => {
       setUser(u);
       if (u) {
-        // Upsert profile in Supabase
-        const { data: existing } = await supabase
-          .from("profiles")
-          .select("id")
-          .eq("firebase_uid", u.uid)
-          .maybeSingle();
-
-        if (!existing) {
-          await supabase.from("profiles").insert({
-            firebase_uid: u.uid,
-            display_name: u.displayName,
+        try {
+          await callFirebaseData(u, {
+            action: "ensureProfile",
+            displayName: u.displayName,
             email: u.email,
-            photo_url: u.photoURL,
+            photoUrl: u.photoURL,
           });
+        } catch (err) {
+          console.error("Failed to ensure profile:", err);
         }
       }
       setLoading(false);
@@ -83,14 +88,15 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const saveQuizResult = async (result: Omit<QuizResult, "id" | "createdAt">) => {
     if (!user) return;
-    const { error } = await supabase.from("quiz_results").insert({
-      firebase_uid: user.uid,
-      answers: result.answers,
-      top_career: result.topCareer,
-      top_match_percentage: result.topMatchPercentage,
-      all_results: result.allResults,
-    });
-    if (error) {
+    try {
+      await callFirebaseData(user, {
+        action: "saveQuizResult",
+        answers: result.answers,
+        topCareer: result.topCareer,
+        topMatchPercentage: result.topMatchPercentage,
+        allResults: result.allResults,
+      });
+    } catch (error) {
       console.error("Failed to save quiz result:", error);
       throw error;
     }
@@ -98,25 +104,21 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const getQuizHistory = async (): Promise<QuizResult[]> => {
     if (!user) return [];
-    const { data, error } = await supabase
-      .from("quiz_results")
-      .select("*")
-      .eq("firebase_uid", user.uid)
-      .order("created_at", { ascending: false });
-
-    if (error) {
+    try {
+      const data = await callFirebaseData(user, { action: "getQuizHistory" });
+      const rows = (data?.results ?? []) as any[];
+      return rows.map((row) => ({
+        id: row.id,
+        answers: row.answers,
+        topCareer: row.top_career,
+        topMatchPercentage: row.top_match_percentage,
+        allResults: row.all_results,
+        createdAt: row.created_at,
+      }));
+    } catch (error) {
       console.error("Failed to fetch quiz history:", error);
       return [];
     }
-
-    return (data || []).map((row: any) => ({
-      id: row.id,
-      answers: row.answers,
-      topCareer: row.top_career,
-      topMatchPercentage: row.top_match_percentage,
-      allResults: row.all_results,
-      createdAt: row.created_at,
-    }));
   };
 
   return (
