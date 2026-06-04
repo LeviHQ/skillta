@@ -5,3 +5,6 @@ verify_jwt = false
 
 [functions.send-plan-receipt]
 verify_jwt = false
+
+[functions.firebase-data]
+verify_jwt = false
