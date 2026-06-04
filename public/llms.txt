@@ -1,0 +1,19 @@
+# SkillTa
+
+> SkillTa is an AI-powered career guidance platform that helps students, freshers, and career switchers find their perfect tech career path. Take a free career quiz and get personalized roadmaps for 50+ tech careers including frontend, backend, data science, AI/ML, cybersecurity, and DevOps.
+
+## Pages
+
+- [Home](/): Discover your ideal tech career with SkillTa's free AI quiz and curated roadmaps.
+- [Career Quiz](/quiz): Free interactive quiz that matches your skills, interests, and goals to the best tech career paths.
+- [Quiz Results](/results): Personalized career recommendations and matching scores based on your quiz answers.
+- [Roadmap Library](/roadmaps): Browse 50+ detailed career roadmaps with learning paths, skills, and milestones.
+- [Roadmap Detail](/roadmap/:slug): In-depth roadmap for a specific tech career including phases, resources, and timelines.
+- [Career Comparison](/compare): Side-by-side comparison of tech careers across salary, demand, difficulty, and growth metrics.
+- [Blog](/blog): Articles and guides on trending tech careers, industry insights, and career tips.
+- [About](/about): Mission, vision, and the team behind SkillTa.
+- [Pricing](/pricing): Free and premium plans for personalized career guidance.
+- [Dashboard](/dashboard): User profile, saved roadmaps, quiz history, and progress tracking.
+- [Contact](/contact): Reach out for support, partnerships, or feedback.
+- [Privacy Policy](/privacy): How SkillTa collects, uses, and protects your data.
+- [Terms of Service](/terms): Rules and guidelines for using SkillTa.
