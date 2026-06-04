@@ -112,6 +112,7 @@ export default function Quiz() {
         <div className="absolute inset-0 grid-pattern opacity-30" />
 
         <div className="container mx-auto px-6 py-12 relative z-10">
+          <h1 className="sr-only">Career Quiz</h1>
           {/* Progress */}
           <div className="max-w-2xl mx-auto mb-8">
             <div className="flex items-center justify-between mb-3">

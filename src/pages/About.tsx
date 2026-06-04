@@ -39,7 +39,7 @@ export default function About() {
                 transition={{ delay: 0.2 + i * 0.1 }}
               >
                 <item.icon className="w-8 h-8 text-primary mb-4" />
-                <h3 className="text-lg font-bold text-foreground mb-2">{item.title}</h3>
+                <h2 className="text-lg font-bold text-foreground mb-2">{item.title}</h2>
                 <p className="text-sm text-muted-foreground">{item.text}</p>
               </motion.div>
             ))}
