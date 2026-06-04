@@ -1,9 +1,39 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
+import { jwtVerify, createRemoteJWKSet } from "https://esm.sh/jose@5.9.6";
+
+const FIREBASE_PROJECT_ID = "skillta-30f35";
+const ISSUER = `https://securetoken.google.com/${FIREBASE_PROJECT_ID}`;
+const JWKS = createRemoteJWKSet(
+  new URL("https://www.googleapis.com/robot/v1/metadata/jwk/securetoken@system.gserviceaccount.com"),
+);
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version',
 };
+
+function escapeHtml(s: string): string {
+  return s
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
+async function verifyFirebaseToken(authHeader: string | null) {
+  if (!authHeader?.startsWith("Bearer ")) throw new Error("Missing bearer token");
+  const { payload } = await jwtVerify(authHeader.slice(7), JWKS, {
+    issuer: ISSUER,
+    audience: FIREBASE_PROJECT_ID,
+  });
+  if (!payload.sub) throw new Error("Token missing sub");
+  return {
+    uid: payload.sub as string,
+    email: typeof payload.email === "string" ? (payload.email as string) : null,
+    name: typeof payload.name === "string" ? (payload.name as string) : null,
+  };
+}
 
 serve(async (req) => {
   if (req.method === 'OPTIONS') {
@@ -12,16 +42,27 @@ serve(async (req) => {
 
   try {
     const RESEND_API_KEY = Deno.env.get('RESEND_API_KEY');
-    if (!RESEND_API_KEY) {
-      throw new Error('RESEND_API_KEY is not configured');
+    if (!RESEND_API_KEY) throw new Error('RESEND_API_KEY is not configured');
+
+    // Verify caller and derive recipient from token (never trust request body for recipient).
+    let token;
+    try {
+      token = await verifyFirebaseToken(req.headers.get("Authorization"));
+    } catch {
+      return new Response(JSON.stringify({ error: "Unauthorized" }), {
+        status: 401, headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      });
+    }
+    if (!token.email) {
+      return new Response(JSON.stringify({ error: "Token missing email" }), {
+        status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      });
     }
 
-    const { email, displayName } = await req.json();
-    if (!email) {
-      throw new Error('Email is required');
-    }
-
-    const userName = displayName || 'there';
+    const body = await req.json().catch(() => ({}));
+    const rawName = typeof body.displayName === "string" ? body.displayName : token.name;
+    const userName = escapeHtml((rawName || 'there').slice(0, 100));
+    const recipient = token.email;
 
     const htmlContent = `
 <!DOCTYPE html>
@@ -35,8 +76,6 @@ serve(async (req) => {
     <tr>
       <td align="center">
         <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="background-color:#ffffff;border-radius:16px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,0.08);">
-          
-          <!-- Header -->
           <tr>
             <td style="background:linear-gradient(135deg,#26c6b0,#7c3aed);padding:40px 40px 30px;text-align:center;">
               <img src="https://skillta.tech/logo.png" alt="SkillTa" width="56" height="56" style="display:block;margin:0 auto 16px;border-radius:14px;" />
@@ -48,8 +87,6 @@ serve(async (req) => {
               </p>
             </td>
           </tr>
-
-          <!-- Welcome Message -->
           <tr>
             <td style="padding:36px 40px 24px;">
               <p style="margin:0;font-size:18px;color:#1a1a2e;font-weight:600;">
@@ -60,81 +97,22 @@ serve(async (req) => {
               </p>
             </td>
           </tr>
-
-          <!-- What You Get -->
           <tr>
             <td style="padding:0 40px 28px;">
               <div style="background:#f8f9fc;border-radius:12px;padding:24px;">
                 <p style="margin:0 0 16px;font-size:16px;font-weight:700;color:#1a1a2e;">
                   🎯 Here's what you can explore:
                 </p>
-                <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
-                  <tr>
-                    <td style="padding:8px 0;">
-                      <table role="presentation" cellpadding="0" cellspacing="0">
-                        <tr>
-                          <td style="width:28px;vertical-align:top;padding-top:2px;">✅</td>
-                          <td style="font-size:14px;color:#555770;line-height:1.6;">
-                            <strong style="color:#1a1a2e;">AI Career Quiz</strong> — Discover your ideal tech career in minutes
-                          </td>
-                        </tr>
-                      </table>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td style="padding:8px 0;">
-                      <table role="presentation" cellpadding="0" cellspacing="0">
-                        <tr>
-                          <td style="width:28px;vertical-align:top;padding-top:2px;">✅</td>
-                          <td style="font-size:14px;color:#555770;line-height:1.6;">
-                            <strong style="color:#1a1a2e;">50+ Career Roadmaps</strong> — Step-by-step guides from beginner to expert
-                          </td>
-                        </tr>
-                      </table>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td style="padding:8px 0;">
-                      <table role="presentation" cellpadding="0" cellspacing="0">
-                        <tr>
-                          <td style="width:28px;vertical-align:top;padding-top:2px;">✅</td>
-                          <td style="font-size:14px;color:#555770;line-height:1.6;">
-                            <strong style="color:#1a1a2e;">Personalized Recommendations</strong> — Tailored skill paths just for you
-                          </td>
-                        </tr>
-                      </table>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td style="padding:8px 0;">
-                      <table role="presentation" cellpadding="0" cellspacing="0">
-                        <tr>
-                          <td style="width:28px;vertical-align:top;padding-top:2px;">✅</td>
-                          <td style="font-size:14px;color:#555770;line-height:1.6;">
-                            <strong style="color:#1a1a2e;">Progress Tracking</strong> — Save results and track your career journey
-                          </td>
-                        </tr>
-                      </table>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td style="padding:8px 0;">
-                      <table role="presentation" cellpadding="0" cellspacing="0">
-                        <tr>
-                          <td style="width:28px;vertical-align:top;padding-top:2px;">✅</td>
-                          <td style="font-size:14px;color:#555770;line-height:1.6;">
-                            <strong style="color:#1a1a2e;">Learning Resources</strong> — Curated tutorials, courses & tools
-                          </td>
-                        </tr>
-                      </table>
-                    </td>
-                  </tr>
-                </table>
+                <p style="margin:0;font-size:14px;color:#555770;line-height:1.7;">
+                  ✅ <strong>AI Career Quiz</strong> — Discover your ideal tech career in minutes<br/>
+                  ✅ <strong>50+ Career Roadmaps</strong> — Step-by-step guides from beginner to expert<br/>
+                  ✅ <strong>Personalized Recommendations</strong> — Tailored skill paths just for you<br/>
+                  ✅ <strong>Progress Tracking</strong> — Save results and track your career journey<br/>
+                  ✅ <strong>Learning Resources</strong> — Curated tutorials, courses &amp; tools
+                </p>
               </div>
             </td>
           </tr>
-
-          <!-- CTA Button -->
           <tr>
             <td style="padding:0 40px 28px;text-align:center;">
               <a href="https://skillta.tech/quiz" style="display:inline-block;background:linear-gradient(135deg,#26c6b0,#7c3aed);color:#ffffff;text-decoration:none;font-size:16px;font-weight:600;padding:14px 36px;border-radius:10px;letter-spacing:0.3px;">
@@ -142,15 +120,10 @@ serve(async (req) => {
               </a>
             </td>
           </tr>
-
-          <!-- Footer -->
           <tr>
             <td style="background:#f8f9fc;padding:28px 40px;text-align:center;border-top:1px solid #e8e9f0;">
               <p style="margin:0 0 8px;font-size:15px;font-weight:600;color:#1a1a2e;">
                 Best of luck on your journey! 🌟
-              </p>
-              <p style="margin:0 0 16px;font-size:13px;color:#777;line-height:1.6;">
-                We're here to help you navigate the tech world<br/>and find the career you love.
               </p>
               <p style="margin:0;font-size:13px;font-weight:600;color:#7c3aed;">
                 — Team SkillTa 💜
@@ -163,7 +136,6 @@ serve(async (req) => {
               </div>
             </td>
           </tr>
-
         </table>
       </td>
     </tr>
@@ -179,17 +151,16 @@ serve(async (req) => {
       },
       body: JSON.stringify({
         from: "SkillTa <hello@skillta.tech>",
-        to: [email],
-        subject: `Welcome aboard, ${userName}! Your SkillTa account is ready`,
+        to: [recipient],
+        subject: `Welcome aboard! Your SkillTa account is ready`,
         html: htmlContent,
       }),
     });
 
     const data = await res.json();
-
     if (!res.ok) {
       console.error('Resend API error:', data);
-      throw new Error(`Resend API error [${res.status}]: ${JSON.stringify(data)}`);
+      throw new Error(`Resend API error [${res.status}]`);
     }
 
     return new Response(JSON.stringify({ success: true, data }), {
@@ -198,8 +169,7 @@ serve(async (req) => {
     });
   } catch (error: unknown) {
     console.error('Error sending welcome email:', error);
-    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
-    return new Response(JSON.stringify({ success: false, error: errorMessage }), {
+    return new Response(JSON.stringify({ success: false, error: 'Failed to send email' }), {
       status: 500,
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },
     });
