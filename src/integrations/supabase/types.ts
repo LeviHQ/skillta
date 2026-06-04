@@ -71,6 +71,36 @@ export type Database = {
         }
         Relationships: []
       }
+      user_plans: {
+        Row: {
+          activated_at: string
+          created_at: string
+          expires_at: string
+          firebase_uid: string
+          id: string
+          name: string
+          updated_at: string
+        }
+        Insert: {
+          activated_at?: string
+          created_at?: string
+          expires_at: string
+          firebase_uid: string
+          id?: string
+          name: string
+          updated_at?: string
+        }
+        Update: {
+          activated_at?: string
+          created_at?: string
+          expires_at?: string
+          firebase_uid?: string
+          id?: string
+          name?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

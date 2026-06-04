@@ -75,23 +75,28 @@ export default function PricingSection() {
   // After Google sign-in, once user becomes available, activate Free plan.
   useEffect(() => {
     if (pendingActivation && user && !plan) {
-      const p = activateFreePlan();
-      setCongratsExpiry(p.expiresAt);
-      setShowCongrats(true);
-      setPendingActivation(false);
+      (async () => {
+        const p = await activateFreePlan();
+        if (p) {
+          setCongratsExpiry(p.expiresAt);
+          setShowCongrats(true);
+        }
+        setPendingActivation(false);
+      })();
     } else if (pendingActivation && user && plan) {
-      // Already had a plan
       setPendingActivation(false);
     }
   }, [pendingActivation, user, plan, activateFreePlan]);
 
-  const handleFreeClick = () => {
+  const handleFreeClick = async () => {
     if (!user) {
       setShowSignIn(true);
     } else if (!plan) {
-      const p = activateFreePlan();
-      setCongratsExpiry(p.expiresAt);
-      setShowCongrats(true);
+      const p = await activateFreePlan();
+      if (p) {
+        setCongratsExpiry(p.expiresAt);
+        setShowCongrats(true);
+      }
     }
   };
 
