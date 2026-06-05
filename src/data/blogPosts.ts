@@ -1188,6 +1188,6 @@ Yes — but not on day one. Fullstack developers exist, and they're valuable, es
 - ⚖️ [Compare Careers Side-by-Side](/compare) — salary, demand, difficulty
 
 The best path isn't the one that pays the most — it's the one you'll still enjoy in year three. Pick with your personality, not the trend. 🚀
-\`,
+`,
   },
 ];
