@@ -28,14 +28,14 @@ export interface PageSEO {
 
 export const PAGE_SEO: Record<string, PageSEO> = {
   home: {
-    title: "SkillTa — Find Your Perfect Tech Career Path | Free AI Career Quiz & Roadmaps 2026",
-    description: "Confused about which tech career to choose? Take SkillTa's free AI-powered career quiz and get a personalized roadmap for 50+ tech careers including frontend, backend, data science, AI/ML, cybersecurity, DevOps & more. Free for students, freshers & career switchers.",
+    title: "SkillTa — Free AI Career Quiz & Roadmaps 2026",
+    description: "Free AI-powered career quiz + personalized roadmaps for 50+ tech careers. Find your ideal path in 5 minutes. For students, freshers & switchers.",
     keywords: "tech career quiz, career path finder, best tech careers 2026, learn to code free, career guidance for programmers, tech career roadmap, which tech career is right for me, free career test, software developer roadmap, career aptitude test, ai career quiz, tech career for beginners, career quiz for students, free tech career guidance, best career in tech 2026, how to start tech career",
     path: "/",
   },
   quiz: {
-    title: "Free AI Career Quiz 2026 — Discover Your Ideal Tech Career in 5 Minutes | SkillTa",
-    description: "Answer 10 smart questions to find your perfect tech career match. Our AI analyzes your skills, interests & personality to recommend the best career path with a complete learning roadmap. 100% free, no signup required. Works for students, freshers & career switchers.",
+    title: "Free AI Career Quiz 2026 — Find Your Tech Path",
+    description: "Answer 10 questions to discover your ideal tech career. AI-powered match with a personalized learning roadmap. Free, no signup needed.",
     keywords: "tech career quiz free, which tech career is right for me, career aptitude test online free, coding career quiz, AI career recommendation, tech skills assessment, career quiz for students, career quiz for freshers, free career test 2026, career personality quiz, tech career finder, what tech career suits me",
     path: "/quiz",
   },
@@ -47,13 +47,13 @@ export const PAGE_SEO: Record<string, PageSEO> = {
     noIndex: true,
   },
   roadmaps: {
-    title: "50+ Free Tech Career Roadmaps 2026 — Step-by-Step Learning Paths | SkillTa",
-    description: "Browse curated roadmaps for 50+ tech careers including frontend, backend, data science, AI/ML, cybersecurity, DevOps, game dev, blockchain & more. Each roadmap includes free resources, projects, salary info & timelines. Updated for 2026.",
+    title: "50+ Free Tech Career Roadmaps 2026 | SkillTa",
+    description: "Curated step-by-step roadmaps for 50+ tech careers. Free resources, projects, salary info & timelines. Updated for 2026.",
     keywords: "tech career roadmap 2026, learning path free, how to become a developer, frontend roadmap 2026, backend roadmap, data science roadmap, cybersecurity roadmap, DevOps roadmap, ai ml roadmap, web development roadmap, career learning path free, developer roadmap, programming roadmap for beginners",
     path: "/roadmaps",
   },
   about: {
-    title: "About SkillTa — Free AI-Powered Career Guidance for Tech Students & Freshers",
+    title: "About SkillTa — Free AI Career Guidance for Tech",
     description: "SkillTa helps aspiring tech professionals find their ideal career path with honest, data-driven AI guidance. Free career quiz, 50+ roadmaps, salary insights, and personalized recommendations for students, freshers & career switchers.",
     keywords: "about skillta, tech career guidance platform, career mentoring for students, free tech career quiz, ai career guidance, career path discovery tool",
     path: "/about",
@@ -81,14 +81,14 @@ export const PAGE_SEO: Record<string, PageSEO> = {
     path: "/terms",
   },
   compare: {
-    title: "Compare Tech Careers Side by Side 2026 — Salary, Skills, Demand & Difficulty | SkillTa",
-    description: "Can't decide between two tech careers? Compare salary (India & Global), difficulty, required skills, job demand, and learning time side by side. 50+ careers to compare — Frontend vs Backend, Data Science vs Cybersecurity, AI vs DevOps & more.",
+    title: "Compare Tech Careers 2026 — Salary, Skills & Demand",
+    description: "Side-by-side comparison of 50+ tech careers. Compare salary, difficulty, skills & demand. Frontend vs Backend, AI vs DevOps & more.",
     keywords: "compare tech careers 2026, frontend vs backend, data science vs cybersecurity, ai vs devops, career comparison tool, tech career salary comparison india, which tech career is better, career comparison 2026, web developer vs data scientist, software engineer vs data analyst",
     path: "/compare",
   },
   blog: {
-    title: "Tech Career Blog 2026 — Career Guides, Salary Insights, Roadmaps & Tips | SkillTa",
-    description: "Expert articles on tech careers, salary guides, career comparisons, learning roadmaps, and job hunting tips. Everything freshers, students & career switchers need to choose and succeed in tech. Updated for 2026.",
+    title: "Tech Career Blog 2026 — Guides & Salary Tips",
+    description: "Expert guides, salary insights & career comparisons. Everything freshers & students need to succeed in tech. Updated for 2026.",
     keywords: "tech career blog 2026, career guidance articles, tech salary guide india, coding career tips, developer career advice, best tech careers 2026, learn coding blog, tech career for freshers, programming career guide, how to get tech job",
     path: "/blog",
   },
