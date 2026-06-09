@@ -6,7 +6,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { PlanProvider } from "@/contexts/PlanContext";
-import { InstallPrompt } from "@/components/InstallPrompt";
+//import { InstallPrompt } from "@/components/InstallPrompt";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import Navbar from "./components/Navbar";
@@ -26,6 +26,7 @@ import CompareCareers from "./pages/CompareCareers";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import NotFound from "./pages/NotFound";
+import KofiButton from "./components/kofiButton";
 
 const queryClient = new QueryClient();
 
@@ -37,7 +38,7 @@ const App = () => (
         <TooltipProvider>
         <Toaster />
         <Sonner />
-        <InstallPrompt />
+        {/* <InstallPrompt /> */}
         <BrowserRouter>
           <Navbar />
           <main className="min-h-screen pt-16">
@@ -60,6 +61,7 @@ const App = () => (
           </main>
           <Footer />
           <SaathiChatbot />
+          <KofiButton/>
         </BrowserRouter>
         <Analytics />
         <SpeedInsights />
