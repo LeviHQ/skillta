@@ -26,7 +26,7 @@ import CompareCareers from "./pages/CompareCareers";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import NotFound from "./pages/NotFound";
-import KofiButton from "./components/kofiButton";
+import KofiButton from "./components/KofiButton";
 
 const queryClient = new QueryClient();
 
