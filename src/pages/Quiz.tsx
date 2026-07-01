@@ -11,6 +11,7 @@ import SubscribeRequiredModal from "@/components/SubscribeRequiredModal";
 import CongratsModal from "@/components/CongratsModal";
 import SEOHead from "@/components/SEOHead";
 import { PAGE_SEO } from "@/lib/seo";
+import SupportBanner from "@/components/SupportBanner";
 
 import { QuizAnswers } from "@/data/careers";
 
@@ -221,6 +222,8 @@ export default function Quiz() {
               </button>
             </div>
           </div>
+
+          <SupportBanner variant="quiz" />
         </div>
       </div>
 

@@ -7,6 +7,8 @@ import { useAuth } from "@/contexts/AuthContext";
 import { usePlan } from "@/contexts/PlanContext";
 import SEOHead from "@/components/SEOHead";
 import { PAGE_SEO } from "@/lib/seo";
+import SupportBanner from "@/components/SupportBanner";
+import SupportModal from "@/components/SupportModal";
 
 interface CareerResult {
   career: Career;
@@ -20,6 +22,7 @@ export default function Results() {
   const { incrementUsage } = usePlan();
   const [results, setResults] = useState<CareerResult[]>([]);
   const [saved, setSaved] = useState(false);
+  const [showSupport, setShowSupport] = useState(false);
 
   useEffect(() => {
     const stored = sessionStorage.getItem("quizAnswers");
@@ -30,6 +33,15 @@ export default function Results() {
     const answers: QuizAnswers = JSON.parse(stored);
     const computed = calculateCareerScores(answers);
     setResults(computed);
+
+    // Show donation popup once per session after showing results
+    let supportTimer: ReturnType<typeof setTimeout> | undefined;
+    if (!sessionStorage.getItem("supportModalShown")) {
+      supportTimer = setTimeout(() => {
+        setShowSupport(true);
+        sessionStorage.setItem("supportModalShown", "1");
+      }, 1800);
+    }
 
     // Auto-save if user just signed in (quiz page didn't save yet)
     if (user && !saved) {
@@ -46,9 +58,8 @@ export default function Results() {
       })
         .then(() => { setSaved(true); incrementUsage(); })
         .catch((err) => console.error("Failed to save quiz result on results page:", err));
-    } else if (!saved && !user) {
-      // Track usage even when not signed in is unnecessary; skip
     }
+    return () => { if (supportTimer) clearTimeout(supportTimer); };
   }, [navigate, user]);
 
   if (results.length === 0) return null;
@@ -289,7 +300,10 @@ export default function Results() {
             ))}
           </div>
         </div>
+
+        <SupportBanner variant="results" />
       </div>
+      <SupportModal open={showSupport} onClose={() => setShowSupport(false)} />
     </div>
   );
 }
