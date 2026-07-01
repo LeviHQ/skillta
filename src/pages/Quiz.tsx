@@ -222,6 +222,8 @@ export default function Quiz() {
               </button>
             </div>
           </div>
+
+          <SupportBanner variant="quiz" />
         </div>
       </div>
 
