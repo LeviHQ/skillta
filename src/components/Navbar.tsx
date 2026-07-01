@@ -11,7 +11,7 @@ const navLinks = [
   { label: "Home", path: "/" },
   { label: "Career Quiz", path: "/quiz" },
   { label: "Roadmap Library", path: "/roadmaps" },
-  { label: "Pricing", path: "/#pricing" },
+  { label: "Our Story", path: "/story" },
   { label: "About", path: "/about" },
 ];
 
