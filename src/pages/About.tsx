@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Compass, Target, Heart, Lightbulb } from "lucide-react";
 import SEOHead from "@/components/SEOHead";
 import { PAGE_SEO, getBreadcrumbSchema } from "@/lib/seo";
+import SupportBanner from "@/components/SupportBanner";
 export default function About() {
   return (
     <div className="min-h-screen bg-gradient-hero relative">
@@ -51,6 +52,8 @@ export default function About() {
               SkillTa is free to use and always will be for core features. Our goal is to make quality career guidance accessible to everyone, regardless of background. Our goal is to make quality career guidance accessible to everyone, regardless of background.
             </p>
           </div>
+
+          <SupportBanner variant="about" />
         </motion.div>
       </div>
     </div>
