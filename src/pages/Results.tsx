@@ -300,7 +300,10 @@ export default function Results() {
             ))}
           </div>
         </div>
+
+        <SupportBanner variant="results" />
       </div>
+      <SupportModal open={showSupport} onClose={() => setShowSupport(false)} />
     </div>
   );
 }
