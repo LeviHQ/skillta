@@ -25,6 +25,7 @@ import Contact from "./pages/Contact";
 import CompareCareers from "./pages/CompareCareers";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
+import Story from "./pages/Story";
 import NotFound from "./pages/NotFound";
 import KofiButton from "./components/KofiButton";
 
@@ -56,6 +57,7 @@ const App = () => (
               <Route path="/compare" element={<CompareCareers />} />
               <Route path="/blog" element={<Blog />} />
               <Route path="/blog/:slug" element={<BlogPost />} />
+              <Route path="/story" element={<Story />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </main>
