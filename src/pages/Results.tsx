@@ -7,6 +7,8 @@ import { useAuth } from "@/contexts/AuthContext";
 import { usePlan } from "@/contexts/PlanContext";
 import SEOHead from "@/components/SEOHead";
 import { PAGE_SEO } from "@/lib/seo";
+import SupportBanner from "@/components/SupportBanner";
+import SupportModal from "@/components/SupportModal";
 
 interface CareerResult {
   career: Career;
@@ -20,6 +22,7 @@ export default function Results() {
   const { incrementUsage } = usePlan();
   const [results, setResults] = useState<CareerResult[]>([]);
   const [saved, setSaved] = useState(false);
+  const [showSupport, setShowSupport] = useState(false);
 
   useEffect(() => {
     const stored = sessionStorage.getItem("quizAnswers");
@@ -30,6 +33,16 @@ export default function Results() {
     const answers: QuizAnswers = JSON.parse(stored);
     const computed = calculateCareerScores(answers);
     setResults(computed);
+
+    // Show donation popup once per session after showing results
+    if (!sessionStorage.getItem("supportModalShown")) {
+      const t = setTimeout(() => {
+        setShowSupport(true);
+        sessionStorage.setItem("supportModalShown", "1");
+      }, 1800);
+      // cleanup on unmount
+      return () => clearTimeout(t);
+    }
 
     // Auto-save if user just signed in (quiz page didn't save yet)
     if (user && !saved) {
