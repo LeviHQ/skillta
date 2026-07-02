@@ -56,21 +56,9 @@ export default function Navbar() {
 
           {/* Desktop */}
           <div className="hidden md:flex items-center gap-1">
-            {navLinks.map((link) => {
-              const isHash = link.path.startsWith("/#");
-              const isActive = isHash
-                ? location.pathname === "/" && location.hash === `#${link.path.slice(2)}`
-                : location.pathname === link.path;
-
-              return isHash ? (
-                <button
-                  key={link.path}
-                  onClick={() => handleNavClick(link.path)}
-                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors relative text-muted-foreground hover:text-foreground`}
-                >
-                  {link.label}
-                </button>
-              ) : (
+            {navLinks.map((link, idx) => {
+              const isActive = location.pathname === link.path;
+              const linkEl = (
                 <Link
                   key={link.path}
                   to={link.path}
@@ -88,6 +76,63 @@ export default function Navbar() {
                   )}
                 </Link>
               );
+
+              // Insert Services dropdown right after "Home"
+              if (idx === 1) {
+                return (
+                  <div key="__wrap" className="flex items-center">
+                    <div
+                      className="relative"
+                      onMouseEnter={() => setServicesOpen(true)}
+                      onMouseLeave={() => setServicesOpen(false)}
+                    >
+                      <button
+                        onClick={() => setServicesOpen((v) => !v)}
+                        className={`flex items-center gap-1 px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                          services.some((s) => s.path === location.pathname)
+                            ? "text-primary"
+                            : "text-muted-foreground hover:text-foreground"
+                        }`}
+                        aria-haspopup="menu"
+                        aria-expanded={servicesOpen}
+                      >
+                        Services <ChevronDown className={`w-3.5 h-3.5 transition-transform ${servicesOpen ? "rotate-180" : ""}`} />
+                      </button>
+                      <AnimatePresence>
+                        {servicesOpen && (
+                          <motion.div
+                            initial={{ opacity: 0, y: 6 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: 6 }}
+                            transition={{ duration: 0.15 }}
+                            className="absolute left-0 top-full mt-2 w-80 glass border border-border rounded-xl p-2 shadow-xl"
+                            role="menu"
+                          >
+                            {services.map(({ label, path, desc, Icon }) => (
+                              <Link
+                                key={path}
+                                to={path}
+                                onClick={() => setServicesOpen(false)}
+                                className="flex items-start gap-3 p-3 rounded-lg hover:bg-primary/10 transition-colors group"
+                              >
+                                <div className="w-9 h-9 rounded-lg bg-primary/15 flex items-center justify-center flex-shrink-0">
+                                  <Icon className="w-4.5 h-4.5 text-primary" />
+                                </div>
+                                <div className="min-w-0">
+                                  <div className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors">{label}</div>
+                                  <div className="text-xs text-muted-foreground mt-0.5">{desc}</div>
+                                </div>
+                              </Link>
+                            ))}
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
+                    {linkEl}
+                  </div>
+                );
+              }
+              return linkEl;
             })}
           </div>
 
