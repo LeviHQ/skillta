@@ -192,17 +192,8 @@ export default function Navbar() {
             className="md:hidden glass border-t border-border"
           >
             <div className="container mx-auto px-6 py-4 flex flex-col gap-2">
-              {navLinks.map((link) => {
-                const isHash = link.path.startsWith("/#");
-                return isHash ? (
-                  <button
-                    key={link.path}
-                    onClick={() => { handleNavClick(link.path); setMobileOpen(false); }}
-                    className="px-4 py-3 rounded-lg text-sm font-medium transition-colors text-muted-foreground hover:text-foreground text-left"
-                  >
-                    {link.label}
-                  </button>
-                ) : (
+              {navLinks.map((link, idx) => {
+                const linkEl = (
                   <Link
                     key={link.path}
                     to={link.path}
@@ -216,6 +207,35 @@ export default function Navbar() {
                     {link.label}
                   </Link>
                 );
+                if (idx === 1) {
+                  return (
+                    <div key="__m_wrap" className="flex flex-col gap-2">
+                      <button
+                        onClick={() => setMobileServicesOpen((v) => !v)}
+                        className="flex items-center justify-between px-4 py-3 rounded-lg text-sm font-medium text-muted-foreground hover:text-foreground"
+                      >
+                        Services
+                        <ChevronDown className={`w-4 h-4 transition-transform ${mobileServicesOpen ? "rotate-180" : ""}`} />
+                      </button>
+                      {mobileServicesOpen && (
+                        <div className="pl-3 flex flex-col gap-1 border-l border-border ml-4">
+                          {services.map(({ label, path, Icon }) => (
+                            <Link
+                              key={path}
+                              to={path}
+                              onClick={() => setMobileOpen(false)}
+                              className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-muted-foreground hover:text-primary hover:bg-primary/10 transition-colors"
+                            >
+                              <Icon className="w-4 h-4 text-primary" /> {label}
+                            </Link>
+                          ))}
+                        </div>
+                      )}
+                      {linkEl}
+                    </div>
+                  );
+                }
+                return linkEl;
               })}
               {user ? (
                 <Link
