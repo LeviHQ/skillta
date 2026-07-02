@@ -292,10 +292,7 @@ export default function SalaryPredictor() {
         </div>
 
         <div className="mt-10">
-          <SupportBanner
-            title="Loved this tool? Help keep SkillTa free & ad-free."
-            message="Salary Predictor costs us AI credits on every prediction. A small donation keeps this tool running for every student — no ads, ever."
-          />
+          <SupportBanner variant="results" />
         </div>
 
         <div className="mt-10 text-center">
