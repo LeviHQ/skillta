@@ -1,7 +1,7 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
-import { Menu, X, User, LayoutDashboard } from "lucide-react";
+import { Menu, X, LayoutDashboard, ChevronDown, Brain, TrendingUp } from "lucide-react";
 import logo from "@/assets/logo.png";
 import { useAuth } from "@/contexts/AuthContext";
 import { usePlan } from "@/contexts/PlanContext";
@@ -9,10 +9,14 @@ import SignInModal from "./SignInModal";
 
 const navLinks = [
   { label: "Home", path: "/" },
-  { label: "Career Quiz", path: "/quiz" },
   { label: "Roadmap Library", path: "/roadmaps" },
   { label: "Our Story", path: "/story" },
   { label: "About", path: "/about" },
+];
+
+const services = [
+  { label: "AI-Powered Career Quiz", path: "/quiz", desc: "Find your best-fit tech career in 5 minutes.", Icon: Brain },
+  { label: "Salary Predictor", path: "/salary-predictor", desc: "Real 2025-2026 market salary + growth advice.", Icon: TrendingUp },
 ];
 
 export default function Navbar() {
