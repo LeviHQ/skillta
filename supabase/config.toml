@@ -8,3 +8,6 @@ verify_jwt = false
 
 [functions.firebase-data]
 verify_jwt = false
+
+[functions.predict-salary]
+verify_jwt = false
