@@ -428,4 +428,15 @@
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
+  <!-- Trending 2026 roadmaps -->
+  <url><loc>https://www.skillta.tech/roadmaps/prompt-engineer</loc><lastmod>2026-07-05</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://www.skillta.tech/roadmaps/generative-ai-engineer</loc><lastmod>2026-07-05</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://www.skillta.tech/roadmaps/rust-systems-engineer</loc><lastmod>2026-07-05</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://www.skillta.tech/roadmaps/web3-smart-contract-auditor</loc><lastmod>2026-07-05</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://www.skillta.tech/roadmaps/quantum-software-engineer</loc><lastmod>2026-07-05</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.skillta.tech/roadmaps/platform-devrel-engineer</loc><lastmod>2026-07-05</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.skillta.tech/roadmaps/mlops-platform-engineer</loc><lastmod>2026-07-05</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://www.skillta.tech/roadmaps/edge-serverless-engineer</loc><lastmod>2026-07-05</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.skillta.tech/roadmaps/developer-productivity-engineer</loc><lastmod>2026-07-05</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.skillta.tech/roadmaps/ai-product-manager</loc><lastmod>2026-07-05</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
 </urlset>
