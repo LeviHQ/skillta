@@ -42,7 +42,7 @@ const personas = [
 
 const stats = [
   { value: "10K+", label: "Career Paths Generated" },
-  { value: "50+", label: "Tech Careers Covered" },
+  { value: "60+", label: "Tech Careers Covered" },
   { value: "95%", label: "Users Found Clarity" },
   { value: "5 Min", label: "To Your Roadmap" },
 ];

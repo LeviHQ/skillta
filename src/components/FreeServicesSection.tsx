@@ -6,12 +6,12 @@ const services = [
   {
     title: "AI Career Quiz",
     description: "10 smart questions to find your best-fit tech career with a 92% match accuracy.",
-    limit: "3 free attempts",
+    limit: "3 free attempts / day",
     path: "/quiz",
     Icon: Brain,
-    gradient: "from-primary/25 to-primary/5",
-    ring: "ring-primary/30",
-    accent: "text-primary",
+    gradient: "from-success/25 to-success/5",
+    ring: "ring-success/30",
+    accent: "text-success",
   },
   {
     title: "Salary Predictor",
@@ -22,16 +22,6 @@ const services = [
     gradient: "from-accent/25 to-accent/5",
     ring: "ring-accent/30",
     accent: "text-accent",
-  },
-  {
-    title: "Interview Prep",
-    description: "Adaptive MCQ + written rounds tailored to your role, level and stack.",
-    limit: "Unlimited free",
-    path: "/interview-prep",
-    Icon: MessageSquare,
-    gradient: "from-warning/25 to-warning/5",
-    ring: "ring-warning/30",
-    accent: "text-warning",
   },
   {
     title: "Roadmap Library",
@@ -49,9 +39,9 @@ const services = [
     limit: "Unlimited free",
     path: "/compare",
     Icon: ArrowLeftRight,
-    gradient: "from-success/25 to-success/5",
-    ring: "ring-success/30",
-    accent: "text-success",
+    gradient: "from-warning/25 to-warning/5",
+    ring: "ring-warning/30",
+    accent: "text-warning",
   },
 ];
 
@@ -71,17 +61,17 @@ export default function FreeServicesSection() {
         >
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 mb-4">
             <Sparkles className="w-3.5 h-3.5 text-primary" />
-            <span className="text-xs font-semibold text-primary uppercase tracking-wider">100% Free · No signup for core tools</span>
+            <span className="text-xs font-semibold text-primary uppercase tracking-wider">Everything you get with the Free Plan</span>
           </div>
           <h2 className="text-3xl md:text-5xl font-bold mb-4">
             Everything SkillTa gives you <span className="text-gradient">for free</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-base md:text-lg">
-            Five real services — no paywalls, no ads. Just career clarity built for students, freshers and switchers.
+            Access powerful career tools with SkillTa's free plan. Upgrade only if you need more features. — no paywalls, no ads. Just career clarity built for students, freshers and switchers.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
           {services.map((s, i) => (
             <motion.div
               key={s.path}
@@ -118,7 +108,7 @@ export default function FreeServicesSection() {
         </div>
 
         <motion.p
-          className="text-center text-xs text-muted-foreground mt-10 max-w-xl mx-auto"
+          className="text-center text-sm md:text-base text-muted-foreground mt-10 max-w-2xl mx-auto leading-relaxed"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}

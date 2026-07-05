@@ -4,7 +4,7 @@ import { Target, Database, Brain, ShieldCheck } from "lucide-react";
 const stats = [
   { value: "92%", label: "Match accuracy", description: "Validated against real career outcomes" },
   { value: "10K+", label: "Tech professionals", description: "Data points training our model" },
-  { value: "50+", label: "Career paths", description: "Across every major tech domain" },
+  { value: "60+", label: "Career paths", description: "Across every major tech domain" },
   { value: "10", label: "Smart questions", description: "Tuned for signal, not noise" },
 ];
 

@@ -12,7 +12,7 @@ const rotatingWords = [
 
 const socialProof = [
   { icon: Users, value: "10,000+", label: "Students Guided" },
-  { icon: Trophy, value: "50+", label: "Career Paths" },
+  { icon: Trophy, value: "60+", label: "Career Paths" },
   { icon: Clock, value: "5 Min", label: "Quick Quiz" },
 ];
 
