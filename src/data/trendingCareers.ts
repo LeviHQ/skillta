@@ -81,7 +81,7 @@ export const trendingCareers: Career[] = [
         { name: "Open source", description: "PRs to LangChain, LlamaIndex, or Vercel AI SDK" },
       ], resources: ["System design interviews", "AI newsletter (Latent Space, Sequoia AI Ascent)"], projects: ["Portfolio site with live AI demos"] },
     ],
-    realityCheck: { difficulty: 4, learningTime: "6-12 months, faster if you already ship web apps", competition: "High but talent-starved", entryBarrier: "Medium", salaryExpectation: "Top applied AI engineers at frontier labs earn $400K-$700K total comp.", honestNote: "The field is real but noisy — a lot of 'AI engineer' listings are just prompt work. Learn real engineering (databases, distributed systems) or you'll plateau fast." },
+    realityCheck: { difficulty: 4, learningTime: "6-12 months, faster if you already ship web apps", competition: "High", entryBarrier: "Medium", salaryExpectation: "Top applied AI engineers at frontier labs earn $400K-$700K total comp.", honestNote: "The field is real but noisy — a lot of 'AI engineer' listings are just prompt work. Learn real engineering (databases, distributed systems) or you'll plateau fast." },
   },
   {
     id: "rust-systems-engineer",
@@ -119,7 +119,7 @@ export const trendingCareers: Career[] = [
         { name: "Portfolio", description: "2-3 polished crates with docs & CI" },
       ], resources: ["This Week in Rust", "r/rust", "Rust jobs board"], projects: ["Published, downloaded crate"] },
     ],
-    realityCheck: { difficulty: 5, learningTime: "9-15 months — Rust has one of the steepest curves in tech", competition: "Medium — many learners, few experts", entryBarrier: "High", salaryExpectation: "Senior Rust engineers at infra companies earn $250K-$450K.", honestNote: "Rust jobs are still fewer than Python/JS jobs. Most Rust roles want 5+ years of systems experience first. Learn Rust as a differentiator, not a first language." },
+    realityCheck: { difficulty: 5, learningTime: "9-15 months — Rust has one of the steepest curves in tech", competition: "Medium", entryBarrier: "High", salaryExpectation: "Senior Rust engineers at infra companies earn $250K-$450K.", honestNote: "Rust jobs are still fewer than Python/JS jobs. Most Rust roles want 5+ years of systems experience first. Learn Rust as a differentiator, not a first language." },
   },
   {
     id: "web3-smart-contract-auditor",
@@ -157,7 +157,7 @@ export const trendingCareers: Career[] = [
         { name: "Join a firm or go solo", description: "Trail of Bits, Spearbit, OpenZeppelin, or independent" },
       ], resources: ["Code4rena", "Sherlock", "Immunefi"], projects: ["Top-100 on Code4rena leaderboard"] },
     ],
-    realityCheck: { difficulty: 5, learningTime: "12-18 months of full-time, obsessive study", competition: "Very High at the top", entryBarrier: "High", salaryExpectation: "Elite auditors earn $500K+/yr. Median is more like $150-250K.", honestNote: "This is a winner-takes-most market — the top 5% earn 80% of the money. You must love the craft. Crypto market cycles will crash your income periodically. But the top of this field is one of the most lucrative niches in all of software." },
+    realityCheck: { difficulty: 5, learningTime: "12-18 months of full-time, obsessive study", competition: "Very High", entryBarrier: "High", salaryExpectation: "Elite auditors earn $500K+/yr. Median is more like $150-250K.", honestNote: "This is a winner-takes-most market — the top 5% earn 80% of the money. You must love the craft. Crypto market cycles will crash your income periodically. But the top of this field is one of the most lucrative niches in all of software." },
   },
   {
     id: "quantum-software-engineer",
@@ -195,7 +195,7 @@ export const trendingCareers: Career[] = [
         { name: "Grad-adjacent knowledge", description: "Some roles want an MS/PhD" },
       ], resources: ["arXiv quant-ph", "Quantum Zeitgeist", "IEEE Quantum Week"], projects: ["Published blog series with reproduced experiments"] },
     ],
-    realityCheck: { difficulty: 5, learningTime: "12-24 months, plus ongoing physics reading", competition: "Low — small field, few qualified people", entryBarrier: "Very High", salaryExpectation: "Well-paid at national labs, IBM, Google Quantum, Quantinuum, PsiQuantum.", honestNote: "Most 'quantum advantage' claims are hype. Useful fault-tolerant hardware is likely 5-10 years away. Learn this if you're passionate, not for a quick payday." },
+    realityCheck: { difficulty: 5, learningTime: "12-24 months, plus ongoing physics reading", competition: "Low", entryBarrier: "High", salaryExpectation: "Well-paid at national labs, IBM, Google Quantum, Quantinuum, PsiQuantum.", honestNote: "Most 'quantum advantage' claims are hype. Useful fault-tolerant hardware is likely 5-10 years away. Learn this if you're passionate, not for a quick payday." },
   },
   {
     id: "platform-devrel-engineer",
@@ -233,7 +233,7 @@ export const trendingCareers: Career[] = [
         { name: "Warm intros", description: "Most DevRel jobs are filled via network" },
       ], resources: ["DevRel Collective Slack", "LinkedIn"], projects: ["Portfolio of talks + blog posts + demos"] },
     ],
-    realityCheck: { difficulty: 4, learningTime: "You can't skip the engineering years", competition: "Medium — visible roles get 500+ applicants", entryBarrier: "High (needs prior eng + content)", salaryExpectation: "Senior DevRel at AI infra co's earn $250-350K.", honestNote: "It's part engineering, part marketing, part therapy. You'll be on Twitter/X all day and travel a lot. Burnout is real. But few roles offer this much creative freedom." },
+    realityCheck: { difficulty: 4, learningTime: "You can't skip the engineering years", competition: "Medium", entryBarrier: "High", salaryExpectation: "Senior DevRel at AI infra co's earn $250-350K.", honestNote: "It's part engineering, part marketing, part therapy. You'll be on Twitter/X all day and travel a lot. Burnout is real. But few roles offer this much creative freedom." },
   },
   {
     id: "mlops-platform-engineer",
@@ -271,7 +271,7 @@ export const trendingCareers: Career[] = [
         { name: "Case studies", description: "Read platform blogs from Netflix, Uber, Airbnb, OpenAI" },
       ], resources: ["Company engineering blogs", "MLOps community"], projects: ["Write a public post: 'How I cut inference cost 60%'"] },
     ],
-    realityCheck: { difficulty: 4, learningTime: "9-15 months if you already know backend", competition: "Medium — many DevOps folks, few with real ML", entryBarrier: "Medium-High", salaryExpectation: "Senior AI Platform engineers earn $250-400K TC at AI-native companies.", honestNote: "You'll be paged when a $10K/hr GPU cluster is down. Cost pressure is intense. But this is one of the highest-leverage roles in AI right now — you enable 100 model engineers to ship." },
+    realityCheck: { difficulty: 4, learningTime: "9-15 months if you already know backend", competition: "Medium", entryBarrier: "High", salaryExpectation: "Senior AI Platform engineers earn $250-400K TC at AI-native companies.", honestNote: "You'll be paged when a $10K/hr GPU cluster is down. Cost pressure is intense. But this is one of the highest-leverage roles in AI right now — you enable 100 model engineers to ship." },
   },
   {
     id: "edge-serverless-engineer",
@@ -309,7 +309,7 @@ export const trendingCareers: Career[] = [
         { name: "Community", description: "Cloudflare Discord, Vercel community" },
       ], resources: ["Cloudflare Discord", "Vercel community"], projects: ["Portfolio + written case studies"] },
     ],
-    realityCheck: { difficulty: 3, learningTime: "4-8 months if you know Node/Next.js", competition: "Medium", entryBarrier: "Low-Medium", salaryExpectation: "Senior edge engineers earn $200-320K at Cloudflare, Vercel, Fastly.", honestNote: "You must un-learn Node-isms — no long-lived globals, no fs. Runtimes evolve fast. But the DX is fantastic and few backends can match edge latency." },
+    realityCheck: { difficulty: 3, learningTime: "4-8 months if you know Node/Next.js", competition: "Medium", entryBarrier: "Low", salaryExpectation: "Senior edge engineers earn $200-320K at Cloudflare, Vercel, Fastly.", honestNote: "You must un-learn Node-isms — no long-lived globals, no fs. Runtimes evolve fast. But the DX is fantastic and few backends can match edge latency." },
   },
   {
     id: "developer-productivity-engineer",
@@ -347,7 +347,7 @@ export const trendingCareers: Career[] = [
         { name: "Portfolio", description: "One published OSS tool" },
       ], resources: ["Company DX blogs", "Platform Engineering Slack"], projects: ["OSS internal tool, blog post"] },
     ],
-    realityCheck: { difficulty: 4, learningTime: "Requires prior product-eng experience", competition: "Medium — many devs, few real platform thinkers", entryBarrier: "High", salaryExpectation: "Staff DevProd at big tech earn $400-600K TC.", honestNote: "You'll get less visibility than product engineers, and users (your own devs) are the harshest critics. But the leverage is unreal — one good tool can save 1000 engineer-hours a week." },
+    realityCheck: { difficulty: 4, learningTime: "Requires prior product-eng experience", competition: "Medium", entryBarrier: "High", salaryExpectation: "Staff DevProd at big tech earn $400-600K TC.", honestNote: "You'll get less visibility than product engineers, and users (your own devs) are the harshest critics. But the leverage is unreal — one good tool can save 1000 engineer-hours a week." },
   },
   {
     id: "ai-product-manager",
@@ -385,6 +385,6 @@ export const trendingCareers: Career[] = [
         { name: "Interview prep", description: "AI product cases, eval design, trade-off questions" },
       ], resources: ["Reforge AI PM course", "'Cracking the PM Interview'"], projects: ["Published case study on your blog"] },
     ],
-    realityCheck: { difficulty: 4, learningTime: "Faster if you're already a PM or ML engineer", competition: "High for glamour roles at OpenAI/Anthropic", entryBarrier: "High", salaryExpectation: "Senior AI PMs at frontier labs earn $350-500K+ TC.", honestNote: "Non-deterministic products are hard — you'll debate 'is the model just bad today?' weekly. Design partners matter more than roadmaps. But you're shaping products people will remember." },
+    realityCheck: { difficulty: 4, learningTime: "Faster if you're already a PM or ML engineer", competition: "High", entryBarrier: "High", salaryExpectation: "Senior AI PMs at frontier labs earn $350-500K+ TC.", honestNote: "Non-deterministic products are hard — you'll debate 'is the model just bad today?' weekly. Design partners matter more than roadmaps. But you're shaping products people will remember." },
   },
 ];
