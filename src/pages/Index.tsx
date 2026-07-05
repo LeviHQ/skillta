@@ -12,6 +12,7 @@ import HowToUseSection from "@/components/HowToUseSection";
 import AccuracySection from "@/components/AccuracySection";
 import WhoIsItForSection from "@/components/WhoIsItForSection";
 import FAQSection from "@/components/FAQSection";
+import FreeServicesSection from "@/components/FreeServicesSection";
 import SEOHead from "@/components/SEOHead";
 import { PAGE_SEO, getWebApplicationSchema, getEducationalOrgSchema, getWebsiteSchema, getHowToSchema, getFAQSchema, getOrganizationSchema, getSoftwareAppSchema, getItemListSchema } from "@/lib/seo";
 
@@ -103,6 +104,9 @@ export default function Index() {
           </div>
         </section>
       )}
+
+      {/* Free Services showcase */}
+      <FreeServicesSection />
 
       {/* Who Is It For */}
       <WhoIsItForSection />
