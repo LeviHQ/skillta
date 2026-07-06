@@ -11,6 +11,591 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "agentic-ai-developer-roadmap-2026",
+    title: "Agentic AI Developer Roadmap 2026 — Skills, Tools & Salary Guide",
+    description: "Agentic AI is the fastest-growing tech role of 2026. Learn the exact skills, frameworks (LangGraph, CrewAI, AutoGen), MCP servers, and salary bands you need to break in this year.",
+    date: "2026-07-06",
+    readTime: "14 min read",
+    category: "AI & ML",
+    keywords: "agentic ai developer, ai agent engineer, langgraph roadmap, crewai tutorial, mcp servers, ai agent salary 2026, autonomous agents jobs",
+    content: `
+## Why Agentic AI Is the #1 Hire of 2026
+
+In 2025, "prompt engineer" was hot. In 2026, every serious company is hiring **Agentic AI Developers** — engineers who build AI systems that plan, use tools, and take actions autonomously. LinkedIn's 2026 Jobs on the Rise report ranks it in the top 3 fastest-growing roles globally.
+
+Unlike a chatbot, an AI agent can browse the web, query your database, call APIs, write code, and self-correct. That shift changes what you need to learn.
+
+## What an Agentic AI Developer Actually Does
+
+- Designs multi-step reasoning loops (plan → act → observe → reflect)
+- Builds tool-use pipelines with function calling
+- Connects LLMs to real systems via **MCP (Model Context Protocol)** servers
+- Runs evals and guardrails so agents don't go off the rails
+- Ships agents into production (latency, cost, retries, observability)
+
+## The Skill Stack You Actually Need
+
+### Foundation (Month 1)
+- Python fundamentals + async/await
+- REST APIs, JSON, webhooks
+- One vector DB — **pgvector** or **Qdrant**
+- LLM basics: tokens, context windows, function calling
+
+### Core Agent Frameworks (Month 2)
+- **LangGraph** — graph-based agent orchestration, industry standard for 2026
+- **CrewAI** — multi-agent teams with roles
+- **AutoGen (Microsoft)** — conversational multi-agent systems
+- **OpenAI Agents SDK** — lightweight production agents
+
+### Production Skills (Month 3)
+- **MCP servers** — standardized tool interface, huge in 2026
+- Observability: **LangSmith**, **Langfuse**, **Arize Phoenix**
+- Eval frameworks: **DeepEval**, **RAGAS**, **Braintrust**
+- Guardrails: **Guardrails AI**, **NeMo Guardrails**
+
+## Salary Bands (2026 Real Data)
+
+| Level | India | US | Europe |
+|-------|-------|-----|--------|
+| Junior (0–1 yr) | ₹14–24 LPA | $110–150K | €70–95K |
+| Mid (2–4 yr) | ₹28–55 LPA | $160–220K | €95–140K |
+| Senior (5+ yr) | ₹60–120 LPA | $230–380K | €140–200K |
+
+Data blended from Levels.fyi, Glassdoor Nov 2025, and Karta.io 2026 reports. Confirm your own number with SkillTa's [Salary Predictor](/salary-predictor).
+
+## 90-Day Learning Plan
+
+**Weeks 1–4:** Ship a single-tool agent that summarizes a website and posts to Slack.
+**Weeks 5–8:** Build a 3-agent CrewAI system that researches, writes, and reviews a blog post.
+**Weeks 9–12:** Deploy a LangGraph agent with MCP tools + Langfuse tracing to Vercel/Fly.io. Add it to your portfolio.
+
+## What Interviewers Actually Ask
+
+1. When would you pick ReAct over Plan-and-Execute?
+2. How do you prevent infinite loops in an agent?
+3. Walk me through your eval strategy for a multi-agent system.
+4. Difference between RAG and Tool Use — when to use each?
+5. How does MCP differ from OpenAI function calling?
+
+Practice these on SkillTa's [Interview Prep](/interview-prep).
+
+## Next Steps
+
+- 🎯 [Take the Career Quiz](/quiz) — confirm agentic AI fits your strengths
+- 🗺️ [See the full AI/ML roadmap](/roadmaps)
+- 💰 [Predict your salary](/salary-predictor) with your city + skills
+
+Agentic AI won't stay uncrowded forever. The people winning offers in mid-2026 started building in early 2026. Start today. 🚀
+`,
+  },
+  {
+    slug: "genai-engineer-vs-ml-engineer-2026",
+    title: "GenAI Engineer vs ML Engineer in 2026 — Which Pays More & Which to Pick?",
+    description: "GenAI Engineer and ML Engineer sound similar but the day-to-day, tools, and salaries diverge sharply in 2026. Full comparison with real market data.",
+    date: "2026-07-06",
+    readTime: "12 min read",
+    category: "AI & ML",
+    keywords: "genai engineer vs ml engineer, generative ai engineer salary, ml engineer 2026, llm engineer, ai engineer career",
+    content: `
+## The Confusion Is Costing People Job Offers
+
+In 2026, "AI Engineer" splits into two very different tracks. Applying to the wrong one wastes months of prep. Here's the honest breakdown.
+
+## Day-to-Day: What They Actually Do
+
+**GenAI Engineer** — Builds features on top of foundation models. Writes prompts, RAG pipelines, agent flows, evals. Ships in weeks. Loves LangChain, LlamaIndex, MCP, vector DBs.
+
+**ML Engineer** — Trains and deploys models from data. Owns the full pipeline: feature stores, training runs, model serving, drift monitoring. Ships in months. Loves PyTorch, MLflow, Kubeflow, Ray.
+
+## The Skill Overlap (and Divergence)
+
+| Skill | GenAI Engineer | ML Engineer |
+|-------|:--------------:|:-----------:|
+| Prompt engineering | 🔥 Core | ⚠️ Nice-to-have |
+| PyTorch/TensorFlow | ⚠️ Basic | 🔥 Core |
+| RAG + Vector DBs | 🔥 Core | ⚠️ Sometimes |
+| Distributed training | ❌ Rare | 🔥 Core |
+| Evals (DeepEval, RAGAS) | 🔥 Core | ⚠️ Different tooling |
+| MLOps (Kubeflow, MLflow) | ⚠️ Basic | 🔥 Core |
+| Statistics & math | ⚠️ Basic | 🔥 Core |
+
+## Salary Reality (Mid-2026)
+
+- **GenAI Engineer** — India ₹18–65 LPA · US $140–260K · Faster to reach mid-level
+- **ML Engineer** — India ₹22–90 LPA · US $160–320K · Slower ramp, higher ceiling
+
+## Which One Fits You?
+
+Pick **GenAI Engineer** if you love shipping fast, playing with new models weekly, and prefer APIs over research papers.
+
+Pick **ML Engineer** if you love math, patience, and owning systems end-to-end from data to production.
+
+Not sure? [Take the 2-min Career Quiz](/quiz) — it triangulates from your natural preferences.
+
+## 2026 Hiring Signal
+
+LinkedIn data (Q2 2026): GenAI Engineer postings up **312% YoY**. ML Engineer postings up **41% YoY**. But ML Engineer roles convert at a **higher offer rate** because the pool is smaller.
+
+## Next Steps
+
+- 🎯 [Career Quiz](/quiz) — personalized recommendation
+- 🗺️ [Roadmaps](/roadmaps) — full GenAI & ML paths
+- ⚖️ [Compare Careers](/compare) — GenAI vs ML side-by-side
+- 💰 [Salary Predictor](/salary-predictor) — your exact band
+`,
+  },
+  {
+    slug: "rust-vs-go-2026-which-language-pays-more",
+    title: "Rust vs Go in 2026 — Which One Should You Learn for Higher Pay?",
+    description: "Rust and Go both dominate backend hiring in 2026 but for very different reasons. Real hiring data, salary numbers, and a clear pick-one guide.",
+    date: "2026-07-06",
+    readTime: "11 min read",
+    category: "Backend",
+    keywords: "rust vs go 2026, rust developer salary, go developer salary, systems programming, backend languages 2026",
+    content: `
+## The Honest 2026 Take
+
+Both languages are hot. But they hire for different jobs. Learn the wrong one for your goal and you'll be underpaid.
+
+## Where Each One Wins
+
+**Rust** — infra, blockchain, systems, embedded, WASM, high-frequency trading, LLM inference runtimes (vLLM, Candle). Steep curve, big payoff.
+
+**Go** — cloud services, DevOps tooling (Kubernetes, Terraform), APIs at scale, streaming platforms. Gentle curve, wide hiring.
+
+## Salary Comparison (Real 2026 Data)
+
+| Role | Rust | Go |
+|------|------|-----|
+| India Junior | ₹14–26 LPA | ₹10–20 LPA |
+| India Senior | ₹45–110 LPA | ₹32–75 LPA |
+| US Junior | $115–150K | $105–140K |
+| US Senior | $220–360K | $180–280K |
+
+Rust wins on ceiling. Go wins on volume of openings (~3.5× more Go roles globally).
+
+## Which One Fits Your Personality
+
+Love low-level control, don't mind fighting the borrow checker for a week to save 5ms? **Rust**.
+
+Love shipping services on Monday that work on Friday, and hate debugging memory bugs? **Go**.
+
+Take the [Career Quiz](/quiz) — it maps your patience & abstraction preference to the right stack.
+
+## 90-Day Plan for Either
+
+- Weeks 1–4: Language fundamentals + one small CLI tool
+- Weeks 5–8: One production-shape service (auth, DB, tests, Docker)
+- Weeks 9–12: Deploy + write about it on GitHub. This is what gets interviews.
+
+## Next Steps
+
+- 🗺️ [Rust Systems Engineer Roadmap](/roadmaps)
+- 🗺️ [Backend Developer Roadmap](/roadmaps)
+- 💰 [Predict your Rust/Go salary](/salary-predictor)
+`,
+  },
+  {
+    slug: "how-to-land-remote-tech-job-from-india-2026",
+    title: "How to Land a Remote International Tech Job from India in 2026",
+    description: "A practical, step-by-step 2026 playbook to get remote US/EU offers from India — with resume, portfolio, salary negotiation and platform-by-platform tactics.",
+    date: "2026-07-06",
+    readTime: "13 min read",
+    category: "Career Growth",
+    keywords: "remote tech jobs india 2026, international remote jobs, work from home tech india, dollar salary jobs, remote developer india",
+    content: `
+## Why 2026 Is the Best Year Yet
+
+Post-2025 layoffs settled, US and EU companies are re-opening remote hiring — especially for AI, DevOps, and senior full-stack roles. The catch: competition is global, and standards are higher than ever.
+
+## The 5-Layer Playbook
+
+### 1. Pick a Role With Remote-Friendly Demand
+Highest remote-friendliness in 2026:
+- GenAI / AI Engineer
+- Senior Full-Stack (React + Node + Postgres)
+- DevOps / Platform Engineer
+- Backend (Go, Rust, Elixir)
+- Security Engineer
+
+Avoid roles that need physical presence: hardware, in-office IT support, on-prem infra.
+
+### 2. Build a Portfolio That Signals Seniority
+- 3 GitHub projects that solve real problems (not to-do apps)
+- Detailed READMEs with architecture diagrams
+- One deployed live demo per project
+- At least one open-source contribution to a well-known repo
+
+### 3. Resume Rules for US/EU Recruiters
+- 1 page, no photo, no age, no marital status
+- Impact-first bullets: "Cut API p95 latency 780ms → 90ms (Redis + query batching)"
+- Include timezone flexibility line: "Comfortable with 4-hour US overlap"
+
+### 4. Where to Actually Apply
+- **Wellfound (ex-AngelList)** — startups, remote-first
+- **Otta / Welcome to the Jungle** — European roles
+- **Y Combinator Work at a Startup**
+- **RemoteOK, Weworkremotely** — volume
+- **LinkedIn** with "Remote" + country filter (turn on Open to Work privately)
+- **Toptal, A.Team, Braintrust** — vetted talent networks
+
+### 5. Interview & Offer
+- Practice system design in 40-min chunks (SkillTa [Interview Prep](/interview-prep))
+- Always ask salary band in the first screening call
+- Negotiate in USD, not INR. Ask for equity separately.
+
+## Realistic Salary Ranges (2026)
+
+- Junior remote → $35–65K USD
+- Mid (3–5 yr) → $70–130K USD
+- Senior → $130–220K USD
+- Staff+ → $220K+
+
+Confirm your band with SkillTa's [Salary Predictor](/salary-predictor).
+
+## Next Steps
+
+- 🎯 [Career Quiz](/quiz) — pick the most remote-friendly path for you
+- 🗺️ [Roadmaps](/roadmaps) — the exact skills to master
+- 💰 [Salary Predictor](/salary-predictor)
+
+Remote isn't luck — it's a stack of small correct decisions. Start today. 🚀
+`,
+  },
+  {
+    slug: "devops-vs-platform-engineer-vs-sre-2026",
+    title: "DevOps vs Platform Engineer vs SRE in 2026 — The Definitive Comparison",
+    description: "These three roles look identical from outside but have completely different day-to-day work, salaries, and career ceilings in 2026. Full breakdown.",
+    date: "2026-07-06",
+    readTime: "12 min read",
+    category: "DevOps & Cloud",
+    keywords: "devops vs sre vs platform engineer, platform engineering 2026, sre salary, devops career, kubernetes jobs",
+    content: `
+## Same Tools, Different Jobs
+
+All three touch Kubernetes, Terraform, Prometheus. But they're hired to solve different problems.
+
+## The One-Line Definitions
+
+- **DevOps Engineer** — automates delivery for feature teams (CI/CD, IaC, environments)
+- **Platform Engineer** — builds the internal developer platform (IDP) that DevOps teams use
+- **SRE (Site Reliability Engineer)** — owns production reliability (SLIs/SLOs, incident response, error budgets)
+
+## Day-to-Day
+
+| Task | DevOps | Platform | SRE |
+|------|:------:|:--------:|:---:|
+| CI/CD pipelines | 🔥 | ⚠️ | ⚠️ |
+| Kubernetes clusters | ⚠️ | 🔥 | 🔥 |
+| Terraform modules | 🔥 | 🔥 | ⚠️ |
+| Backstage / IDPs | ❌ | 🔥 | ❌ |
+| On-call rotations | ⚠️ | ❌ | 🔥 |
+| Incident post-mortems | ⚠️ | ❌ | 🔥 |
+| Cost optimization | ⚠️ | 🔥 | 🔥 |
+
+## Salary Bands (2026)
+
+| Level | DevOps | Platform | SRE |
+|-------|--------|----------|-----|
+| India Mid | ₹18–35 LPA | ₹25–50 LPA | ₹22–45 LPA |
+| India Senior | ₹40–80 LPA | ₹55–120 LPA | ₹50–110 LPA |
+| US Mid | $130–180K | $160–220K | $150–210K |
+| US Senior | $200–290K | $250–380K | $230–360K |
+
+**Platform Engineering** is the fastest-growing of the three in 2026 (Gartner: 80% of engineering orgs will have a platform team by 2027).
+
+## Which One to Pick
+
+Love writing pipelines that other devs use? → **DevOps**.
+Love building products for other engineers? → **Platform**.
+Love debugging at 3am with a calm head? → **SRE**.
+
+## Next Steps
+
+- 🎯 [Career Quiz](/quiz)
+- 🗺️ [DevOps / Platform / SRE Roadmaps](/roadmaps)
+- ⚖️ [Compare all three side-by-side](/compare)
+`,
+  },
+  {
+    slug: "cybersecurity-career-2026-red-team-vs-blue-team",
+    title: "Cybersecurity Career in 2026 — Red Team vs Blue Team vs Purple Team",
+    description: "Cybersecurity has three distinct career ladders in 2026. Which pays more, which has the shortest path in, and which fits your personality? Full guide.",
+    date: "2026-07-06",
+    readTime: "12 min read",
+    category: "Cybersecurity",
+    keywords: "cybersecurity career 2026, red team vs blue team, penetration tester salary, soc analyst, purple team career",
+    content: `
+## The 2026 Cyber Skills Gap Is Real
+
+ISC² 2025 workforce study: **4.8 million** unfilled cybersecurity roles globally. But the roles branched into three specialties that need different personalities.
+
+## The Three Teams
+
+### 🔴 Red Team — Offense
+Pentesters, ethical hackers, exploit developers. Break stuff before criminals do.
+
+**Tools**: Burp Suite, Metasploit, Cobalt Strike, custom C2s, BloodHound
+**Salary (US)**: $110K–$260K · **India**: ₹12–70 LPA
+**Personality**: Curious, patient, creative, chess-brain
+
+### 🔵 Blue Team — Defense
+SOC analysts, threat hunters, incident responders. Detect & contain.
+
+**Tools**: Splunk, Sentinel, CrowdStrike, Elastic, MISP
+**Salary (US)**: $95K–$220K · **India**: ₹8–55 LPA
+**Personality**: Methodical, calm under pressure, good writer
+
+### 🟣 Purple Team — Both
+Mix of red + blue. Runs adversary simulations to improve defenses. Fastest-growing sub-role in 2026.
+
+**Salary (US)**: $130K–$280K · **India**: ₹18–75 LPA
+
+## The Shortest Path In (2026)
+
+1. **CompTIA Security+** or **Google Cybersecurity Certificate** (2–3 months)
+2. **TryHackMe** + **HackTheBox** — 60 rooms/boxes minimum
+3. Pick your side: **OSCP** (red) or **BTL1/CySA+** (blue)
+4. First job usually SOC L1, then pivot within 12–18 months
+
+## Which Team Fits You
+
+Take the [Career Quiz](/quiz) — the "how do you think under pressure?" questions map cleanly to red vs blue.
+
+## Next Steps
+
+- 🗺️ [Cybersecurity Roadmap](/roadmaps)
+- 💰 [Salary Predictor](/salary-predictor)
+- 🎯 [Career Quiz](/quiz)
+`,
+  },
+  {
+    slug: "web3-smart-contract-auditor-career-guide-2026",
+    title: "Web3 Smart Contract Auditor in 2026 — The Career Guide No One Talks About",
+    description: "Smart contract auditors earn some of the highest per-hour rates in tech in 2026. Here's how to break in, what firms hire, and the exact skills you need.",
+    date: "2026-07-06",
+    readTime: "13 min read",
+    category: "Blockchain",
+    keywords: "smart contract auditor 2026, solidity auditor salary, web3 security career, defi security, blockchain jobs",
+    content: `
+## The Highest Per-Hour Rate in Tech
+
+Web3 shrunk after 2022, but security stayed hot. In 2026, a good Solidity auditor bills **$300–800/hr** freelance. Full-time roles at Trail of Bits, OpenZeppelin, Zellic, Cantina, Spearbit pay top-of-market.
+
+## Why Auditing Pays So Much
+
+One missed bug = $200M lost (Ronin, Wormhole, Poly Network, Euler). Firms pay to make sure it doesn't happen twice.
+
+## The 2026 Skill Stack
+
+- **Solidity** (deep) + Yul assembly
+- **Foundry** (industry-default) — forge, cast, chisel, invariant testing
+- **Formal methods**: Halmos, Certora, Kontrol
+- **EVM internals**: opcodes, gas, storage layout, precompiles
+- One other VM: **Move** (Aptos/Sui), **CairoVM** (Starknet), or **SVM** (Solana)
+- Reading dozens of past reports (Trail of Bits, Spearbit, code4rena)
+
+## Realistic Path In (9–12 Months)
+
+1. Complete **Cyfrin Updraft** free course (Patrick Collins)
+2. Solve all **Ethernaut**, **Damn Vulnerable DeFi**, **Paradigm CTF** past challenges
+3. Compete in **Code4rena** and **Sherlock** contests — this is your resume
+4. Publish detailed writeups
+5. Apply to junior audit roles or Cantina solo
+
+## Salary Reality (2026)
+
+- Junior in-house auditor → $110–160K
+- Mid auditor (2 yr) → $180–280K
+- Senior / research → $300–500K + bonuses
+- Top freelancer → $500K–$1M
+
+## Is This For You?
+
+Auditors are patient, adversarial, and detail-obsessive. If reading 2,000 lines of Solidity looking for one off-by-one sounds fun, this is your career. Take the [Career Quiz](/quiz).
+
+## Next Steps
+
+- 🗺️ [Web3 Smart Contract Auditor Roadmap](/roadmaps)
+- 💰 [Salary Predictor](/salary-predictor)
+`,
+  },
+  {
+    slug: "ai-product-manager-career-2026",
+    title: "AI Product Manager in 2026 — The Highest-Leverage PM Role Right Now",
+    description: "AI PM is the fastest-growing product role of 2026, blending PM craft with LLM fluency. Here's what you need to learn, and the exact salary bands.",
+    date: "2026-07-06",
+    readTime: "11 min read",
+    category: "Product",
+    keywords: "ai product manager 2026, ai pm salary, llm product manager, generative ai pm, product manager career",
+    content: `
+## Why AI PM Exploded in 2026
+
+Every product team is bolting AI onto their app. But most PMs don't know how LLMs actually work — they can't scope evals, pick models, or reason about latency/cost tradeoffs. AI PMs fill that gap and get paid handsomely.
+
+## What Makes an AI PM Different
+
+- Can read a model card and pick between Claude 4.5, Gemini 3 Pro, GPT-5.1
+- Owns eval strategy (offline + online + human-in-the-loop)
+- Understands RAG, fine-tuning, tool use, agents — enough to scope, not build
+- Reasons about tokens, cost per 1k users, hallucination rate as a metric
+
+## The 2026 Skill Stack
+
+- Core PM craft — discovery, specs, prioritization, metrics
+- LLM basics — take Karpathy's "Intro to LLMs" + one Anthropic prompting workshop
+- SQL + one BI tool (Metabase, Hex)
+- One eval tool — Langfuse, Braintrust, or Vellum
+- Prototyping with Cursor / v0 / Lovable
+
+## Salary (2026)
+
+| Level | US | India | Europe |
+|-------|-----|-------|--------|
+| AI APM | $140–180K | ₹22–40 LPA | €80–115K |
+| AI PM | $180–260K | ₹35–75 LPA | €115–170K |
+| Senior AI PM | $260–380K | ₹75–150 LPA | €170–240K |
+| Group / Principal | $380–600K+ | ₹150+ LPA | €240K+ |
+
+## Break-In Path
+
+1. Ship one AI side-project — a real one, not a wrapper
+2. Publish a detailed spec + eval plan for it
+3. Apply internally first if you're already a PM; externally else
+4. Interview signal: talk about **evals** and **cost** unprompted
+
+## Next Steps
+
+- 🗺️ [AI Product Manager Roadmap](/roadmaps)
+- 🎯 [Career Quiz](/quiz)
+- 💰 [Salary Predictor](/salary-predictor)
+`,
+  },
+  {
+    slug: "learn-to-code-in-2026-without-cs-degree",
+    title: "How to Learn to Code in 2026 Without a CS Degree — 6-Month Plan That Actually Works",
+    description: "A no-fluff 6-month plan that has put non-CS grads into paid tech jobs in 2026. Curriculum, projects, portfolio, and how to use AI as your co-pilot without becoming lazy.",
+    date: "2026-07-06",
+    readTime: "13 min read",
+    category: "Getting Started",
+    keywords: "learn to code 2026, no cs degree tech job, self taught developer, career switch tech, coding bootcamp alternative",
+    content: `
+## The 2026 Reality
+
+You don't need a CS degree. You need proof you can build. The bar rose in 2026 because AI can write boilerplate — so recruiters want to see judgment, debugging, and shipping.
+
+## The 6-Month Plan
+
+### Month 1 — Fundamentals
+- HTML, CSS, JavaScript (basics)
+- Git + GitHub
+- One tiny project: personal site, deployed on Vercel
+
+### Month 2 — Real JavaScript + Frontend
+- ES6+, async/await, fetch, DOM
+- React + Tailwind (from React docs — they're excellent in 2026)
+- Ship a weather app + a movie search app with an external API
+
+### Month 3 — Backend Basics
+- Node.js + Express OR Python + FastAPI (pick one)
+- REST APIs, JWT auth, Postgres
+- Build a full-stack CRUD app (notes, todo, or bookmarks)
+
+### Month 4 — One "Real" Project
+Pick a real problem you have. Build the full app. Deploy. Add auth, DB, tests.
+
+### Month 5 — Portfolio + Open Source
+- Write detailed READMEs
+- Contribute to 2 open-source repos (docs fixes count)
+- Start a Twitter/X presence sharing what you're learning
+
+### Month 6 — Apply
+- 30 quality applications > 300 spray-and-pray
+- Cold email hiring managers with your project links
+- Mock interviews daily (SkillTa [Interview Prep](/interview-prep))
+
+## Using AI Without Becoming Lazy
+
+- ✅ Ask AI to explain unfamiliar concepts
+- ✅ Ask AI to review your code
+- ❌ Don't ask AI to write the whole feature — you'll never learn
+- ✅ Type every line by hand for the first 3 months
+
+## Tools of the Trade in 2026
+
+- Editor: **Cursor** or **VS Code + Copilot**
+- Terminal: **Warp** or **Ghostty**
+- Deploy: **Vercel**, **Fly.io**, **Railway**
+- Auth: **Clerk** or **Supabase Auth**
+- DB: **Supabase**, **Neon**, **Turso**
+
+## What to Avoid
+
+- Watching tutorials without coding along (tutorial hell)
+- Buying 5 Udemy courses at once
+- Starting learning DSA before you can build anything
+- Waiting to "feel ready" — no one ever does
+
+## Next Steps
+
+- 🎯 [Take the Career Quiz](/quiz) — pick the right entry role
+- 🗺️ [Frontend or Backend Roadmap](/roadmaps)
+- 💰 [Salary Predictor](/salary-predictor) — see your realistic first offer
+`,
+  },
+  {
+    slug: "edge-computing-serverless-2026-career-guide",
+    title: "Edge & Serverless Engineering in 2026 — The Career Guide",
+    description: "Edge runtimes (Cloudflare Workers, Vercel, Deno Deploy, Fastly) are reshaping backend hiring in 2026. Here's the skill stack, salary bands, and how to break in.",
+    date: "2026-07-06",
+    readTime: "11 min read",
+    category: "DevOps & Cloud",
+    keywords: "edge computing career 2026, cloudflare workers jobs, serverless engineer salary, deno deploy, vercel edge",
+    content: `
+## The Shift Backend Devs Missed
+
+In 2026, edge computing isn't a novelty — it's the default for latency-sensitive apps. Cloudflare Workers, Vercel Edge, Deno Deploy, and Fastly Compute@Edge crossed the mainstream line. Companies hiring for it are having trouble finding people.
+
+## What an Edge Engineer Actually Does
+
+- Ships stateless functions that run in 300+ locations
+- Uses edge-native storage: KV, D1, R2, Durable Objects, Upstash
+- Reasons about cold starts, isolate limits, CPU-time caps
+- Streams responses, handles WebSockets at edge
+- Builds AI inference at edge (Cloudflare Workers AI, Vercel AI SDK)
+
+## The 2026 Skill Stack
+
+- TypeScript / JavaScript (deep)
+- Workers runtime + Web Standards (Request, Response, Streams)
+- One edge platform end-to-end: **Cloudflare Workers** is the leader
+- SQL — **D1**, **Turso**, **Neon**
+- Deployment: `wrangler`, GitHub Actions
+- Observability: Workers Analytics, Sentry, Axiom
+
+## Salary Bands (2026)
+
+| Level | India | US |
+|-------|-------|-----|
+| Junior | ₹12–22 LPA | $105–140K |
+| Mid | ₹25–50 LPA | $150–210K |
+| Senior | ₹55–110 LPA | $220–340K |
+
+## 90-Day Break-In Plan
+
+- Weeks 1–4: Build a URL shortener on Workers + D1
+- Weeks 5–8: Add auth (Lucia), Durable Objects for rate-limits, KV cache
+- Weeks 9–12: Ship a real product — an image resizer, or webhook broker
+
+## Next Steps
+
+- 🗺️ [Edge / Serverless Engineer Roadmap](/roadmaps)
+- 🎯 [Career Quiz](/quiz)
+- 💰 [Salary Predictor](/salary-predictor)
+`,
+  },
+
+  {
     slug: "how-to-choose-right-tech-career-2025",
     title: "How to Choose the Right Tech Career in 2025 — Complete Guide",
     description: "Not sure which tech career is right for you? This in-depth guide covers the top tech careers in 2025, how to evaluate your skills, and how to pick the path that matches your personality and goals.",
