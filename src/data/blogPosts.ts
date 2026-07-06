@@ -570,7 +570,7 @@ In 2026, edge computing isn't a novelty — it's the default for latency-sensiti
 - Workers runtime + Web Standards (Request, Response, Streams)
 - One edge platform end-to-end: **Cloudflare Workers** is the leader
 - SQL — **D1**, **Turso**, **Neon**
-- Deployment: `wrangler`, GitHub Actions
+- Deployment: 'wrangler', GitHub Actions
 - Observability: Workers Analytics, Sentry, Axiom
 
 ## Salary Bands (2026)
