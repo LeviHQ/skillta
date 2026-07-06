@@ -11,18 +11,20 @@ const JWKS = createRemoteJWKSet(
 const PLAN_LIMITS: Record<string, number> = { Free: 3, Pro: 999, Premium: 9999 };
 const PLAN_FEATURES: Record<string, string[]> = {
   Free: [
-    "3 AI career quiz attempts per day",
-    "Access to a curated set of career paths",
-    "Basic career roadmap view",
-    "Saathi AI career assistant (basic)",
-    "Save quiz results to your dashboard",
+    "3 AI Career Quiz attempts per day",
+    "Unlimited Salary Predictor (AI-powered, 2026 market data)",
+    "Unlimited Interview Prep sessions",
+    "Full Roadmap Library — 60+ tech career paths",
+    "Unlimited Compare Careers side-by-side",
+    "Saathi AI career assistant",
+    "Save all results to your dashboard",
   ],
   Pro: [
     "Unlimited AI career quiz attempts",
-    "Full access to all career paths",
-    "Detailed career roadmaps",
-    "Saathi AI career assistant (advanced)",
+    "Everything in Free, without limits",
     "Priority quiz result analysis",
+    "Advanced Saathi AI career assistant",
+    "Early access to new roadmaps & blogs",
   ],
   Premium: [
     "Everything in Pro",
