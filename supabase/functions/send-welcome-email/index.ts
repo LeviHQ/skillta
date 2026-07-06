@@ -105,10 +105,11 @@ serve(async (req) => {
                 </p>
                 <p style="margin:0;font-size:14px;color:#555770;line-height:1.7;">
                   ✅ <strong>AI Career Quiz</strong> — Discover your ideal tech career in minutes<br/>
-                  ✅ <strong>50+ Career Roadmaps</strong> — Step-by-step guides from beginner to expert<br/>
-                  ✅ <strong>Personalized Recommendations</strong> — Tailored skill paths just for you<br/>
-                  ✅ <strong>Progress Tracking</strong> — Save results and track your career journey<br/>
-                  ✅ <strong>Learning Resources</strong> — Curated tutorials, courses &amp; tools
+                  ✅ <strong>Salary Predictor</strong> — AI-powered salary insights with 2026 market data<br/>
+                  ✅ <strong>Interview Prep</strong> — Practice with role-specific AI interviews<br/>
+                  ✅ <strong>60+ Career Roadmaps</strong> — Step-by-step guides, beginner to expert<br/>
+                  ✅ <strong>Compare Careers</strong> — Side-by-side salary, demand &amp; difficulty<br/>
+                  ✅ <strong>Saathi AI Assistant</strong> — Your always-on career mentor
                 </p>
               </div>
             </td>

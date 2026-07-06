@@ -73,6 +73,12 @@ async function getPlanRow(uid: string) {
     .eq("firebase_uid", uid)
     .maybeSingle();
   if (error) throw error;
+  if (!data) return null;
+  // Auto-deactivate expired plans (Task 1).
+  if (new Date(data.expires_at).getTime() < Date.now()) {
+    await supabase.from("user_plans").delete().eq("firebase_uid", uid);
+    return null;
+  }
   return data;
 }
 
@@ -153,6 +159,31 @@ Deno.serve(async (req) => {
         all_results: allResults,
       });
       if (error) throw error;
+
+      // Fire-and-forget: notify user when they exhaust their daily quota.
+      if (used + 1 >= limit && token.email) {
+        try {
+          const { data: profile } = await supabase
+            .from("profiles")
+            .select("display_name,email")
+            .eq("firebase_uid", uid)
+            .maybeSingle();
+          supabase.functions
+            .invoke("send-limit-reached", {
+              body: {
+                email: profile?.email ?? token.email,
+                name: profile?.display_name ?? token.name ?? "there",
+                planName: planRow.name,
+                dailyLimit: limit,
+                expiresAt: planRow.expires_at,
+              },
+            })
+            .catch((e) => console.error("limit email invoke failed", e));
+        } catch (e) {
+          console.error("limit email lookup failed", e);
+        }
+      }
+
       return json({ ok: true, used: used + 1, limit });
     }
 

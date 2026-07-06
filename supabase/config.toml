@@ -11,3 +11,10 @@ verify_jwt = false
 
 [functions.predict-salary]
 verify_jwt = false
+
+[functions.send-limit-reached]
+verify_jwt = false
+
+[functions.send-expiring-plan-reminder]
+verify_jwt = false
+
