@@ -73,6 +73,12 @@ async function getPlanRow(uid: string) {
     .eq("firebase_uid", uid)
     .maybeSingle();
   if (error) throw error;
+  if (!data) return null;
+  // Auto-deactivate expired plans (Task 1).
+  if (new Date(data.expires_at).getTime() < Date.now()) {
+    await supabase.from("user_plans").delete().eq("firebase_uid", uid);
+    return null;
+  }
   return data;
 }
 
