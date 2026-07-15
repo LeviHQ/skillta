@@ -5,6 +5,7 @@ import { getBreadcrumbSchema, getArticleSchema } from "@/lib/seo";
 import { ArrowLeft, Calendar, Clock, BookOpen } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import { motion } from "framer-motion";
+import AdsterraNativeBanner from "@/components/AdsterraNativeBanner";
 
 export default function BlogPost() {
   const { slug } = useParams<{ slug: string }>();
