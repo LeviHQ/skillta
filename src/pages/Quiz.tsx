@@ -222,6 +222,9 @@ export default function Quiz() {
                 )}
               </button>
             </div>
+
+            {/* Sponsored - Native Banner (mounted once, stable across questions) */}
+            <AdsterraNativeBanner />
           </div>
 
           <SupportBanner variant="quiz" />
