@@ -12,6 +12,7 @@ import CongratsModal from "@/components/CongratsModal";
 import SEOHead from "@/components/SEOHead";
 import { PAGE_SEO } from "@/lib/seo";
 import SupportBanner from "@/components/SupportBanner";
+import AdsterraNativeBanner from "@/components/AdsterraNativeBanner";
 
 import { QuizAnswers } from "@/data/careers";
 
@@ -221,6 +222,9 @@ export default function Quiz() {
                 )}
               </button>
             </div>
+
+            {/* Sponsored - Native Banner (mounted once, stable across questions) */}
+            <AdsterraNativeBanner />
           </div>
 
           <SupportBanner variant="quiz" />

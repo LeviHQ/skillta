@@ -13,6 +13,7 @@ import AccuracySection from "@/components/AccuracySection";
 import WhoIsItForSection from "@/components/WhoIsItForSection";
 import FAQSection from "@/components/FAQSection";
 import FreeServicesSection from "@/components/FreeServicesSection";
+import AdsterraNativeBanner from "@/components/AdsterraNativeBanner";
 import SEOHead from "@/components/SEOHead";
 import { PAGE_SEO, getWebApplicationSchema, getEducationalOrgSchema, getWebsiteSchema, getHowToSchema, getFAQSchema, getOrganizationSchema, getSoftwareAppSchema, getItemListSchema } from "@/lib/seo";
 
@@ -104,6 +105,9 @@ export default function Index() {
           </div>
         </section>
       )}
+
+      {/* Sponsored - Native Banner */}
+      <AdsterraNativeBanner />
 
       {/* Free Services showcase */}
       <FreeServicesSection />
