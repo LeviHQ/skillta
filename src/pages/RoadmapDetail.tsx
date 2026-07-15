@@ -4,6 +4,7 @@ import { careers } from "@/data/careers";
 import { ArrowLeft, Download, Clock, TrendingUp, DollarSign, AlertTriangle, BookOpen, Wrench, FolderOpen } from "lucide-react";
 import { useRef } from "react";
 import SEOHead from "@/components/SEOHead";
+import AdsterraNativeBanner from "@/components/AdsterraNativeBanner";
 import { getCourseSchema, getBreadcrumbSchema } from "@/lib/seo";
 
 export default function RoadmapDetail() {
@@ -378,6 +379,9 @@ export default function RoadmapDetail() {
             </div>
           </motion.div>
         </div>
+
+        {/* Sponsored - Native Banner */}
+        <AdsterraNativeBanner />
 
         {/* CTA */}
         <div className="max-w-3xl mx-auto text-center no-print">

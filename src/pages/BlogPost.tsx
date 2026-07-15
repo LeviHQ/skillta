@@ -69,36 +69,47 @@ export default function BlogPost() {
             {post.title}
           </h1>
 
-          {/* Content */}
-          <div className="prose prose-invert prose-lg max-w-none
-            prose-headings:text-foreground prose-headings:font-bold
-            prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4
-            prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3
-            prose-p:text-muted-foreground prose-p:leading-relaxed
-            prose-a:text-primary prose-a:no-underline hover:prose-a:underline
-            prose-strong:text-foreground
-            prose-li:text-muted-foreground
-            prose-table:border-border
-            prose-th:text-foreground prose-th:bg-muted/30 prose-th:px-4 prose-th:py-2
-            prose-td:text-muted-foreground prose-td:px-4 prose-td:py-2 prose-td:border-border
-            prose-tr:border-border
-            prose-code:text-primary prose-code:bg-muted/50 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded
-            prose-blockquote:border-l-primary prose-blockquote:text-muted-foreground
-            prose-hr:border-border
-          ">
-            <ReactMarkdown
-              components={{
-                a: ({ href, children }) => {
-                  if (href?.startsWith("/")) {
-                    return <Link to={href} className="text-primary hover:underline">{children}</Link>;
-                  }
-                  return <a href={href} target="_blank" rel="noopener noreferrer">{children}</a>;
-                },
-              }}
-            >
-              {post.content}
-            </ReactMarkdown>
-          </div>
+          {/* Content - split around midpoint for a natural ad break */}
+          {(() => {
+            const parts = post.content.split(/\n\n+/);
+            const mid = Math.floor(parts.length / 2);
+            const first = parts.slice(0, mid).join("\n\n");
+            const second = parts.slice(mid).join("\n\n");
+            const proseClass = `prose prose-invert prose-lg max-w-none
+              prose-headings:text-foreground prose-headings:font-bold
+              prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4
+              prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3
+              prose-p:text-muted-foreground prose-p:leading-relaxed
+              prose-a:text-primary prose-a:no-underline hover:prose-a:underline
+              prose-strong:text-foreground
+              prose-li:text-muted-foreground
+              prose-table:border-border
+              prose-th:text-foreground prose-th:bg-muted/30 prose-th:px-4 prose-th:py-2
+              prose-td:text-muted-foreground prose-td:px-4 prose-td:py-2 prose-td:border-border
+              prose-tr:border-border
+              prose-code:text-primary prose-code:bg-muted/50 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded
+              prose-blockquote:border-l-primary prose-blockquote:text-muted-foreground
+              prose-hr:border-border`;
+            const mdComponents = {
+              a: ({ href, children }: { href?: string; children?: React.ReactNode }) => {
+                if (href?.startsWith("/")) {
+                  return <Link to={href} className="text-primary hover:underline">{children}</Link>;
+                }
+                return <a href={href} target="_blank" rel="noopener noreferrer">{children}</a>;
+              },
+            };
+            return (
+              <>
+                <div className={proseClass}>
+                  <ReactMarkdown components={mdComponents}>{first}</ReactMarkdown>
+                </div>
+                <AdsterraNativeBanner />
+                <div className={proseClass}>
+                  <ReactMarkdown components={mdComponents}>{second}</ReactMarkdown>
+                </div>
+              </>
+            );
+          })()}
 
           {/* CTA */}
           <div className="mt-14 p-8 rounded-2xl bg-gradient-to-br from-primary/10 via-card to-accent/10 border border-primary/20 text-center">
