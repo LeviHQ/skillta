@@ -1,3 +1,5 @@
+import { countryBlogs } from "./countryBlogs";
+
 export interface BlogPost {
   slug: string;
   title: string;
@@ -7,6 +9,7 @@ export interface BlogPost {
   category: string;
   keywords: string;
   content: string;
+  country?: string; // ISO-ish key: "usa" | "uk" | "canada" | "australia" | "germany" | "russia"
 }
 
 export const blogPosts: BlogPost[] = [
