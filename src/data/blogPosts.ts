@@ -1,3 +1,5 @@
+import { countryBlogs } from "./countryBlogs";
+
 export interface BlogPost {
   slug: string;
   title: string;
@@ -7,6 +9,7 @@ export interface BlogPost {
   category: string;
   keywords: string;
   content: string;
+  country?: string; // ISO-ish key: "usa" | "uk" | "canada" | "australia" | "germany" | "russia"
 }
 
 export const blogPosts: BlogPost[] = [
@@ -1775,4 +1778,14 @@ Yes — but not on day one. Fullstack developers exist, and they're valuable, es
 The best path isn't the one that pays the most — it's the one you'll still enjoy in year three. Pick with your personality, not the trend. 🚀
 `,
   },
+  ...countryBlogs,
+];
+
+export const BLOG_COUNTRIES: { key: string; name: string; flag: string }[] = [
+  { key: "usa", name: "United States", flag: "🇺🇸" },
+  { key: "uk", name: "United Kingdom", flag: "🇬🇧" },
+  { key: "canada", name: "Canada", flag: "🇨🇦" },
+  { key: "australia", name: "Australia", flag: "🇦🇺" },
+  { key: "germany", name: "Germany", flag: "🇩🇪" },
+  { key: "russia", name: "Russia", flag: "🇷🇺" },
 ];
