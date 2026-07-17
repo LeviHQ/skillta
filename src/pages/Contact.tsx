@@ -1,181 +1,168 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import { Mail, MapPin, Clock, Send } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { useToast } from "@/hooks/use-toast";
+import { motion } from "framer-motion";
+import { Mail, Github, Linkedin, Heart, Sparkles, MapPin, Code2 } from "lucide-react";
 import SEOHead from "@/components/SEOHead";
 import { PAGE_SEO, getBreadcrumbSchema } from "@/lib/seo";
-import { z } from "zod";
+import founderPhoto from "@/assets/adarsh-founder.jpg.asset.json";
 
-const contactSchema = z.object({
-  name: z.string().trim().min(1, "Name is required").max(100),
-  email: z.string().trim().email("Invalid email address").max(255),
-  subject: z.string().trim().min(1, "Subject is required").max(200),
-  message: z.string().trim().min(1, "Message is required").max(2000),
-});
+const EMAIL = "adarshmishra70931@gmail.com";
+const GITHUB = "https://github.com/Code-By-Adarsh";
+const LINKEDIN = "https://www.linkedin.com/in/adarsh-jayprakash-mishra";
+const GMAIL_COMPOSE = `https://mail.google.com/mail/?view=cm&fs=1&to=${EMAIL}`;
 
 export default function Contact() {
-  const { toast } = useToast();
-  const [loading, setLoading] = useState(false);
-  const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
-  const [errors, setErrors] = useState<Record<string, string>>({});
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setErrors({});
-
-    const result = contactSchema.safeParse(form);
-    if (!result.success) {
-      const fieldErrors: Record<string, string> = {};
-      result.error.errors.forEach((err) => {
-        if (err.path[0]) fieldErrors[err.path[0] as string] = err.message;
-      });
-      setErrors(fieldErrors);
-      return;
-    }
-
-    setLoading(true);
-    // Simulate sending
-    await new Promise((r) => setTimeout(r, 1200));
-    setLoading(false);
-
-    toast({
-      title: "Message sent! ✅",
-      description: "We'll get back to you within 24-48 hours.",
-    });
-    setForm({ name: "", email: "", subject: "", message: "" });
-  };
-
   return (
     <>
       <SEOHead
         {...PAGE_SEO.contact}
+        title="Contact the Founder — SkillTa"
+        description="Reach out to Adarsh Mishra, founder of SkillTa. Connect via email, GitHub, or LinkedIn."
         jsonLd={getBreadcrumbSchema([{ name: "Home", path: "/" }, { name: "Contact", path: "/contact" }])}
       />
       <div className="min-h-screen py-16 px-4">
-        <div className="container mx-auto max-w-5xl">
+        <div className="container mx-auto max-w-3xl">
           {/* Header */}
-          <div className="text-center mb-14">
-            <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-3">
-              Get in <span className="text-gradient">Touch</span>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-center mb-12"
+          >
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/30 mb-4">
+              <Sparkles className="w-3.5 h-3.5 text-primary" />
+              <span className="text-xs font-medium text-primary">One-person indie project</span>
+            </div>
+            <h1 className="text-4xl md:text-5xl font-bold mb-3">
+              Contact the <span className="text-gradient">Founder</span>
             </h1>
             <p className="text-muted-foreground text-sm max-w-md mx-auto">
-              Have a question, feedback, or want to collaborate? We'd love to hear from you.
+              No support desk, no ticket queue — just me. Reach out directly.
             </p>
-          </div>
+          </motion.div>
 
-          <div className="grid md:grid-cols-5 gap-10">
-            {/* Contact Info */}
-            <div className="md:col-span-2 space-y-6">
-              <div className="p-5 rounded-xl border border-border bg-card/60 backdrop-blur-sm space-y-6">
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <Mail className="w-5 h-5 text-primary" />
-                  </div>
-                  <div>
-                    <h3 className="text-sm font-semibold text-foreground">Email Us</h3>
-                    <a href="mailto:support@skillta.tech" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                      support@skillta.tech
-                    </a>
-                  </div>
-                </div>
+          {/* Founder Card */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            className="relative p-6 md:p-8 rounded-3xl border border-border bg-gradient-card backdrop-blur-sm mb-8 overflow-hidden"
+          >
+            {/* decorative glow */}
+            <div className="absolute -top-20 -right-20 w-64 h-64 bg-primary/20 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute -bottom-20 -left-20 w-64 h-64 bg-accent/20 rounded-full blur-3xl pointer-events-none" />
 
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <MapPin className="w-5 h-5 text-primary" />
-                  </div>
-                  <div>
-                    <h3 className="text-sm font-semibold text-foreground">Location</h3>
-                    <p className="text-sm text-muted-foreground">Remote-first, India 🇮🇳</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <Clock className="w-5 h-5 text-primary" />
-                  </div>
-                  <div>
-                    <h3 className="text-sm font-semibold text-foreground">Response Time</h3>
-                    <p className="text-sm text-muted-foreground">Within 24–48 hours</p>
-                  </div>
-                </div>
+            <div className="relative flex flex-col md:flex-row items-center md:items-start gap-6">
+              {/* Photo */}
+              <div className="relative flex-shrink-0">
+                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary to-accent blur-md opacity-60" />
+                <img
+                  src={founderPhoto.url}
+                  alt="Adarsh Jayprakash Mishra — Founder of SkillTa"
+                  className="relative w-32 h-32 md:w-36 md:h-36 rounded-full object-cover border-2 border-primary/40 shadow-glow"
+                />
               </div>
 
-              <div className="p-5 rounded-xl border border-border bg-card/60 backdrop-blur-sm">
-                <h3 className="text-sm font-semibold text-foreground mb-2">Quick Links</h3>
-                <div className="flex flex-col gap-2">
-                  <Link to="/quiz" className="text-sm text-muted-foreground hover:text-primary transition-colors">→ Take the Career Quiz</Link>
-                  <Link to="/roadmaps" className="text-sm text-muted-foreground hover:text-primary transition-colors">→ Browse Roadmaps</Link>
-                  <Link to="/about" className="text-sm text-muted-foreground hover:text-primary transition-colors">→ About SkillTa</Link>
+              {/* Intro */}
+              <div className="flex-1 text-center md:text-left">
+                <h2 className="text-2xl font-bold text-foreground mb-1">Adarsh Jayprakash Mishra</h2>
+                <p className="text-primary text-sm font-medium mb-3 flex items-center justify-center md:justify-start gap-1.5">
+                  <Code2 className="w-4 h-4" /> Founder & Developer · SkillTa
+                </p>
+                <p className="text-muted-foreground text-sm leading-relaxed mb-3">
+                  Hey! I'm Adarsh — a student developer from India who got tired of watching friends
+                  pick tech careers based on YouTube hype and random Reddit threads. So I built
+                  SkillTa: a free, honest, AI-powered career guide that actually listens.
+                </p>
+                <p className="text-muted-foreground text-sm leading-relaxed">
+                  I'm the only one behind every quiz, roadmap, blog, and line of code here. If you
+                  have feedback, a bug report, a collab idea, or just want to say hi — my inbox is
+                  open. I read everything myself.
+                </p>
+                <div className="mt-3 flex items-center justify-center md:justify-start gap-2 text-xs text-muted-foreground">
+                  <MapPin className="w-3.5 h-3.5" /> Remote · India 🇮🇳
                 </div>
               </div>
             </div>
+          </motion.div>
 
-            {/* Contact Form */}
-            <div className="md:col-span-3">
-              <form onSubmit={handleSubmit} className="p-6 md:p-8 rounded-xl border border-border bg-card/60 backdrop-blur-sm space-y-5">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label className="text-xs font-medium text-foreground mb-1.5 block">Name</label>
-                    <Input
-                      placeholder="Your name"
-                      value={form.name}
-                      onChange={(e) => setForm({ ...form, name: e.target.value })}
-                      className={errors.name ? "border-destructive" : ""}
-                    />
-                    {errors.name && <p className="text-xs text-destructive mt-1">{errors.name}</p>}
-                  </div>
-                  <div>
-                    <label className="text-xs font-medium text-foreground mb-1.5 block">Email</label>
-                    <Input
-                      type="email"
-                      placeholder="you@example.com"
-                      value={form.email}
-                      onChange={(e) => setForm({ ...form, email: e.target.value })}
-                      className={errors.email ? "border-destructive" : ""}
-                    />
-                    {errors.email && <p className="text-xs text-destructive mt-1">{errors.email}</p>}
-                  </div>
-                </div>
-
-                <div>
-                  <label className="text-xs font-medium text-foreground mb-1.5 block">Subject</label>
-                  <Input
-                    placeholder="What's this about?"
-                    value={form.subject}
-                    onChange={(e) => setForm({ ...form, subject: e.target.value })}
-                    className={errors.subject ? "border-destructive" : ""}
-                  />
-                  {errors.subject && <p className="text-xs text-destructive mt-1">{errors.subject}</p>}
-                </div>
-
-                <div>
-                  <label className="text-xs font-medium text-foreground mb-1.5 block">Message</label>
-                  <Textarea
-                    placeholder="Tell us what's on your mind..."
-                    rows={5}
-                    value={form.message}
-                    onChange={(e) => setForm({ ...form, message: e.target.value })}
-                    className={errors.message ? "border-destructive" : ""}
-                  />
-                  {errors.message && <p className="text-xs text-destructive mt-1">{errors.message}</p>}
-                </div>
-
-                <Button type="submit" className="w-full gap-2" disabled={loading}>
-                  {loading ? (
-                    <span className="animate-pulse">Sending...</span>
-                  ) : (
-                    <>
-                      <Send className="w-4 h-4" />
-                      Send Message
-                    </>
-                  )}
-                </Button>
-              </form>
+          {/* Primary Contact — Email */}
+          <motion.a
+            href={GMAIL_COMPOSE}
+            target="_blank"
+            rel="noopener noreferrer"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="group flex items-center gap-4 p-5 rounded-2xl border border-border bg-card/60 backdrop-blur-sm hover:border-primary/50 hover:bg-card/80 transition-all mb-6"
+          >
+            <div className="w-12 h-12 rounded-xl bg-primary/15 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+              <Mail className="w-6 h-6 text-primary" />
             </div>
-          </div>
+            <div className="flex-1 min-w-0">
+              <h3 className="text-sm font-semibold text-foreground">Email me directly</h3>
+              <p className="text-sm text-muted-foreground truncate">{EMAIL}</p>
+            </div>
+            <span className="text-xs text-primary font-medium opacity-0 group-hover:opacity-100 transition-opacity hidden sm:inline">
+              Open Gmail →
+            </span>
+          </motion.a>
+
+          {/* Socials */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+            className="grid sm:grid-cols-2 gap-4 mb-12"
+          >
+            <a
+              href={GITHUB}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center gap-4 p-5 rounded-2xl border border-border bg-card/60 backdrop-blur-sm hover:border-foreground/40 hover:bg-card/80 transition-all"
+            >
+              <div className="w-11 h-11 rounded-xl bg-foreground/10 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                <Github className="w-5 h-5 text-foreground" />
+              </div>
+              <div className="min-w-0">
+                <h3 className="text-sm font-semibold text-foreground">GitHub</h3>
+                <p className="text-xs text-muted-foreground truncate">@Code-By-Adarsh</p>
+              </div>
+            </a>
+
+            <a
+              href={LINKEDIN}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center gap-4 p-5 rounded-2xl border border-border bg-card/60 backdrop-blur-sm hover:border-[#0A66C2]/60 hover:bg-card/80 transition-all"
+            >
+              <div className="w-11 h-11 rounded-xl bg-[#0A66C2]/15 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                <Linkedin className="w-5 h-5 text-[#0A66C2]" />
+              </div>
+              <div className="min-w-0">
+                <h3 className="text-sm font-semibold text-foreground">LinkedIn</h3>
+                <p className="text-xs text-muted-foreground truncate">Adarsh Jayprakash Mishra</p>
+              </div>
+            </a>
+          </motion.div>
+
+          {/* Thank You Note */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 }}
+            className="relative p-6 md:p-8 rounded-3xl border border-primary/30 bg-gradient-to-br from-primary/10 via-transparent to-accent/10 text-center overflow-hidden"
+          >
+            <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/20 border border-primary/40 mb-4">
+              <Heart className="w-6 h-6 text-primary" fill="currentColor" />
+            </div>
+            <h3 className="text-xl md:text-2xl font-bold text-foreground mb-2">
+              Thank you for using SkillTa 💜
+            </h3>
+            <p className="text-sm text-muted-foreground max-w-lg mx-auto leading-relaxed">
+              Every quiz you take, every roadmap you open, every blog you share — it genuinely means
+              the world to a solo builder. You're the reason SkillTa exists, and the reason it
+              stays free and ad-free. Keep learning, keep building. I'm rooting for you. 🚀
+            </p>
+            <p className="text-xs text-primary/80 font-medium mt-4">— Adarsh</p>
+          </motion.div>
         </div>
       </div>
     </>
