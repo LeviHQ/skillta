@@ -131,7 +131,7 @@ serve(async (req) => {
               </p>
               <div style="margin-top:20px;padding-top:16px;border-top:1px solid #e0e0e8;">
                 <p style="margin:0;font-size:11px;color:#aaa;">
-                  © 2025 SkillTa. All rights reserved.<br/>
+                  © 2026 SkillTa. All rights reserved.<br/>
                   <a href="https://skillta.tech" style="color:#26c6b0;text-decoration:none;">skillta.tech</a>
                 </p>
               </div>

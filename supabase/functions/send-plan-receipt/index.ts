@@ -168,7 +168,7 @@ serve(async (req) => {
       </td></tr>
       <tr><td style="background:#f8f9fc;padding:24px 40px;text-align:center;border-top:1px solid #e8e9f0;">
         <p style="margin:0;font-size:13px;font-weight:600;color:#7c3aed;">— Team SkillTa 💜</p>
-        <p style="margin:12px 0 0;font-size:11px;color:#aaa;">© 2025 SkillTa · <a href="https://skillta.tech" style="color:#26c6b0;text-decoration:none;">skillta.tech</a></p>
+        <p style="margin:12px 0 0;font-size:11px;color:#aaa;">© 2026 SkillTa · <a href="https://skillta.tech" style="color:#26c6b0;text-decoration:none;">skillta.tech</a></p>
       </td></tr>
     </table>
   </td></tr>
