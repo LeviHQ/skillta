@@ -2,7 +2,8 @@ import { motion } from "framer-motion";
 import { Mail, Github, Linkedin, Heart, Sparkles, MapPin, Code2 } from "lucide-react";
 import SEOHead from "@/components/SEOHead";
 import { PAGE_SEO, getBreadcrumbSchema } from "@/lib/seo";
-import founderPhoto from "@/assets/adarsh-founder.jpg.asset.json";
+//import founderPhoto from "@/assets/adarsh-founder.jpg.asset.json";
+import founderPhoto from "@/assets/MyProfile.jpg";
 
 const EMAIL = "adarshmishra70931@gmail.com";
 const GITHUB = "https://github.com/Code-By-Adarsh";
@@ -54,7 +55,7 @@ export default function Contact() {
               <div className="relative flex-shrink-0">
                 <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary to-accent blur-md opacity-60" />
                 <img
-                  src={founderPhoto.url}
+                  src={founderPhoto}
                   alt="Adarsh Jayprakash Mishra — Founder of SkillTa"
                   className="relative w-32 h-32 md:w-36 md:h-36 rounded-full object-cover border-2 border-primary/40 shadow-glow"
                 />
