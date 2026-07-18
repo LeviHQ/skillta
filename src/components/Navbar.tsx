@@ -19,7 +19,7 @@ const services = [
   { label: "AI-Powered Career Quiz", path: "/quiz", desc: "Find your best-fit tech career in 5 minutes.", Icon: Brain },
   { label: "Salary Predictor", path: "/salary-predictor", desc: "Real 2025-2026 market salary + growth advice.", Icon: TrendingUp },
   { label: "Roadmap Library", path: "/roadmaps", desc: "60+ curated step-by-step roadmaps with resources, projects and salary info.", Icon: BookOpen},
-  { label: "Compare Careers", path: "/comapre", desc: "Side-by-side comparison of any two tech careers — salary, demand, difficulty.", Icon: ArrowLeftRight}
+  { label: "Compare Careers", path: "/compare", desc: "Side-by-side comparison of any two tech careers — salary, demand, difficulty.", Icon: ArrowLeftRight}
 ];
 
 export default function Navbar() {
