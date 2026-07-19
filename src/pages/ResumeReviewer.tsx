@@ -162,6 +162,7 @@ export default function ResumeReviewer() {
     setRole("");
     setRoleSelect("");
     setCustomRole("");
+    setJobDescription("");
     setReview(null);
     setError(null);
     setFileName(null);
