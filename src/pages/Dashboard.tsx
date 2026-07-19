@@ -198,8 +198,10 @@ export default function Dashboard() {
                     />
                   </div>
                 </div>
-
+              </div>
+              </>
             ) : (
+
               <div className="text-center py-6">
                 <p className="text-sm text-muted-foreground mb-4">You don't have an active plan yet.</p>
                 <Link
