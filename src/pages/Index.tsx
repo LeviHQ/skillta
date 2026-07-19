@@ -115,6 +115,10 @@ export default function Index() {
       {/* Who Is It For */}
       <WhoIsItForSection />
 
+      <AdsterraNativeBanner />
+
+
+
       {/* Features */}
       <section className="py-24 bg-background">
         <div className="container mx-auto px-6">
@@ -204,11 +208,16 @@ export default function Index() {
         </div>
       </section>
 
+      <AdsterraNativeBanner />
+
       {/* Pricing */}
       <PricingSection />
 
       {/* How to use */}
       <HowToUseSection />
+
+      <AdsterraNativeBanner />
+
 
       {/* Accuracy */}
       <AccuracySection />
