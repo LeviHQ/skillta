@@ -26,123 +26,338 @@ export default function RoadmapDetail() {
   const handleDownloadPDF = async () => {
     if (!career) return;
 
-    const html2pdf = (await import("html2pdf.js")).default;
+    const { jsPDF } = await import("jspdf");
+    const doc = new jsPDF({ unit: "mm", format: "a4", orientation: "portrait" });
 
-    // Build a clean, print-friendly HTML string
-    const phasesHTML = career.roadmap.map((phase, i) => `
-      <div style="margin-bottom:18px; page-break-inside:avoid; border:1.5px solid #334155; border-radius:12px; padding:18px 20px; background:#1e293b;">
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
-          <div style="display:flex; align-items:center; gap:10px;">
-            <span style="display:inline-flex; align-items:center; justify-content:center; width:32px; height:32px; border-radius:50%; background:#6366f1; color:#fff; font-weight:700; font-size:14px;">${phase.phase}</span>
-            <span style="font-size:16px; font-weight:700; color:#f1f5f9;">${phase.title}</span>
-          </div>
-          <span style="font-size:11px; color:#94a3b8; background:#334155; padding:3px 10px; border-radius:6px; font-family:monospace;">${phase.duration}</span>
-        </div>
-        ${phase.items.map(item => `
-          <div style="margin-bottom:6px; padding-left:42px;">
-            <span style="font-size:13px; font-weight:600; color:#e2e8f0;">🔧 ${item.name}</span>
-            <span style="font-size:11px; color:#94a3b8; margin-left:6px;">${item.description}</span>
-          </div>
-        `).join("")}
-        <div style="padding-left:42px; margin-top:10px;">
-          <p style="font-size:10px; font-weight:700; color:#818cf8; text-transform:uppercase; margin-bottom:4px;">📚 Resources</p>
-          <div style="display:flex; flex-wrap:wrap; gap:4px;">
-            ${phase.resources.map(r => `<span style="font-size:10px; background:#312e81; color:#a5b4fc; padding:2px 8px; border-radius:4px;">${r}</span>`).join("")}
-          </div>
-        </div>
-        <div style="padding-left:42px; margin-top:8px;">
-          <p style="font-size:10px; font-weight:700; color:#34d399; text-transform:uppercase; margin-bottom:4px;">🚀 Projects</p>
-          <div style="display:flex; flex-wrap:wrap; gap:4px;">
-            ${phase.projects.map(p => `<span style="font-size:10px; background:#064e3b; color:#6ee7b7; padding:2px 8px; border-radius:4px;">${p}</span>`).join("")}
-          </div>
-        </div>
-      </div>
-    `).join("");
+    const PAGE_W = 210;
+    const PAGE_H = 297;
+    const M = 15; // margin
+    const CONTENT_W = PAGE_W - M * 2;
 
-    const pdfHTML = `
-      <div style="font-family:'Segoe UI',Arial,sans-serif; color:#e2e8f0; padding:0; background:#0f172a;">
-        <!-- Header -->
-        <div style="text-align:center; margin-bottom:24px; padding-bottom:18px; border-bottom:2px solid #334155;">
-          <div style="font-size:36px; margin-bottom:6px;">${career.icon}</div>
-          <h1 style="font-size:28px; font-weight:800; color:#818cf8; margin:0 0 4px;">${career.title}</h1>
-          <p style="font-size:13px; color:#94a3b8; margin:0 0 8px;">${career.tagline}</p>
-          <p style="font-size:11px; color:#64748b; max-width:480px; margin:0 auto;">${career.description}</p>
-        </div>
+    // Colors (professional light theme -> crisp print + selectable vector text)
+    const C = {
+      brand: [99, 102, 241] as [number, number, number],
+      brandDark: [67, 56, 202] as [number, number, number],
+      text: [15, 23, 42] as [number, number, number],
+      muted: [100, 116, 139] as [number, number, number],
+      subtle: [226, 232, 240] as [number, number, number],
+      card: [248, 250, 252] as [number, number, number],
+      warnBg: [254, 249, 231] as [number, number, number],
+      warnBorder: [234, 179, 8] as [number, number, number],
+      warnText: [133, 77, 14] as [number, number, number],
+      okBg: [236, 253, 245] as [number, number, number],
+      okBorder: [16, 185, 129] as [number, number, number],
+      okText: [6, 78, 59] as [number, number, number],
+      chipBg: [238, 242, 255] as [number, number, number],
+      chipText: [67, 56, 202] as [number, number, number],
+      chipOkBg: [220, 252, 231] as [number, number, number],
+      chipOkText: [22, 101, 52] as [number, number, number],
+    };
 
-        <!-- Quick Stats -->
-        <div style="display:flex; gap:10px; justify-content:center; margin-bottom:28px;">
-          <div style="flex:1; text-align:center; padding:10px; border:1px solid #334155; border-radius:10px; background:#1e293b;">
-            <p style="font-size:10px; color:#94a3b8; margin:0;">Timeline</p>
-            <p style="font-size:13px; font-weight:700; color:#f1f5f9; margin:2px 0 0;">${career.estimatedTime}</p>
-          </div>
-          <div style="flex:1; text-align:center; padding:10px; border:1px solid #334155; border-radius:10px; background:#1e293b;">
-            <p style="font-size:10px; color:#94a3b8; margin:0;">Demand</p>
-            <p style="font-size:13px; font-weight:700; color:#f1f5f9; margin:2px 0 0;">${career.demandLevel}</p>
-          </div>
-          <div style="flex:1; text-align:center; padding:10px; border:1px solid #334155; border-radius:10px; background:#1e293b;">
-            <p style="font-size:10px; color:#94a3b8; margin:0;">Difficulty</p>
-            <p style="font-size:13px; font-weight:700; color:#f1f5f9; margin:2px 0 0;">${career.learningDifficulty}</p>
-          </div>
-          <div style="flex:1; text-align:center; padding:10px; border:1px solid #334155; border-radius:10px; background:#1e293b;">
-            <p style="font-size:10px; color:#94a3b8; margin:0;">Entry Barrier</p>
-            <p style="font-size:13px; font-weight:700; color:#f1f5f9; margin:2px 0 0;">${career.realityCheck.entryBarrier}</p>
-          </div>
-        </div>
+    let y = M;
 
-        <!-- Roadmap -->
-        <h2 style="text-align:center; font-size:20px; font-weight:700; color:#f1f5f9; margin-bottom:16px;">📍 Learning Roadmap</h2>
-        ${phasesHTML}
+    const setFill = (c: [number, number, number]) => doc.setFillColor(c[0], c[1], c[2]);
+    const setDraw = (c: [number, number, number]) => doc.setDrawColor(c[0], c[1], c[2]);
+    const setText = (c: [number, number, number]) => doc.setTextColor(c[0], c[1], c[2]);
 
-        <!-- Reality Check -->
-        <div style="page-break-inside:avoid; margin-top:24px; padding:18px 20px; border:1.5px solid #854d0e; border-radius:12px; background:#1c1917;">
-          <h2 style="font-size:17px; font-weight:700; color:#fbbf24; margin:0 0 12px;">⚠️ Reality Check</h2>
-          <div style="display:flex; gap:16px; margin-bottom:10px;">
-            <div><p style="font-size:10px; color:#fbbf24; margin:0;">Competition</p><p style="font-size:13px; font-weight:600; color:#fde68a; margin:2px 0 0;">${career.realityCheck.competition}</p></div>
-            <div><p style="font-size:10px; color:#fbbf24; margin:0;">Entry Barrier</p><p style="font-size:13px; font-weight:600; color:#fde68a; margin:2px 0 0;">${career.realityCheck.entryBarrier}</p></div>
-          </div>
-          <p style="font-size:11px; color:#fde68a; margin:0 0 6px;"><strong>Salary:</strong> ${career.realityCheck.salaryExpectation}</p>
-          <p style="font-size:11px; color:#fbbf24; font-style:italic; border-left:3px solid #fbbf24; padding-left:10px; margin:0;">${career.realityCheck.honestNote}</p>
-        </div>
+    const ensureSpace = (needed: number) => {
+      if (y + needed > PAGE_H - M) {
+        addFooter();
+        doc.addPage();
+        y = M;
+      }
+    };
 
-        <!-- Salary -->
-        <div style="page-break-inside:avoid; margin-top:18px; padding:18px 20px; border:1.5px solid #334155; border-radius:12px; background:#042f2e;">
-          <h2 style="font-size:17px; font-weight:700; color:#34d399; margin:0 0 10px;">💰 Salary Range</h2>
-          <div style="display:flex; gap:12px; margin-bottom:8px;">
-            <div style="flex:1; padding:8px 12px; background:#064e3b; border-radius:8px;">
-              <p style="font-size:10px; color:#6ee7b7; margin:0;">🇮🇳 India</p>
-              <p style="font-size:12px; font-weight:600; color:#a7f3d0; margin:2px 0 0;">${career.salaryIndia}</p>
-            </div>
-            <div style="flex:1; padding:8px 12px; background:#064e3b; border-radius:8px;">
-              <p style="font-size:10px; color:#6ee7b7; margin:0;">🌍 Global</p>
-              <p style="font-size:12px; font-weight:600; color:#a7f3d0; margin:2px 0 0;">${career.salaryGlobal}</p>
-            </div>
-          </div>
-          <p style="font-size:11px; color:#6ee7b7; margin:0;">${career.growthPotential}</p>
-        </div>
+    const addFooter = () => {
+      const pageNum = doc.getNumberOfPages();
+      setText(C.muted);
+      doc.setFont("helvetica", "normal");
+      doc.setFontSize(8);
+      doc.text("Generated by SkillTa — skillta.tech", M, PAGE_H - 8);
+      doc.text(`Page ${pageNum}`, PAGE_W - M, PAGE_H - 8, { align: "right" });
+    };
 
-        <!-- Footer -->
-        <div style="text-align:center; margin-top:24px; padding-top:14px; border-top:1px solid #334155;">
-          <p style="font-size:10px; color:#64748b; margin:0;">Generated by SkillTa — skillta.tech</p>
-        </div>
-      </div>
-    `;
+    const writeWrapped = (
+      text: string,
+      x: number,
+      maxW: number,
+      lineH: number,
+      opts?: { indent?: number }
+    ) => {
+      const lines = doc.splitTextToSize(text, maxW) as string[];
+      for (const ln of lines) {
+        ensureSpace(lineH);
+        doc.text(ln, x + (opts?.indent || 0), y);
+        y += lineH;
+      }
+    };
 
-    const container = document.createElement("div");
-    container.innerHTML = pdfHTML;
-    document.body.appendChild(container);
+    const drawChips = (
+      items: string[],
+      startX: number,
+      maxW: number,
+      bg: [number, number, number],
+      fg: [number, number, number]
+    ) => {
+      doc.setFont("helvetica", "normal");
+      doc.setFontSize(8);
+      const padX = 2.2;
+      const padY = 1.6;
+      const gap = 1.8;
+      const chipH = 5;
+      let cx = startX;
+      ensureSpace(chipH + 1);
+      for (const raw of items) {
+        const t = String(raw);
+        const w = doc.getTextWidth(t) + padX * 2;
+        if (cx + w > startX + maxW) {
+          y += chipH + gap;
+          ensureSpace(chipH + 1);
+          cx = startX;
+        }
+        setFill(bg);
+        doc.roundedRect(cx, y - chipH + padY + 0.4, w, chipH, 1.2, 1.2, "F");
+        setText(fg);
+        doc.text(t, cx + padX, y);
+        cx += w + gap;
+      }
+      y += 2;
+    };
 
-    await (html2pdf() as any)
-      .set({
-        margin: [12, 14],
-        filename: `${career.title}-Roadmap-SkillTa.pdf`,
-        html2canvas: { scale: 2, useCORS: true, backgroundColor: "#0f172a" },
-        jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
-        pagebreak: { mode: ["avoid-all", "css", "legacy"] },
-      })
-      .from(container)
-      .save();
+    // ===== Header (brand bar) =====
+    setFill(C.brand);
+    doc.rect(0, 0, PAGE_W, 26, "F");
+    setText([255, 255, 255]);
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(20);
+    doc.text("SkillTa", M, 14);
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(9);
+    doc.text("Career Roadmap", M, 20);
+    doc.setFontSize(9);
+    doc.text("skillta.tech", PAGE_W - M, 14, { align: "right" });
+    doc.setFontSize(8);
+    doc.text(new Date().toLocaleDateString(), PAGE_W - M, 20, { align: "right" });
 
-    document.body.removeChild(container);
+    y = 36;
+
+    // ===== Title =====
+    setText(C.text);
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(22);
+    const titleLines = doc.splitTextToSize(career.title, CONTENT_W) as string[];
+    titleLines.forEach((ln) => {
+      doc.text(ln, M, y);
+      y += 8;
+    });
+
+    setText(C.brandDark);
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(11);
+    writeWrapped(career.tagline, M, CONTENT_W, 5);
+    y += 1;
+
+    setText(C.muted);
+    doc.setFontSize(10);
+    writeWrapped(career.description, M, CONTENT_W, 4.6);
+    y += 3;
+
+    // ===== Quick Stats grid =====
+    const stats: [string, string][] = [
+      ["Timeline", career.estimatedTime],
+      ["Demand", career.demandLevel],
+      ["Difficulty", career.learningDifficulty],
+      ["Entry Barrier", career.realityCheck.entryBarrier],
+    ];
+    const cardGap = 3;
+    const cardW = (CONTENT_W - cardGap * 3) / 4;
+    const cardH = 16;
+    ensureSpace(cardH + 3);
+    stats.forEach(([label, val], i) => {
+      const x = M + i * (cardW + cardGap);
+      setFill(C.card);
+      setDraw(C.subtle);
+      doc.roundedRect(x, y, cardW, cardH, 2, 2, "FD");
+      setText(C.muted);
+      doc.setFont("helvetica", "normal");
+      doc.setFontSize(8);
+      doc.text(label, x + 3, y + 5);
+      setText(C.text);
+      doc.setFont("helvetica", "bold");
+      doc.setFontSize(10);
+      const vLines = doc.splitTextToSize(val, cardW - 6) as string[];
+      doc.text(vLines[0] || "", x + 3, y + 11);
+      if (vLines[1]) doc.text(vLines[1], x + 3, y + 14.5);
+    });
+    y += cardH + 8;
+
+    // ===== Section: Learning Roadmap =====
+    const sectionTitle = (title: string) => {
+      ensureSpace(12);
+      setFill(C.brand);
+      doc.rect(M, y - 4, 1.5, 6, "F");
+      setText(C.text);
+      doc.setFont("helvetica", "bold");
+      doc.setFontSize(14);
+      doc.text(title, M + 4, y);
+      y += 6;
+    };
+
+    sectionTitle("Learning Roadmap");
+
+    career.roadmap.forEach((phase) => {
+      // measure roughly; if not enough for header + first item, page break
+      ensureSpace(20);
+
+      // Phase card
+      const cardTop = y;
+      const contentStartY = y + 4;
+      y = contentStartY;
+
+      // Phase header
+      setFill(C.brand);
+      doc.circle(M + 5, y + 1, 3.2, "F");
+      setText([255, 255, 255]);
+      doc.setFont("helvetica", "bold");
+      doc.setFontSize(10);
+      doc.text(String(phase.phase), M + 5, y + 2.2, { align: "center" });
+
+      setText(C.text);
+      doc.setFontSize(12);
+      doc.text(phase.title, M + 11, y + 2);
+
+      setText(C.muted);
+      doc.setFont("helvetica", "normal");
+      doc.setFontSize(9);
+      doc.text(phase.duration, M + CONTENT_W - 2, y + 2, { align: "right" });
+      y += 8;
+
+      // Items
+      phase.items.forEach((item) => {
+        ensureSpace(9);
+        setText(C.text);
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(10);
+        doc.text(`• ${item.name}`, M + 6, y);
+        y += 4.2;
+        setText(C.muted);
+        doc.setFont("helvetica", "normal");
+        doc.setFontSize(9);
+        writeWrapped(item.description, M + 9, CONTENT_W - 12, 4);
+        y += 1;
+      });
+
+      // Resources
+      if (phase.resources?.length) {
+        ensureSpace(8);
+        setText(C.brandDark);
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(9);
+        doc.text("Resources", M + 6, y);
+        y += 3.6;
+        drawChips(phase.resources, M + 6, CONTENT_W - 8, C.chipBg, C.chipText);
+      }
+
+      // Projects
+      if (phase.projects?.length) {
+        ensureSpace(8);
+        setText(C.okText);
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(9);
+        doc.text("Projects", M + 6, y);
+        y += 3.6;
+        drawChips(phase.projects, M + 6, CONTENT_W - 8, C.chipOkBg, C.chipOkText);
+      }
+
+      // Border around the phase card
+      setDraw(C.subtle);
+      doc.setLineWidth(0.3);
+      doc.roundedRect(M, cardTop, CONTENT_W, y - cardTop + 2, 2.5, 2.5, "S");
+      y += 6;
+    });
+
+    // ===== Reality Check =====
+    ensureSpace(30);
+    sectionTitle("Reality Check");
+    const rcTop = y - 2;
+    setFill(C.warnBg);
+    setDraw(C.warnBorder);
+    doc.setLineWidth(0.3);
+    // draw rect first, then write content on top by advancing y
+    const rcStartY = y + 2;
+    y = rcStartY + 3;
+
+    const rcRow = (label: string, val: string) => {
+      ensureSpace(6);
+      setText(C.warnText);
+      doc.setFont("helvetica", "bold");
+      doc.setFontSize(9);
+      doc.text(`${label}:`, M + 4, y);
+      setText(C.text);
+      doc.setFont("helvetica", "normal");
+      const labelW = doc.getTextWidth(`${label}: `) + 2;
+      writeWrapped(val, M + 4 + labelW, CONTENT_W - 8 - labelW, 4.4);
+    };
+    rcRow("Competition", career.realityCheck.competition);
+    rcRow("Entry Barrier", career.realityCheck.entryBarrier);
+    rcRow("Salary Expectation", career.realityCheck.salaryExpectation);
+    y += 1;
+    setText(C.warnText);
+    doc.setFont("helvetica", "italic");
+    doc.setFontSize(9);
+    writeWrapped(`"${career.realityCheck.honestNote}"`, M + 4, CONTENT_W - 8, 4.4);
+    const rcEnd = y + 2;
+    doc.roundedRect(M, rcTop, CONTENT_W, rcEnd - rcTop, 2.5, 2.5, "S");
+    y = rcEnd + 6;
+
+    // ===== Salary =====
+    ensureSpace(28);
+    sectionTitle("Salary Range");
+    const salTop = y - 2;
+    setDraw(C.okBorder);
+    const salStartY = y + 2;
+    y = salStartY + 3;
+
+    const halfW = (CONTENT_W - 8 - 4) / 2;
+    setFill(C.okBg);
+    doc.roundedRect(M + 4, y - 3, halfW, 14, 2, 2, "F");
+    doc.roundedRect(M + 4 + halfW + 4, y - 3, halfW, 14, 2, 2, "F");
+    setText(C.okText);
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(9);
+    doc.text("India", M + 7, y + 1);
+    doc.text("Global", M + 7 + halfW + 4, y + 1);
+    setText(C.text);
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(10);
+    doc.text(doc.splitTextToSize(career.salaryIndia, halfW - 6) as string[], M + 7, y + 6);
+    doc.text(doc.splitTextToSize(career.salaryGlobal, halfW - 6) as string[], M + 7 + halfW + 4, y + 6);
+    y += 16;
+
+    setText(C.okText);
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(9);
+    doc.text("Growth Potential", M + 4, y);
+    y += 4;
+    setText(C.text);
+    doc.setFont("helvetica", "normal");
+    writeWrapped(career.growthPotential, M + 4, CONTENT_W - 8, 4.4);
+    const salEnd = y + 2;
+    doc.roundedRect(M, salTop, CONTENT_W, salEnd - salTop, 2.5, 2.5, "S");
+    y = salEnd + 6;
+
+    // Footer on every page
+    const total = doc.getNumberOfPages();
+    for (let i = 1; i <= total; i++) {
+      doc.setPage(i);
+      setText(C.muted);
+      doc.setFont("helvetica", "normal");
+      doc.setFontSize(8);
+      doc.text("Generated by SkillTa — skillta.tech", M, PAGE_H - 8);
+      doc.text(`Page ${i} of ${total}`, PAGE_W - M, PAGE_H - 8, { align: "right" });
+    }
+
+    doc.save(`${career.title}-Roadmap-SkillTa.pdf`);
   };
 
   const phaseColors = [
