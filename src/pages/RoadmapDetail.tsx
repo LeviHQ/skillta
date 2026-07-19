@@ -57,6 +57,18 @@ export default function RoadmapDetail() {
     const setDraw = (c: [number, number, number]) => doc.setDrawColor(c[0], c[1], c[2]);
     const setText = (c: [number, number, number]) => doc.setTextColor(c[0], c[1], c[2]);
 
+    // Sanitize text for jsPDF built-in helvetica (WinAnsi). Replace unsupported
+    // glyphs like ₹ and → that render as garbage / cause weird letter spacing.
+    const T = (s: string) =>
+      (s || "")
+        .replace(/₹/g, "Rs ")
+        .replace(/→/g, "->")
+        .replace(/–|—/g, "-")
+        .replace(/’|‘/g, "'")
+        .replace(/“|”/g, '"')
+        .replace(/•/g, "-")
+        .replace(/[^\x20-\x7E]/g, "");
+
     let y = M;
 
     const newPage = () => {
