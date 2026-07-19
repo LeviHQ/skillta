@@ -1,7 +1,7 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
-import { Menu, X, LayoutDashboard, ChevronDown, Brain, TrendingUp, Icon, BookOpen, ArrowLeftRight } from "lucide-react";
+import { Menu, X, LayoutDashboard, ChevronDown, Brain, TrendingUp, Icon, BookOpen, ArrowLeftRight, FileText } from "lucide-react";
 import logo from "@/assets/logo.png";
 import { useAuth } from "@/contexts/AuthContext";
 import { usePlan } from "@/contexts/PlanContext";
