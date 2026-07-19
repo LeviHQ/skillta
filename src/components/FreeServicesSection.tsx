@@ -81,7 +81,7 @@ export default function FreeServicesSection() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 md:grid-rows-4 md:grid-flow-col gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
           {services.map((s, i) => (
             <motion.div
               key={s.path}
