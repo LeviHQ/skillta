@@ -163,6 +163,40 @@ export default function Dashboard() {
                   </button>
                 </div>
               </div>
+
+              {/* Extra service usage row */}
+              <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="p-4 rounded-xl bg-secondary/40 border border-border">
+                  <div className="flex items-center justify-between mb-2">
+                    <p className="text-xs text-muted-foreground">Resume Reviews Today</p>
+                    <Zap className="w-4 h-4 text-accent" />
+                  </div>
+                  <p className="text-xl font-bold text-foreground">
+                    {resumeUsage} <span className="text-sm font-normal text-muted-foreground">/ {resumeDailyLimit}</span>
+                  </p>
+                  <div className="mt-2 h-1.5 rounded-full bg-secondary overflow-hidden">
+                    <div
+                      className="h-full bg-gradient-primary rounded-full transition-all"
+                      style={{ width: `${Math.min(100, (resumeUsage / Math.max(1, resumeDailyLimit)) * 100)}%` }}
+                    />
+                  </div>
+                </div>
+                <div className="p-4 rounded-xl bg-secondary/40 border border-border">
+                  <div className="flex items-center justify-between mb-2">
+                    <p className="text-xs text-muted-foreground">Skill Gap Analyses Today</p>
+                    <Zap className="w-4 h-4 text-accent" />
+                  </div>
+                  <p className="text-xl font-bold text-foreground">
+                    {skillGapUsage} <span className="text-sm font-normal text-muted-foreground">/ {skillGapDailyLimit}</span>
+                  </p>
+                  <div className="mt-2 h-1.5 rounded-full bg-secondary overflow-hidden">
+                    <div
+                      className="h-full bg-gradient-primary rounded-full transition-all"
+                      style={{ width: `${Math.min(100, (skillGapUsage / Math.max(1, skillGapDailyLimit)) * 100)}%` }}
+                    />
+                  </div>
+                </div>
+
             ) : (
               <div className="text-center py-6">
                 <p className="text-sm text-muted-foreground mb-4">You don't have an active plan yet.</p>
