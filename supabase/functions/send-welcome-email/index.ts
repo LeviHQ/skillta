@@ -109,6 +109,7 @@ serve(async (req) => {
                   ✅ <strong>Interview Prep</strong> — Practice with role-specific AI interviews<br/>
                   ✅ <strong>60+ Career Roadmaps</strong> — Step-by-step guides, beginner to expert<br/>
                   ✅ <strong>Compare Careers</strong> — Side-by-side salary, demand &amp; difficulty<br/>
+                  ✅ <strong>AI Resume Reviewer</strong> — Instant ATS score, keyword gaps &amp; bullet rewrites<br/>
                   ✅ <strong>Saathi AI Assistant</strong> — Your always-on career mentor
                 </p>
               </div>

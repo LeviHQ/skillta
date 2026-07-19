@@ -67,6 +67,7 @@ serve(async (req) => {
             🎯 <a href="https://skillta.tech/interview-prep" style="color:#7c3aed;text-decoration:none;font-weight:600;">Interview Prep</a> — role-specific practice<br/>
             🗺️ <a href="https://skillta.tech/roadmaps" style="color:#7c3aed;text-decoration:none;font-weight:600;">Roadmap Library</a> — 60+ tech paths<br/>
             ⚖️ <a href="https://skillta.tech/compare" style="color:#7c3aed;text-decoration:none;font-weight:600;">Compare Careers</a> — side-by-side<br/>
+            📄 <a href="https://skillta.tech/resume-reviewer" style="color:#7c3aed;text-decoration:none;font-weight:600;">AI Resume Reviewer</a> — instant ATS score &amp; rewrites<br/>
             📚 <a href="https://skillta.tech/blog" style="color:#7c3aed;text-decoration:none;font-weight:600;">Blog</a> — trending tech deep-dives
           </p>
         </div>

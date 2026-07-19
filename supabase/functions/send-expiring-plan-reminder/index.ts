@@ -52,6 +52,7 @@ function buildHtml(name: string, planName: string, expiresAt: string) {
             ✅ 3 AI Career Quiz attempts / day<br/>
             ✅ Unlimited Salary Predictor &amp; Interview Prep<br/>
             ✅ Full 60+ Roadmap Library &amp; Compare Careers<br/>
+            ✅ Unlimited AI Resume Reviewer<br/>
             ✅ Saved dashboard history
           </p>
         </div>
