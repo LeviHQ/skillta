@@ -91,9 +91,63 @@ function ScoreRing({ score, label }: { score: number; label: string }) {
   );
 }
 
+const TECH_ROLES = [
+  "Frontend Engineer",
+  "Backend Engineer",
+  "Full Stack Engineer",
+  "Mobile Engineer (iOS/Android)",
+  "React Native Developer",
+  "Flutter Developer",
+  "Software Engineer (Generalist)",
+  "DevOps Engineer",
+  "Site Reliability Engineer (SRE)",
+  "Cloud Engineer (AWS/GCP/Azure)",
+  "Platform Engineer",
+  "Data Engineer",
+  "Data Analyst",
+  "Data Scientist",
+  "Machine Learning Engineer",
+  "AI/ML Research Engineer",
+  "MLOps Engineer",
+  "Prompt Engineer",
+  "Generative AI Engineer",
+  "Computer Vision Engineer",
+  "NLP Engineer",
+  "Analytics Engineer",
+  "Business Intelligence Analyst",
+  "QA Engineer / SDET",
+  "Automation Test Engineer",
+  "Security Engineer",
+  "Cybersecurity Analyst",
+  "Penetration Tester",
+  "Blockchain Developer",
+  "Smart Contract Engineer",
+  "Web3 Engineer",
+  "Game Developer",
+  "AR/VR Engineer",
+  "Embedded Systems Engineer",
+  "IoT Engineer",
+  "Systems / Rust Engineer",
+  "Database Administrator (DBA)",
+  "Solutions Architect",
+  "Technical Lead",
+  "Engineering Manager",
+  "Product Manager (Tech)",
+  "Technical Program Manager",
+  "UI/UX Designer",
+  "Product Designer",
+  "Technical Writer",
+  "Developer Advocate",
+  "Salesforce Developer",
+  "SAP Consultant",
+  "Support / Solutions Engineer",
+];
+
 export default function ResumeReviewer() {
   const [resume, setResume] = useState("");
   const [role, setRole] = useState("");
+  const [roleSelect, setRoleSelect] = useState("");
+  const [customRole, setCustomRole] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [review, setReview] = useState<Review | null>(null);
