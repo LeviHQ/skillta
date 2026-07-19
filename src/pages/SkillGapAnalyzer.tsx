@@ -28,6 +28,7 @@ import SignInModal from "@/components/SignInModal";
 import SubscribeRequiredModal from "@/components/SubscribeRequiredModal";
 import CongratsModal from "@/components/CongratsModal";
 import AdsterraNativeBanner from "@/components/AdsterraNativeBanner";
+import AdsterraResponsiveBanner from "@/components/AdsterraResponsiveBanner";
 import SEOHead from "@/components/SEOHead";
 import { supabase } from "@/integrations/supabase/client";
 
@@ -185,6 +186,8 @@ export default function SkillGapAnalyzer() {
         path="/skill-gap-analyzer"
         keywords="skill gap analyzer, tech skill assessment, learning roadmap, missing skills, career gap analysis"
       />
+
+      <AdsterraResponsiveBanner />
 
       {/* HERO */}
       <section className="pt-16 pb-10 border-b border-border bg-gradient-to-b from-accent/5 to-background">

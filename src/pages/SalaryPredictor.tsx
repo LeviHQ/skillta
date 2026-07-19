@@ -6,6 +6,7 @@ import { supabase } from "@/integrations/supabase/client";
 import SupportBanner from "@/components/SupportBanner";
 import ResumeReviewerCTA from "@/components/ResumeReviewerCTA";
 import SkillGapAnalyzerCTA from "@/components/SkillGapAnalyzerCTA";
+import AdsterraResponsiveBanner from "@/components/AdsterraResponsiveBanner";
 import { z } from "zod";
 
 const schema = z.object({
@@ -105,6 +106,7 @@ export default function SalaryPredictor() {
         <link rel="canonical" href="https://skillta.tech/salary-predictor" />
       </Helmet>
 
+      <AdsterraResponsiveBanner />
       <div className="container mx-auto px-4 sm:px-6 py-10 max-w-5xl">
         <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-10">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold mb-4">

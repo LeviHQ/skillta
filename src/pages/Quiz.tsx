@@ -13,6 +13,7 @@ import SEOHead from "@/components/SEOHead";
 import { PAGE_SEO } from "@/lib/seo";
 import SupportBanner from "@/components/SupportBanner";
 import AdsterraNativeBanner from "@/components/AdsterraNativeBanner";
+import AdsterraResponsiveBanner from "@/components/AdsterraResponsiveBanner";
 
 import { QuizAnswers } from "@/data/careers";
 
@@ -113,6 +114,7 @@ export default function Quiz() {
       <div className="min-h-screen bg-gradient-hero relative">
         <div className="absolute inset-0 grid-pattern opacity-30" />
 
+        <AdsterraResponsiveBanner />
         <div className="container mx-auto px-6 py-12 relative z-10">
           <h1 className="sr-only">Career Quiz</h1>
           {/* Progress */}

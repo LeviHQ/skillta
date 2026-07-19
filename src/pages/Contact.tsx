@@ -4,6 +4,7 @@ import SEOHead from "@/components/SEOHead";
 import { PAGE_SEO, getBreadcrumbSchema } from "@/lib/seo";
 //import founderPhoto from "@/assets/adarsh-founder.jpg.asset.json";
 import founderPhoto from "@/assets/MyProfile.jpg";
+import AdsterraResponsiveBanner from "@/components/AdsterraResponsiveBanner";
 
 const EMAIL = "adarshmishra70931@gmail.com";
 const GITHUB = "https://github.com/Code-By-Adarsh";
@@ -19,6 +20,7 @@ export default function Contact() {
         description="Reach out to Adarsh Mishra, founder of SkillTa. Connect via email, GitHub, or LinkedIn."
         jsonLd={getBreadcrumbSchema([{ name: "Home", path: "/" }, { name: "Contact", path: "/contact" }])}
       />
+      <AdsterraResponsiveBanner />
       <div className="min-h-screen py-16 px-4">
         <div className="container mx-auto max-w-3xl">
           {/* Header */}

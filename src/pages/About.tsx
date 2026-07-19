@@ -3,6 +3,7 @@ import { Compass, Target, Heart, Lightbulb } from "lucide-react";
 import SEOHead from "@/components/SEOHead";
 import { PAGE_SEO, getBreadcrumbSchema } from "@/lib/seo";
 import SupportBanner from "@/components/SupportBanner";
+import AdsterraResponsiveBanner from "@/components/AdsterraResponsiveBanner";
 export default function About() {
   return (
     <div className="min-h-screen bg-gradient-hero relative">
@@ -10,6 +11,7 @@ export default function About() {
         {...PAGE_SEO.about}
         jsonLd={getBreadcrumbSchema([{ name: "Home", path: "/" }, { name: "About", path: "/about" }])}
       />
+      <AdsterraResponsiveBanner />
       <div className="container mx-auto px-6 py-16 relative z-10">
         <motion.div
           className="max-w-3xl mx-auto"

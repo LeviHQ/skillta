@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Heart, Sparkles, Target, Users, Coffee } from "lucide-react";
 import SEOHead from "@/components/SEOHead";
+import AdsterraResponsiveBanner from "@/components/AdsterraResponsiveBanner";
 
 export default function Story() {
   return (
@@ -9,6 +10,7 @@ export default function Story() {
         title="Our Story — SkillTa"
         description="The story behind SkillTa — why we're building a free, ad-free AI career guidance platform for students."
       />
+      <AdsterraResponsiveBanner />
       <div className="container mx-auto px-6 max-w-3xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

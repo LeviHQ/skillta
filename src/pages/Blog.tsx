@@ -5,6 +5,7 @@ import SEOHead from "@/components/SEOHead";
 import { PAGE_SEO, getBreadcrumbSchema } from "@/lib/seo";
 import { BookOpen, ArrowRight, Calendar, Clock, Filter, Globe, ChevronDown, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import AdsterraResponsiveBanner from "@/components/AdsterraResponsiveBanner";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -44,6 +45,7 @@ export default function Blog() {
           { name: "Blog", path: "/blog" },
         ])}
       />
+      <AdsterraResponsiveBanner />
 
       {/* Hero */}
       <section className="relative py-16 md:py-20 overflow-hidden">

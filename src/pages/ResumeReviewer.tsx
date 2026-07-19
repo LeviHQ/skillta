@@ -18,6 +18,7 @@ import {
 import { supabase } from "@/integrations/supabase/client";
 import SupportBanner from "@/components/SupportBanner";
 import AdsterraNativeBanner from "@/components/AdsterraNativeBanner";
+import AdsterraResponsiveBanner from "@/components/AdsterraResponsiveBanner";
 import SignInModal from "@/components/SignInModal";
 import SubscribeRequiredModal from "@/components/SubscribeRequiredModal";
 import CongratsModal from "@/components/CongratsModal";
@@ -485,6 +486,7 @@ export default function ResumeReviewer() {
       </Helmet>
 
       <div className="min-h-screen bg-background">
+        <AdsterraResponsiveBanner />
         {/* Hero */}
         <section className="relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-transparent to-transparent" />

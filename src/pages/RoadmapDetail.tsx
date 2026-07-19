@@ -5,6 +5,7 @@ import { ArrowLeft, Download, Clock, TrendingUp, DollarSign, AlertTriangle, Book
 import { useRef } from "react";
 import SEOHead from "@/components/SEOHead";
 import AdsterraNativeBanner from "@/components/AdsterraNativeBanner";
+import AdsterraResponsiveBanner from "@/components/AdsterraResponsiveBanner";
 import ResumeReviewerCTA from "@/components/ResumeReviewerCTA";
 import SkillGapAnalyzerCTA from "@/components/SkillGapAnalyzerCTA";
 import { getCourseSchema, getBreadcrumbSchema } from "@/lib/seo";
@@ -461,7 +462,9 @@ export default function RoadmapDetail() {
           ]),
         ]}
       />
+      <AdsterraResponsiveBanner />
       <div className="container mx-auto px-6 py-12 relative z-10">
+
 
         {/* Back + Download */}
         <div className="flex items-center justify-between mb-8 no-print">

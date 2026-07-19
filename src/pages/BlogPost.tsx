@@ -6,6 +6,7 @@ import { ArrowLeft, Calendar, Clock, BookOpen } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import { motion } from "framer-motion";
 import AdsterraNativeBanner from "@/components/AdsterraNativeBanner";
+import AdsterraResponsiveBanner from "@/components/AdsterraResponsiveBanner";
 import ResumeReviewerCTA from "@/components/ResumeReviewerCTA";
 
 export default function BlogPost() {
@@ -34,6 +35,7 @@ export default function BlogPost() {
           ]),
         ]}
       />
+      <AdsterraResponsiveBanner />
 
       <article className="container mx-auto px-6 py-12 md:py-16">
         <motion.div
