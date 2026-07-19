@@ -17,73 +17,131 @@ const chatTree: Record<string, ChatNode> = {
     message: "Hey there! 👋 I'm Saathi, your SkillTa guide. How can I help you today?",
     options: [
       { label: "🧭 Career guidance", nextId: "career" },
-      { label: "📝 How to take the quiz?", nextId: "quiz_help" },
-      { label: "🗺️ View roadmaps", nextId: "roadmap_help" },
-      { label: "📊 Where's my dashboard?", nextId: "dashboard_help" },
-      { label: "💰 Pricing info", nextId: "pricing_help" },
+      { label: "📝 Career Quiz", nextId: "quiz_help" },
+      { label: "🗺️ Roadmap Library", nextId: "roadmap_help" },
+      { label: "💰 Salary Predictor", nextId: "salary_help" },
+      { label: "🎤 Interview Prep", nextId: "interview_help" },
+      { label: "⚖️ Compare Careers", nextId: "compare_help" },
+      { label: "📚 Blogs & Country Guides", nextId: "blog_help" },
+      { label: "📊 Dashboard & History", nextId: "dashboard_help" },
+      { label: "💎 Pricing & Free Plan", nextId: "pricing_help" },
       { label: "🤔 Something else", nextId: "other" },
     ],
   },
   career: {
     id: "career",
-    message: "For career guidance, our AI-powered Career Quiz is the best place to start! 10 questions to find your perfect career match. 🎯",
+    message: "For career guidance, start with our AI Career Quiz — 10 questions to find your perfect match. Then explore roadmaps, compare careers, or predict salary. 🎯",
     options: [
       { label: "Start the quiz", nextId: "quiz_go" },
-      { label: "Explore careers first", nextId: "roadmap_go" },
+      { label: "Explore roadmaps", nextId: "roadmap_go" },
       { label: "Compare careers", nextId: "compare_go" },
+      { label: "Predict my salary", nextId: "salary_go" },
     ],
   },
   quiz_help: {
     id: "quiz_help",
-    message: "Taking the quiz is super easy! 🎮 Just 10 objective questions — no right or wrong answers, only your preferences matter.",
+    message: "The Career Quiz is 10 objective questions — no right/wrong, only your preferences. Free plan = 3 attempts per day. Results are saved in your dashboard. 🎮",
     options: [
-      { label: "Let's go to the quiz!", nextId: "quiz_go" },
-      { label: "How do I see results?", nextId: "results_help" },
+      { label: "Take the quiz now", nextId: "quiz_go" },
+      { label: "How do results work?", nextId: "results_help" },
       { label: "Do I need to sign in?", nextId: "signin_help" },
     ],
   },
   quiz_go: {
     id: "quiz_go",
-    message: "Perfect! Let me take you to the quiz page. ✨ Good luck!",
+    message: "Perfect! Taking you to the quiz. ✨ Good luck!",
     action: { label: "🚀 Start Quiz", path: "/quiz" },
   },
   results_help: {
     id: "results_help",
-    message: "After completing the quiz, you'll be automatically redirected to the results page. Your top career matches will be shown with match percentages! 📊",
+    message: "After the quiz you're redirected to results with your top career matches + match %. Signed-in users get everything saved in the dashboard. 📊",
     options: [
       { label: "Take the quiz now", nextId: "quiz_go" },
-      { label: "Are results saved?", nextId: "dashboard_help" },
+      { label: "Show me dashboard", nextId: "dashboard_go" },
     ],
   },
   signin_help: {
     id: "signin_help",
-    message: "Sign in is NOT required to take the quiz! 🎉 But if you want to save your results and access the dashboard, sign in with Google.",
+    message: "Sign in is NOT required to take the quiz. But sign in with Google to save results, track history, and unlock the dashboard. 🔐",
     options: [
-      { label: "Let's take the quiz", nextId: "quiz_go" },
-      { label: "Show me the dashboard", nextId: "dashboard_go" },
+      { label: "Take the quiz", nextId: "quiz_go" },
+      { label: "Show me dashboard", nextId: "dashboard_go" },
     ],
   },
   roadmap_help: {
     id: "roadmap_help",
-    message: "The Roadmap Library has 50+ tech career roadmaps with complete step-by-step guides — skills, tools, timeline, everything! 🗺️",
+    message: "Roadmap Library has 60+ tech career roadmaps (including 2026 trending: GenAI, Prompt Engineer, Rust, Web3 & more). Each has skills, tools, timeline, resources + downloadable PDF. 🗺️",
     options: [
-      { label: "View roadmaps", nextId: "roadmap_go" },
-      { label: "Find my match via quiz first", nextId: "quiz_go" },
+      { label: "Open Roadmap Library", nextId: "roadmap_go" },
+      { label: "Find my match first", nextId: "quiz_go" },
+      { label: "Compare 2 careers", nextId: "compare_go" },
     ],
   },
   roadmap_go: {
     id: "roadmap_go",
-    message: "Let's head to the Roadmap Library! Explore and choose your path. 💪",
+    message: "Let's head to the Roadmap Library! Pick your path. 💪",
     action: { label: "🗺️ Roadmap Library", path: "/roadmaps" },
+  },
+  salary_help: {
+    id: "salary_help",
+    message: "Salary Predictor uses AI to estimate CTC based on your role, experience, skills & location. Unlimited on free plan! 💰",
+    options: [
+      { label: "Predict my salary", nextId: "salary_go" },
+      { label: "Read country salary guides", nextId: "blog_country_go" },
+    ],
+  },
+  salary_go: {
+    id: "salary_go",
+    message: "Taking you to Salary Predictor. Fill in details & get your instant estimate! 💸",
+    action: { label: "💰 Salary Predictor", path: "/salary-predictor" },
+  },
+  interview_help: {
+    id: "interview_help",
+    message: "Interview Prep gives you a real mock interview — pick your role, level & skills. 10 questions per round (MCQ + writing). Every attempt is saved in your dashboard for review. 🎤",
+    options: [
+      { label: "Start Interview Prep", nextId: "interview_go" },
+      { label: "See my past attempts", nextId: "dashboard_go" },
+    ],
+  },
+  interview_go: {
+    id: "interview_go",
+    message: "Time to practice! Choose your role & level and let's go. 🎯",
+    action: { label: "🎤 Interview Prep", path: "/interview-prep" },
+  },
+  compare_help: {
+    id: "compare_help",
+    message: "Compare Careers lets you evaluate 2 roles side-by-side — salary, demand, skills, difficulty, growth. Unlimited on free plan. ⚖️",
+    options: [
+      { label: "Open Compare Careers", nextId: "compare_go" },
+      { label: "Browse roadmaps first", nextId: "roadmap_go" },
+    ],
   },
   compare_go: {
     id: "compare_go",
-    message: "On the Compare page you can view 2 careers side-by-side — salary, skills, demand and more! ⚖️",
+    message: "Opening Compare Careers — pick any 2 and analyze! ⚖️",
     action: { label: "⚖️ Compare Careers", path: "/compare" },
+  },
+  blog_help: {
+    id: "blog_help",
+    message: "Our Blog has 90+ SEO-optimized articles — trending tech topics, career guides, and country-wise salary guides (USA, UK, Canada, Australia, Germany, Russia). Use the Country filter on the Blog page! 📚",
+    options: [
+      { label: "Read the blog", nextId: "blog_go" },
+      { label: "Country salary guides", nextId: "blog_country_go" },
+    ],
+  },
+  blog_go: {
+    id: "blog_go",
+    message: "Latest tech + career articles await. 📚",
+    action: { label: "📚 Read Blog", path: "/blog" },
+  },
+  blog_country_go: {
+    id: "blog_country_go",
+    message: "On the Blog page, tap the Category dropdown → Country → pick a flag (USA, UK, etc.) to see local salary guides. 🌍",
+    action: { label: "🌍 Open Blog", path: "/blog" },
   },
   dashboard_help: {
     id: "dashboard_help",
-    message: "Your Dashboard holds your saved quiz results, career matches and progress — just make sure you're signed in! 🔐",
+    message: "Your Dashboard has: saved quiz results, career matches, salary predictions, and Interview Prep history (previous attempts + analysis). Sign in to unlock. 📊",
     options: [
       { label: "Go to dashboard", nextId: "dashboard_go" },
       { label: "How do I sign in?", nextId: "signin_help" },
@@ -91,40 +149,36 @@ const chatTree: Record<string, ChatNode> = {
   },
   dashboard_go: {
     id: "dashboard_go",
-    message: "Dashboard is ready! 🎯 You'll get direct access once signed in.",
+    message: "Dashboard ready — sign in to access all your saved data. 🎯",
     action: { label: "📊 Dashboard", path: "/dashboard" },
   },
   pricing_help: {
     id: "pricing_help",
-    message: "SkillTa's quiz and basic features are completely FREE! Premium plans offer advanced roadmaps and AI mentoring. 💎",
+    message: "Free plan: 3 quiz attempts/day + UNLIMITED Salary Predictor, Interview Prep, Roadmap Library & Compare Careers. Plan is 1-month; auto-deactivates on expiry — reactivate anytime. 💎",
     options: [
       { label: "View pricing", nextId: "pricing_go" },
-      { label: "What's free?", nextId: "free_features" },
+      { label: "What's included free?", nextId: "free_features" },
     ],
   },
   pricing_go: {
     id: "pricing_go",
-    message: "Let me take you to the pricing section! 💰",
+    message: "Taking you to pricing! 💰",
     action: { label: "💰 View Pricing", path: "/#pricing" },
   },
   free_features: {
     id: "free_features",
-    message: "Free tier includes: Career Quiz, Top 3 Matches, Roadmap Library, and Blog/Resources! 🎁 Plenty to explore without paying a thing.",
+    message: "Free tier: Career Quiz (3/day), Top matches, Unlimited Salary Predictor, Unlimited Interview Prep, Roadmap Library, Compare Careers, Blogs. 🎁",
     options: [
-      { label: "Take the free quiz", nextId: "quiz_go" },
-      { label: "Read the blog", nextId: "blog_go" },
+      { label: "Start free quiz", nextId: "quiz_go" },
+      { label: "Try Interview Prep", nextId: "interview_go" },
+      { label: "Predict salary", nextId: "salary_go" },
     ],
-  },
-  blog_go: {
-    id: "blog_go",
-    message: "The blog has the latest tech career articles, tips and guides. Read and grow! 📚",
-    action: { label: "📚 Read Blog", path: "/blog" },
   },
   other: {
     id: "other",
     message: "No problem! What are you looking for? 🤗",
     options: [
-      { label: "Contact / Support", nextId: "contact_go" },
+      { label: "Contact founder", nextId: "contact_go" },
       { label: "About SkillTa", nextId: "about_go" },
       { label: "Blog articles", nextId: "blog_go" },
       { label: "Terms & Privacy", nextId: "legal" },
@@ -132,12 +186,12 @@ const chatTree: Record<string, ChatNode> = {
   },
   contact_go: {
     id: "contact_go",
-    message: "You can reach us on the Contact page! 📬 We reply quickly.",
-    action: { label: "📬 Contact Us", path: "/contact" },
+    message: "Reach the founder directly via email, GitHub or LinkedIn on the Contact page. 📬",
+    action: { label: "📬 Contact Founder", path: "/contact" },
   },
   about_go: {
     id: "about_go",
-    message: "The About page has SkillTa's mission, team and vision! 🌟",
+    message: "About page has SkillTa's mission, vision & story. 🌟",
     action: { label: "🌟 About SkillTa", path: "/about" },
   },
   legal: {
@@ -150,12 +204,12 @@ const chatTree: Record<string, ChatNode> = {
   },
   terms_go: {
     id: "terms_go",
-    message: "Let me take you to the Terms of Service! 📜",
+    message: "Opening Terms of Service. 📜",
     action: { label: "📜 Terms", path: "/terms" },
   },
   privacy_go: {
     id: "privacy_go",
-    message: "Let's check the Privacy Policy! 🔒",
+    message: "Opening Privacy Policy. 🔒",
     action: { label: "🔒 Privacy Policy", path: "/privacy" },
   },
 };
