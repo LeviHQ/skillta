@@ -147,7 +147,7 @@ export default function SkillGapAnalyzer() {
       <SEOHead
         title="Skill Gap Analyzer — Compare Your Skills vs Any Tech Role | SkillTa"
         description="Free algorithm-driven skill gap analyzer. Enter your current skills and target role — get missing skills, match %, and a weekly study roadmap. 3 free analyses/day."
-        url="/skill-gap-analyzer"
+        path="/skill-gap-analyzer"
         keywords="skill gap analyzer, tech skill assessment, learning roadmap, missing skills, career gap analysis"
       />
 
