@@ -287,16 +287,30 @@ export default function ResumeReviewer() {
             <div className="flex flex-col md:flex-row md:items-end gap-4 mb-5">
               <div className="flex-1">
                 <label className="block text-sm font-semibold text-foreground mb-2">
-                  Target Role <span className="text-muted-foreground font-normal">(optional)</span>
+                  Target Role <span className="text-rose-400 font-normal">*</span>
                 </label>
-                <input
-                  type="text"
-                  value={role}
-                  onChange={(e) => setRole(e.target.value)}
-                  placeholder="e.g. Frontend Engineer, Data Scientist, DevOps Engineer"
-                  className="w-full px-4 py-3 rounded-lg bg-background/60 border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/60 transition-colors"
-                  maxLength={120}
-                />
+                <select
+                  value={roleSelect}
+                  onChange={(e) => setRoleSelect(e.target.value)}
+                  className="w-full px-4 py-3 rounded-lg bg-background/60 border border-border text-foreground focus:outline-none focus:border-primary/60 transition-colors"
+                >
+                  <option value="">Select a target role…</option>
+                  {TECH_ROLES.map((r) => (
+                    <option key={r} value={r}>{r}</option>
+                  ))}
+                  <option value="__custom__">Other (type your own)…</option>
+                </select>
+                {roleSelect === "__custom__" && (
+                  <input
+                    type="text"
+                    value={customRole}
+                    onChange={(e) => setCustomRole(e.target.value)}
+                    placeholder="Type your target role (e.g. Robotics Software Engineer)"
+                    className="mt-2 w-full px-4 py-3 rounded-lg bg-background/60 border border-primary/40 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/60 transition-colors"
+                    maxLength={120}
+                    autoFocus
+                  />
+                )}
               </div>
               <div>
                 <input
