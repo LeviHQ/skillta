@@ -115,7 +115,7 @@ export default function Index() {
       {/* Who Is It For */}
       <WhoIsItForSection />
 
-      <AdsterraNativeBanner />
+
 
 
 
@@ -208,15 +208,13 @@ export default function Index() {
         </div>
       </section>
 
-      <AdsterraNativeBanner />
-
       {/* Pricing */}
       <PricingSection />
 
       {/* How to use */}
       <HowToUseSection />
 
-      <AdsterraNativeBanner />
+
 
 
       {/* Accuracy */}
