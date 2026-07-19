@@ -356,6 +356,9 @@ export default function RoadmapDetail() {
             </div>
           </motion.div>
 
+          {/* Sponsored - Native Banner (between Reality Check & Salary Range) */}
+          <AdsterraNativeBanner />
+
           {/* Salary Section */}
           <motion.div
             className="max-w-3xl mx-auto mb-16"
@@ -379,9 +382,6 @@ export default function RoadmapDetail() {
             </div>
           </motion.div>
         </div>
-
-        {/* Sponsored - Native Banner */}
-        <AdsterraNativeBanner />
 
         {/* CTA */}
         <div className="max-w-3xl mx-auto text-center no-print">
