@@ -19,8 +19,12 @@ import { supabase } from "@/integrations/supabase/client";
 import SupportBanner from "@/components/SupportBanner";
 import AdsterraNativeBanner from "@/components/AdsterraNativeBanner";
 import SignInModal from "@/components/SignInModal";
+import SubscribeRequiredModal from "@/components/SubscribeRequiredModal";
+import CongratsModal from "@/components/CongratsModal";
 import { useAuth } from "@/contexts/AuthContext";
+import { usePlan } from "@/contexts/PlanContext";
 import jsPDF from "jspdf";
+
 
 interface RewriteItem {
   original: string;
@@ -156,8 +160,17 @@ export default function ResumeReviewer() {
   const [review, setReview] = useState<Review | null>(null);
   const [fileName, setFileName] = useState<string | null>(null);
   const [showSignIn, setShowSignIn] = useState(false);
+  const [showSubscribe, setShowSubscribe] = useState(false);
+  const [showCongrats, setShowCongrats] = useState(false);
+  const [congratsExpiry, setCongratsExpiry] = useState<string | undefined>();
   const fileRef = useRef<HTMLInputElement>(null);
   const { user } = useAuth();
+  const { plan, resumeUsage, resumeDailyLimit, activateFreePlan, refreshPlan } = usePlan();
+
+  const noPlan = !!user && !plan;
+  const limitReached = !!plan && resumeUsage >= resumeDailyLimit;
+  const locked = noPlan || limitReached;
+
 
   const clearAll = () => {
     setResume("");
@@ -205,6 +218,14 @@ export default function ResumeReviewer() {
       setShowSignIn(true);
       return;
     }
+    if (noPlan) {
+      setShowSubscribe(true);
+      return;
+    }
+    if (limitReached) {
+      setError(`Daily limit reached — you've used all ${resumeDailyLimit} free resume reviews today. Your quota resets tomorrow at 00:00 UTC.`);
+      return;
+    }
     if (!resolvedRole) {
       setError("Please select a target role (or choose Custom and type one).");
       return;
@@ -223,21 +244,35 @@ export default function ResumeReviewer() {
       });
 
       if (error) {
-        // Supabase wraps non-2xx as a generic error; try to read the server body.
         const ctx: any = (error as any)?.context;
         let serverMsg: string | null = null;
+        let serverCode: string | null = null;
         try {
           const text = ctx && typeof ctx.text === "function" ? await ctx.text() : null;
           if (text) {
             const parsed = JSON.parse(text);
             serverMsg = parsed?.message || parsed?.error || null;
+            serverCode = parsed?.error || null;
           }
         } catch { /* ignore */ }
+        if (serverCode === "no_plan") {
+          await refreshPlan();
+          setShowSubscribe(true);
+          return;
+        }
         throw new Error(serverMsg || error.message || "Request failed");
       }
-      if (data?.error) throw new Error(data.message || data.error);
+      if (data?.error) {
+        if (data.error === "no_plan") {
+          await refreshPlan();
+          setShowSubscribe(true);
+          return;
+        }
+        throw new Error(data.message || data.error);
+      }
       setReview(data.review as Review);
-      // Scroll to results
+      // Keep dashboard usage counter in sync
+      refreshPlan().catch(() => {});
       setTimeout(() => {
         document.getElementById("review-results")?.scrollIntoView({ behavior: "smooth", block: "start" });
       }, 100);
@@ -248,6 +283,7 @@ export default function ResumeReviewer() {
       setLoading(false);
     }
   };
+
 
   const reset = () => clearAll();
 
@@ -568,15 +604,30 @@ export default function ResumeReviewer() {
               </div>
             )}
 
+            {user && plan && (
+              <div className="mt-4 inline-flex items-center gap-2 text-xs text-muted-foreground">
+                <Sparkles className="w-3.5 h-3.5 text-primary" />
+                {Math.max(0, resumeDailyLimit - resumeUsage)} of {resumeDailyLimit} free reviews left today
+              </div>
+            )}
+
             <div className="mt-5 flex flex-col sm:flex-row gap-3">
               <button
                 onClick={handleSubmit}
-                disabled={loading}
+                disabled={loading || (!!user && locked)}
                 className="flex-1 flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-gradient-primary text-primary-foreground font-semibold hover:opacity-95 transition-opacity disabled:opacity-60 disabled:cursor-not-allowed"
               >
                 {loading ? (
                   <>
                     <Loader2 className="w-4 h-4 animate-spin" /> Analyzing your resume…
+                  </>
+                ) : noPlan ? (
+                  <>
+                    <Sparkles className="w-4 h-4" /> Subscription required
+                  </>
+                ) : limitReached ? (
+                  <>
+                    <Sparkles className="w-4 h-4" /> Daily limit reached — try tomorrow
                   </>
                 ) : (
                   <>
@@ -593,6 +644,7 @@ export default function ResumeReviewer() {
                 </button>
               )}
             </div>
+
           </div>
         </section>
 
@@ -762,6 +814,24 @@ export default function ResumeReviewer() {
         onClose={() => { setShowSignIn(false); clearAll(); }}
         message="Please sign in to get your free AI-powered resume review."
       />
+      <SubscribeRequiredModal
+        open={showSubscribe}
+        onClose={() => setShowSubscribe(false)}
+        onGetStartedFree={async () => {
+          const p = await activateFreePlan();
+          if (p) {
+            setCongratsExpiry(p.expiresAt);
+            setShowCongrats(true);
+          }
+        }}
+      />
+      <CongratsModal
+        open={showCongrats}
+        onClose={() => setShowCongrats(false)}
+        planName="Free"
+        expiresAt={congratsExpiry}
+      />
+
 
     </>
   );

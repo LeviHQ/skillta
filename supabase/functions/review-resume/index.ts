@@ -87,6 +87,26 @@ Deno.serve(async (req) => {
     let identifier: string;
     let limit: number;
     if (uid) {
+      // Require an active, non-expired plan for signed-in usage (mirrors quiz gating).
+      const { data: planRow } = await supabase
+        .from("user_plans")
+        .select("name, expires_at")
+        .eq("firebase_uid", uid)
+        .maybeSingle();
+      const planActive = planRow && new Date(planRow.expires_at).getTime() >= Date.now();
+      if (!planActive) {
+        // Clean up expired row so client sees "no plan"
+        if (planRow) {
+          await supabase.from("user_plans").delete().eq("firebase_uid", uid);
+        }
+        return new Response(
+          JSON.stringify({
+            error: "no_plan",
+            message: "Subscribe to a plan to use the AI Resume Reviewer.",
+          }),
+          { status: 403, headers: { ...corsHeaders, "Content-Type": "application/json" } },
+        );
+      }
       identifier = `uid:${uid}`;
       limit = DAILY_LIMIT_SIGNED_IN;
     } else {
@@ -98,6 +118,7 @@ Deno.serve(async (req) => {
       identifier = `ip:${await sha256Hex(ip || "unknown")}`;
       limit = DAILY_LIMIT_ANON;
     }
+
 
     const { count, error: countErr } = await supabase
       .from("resume_review_usage")
