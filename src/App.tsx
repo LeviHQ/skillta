@@ -27,6 +27,7 @@ import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import Story from "./pages/Story";
 import SalaryPredictor from "./pages/SalaryPredictor";
+import ResumeReviewer from "./pages/ResumeReviewer";
 import NotFound from "./pages/NotFound";
 import KofiButton from "./components/KofiButton";
 
@@ -60,6 +61,7 @@ const App = () => (
               <Route path="/blog/:slug" element={<BlogPost />} />
               <Route path="/story" element={<Story />} />
               <Route path="/salary-predictor" element={<SalaryPredictor />} />
+              <Route path="/resume-reviewer" element={<ResumeReviewer />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </main>
