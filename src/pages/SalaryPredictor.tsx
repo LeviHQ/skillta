@@ -5,6 +5,7 @@ import { Loader2, TrendingUp, Sparkles, Target, BookOpen, ShieldCheck, Heart, Ar
 import { supabase } from "@/integrations/supabase/client";
 import SupportBanner from "@/components/SupportBanner";
 import ResumeReviewerCTA from "@/components/ResumeReviewerCTA";
+import SkillGapAnalyzerCTA from "@/components/SkillGapAnalyzerCTA";
 import { z } from "zod";
 
 const schema = z.object({
@@ -295,6 +296,7 @@ export default function SalaryPredictor() {
         <div className="mt-10">
           <SupportBanner variant="results" />
           <ResumeReviewerCTA />
+          <SkillGapAnalyzerCTA />
         </div>
 
         <div className="mt-10 text-center">

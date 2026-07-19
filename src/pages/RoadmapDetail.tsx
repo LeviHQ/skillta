@@ -6,6 +6,7 @@ import { useRef } from "react";
 import SEOHead from "@/components/SEOHead";
 import AdsterraNativeBanner from "@/components/AdsterraNativeBanner";
 import ResumeReviewerCTA from "@/components/ResumeReviewerCTA";
+import SkillGapAnalyzerCTA from "@/components/SkillGapAnalyzerCTA";
 import { getCourseSchema, getBreadcrumbSchema } from "@/lib/seo";
 
 export default function RoadmapDetail() {
@@ -668,6 +669,7 @@ export default function RoadmapDetail() {
 
         <div className="max-w-3xl mx-auto no-print">
           <ResumeReviewerCTA />
+          <SkillGapAnalyzerCTA />
         </div>
 
         {/* CTA */}

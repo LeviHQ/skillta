@@ -11,6 +11,7 @@ import {
 import SEOHead from "@/components/SEOHead";
 import { PAGE_SEO } from "@/lib/seo";
 import ResumeReviewerCTA from "@/components/ResumeReviewerCTA";
+import SkillGapAnalyzerCTA from "@/components/SkillGapAnalyzerCTA";
 
 interface QuizResult {
   id?: string;
@@ -479,6 +480,7 @@ export default function Dashboard() {
 
       <div className="container mx-auto px-6 pb-10 relative z-10">
         <ResumeReviewerCTA />
+        <SkillGapAnalyzerCTA />
       </div>
     </div>
   );
