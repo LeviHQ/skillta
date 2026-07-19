@@ -24,7 +24,7 @@ interface QuizResult {
 
 export default function Dashboard() {
   const { user, signOut, getQuizHistory } = useAuth();
-  const { plan, cancelPlan, todayUsage, dailyLimit } = usePlan();
+  const { plan, cancelPlan, todayUsage, dailyLimit, resumeUsage, resumeDailyLimit, skillGapUsage, skillGapDailyLimit } = usePlan();
   const navigate = useNavigate();
   const [history, setHistory] = useState<QuizResult[]>([]);
   const [loading, setLoading] = useState(true);
