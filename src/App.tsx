@@ -27,6 +27,7 @@ import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import Story from "./pages/Story";
 import SalaryPredictor from "./pages/SalaryPredictor";
+import ResumeReviewer from "./pages/ResumeReviewer";
 import NotFound from "./pages/NotFound";
 import KofiButton from "./components/KofiButton";
 
