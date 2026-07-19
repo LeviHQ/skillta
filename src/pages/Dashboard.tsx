@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import SEOHead from "@/components/SEOHead";
 import { PAGE_SEO } from "@/lib/seo";
+import ResumeReviewerCTA from "@/components/ResumeReviewerCTA";
 
 interface QuizResult {
   id?: string;
@@ -475,6 +476,10 @@ export default function Dashboard() {
           </motion.div>
         </div>
       )}
+
+      <div className="container mx-auto px-6 pb-10 relative z-10">
+        <ResumeReviewerCTA />
+      </div>
     </div>
   );
 }
