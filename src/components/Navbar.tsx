@@ -1,7 +1,7 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
-import { Menu, X, LayoutDashboard, ChevronDown, Brain, TrendingUp, Icon, BookOpen, ArrowLeftRight, FileText } from "lucide-react";
+import { Menu, X, LayoutDashboard, ChevronDown, Brain, TrendingUp, Icon, BookOpen, ArrowLeftRight, FileText, Target } from "lucide-react";
 import logo from "@/assets/logo.png";
 import { useAuth } from "@/contexts/AuthContext";
 import { usePlan } from "@/contexts/PlanContext";
@@ -19,6 +19,7 @@ const navLinks = [
 const services = [
   { label: "AI-Powered Career Quiz", path: "/quiz", desc: "Find your best-fit tech career in 5 minutes.", Icon: Brain },
   { label: "AI Resume Reviewer", path: "/resume-reviewer", desc: "Instant ATS score, keyword gaps and bullet rewrites — free.", Icon: FileText },
+  { label: "Skill Gap Analyzer", path: "/skill-gap-analyzer", desc: "See exactly what to learn next for your target role.", Icon: Target },
   { label: "Salary Predictor", path: "/salary-predictor", desc: "Real 2025-2026 market salary + growth advice.", Icon: TrendingUp },
   { label: "Roadmap Library", path: "/roadmaps", desc: "60+ curated step-by-step roadmaps with resources, projects and salary info.", Icon: BookOpen},
   { label: "Compare Careers", path: "/compare", desc: "Side-by-side comparison of any two tech careers — salary, demand, difficulty.", Icon: ArrowLeftRight}

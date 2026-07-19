@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Brain, TrendingUp, MessageSquare, BookOpen, ArrowLeftRight, ArrowRight, Sparkles, FileText } from "lucide-react";
+import { Brain, TrendingUp, MessageSquare, BookOpen, ArrowLeftRight, ArrowRight, Sparkles, FileText, Target } from "lucide-react";
 
 const services = [
   {
@@ -52,6 +52,16 @@ const services = [
     gradient: "from-primary/25 to-primary/5",
     ring: "ring-primary/30",
     accent: "text-primary",
+  },
+  {
+    title: "Skill Gap Analyzer",
+    description: "Match your current skills against any tech role. Get missing skills + a weekly study plan.",
+    limit: "3 free/day",
+    path: "/skill-gap-analyzer",
+    Icon: Target,
+    gradient: "from-info/25 to-info/5",
+    ring: "ring-info/30",
+    accent: "text-info",
   },
 ];
 
