@@ -107,11 +107,41 @@ Deno.serve(async (req) => {
     if (countErr) console.error("usage count error", countErr);
     const used = count ?? 0;
     if (used >= limit) {
+      // Fire limit-reached email once per day for signed-in users (best effort)
+      if (uid) {
+        try {
+          const mailMarker = `resume_limit_mail:${uid}`;
+          const { count: mailSent } = await supabase
+            .from("resume_review_usage")
+            .select("id", { count: "exact", head: true })
+            .eq("identifier", mailMarker)
+            .gte("created_at", todayStart());
+          if (!mailSent) {
+            const { data: profile } = await supabase
+              .from("profiles")
+              .select("email, display_name")
+              .eq("firebase_uid", uid)
+              .maybeSingle();
+            if (profile?.email) {
+              await supabase.functions.invoke("send-resume-limit-reached", {
+                body: {
+                  email: profile.email,
+                  name: profile.display_name || profile.email.split("@")[0],
+                  dailyLimit: limit,
+                },
+              });
+              await supabase.from("resume_review_usage").insert({ identifier: mailMarker });
+            }
+          }
+        } catch (mailErr) {
+          console.error("limit email dispatch failed", mailErr);
+        }
+      }
       return new Response(
         JSON.stringify({
           error: "limit_reached",
           message: uid
-            ? `You've used your ${limit} free resume reviews for today. Please come back tomorrow.`
+            ? `Daily limit reached — you've used all ${limit} free resume reviews today. Your quota resets tomorrow at 00:00 UTC. We've sent you an email reminder so you can come back and analyze more resumes then.`
             : `Free preview limit reached. Sign in with Google to unlock ${DAILY_LIMIT_SIGNED_IN} reviews per day.`,
           used, limit, signedIn: !!uid,
         }),
