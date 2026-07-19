@@ -6,6 +6,7 @@ import logo from "@/assets/logo.png";
 import { useAuth } from "@/contexts/AuthContext";
 import { usePlan } from "@/contexts/PlanContext";
 import SignInModal from "./SignInModal";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 const navLinks = [
   { label: "Home", path: "/" },
@@ -140,6 +141,8 @@ export default function Navbar() {
           </div>
 
           <div className="hidden md:flex items-center gap-3">
+            <LanguageSwitcher compact />
+
             {user ? (
               <>
                 {plan && (
@@ -240,6 +243,9 @@ export default function Navbar() {
                 }
                 return linkEl;
               })}
+              <div className="pt-2 border-t border-border/60">
+                <LanguageSwitcher />
+              </div>
               {user ? (
                 <Link
                   to="/dashboard"
