@@ -133,7 +133,7 @@ export default function Dashboard() {
 
                 <div className="p-4 rounded-xl bg-secondary/40 border border-border">
                   <div className="flex items-center justify-between mb-2">
-                    <p className="text-xs text-muted-foreground">Today's Usage</p>
+                    <p className="text-xs text-muted-foreground">Quiz Usage Today</p>
                     <Zap className="w-4 h-4 text-warning" />
                   </div>
                   <p className="text-xl font-bold text-foreground">
