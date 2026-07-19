@@ -17,6 +17,8 @@ import {
 import { supabase } from "@/integrations/supabase/client";
 import SupportBanner from "@/components/SupportBanner";
 import AdsterraNativeBanner from "@/components/AdsterraNativeBanner";
+import SignInModal from "@/components/SignInModal";
+import { useAuth } from "@/contexts/AuthContext";
 
 interface RewriteItem {
   original: string;
@@ -96,7 +98,18 @@ export default function ResumeReviewer() {
   const [error, setError] = useState<string | null>(null);
   const [review, setReview] = useState<Review | null>(null);
   const [fileName, setFileName] = useState<string | null>(null);
+  const [showSignIn, setShowSignIn] = useState(false);
   const fileRef = useRef<HTMLInputElement>(null);
+  const { user } = useAuth();
+
+  const clearAll = () => {
+    setResume("");
+    setRole("");
+    setReview(null);
+    setError(null);
+    setFileName(null);
+    if (fileRef.current) fileRef.current.value = "";
+  };
 
   const handleFile = async (file: File) => {
     setError(null);
@@ -126,6 +139,10 @@ export default function ResumeReviewer() {
   const handleSubmit = async () => {
     setError(null);
     setReview(null);
+    if (!user) {
+      setShowSignIn(true);
+      return;
+    }
     if (resume.trim().length < 100) {
       setError("Please paste your resume (at least a few sections) or upload a file.");
       return;
@@ -162,14 +179,8 @@ export default function ResumeReviewer() {
     }
   };
 
-  const reset = () => {
-    setResume("");
-    setRole("");
-    setReview(null);
-    setError(null);
-    setFileName(null);
-    if (fileRef.current) fileRef.current.value = "";
-  };
+  const reset = () => clearAll();
+
 
   return (
     <>
@@ -193,7 +204,7 @@ export default function ResumeReviewer() {
               className="max-w-3xl mx-auto text-center"
             >
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/15 border border-primary/30 text-primary text-xs font-semibold mb-4">
-                <Sparkles className="w-3.5 h-3.5" /> 100% Free · No sign-in required
+                <Sparkles className="w-3.5 h-3.5" /> 100% Free · Sign in required
               </div>
               <h1 className="text-3xl md:text-5xl font-bold text-foreground mb-4">
                 AI <span className="text-gradient">Resume Reviewer</span>
@@ -458,6 +469,13 @@ export default function ResumeReviewer() {
 
         <SupportBanner />
       </div>
+
+      <SignInModal
+        open={showSignIn}
+        onClose={() => { setShowSignIn(false); clearAll(); }}
+        message="Please sign in to get your free AI-powered resume review."
+      />
+
     </>
   );
 }

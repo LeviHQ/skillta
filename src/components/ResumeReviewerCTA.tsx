@@ -28,7 +28,7 @@ export default function ResumeReviewerCTA({ variant = "default" }: { variant?: "
         </div>
         <div className="flex-1">
           <div className="flex items-center gap-2 text-xs uppercase tracking-widest text-primary/80 font-semibold mb-1">
-            <Sparkles className="w-3 h-3" /> Free · No sign-in
+            <Sparkles className="w-3 h-3" /> Free · AI-powered
           </div>
           <h4 className="text-lg md:text-xl font-bold text-foreground">
             Is your resume ready for 2026 hiring?
