@@ -4,6 +4,7 @@ import SEOHead from "@/components/SEOHead";
 import { PAGE_SEO, getBreadcrumbSchema } from "@/lib/seo";
 //import founderPhoto from "@/assets/adarsh-founder.jpg.asset.json";
 import founderPhoto from "@/assets/MyProfile.jpg";
+import AdsterraResponsiveBanner from "@/components/AdsterraResponsiveBanner";
 
 const EMAIL = "adarshmishra70931@gmail.com";
 const GITHUB = "https://github.com/Code-By-Adarsh";
