@@ -8,6 +8,7 @@ import { usePlan } from "@/contexts/PlanContext";
 import SEOHead from "@/components/SEOHead";
 import { PAGE_SEO } from "@/lib/seo";
 import SupportBanner from "@/components/SupportBanner";
+import ResumeReviewerCTA from "@/components/ResumeReviewerCTA";
 import SupportModal from "@/components/SupportModal";
 
 interface CareerResult {
@@ -301,6 +302,7 @@ export default function Results() {
           </div>
         </div>
 
+        <ResumeReviewerCTA />
         <SupportBanner variant="results" />
       </div>
       <SupportModal open={showSupport} onClose={() => setShowSupport(false)} />

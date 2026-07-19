@@ -4,6 +4,7 @@ import { Helmet } from "react-helmet-async";
 import { Loader2, TrendingUp, Sparkles, Target, BookOpen, ShieldCheck, Heart, ArrowUpRight } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import SupportBanner from "@/components/SupportBanner";
+import ResumeReviewerCTA from "@/components/ResumeReviewerCTA";
 import { z } from "zod";
 
 const schema = z.object({
@@ -293,6 +294,7 @@ export default function SalaryPredictor() {
 
         <div className="mt-10">
           <SupportBanner variant="results" />
+          <ResumeReviewerCTA />
         </div>
 
         <div className="mt-10 text-center">
