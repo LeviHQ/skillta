@@ -21,6 +21,7 @@ const chatTree: Record<string, ChatNode> = {
       { label: "🗺️ Roadmap Library", nextId: "roadmap_help" },
       { label: "💰 Salary Predictor", nextId: "salary_help" },
       { label: "🎤 Interview Prep", nextId: "interview_help" },
+      { label: "📄 AI Resume Reviewer", nextId: "resume_help" },
       { label: "⚖️ Compare Careers", nextId: "compare_help" },
       { label: "📚 Blogs & Country Guides", nextId: "blog_help" },
       { label: "📊 Dashboard & History", nextId: "dashboard_help" },
@@ -108,6 +109,19 @@ const chatTree: Record<string, ChatNode> = {
     message: "Time to practice! Choose your role & level and let's go. 🎯",
     action: { label: "🎤 Interview Prep", path: "/interview-prep" },
   },
+  resume_help: {
+    id: "resume_help",
+    message: "AI Resume Reviewer gives you an instant ATS score, section-wise feedback, missing keywords, and rewritten bullet points — free, no sign-in needed. 📄",
+    options: [
+      { label: "Review my resume", nextId: "resume_go" },
+      { label: "See other services", nextId: "root" },
+    ],
+  },
+  resume_go: {
+    id: "resume_go",
+    message: "Opening the AI Resume Reviewer — paste your resume or upload a PDF! 📄",
+    action: { label: "📄 AI Resume Reviewer", path: "/resume-reviewer" },
+  },
   compare_help: {
     id: "compare_help",
     message: "Compare Careers lets you evaluate 2 roles side-by-side — salary, demand, skills, difficulty, growth. Unlimited on free plan. ⚖️",
@@ -167,9 +181,10 @@ const chatTree: Record<string, ChatNode> = {
   },
   free_features: {
     id: "free_features",
-    message: "Free tier: Career Quiz (3/day), Top matches, Unlimited Salary Predictor, Unlimited Interview Prep, Roadmap Library, Compare Careers, Blogs. 🎁",
+    message: "Free tier: Career Quiz (3/day), Top matches, Unlimited Salary Predictor, Unlimited Interview Prep, Unlimited AI Resume Reviewer, Roadmap Library, Compare Careers, Blogs. 🎁",
     options: [
       { label: "Start free quiz", nextId: "quiz_go" },
+      { label: "Review my resume", nextId: "resume_go" },
       { label: "Try Interview Prep", nextId: "interview_go" },
       { label: "Predict salary", nextId: "salary_go" },
     ],

@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import SupportBanner from "@/components/SupportBanner";
+import AdsterraNativeBanner from "@/components/AdsterraNativeBanner";
 
 interface RewriteItem {
   original: string;
@@ -292,6 +293,10 @@ export default function ResumeReviewer() {
             </div>
           </div>
         </section>
+
+        {/* Sponsored — Native Banner */}
+        <AdsterraNativeBanner />
+
 
         {/* Results */}
         {review && (

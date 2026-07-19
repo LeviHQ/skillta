@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Brain, TrendingUp, MessageSquare, BookOpen, ArrowLeftRight, ArrowRight, Sparkles } from "lucide-react";
+import { Brain, TrendingUp, MessageSquare, BookOpen, ArrowLeftRight, ArrowRight, Sparkles, FileText } from "lucide-react";
 
 const services = [
   {
@@ -43,6 +43,16 @@ const services = [
     ring: "ring-warning/30",
     accent: "text-warning",
   },
+  {
+    title: "AI Resume Reviewer",
+    description: "Instant ATS score, keyword gaps and bullet rewrites — tuned for 2026 tech hiring.",
+    limit: "Unlimited free",
+    path: "/resume-reviewer",
+    Icon: FileText,
+    gradient: "from-primary/25 to-primary/5",
+    ring: "ring-primary/30",
+    accent: "text-primary",
+  },
 ];
 
 export default function FreeServicesSection() {
@@ -71,7 +81,7 @@ export default function FreeServicesSection() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 md:grid-rows-4 md:grid-flow-col gap-8 max-w-6xl mx-auto">
           {services.map((s, i) => (
             <motion.div
               key={s.path}

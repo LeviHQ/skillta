@@ -16,8 +16,9 @@ const plans = [
     features: [
       "Basic career guidance questions",
       "Limited AI responses (3/day)",
-      "Access to a few career paths",
-      "Basic career roadmap view",
+      "Unlimited AI Resume Reviewer",
+      "Unlimited Salary Predictor & Interview Prep",
+      "Roadmap Library & Compare Careers",
     ],
     cta: "Get Started",
     highlighted: false,

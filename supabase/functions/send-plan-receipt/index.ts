@@ -16,6 +16,7 @@ const PLAN_FEATURES: Record<string, string[]> = {
     "Unlimited Interview Prep sessions",
     "Full Roadmap Library — 60+ tech career paths",
     "Unlimited Compare Careers side-by-side",
+    "Unlimited AI Resume Reviewer (instant ATS score, keyword gaps, bullet rewrites)",
     "Saathi AI career assistant",
     "Save all results to your dashboard",
   ],
