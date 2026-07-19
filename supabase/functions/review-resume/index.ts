@@ -75,6 +75,7 @@ Deno.serve(async (req) => {
     const body = await req.json().catch(() => ({}));
     const resume = typeof body?.resume === "string" ? body.resume.trim() : "";
     const targetRole = typeof body?.targetRole === "string" ? body.targetRole.trim().slice(0, 120) : "";
+    const jobDescription = typeof body?.jobDescription === "string" ? body.jobDescription.trim().slice(0, MAX_JD_CHARS) : "";
     if (resume.length < 100) {
       return new Response(JSON.stringify({ error: "Resume text is too short. Paste at least a few sections." }), {
         status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" },
