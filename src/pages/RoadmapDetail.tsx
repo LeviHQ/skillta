@@ -5,6 +5,7 @@ import { ArrowLeft, Download, Clock, TrendingUp, DollarSign, AlertTriangle, Book
 import { useRef } from "react";
 import SEOHead from "@/components/SEOHead";
 import AdsterraNativeBanner from "@/components/AdsterraNativeBanner";
+import ResumeReviewerCTA from "@/components/ResumeReviewerCTA";
 import { getCourseSchema, getBreadcrumbSchema } from "@/lib/seo";
 
 export default function RoadmapDetail() {
@@ -663,6 +664,10 @@ export default function RoadmapDetail() {
               <p className="text-sm text-muted-foreground">{career.growthPotential}</p>
             </div>
           </motion.div>
+        </div>
+
+        <div className="max-w-3xl mx-auto no-print">
+          <ResumeReviewerCTA />
         </div>
 
         {/* CTA */}

@@ -16,7 +16,7 @@ const plans = [
     features: [
       "Basic career guidance questions",
       "Limited AI responses (3/day)",
-      "Unlimited AI Resume Reviewer",
+      "AI Resume Reviewer — 3 free reviews/day",
       "Unlimited Salary Predictor & Interview Prep",
       "Roadmap Library & Compare Careers",
     ],

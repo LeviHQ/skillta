@@ -6,6 +6,7 @@ import { ArrowLeft, Calendar, Clock, BookOpen } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import { motion } from "framer-motion";
 import AdsterraNativeBanner from "@/components/AdsterraNativeBanner";
+import ResumeReviewerCTA from "@/components/ResumeReviewerCTA";
 
 export default function BlogPost() {
   const { slug } = useParams<{ slug: string }>();
@@ -125,6 +126,9 @@ export default function BlogPost() {
               Take the Career Quiz →
             </Link>
           </div>
+
+          <ResumeReviewerCTA />
+
 
           {/* Related Posts */}
           <div className="mt-14">
