@@ -14,6 +14,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
+import AdsterraResponsiveBanner from "@/components/AdsterraResponsiveBanner";
+
 
 export default function RoadmapLibrary() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -80,6 +82,7 @@ export default function RoadmapLibrary() {
         {...PAGE_SEO.roadmaps}
         jsonLd={getBreadcrumbSchema([{ name: "Home", path: "/" }, { name: "Roadmaps", path: "/roadmaps" }])}
       />
+      <AdsterraResponsiveBanner />
       <div className="container mx-auto px-6 py-16 relative z-10">
         <motion.div
           className="text-center mb-12"

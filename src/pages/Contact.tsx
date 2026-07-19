@@ -20,6 +20,7 @@ export default function Contact() {
         description="Reach out to Adarsh Mishra, founder of SkillTa. Connect via email, GitHub, or LinkedIn."
         jsonLd={getBreadcrumbSchema([{ name: "Home", path: "/" }, { name: "Contact", path: "/contact" }])}
       />
+      <AdsterraResponsiveBanner />
       <div className="min-h-screen py-16 px-4">
         <div className="container mx-auto max-w-3xl">
           {/* Header */}

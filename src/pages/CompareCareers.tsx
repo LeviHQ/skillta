@@ -6,6 +6,7 @@ import { ArrowLeftRight, ChevronDown, Check, X, BarChart3, Clock, TrendingUp, In
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import ResumeReviewerCTA from "@/components/ResumeReviewerCTA";
+import AdsterraResponsiveBanner from "@/components/AdsterraResponsiveBanner";
 
 export default function CompareCareers() {
   const [career1Id, setCareer1Id] = useState<string>("");
@@ -30,6 +31,7 @@ export default function CompareCareers() {
           { name: "Compare Careers", path: "/compare" },
         ])}
       />
+      <AdsterraResponsiveBanner />
 
       {/* Hero */}
       <section className="relative py-16 md:py-20 overflow-hidden">
