@@ -148,6 +148,7 @@ export default function ResumeReviewer() {
   const [role, setRole] = useState("");
   const [roleSelect, setRoleSelect] = useState("");
   const [customRole, setCustomRole] = useState("");
+  const [jobDescription, setJobDescription] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [review, setReview] = useState<Review | null>(null);
