@@ -13,12 +13,14 @@ import {
   ClipboardList,
   Wand2,
   X,
+  Download,
 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import SupportBanner from "@/components/SupportBanner";
 import AdsterraNativeBanner from "@/components/AdsterraNativeBanner";
 import SignInModal from "@/components/SignInModal";
 import { useAuth } from "@/contexts/AuthContext";
+import jsPDF from "jspdf";
 
 interface RewriteItem {
   original: string;
