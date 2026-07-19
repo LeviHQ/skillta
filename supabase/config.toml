@@ -24,4 +24,8 @@ verify_jwt = false
 [functions.send-resume-limit-reached]
 verify_jwt = false
 
+[functions.send-skillgap-limit-reached]
+verify_jwt = false
+
+
 

@@ -17,10 +17,15 @@ interface PlanContextType {
   cancelPlan: () => Promise<void>;
   todayUsage: number;
   dailyLimit: number;
+  resumeUsage: number;
+  resumeDailyLimit: number;
+  skillGapUsage: number;
+  skillGapDailyLimit: number;
   incrementUsage: () => void;
   isExpired: boolean;
   refreshPlan: () => Promise<void>;
 }
+
 
 const PlanContext = createContext<PlanContextType | null>(null);
 
@@ -45,11 +50,17 @@ export function PlanProvider({ children }: { children: ReactNode }) {
   const [plan, setPlan] = useState<UserPlan | null>(null);
   const [todayUsage, setTodayUsage] = useState(0);
   const [serverLimit, setServerLimit] = useState<number>(PLAN_LIMITS.Free);
+  const [resumeUsage, setResumeUsage] = useState(0);
+  const [resumeDailyLimit, setResumeDailyLimit] = useState(3);
+  const [skillGapUsage, setSkillGapUsage] = useState(0);
+  const [skillGapDailyLimit, setSkillGapDailyLimit] = useState(3);
 
   const refreshPlan = useCallback(async () => {
     if (!user) {
       setPlan(null);
       setTodayUsage(0);
+      setResumeUsage(0);
+      setSkillGapUsage(0);
       setServerLimit(PLAN_LIMITS.Free);
       return;
     }
@@ -58,6 +69,10 @@ export function PlanProvider({ children }: { children: ReactNode }) {
       setPlan(data?.plan ?? null);
       setTodayUsage(typeof data?.usage === "number" ? data.usage : 0);
       setServerLimit(typeof data?.dailyLimit === "number" ? data.dailyLimit : PLAN_LIMITS.Free);
+      setResumeUsage(typeof data?.resumeUsage === "number" ? data.resumeUsage : 0);
+      setResumeDailyLimit(typeof data?.resumeDailyLimit === "number" ? data.resumeDailyLimit : 3);
+      setSkillGapUsage(typeof data?.skillGapUsage === "number" ? data.skillGapUsage : 0);
+      setSkillGapDailyLimit(typeof data?.skillGapDailyLimit === "number" ? data.skillGapDailyLimit : 3);
     } catch (err) {
       console.error("Failed to fetch plan", err);
       setPlan(null);
@@ -75,7 +90,6 @@ export function PlanProvider({ children }: { children: ReactNode }) {
       const newPlan: UserPlan = data.plan;
       setPlan(newPlan);
       setServerLimit(typeof data?.dailyLimit === "number" ? data.dailyLimit : PLAN_LIMITS.Free);
-      // Fire-and-forget receipt email (server pulls plan from DB)
       try {
         const token = await user.getIdToken();
         supabase.functions
@@ -104,7 +118,6 @@ export function PlanProvider({ children }: { children: ReactNode }) {
     }
   }, [user]);
 
-  // Optimistic UI bump; server is the source of truth and rejects over-limit saves.
   const incrementUsage = useCallback(() => {
     setTodayUsage((n) => n + 1);
   }, []);
@@ -114,12 +127,26 @@ export function PlanProvider({ children }: { children: ReactNode }) {
 
   return (
     <PlanContext.Provider
-      value={{ plan, activateFreePlan, cancelPlan, todayUsage, dailyLimit, incrementUsage, isExpired, refreshPlan }}
+      value={{
+        plan,
+        activateFreePlan,
+        cancelPlan,
+        todayUsage,
+        dailyLimit,
+        resumeUsage,
+        resumeDailyLimit,
+        skillGapUsage,
+        skillGapDailyLimit,
+        incrementUsage,
+        isExpired,
+        refreshPlan,
+      }}
     >
       {children}
     </PlanContext.Provider>
   );
 }
+
 
 export function usePlan() {
   const ctx = useContext(PlanContext);

@@ -89,6 +89,24 @@ export type Database = {
         }
         Relationships: []
       }
+      skill_gap_usage: {
+        Row: {
+          created_at: string
+          id: string
+          identifier: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          identifier: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          identifier?: string
+        }
+        Relationships: []
+      }
       user_plans: {
         Row: {
           activated_at: string

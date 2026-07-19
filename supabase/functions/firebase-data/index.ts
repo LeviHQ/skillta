@@ -66,6 +66,27 @@ async function getUsageToday(uid: string): Promise<number> {
   return count ?? 0;
 }
 
+async function getResumeUsageToday(uid: string): Promise<number> {
+  const { count, error } = await supabase
+    .from("resume_review_usage")
+    .select("id", { count: "exact", head: true })
+    .eq("identifier", `uid:${uid}`)
+    .gte("created_at", todayCountWindow());
+  if (error) { console.error("resume usage count error", error); return 0; }
+  return count ?? 0;
+}
+
+async function getSkillGapUsageToday(uid: string): Promise<number> {
+  const { count, error } = await supabase
+    .from("skill_gap_usage")
+    .select("id", { count: "exact", head: true })
+    .eq("identifier", `uid:${uid}`)
+    .gte("created_at", todayCountWindow());
+  if (error) { console.error("skillgap usage count error", error); return 0; }
+  return count ?? 0;
+}
+
+
 async function getPlanRow(uid: string) {
   const { data, error } = await supabase
     .from("user_plans")
@@ -199,7 +220,11 @@ Deno.serve(async (req) => {
 
     if (action === "getPlan") {
       const planRow = await getPlanRow(uid);
-      const usage = planRow ? await getUsageToday(uid) : 0;
+      const [usage, resumeUsage, skillGapUsage] = await Promise.all([
+        planRow ? getUsageToday(uid) : Promise.resolve(0),
+        getResumeUsageToday(uid),
+        getSkillGapUsageToday(uid),
+      ]);
       return json({
         plan: planRow
           ? {
@@ -209,9 +234,61 @@ Deno.serve(async (req) => {
             }
           : null,
         usage,
+        resumeUsage,
+        skillGapUsage,
+        resumeDailyLimit: 3,
+        skillGapDailyLimit: 3,
         dailyLimit: planRow ? PLAN_LIMITS[planRow.name] ?? PLAN_LIMITS.Free : PLAN_LIMITS.Free,
       });
     }
+
+    if (action === "trackSkillGap") {
+      const planRow = await getPlanRow(uid);
+      if (!planRow) {
+        return json({ error: "no_plan", message: "Subscribe to a plan to use the Skill Gap Analyzer." }, 403);
+      }
+      const SKILL_GAP_LIMIT = 3;
+      const used = await getSkillGapUsageToday(uid);
+      if (used >= SKILL_GAP_LIMIT) {
+        return json({ error: "limit_reached", message: "Daily skill gap analysis limit reached.", used, limit: SKILL_GAP_LIMIT }, 429);
+      }
+      const { error } = await supabase.from("skill_gap_usage").insert({ identifier: `uid:${uid}` });
+      if (error) throw error;
+
+      // Fire limit-reached email when quota just exhausted (best-effort, once per day)
+      if (used + 1 >= SKILL_GAP_LIMIT && token.email) {
+        try {
+          const mailMarker = `skillgap_limit_mail:${uid}`;
+          const { count: mailSent } = await supabase
+            .from("skill_gap_usage")
+            .select("id", { count: "exact", head: true })
+            .eq("identifier", mailMarker)
+            .gte("created_at", todayCountWindow());
+          if (!mailSent) {
+            const { data: profile } = await supabase
+              .from("profiles")
+              .select("email,display_name")
+              .eq("firebase_uid", uid)
+              .maybeSingle();
+            supabase.functions
+              .invoke("send-skillgap-limit-reached", {
+                body: {
+                  email: profile?.email ?? token.email,
+                  name: profile?.display_name ?? token.name ?? "there",
+                  dailyLimit: SKILL_GAP_LIMIT,
+                },
+              })
+              .catch((e) => console.error("skillgap limit email invoke failed", e));
+            await supabase.from("skill_gap_usage").insert({ identifier: mailMarker });
+          }
+        } catch (e) {
+          console.error("skillgap limit email lookup failed", e);
+        }
+      }
+
+      return json({ ok: true, used: used + 1, limit: SKILL_GAP_LIMIT });
+    }
+
 
     if (action === "activatePlan") {
       // Only Free plan can be self-activated. Paid plans must come from a payment webhook.

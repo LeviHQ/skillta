@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Target,
@@ -23,32 +23,13 @@ import {
   type GapResult,
 } from "@/data/skillGapData";
 import { useAuth } from "@/contexts/AuthContext";
+import { usePlan } from "@/contexts/PlanContext";
 import SignInModal from "@/components/SignInModal";
+import SubscribeRequiredModal from "@/components/SubscribeRequiredModal";
+import CongratsModal from "@/components/CongratsModal";
 import AdsterraNativeBanner from "@/components/AdsterraNativeBanner";
 import SEOHead from "@/components/SEOHead";
-
-const DAILY_LIMIT = 3;
-
-function todayKey() {
-  return new Date().toISOString().slice(0, 10);
-}
-function usageKey(uid: string) {
-  return `skillgap_usage_${uid}_${todayKey()}`;
-}
-function getTodayUsage(uid: string): number {
-  try {
-    return parseInt(localStorage.getItem(usageKey(uid)) || "0", 10) || 0;
-  } catch {
-    return 0;
-  }
-}
-function incrementUsage(uid: string) {
-  try {
-    localStorage.setItem(usageKey(uid), String(getTodayUsage(uid) + 1));
-  } catch {
-    /* ignore */
-  }
-}
+import { supabase } from "@/integrations/supabase/client";
 
 const SUGGESTED_SKILLS = [
   "HTML", "CSS", "JavaScript", "TypeScript", "React", "Node.js", "Python",
@@ -57,23 +38,25 @@ const SUGGESTED_SKILLS = [
   "Linux", "Figma", "Java", "C++", "Kubernetes", "TensorFlow",
 ];
 
+
 export default function SkillGapAnalyzer() {
   const { user } = useAuth();
+  const { plan, skillGapUsage, skillGapDailyLimit, activateFreePlan, refreshPlan } = usePlan();
   const [showSignIn, setShowSignIn] = useState(false);
+  const [showSubscribe, setShowSubscribe] = useState(false);
+  const [showCongrats, setShowCongrats] = useState(false);
+  const [congratsExpiry, setCongratsExpiry] = useState<string | undefined>();
   const [skillInput, setSkillInput] = useState("");
   const [skills, setSkills] = useState<string[]>([]);
   const [roleId, setRoleId] = useState<string>("");
   const [result, setResult] = useState<GapResult | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [analyzing, setAnalyzing] = useState(false);
-  const [attemptsToday, setAttemptsToday] = useState(0);
 
-  useEffect(() => {
-    if (user) setAttemptsToday(getTodayUsage(user.uid));
-  }, [user]);
-
-  const remaining = user ? Math.max(0, DAILY_LIMIT - attemptsToday) : DAILY_LIMIT;
-  const limitReached = user && remaining === 0;
+  const DAILY_LIMIT = skillGapDailyLimit;
+  const noPlan = !!user && !plan;
+  const remaining = user && plan ? Math.max(0, DAILY_LIMIT - skillGapUsage) : DAILY_LIMIT;
+  const limitReached = !!user && !!plan && skillGapUsage >= DAILY_LIMIT;
 
   const clearAll = () => {
     setSkills([]);
@@ -95,14 +78,18 @@ export default function SkillGapAnalyzer() {
     setSkills((prev) => prev.filter((x) => x !== s));
   };
 
-  const handleAnalyze = () => {
+  const handleAnalyze = async () => {
     setError(null);
     if (!user) {
       setShowSignIn(true);
       return;
     }
+    if (noPlan) {
+      setShowSubscribe(true);
+      return;
+    }
     if (limitReached) {
-      setError("Daily limit reached — you've used all 3 free analyses today. Your quota resets tomorrow at 00:00 local time.");
+      setError(`Daily limit reached — you've used all ${DAILY_LIMIT} free analyses today. Your quota resets tomorrow.`);
       return;
     }
     if (skills.length < 2) {
@@ -115,8 +102,52 @@ export default function SkillGapAnalyzer() {
     }
 
     setAnalyzing(true);
-    // small artificial delay for smooth animation, purely presentational
-    setTimeout(() => {
+    try {
+      // Server-side track: enforces plan, counts usage, sends limit-reached email.
+      const token = await user.getIdToken();
+      const { data, error: fnError } = await supabase.functions.invoke("firebase-data", {
+        body: { action: "trackSkillGap" },
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      if (fnError) {
+        const ctx: any = (fnError as any)?.context;
+        let serverCode: string | null = null;
+        let serverMsg: string | null = null;
+        try {
+          const text = ctx && typeof ctx.text === "function" ? await ctx.text() : null;
+          if (text) {
+            const parsed = JSON.parse(text);
+            serverCode = parsed?.error || null;
+            serverMsg = parsed?.message || null;
+          }
+        } catch { /* ignore */ }
+        if (serverCode === "no_plan") {
+          await refreshPlan();
+          setShowSubscribe(true);
+          setAnalyzing(false);
+          return;
+        }
+        if (serverCode === "limit_reached") {
+          setError(serverMsg || `Daily limit reached — resets tomorrow.`);
+          await refreshPlan();
+          setAnalyzing(false);
+          return;
+        }
+        throw new Error(serverMsg || fnError.message || "Request failed");
+      }
+      if (data?.error === "no_plan") {
+        await refreshPlan();
+        setShowSubscribe(true);
+        setAnalyzing(false);
+        return;
+      }
+      if (data?.error === "limit_reached") {
+        setError(data.message || `Daily limit reached — resets tomorrow.`);
+        await refreshPlan();
+        setAnalyzing(false);
+        return;
+      }
+
       const res = analyzeSkillGap(skills, roleId);
       if (!res) {
         setError("Something went wrong — please try a different role.");
@@ -124,18 +155,22 @@ export default function SkillGapAnalyzer() {
         return;
       }
       setResult(res);
-      incrementUsage(user.uid);
-      setAttemptsToday((n) => n + 1);
+      refreshPlan().catch(() => {});
       setAnalyzing(false);
       setTimeout(() => {
         document.getElementById("skillgap-results")?.scrollIntoView({ behavior: "smooth" });
       }, 100);
-    }, 500);
+    } catch (e: any) {
+      console.error(e);
+      setError(e?.message || "Something went wrong — please try again.");
+      setAnalyzing(false);
+    }
   };
 
   const handleSignInClose = () => {
     setShowSignIn(false);
   };
+
 
   const unusedSuggestions = useMemo(
     () => SUGGESTED_SKILLS.filter((s) => !skills.some((x) => x.toLowerCase() === s.toLowerCase())),
@@ -276,12 +311,20 @@ export default function SkillGapAnalyzer() {
           <div className="mt-6 flex flex-col sm:flex-row gap-3">
             <button
               onClick={handleAnalyze}
-              disabled={analyzing || !!limitReached}
+              disabled={analyzing || (!!user && (limitReached))}
               className="flex-1 py-3 rounded-xl bg-gradient-primary text-primary-foreground font-semibold hover:opacity-90 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
             >
               {analyzing ? (
                 <>
                   <Sparkles className="w-4 h-4 animate-pulse" /> Analysing your gap...
+                </>
+              ) : noPlan ? (
+                <>
+                  <Target className="w-4 h-4" /> Subscription required
+                </>
+              ) : limitReached ? (
+                <>
+                  <Target className="w-4 h-4" /> Daily limit reached — try tomorrow
                 </>
               ) : (
                 <>
@@ -289,6 +332,7 @@ export default function SkillGapAnalyzer() {
                 </>
               )}
             </button>
+
             {(skills.length > 0 || roleId) && (
               <button onClick={clearAll} className="py-3 px-5 rounded-xl border border-border text-sm font-medium text-muted-foreground hover:text-foreground hover:border-primary/40 transition-colors">
                 Clear all
@@ -476,6 +520,24 @@ export default function SkillGapAnalyzer() {
         onClose={handleSignInClose}
         message="Sign in with Google to run your free skill-gap analysis (3 free per day)."
       />
+      <SubscribeRequiredModal
+        open={showSubscribe}
+        onClose={() => setShowSubscribe(false)}
+        onGetStartedFree={async () => {
+          const p = await activateFreePlan();
+          if (p) {
+            setCongratsExpiry(p.expiresAt);
+            setShowCongrats(true);
+          }
+        }}
+      />
+      <CongratsModal
+        open={showCongrats}
+        onClose={() => setShowCongrats(false)}
+        planName="Free"
+        expiresAt={congratsExpiry}
+      />
+
     </div>
   );
 }
