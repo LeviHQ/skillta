@@ -148,6 +148,7 @@ export default function ResumeReviewer() {
   const [role, setRole] = useState("");
   const [roleSelect, setRoleSelect] = useState("");
   const [customRole, setCustomRole] = useState("");
+  const [jobDescription, setJobDescription] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [review, setReview] = useState<Review | null>(null);
@@ -161,6 +162,7 @@ export default function ResumeReviewer() {
     setRole("");
     setRoleSelect("");
     setCustomRole("");
+    setJobDescription("");
     setReview(null);
     setError(null);
     setFileName(null);
@@ -213,7 +215,7 @@ export default function ResumeReviewer() {
     setLoading(true);
     try {
       const { data, error } = await supabase.functions.invoke("review-resume", {
-        body: { resume, targetRole: resolvedRole },
+        body: { resume, targetRole: resolvedRole, jobDescription: jobDescription.trim() },
       });
 
       if (error) {
@@ -358,6 +360,25 @@ export default function ResumeReviewer() {
             <div className="mt-2 text-xs text-muted-foreground flex justify-between">
               <span>{resume.length.toLocaleString()} characters</span>
               <span>Tip: Include quantified achievements for the best review.</span>
+            </div>
+
+            <div className="mt-5">
+              <label className="block text-sm font-semibold text-foreground mb-2">
+                Job Description <span className="text-muted-foreground font-normal">(optional — paste the JD to tailor the review to a specific opening)</span>
+              </label>
+              <textarea
+                value={jobDescription}
+                onChange={(e) => setJobDescription(e.target.value.slice(0, 4000))}
+                placeholder="Paste the full job description here to get a JD-specific ATS score, matched keywords, and gap analysis. Leave blank for a general review."
+                rows={6}
+                className="w-full px-4 py-3 rounded-lg bg-background/60 border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/60 transition-colors font-mono text-sm resize-y"
+              />
+              <div className="mt-1 text-xs text-muted-foreground flex justify-between">
+                <span>{jobDescription.length.toLocaleString()} / 4,000 characters</span>
+                {jobDescription.trim() && (
+                  <span className="text-primary">✓ Review will be tailored to this JD</span>
+                )}
+              </div>
             </div>
 
             {error && (

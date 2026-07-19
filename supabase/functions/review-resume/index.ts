@@ -12,6 +12,7 @@ const JWKS = createRemoteJWKSet(
 const DAILY_LIMIT_SIGNED_IN = 3;
 const DAILY_LIMIT_ANON = 1;
 const MAX_RESUME_CHARS = 8000;
+const MAX_JD_CHARS = 4000;
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -74,6 +75,7 @@ Deno.serve(async (req) => {
     const body = await req.json().catch(() => ({}));
     const resume = typeof body?.resume === "string" ? body.resume.trim() : "";
     const targetRole = typeof body?.targetRole === "string" ? body.targetRole.trim().slice(0, 120) : "";
+    const jobDescription = typeof body?.jobDescription === "string" ? body.jobDescription.trim().slice(0, MAX_JD_CHARS) : "";
     if (resume.length < 100) {
       return new Response(JSON.stringify({ error: "Resume text is too short. Paste at least a few sections." }), {
         status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" },
@@ -118,7 +120,11 @@ Deno.serve(async (req) => {
     }
 
     const clipped = resume.slice(0, MAX_RESUME_CHARS);
-    const userPrompt = `TARGET ROLE: ${targetRole || "(infer best-fit role from resume)"}\n\nRESUME:\n"""\n${clipped}\n"""\n\nReturn only the JSON object.`;
+    const jdBlock = jobDescription
+      ? `\n\nJOB DESCRIPTION (tailor the review specifically for this JD — match keywords, requirements, and responsibilities; align atsScore, missingKeywords, and roleFit against THIS JD):\n"""\n${jobDescription}\n"""`
+      : "";
+    const userPrompt = `TARGET ROLE: ${targetRole || "(infer best-fit role from resume)"}${jdBlock}\n\nRESUME:\n"""\n${clipped}\n"""\n\nReturn only the JSON object.`;
+
 
     const aiRes = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
       method: "POST",
