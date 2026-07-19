@@ -362,6 +362,25 @@ export default function ResumeReviewer() {
               <span>Tip: Include quantified achievements for the best review.</span>
             </div>
 
+            <div className="mt-5">
+              <label className="block text-sm font-semibold text-foreground mb-2">
+                Job Description <span className="text-muted-foreground font-normal">(optional — paste the JD to tailor the review to a specific opening)</span>
+              </label>
+              <textarea
+                value={jobDescription}
+                onChange={(e) => setJobDescription(e.target.value.slice(0, 4000))}
+                placeholder="Paste the full job description here to get a JD-specific ATS score, matched keywords, and gap analysis. Leave blank for a general review."
+                rows={6}
+                className="w-full px-4 py-3 rounded-lg bg-background/60 border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/60 transition-colors font-mono text-sm resize-y"
+              />
+              <div className="mt-1 text-xs text-muted-foreground flex justify-between">
+                <span>{jobDescription.length.toLocaleString()} / 4,000 characters</span>
+                {jobDescription.trim() && (
+                  <span className="text-primary">✓ Review will be tailored to this JD</span>
+                )}
+              </div>
+            </div>
+
             {error && (
               <div className="mt-4 p-3 rounded-lg bg-rose-500/10 border border-rose-500/30 text-rose-300 text-sm flex items-start gap-2">
                 <AlertTriangle className="w-4 h-4 mt-0.5 flex-shrink-0" />
