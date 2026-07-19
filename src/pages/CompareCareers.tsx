@@ -5,6 +5,7 @@ import { PAGE_SEO, getBreadcrumbSchema } from "@/lib/seo";
 import { ArrowLeftRight, ChevronDown, Check, X, BarChart3, Clock, TrendingUp, IndianRupee, Globe, AlertTriangle } from "lucide-react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import ResumeReviewerCTA from "@/components/ResumeReviewerCTA";
 
 export default function CompareCareers() {
   const [career1Id, setCareer1Id] = useState<string>("");
@@ -190,6 +191,7 @@ export default function CompareCareers() {
                 <p className="text-sm text-muted-foreground mt-1">View Full Roadmap →</p>
               </Link>
             </div>
+            <ResumeReviewerCTA />
           </div>
         </motion.section>
       )}
