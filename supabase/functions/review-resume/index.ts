@@ -12,6 +12,7 @@ const JWKS = createRemoteJWKSet(
 const DAILY_LIMIT_SIGNED_IN = 3;
 const DAILY_LIMIT_ANON = 1;
 const MAX_RESUME_CHARS = 8000;
+const MAX_JD_CHARS = 4000;
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
