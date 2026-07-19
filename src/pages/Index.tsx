@@ -204,11 +204,16 @@ export default function Index() {
         </div>
       </section>
 
+      <AdsterraNativeBanner />
+
       {/* Pricing */}
       <PricingSection />
 
       {/* How to use */}
       <HowToUseSection />
+
+      <AdsterraNativeBanner />
+
 
       {/* Accuracy */}
       <AccuracySection />
