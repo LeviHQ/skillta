@@ -135,8 +135,20 @@ export default function ResumeReviewer() {
       const { data, error } = await supabase.functions.invoke("review-resume", {
         body: { resume, targetRole: role },
       });
-      if (error) throw error;
-      if (data?.error) throw new Error(data.error);
+      if (error) {
+        // Supabase wraps non-2xx as a generic error; try to read the server body.
+        const ctx: any = (error as any)?.context;
+        let serverMsg: string | null = null;
+        try {
+          const text = ctx && typeof ctx.text === "function" ? await ctx.text() : null;
+          if (text) {
+            const parsed = JSON.parse(text);
+            serverMsg = parsed?.message || parsed?.error || null;
+          }
+        } catch { /* ignore */ }
+        throw new Error(serverMsg || error.message || "Request failed");
+      }
+      if (data?.error) throw new Error(data.message || data.error);
       setReview(data.review as Review);
       // Scroll to results
       setTimeout(() => {

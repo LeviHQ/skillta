@@ -71,6 +71,24 @@ export type Database = {
         }
         Relationships: []
       }
+      resume_review_usage: {
+        Row: {
+          created_at: string
+          id: string
+          identifier: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          identifier: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          identifier?: string
+        }
+        Relationships: []
+      }
       user_plans: {
         Row: {
           activated_at: string
