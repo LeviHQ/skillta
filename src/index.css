@@ -152,3 +152,33 @@
     display: none !important;
   }
 }
+
+/* ============================================================
+   Google Translate widget — hide the banner, tooltips and iframe
+   so translations happen silently. Site theme stays intact.
+   ============================================================ */
+.goog-te-banner-frame,
+.skiptranslate,
+#goog-gt-tt,
+.goog-te-balloon-frame,
+.goog-tooltip,
+.goog-tooltip:hover {
+  display: none !important;
+  visibility: hidden !important;
+}
+body {
+  top: 0 !important;
+}
+/* Prevent underline / highlight Google injects on translated text */
+font[style*="background-color"],
+font[style*="background: yellow"] {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+.goog-text-highlight {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+#google_translate_element {
+  display: none !important;
+}
