@@ -469,6 +469,13 @@ export default function ResumeReviewer() {
 
         <SupportBanner />
       </div>
+
+      <SignInModal
+        open={showSignIn}
+        onClose={() => { setShowSignIn(false); clearAll(); }}
+        message="Please sign in to get your free AI-powered resume review."
+      />
+
     </>
   );
 }
