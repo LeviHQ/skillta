@@ -215,7 +215,7 @@ export default function ResumeReviewer() {
     setLoading(true);
     try {
       const { data, error } = await supabase.functions.invoke("review-resume", {
-        body: { resume, targetRole: resolvedRole },
+        body: { resume, targetRole: resolvedRole, jobDescription: jobDescription.trim() },
       });
 
       if (error) {
