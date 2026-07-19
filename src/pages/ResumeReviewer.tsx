@@ -604,6 +604,14 @@ export default function ResumeReviewer() {
         {review && (
           <section id="review-results" className="container mx-auto px-6 pb-16">
             <div className="max-w-5xl mx-auto space-y-6">
+              <div className="flex justify-end">
+                <button
+                  onClick={downloadPdf}
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-gradient-primary text-primary-foreground font-semibold text-sm hover:opacity-95 transition-opacity shadow-lg"
+                >
+                  <Download className="w-4 h-4" /> Download Report (PDF)
+                </button>
+              </div>
               {/* Score card */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
