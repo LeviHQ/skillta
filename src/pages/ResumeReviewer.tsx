@@ -159,6 +159,8 @@ export default function ResumeReviewer() {
   const clearAll = () => {
     setResume("");
     setRole("");
+    setRoleSelect("");
+    setCustomRole("");
     setReview(null);
     setError(null);
     setFileName(null);
@@ -190,6 +192,8 @@ export default function ResumeReviewer() {
     }
   };
 
+  const resolvedRole = (roleSelect === "__custom__" ? customRole : roleSelect).trim();
+
   const handleSubmit = async () => {
     setError(null);
     setReview(null);
@@ -197,15 +201,21 @@ export default function ResumeReviewer() {
       setShowSignIn(true);
       return;
     }
+    if (!resolvedRole) {
+      setError("Please select a target role (or choose Custom and type one).");
+      return;
+    }
     if (resume.trim().length < 100) {
       setError("Please paste your resume (at least a few sections) or upload a file.");
       return;
     }
+    setRole(resolvedRole);
     setLoading(true);
     try {
       const { data, error } = await supabase.functions.invoke("review-resume", {
-        body: { resume, targetRole: role },
+        body: { resume, targetRole: resolvedRole },
       });
+
       if (error) {
         // Supabase wraps non-2xx as a generic error; try to read the server body.
         const ctx: any = (error as any)?.context;
