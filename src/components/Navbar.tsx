@@ -243,6 +243,9 @@ export default function Navbar() {
                 }
                 return linkEl;
               })}
+              <div className="pt-2 border-t border-border/60">
+                <LanguageSwitcher />
+              </div>
               {user ? (
                 <Link
                   to="/dashboard"
