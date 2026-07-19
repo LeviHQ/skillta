@@ -932,9 +932,11 @@
     <priority>0.75</priority>
   </url>
 
+  <!-- Added 2026-07-19: AI Resume Reviewer -->
   <url>
     <loc>https://skillta.tech/resume-reviewer</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
   </url>
 </urlset>
