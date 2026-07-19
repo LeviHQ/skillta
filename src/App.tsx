@@ -61,6 +61,7 @@ const App = () => (
               <Route path="/blog/:slug" element={<BlogPost />} />
               <Route path="/story" element={<Story />} />
               <Route path="/salary-predictor" element={<SalaryPredictor />} />
+              <Route path="/resume-reviewer" element={<ResumeReviewer />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </main>
