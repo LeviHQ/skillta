@@ -22,6 +22,7 @@ const chatTree: Record<string, ChatNode> = {
       { label: "💰 Salary Predictor", nextId: "salary_help" },
       { label: "🎤 Interview Prep", nextId: "interview_help" },
       { label: "📄 AI Resume Reviewer", nextId: "resume_help" },
+      { label: "🎯 Skill Gap Analyzer", nextId: "skillgap_help" },
       { label: "⚖️ Compare Careers", nextId: "compare_help" },
       { label: "📚 Blogs & Country Guides", nextId: "blog_help" },
       { label: "📊 Dashboard & History", nextId: "dashboard_help" },
@@ -122,6 +123,19 @@ const chatTree: Record<string, ChatNode> = {
     message: "Opening the AI Resume Reviewer — paste your resume or upload a PDF! 📄",
     action: { label: "📄 AI Resume Reviewer", path: "/resume-reviewer" },
   },
+  skillgap_help: {
+    id: "skillgap_help",
+    message: "Skill Gap Analyzer compares your current skills against your target tech role — you get missing skills, a match %, and a personalised week-by-week roadmap. Sign-in required, 3 free/day. 🎯",
+    options: [
+      { label: "Analyse my skills", nextId: "skillgap_go" },
+      { label: "See other services", nextId: "root" },
+    ],
+  },
+  skillgap_go: {
+    id: "skillgap_go",
+    message: "Opening Skill Gap Analyzer — add your skills, pick a target role, and get your plan! 🎯",
+    action: { label: "🎯 Skill Gap Analyzer", path: "/skill-gap-analyzer" },
+  },
   compare_help: {
     id: "compare_help",
     message: "Compare Careers lets you evaluate 2 roles side-by-side — salary, demand, skills, difficulty, growth. Unlimited on free plan. ⚖️",
@@ -181,7 +195,7 @@ const chatTree: Record<string, ChatNode> = {
   },
   free_features: {
     id: "free_features",
-    message: "Free tier: Career Quiz (3/day), Top matches, Unlimited Salary Predictor, Unlimited Interview Prep, AI Resume Reviewer (3/day), Roadmap Library, Compare Careers, Blogs. 🎁",
+    message: "Free tier: Career Quiz (3/day), Top matches, Unlimited Salary Predictor, Unlimited Interview Prep, AI Resume Reviewer (3/day), Skill Gap Analyzer (3/day), Roadmap Library, Compare Careers, Blogs. 🎁",
     options: [
       { label: "Start free quiz", nextId: "quiz_go" },
       { label: "Review my resume", nextId: "resume_go" },
