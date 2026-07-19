@@ -122,7 +122,9 @@ export default function Dashboard() {
             </div>
 
             {plan ? (
+              <>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+
                 <div className="p-4 rounded-xl bg-secondary/40 border border-border">
                   <p className="text-xs text-muted-foreground mb-1">Current Plan</p>
                   <p className="text-xl font-bold text-foreground">{plan.name}</p>
