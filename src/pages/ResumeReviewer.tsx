@@ -139,6 +139,10 @@ export default function ResumeReviewer() {
   const handleSubmit = async () => {
     setError(null);
     setReview(null);
+    if (!user) {
+      setShowSignIn(true);
+      return;
+    }
     if (resume.trim().length < 100) {
       setError("Please paste your resume (at least a few sections) or upload a file.");
       return;
