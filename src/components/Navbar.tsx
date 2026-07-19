@@ -110,7 +110,7 @@ export default function Navbar() {
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: 6 }}
                             transition={{ duration: 0.15 }}
-                            className="absolute left-0 top-full mt-2 w-80 glass border border-border rounded-xl p-2 shadow-xl"
+                            className={`absolute left-0 top-full mt-2 glass border border-border rounded-xl p-2 shadow-xl grid grid-flow-col grid-rows-4 auto-cols-[20rem] gap-1`}
                             role="menu"
                           >
                             {services.map(({ label, path, desc, Icon }) => (
