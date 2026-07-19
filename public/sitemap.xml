@@ -939,4 +939,12 @@
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
   </url>
+
+  <!-- Added 2026-07-19: Skill Gap Analyzer -->
+  <url>
+    <loc>https://skillta.tech/skill-gap-analyzer</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
 </urlset>

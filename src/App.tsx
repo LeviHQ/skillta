@@ -28,6 +28,7 @@ import BlogPost from "./pages/BlogPost";
 import Story from "./pages/Story";
 import SalaryPredictor from "./pages/SalaryPredictor";
 import ResumeReviewer from "./pages/ResumeReviewer";
+import SkillGapAnalyzer from "./pages/SkillGapAnalyzer";
 import NotFound from "./pages/NotFound";
 import KofiButton from "./components/KofiButton";
 
@@ -62,6 +63,7 @@ const App = () => (
               <Route path="/story" element={<Story />} />
               <Route path="/salary-predictor" element={<SalaryPredictor />} />
               <Route path="/resume-reviewer" element={<ResumeReviewer />} />
+              <Route path="/skill-gap-analyzer" element={<SkillGapAnalyzer />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </main>
