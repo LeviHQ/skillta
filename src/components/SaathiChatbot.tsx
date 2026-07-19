@@ -181,7 +181,7 @@ const chatTree: Record<string, ChatNode> = {
   },
   free_features: {
     id: "free_features",
-    message: "Free tier: Career Quiz (3/day), Top matches, Unlimited Salary Predictor, Unlimited Interview Prep, Unlimited AI Resume Reviewer, Roadmap Library, Compare Careers, Blogs. 🎁",
+    message: "Free tier: Career Quiz (3/day), Top matches, Unlimited Salary Predictor, Unlimited Interview Prep, AI Resume Reviewer (3/day), Roadmap Library, Compare Careers, Blogs. 🎁",
     options: [
       { label: "Start free quiz", nextId: "quiz_go" },
       { label: "Review my resume", nextId: "resume_go" },

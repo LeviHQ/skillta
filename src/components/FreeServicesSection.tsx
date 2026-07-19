@@ -46,7 +46,7 @@ const services = [
   {
     title: "AI Resume Reviewer",
     description: "Instant ATS score, keyword gaps and bullet rewrites — tuned for 2026 tech hiring.",
-    limit: "Unlimited free",
+    limit: "3 free reviews/day",
     path: "/resume-reviewer",
     Icon: FileText,
     gradient: "from-primary/25 to-primary/5",
