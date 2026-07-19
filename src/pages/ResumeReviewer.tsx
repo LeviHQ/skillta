@@ -208,7 +208,7 @@ export default function ResumeReviewer() {
       return;
     }
     if (resume.trim().length < 100) {
-      setError("Please paste your resume (at least a few sections) or upload a file.");
+      setError("Please upload your resume (PDF or TXT) to continue.");
       return;
     }
     setRole(resolvedRole);
@@ -347,20 +347,11 @@ export default function ResumeReviewer() {
               </div>
             )}
 
-            <label className="block text-sm font-semibold text-foreground mb-2">
-              Your Resume Text
-            </label>
-            <textarea
-              value={resume}
-              onChange={(e) => setResume(e.target.value)}
-              placeholder="Paste your full resume here — summary, experience, skills, projects, education…"
-              rows={14}
-              className="w-full px-4 py-3 rounded-lg bg-background/60 border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/60 transition-colors font-mono text-sm resize-y"
-            />
-            <div className="mt-2 text-xs text-muted-foreground flex justify-between">
-              <span>{resume.length.toLocaleString()} characters</span>
-              <span>Tip: Include quantified achievements for the best review.</span>
-            </div>
+            {resume && !fileName && (
+              <div className="text-xs text-muted-foreground">
+                {resume.length.toLocaleString()} characters loaded
+              </div>
+            )}
 
             <div className="mt-5">
               <label className="block text-sm font-semibold text-foreground mb-2">
