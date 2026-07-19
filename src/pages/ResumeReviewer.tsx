@@ -179,14 +179,8 @@ export default function ResumeReviewer() {
     }
   };
 
-  const reset = () => {
-    setResume("");
-    setRole("");
-    setReview(null);
-    setError(null);
-    setFileName(null);
-    if (fileRef.current) fileRef.current.value = "";
-  };
+  const reset = () => clearAll();
+
 
   return (
     <>
