@@ -115,7 +115,7 @@ export default function Index() {
       {/* Who Is It For */}
       <WhoIsItForSection />
 
-      <AdsterraNativeBanner />
+
 
 
 
