@@ -91,9 +91,63 @@ function ScoreRing({ score, label }: { score: number; label: string }) {
   );
 }
 
+const TECH_ROLES = [
+  "Frontend Engineer",
+  "Backend Engineer",
+  "Full Stack Engineer",
+  "Mobile Engineer (iOS/Android)",
+  "React Native Developer",
+  "Flutter Developer",
+  "Software Engineer (Generalist)",
+  "DevOps Engineer",
+  "Site Reliability Engineer (SRE)",
+  "Cloud Engineer (AWS/GCP/Azure)",
+  "Platform Engineer",
+  "Data Engineer",
+  "Data Analyst",
+  "Data Scientist",
+  "Machine Learning Engineer",
+  "AI/ML Research Engineer",
+  "MLOps Engineer",
+  "Prompt Engineer",
+  "Generative AI Engineer",
+  "Computer Vision Engineer",
+  "NLP Engineer",
+  "Analytics Engineer",
+  "Business Intelligence Analyst",
+  "QA Engineer / SDET",
+  "Automation Test Engineer",
+  "Security Engineer",
+  "Cybersecurity Analyst",
+  "Penetration Tester",
+  "Blockchain Developer",
+  "Smart Contract Engineer",
+  "Web3 Engineer",
+  "Game Developer",
+  "AR/VR Engineer",
+  "Embedded Systems Engineer",
+  "IoT Engineer",
+  "Systems / Rust Engineer",
+  "Database Administrator (DBA)",
+  "Solutions Architect",
+  "Technical Lead",
+  "Engineering Manager",
+  "Product Manager (Tech)",
+  "Technical Program Manager",
+  "UI/UX Designer",
+  "Product Designer",
+  "Technical Writer",
+  "Developer Advocate",
+  "Salesforce Developer",
+  "SAP Consultant",
+  "Support / Solutions Engineer",
+];
+
 export default function ResumeReviewer() {
   const [resume, setResume] = useState("");
   const [role, setRole] = useState("");
+  const [roleSelect, setRoleSelect] = useState("");
+  const [customRole, setCustomRole] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [review, setReview] = useState<Review | null>(null);
@@ -105,6 +159,8 @@ export default function ResumeReviewer() {
   const clearAll = () => {
     setResume("");
     setRole("");
+    setRoleSelect("");
+    setCustomRole("");
     setReview(null);
     setError(null);
     setFileName(null);
@@ -136,6 +192,8 @@ export default function ResumeReviewer() {
     }
   };
 
+  const resolvedRole = (roleSelect === "__custom__" ? customRole : roleSelect).trim();
+
   const handleSubmit = async () => {
     setError(null);
     setReview(null);
@@ -143,15 +201,21 @@ export default function ResumeReviewer() {
       setShowSignIn(true);
       return;
     }
+    if (!resolvedRole) {
+      setError("Please select a target role (or choose Custom and type one).");
+      return;
+    }
     if (resume.trim().length < 100) {
       setError("Please paste your resume (at least a few sections) or upload a file.");
       return;
     }
+    setRole(resolvedRole);
     setLoading(true);
     try {
       const { data, error } = await supabase.functions.invoke("review-resume", {
-        body: { resume, targetRole: role },
+        body: { resume, targetRole: resolvedRole },
       });
+
       if (error) {
         // Supabase wraps non-2xx as a generic error; try to read the server body.
         const ctx: any = (error as any)?.context;
@@ -223,16 +287,30 @@ export default function ResumeReviewer() {
             <div className="flex flex-col md:flex-row md:items-end gap-4 mb-5">
               <div className="flex-1">
                 <label className="block text-sm font-semibold text-foreground mb-2">
-                  Target Role <span className="text-muted-foreground font-normal">(optional)</span>
+                  Target Role <span className="text-rose-400 font-normal">*</span>
                 </label>
-                <input
-                  type="text"
-                  value={role}
-                  onChange={(e) => setRole(e.target.value)}
-                  placeholder="e.g. Frontend Engineer, Data Scientist, DevOps Engineer"
-                  className="w-full px-4 py-3 rounded-lg bg-background/60 border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/60 transition-colors"
-                  maxLength={120}
-                />
+                <select
+                  value={roleSelect}
+                  onChange={(e) => setRoleSelect(e.target.value)}
+                  className="w-full px-4 py-3 rounded-lg bg-background/60 border border-border text-foreground focus:outline-none focus:border-primary/60 transition-colors"
+                >
+                  <option value="">Select a target role…</option>
+                  {TECH_ROLES.map((r) => (
+                    <option key={r} value={r}>{r}</option>
+                  ))}
+                  <option value="__custom__">Other (type your own)…</option>
+                </select>
+                {roleSelect === "__custom__" && (
+                  <input
+                    type="text"
+                    value={customRole}
+                    onChange={(e) => setCustomRole(e.target.value)}
+                    placeholder="Type your target role (e.g. Robotics Software Engineer)"
+                    className="mt-2 w-full px-4 py-3 rounded-lg bg-background/60 border border-primary/40 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/60 transition-colors"
+                    maxLength={120}
+                    autoFocus
+                  />
+                )}
               </div>
               <div>
                 <input
