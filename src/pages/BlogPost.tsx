@@ -127,6 +127,9 @@ export default function BlogPost() {
             </Link>
           </div>
 
+          <ResumeReviewerCTA />
+
+
           {/* Related Posts */}
           <div className="mt-14">
             <h3 className="text-lg font-bold text-foreground mb-5">More Articles</h3>
