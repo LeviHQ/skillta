@@ -187,6 +187,8 @@ export default function SkillGapAnalyzer() {
         keywords="skill gap analyzer, tech skill assessment, learning roadmap, missing skills, career gap analysis"
       />
 
+      <AdsterraResponsiveBanner />
+
       {/* HERO */}
       <section className="pt-16 pb-10 border-b border-border bg-gradient-to-b from-accent/5 to-background">
         <div className="container mx-auto px-6 max-w-5xl text-center">
