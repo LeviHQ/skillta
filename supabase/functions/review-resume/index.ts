@@ -120,7 +120,11 @@ Deno.serve(async (req) => {
     }
 
     const clipped = resume.slice(0, MAX_RESUME_CHARS);
-    const userPrompt = `TARGET ROLE: ${targetRole || "(infer best-fit role from resume)"}\n\nRESUME:\n"""\n${clipped}\n"""\n\nReturn only the JSON object.`;
+    const jdBlock = jobDescription
+      ? `\n\nJOB DESCRIPTION (tailor the review specifically for this JD — match keywords, requirements, and responsibilities; align atsScore, missingKeywords, and roleFit against THIS JD):\n"""\n${jobDescription}\n"""`
+      : "";
+    const userPrompt = `TARGET ROLE: ${targetRole || "(infer best-fit role from resume)"}${jdBlock}\n\nRESUME:\n"""\n${clipped}\n"""\n\nReturn only the JSON object.`;
+
 
     const aiRes = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
       method: "POST",
