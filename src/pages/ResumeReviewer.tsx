@@ -13,12 +13,14 @@ import {
   ClipboardList,
   Wand2,
   X,
+  Download,
 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import SupportBanner from "@/components/SupportBanner";
 import AdsterraNativeBanner from "@/components/AdsterraNativeBanner";
 import SignInModal from "@/components/SignInModal";
 import { useAuth } from "@/contexts/AuthContext";
+import jsPDF from "jspdf";
 
 interface RewriteItem {
   original: string;
@@ -214,8 +216,10 @@ export default function ResumeReviewer() {
     setRole(resolvedRole);
     setLoading(true);
     try {
+      const token = await user.getIdToken();
       const { data, error } = await supabase.functions.invoke("review-resume", {
         body: { resume, targetRole: resolvedRole, jobDescription: jobDescription.trim() },
+        headers: { Authorization: `Bearer ${token}` },
       });
 
       if (error) {
@@ -246,6 +250,191 @@ export default function ResumeReviewer() {
   };
 
   const reset = () => clearAll();
+
+  const downloadPdf = () => {
+    if (!review) return;
+    const doc = new jsPDF({ unit: "pt", format: "a4" });
+    const pageW = doc.internal.pageSize.getWidth();
+    const pageH = doc.internal.pageSize.getHeight();
+    const margin = 40;
+    const maxW = pageW - margin * 2;
+    let y = margin;
+
+    const sanitize = (s: string) =>
+      String(s || "")
+        .replace(/₹/g, "Rs ")
+        .replace(/→/g, "->")
+        .replace(/[""]/g, '"')
+        .replace(/['']/g, "'")
+        .replace(/•/g, "-")
+        .replace(/[^\x00-\x7F]/g, "");
+
+    const ensure = (h: number) => {
+      if (y + h > pageH - margin) {
+        doc.addPage();
+        y = margin;
+      }
+    };
+
+    const heading = (text: string, size = 14, color: [number, number, number] = [124, 58, 237]) => {
+      ensure(size + 12);
+      doc.setFont("helvetica", "bold");
+      doc.setFontSize(size);
+      doc.setTextColor(...color);
+      doc.text(sanitize(text), margin, y);
+      y += size + 6;
+      doc.setDrawColor(230, 230, 235);
+      doc.line(margin, y, pageW - margin, y);
+      y += 10;
+      doc.setTextColor(40, 40, 50);
+    };
+
+    const para = (text: string, size = 10) => {
+      doc.setFont("helvetica", "normal");
+      doc.setFontSize(size);
+      doc.setTextColor(60, 60, 70);
+      const lines = doc.splitTextToSize(sanitize(text), maxW);
+      lines.forEach((ln: string) => {
+        ensure(size + 4);
+        doc.text(ln, margin, y);
+        y += size + 4;
+      });
+      y += 4;
+    };
+
+    const bullets = (items: string[], size = 10) => {
+      doc.setFont("helvetica", "normal");
+      doc.setFontSize(size);
+      doc.setTextColor(60, 60, 70);
+      items.forEach((it) => {
+        const lines = doc.splitTextToSize("- " + sanitize(it), maxW - 12);
+        lines.forEach((ln: string, i: number) => {
+          ensure(size + 4);
+          doc.text(ln, margin + (i === 0 ? 0 : 12), y);
+          y += size + 4;
+        });
+      });
+      y += 4;
+    };
+
+    // Header
+    doc.setFillColor(20, 20, 30);
+    doc.rect(0, 0, pageW, 60, "F");
+    doc.setTextColor(255, 255, 255);
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(20);
+    doc.text("SkillTa - AI Resume Review Report", margin, 38);
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(9);
+    doc.setTextColor(180, 180, 200);
+    doc.text(new Date().toLocaleString(), pageW - margin, 38, { align: "right" });
+    y = 90;
+
+    doc.setTextColor(40, 40, 50);
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(12);
+    doc.text(`Target Role: ${sanitize(role || review.roleFit?.role || "-")}`, margin, y);
+    y += 18;
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(11);
+    doc.text(`ATS Score: ${review.atsScore}/100`, margin, y);
+    if (review.roleFit?.fitScore != null) {
+      doc.text(`Role Fit: ${review.roleFit.fitScore}/100`, margin + 200, y);
+    }
+    y += 20;
+
+    heading("Verdict");
+    para(review.verdict);
+
+    if (review.roleFit?.reasoning) {
+      heading("Role Fit");
+      para(`${review.roleFit.role || ""} - ${review.roleFit.reasoning}`);
+    }
+
+    if (review.strengths?.length) {
+      heading("Strengths", 14, [16, 185, 129]);
+      bullets(review.strengths);
+    }
+    if (review.weaknesses?.length) {
+      heading("Weaknesses", 14, [244, 63, 94]);
+      bullets(review.weaknesses);
+    }
+    if (review.missingKeywords?.length) {
+      heading("Missing Keywords (ATS)");
+      para(review.missingKeywords.join(", "));
+    }
+    if (review.sectionFeedback) {
+      heading("Section-by-Section Feedback");
+      Object.entries(review.sectionFeedback).forEach(([k, v]) => {
+        if (!v) return;
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(11);
+        doc.setTextColor(124, 58, 237);
+        ensure(16);
+        doc.text(sanitize(k.toUpperCase()), margin, y);
+        y += 14;
+        para(v as string);
+      });
+    }
+    if (review.rewriteSuggestions?.length) {
+      heading("Bullet Rewrites");
+      review.rewriteSuggestions.forEach((r, i) => {
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(10);
+        doc.setTextColor(244, 63, 94);
+        ensure(14);
+        doc.text(`#${i + 1} Before:`, margin, y);
+        y += 12;
+        para(r.original);
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(10);
+        doc.setTextColor(16, 185, 129);
+        ensure(14);
+        doc.text("After:", margin, y);
+        y += 12;
+        para(r.improved);
+        doc.setFont("helvetica", "italic");
+        doc.setFontSize(9);
+        doc.setTextColor(124, 58, 237);
+        const wlines = doc.splitTextToSize(sanitize("Why: " + r.why), maxW);
+        wlines.forEach((ln: string) => {
+          ensure(12);
+          doc.text(ln, margin, y);
+          y += 12;
+        });
+        y += 6;
+      });
+    }
+    if (review.actionPlan?.length) {
+      heading("Your Action Plan");
+      review.actionPlan.forEach((s, i) => {
+        const lines = doc.splitTextToSize(sanitize(`${i + 1}. ${s}`), maxW);
+        lines.forEach((ln: string) => {
+          ensure(14);
+          doc.setFont("helvetica", "normal");
+          doc.setFontSize(10);
+          doc.setTextColor(60, 60, 70);
+          doc.text(ln, margin, y);
+          y += 12;
+        });
+        y += 4;
+      });
+    }
+
+    // Footer on all pages
+    const pages = (doc as any).internal.getNumberOfPages();
+    for (let i = 1; i <= pages; i++) {
+      doc.setPage(i);
+      doc.setFont("helvetica", "normal");
+      doc.setFontSize(8);
+      doc.setTextColor(150, 150, 160);
+      doc.text("Generated by SkillTa AI Resume Reviewer - skillta.tech", margin, pageH - 20);
+      doc.text(`Page ${i} of ${pages}`, pageW - margin, pageH - 20, { align: "right" });
+    }
+
+    doc.save(`SkillTa-Resume-Review-${Date.now()}.pdf`);
+  };
+
 
 
   return (
@@ -415,6 +604,14 @@ export default function ResumeReviewer() {
         {review && (
           <section id="review-results" className="container mx-auto px-6 pb-16">
             <div className="max-w-5xl mx-auto space-y-6">
+              <div className="flex justify-end">
+                <button
+                  onClick={downloadPdf}
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-gradient-primary text-primary-foreground font-semibold text-sm hover:opacity-95 transition-opacity shadow-lg"
+                >
+                  <Download className="w-4 h-4" /> Download Report (PDF)
+                </button>
+              </div>
               {/* Score card */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}

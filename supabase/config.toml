@@ -21,4 +21,7 @@ verify_jwt = false
 [functions.review-resume]
 verify_jwt = false
 
+[functions.send-resume-limit-reached]
+verify_jwt = false
+
 
