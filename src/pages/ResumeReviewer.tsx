@@ -210,7 +210,7 @@ export default function ResumeReviewer() {
               className="max-w-3xl mx-auto text-center"
             >
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/15 border border-primary/30 text-primary text-xs font-semibold mb-4">
-                <Sparkles className="w-3.5 h-3.5" /> 100% Free · No sign-in required
+                <Sparkles className="w-3.5 h-3.5" /> 100% Free · Sign in required
               </div>
               <h1 className="text-3xl md:text-5xl font-bold text-foreground mb-4">
                 AI <span className="text-gradient">Resume Reviewer</span>
