@@ -98,7 +98,18 @@ export default function ResumeReviewer() {
   const [error, setError] = useState<string | null>(null);
   const [review, setReview] = useState<Review | null>(null);
   const [fileName, setFileName] = useState<string | null>(null);
+  const [showSignIn, setShowSignIn] = useState(false);
   const fileRef = useRef<HTMLInputElement>(null);
+  const { user } = useAuth();
+
+  const clearAll = () => {
+    setResume("");
+    setRole("");
+    setReview(null);
+    setError(null);
+    setFileName(null);
+    if (fileRef.current) fileRef.current.value = "";
+  };
 
   const handleFile = async (file: File) => {
     setError(null);
