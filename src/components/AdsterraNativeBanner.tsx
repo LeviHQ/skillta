@@ -22,9 +22,12 @@ export default function AdsterraNativeBanner({ className = "" }: { className?: s
     if (!iframe) return;
 
     const html = `<!doctype html><html><head><meta charset="utf-8" />
+<meta name="color-scheme" content="dark" />
 <style>
-  html,body{margin:0;padding:0;background:transparent;color:#e5e7eb;font-family:ui-sans-serif,system-ui,sans-serif;}
-  #${CONTAINER_ID}{min-height:100px;}
+  html,body{margin:0;padding:0;width:100%;max-width:100%;background:transparent!important;color:inherit;font-family:ui-sans-serif,system-ui,sans-serif;overflow:hidden;scrollbar-width:none;color-scheme:dark;}
+  body::-webkit-scrollbar{display:none;}
+  #${CONTAINER_ID}{min-height:100px;width:100%;max-width:100%;overflow:hidden;background:transparent!important;}
+  iframe{max-width:100%!important;background:transparent!important;}
   a{color:inherit;}
 </style>
 </head><body>
@@ -70,6 +73,7 @@ export default function AdsterraNativeBanner({ className = "" }: { className?: s
             title="Sponsored content"
             className="w-full block"
             style={{ height: 120, border: 0, background: "transparent" }}
+            scrolling="no"
             sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox allow-same-origin"
           />
         </div>
