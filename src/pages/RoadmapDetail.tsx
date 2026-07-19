@@ -57,6 +57,29 @@ export default function RoadmapDetail() {
     const setDraw = (c: [number, number, number]) => doc.setDrawColor(c[0], c[1], c[2]);
     const setText = (c: [number, number, number]) => doc.setTextColor(c[0], c[1], c[2]);
 
+    // Sanitize text for jsPDF built-in helvetica (WinAnsi). Replace unsupported
+    // glyphs like ₹ and → that render as garbage / cause weird letter spacing.
+    const T = (s: string) =>
+      (s || "")
+        .replace(/₹/g, "Rs ")
+        .replace(/→/g, "->")
+        .replace(/–|—/g, "-")
+        .replace(/’|‘/g, "'")
+        .replace(/“|”/g, '"')
+        .replace(/•/g, "-")
+        .replace(/[^\x20-\x7E]/g, "");
+    // Wrap doc.text to sanitize any strings drawn to the PDF
+    const _origText = doc.text.bind(doc);
+    (doc as any).text = (txt: any, x: number, y: number, opts?: any) => {
+      if (typeof txt === "string") return _origText(T(txt), x, y, opts);
+      if (Array.isArray(txt)) return _origText(txt.map((s) => (typeof s === "string" ? T(s) : s)), x, y, opts);
+      return _origText(txt, x, y, opts);
+    };
+    const _origSplit = doc.splitTextToSize.bind(doc);
+    (doc as any).splitTextToSize = (txt: any, w: number, opts?: any) =>
+      _origSplit(typeof txt === "string" ? T(txt) : txt, w, opts);
+
+
     let y = M;
 
     const newPage = () => {
