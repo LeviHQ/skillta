@@ -51,6 +51,7 @@ export default defineConfig(({ mode }) => ({
         categories: ["education", "productivity"],
       },
       workbox: {
+        maximumFileSizeToCacheInBytes: 5 * 1024 * 1024,
         navigateFallbackDenylist: [/^\/~oauth/],
         runtimeCaching: [
           {
