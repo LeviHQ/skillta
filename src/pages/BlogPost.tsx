@@ -301,7 +301,7 @@ export default function BlogPost() {
   return (
     <div className="min-h-screen bg-background">
       <SEOHead
-        title={`${post.title} | SkillTa Blog`}
+        title={seoTitle}
         description={post.description}
         keywords={post.keywords}
         path={`/blog/${post.slug}`}
