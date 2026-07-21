@@ -30,6 +30,7 @@ import SalaryPredictor from "./pages/SalaryPredictor";
 import ResumeReviewer from "./pages/ResumeReviewer";
 import SkillGapAnalyzer from "./pages/SkillGapAnalyzer";
 import NotFound from "./pages/NotFound";
+import CountryPage from "./pages/CountryPage";
 import KofiButton from "./components/KofiButton";
 
 const queryClient = new QueryClient();
@@ -64,6 +65,8 @@ const App = () => (
               <Route path="/salary-predictor" element={<SalaryPredictor />} />
               <Route path="/resume-reviewer" element={<ResumeReviewer />} />
               <Route path="/skill-gap-analyzer" element={<SkillGapAnalyzer />} />
+              <Route path="/:country" element={<CountryPage />} />
+              <Route path="/:country/:section" element={<CountryPage />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </main>
