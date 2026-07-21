@@ -141,6 +141,7 @@ export default function Navbar() {
               }
               return linkEl;
             })}
+            <CountryDropdown variant="desktop" />
           </div>
 
           <div className="hidden md:flex items-center gap-3">
@@ -246,6 +247,7 @@ export default function Navbar() {
                 }
                 return linkEl;
               })}
+              <CountryDropdown variant="mobile" />
               {user ? (
                 <Link
                   to="/dashboard"
