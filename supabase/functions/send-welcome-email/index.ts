@@ -111,6 +111,7 @@ serve(async (req) => {
                   ✅ <strong>Compare Careers</strong> — Side-by-side salary, demand &amp; difficulty<br/>
                   ✅ <strong>AI Resume Reviewer</strong> — Instant ATS score, keyword gaps &amp; bullet rewrites<br/>
                   ✅ <strong>Skill Gap Analyzer</strong> — Match your skills vs your target role + weekly study plan<br/>
+                  ✅ <strong>🌍 Country Ecosystem (NEW)</strong> — 50+ countries: jobs, salaries, roadmaps, resume rules &amp; interview prep, all localized<br/>
                   ✅ <strong>Saathi AI Assistant</strong> — Your always-on career mentor
                 </p>
               </div>
