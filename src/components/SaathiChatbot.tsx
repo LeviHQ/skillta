@@ -24,6 +24,7 @@ const chatTree: Record<string, ChatNode> = {
       { label: "📄 AI Resume Reviewer", nextId: "resume_help" },
       { label: "🎯 Skill Gap Analyzer", nextId: "skillgap_help" },
       { label: "⚖️ Compare Careers", nextId: "compare_help" },
+      { label: "🌍 Country Ecosystem (NEW)", nextId: "country_help" },
       { label: "📚 Blogs & Country Guides", nextId: "blog_help" },
       { label: "📊 Dashboard & History", nextId: "dashboard_help" },
       { label: "💎 Pricing & Free Plan", nextId: "pricing_help" },
