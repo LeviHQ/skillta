@@ -35,14 +35,14 @@ export default function CountryDocLayout({ country, currentKey, children }: Prop
         </div>
       </div>
 
-      <div className="grid md:grid-cols-[240px_1fr] gap-6">
+      <div className="grid md:grid-cols-[240px_1fr] gap-6 min-w-0">
         {/* Sidebar */}
-        <aside className="md:sticky md:top-24 md:self-start">
-          <nav className="glass rounded-xl border border-border p-3">
+        <aside className="md:sticky md:top-24 md:self-start min-w-0 w-full overflow-hidden">
+          <nav className="glass rounded-xl border border-border p-3 min-w-0">
             <div className="text-[10px] uppercase tracking-widest text-muted-foreground font-mono px-2 pb-2 border-b border-border mb-2">
               {country.name} Docs
             </div>
-            <ul className="flex md:flex-col gap-1 overflow-x-auto md:overflow-visible">
+            <ul className="flex md:flex-col gap-1 overflow-x-auto md:overflow-visible w-full scrollbar-thin">
               {SECTIONS.map((s, i) => {
                 const active = s.key === currentKey;
                 return (
