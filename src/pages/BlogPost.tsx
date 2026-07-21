@@ -453,7 +453,7 @@ export default function BlogPost() {
 
             {/* Content — first half */}
             <div className={proseClass}>
-              <ReactMarkdown components={mdComponents}>{first}</ReactMarkdown>
+              <ReactMarkdown remarkPlugins={[remarkGfm]} components={mdComponents}>{first}</ReactMarkdown>
             </div>
 
             {/* Contextual mid-article service CTA */}
@@ -480,7 +480,7 @@ export default function BlogPost() {
 
             {/* Content — second half */}
             <div className={proseClass}>
-              <ReactMarkdown components={mdComponents}>{second}</ReactMarkdown>
+              <ReactMarkdown remarkPlugins={[remarkGfm]} components={mdComponents}>{second}</ReactMarkdown>
             </div>
 
             {/* FAQ */}
