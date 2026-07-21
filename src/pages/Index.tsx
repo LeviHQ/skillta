@@ -116,9 +116,6 @@ export default function Index() {
       {/* Country Ecosystem launch */}
       <CountryEcosystemSection />
 
-      {/* Sponsored - Native Banner */}
-      <AdsterraNativeBanner />
-
       {/* Who Is It For */}
       <WhoIsItForSection />
 
