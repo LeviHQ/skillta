@@ -15,6 +15,7 @@ import {
 } from "@/data/countrySections";
 import CountryDocLayout from "@/components/CountryDocLayout";
 import AdsterraResponsiveBanner from "@/components/AdsterraResponsiveBanner";
+import AdsterraNativeBanner from "@/components/AdsterraNativeBanner";
 import ResumeReviewerCTA from "@/components/ResumeReviewerCTA";
 import SupportBanner from "@/components/SupportBanner";
 import { getBaseUrl } from "@/lib/seo";
@@ -72,6 +73,7 @@ export default function CountryPage() {
       </CountryDocLayout>
 
       <div className="container mx-auto px-6">
+        <AdsterraNativeBanner />
         <SupportBanner />
       </div>
     </>

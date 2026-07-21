@@ -20,6 +20,7 @@ const plans = [
       "Skill Gap Analyzer — 3 free analyses/day",
       "Unlimited Salary Predictor & Interview Prep",
       "Roadmap Library & Compare Careers",
+      "🌍 Country Ecosystem — 50+ countries (jobs, salaries, roadmaps, resume, interview)",
     ],
     cta: "Get Started",
     highlighted: false,
