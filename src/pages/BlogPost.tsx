@@ -25,6 +25,7 @@ import {
   Globe2,
 } from "lucide-react";
 import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import { motion } from "framer-motion";
 import AdsterraNativeBanner from "@/components/AdsterraNativeBanner";
 import AdsterraResponsiveBanner from "@/components/AdsterraResponsiveBanner";
@@ -280,19 +281,27 @@ export default function BlogPost() {
     },
   };
 
-  // Split content around midpoint for a natural ad + service CTA break
-  const parts = enhancedContent.split(/\n\n+/);
-  const mid = Math.floor(parts.length / 2);
-  const first = parts.slice(0, mid).join("\n\n");
-  const second = parts.slice(mid).join("\n\n");
+  // Split content at an H2 boundary near the midpoint so headings stay with their sections
+  const splitAtMidH2 = (md: string): [string, string] => {
+    const lines = md.split("\n");
+    const h2Idx: number[] = [];
+    lines.forEach((l, i) => { if (/^##\s+/.test(l)) h2Idx.push(i); });
+    if (h2Idx.length < 3) return [md, ""];
+    const target = h2Idx[Math.floor(h2Idx.length / 2)];
+    return [lines.slice(0, target).join("\n"), lines.slice(target).join("\n")];
+  };
+  const [first, second] = splitAtMidH2(enhancedContent);
 
   const ServiceIcon = service.icon;
   const wordCount = enhancedContent.split(/\s+/).filter(Boolean).length;
 
+  // Cleaner SEO title (avoid duplicated brand when title already contains it)
+  const seoTitle = /skillta/i.test(post.title) ? post.title : `${post.title} | SkillTa`;
+
   return (
     <div className="min-h-screen bg-background">
       <SEOHead
-        title={`${post.title} | SkillTa Blog`}
+        title={seoTitle}
         description={post.description}
         keywords={post.keywords}
         path={`/blog/${post.slug}`}
@@ -444,7 +453,7 @@ export default function BlogPost() {
 
             {/* Content — first half */}
             <div className={proseClass}>
-              <ReactMarkdown components={mdComponents}>{first}</ReactMarkdown>
+              <ReactMarkdown remarkPlugins={[remarkGfm]} components={mdComponents}>{first}</ReactMarkdown>
             </div>
 
             {/* Contextual mid-article service CTA */}
@@ -471,7 +480,7 @@ export default function BlogPost() {
 
             {/* Content — second half */}
             <div className={proseClass}>
-              <ReactMarkdown components={mdComponents}>{second}</ReactMarkdown>
+              <ReactMarkdown remarkPlugins={[remarkGfm]} components={mdComponents}>{second}</ReactMarkdown>
             </div>
 
             {/* FAQ */}
