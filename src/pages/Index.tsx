@@ -113,6 +113,12 @@ export default function Index() {
       {/* Free Services showcase */}
       <FreeServicesSection />
 
+      {/* Country Ecosystem launch */}
+      <CountryEcosystemSection />
+
+      {/* Sponsored - Native Banner */}
+      <AdsterraNativeBanner />
+
       {/* Who Is It For */}
       <WhoIsItForSection />
 
