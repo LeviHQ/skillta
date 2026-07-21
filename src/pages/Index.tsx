@@ -13,6 +13,7 @@ import AccuracySection from "@/components/AccuracySection";
 import WhoIsItForSection from "@/components/WhoIsItForSection";
 import FAQSection from "@/components/FAQSection";
 import FreeServicesSection from "@/components/FreeServicesSection";
+import CountryEcosystemSection from "@/components/CountryEcosystemSection";
 import AdsterraNativeBanner from "@/components/AdsterraNativeBanner";
 import SEOHead from "@/components/SEOHead";
 import { PAGE_SEO, getWebApplicationSchema, getEducationalOrgSchema, getWebsiteSchema, getHowToSchema, getFAQSchema, getOrganizationSchema, getSoftwareAppSchema, getItemListSchema } from "@/lib/seo";
