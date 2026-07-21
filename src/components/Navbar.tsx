@@ -6,6 +6,7 @@ import logo from "@/assets/logo.png";
 import { useAuth } from "@/contexts/AuthContext";
 import { usePlan } from "@/contexts/PlanContext";
 import SignInModal from "./SignInModal";
+import CountryDropdown from "./CountryDropdown";
 
 
 const navLinks = [
