@@ -150,6 +150,33 @@ const chatTree: Record<string, ChatNode> = {
     message: "Opening Compare Careers — pick any 2 and analyze! ⚖️",
     action: { label: "⚖️ Compare Careers", path: "/compare" },
   },
+  country_help: {
+    id: "country_help",
+    message: "🌍 Country Ecosystem is our newest FREE launch! Pick your country from the navbar 'Country' tab (50+ available) and get a full doc-style page: top tech jobs, local salaries (Junior/Mid/Senior), roadmaps, country-specific resume rules, interview loops, top companies, certifications and in-demand skills for 2026. All localized, no sign-in needed.",
+    options: [
+      { label: "Open USA ecosystem", nextId: "country_usa_go" },
+      { label: "Open India ecosystem", nextId: "country_india_go" },
+      { label: "How do I use it?", nextId: "country_how" },
+    ],
+  },
+  country_usa_go: {
+    id: "country_usa_go",
+    message: "Taking you to the USA tech ecosystem. 🇺🇸",
+    action: { label: "🇺🇸 Open USA", path: "/usa" },
+  },
+  country_india_go: {
+    id: "country_india_go",
+    message: "Taking you to the India tech ecosystem. 🇮🇳",
+    action: { label: "🇮🇳 Open India", path: "/india" },
+  },
+  country_how: {
+    id: "country_how",
+    message: "1️⃣ Click 'Country' in navbar → 2️⃣ Search or scroll flags → 3️⃣ Pick your country → 4️⃣ Read like docs: 10 sections in the left sidebar (Overview, Jobs, Salary, Roadmaps, Resume, Interview, Companies, Certifications, Skills, Resources). Use Next/Previous to navigate. 🚀",
+    options: [
+      { label: "Explore USA", nextId: "country_usa_go" },
+      { label: "Explore India", nextId: "country_india_go" },
+    ],
+  },
   blog_help: {
     id: "blog_help",
     message: "Our Blog has 90+ SEO-optimized articles — trending tech topics, career guides, and country-wise salary guides (USA, UK, Canada, Australia, Germany, Russia). Use the Country filter on the Blog page! 📚",
