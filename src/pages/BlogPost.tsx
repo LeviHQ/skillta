@@ -25,6 +25,7 @@ import {
   Globe2,
 } from "lucide-react";
 import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import { motion } from "framer-motion";
 import AdsterraNativeBanner from "@/components/AdsterraNativeBanner";
 import AdsterraResponsiveBanner from "@/components/AdsterraResponsiveBanner";
