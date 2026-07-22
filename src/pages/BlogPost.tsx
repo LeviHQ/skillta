@@ -231,7 +231,7 @@ export default function BlogPost() {
     return [...sameCat, ...sameCountry, ...rest].slice(0, 6);
   }, [post]);
 
-  const shareUrl = `https://skillta.tech/blog/${post.slug}`;
+  const shareUrl = `https://www.skillta.tech/blog/${post.slug}`;
   const onCopy = async () => {
     try {
       await navigator.clipboard.writeText(shareUrl);

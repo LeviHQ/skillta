@@ -78,7 +78,7 @@ serve(async (req) => {
         <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="background-color:#ffffff;border-radius:16px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,0.08);">
           <tr>
             <td style="background:linear-gradient(135deg,#26c6b0,#7c3aed);padding:40px 40px 30px;text-align:center;">
-              <img src="https://skillta.tech/logo.png" alt="SkillTa" width="56" height="56" style="display:block;margin:0 auto 16px;border-radius:14px;" />
+              <img src="https://www.skillta.tech/logo.png" alt="SkillTa" width="56" height="56" style="display:block;margin:0 auto 16px;border-radius:14px;" />
               <h1 style="margin:0;font-size:26px;font-weight:700;color:#ffffff;letter-spacing:-0.5px;">
                 Welcome to SkillTa! 🚀
               </h1>
@@ -119,7 +119,7 @@ serve(async (req) => {
           </tr>
           <tr>
             <td style="padding:0 40px 28px;text-align:center;">
-              <a href="https://skillta.tech/quiz" style="display:inline-block;background:linear-gradient(135deg,#26c6b0,#7c3aed);color:#ffffff;text-decoration:none;font-size:16px;font-weight:600;padding:14px 36px;border-radius:10px;letter-spacing:0.3px;">
+              <a href="https://www.skillta.tech/quiz" style="display:inline-block;background:linear-gradient(135deg,#26c6b0,#7c3aed);color:#ffffff;text-decoration:none;font-size:16px;font-weight:600;padding:14px 36px;border-radius:10px;letter-spacing:0.3px;">
                 Take Your Career Quiz Now →
               </a>
             </td>
@@ -135,7 +135,7 @@ serve(async (req) => {
               <div style="margin-top:20px;padding-top:16px;border-top:1px solid #e0e0e8;">
                 <p style="margin:0;font-size:11px;color:#aaa;">
                   © 2026 SkillTa. All rights reserved.<br/>
-                  <a href="https://skillta.tech" style="color:#26c6b0;text-decoration:none;">skillta.tech</a>
+                  <a href="https://www.skillta.tech" style="color:#26c6b0;text-decoration:none;">skillta.tech</a>
                 </p>
               </div>
             </td>
