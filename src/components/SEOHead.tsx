@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { SITE_CONFIG, getBaseUrl } from "@/lib/seo";
 
@@ -33,6 +34,24 @@ export default function SEOHead({
       ? jsonLd
       : [jsonLd]
     : [];
+
+  // Guard against third-party scripts (e.g. Adsterra social bar) that
+  // overwrite document.title after Helmet has set it. Re-assert the
+  // route title whenever <title> is mutated.
+  useEffect(() => {
+    if (typeof document === "undefined") return;
+    if (document.title !== title) document.title = title;
+
+    const titleEl = document.querySelector("title");
+    if (!titleEl) return;
+
+    const observer = new MutationObserver(() => {
+      if (document.title !== title) document.title = title;
+    });
+    observer.observe(titleEl, { childList: true, characterData: true, subtree: true });
+
+    return () => observer.disconnect();
+  }, [title]);
 
   return (
     <Helmet>
