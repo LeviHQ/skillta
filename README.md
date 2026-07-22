@@ -31,16 +31,13 @@ Get **unlimited, data-backed salary predictions** based on your role, location, 
 ### 4. ⚔️ [Compare Careers](https://www.skillta.tech/compare-careers)
 Side-by-side comparison of tech roles across **salary, growth, difficulty, work-life balance, remote friendliness, and demand** — unlimited comparisons, always free.
 
-### 5. 🎤 [Interview Preparation](https://www.skillta.tech/interview-prep)
-Practice **real-level tech interviews** with adaptive MCQs and writing questions. Choose your role, seniority, and skills — get a curated 10-question round per attempt. Full **history tracking** for progress analysis.
-
-### 6. 📄 [AI Resume Reviewer](https://www.skillta.tech/resume-reviewer)
+### 5. 📄 [AI Resume Reviewer](https://www.skillta.tech/resume-reviewer)
 Upload your resume + target role + (optional) job description → get **AI-powered analysis** with strengths, weaknesses, ATS score, keyword suggestions, and a downloadable PDF report. Free tier: **3 reviews/day**.
 
-### 7. 🧠 [Skill Gap Analyzer](https://www.skillta.tech/skill-gap-analyzer)
+### 6. 🧠 [Skill Gap Analyzer](https://www.skillta.tech/skill-gap-analyzer)
 Compare your current skills against your target role's requirements. Get a **personalized gap analysis, learning priorities, and resource recommendations**. Algorithmic (no AI cost), lightning-fast. Free tier: **3 analyses/day**.
 
-### 8. 🌍 [Global Country Ecosystem](https://www.skillta.tech/countries)
+### 7. 🌍 [Global Country Ecosystem](https://www.skillta.tech/countries)
 **50+ countries × 10 sections each** = **500+ localized career hubs** covering:
 - Overview & Tech Scene
 - In-Demand Roles
@@ -53,10 +50,10 @@ Compare your current skills against your target role's requirements. Get a **per
 - Networking Communities
 - Job Boards
 
-### 9. 📝 [Tech Career Blog](https://www.skillta.tech/blog)
+### 8. 📝 [Tech Career Blog](https://www.skillta.tech/blog)
 **70+ SEO-optimized long-form articles** on trending tech topics, country-specific salary guides, career switching, upskilling, and 2026 tech trends. Filter by country/category.
 
-### 10. 🤖 Saathi Chatbot
+### 9. 🤖 Saathi Chatbot
 An in-app decision-tree assistant that guides users through SkillTa's features and answers common career questions.
 
 ---
@@ -86,7 +83,7 @@ An in-app decision-tree assistant that guides users through SkillTa's features a
 - 🔒 [Privacy Policy](https://www.skillta.tech/privacy)
 
 ### Free Services
-- [Career Quiz](https://www.skillta.tech/quiz) · [Roadmaps](https://www.skillta.tech/roadmaps) · [Salary Predictor](https://www.skillta.tech/salary-predictor) · [Compare Careers](https://www.skillta.tech/compare-careers) · [Interview Prep](https://www.skillta.tech/interview-prep) · [Resume Reviewer](https://www.skillta.tech/resume-reviewer) · [Skill Gap Analyzer](https://www.skillta.tech/skill-gap-analyzer)
+- [Career Quiz](https://www.skillta.tech/quiz) · [Roadmaps](https://www.skillta.tech/roadmaps) · [Salary Predictor](https://www.skillta.tech/salary-predictor) · [Compare Careers](https://www.skillta.tech/compare-careers) · [Resume Reviewer](https://www.skillta.tech/resume-reviewer) · [Skill Gap Analyzer](https://www.skillta.tech/skill-gap-analyzer)
 
 ### Popular Country Hubs
 - 🇺🇸 [Tech Careers in USA](https://www.skillta.tech/usa) · 🇬🇧 [UK](https://www.skillta.tech/uk) · 🇨🇦 [Canada](https://www.skillta.tech/canada) · 🇦🇺 [Australia](https://www.skillta.tech/australia) · 🇩🇪 [Germany](https://www.skillta.tech/germany) · 🇮🇳 [India](https://www.skillta.tech/india) · 🇸🇬 [Singapore](https://www.skillta.tech/singapore) · 🇦🇪 [UAE](https://www.skillta.tech/uae)
@@ -108,12 +105,12 @@ Full sitemap: [https://www.skillta.tech/sitemap.xml](https://www.skillta.tech/si
 
 ## 💡 Why SkillTa Stands Out
 
-✅ **Free forever core tools** — no hidden paywalls on essential guidance
-✅ **Global-first** — 50+ countries with localized salary, visa, and job market data
-✅ **Data-driven, not fluff** — every roadmap, salary, and comparison backed by curated research
-✅ **AI where it matters** — Gemini-powered resume review with cost-safe limits
-✅ **Beautiful, fast, mobile-first UX** — glassmorphism, smooth animations, PWA-ready
-✅ **SEO-optimized** — 650+ indexed pages, JSON-LD schema, per-route canonical tags
+✅ **Free forever core tools** — no hidden paywalls on essential guidance<br>
+✅ **Global-first** — 50+ countries with localized salary, visa, and job market data<br>
+✅ **Data-driven, not fluff** — every roadmap, salary, and comparison backed by curated research<br>
+✅ **AI where it matters** — Gemini-powered resume review with cost-safe limits<br>
+✅ **Beautiful, fast, mobile-first UX** — glassmorphism, smooth animations, PWA-ready<br>
+✅ **SEO-optimized** — 650+ indexed pages, JSON-LD schema, per-route canonical tags<br>
 ✅ **Privacy-respecting** — Firebase Auth (Google), no tracking spyware
 
 ---
@@ -140,25 +137,11 @@ Full sitemap: [https://www.skillta.tech/sitemap.xml](https://www.skillta.tech/si
 
 ## 👨‍💻 About the Founder
 
-**Adarsh Jayprakash Mishra** — Full-stack developer and founder of SkillTa. Passionate about democratizing career guidance for the next generation of tech talent.
+**Adarsh Jayprakash Mishra** — A final-year Computer Science student, founder of SkillTa, and an aspiring software tester passoniate about ai, web development and startup.
 
 - 💼 [LinkedIn](https://www.linkedin.com/in/adarsh-jayprakash-mishra)
 - 🐙 [GitHub](https://github.com/Code-By-Adarsh)
 - 📧 [Email](mailto:adarshmishra70931@gmail.com)
-
----
-
-## 🏷️ Topics & Keywords
-
-`career-guidance` `tech-careers` `ai-career-coach` `resume-reviewer` `interview-prep` `career-roadmap` `salary-predictor` `skill-gap-analyzer` `software-engineer` `data-scientist` `ai-engineer` `devops` `cybersecurity` `product-manager` `career-quiz` `tech-jobs` `global-tech-careers` `career-switch` `learn-to-code` `developer-career` `react` `vite` `typescript` `supabase` `gemini-ai`
-
----
-
-## 📜 License & Trademark
-
-© 2026 **SkillTa**. All rights reserved. SkillTa™ and the SkillTa logo are trademarks of the SkillTa project.
-
-The SkillTa platform, content, roadmaps, blog articles, and country ecosystem data are proprietary. Reuse without written permission is prohibited. See our [Terms of Service](https://www.skillta.tech/terms) for details.
 
 ---
 
