@@ -482,7 +482,7 @@ export default function ResumeReviewer() {
           name="description"
           content="Get an instant AI-powered ATS score, section-wise feedback, missing keywords, and bullet rewrites for your tech resume — completely free on SkillTa."
         />
-        <link rel="canonical" href="https://skillta.tech/resume-reviewer" />
+        <link rel="canonical" href="https://www.skillta.tech/resume-reviewer" />
       </Helmet>
 
       <div className="min-h-screen bg-background">

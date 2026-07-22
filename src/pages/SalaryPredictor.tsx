@@ -103,7 +103,7 @@ export default function SalaryPredictor() {
           name="description"
           content="AI-powered salary predictor for tech roles. Get a realistic pay range, market position, and growth advice grounded in 2025-2026 data."
         />
-        <link rel="canonical" href="https://skillta.tech/salary-predictor" />
+        <link rel="canonical" href="https://www.skillta.tech/salary-predictor" />
       </Helmet>
 
       <AdsterraResponsiveBanner />

@@ -270,7 +270,7 @@ export default function PricingSection() {
               </div>
 
               <a
-                href="https://skillta.tech/contact"
+                href="https://www.skillta.tech/contact"
                 className="w-full py-3 rounded-xl font-semibold text-sm bg-gradient-primary text-primary-foreground hover:opacity-90 transition-all text-center block mb-3"
               >
                 Share Your Feedback ✨

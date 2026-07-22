@@ -131,7 +131,7 @@ serve(async (req) => {
   <tr><td align="center">
     <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="background-color:#ffffff;border-radius:16px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,0.08);">
       <tr><td style="background:linear-gradient(135deg,#26c6b0,#7c3aed);padding:40px 40px 30px;text-align:center;">
-        <img src="https://skillta.tech/logo.png" alt="SkillTa" width="56" height="56" style="display:block;margin:0 auto 16px;border-radius:14px;" />
+        <img src="https://www.skillta.tech/logo.png" alt="SkillTa" width="56" height="56" style="display:block;margin:0 auto 16px;border-radius:14px;" />
         <h1 style="margin:0;font-size:26px;font-weight:700;color:#ffffff;letter-spacing:-0.5px;">Subscription Receipt 🎉</h1>
         <p style="margin:8px 0 0;font-size:14px;color:rgba(255,255,255,0.85);">Your ${planName} Plan is now active</p>
       </td></tr>
@@ -162,14 +162,14 @@ serve(async (req) => {
         </div>
       </td></tr>
       <tr><td style="padding:24px 40px 28px;text-align:center;">
-        <a href="https://skillta.tech/dashboard" style="display:inline-block;background:linear-gradient(135deg,#26c6b0,#7c3aed);color:#ffffff;text-decoration:none;font-size:16px;font-weight:600;padding:14px 36px;border-radius:10px;">
+        <a href="https://www.skillta.tech/dashboard" style="display:inline-block;background:linear-gradient(135deg,#26c6b0,#7c3aed);color:#ffffff;text-decoration:none;font-size:16px;font-weight:600;padding:14px 36px;border-radius:10px;">
           Go to Your Dashboard →
         </a>
         <p style="margin:14px 0 0;font-size:12px;color:#999;">You can upgrade or cancel anytime from your dashboard.</p>
       </td></tr>
       <tr><td style="background:#f8f9fc;padding:24px 40px;text-align:center;border-top:1px solid #e8e9f0;">
         <p style="margin:0;font-size:13px;font-weight:600;color:#7c3aed;">— Team SkillTa 💜</p>
-        <p style="margin:12px 0 0;font-size:11px;color:#aaa;">© 2026 SkillTa · <a href="https://skillta.tech" style="color:#26c6b0;text-decoration:none;">skillta.tech</a></p>
+        <p style="margin:12px 0 0;font-size:11px;color:#aaa;">© 2026 SkillTa · <a href="https://www.skillta.tech" style="color:#26c6b0;text-decoration:none;">skillta.tech</a></p>
       </td></tr>
     </table>
   </td></tr>

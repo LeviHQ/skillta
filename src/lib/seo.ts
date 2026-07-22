@@ -1,7 +1,7 @@
 // Centralized SEO configuration — domain-agnostic
 export const SITE_CONFIG = {
   name: "SkillTa",
-  url: "https://skillta.tech",
+  url: "https://www.skillta.tech",
   tagline: "Find Your Perfect Tech Career Path",
   description: "AI-powered career guidance for tech. Take our free quiz to discover your ideal career path — frontend, backend, data science, AI/ML, cybersecurity & more. Get a personalized roadmap with 50+ career paths, salary insights & free resources.",
   keywords: "tech career quiz, career path finder, best tech careers 2026, learn to code, career guidance for programmers, tech career roadmap, which tech career is right for me, free career test, software developer roadmap, career aptitude test, ai engineer roadmap, how to become developer, tech career after 12th, programming language to learn, web development roadmap, tech job no experience",

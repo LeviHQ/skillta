@@ -41,7 +41,7 @@ serve(async (req) => {
   <tr><td align="center">
     <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,0.08);">
       <tr><td style="background:linear-gradient(135deg,#26c6b0,#7c3aed);padding:40px;text-align:center;">
-        <img src="https://skillta.tech/logo.png" alt="SkillTa" width="56" height="56" style="display:block;margin:0 auto 16px;border-radius:14px;" />
+        <img src="https://www.skillta.tech/logo.png" alt="SkillTa" width="56" height="56" style="display:block;margin:0 auto 16px;border-radius:14px;" />
         <h1 style="margin:0;font-size:24px;color:#fff;font-weight:700;">Skill Gap limit reached 🎯</h1>
         <p style="margin:8px 0 0;font-size:14px;color:rgba(255,255,255,0.85);">Your quota resets tomorrow</p>
       </td></tr>
@@ -58,21 +58,21 @@ serve(async (req) => {
         <div style="background:#f8f9fc;border-radius:12px;padding:22px;">
           <p style="margin:0 0 12px;font-size:15px;font-weight:700;color:#1a1a2e;">💡 While you wait, explore other free tools</p>
           <p style="margin:6px 0;font-size:14px;color:#555770;line-height:1.7;">
-            🎯 <a href="https://skillta.tech/quiz" style="color:#7c3aed;text-decoration:none;font-weight:600;">AI Career Quiz</a><br/>
-            📄 <a href="https://skillta.tech/resume-reviewer" style="color:#7c3aed;text-decoration:none;font-weight:600;">AI Resume Reviewer</a><br/>
-            💰 <a href="https://skillta.tech/salary-predictor" style="color:#7c3aed;text-decoration:none;font-weight:600;">Salary Predictor</a><br/>
-            🗺️ <a href="https://skillta.tech/roadmaps" style="color:#7c3aed;text-decoration:none;font-weight:600;">Roadmap Library</a><br/>
-            ⚖️ <a href="https://skillta.tech/compare" style="color:#7c3aed;text-decoration:none;font-weight:600;">Compare Careers</a>
+            🎯 <a href="https://www.skillta.tech/quiz" style="color:#7c3aed;text-decoration:none;font-weight:600;">AI Career Quiz</a><br/>
+            📄 <a href="https://www.skillta.tech/resume-reviewer" style="color:#7c3aed;text-decoration:none;font-weight:600;">AI Resume Reviewer</a><br/>
+            💰 <a href="https://www.skillta.tech/salary-predictor" style="color:#7c3aed;text-decoration:none;font-weight:600;">Salary Predictor</a><br/>
+            🗺️ <a href="https://www.skillta.tech/roadmaps" style="color:#7c3aed;text-decoration:none;font-weight:600;">Roadmap Library</a><br/>
+            ⚖️ <a href="https://www.skillta.tech/compare" style="color:#7c3aed;text-decoration:none;font-weight:600;">Compare Careers</a>
           </p>
         </div>
       </td></tr>
       <tr><td style="padding:24px 40px 28px;text-align:center;">
-        <a href="https://skillta.tech/skill-gap-analyzer" style="display:inline-block;background:linear-gradient(135deg,#26c6b0,#7c3aed);color:#fff;text-decoration:none;font-size:15px;font-weight:600;padding:14px 36px;border-radius:10px;">Come back tomorrow →</a>
+        <a href="https://www.skillta.tech/skill-gap-analyzer" style="display:inline-block;background:linear-gradient(135deg,#26c6b0,#7c3aed);color:#fff;text-decoration:none;font-size:15px;font-weight:600;padding:14px 36px;border-radius:10px;">Come back tomorrow →</a>
         <p style="margin:14px 0 0;font-size:12px;color:#999;">Bookmark the page so it's a click away when your quota resets.</p>
       </td></tr>
       <tr><td style="background:#f8f9fc;padding:22px 40px;text-align:center;border-top:1px solid #e8e9f0;">
         <p style="margin:0;font-size:13px;font-weight:600;color:#7c3aed;">— Team SkillTa 💜</p>
-        <p style="margin:10px 0 0;font-size:11px;color:#aaa;">© 2026 SkillTa · <a href="https://skillta.tech" style="color:#26c6b0;text-decoration:none;">skillta.tech</a></p>
+        <p style="margin:10px 0 0;font-size:11px;color:#aaa;">© 2026 SkillTa · <a href="https://www.skillta.tech" style="color:#26c6b0;text-decoration:none;">skillta.tech</a></p>
       </td></tr>
     </table>
   </td></tr>
