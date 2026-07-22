@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { SITE_CONFIG, getBaseUrl } from "@/lib/seo";
 
