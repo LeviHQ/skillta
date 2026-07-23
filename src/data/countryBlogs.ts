@@ -482,17 +482,114 @@ Usually within 5–15% of the metro band. Fully-remote roles from US-HQ employer
 `;
 }
 
+// Country-specific SEO hooks — used to differentiate titles/descriptions
+// across countries so no two of the 60 blog cards look templated to Google.
+const COUNTRY_HOOKS: Record<string, { titleHook: string; descHook: string; extraKw: string }> = {
+  usa: {
+    titleHook: "FAANG, State-Wise Pay & H1B Insights",
+    descHook: "FAANG bands, state-wise pay (California, Texas, NY) and H1B-friendly employers",
+    extraKw: "faang salary, california tech salary, new york developer pay, h1b sponsor companies",
+  },
+  uk: {
+    titleHook: "London vs Remote, IR35 & Big Tech Bands",
+    descHook: "London vs regional pay, IR35 contractor day-rates and Big Tech UK bands",
+    extraKw: "london tech salary, ir35 contractor rates, uk tech jobs 2026, big tech london pay",
+  },
+  canada: {
+    titleHook: "Toronto, Vancouver & PR-Pathway Employers",
+    descHook: "Toronto & Vancouver pay, PR-pathway employers and US-remote comp for Canadian devs",
+    extraKw: "toronto tech salary, vancouver developer pay, canada pr tech jobs, us remote canada",
+  },
+  australia: {
+    titleHook: "Sydney, Melbourne & 482 Visa Sponsors",
+    descHook: "Sydney & Melbourne bands, 482 visa sponsors and Big 4 bank tech comp",
+    extraKw: "sydney tech salary, melbourne developer pay, 482 visa sponsor tech, australia big 4 tech",
+  },
+  germany: {
+    titleHook: "Berlin, Munich & EU Blue Card Employers",
+    descHook: "Berlin & Munich pay, EU Blue Card sponsors and Mittelstand vs scale-up bands",
+    extraKw: "berlin tech salary, munich developer pay, eu blue card tech germany, mittelstand tech jobs",
+  },
+  russia: {
+    titleHook: "Moscow, SPB & Remote-First Employers",
+    descHook: "Moscow & St Petersburg bands, remote-first employers and international contract pay",
+    extraKw: "moscow tech salary, st petersburg developer pay, russia remote tech jobs, international contract russia",
+  },
+};
+
+// 10 title templates — indexed by role slot so each role has its own signature
+// phrasing. Combined with the country hook this yields 60 unique titles.
+const TITLE_TEMPLATES: ((role: string, country: string, hook: string) => string)[] = [
+  (r, c, h) => `${r} Salary in ${c} (2026): Entry-Level, Senior & Lead Pay — ${h}`,
+  (r, c, h) => `${r} Salary in ${c} 2026: ${h} & Full Compensation Breakdown`,
+  (r, c, h) => `How Much Does a ${r} Earn in ${c}? 2026 Report (${h})`,
+  (r, c, h) => `${r} Jobs in ${c} 2026: Average Salary, ${h} & Top Employers`,
+  (r, c, h) => `${r} Salary Guide — ${c} 2026: Bands, Bonuses, Equity & ${h}`,
+  (r, c, h) => `${c} ${r} Salary 2026: ${h} + City-Wise Pay & Negotiation Tips`,
+  (r, c, h) => `${r} Pay in ${c} (2026): ${h} and the Full Career-Ladder Breakdown`,
+  (r, c, h) => `${r} Compensation in ${c} 2026: ${h} & Skills That Boost Your Offer`,
+  (r, c, h) => `Is ${r} Worth It in ${c} in 2026? Salary Data, Demand & ${h}`,
+  (r, c, h) => `${r} Salary in ${c} 2026 — ${h}, Remote Rates & Contractor Pay`,
+];
+
+// 10 description templates — same idea; also weave in real numbers so each
+// snippet reads as data-driven (higher CTR than generic copy).
+const DESC_TEMPLATES: ((ctx: {
+  role: string; country: string; hook: string;
+  entry: string; mid: string; senior: string; lead: string;
+}) => string)[] = [
+  ({ role, country, hook, entry, mid, senior }) =>
+    `Complete 2026 ${role} salary breakdown for ${country}: entry ${entry}, mid ${mid}, senior ${senior}. City-wise pay, ${hook}, top employers & premium skills covered.`,
+  ({ role, country, hook, mid, senior }) =>
+    `${role} pay in ${country} for 2026 — mid-level ${mid}, senior tops ${senior}. See ${hook}, hiring companies and skills that unlock a 30% raise.`,
+  ({ role, country, hook, entry, lead }) =>
+    `How much does a ${role} really make in ${country} in 2026? Full report with ${hook}, entry ${entry} to lead ${lead} bands, bonuses & equity insights.`,
+  ({ role, country, hook, mid }) =>
+    `${role} jobs in ${country} pay around ${mid} mid-level in 2026. Explore ${hook}, top hiring firms, remote rates and negotiation tactics.`,
+  ({ role, country, hook, entry, lead }) =>
+    `2026 ${role} salary guide for ${country}: bands from ${entry} to ${lead}, ${hook}, in-demand skills and how to climb the career ladder faster.`,
+  ({ role, country, hook, senior }) =>
+    `Detailed ${country} ${role} salary data for 2026 — city-wise numbers up to ${senior} for seniors, ${hook}, and step-by-step negotiation tips.`,
+  ({ role, country, hook, mid, senior }) =>
+    `${role} pay in ${country} (2026): ${mid} mid, ${senior} senior. Career ladder, ${hook} and premium skills that command 20–35% higher offers.`,
+  ({ role, country, hook }) =>
+    `Everything on ${role} compensation in ${country} for 2026 — ${hook}, top skills, contractor day-rates and side-by-side city salary data.`,
+  ({ role, country, hook, entry, lead }) =>
+    `Should you pursue ${role} in ${country} in 2026? Latest salary bands (${entry}–${lead}), demand trends and ${hook} — all in one guide.`,
+  ({ role, country, hook }) =>
+    `${role} salary in ${country} 2026 — full data on ${hook}, remote pay, contractor rates and the skills separating mid from senior offers.`,
+];
+
+function templateIndex(country: CountryCfg, role: RoleCfg): number {
+  const cIdx = COUNTRIES.findIndex(c => c.key === country.key);
+  const rIdx = ROLES.findIndex(r => r.key === role.key);
+  // (cIdx*3 + rIdx) % 10 spreads templates across both axes so a single
+  // country never reuses the same phrasing twice for its 10 roles.
+  return ((cIdx * 3) + rIdx) % 10;
+}
+
 function buildTitle(country: CountryCfg, role: RoleCfg): string {
-  return `${role.role} Salary in ${country.name} 2026 — Complete Guide with City-Wise Data`;
+  const hook = COUNTRY_HOOKS[country.key]?.titleHook ?? "2026 Data";
+  return TITLE_TEMPLATES[templateIndex(country, role)](role.role, country.name, hook);
 }
 
 function buildDescription(country: CountryCfg, role: RoleCfg): string {
-  const mid = role.ranges[country.key][1];
-  return `${role.role} salary in ${country.name} 2026: mid-level averages around ${fmt(mid, country)} ${country.ccy}. City-wise pay, top hiring companies, premium skills, and how to negotiate — full 2026 data breakdown.`;
+  const [entry, mid, senior, lead] = role.ranges[country.key];
+  const hook = COUNTRY_HOOKS[country.key]?.descHook ?? "2026 market data";
+  return DESC_TEMPLATES[templateIndex(country, role)]({
+    role: role.role,
+    country: country.name,
+    hook,
+    entry: `${fmt(entry, country)} ${country.ccy}`,
+    mid: `${fmt(mid, country)} ${country.ccy}`,
+    senior: `${fmt(senior, country)} ${country.ccy}`,
+    lead: `${fmt(lead, country)} ${country.ccy}`,
+  }).slice(0, 300);
 }
 
 function buildKeywords(country: CountryCfg, role: RoleCfg): string {
-  return `${role.role.toLowerCase()} salary ${country.name.toLowerCase()} 2026, ${role.role.toLowerCase()} pay ${country.name.toLowerCase()}, ${role.keywordsExtra}, tech salary ${country.name.toLowerCase()} 2026`;
+  const extra = COUNTRY_HOOKS[country.key]?.extraKw ?? "";
+  return `${role.role.toLowerCase()} salary ${country.name.toLowerCase()} 2026, ${role.role.toLowerCase()} pay ${country.name.toLowerCase()}, ${role.keywordsExtra}, ${extra}, tech salary ${country.name.toLowerCase()} 2026`;
 }
 
 const posts: BlogPost[] = [];
