@@ -13,8 +13,10 @@ import {
   Smartphone,
   TrendingUp,
   Wallet,
+  Gift,
 } from "lucide-react";
 import { careers } from "@/data/careers";
+import FreePerksModal from "./FreePerksModal";
 
 const rotatingWords = ["Tech Career", "Dream Job", "Future Path", "Passion"];
 
@@ -60,6 +62,7 @@ export default function HeroSection() {
   const [selected, setSelected] = useState<string | null>(null);
   const [feedIndex, setFeedIndex] = useState(0);
   const [liveUsers, setLiveUsers] = useState(1284);
+  const [perksOpen, setPerksOpen] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -155,7 +158,7 @@ export default function HeroSection() {
               data to land your dream tech role — free to start.
             </p>
 
-            <div className="flex flex-wrap gap-4 justify-center lg:justify-start mb-10">
+            <div className="flex flex-wrap gap-4 justify-center lg:justify-start mb-5">
               <Link
                 to="/quiz"
                 className="group inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-gradient-primary text-primary-foreground font-semibold shadow-glow hover:scale-[1.03] active:scale-[0.98] transition-transform"
@@ -170,6 +173,27 @@ export default function HeroSection() {
                 View Roadmaps
               </Link>
             </div>
+
+            <div className="flex justify-center lg:justify-start mb-10">
+              <motion.button
+                type="button"
+                onClick={() => setPerksOpen(true)}
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.98 }}
+                className="group relative inline-flex items-center gap-2.5 px-5 py-3 rounded-full border border-accent/40 bg-accent/10 backdrop-blur-sm overflow-hidden"
+              >
+                <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-accent/25 to-transparent" />
+                <Gift className="w-4 h-4 text-accent relative" />
+                <span className="text-sm font-semibold text-foreground relative">
+                  What SkillTa gives you <span className="text-gradient">for free</span>
+                </span>
+                <span className="relative text-[10px] font-mono font-bold uppercase tracking-widest text-accent">
+                  7 tools
+                </span>
+                <ArrowRight className="w-3.5 h-3.5 text-accent relative group-hover:translate-x-1 transition-transform" />
+              </motion.button>
+            </div>
+
 
             <div className="border-t border-border/60 pt-8">
               <div className="rounded-2xl border border-border/60 bg-card/50 backdrop-blur-sm p-4 max-w-md mx-auto lg:mx-0">
@@ -365,6 +389,8 @@ export default function HeroSection() {
 
       {/* Bottom fade */}
       <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background to-transparent pointer-events-none" />
+
+      <FreePerksModal open={perksOpen} onClose={() => setPerksOpen(false)} />
     </section>
   );
 }
