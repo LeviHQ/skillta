@@ -18,6 +18,17 @@ import { careers } from "@/data/careers";
 
 const rotatingWords = ["Tech Career", "Dream Job", "Future Path", "Passion"];
 
+const liveFeed = [
+  { emoji: "🧑‍💻", who: "Aarav from Bengaluru", action: "generated an AI Engineer roadmap", when: "just now" },
+  { emoji: "👩‍💻", who: "Sophia from London", action: "completed the career quiz", when: "12 seconds ago" },
+  { emoji: "🧑‍🎓", who: "Daniel from Toronto", action: "analyzed his resume with AI", when: "34 seconds ago" },
+  { emoji: "👨‍🔧", who: "Meera from Pune", action: "compared Frontend vs Backend", when: "1 minute ago" },
+  { emoji: "🧕", who: "Fatima from Dubai", action: "ran a skill gap analysis", when: "2 minutes ago" },
+  { emoji: "🧑‍🚀", who: "Lucas from Berlin", action: "started an interview practice round", when: "3 minutes ago" },
+  { emoji: "👩‍🔬", who: "Emily from Sydney", action: "unlocked the Cloud Architect path", when: "4 minutes ago" },
+];
+
+
 const paths = [
   { id: "frontend-developer", label: "Frontend", sub: "UI/UX & Interactive", icon: Code2, tone: "primary" },
   { id: "backend-developer", label: "Backend", sub: "Systems & Logic", icon: Server, tone: "accent" },
