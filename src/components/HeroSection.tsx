@@ -140,25 +140,47 @@ export default function HeroSection() {
               </Link>
             </div>
 
-            <div className="flex items-center gap-5 justify-center lg:justify-start border-t border-border/60 pt-8">
-              <div className="flex -space-x-3">
-                {["🧑‍💻", "👩‍💻", "🧑‍🎓"].map((e, i) => (
-                  <div
-                    key={i}
-                    className="w-10 h-10 rounded-full bg-secondary border-2 border-background flex items-center justify-center text-sm"
-                  >
-                    {e}
-                  </div>
-                ))}
-                <div className="w-10 h-10 rounded-full bg-primary border-2 border-background flex items-center justify-center text-[10px] font-bold text-primary-foreground">
-                  +10k
+            <div className="border-t border-border/60 pt-8">
+              <div className="rounded-2xl border border-border/60 bg-card/50 backdrop-blur-sm p-4 max-w-md mx-auto lg:mx-0">
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="relative flex h-2 w-2">
+                    <span className="absolute inline-flex h-full w-full rounded-full bg-success opacity-75 animate-ping" />
+                    <span className="relative inline-flex h-2 w-2 rounded-full bg-success" />
+                  </span>
+                  <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-success">
+                    Live activity
+                  </span>
+                  <span className="ml-auto text-[10px] font-mono text-muted-foreground">
+                    {liveUsers.toLocaleString()} online now
+                  </span>
+                </div>
+
+                <div className="relative h-9 overflow-hidden">
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={feedIndex}
+                      initial={{ opacity: 0, y: 14 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -14 }}
+                      transition={{ duration: 0.35, ease: "easeOut" }}
+                      className="absolute inset-0 flex items-center gap-3"
+                    >
+                      <div className="w-7 h-7 shrink-0 rounded-full bg-secondary border border-border flex items-center justify-center text-sm">
+                        {liveFeed[feedIndex].emoji}
+                      </div>
+                      <p className="text-sm text-muted-foreground text-left leading-tight">
+                        <span className="text-foreground font-semibold">{liveFeed[feedIndex].who}</span>{" "}
+                        {liveFeed[feedIndex].action}
+                        <span className="block text-[10px] font-mono text-muted-foreground/70">
+                          {liveFeed[feedIndex].when}
+                        </span>
+                      </p>
+                    </motion.div>
+                  </AnimatePresence>
                 </div>
               </div>
-              <div className="text-sm text-muted-foreground text-left">
-                <span className="text-foreground font-bold block">10,000+ Students</span>
-                Finding their path with SkillTa
-              </div>
             </div>
+
           </motion.div>
 
           {/* Right: interactive path selector */}
