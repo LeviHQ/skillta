@@ -18,6 +18,17 @@ import { careers } from "@/data/careers";
 
 const rotatingWords = ["Tech Career", "Dream Job", "Future Path", "Passion"];
 
+const liveFeed = [
+  { emoji: "🧑‍💻", who: "Aarav from Bengaluru", action: "generated an AI Engineer roadmap", when: "just now" },
+  { emoji: "👩‍💻", who: "Sophia from London", action: "completed the career quiz", when: "12 seconds ago" },
+  { emoji: "🧑‍🎓", who: "Daniel from Toronto", action: "analyzed his resume with AI", when: "34 seconds ago" },
+  { emoji: "👨‍🔧", who: "Meera from Pune", action: "compared Frontend vs Backend", when: "1 minute ago" },
+  { emoji: "🧕", who: "Fatima from Dubai", action: "ran a skill gap analysis", when: "2 minutes ago" },
+  { emoji: "🧑‍🚀", who: "Lucas from Berlin", action: "started an interview practice round", when: "3 minutes ago" },
+  { emoji: "👩‍🔬", who: "Emily from Sydney", action: "unlocked the Cloud Architect path", when: "4 minutes ago" },
+];
+
+
 const paths = [
   { id: "frontend-developer", label: "Frontend", sub: "UI/UX & Interactive", icon: Code2, tone: "primary" },
   { id: "backend-developer", label: "Backend", sub: "Systems & Logic", icon: Server, tone: "accent" },
@@ -47,6 +58,8 @@ export default function HeroSection() {
   const [wordIndex, setWordIndex] = useState(0);
   const [query, setQuery] = useState("");
   const [selected, setSelected] = useState<string | null>(null);
+  const [feedIndex, setFeedIndex] = useState(0);
+  const [liveUsers, setLiveUsers] = useState(1284);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -55,6 +68,24 @@ export default function HeroSection() {
     }, 2500);
     return () => clearInterval(interval);
   }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setFeedIndex((prev) => (prev + 1) % liveFeed.length);
+    }, 3200);
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setLiveUsers((prev) => {
+        const next = prev + Math.floor(Math.random() * 15) - 6;
+        return Math.min(1680, Math.max(1120, next));
+      });
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
+
 
   const suggestions = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -100,16 +131,16 @@ export default function HeroSection() {
               <Sparkles className="w-3.5 h-3.5 text-primary" />
             </div>
 
-            <h1 className="text-5xl md:text-6xl xl:text-7xl font-bold leading-[1.05] mb-6 tracking-tight">
-              Discover Your <br className="hidden sm:block" />
-              <span className="relative inline-block h-[1.3em] min-w-[260px] md:min-w-[380px] overflow-hidden align-bottom leading-[1.05]">
+            <h1 className="text-5xl md:text-6xl xl:text-7xl font-bold leading-[1.1] mb-6 tracking-tight">
+              <span className="block">Discover Your</span>
+              <span className="relative block h-[1.25em] overflow-hidden">
                 <AnimatePresence mode="wait">
                   <motion.span
                     key={wordIndex}
-                    className="text-gradient absolute left-0 right-0 inline-block"
-                    initial={{ y: 50, opacity: 0 }}
+                    className="text-gradient absolute inset-x-0 top-0 block whitespace-nowrap leading-[1.25] pb-[0.12em]"
+                    initial={{ y: "100%", opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
-                    exit={{ y: -50, opacity: 0 }}
+                    exit={{ y: "-100%", opacity: 0 }}
                     transition={{ duration: 0.45, ease: "easeOut" }}
                   >
                     {rotatingWords[wordIndex]}
@@ -117,6 +148,7 @@ export default function HeroSection() {
                 </AnimatePresence>
               </span>
             </h1>
+
 
             <p className="text-base md:text-lg text-muted-foreground mb-8 max-w-lg mx-auto lg:mx-0 leading-relaxed">
               Don't just guess your future. Use AI-driven roadmaps, skill gap analysis and real salary
@@ -139,25 +171,47 @@ export default function HeroSection() {
               </Link>
             </div>
 
-            <div className="flex items-center gap-5 justify-center lg:justify-start border-t border-border/60 pt-8">
-              <div className="flex -space-x-3">
-                {["🧑‍💻", "👩‍💻", "🧑‍🎓"].map((e, i) => (
-                  <div
-                    key={i}
-                    className="w-10 h-10 rounded-full bg-secondary border-2 border-background flex items-center justify-center text-sm"
-                  >
-                    {e}
-                  </div>
-                ))}
-                <div className="w-10 h-10 rounded-full bg-primary border-2 border-background flex items-center justify-center text-[10px] font-bold text-primary-foreground">
-                  +10k
+            <div className="border-t border-border/60 pt-8">
+              <div className="rounded-2xl border border-border/60 bg-card/50 backdrop-blur-sm p-4 max-w-md mx-auto lg:mx-0">
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="relative flex h-2 w-2">
+                    <span className="absolute inline-flex h-full w-full rounded-full bg-success opacity-75 animate-ping" />
+                    <span className="relative inline-flex h-2 w-2 rounded-full bg-success" />
+                  </span>
+                  <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-success">
+                    Live activity
+                  </span>
+                  <span className="ml-auto text-[10px] font-mono text-muted-foreground">
+                    {liveUsers.toLocaleString()} online now
+                  </span>
+                </div>
+
+                <div className="relative h-11 overflow-hidden">
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={feedIndex}
+                      initial={{ opacity: 0, y: 14 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -14 }}
+                      transition={{ duration: 0.35, ease: "easeOut" }}
+                      className="absolute inset-0 flex items-center gap-3"
+                    >
+                      <div className="w-7 h-7 shrink-0 rounded-full bg-secondary border border-border flex items-center justify-center text-sm">
+                        {liveFeed[feedIndex].emoji}
+                      </div>
+                      <p className="text-sm text-muted-foreground text-left leading-tight">
+                        <span className="text-foreground font-semibold">{liveFeed[feedIndex].who}</span>{" "}
+                        {liveFeed[feedIndex].action}
+                        <span className="block text-[10px] font-mono text-muted-foreground/70">
+                          {liveFeed[feedIndex].when}
+                        </span>
+                      </p>
+                    </motion.div>
+                  </AnimatePresence>
                 </div>
               </div>
-              <div className="text-sm text-muted-foreground text-left">
-                <span className="text-foreground font-bold block">10,000+ Students</span>
-                Finding their path with SkillTa
-              </div>
             </div>
+
           </motion.div>
 
           {/* Right: interactive path selector */}
