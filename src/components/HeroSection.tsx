@@ -102,7 +102,7 @@ export default function HeroSection() {
 
             <h1 className="text-5xl md:text-6xl xl:text-7xl font-bold leading-[1.05] mb-6 tracking-tight">
               Discover Your <br className="hidden sm:block" />
-              <span className="relative inline-block h-[1.15em] min-w-[260px] md:min-w-[380px] overflow-hidden align-bottom">
+              <span className="relative inline-block h-[1.3em] min-w-[260px] md:min-w-[380px] overflow-hidden align-bottom leading-[1.05]">
                 <AnimatePresence mode="wait">
                   <motion.span
                     key={wordIndex}
