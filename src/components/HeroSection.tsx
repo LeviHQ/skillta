@@ -183,14 +183,15 @@ export default function HeroSection() {
                 className="group relative inline-flex items-center gap-2.5 px-5 py-3 rounded-full border border-accent/40 bg-accent/10 backdrop-blur-sm overflow-hidden"
               >
                 <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-accent/25 to-transparent" />
-                <Gift className="w-4 h-4 text-accent relative" />
-                <span className="text-sm font-semibold text-foreground relative">
-                  What SkillTa gives you <span className="text-gradient">for free</span>
+                <Gift className="w-4 h-4 text-accent relative shrink-0" />
+                <span className="text-sm sm:text-base font-semibold text-foreground relative">
+                  What SkillTa gives you <span className="text-accent font-bold">for free</span>
                 </span>
-                <span className="relative text-[10px] font-mono font-bold uppercase tracking-widest text-accent">
+                <span className="relative shrink-0 text-[11px] font-bold uppercase tracking-wide text-accent-foreground bg-accent px-2 py-0.5 rounded-full">
                   7 tools
                 </span>
-                <ArrowRight className="w-3.5 h-3.5 text-accent relative group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="w-3.5 h-3.5 text-accent relative shrink-0 group-hover:translate-x-1 transition-transform" />
+
               </motion.button>
             </div>
 
