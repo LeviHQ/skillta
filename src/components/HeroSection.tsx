@@ -100,16 +100,16 @@ export default function HeroSection() {
               <Sparkles className="w-3.5 h-3.5 text-primary" />
             </div>
 
-            <h1 className="text-5xl md:text-6xl xl:text-7xl font-bold leading-[1.05] mb-6 tracking-tight">
-              Discover Your <br className="hidden sm:block" />
-              <span className="relative inline-block h-[1.3em] min-w-[260px] md:min-w-[380px] overflow-hidden align-bottom leading-[1.05]">
+            <h1 className="text-5xl md:text-6xl xl:text-7xl font-bold leading-[1.1] mb-6 tracking-tight">
+              <span className="block">Discover Your</span>
+              <span className="relative block h-[1.25em] overflow-hidden">
                 <AnimatePresence mode="wait">
                   <motion.span
                     key={wordIndex}
-                    className="text-gradient absolute left-0 right-0 inline-block"
-                    initial={{ y: 50, opacity: 0 }}
+                    className="text-gradient absolute inset-x-0 top-0 block whitespace-nowrap leading-[1.25] pb-[0.12em]"
+                    initial={{ y: "100%", opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
-                    exit={{ y: -50, opacity: 0 }}
+                    exit={{ y: "-100%", opacity: 0 }}
                     transition={{ duration: 0.45, ease: "easeOut" }}
                   >
                     {rotatingWords[wordIndex]}
@@ -117,6 +117,7 @@ export default function HeroSection() {
                 </AnimatePresence>
               </span>
             </h1>
+
 
             <p className="text-base md:text-lg text-muted-foreground mb-8 max-w-lg mx-auto lg:mx-0 leading-relaxed">
               Don't just guess your future. Use AI-driven roadmaps, skill gap analysis and real salary
