@@ -185,8 +185,12 @@ export default function HeroSection() {
                 <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-accent/25 to-transparent" />
                 <Gift className="w-4 h-4 text-accent relative shrink-0" />
                 <span className="text-sm sm:text-base font-semibold text-foreground relative">
-                  What SkillTa gives you <span className="text-accent font-bold">for free</span>
+                  What SkillTa gives you{" "}
+                  <span className="font-extrabold text-accent underline decoration-accent/60 decoration-2 underline-offset-4">
+                    for FREE
+                  </span>
                 </span>
+
                 <span className="relative shrink-0 text-[11px] font-bold uppercase tracking-wide text-accent-foreground bg-accent px-2 py-0.5 rounded-full">
                   7 tools
                 </span>
