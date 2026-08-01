@@ -58,6 +58,8 @@ export default function HeroSection() {
   const [wordIndex, setWordIndex] = useState(0);
   const [query, setQuery] = useState("");
   const [selected, setSelected] = useState<string | null>(null);
+  const [feedIndex, setFeedIndex] = useState(0);
+  const [liveUsers, setLiveUsers] = useState(1284);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -66,6 +68,24 @@ export default function HeroSection() {
     }, 2500);
     return () => clearInterval(interval);
   }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setFeedIndex((prev) => (prev + 1) % liveFeed.length);
+    }, 3200);
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setLiveUsers((prev) => {
+        const next = prev + Math.floor(Math.random() * 15) - 6;
+        return Math.min(1680, Math.max(1120, next));
+      });
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
+
 
   const suggestions = useMemo(() => {
     const q = query.trim().toLowerCase();
