@@ -39,6 +39,23 @@ const features = [
 export default function Index() {
   const { user } = useAuth();
   const [showSignIn, setShowSignIn] = useState(false);
+  const { hash } = useLocation();
+
+  useEffect(() => {
+    if (!hash) return;
+    const id = hash.replace("#", "");
+    let tries = 0;
+    const tryScroll = () => {
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      } else if (tries++ < 20) {
+        setTimeout(tryScroll, 100);
+      }
+    };
+    tryScroll();
+  }, [hash]);
+
 
   return (
     <div>
