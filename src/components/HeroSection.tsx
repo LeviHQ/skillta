@@ -13,8 +13,10 @@ import {
   Smartphone,
   TrendingUp,
   Wallet,
+  Gift,
 } from "lucide-react";
 import { careers } from "@/data/careers";
+import FreePerksModal from "./FreePerksModal";
 
 const rotatingWords = ["Tech Career", "Dream Job", "Future Path", "Passion"];
 
@@ -60,6 +62,7 @@ export default function HeroSection() {
   const [selected, setSelected] = useState<string | null>(null);
   const [feedIndex, setFeedIndex] = useState(0);
   const [liveUsers, setLiveUsers] = useState(1284);
+  const [perksOpen, setPerksOpen] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
