@@ -186,7 +186,7 @@ export default function HeroSection() {
                   </span>
                 </div>
 
-                <div className="relative h-9 overflow-hidden">
+                <div className="relative h-11 overflow-hidden">
                   <AnimatePresence mode="wait">
                     <motion.div
                       key={feedIndex}
