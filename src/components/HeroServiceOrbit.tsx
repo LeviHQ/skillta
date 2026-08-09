@@ -55,7 +55,7 @@ export default function HeroServiceOrbit() {
 
   return (
 
-    <div className="relative mx-auto w-full max-w-[420px] aspect-square">
+    <div className="relative mx-auto aspect-square w-full max-w-[420px] overflow-visible">
       {/* orbit rings */}
       <div className="absolute inset-[6%] rounded-full border border-border/50" />
       <motion.div
@@ -106,29 +106,40 @@ export default function HeroServiceOrbit() {
         const top = 50 + Math.sin(angle) * 34;
         const isActive = active === i;
         return (
-          <motion.div
+          <div
             key={s.id}
             className="absolute -translate-x-1/2 -translate-y-1/2"
             style={{ left: `${left}%`, top: `${top}%` }}
-            animate={{ y: [0, -6, 0] }}
-            transition={{ duration: 4 + i * 0.4, repeat: Infinity, ease: "easeInOut" }}
           >
-            <Link to={s.to} aria-label={`${s.label} — ${s.perk}`} className="group block">
-              <motion.div
-                animate={isActive ? { scale: [1, 1.12, 1] } : { scale: 1 }}
-                transition={{ duration: 1.2, ease: "easeInOut" }}
-                className={`w-[74px] h-[74px] sm:w-[84px] sm:h-[84px] rounded-full border backdrop-blur-md flex flex-col items-center justify-center text-center transition-all duration-300 hover:scale-110 ${
-                  toneBubble[s.tone]
-                } ${isActive ? "ring-2 ring-current/40" : ""}`}
-              >
-                <s.icon className="w-4 h-4 mb-1" />
-                <span className="text-[8.5px] sm:text-[9px] font-bold leading-tight text-foreground px-1">
-                  {s.label}
-                </span>
-                <span className="text-[7.5px] font-mono text-muted-foreground">{s.perk}</span>
-              </motion.div>
-            </Link>
-          </motion.div>
+            <motion.div
+              animate={{
+                x: i % 2 === 0 ? [-3, 4, -3] : [3, -4, 3],
+                y: i % 2 === 0 ? [6, -8, 6] : [-7, 7, -7],
+              }}
+              transition={{
+                duration: 3.2 + (i % 3) * 0.45,
+                delay: i * 0.18,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            >
+              <Link to={s.to} aria-label={`${s.label} — ${s.perk}`} className="group block">
+                <motion.div
+                  animate={isActive ? { scale: [1, 1.1, 1] } : { scale: 1 }}
+                  transition={{ duration: 1.2, ease: "easeInOut" }}
+                  className={`w-[74px] h-[74px] sm:w-[84px] sm:h-[84px] rounded-full border backdrop-blur-md flex flex-col items-center justify-center text-center transition-shadow duration-300 group-hover:shadow-glow ${
+                    toneBubble[s.tone]
+                  } ${isActive ? "ring-2 ring-current/40" : ""}`}
+                >
+                  <s.icon className="w-4 h-4 mb-1" />
+                  <span className="text-[8.5px] sm:text-[9px] font-bold leading-tight text-foreground px-1">
+                    {s.label}
+                  </span>
+                  <span className="text-[7.5px] font-mono text-muted-foreground">{s.perk}</span>
+                </motion.div>
+              </Link>
+            </motion.div>
+          </div>
         );
       })}
 
