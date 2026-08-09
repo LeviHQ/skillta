@@ -1,7 +1,5 @@
 import { lazy, Suspense } from "react";
 import { HelmetProvider } from "react-helmet-async";
-import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -12,6 +10,10 @@ import Footer from "./components/Footer";
 import DeferredThirdParty from "./components/DeferredThirdParty";
 // Home stays in the main bundle: it is the LCP route for most traffic.
 import Index from "./pages/Index";
+
+// Toast layers are async: nothing can be toasted before hydration finishes.
+const Toaster = lazy(() => import("@/components/ui/toaster").then((m) => ({ default: m.Toaster })));
+const Sonner = lazy(() => import("@/components/ui/sonner").then((m) => ({ default: m.Toaster })));
 
 // Every other route is code-split so the initial payload stays small.
 const Quiz = lazy(() => import("./pages/Quiz"));
@@ -56,8 +58,10 @@ const App = () => (
       <AuthProvider>
         <PlanProvider>
           <TooltipProvider>
-            <Toaster />
-            <Sonner />
+            <Suspense fallback={null}>
+              <Toaster />
+              <Sonner />
+            </Suspense>
             <BrowserRouter>
               <Navbar />
               <main className="min-h-screen pt-16">
