@@ -1,7 +1,20 @@
 import { createContext, useContext, useEffect, useState, ReactNode } from "react";
-import { User, onAuthStateChanged, signInWithPopup, signOut as firebaseSignOut } from "firebase/auth";
-import { auth, googleProvider } from "@/lib/firebase";
-import { supabase } from "@/integrations/supabase/client";
+import type { User } from "firebase/auth";
+
+// Firebase Auth and the Supabase client are heavy and are not needed for the
+// first paint, so both are pulled in dynamically once the browser is idle.
+const loadFirebaseAuth = () =>
+  Promise.all([import("firebase/auth"), import("@/lib/firebase")]);
+const loadSupabase = () => import("@/integrations/supabase/client").then((m) => m.supabase);
+
+const onIdle = (cb: () => void) => {
+  if (typeof window === "undefined") return;
+  const ric = (window as any).requestIdleCallback as
+    | ((cb: () => void, opts?: { timeout: number }) => number)
+    | undefined;
+  if (ric) ric(cb, { timeout: 1500 });
+  else window.setTimeout(cb, 200);
+};
 
 interface QuizResult {
   id?: string;
@@ -25,6 +38,7 @@ const AuthContext = createContext<AuthContextType | null>(null);
 
 async function callFirebaseData(user: User, body: Record<string, unknown>) {
   const token = await user.getIdToken();
+  const supabase = await loadSupabase();
   const { data, error } = await supabase.functions.invoke("firebase-data", {
     body,
     headers: { Authorization: `Bearer ${token}` },
@@ -38,28 +52,40 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const unsub = onAuthStateChanged(auth, async (u) => {
-      setUser(u);
-      if (u) {
-        try {
-          await callFirebaseData(u, {
-            action: "ensureProfile",
-            displayName: u.displayName,
-            email: u.email,
-            photoUrl: u.photoURL,
-          });
-        } catch (err) {
-          console.error("Failed to ensure profile:", err);
+    let unsub: (() => void) | undefined;
+    let cancelled = false;
+
+    onIdle(async () => {
+      const [{ onAuthStateChanged }, { auth }] = await loadFirebaseAuth();
+      if (cancelled) return;
+      unsub = onAuthStateChanged(auth, async (u) => {
+        setUser(u);
+        if (u) {
+          try {
+            await callFirebaseData(u, {
+              action: "ensureProfile",
+              displayName: u.displayName,
+              email: u.email,
+              photoUrl: u.photoURL,
+            });
+          } catch (err) {
+            console.error("Failed to ensure profile:", err);
+          }
         }
-      }
-      setLoading(false);
+        setLoading(false);
+      });
     });
-    return unsub;
+
+    return () => {
+      cancelled = true;
+      unsub?.();
+    };
   }, []);
 
   const sendWelcomeEmail = async (user: User) => {
     try {
       const token = await user.getIdToken();
+      const supabase = await loadSupabase();
       const { data, error } = await supabase.functions.invoke('send-welcome-email', {
         body: {
           displayName: user.displayName || user.email?.split('@')[0],
@@ -77,6 +103,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   };
 
   const signInWithGoogle = async () => {
+    const [{ signInWithPopup }, { auth, googleProvider }] = await loadFirebaseAuth();
     const result = await signInWithPopup(auth, googleProvider);
     if (result.user) {
       sendWelcomeEmail(result.user);
@@ -84,6 +111,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   };
 
   const signOut = async () => {
+    const [{ signOut: firebaseSignOut }, { auth }] = await loadFirebaseAuth();
     await firebaseSignOut(auth);
   };
 
