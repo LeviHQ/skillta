@@ -1,20 +1,24 @@
 import { Link, useLocation } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, lazy, Suspense } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Sparkles, Map, BookOpen, Shield, TrendingUp, Zap, LogIn, UserPlus } from "lucide-react";
 import HeroSection from "@/components/HeroSection";
 import { careers } from "@/data/careers";
 import { useAuth } from "@/contexts/AuthContext";
-import SignInModal from "@/components/SignInModal";
-import TestimonialSection from "@/components/TestimonialSection";
-import PricingSection from "@/components/PricingSection";
-import HowToUseSection from "@/components/HowToUseSection";
-import AccuracySection from "@/components/AccuracySection";
-import WhoIsItForSection from "@/components/WhoIsItForSection";
-import FAQSection from "@/components/FAQSection";
-import FreeServicesSection from "@/components/FreeServicesSection";
-import CountryEcosystemSection from "@/components/CountryEcosystemSection";
-import AdsterraNativeBanner from "@/components/AdsterraNativeBanner";
+const SignInModal = lazy(() => import("@/components/SignInModal"));
+import DeferredSection from "@/components/DeferredSection";
+
+// Below-the-fold sections are code-split and mounted on approach,
+// keeping them out of the critical path without changing the layout.
+const TestimonialSection = lazy(() => import("@/components/TestimonialSection"));
+const PricingSection = lazy(() => import("@/components/PricingSection"));
+const HowToUseSection = lazy(() => import("@/components/HowToUseSection"));
+const AccuracySection = lazy(() => import("@/components/AccuracySection"));
+const WhoIsItForSection = lazy(() => import("@/components/WhoIsItForSection"));
+const FAQSection = lazy(() => import("@/components/FAQSection"));
+const FreeServicesSection = lazy(() => import("@/components/FreeServicesSection"));
+const CountryEcosystemSection = lazy(() => import("@/components/CountryEcosystemSection"));
+const AdsterraNativeBanner = lazy(() => import("@/components/AdsterraNativeBanner"));
 import SEOHead from "@/components/SEOHead";
 import { PAGE_SEO, getWebApplicationSchema, getEducationalOrgSchema, getWebsiteSchema, getHowToSchema, getFAQSchema, getOrganizationSchema, getSoftwareAppSchema, getItemListSchema } from "@/lib/seo";
 
@@ -125,16 +129,24 @@ export default function Index() {
       )}
 
       {/* Sponsored - Native Banner */}
-      <AdsterraNativeBanner />
+      <DeferredSection minHeight={220}>
+        <AdsterraNativeBanner />
+      </DeferredSection>
 
       {/* Free Services showcase */}
-      <FreeServicesSection />
+      <DeferredSection minHeight={600}>
+        <FreeServicesSection />
+      </DeferredSection>
 
       {/* Country Ecosystem launch */}
-      <CountryEcosystemSection />
+      <DeferredSection minHeight={600}>
+        <CountryEcosystemSection />
+      </DeferredSection>
 
       {/* Who Is It For */}
-      <WhoIsItForSection />
+      <DeferredSection minHeight={600}>
+        <WhoIsItForSection />
+      </DeferredSection>
 
 
 
@@ -230,25 +242,38 @@ export default function Index() {
       </section>
 
       {/* Pricing */}
-      <PricingSection />
+      <DeferredSection minHeight={700}>
+        <PricingSection />
+      </DeferredSection>
 
       {/* How to use */}
-      <HowToUseSection />
+      <DeferredSection minHeight={600}>
+        <HowToUseSection />
+      </DeferredSection>
 
 
 
 
       {/* Accuracy */}
-      <AccuracySection />
+      <DeferredSection minHeight={600}>
+        <AccuracySection />
+      </DeferredSection>
 
       {/* Testimonials */}
-      <TestimonialSection />
+      <DeferredSection minHeight={600}>
+        <TestimonialSection />
+      </DeferredSection>
 
       {/* FAQ */}
-      <FAQSection />
+      <DeferredSection minHeight={600}>
+        <FAQSection />
+      </DeferredSection>
 
-
-      <SignInModal open={showSignIn} onClose={() => setShowSignIn(false)} />
+      {showSignIn && (
+        <Suspense fallback={null}>
+          <SignInModal open={showSignIn} onClose={() => setShowSignIn(false)} />
+        </Suspense>
+      )}
     </div>
   );
 }
