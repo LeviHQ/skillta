@@ -1,22 +1,10 @@
-import { Link, useNavigate } from "react-router-dom";
-import { useState, useEffect, useMemo } from "react";
+import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  ArrowRight,
-  Sparkles,
-  Search,
-  Code2,
-  Server,
-  Brain,
-  ShieldCheck,
-  Cloud,
-  Smartphone,
-  TrendingUp,
-  Wallet,
-  Gift,
-} from "lucide-react";
-import { careers } from "@/data/careers";
+import { ArrowRight, Sparkles, Gift } from "lucide-react";
 import FreePerksModal from "./FreePerksModal";
+import HeroServiceOrbit from "./HeroServiceOrbit";
+
 
 const rotatingWords = ["Tech Career", "Dream Job", "Future Path", "Passion"];
 
