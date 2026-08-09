@@ -463,6 +463,11 @@ ${progressionList}
 - 💰 [Try the Salary Predictor](/salary-predictor) — model your own compensation with 10 inputs
 - 🗺️ [Browse the ${role.role} Roadmap](/roadmaps/${role.slugRole}) — skill-by-skill learning plan
 - ⚖️ [Compare ${role.role} vs other tech roles](/compare) — salary, demand, difficulty side-by-side
+- 🌍 [${country.name} tech career ecosystem](${countryHubPath(country)}) — jobs, salaries, visas, companies and resources
+- 📊 [${country.name} salary explorer](${countryHubPath(country)}/salary-explorer) — every tech role, every level
+- 🎤 [${country.name} interview preparation](${countryHubPath(country)}/interview-preparation) — round-by-round prep
+- 📄 [${country.name} resume guide](${countryHubPath(country)}/resume-guide) — local formatting and ATS rules
+- 🧩 [Skill Gap Analyzer](/skill-gap-analyzer) — see exactly what you are missing for ${role.role}
 - 📚 [More career guides on the SkillTa Blog](/blog)
 
 ## FAQ
@@ -585,6 +590,11 @@ function buildDescription(country: CountryCfg, role: RoleCfg): string {
     senior: `${fmt(senior, country)} ${country.ccy}`,
     lead: `${fmt(lead, country)} ${country.ccy}`,
   }).slice(0, 300);
+}
+
+// Blog country keys map 1:1 to the ecosystem slugs, except the UK.
+function countryHubPath(country: CountryCfg): string {
+  return country.key === "uk" ? "/united-kingdom" : `/${country.key}`;
 }
 
 function buildKeywords(country: CountryCfg, role: RoleCfg): string {

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Country } from "@/data/countries";
 import { SECTIONS, SectionKey } from "@/data/countrySections";
+import CountryInternalLinks from "@/components/CountryInternalLinks";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 interface Props {
@@ -100,6 +101,9 @@ export default function CountryDocLayout({ country, currentKey, children }: Prop
               </Link>
             ) : <div className="flex-1" />}
           </div>
+
+          {/* Internal linking mesh: other countries, salary guides, tools */}
+          <CountryInternalLinks country={country} currentKey={currentKey} />
         </article>
       </div>
     </div>
