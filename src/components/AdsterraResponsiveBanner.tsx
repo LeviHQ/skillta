@@ -29,6 +29,9 @@ export default function AdsterraResponsiveBanner({ className = "" }: { className
     const host = hostRef.current;
     if (!host) return;
 
+    let cleanup: (() => void) | undefined;
+
+    function inject() {
     // Reset container
     host.innerHTML = "";
 
@@ -43,8 +46,27 @@ export default function AdsterraResponsiveBanner({ className = "" }: { className
 
     host.appendChild(configScript);
     host.appendChild(invokeScript);
+    }
+
+    // Defer the ad request until the slot is close to the viewport.
+    if (typeof IntersectionObserver !== "undefined") {
+      const obs = new IntersectionObserver(
+        (entries) => {
+          if (entries.some((e) => e.isIntersecting)) {
+            obs.disconnect();
+            inject();
+          }
+        },
+        { rootMargin: "300px" },
+      );
+      obs.observe(host);
+      cleanup = () => obs.disconnect();
+    } else {
+      inject();
+    }
 
     return () => {
+      cleanup?.();
       host.innerHTML = "";
     };
   }, [cfg.key, cfg.width, cfg.height]);

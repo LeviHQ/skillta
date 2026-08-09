@@ -16,6 +16,31 @@ export default function AdsterraNativeBanner({ className = "" }: { className?: s
     const host = hostRef.current;
     if (!host) return;
 
+    let cleanup: (() => void) | undefined;
+
+    const load = () => {
+      inject();
+    };
+
+    // Only load the ad script once the slot approaches the viewport,
+    // so it never blocks LCP or the main thread during first paint.
+    if (typeof IntersectionObserver !== "undefined") {
+      const obs = new IntersectionObserver(
+        (entries) => {
+          if (entries.some((e) => e.isIntersecting)) {
+            obs.disconnect();
+            load();
+          }
+        },
+        { rootMargin: "300px" },
+      );
+      obs.observe(host);
+      cleanup = () => obs.disconnect();
+    } else {
+      load();
+    }
+
+    function inject() {
     // Ensure a fresh container each mount.
     host.innerHTML = `<div id="${CONTAINER_ID}"></div>`;
 
@@ -23,9 +48,11 @@ export default function AdsterraNativeBanner({ className = "" }: { className?: s
     script.src = AD_SRC;
     script.async = true;
     script.setAttribute("data-cfasync", "false");
-    host.appendChild(script);
+      host.appendChild(script);
+    }
 
     return () => {
+      cleanup?.();
       host.innerHTML = "";
     };
   }, []);
