@@ -592,6 +592,11 @@ function buildDescription(country: CountryCfg, role: RoleCfg): string {
   }).slice(0, 300);
 }
 
+// Blog country keys map 1:1 to the ecosystem slugs, except the UK.
+function countryHubPath(country: CountryCfg): string {
+  return country.key === "uk" ? "/united-kingdom" : `/${country.key}`;
+}
+
 function buildKeywords(country: CountryCfg, role: RoleCfg): string {
   const extra = COUNTRY_HOOKS[country.key]?.extraKw ?? "";
   return `${role.role.toLowerCase()} salary ${country.name.toLowerCase()} 2026, ${role.role.toLowerCase()} pay ${country.name.toLowerCase()}, ${role.keywordsExtra}, ${extra}, tech salary ${country.name.toLowerCase()} 2026`;
