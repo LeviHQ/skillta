@@ -200,9 +200,25 @@ export default function HeroSection() {
             transition={{ duration: 0.7, delay: 0.15, ease: "easeOut" }}
           >
             <HeroServiceOrbit />
-            <p className="mt-6 text-center text-[11px] font-mono uppercase tracking-widest text-muted-foreground">
-              Tap any bubble to start — 100% free
-            </p>
+            <motion.div
+              className="mt-6 flex justify-center"
+              animate={{ y: [0, -3, 0] }}
+              transition={{ duration: 2.6, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <span className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-2 backdrop-blur-sm shadow-lg shadow-primary/10">
+                <span className="relative flex h-2.5 w-2.5">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75" />
+                  <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-primary" />
+                </span>
+                <span className="text-sm sm:text-base font-bold tracking-tight text-foreground">
+                  Tap any bubble to start
+                </span>
+                <span className="text-sm sm:text-base font-extrabold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                  100% FREE
+                </span>
+              </span>
+            </motion.div>
+
           </motion.div>
 
         </div>
