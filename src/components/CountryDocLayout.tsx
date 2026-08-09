@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Country } from "@/data/countries";
 import { SECTIONS, SectionKey } from "@/data/countrySections";
+import CountryInternalLinks from "@/components/CountryInternalLinks";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 interface Props {
