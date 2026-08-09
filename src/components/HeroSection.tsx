@@ -200,7 +200,7 @@ export default function HeroSection() {
             transition={{ duration: 0.7, delay: 0.15, ease: "easeOut" }}
           >
             <HeroServiceOrbit />
-            <p className="mt-2 text-center text-[11px] font-mono uppercase tracking-widest text-muted-foreground">
+            <p className="mt-6 text-center text-[11px] font-mono uppercase tracking-widest text-muted-foreground">
               Tap any bubble to start — 100% free
             </p>
           </motion.div>
