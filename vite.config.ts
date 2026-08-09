@@ -74,4 +74,36 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  build: {
+    target: "es2020",
+    cssCodeSplit: true,
+    chunkSizeWarningLimit: 900,
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          // Keep Vite's preload helper with the core runtime chunk.
+          if (id.includes("vite/preload-helper") || id.includes("vite/modulepreload")) return "react-vendor";
+          if (!id.includes("node_modules")) return;
+          if (/[\\/]node_modules[\\/](react|react-dom|scheduler|react-router|react-router-dom)[\\/]/.test(id))
+            return "react-vendor";
+          if (id.includes("firebase") || id.includes("@firebase")) return "firebase";
+          if (id.includes("framer-motion") || id.includes("motion-dom") || id.includes("motion-utils"))
+            return "motion";
+          if (id.includes("@supabase")) return "supabase";
+          if (id.includes("recharts") || id.includes("d3-")) return "charts";
+          if (id.includes("jspdf") || id.includes("html2canvas") || id.includes("html2pdf") || id.includes("pdfjs"))
+            return "pdf";
+          if (id.includes("@tanstack")) return "query";
+          if (id.includes("embla-carousel")) return "carousel";
+          if (id.includes("date-fns")) return "date-fns";
+          if (id.includes("react-day-picker")) return "day-picker";
+          if (id.includes("zod") || id.includes("react-hook-form") || id.includes("@hookform")) return "forms";
+          if (id.includes("lucide-react")) return "icons";
+          // Leave everything else to Rollup so route-only deps stay in
+          // their own route chunk instead of the shared entry chunk.
+          return undefined;
+        },
+      },
+    },
+  },
 }));

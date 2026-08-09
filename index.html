@@ -11,6 +11,27 @@
     <link rel="manifest" href="/manifest.json" />
     <link rel="icon" type="image/png" href="/favicon.png" />
 
+    <!-- Fonts: preconnect + trimmed weights, non-blocking swap -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap"
+      />
+    </noscript>
+
+    <!-- Warm up third-party origins used after first paint -->
+    <link rel="dns-prefetch" href="https://pl30419480.effectivecpmnetwork.com" />
+    <link rel="dns-prefetch" href="https://pl30370123.effectivecpmnetwork.com" />
+    <link rel="dns-prefetch" href="https://www.highperformanceformat.com" />
+
     <!-- Fallback title only. All SEO meta tags (description, keywords, robots, og:*, twitter:*) are managed per-route by react-helmet-async via SEOHead.tsx to avoid duplicates. Social crawlers that don't run JS will still see the title; og:image fallback added below with property attr so Helmet can override it. -->
     <title>SkillTa — Find Your Perfect Tech Career Path</title>
     <meta property="og:image" content="https://www.skillta.tech/og-image.png" />
@@ -35,7 +56,22 @@
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
 
-    <!--Adsterra Social Bar Script-->
-    <script src="https://pl30419480.effectivecpmnetwork.com/9c/44/ec/9c44eccf7f12896784490412afba4c7b.js"></script>
+    <!--Adsterra Social Bar Script — injected after load so it never blocks parsing/LCP-->
+    <script>
+      (function () {
+        function loadSocialBar() {
+          var s = document.createElement('script');
+          s.src = 'https://pl30419480.effectivecpmnetwork.com/9c/44/ec/9c44eccf7f12896784490412afba4c7b.js';
+          s.async = true;
+          document.body.appendChild(s);
+        }
+        function schedule() {
+          if (window.requestIdleCallback) window.requestIdleCallback(loadSocialBar, { timeout: 4000 });
+          else setTimeout(loadSocialBar, 2500);
+        }
+        if (document.readyState === 'complete') schedule();
+        else window.addEventListener('load', schedule, { once: true });
+      })();
+    </script>
   </body>
 </html>

@@ -1,7 +1,8 @@
 import { createContext, useContext, useEffect, useState, ReactNode, useCallback } from "react";
-import { User } from "firebase/auth";
+import type { User } from "firebase/auth";
 import { useAuth } from "./AuthContext";
-import { supabase } from "@/integrations/supabase/client";
+
+const loadSupabase = () => import("@/integrations/supabase/client").then((m) => m.supabase);
 
 export type PlanName = "Free" | "Pro" | "Premium";
 
@@ -37,6 +38,7 @@ const PLAN_LIMITS: Record<PlanName, number> = {
 
 async function callFirebaseData(user: User, body: Record<string, unknown>) {
   const token = await user.getIdToken();
+  const supabase = await loadSupabase();
   const { data, error } = await supabase.functions.invoke("firebase-data", {
     body,
     headers: { Authorization: `Bearer ${token}` },
@@ -92,6 +94,7 @@ export function PlanProvider({ children }: { children: ReactNode }) {
       setServerLimit(typeof data?.dailyLimit === "number" ? data.dailyLimit : PLAN_LIMITS.Free);
       try {
         const token = await user.getIdToken();
+        const supabase = await loadSupabase();
         supabase.functions
           .invoke("send-plan-receipt", {
             body: {},
