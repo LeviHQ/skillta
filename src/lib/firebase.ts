@@ -1,7 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
-import { getAnalytics } from "firebase/analytics";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCv2gb5zFy1ArBtEWDA1EuCgPEUcrKyj1o",
@@ -19,7 +18,26 @@ export const googleProvider = new GoogleAuthProvider();
 googleProvider.setCustomParameters({ prompt: "select_account" });
 export const db = getFirestore(app);
 
-// Analytics - only in browser
+// Firebase Analytics is non-critical: load it lazily after the page is idle
+// so it never competes with first paint / first interaction.
 if (typeof window !== "undefined") {
-  getAnalytics(app);
+  const startAnalytics = () => {
+    import("firebase/analytics")
+      .then(({ getAnalytics, isSupported }) =>
+        isSupported().then((ok) => {
+          if (ok) getAnalytics(app);
+        }),
+      )
+      .catch(() => {
+        /* analytics is optional */
+      });
+  };
+  const schedule = () => {
+    const idle = (window as unknown as { requestIdleCallback?: (cb: () => void) => number })
+      .requestIdleCallback;
+    if (idle) idle(startAnalytics);
+    else window.setTimeout(startAnalytics, 2000);
+  };
+  if (document.readyState === "complete") schedule();
+  else window.addEventListener("load", schedule, { once: true });
 }
