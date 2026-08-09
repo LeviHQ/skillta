@@ -243,152 +243,19 @@ export default function HeroSection() {
 
           </motion.div>
 
-          {/* Right: interactive path selector */}
+          {/* Right: animated free-service orbit */}
           <motion.div
             className="relative"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, scale: 0.92 }}
+            animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7, delay: 0.15, ease: "easeOut" }}
           >
-            <div className="rounded-3xl border border-border bg-card/60 backdrop-blur-xl p-6 md:p-8 shadow-glow">
-              <div className="flex items-center justify-between mb-6">
-                <h2 className="font-mono text-xs font-bold uppercase tracking-widest text-muted-foreground">
-                  Choose your path
-                </h2>
-                <span className="text-[10px] font-mono text-primary/70">60+ careers</span>
-              </div>
-
-              <div className="grid grid-cols-2 gap-3 md:gap-4">
-                {paths.map((p, i) => {
-                  const isActive = selected === p.id;
-                  return (
-                    <motion.button
-                      key={p.id}
-                      type="button"
-                      onClick={() => setSelected(isActive ? null : p.id)}
-                      initial={{ opacity: 0, y: 12 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.25 + i * 0.06 }}
-                      className={`text-left p-4 rounded-2xl border bg-secondary/30 transition-all group ${
-                        isActive ? "border-primary/60 bg-primary/5" : `border-border/60 ${toneRing[p.tone]}`
-                      }`}
-                    >
-                      <div
-                        className={`w-9 h-9 rounded-lg flex items-center justify-center mb-3 transition-transform group-hover:scale-110 ${toneIcon[p.tone]}`}
-                      >
-                        <p.icon className="w-4 h-4" />
-                      </div>
-                      <div className="text-sm font-bold text-foreground mb-0.5">{p.label}</div>
-                      <div className="text-[10px] font-mono text-muted-foreground">{p.sub}</div>
-                    </motion.button>
-                  );
-                })}
-              </div>
-
-              {/* Search */}
-              <div className="relative mt-6">
-                <div className="flex items-center gap-3 p-3.5 rounded-xl bg-background/70 border border-border/60 focus-within:border-primary/50 transition-colors">
-                  <Search className="w-4 h-4 text-primary shrink-0" />
-                  <input
-                    type="text"
-                    value={query}
-                    onChange={(e) => setQuery(e.target.value)}
-                    onKeyDown={(e) => {
-                      if (e.key === "Enter" && suggestions[0]) navigate(`/roadmaps/${suggestions[0].id}`);
-                    }}
-                    placeholder="Or search your dream job..."
-                    aria-label="Search career roadmaps"
-                    className="bg-transparent border-none outline-none text-sm font-mono w-full placeholder:text-muted-foreground/60 text-foreground"
-                  />
-                </div>
-
-                <AnimatePresence>
-                  {suggestions.length > 0 && (
-                    <motion.ul
-                      initial={{ opacity: 0, y: -6 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -6 }}
-                      className="absolute z-20 left-0 right-0 mt-2 rounded-xl border border-border bg-card shadow-glow overflow-hidden"
-                    >
-                      {suggestions.map((c) => (
-                        <li key={c.id}>
-                          <Link
-                            to={`/roadmaps/${c.id}`}
-                            className="flex items-center gap-3 px-4 py-3 text-sm hover:bg-secondary transition-colors"
-                          >
-                            <span>{c.icon}</span>
-                            <span className="text-foreground">{c.title}</span>
-                            <ArrowRight className="w-3.5 h-3.5 ml-auto text-muted-foreground" />
-                          </Link>
-                        </li>
-                      ))}
-                    </motion.ul>
-                  )}
-                </AnimatePresence>
-              </div>
-
-              {/* Contextual action */}
-              <AnimatePresence mode="wait">
-                {activePath && (
-                  <motion.div
-                    key={activePath.id}
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: "auto" }}
-                    exit={{ opacity: 0, height: 0 }}
-                    className="overflow-hidden"
-                  >
-                    <div className="mt-4 flex flex-col sm:flex-row gap-3">
-                      <Link
-                        to={`/roadmaps/${activePath.id}`}
-                        className="flex-1 inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-gradient-primary text-primary-foreground text-sm font-semibold hover:opacity-90 transition-opacity"
-                      >
-                        View {activePath.label} Roadmap
-                        <ArrowRight className="w-4 h-4" />
-                      </Link>
-                      <Link
-                        to="/quiz"
-                        className="inline-flex items-center justify-center px-5 py-3 rounded-xl border border-border text-sm font-semibold hover:bg-secondary transition-colors"
-                      >
-                        Not sure? Take quiz
-                      </Link>
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-
-            {/* Floating badges */}
-            <motion.div
-              className="absolute -top-3 -right-2 px-3 py-1.5 rounded-lg bg-accent text-accent-foreground text-[10px] font-bold shadow-lg"
-              animate={{ y: [0, -6, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            >
-              New: AI Prompt Engineering
-            </motion.div>
-            <motion.div
-              className="absolute -bottom-3 -left-2 px-3 py-1.5 rounded-lg bg-primary text-primary-foreground text-[10px] font-bold shadow-lg"
-              animate={{ y: [0, 6, 0] }}
-              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-            >
-              Trending: DevOps
-            </motion.div>
-
-            {/* Side stats */}
-            <div className="absolute top-1/2 -right-14 -translate-y-1/2 space-y-3 hidden 2xl:block">
-              <div className="p-3 rounded-xl bg-card/70 backdrop-blur-md border border-border">
-                <div className="flex items-center gap-1.5 text-[10px] uppercase text-muted-foreground">
-                  <Wallet className="w-3 h-3" /> Avg Salary
-                </div>
-                <div className="text-lg font-bold text-success">$124k</div>
-              </div>
-              <div className="p-3 rounded-xl bg-card/70 backdrop-blur-md border border-border">
-                <div className="flex items-center gap-1.5 text-[10px] uppercase text-muted-foreground">
-                  <TrendingUp className="w-3 h-3" /> Growth
-                </div>
-                <div className="text-lg font-bold text-primary">+42%</div>
-              </div>
-            </div>
+            <HeroServiceOrbit />
+            <p className="mt-2 text-center text-[11px] font-mono uppercase tracking-widest text-muted-foreground">
+              Tap any bubble to start — 100% free
+            </p>
           </motion.div>
+
         </div>
       </div>
 
