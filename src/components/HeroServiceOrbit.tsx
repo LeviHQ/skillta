@@ -53,9 +53,8 @@ export default function HeroServiceOrbit() {
     return () => clearInterval(t);
   }, []);
 
-  const radius = 132;
-
   return (
+
     <div className="relative mx-auto w-full max-w-[420px] aspect-square">
       {/* orbit rings */}
       <div className="absolute inset-[6%] rounded-full border border-border/50" />
@@ -100,48 +99,39 @@ export default function HeroServiceOrbit() {
         </span>
       </div>
 
-      {/* orbiting service bubbles */}
-      <motion.div
-        className="absolute inset-0"
-        animate={{ rotate: 360 }}
-        transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
-      >
-        {services.map((s, i) => {
-          const angle = (i / services.length) * Math.PI * 2 - Math.PI / 2;
-          const x = Math.cos(angle) * radius;
-          const y = Math.sin(angle) * radius;
-          const isActive = active === i;
-          return (
-            <motion.div
-              key={s.id}
-              className="absolute left-1/2 top-1/2"
-              style={{ x, y }}
-              animate={{ rotate: -360 }}
-              transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
-            >
-              <Link
-                to={s.to}
-                aria-label={`${s.label} — ${s.perk}`}
-                className="group block -translate-x-1/2 -translate-y-1/2"
+      {/* service bubbles — symmetric ring */}
+      {services.map((s, i) => {
+        const angle = (i / services.length) * Math.PI * 2 - Math.PI / 2;
+        const left = 50 + Math.cos(angle) * 34;
+        const top = 50 + Math.sin(angle) * 34;
+        const isActive = active === i;
+        return (
+          <motion.div
+            key={s.id}
+            className="absolute -translate-x-1/2 -translate-y-1/2"
+            style={{ left: `${left}%`, top: `${top}%` }}
+            animate={{ y: [0, -6, 0] }}
+            transition={{ duration: 4 + i * 0.4, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <Link to={s.to} aria-label={`${s.label} — ${s.perk}`} className="group block">
+              <motion.div
+                animate={isActive ? { scale: [1, 1.12, 1] } : { scale: 1 }}
+                transition={{ duration: 1.2, ease: "easeInOut" }}
+                className={`w-[74px] h-[74px] sm:w-[84px] sm:h-[84px] rounded-full border backdrop-blur-md flex flex-col items-center justify-center text-center transition-all duration-300 hover:scale-110 ${
+                  toneBubble[s.tone]
+                } ${isActive ? "ring-2 ring-current/40" : ""}`}
               >
-                <motion.div
-                  animate={isActive ? { scale: [1, 1.12, 1] } : { scale: 1 }}
-                  transition={{ duration: 1.2, ease: "easeInOut" }}
-                  className={`w-[74px] h-[74px] sm:w-[84px] sm:h-[84px] rounded-full border backdrop-blur-md flex flex-col items-center justify-center text-center transition-all duration-300 hover:scale-110 ${
-                    toneBubble[s.tone]
-                  } ${isActive ? "ring-2 ring-current/40" : ""}`}
-                >
-                  <s.icon className="w-4 h-4 mb-1" />
-                  <span className="text-[8.5px] sm:text-[9px] font-bold leading-tight text-foreground px-1">
-                    {s.label}
-                  </span>
-                  <span className="text-[7.5px] font-mono text-muted-foreground">{s.perk}</span>
-                </motion.div>
-              </Link>
-            </motion.div>
-          );
-        })}
-      </motion.div>
+                <s.icon className="w-4 h-4 mb-1" />
+                <span className="text-[8.5px] sm:text-[9px] font-bold leading-tight text-foreground px-1">
+                  {s.label}
+                </span>
+                <span className="text-[7.5px] font-mono text-muted-foreground">{s.perk}</span>
+              </motion.div>
+            </Link>
+          </motion.div>
+        );
+      })}
+
     </div>
   );
 }
