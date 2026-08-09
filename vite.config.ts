@@ -74,4 +74,29 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  build: {
+    target: "es2020",
+    cssCodeSplit: true,
+    chunkSizeWarningLimit: 900,
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (!id.includes("node_modules")) return;
+          if (/[\\/]node_modules[\\/](react|react-dom|scheduler|react-router|react-router-dom)[\\/]/.test(id))
+            return "react-vendor";
+          if (id.includes("firebase") || id.includes("@firebase")) return "firebase";
+          if (id.includes("framer-motion") || id.includes("motion-dom") || id.includes("motion-utils"))
+            return "motion";
+          if (id.includes("@supabase")) return "supabase";
+          if (id.includes("recharts") || id.includes("d3-")) return "charts";
+          if (id.includes("jspdf") || id.includes("html2canvas") || id.includes("html2pdf") || id.includes("pdfjs"))
+            return "pdf";
+          if (id.includes("react-markdown") || id.includes("remark") || id.includes("micromark") || id.includes("mdast"))
+            return "markdown";
+          if (id.includes("@radix-ui")) return "radix";
+          return "vendor";
+        },
+      },
+    },
+  },
 }));
