@@ -53,9 +53,8 @@ export default function HeroServiceOrbit() {
     return () => clearInterval(t);
   }, []);
 
-  const radius = 132;
-
   return (
+
     <div className="relative mx-auto w-full max-w-[420px] aspect-square">
       {/* orbit rings */}
       <div className="absolute inset-[6%] rounded-full border border-border/50" />
