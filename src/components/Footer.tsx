@@ -93,6 +93,39 @@ export default function Footer() {
               <Link to="/roadmaps/cybersecurity-analyst" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                 Cybersecurity
               </Link>
+              <Link to="/salary-predictor" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                Salary Predictor
+              </Link>
+              <Link to="/resume-reviewer" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                AI Resume Reviewer
+              </Link>
+              <Link to="/skill-gap-analyzer" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                Skill Gap Analyzer
+              </Link>
+            </nav>
+
+            <h4 className="font-semibold text-foreground mt-8 mb-4 text-xs uppercase tracking-widest">
+              Top Countries
+            </h4>
+            <nav className="flex flex-wrap gap-x-4 gap-y-2">
+              {[
+                { slug: "usa", name: "USA" },
+                { slug: "united-kingdom", name: "UK" },
+                { slug: "canada", name: "Canada" },
+                { slug: "germany", name: "Germany" },
+                { slug: "australia", name: "Australia" },
+                { slug: "india", name: "India" },
+                { slug: "uae", name: "UAE" },
+                { slug: "singapore", name: "Singapore" },
+              ].map((c) => (
+                <Link
+                  key={c.slug}
+                  to={`/${c.slug}`}
+                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                >
+                  {c.name}
+                </Link>
+              ))}
             </nav>
           </div>
 
