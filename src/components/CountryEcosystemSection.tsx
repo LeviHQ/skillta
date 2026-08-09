@@ -32,7 +32,8 @@ const sections = [
   { Icon: BookOpen, label: "Career Resources", desc: "Blogs · Videos · Communities" },
 ];
 
-const featuredFlags = COUNTRIES.slice(0, 12);
+// Link every country hub from the homepage so no country page is an orphan.
+const featuredFlags = COUNTRIES;
 
 export default function CountryEcosystemSection() {
   return (
