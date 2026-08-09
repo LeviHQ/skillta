@@ -96,7 +96,15 @@ export default defineConfig(({ mode }) => ({
           if (id.includes("react-markdown") || id.includes("remark") || id.includes("micromark") || id.includes("mdast"))
             return "markdown";
           if (id.includes("@radix-ui")) return "radix";
-          return "vendor";
+          if (id.includes("@tanstack")) return "query";
+          if (id.includes("embla-carousel")) return "carousel";
+          if (id.includes("date-fns")) return "date-fns";
+          if (id.includes("react-day-picker")) return "day-picker";
+          if (id.includes("zod") || id.includes("react-hook-form") || id.includes("@hookform")) return "forms";
+          if (id.includes("lucide-react")) return "icons";
+          // Leave everything else to Rollup so route-only deps stay in
+          // their own route chunk instead of the shared entry chunk.
+          return undefined;
         },
       },
     },
