@@ -3,7 +3,7 @@ import { useState, useEffect, lazy, Suspense } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Sparkles, Map, BookOpen, Shield, TrendingUp, Zap, LogIn, UserPlus } from "lucide-react";
 import HeroSection from "@/components/HeroSection";
-import { careers } from "@/data/careers";
+import { featuredCareers } from "@/data/featuredCareers";
 import { useAuth } from "@/contexts/AuthContext";
 const SignInModal = lazy(() => import("@/components/SignInModal"));
 import DeferredSection from "@/components/DeferredSection";
@@ -204,7 +204,7 @@ export default function Index() {
           </motion.div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {careers.slice(0, 6).map((career, i) => (
+            {featuredCareers.map((career, i) => (
               <motion.div
                 key={career.id}
                 initial={{ opacity: 0, y: 20 }}
