@@ -1,7 +1,7 @@
 # SkillTa — AI-Powered Tech Career Guidance Platform 🚀
 
 > **Your all-in-one AI career copilot for the global tech industry.**
-> Free tools for career discovery, roadmaps, salary intelligence, resume review, skill-gap analysis, and interview practice — trusted by aspiring engineers, developers, and tech professionals worldwide.
+> Free tools for career discovery, roadmaps, salary intelligence, resume review, skill-gap analysis, and country-specific interview preparation guides — trusted by aspiring engineers, developers, and tech professionals worldwide.
 
 🌐 **Live Website:** [https://www.skillta.tech](https://www.skillta.tech)
 🐦 **X (Twitter):** [@SkilltaTech](https://x.com/SkilltaTech)
@@ -37,7 +37,7 @@ Upload your resume + target role + (optional) job description → get **AI-power
 ### 6. 🧠 [Skill Gap Analyzer](https://www.skillta.tech/skill-gap-analyzer)
 Compare your current skills against your target role's requirements. Get a **personalized gap analysis, learning priorities, and resource recommendations**. Algorithmic (no AI cost), lightning-fast. Free tier: **3 analyses/day**.
 
-### 7. 🌍 [Global Country Ecosystem](https://www.skillta.tech/countries)
+### 7. 🌍 [Global Country Ecosystem](https://www.skillta.tech/usa)
 **50+ countries × 10 sections each** = **500+ localized career hubs** covering:
 - Overview & Tech Scene
 - In-Demand Roles
