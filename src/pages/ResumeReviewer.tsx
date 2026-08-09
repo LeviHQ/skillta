@@ -24,7 +24,6 @@ import SubscribeRequiredModal from "@/components/SubscribeRequiredModal";
 import CongratsModal from "@/components/CongratsModal";
 import { useAuth } from "@/contexts/AuthContext";
 import { usePlan } from "@/contexts/PlanContext";
-import jsPDF from "jspdf";
 
 
 interface RewriteItem {
@@ -288,8 +287,9 @@ export default function ResumeReviewer() {
 
   const reset = () => clearAll();
 
-  const downloadPdf = () => {
+  const downloadPdf = async () => {
     if (!review) return;
+    const { jsPDF } = await import("jspdf");
     const doc = new jsPDF({ unit: "pt", format: "a4" });
     const pageW = doc.internal.pageSize.getWidth();
     const pageH = doc.internal.pageSize.getHeight();
