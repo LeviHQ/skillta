@@ -93,7 +93,6 @@ export default defineConfig(({ mode }) => ({
           if (id.includes("recharts") || id.includes("d3-")) return "charts";
           if (id.includes("jspdf") || id.includes("html2canvas") || id.includes("html2pdf") || id.includes("pdfjs"))
             return "pdf";
-          if (id.includes("@radix-ui")) return "radix";
           if (id.includes("@tanstack")) return "query";
           if (id.includes("embla-carousel")) return "carousel";
           if (id.includes("date-fns")) return "date-fns";
