@@ -18,40 +18,11 @@ const liveFeed = [
   { emoji: "👩‍🔬", who: "Emily from Sydney", action: "unlocked the Cloud Architect path", when: "4 minutes ago" },
 ];
 
-
-const paths = [
-  { id: "frontend-developer", label: "Frontend", sub: "UI/UX & Interactive", icon: Code2, tone: "primary" },
-  { id: "backend-developer", label: "Backend", sub: "Systems & Logic", icon: Server, tone: "accent" },
-  { id: "ai-ml-engineer", label: "AI Engineer", sub: "ML & Data Science", icon: Brain, tone: "success" },
-  { id: "cybersecurity-specialist", label: "Cybersecurity", sub: "Protection & Sec Ops", icon: ShieldCheck, tone: "info" },
-  { id: "cloud-architect", label: "Cloud", sub: "Infra & DevOps", icon: Cloud, tone: "warning" },
-  { id: "mobile-developer", label: "Mobile", sub: "iOS & Android Apps", icon: Smartphone, tone: "primary" },
-];
-
-const toneRing: Record<string, string> = {
-  primary: "hover:border-primary/50 hover:bg-primary/5",
-  accent: "hover:border-accent/50 hover:bg-accent/5",
-  success: "hover:border-success/50 hover:bg-success/5",
-  info: "hover:border-info/50 hover:bg-info/5",
-  warning: "hover:border-warning/50 hover:bg-warning/5",
-};
-
-const toneIcon: Record<string, string> = {
-  primary: "bg-primary/15 text-primary",
-  accent: "bg-accent/15 text-accent",
-  success: "bg-success/15 text-success",
-  info: "bg-info/15 text-info",
-  warning: "bg-warning/15 text-warning",
-};
-
 export default function HeroSection() {
   const [wordIndex, setWordIndex] = useState(0);
-  const [query, setQuery] = useState("");
-  const [selected, setSelected] = useState<string | null>(null);
   const [feedIndex, setFeedIndex] = useState(0);
   const [liveUsers, setLiveUsers] = useState(1284);
   const [perksOpen, setPerksOpen] = useState(false);
-  const navigate = useNavigate();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -77,16 +48,6 @@ export default function HeroSection() {
     return () => clearInterval(interval);
   }, []);
 
-
-  const suggestions = useMemo(() => {
-    const q = query.trim().toLowerCase();
-    if (!q) return [];
-    return careers
-      .filter((c) => c.title.toLowerCase().includes(q) || c.id.includes(q.replace(/\s+/g, "-")))
-      .slice(0, 4);
-  }, [query]);
-
-  const activePath = paths.find((p) => p.id === selected);
 
   return (
     <section className="relative bg-gradient-hero overflow-hidden py-20 lg:py-28">
