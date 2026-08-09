@@ -81,6 +81,8 @@ export default defineConfig(({ mode }) => ({
     rollupOptions: {
       output: {
         manualChunks(id) {
+          // Keep Vite's preload helper with the core runtime chunk.
+          if (id.includes("vite/preload-helper") || id.includes("vite/modulepreload")) return "react-vendor";
           if (!id.includes("node_modules")) return;
           if (/[\\/]node_modules[\\/](react|react-dom|scheduler|react-router|react-router-dom)[\\/]/.test(id))
             return "react-vendor";
