@@ -151,8 +151,31 @@ export default function Footer() {
           </div>
         </div>
 
+        {/* Featured Badge */}
+        <div className="mt-10 flex flex-col items-center justify-center gap-3">
+          <p className="text-xs text-muted-foreground uppercase tracking-widest font-medium">
+            As featured on
+          </p>
+          <a
+            href="https://launchbuff.com/products/skillta-dz3ysa"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="Featured on LaunchBuff"
+            className="inline-block rounded-xl bg-white/5 border border-border/60 hover:border-primary/40 hover:bg-white/10 transition-all duration-300 p-2"
+          >
+            <img
+              src="https://launchbuff.com/badge-featured-light.svg"
+              alt="Featured on LaunchBuff"
+              width={256}
+              height={80}
+              loading="lazy"
+              className="h-12 w-auto md:h-16 object-contain"
+            />
+          </a>
+        </div>
+
         {/* Divider */}
-        <div className="border-t border-border mt-12 pt-8">
+        <div className="border-t border-border mt-10 pt-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="text-xs text-muted-foreground">
               © {currentYear} SkillTa. All rights reserved.
