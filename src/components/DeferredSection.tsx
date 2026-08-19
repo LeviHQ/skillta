@@ -7,6 +7,8 @@ interface Props {
   /** Reserved min-height while not yet mounted (prevents CLS) */
   minHeight?: number;
   className?: string;
+  /** Mount immediately, skipping the viewport gate (e.g. deep-link target) */
+  eager?: boolean;
 }
 
 /**
@@ -19,9 +21,14 @@ export default function DeferredSection({
   rootMargin = "600px",
   minHeight = 320,
   className = "",
+  eager = false,
 }: Props) {
   const ref = useRef<HTMLDivElement>(null);
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(eager);
+
+  useEffect(() => {
+    if (eager) setShow(true);
+  }, [eager]);
 
   useEffect(() => {
     if (show) return;
