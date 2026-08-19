@@ -49,11 +49,15 @@ export default function Index() {
     if (!hash) return;
     const id = hash.replace("#", "");
     let tries = 0;
+    let settled = 0;
     const tryScroll = () => {
       const el = document.getElementById(id);
       if (el) {
         el.scrollIntoView({ behavior: "smooth", block: "start" });
-      } else if (tries++ < 20) {
+        // Lazy sections above may still be mounting and shifting layout,
+        // so re-align a few times after the first scroll.
+        if (settled++ < 6) setTimeout(tryScroll, 250);
+      } else if (tries++ < 60) {
         setTimeout(tryScroll, 100);
       }
     };
@@ -242,7 +246,7 @@ export default function Index() {
       </section>
 
       {/* Pricing */}
-      <DeferredSection minHeight={700}>
+      <DeferredSection minHeight={700} eager={hash === "#pricing"}>
         <PricingSection />
       </DeferredSection>
 
