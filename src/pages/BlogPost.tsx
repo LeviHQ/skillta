@@ -483,6 +483,10 @@ export default function BlogPost() {
               <ReactMarkdown remarkPlugins={[remarkGfm]} components={mdComponents}>{second}</ReactMarkdown>
             </div>
 
+            {/* In-depth guide — shared with the prerendered HTML */}
+            <DeepContent blocks={deepBlocks} />
+
+
             {/* FAQ */}
             <section className="mt-14" aria-labelledby="faq-heading">
               <div className="flex items-center gap-2 mb-6">
