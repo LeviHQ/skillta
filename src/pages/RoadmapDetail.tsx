@@ -670,6 +670,11 @@ export default function RoadmapDetail() {
           </motion.div>
         </div>
 
+        {/* In-depth guide — shared with the prerendered HTML */}
+        <div className="max-w-3xl mx-auto no-print">
+          <DeepContent blocks={roadmapDeepBlocks(career)} />
+        </div>
+
         <div className="max-w-3xl mx-auto no-print">
           <ResumeReviewerCTA />
           <SkillGapAnalyzerCTA />
