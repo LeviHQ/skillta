@@ -70,6 +70,9 @@ export default function CountryPage() {
         {currentSection.key === "certifications" && <CertsSection />}
         {currentSection.key === "skills" && <SkillsSection />}
         {currentSection.key === "resources" && <ResourcesSection />}
+
+        {/* In-depth, country-specific guide — shared with the prerendered HTML */}
+        <DeepContent blocks={countryDeepBlocks(country, currentSection.key)} className="mt-10" />
       </CountryDocLayout>
 
       <div className="container mx-auto px-6">
