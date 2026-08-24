@@ -22,6 +22,16 @@ import { blogPosts } from "../src/data/blogPosts";
 import { countryBlogs } from "../src/data/countryBlogs";
 import { COUNTRIES } from "../src/data/countries";
 import {
+  SECTIONS,
+  ROLES,
+  TOP_SKILLS_2026,
+  ROADMAP_CARDS,
+  CERTIFICATIONS,
+  GLOBAL_COMPANIES,
+  INTERVIEW_TOPICS,
+  getRoleSalaryBand,
+} from "../src/data/countrySections";
+import {
   SITE_CONFIG,
   getBaseUrl,
   PAGE_SEO,
@@ -38,8 +48,11 @@ const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const DIST = resolve(ROOT, "dist");
 const BASE = getBaseUrl();
 
-/** Hard cap — raise this gradually once the first batch is verified in GSC. */
-const MAX_PAGES = Number(process.env.PRERENDER_MAX ?? 150);
+/**
+ * Hard cap — safety valve only. Publish limits are 50,000 files / 3 GiB, so the
+ * full site (~1,300 routes) sits far below. Lower via PRERENDER_MAX if needed.
+ */
+const MAX_PAGES = Number(process.env.PRERENDER_MAX ?? 5000);
 
 interface Route {
   path: string;
@@ -376,6 +389,121 @@ ${siteNav}`),
   });
 }
 
+/** /:country/:section — 9 sub-sections per country. */
+function countrySectionRoutes(): Route[] {
+  const routes: Route[] = [];
+
+  for (const country of COUNTRIES) {
+    const sectionNav = `<ul>${SECTIONS.filter((s) => s.slug)
+      .map((s) => `<li>${link(`/${country.slug}/${s.slug}`, `${s.title} in ${country.name}`)}</li>`)
+      .join("")}</ul>`;
+
+    for (const section of SECTIONS) {
+      if (!section.slug) continue; // overview is handled by countryRoutes()
+
+      const path = `/${country.slug}/${section.slug}`;
+      // Titles/descriptions must match CountryPage.tsx exactly.
+      const title = `${country.name} Tech Career Guide 2026 — ${section.title} | SkillTa`;
+      const description = `${section.title} for tech professionals in ${country.name}. Roles, salaries, roadmaps, resume tips, interview prep, top companies, certifications and more — updated for 2026.`;
+
+      let inner = "";
+      switch (section.key) {
+        case "jobs":
+          inner = `<h2>Most in-demand tech roles in ${esc(country.name)}</h2>
+<ul>${ROLES.map((r) => `<li><strong>${esc(r.role)}</strong> — demand ${esc(r.demand)}, growth ${esc(r.growth)}. Key skills: ${r.skills.slice(0, 4).map(esc).join(", ")}.</li>`).join("")}</ul>
+<p>Hiring hubs: ${country.techHubs.map(esc).join(", ")}.</p>`;
+          break;
+        case "salary":
+          inner = `<h2>${esc(country.name)} tech salaries 2026 (${esc(country.currency)})</h2>
+<ul>${ROLES.map((r) => {
+            const b = getRoleSalaryBand(country, r);
+            return `<li><strong>${esc(r.role)}</strong> — junior ${esc(b.junior)}, mid ${esc(b.mid)}, senior ${esc(b.senior)} per year.</li>`;
+          }).join("")}</ul>
+<p>Figures are annual gross bands scaled to the ${esc(country.name)} market. Try the ${link("/salary-predictor", "free salary predictor")} for a personalized estimate.</p>`;
+          break;
+        case "roadmaps":
+          inner = `<h2>Step-by-step tech roadmaps for ${esc(country.name)}</h2>
+<ul>${ROADMAP_CARDS.map((c) => `<li>${link(`/roadmaps/${c.slug}`, `${c.title} Roadmap`)} — ${esc(c.desc)} (${esc(c.level)})</li>`).join("")}</ul>
+<p>${link("/roadmaps", "Browse all 60+ roadmaps")} · ${link("/quiz", "Take the free career quiz")}</p>`;
+          break;
+        case "resume":
+          inner = `<h2>How to write a tech resume for ${esc(country.name)}</h2>
+<ul>
+<li>Keep it to one page (two only with 8+ years of experience).</li>
+<li>Match 60–80% of the job description keywords verbatim so ATS parsers score you higher.</li>
+<li>Use standard headings: Experience, Education, Skills, Projects.</li>
+<li>Quantify every bullet — impact, scale, percentage, latency, revenue.</li>
+<li>List exact tech names (React, Kubernetes, PostgreSQL) rather than vague phrasing.</li>
+<li>Save and send as PDF unless the employer asks otherwise.</li>
+</ul>
+<p>${link("/resume-reviewer", "Get a free ATS score and rewrites")} with the SkillTa AI Resume Reviewer.</p>`;
+          break;
+        case "interview":
+          inner = `<h2>Interview preparation for tech roles in ${esc(country.name)}</h2>
+<h3>Coding round topics</h3><ul>${INTERVIEW_TOPICS.coding.map((t) => `<li>${esc(t)}</li>`).join("")}</ul>
+<h3>System design questions</h3><ul>${INTERVIEW_TOPICS.systemDesign.map((t) => `<li>${esc(t)}</li>`).join("")}</ul>
+<h3>Behavioral questions</h3><ul>${INTERVIEW_TOPICS.behavioral.map((t) => `<li>${esc(t)}</li>`).join("")}</ul>
+<h3>HR round questions</h3><ul>${INTERVIEW_TOPICS.hr.map((t) => `<li>${esc(t)}</li>`).join("")}</ul>`;
+          break;
+        case "companies":
+          inner = `<h2>Top tech employers hiring in ${esc(country.name)}</h2>
+<h3>Local leaders</h3><ul>${country.topCompaniesLocal.map((c) => `<li>${esc(c)}</li>`).join("")}</ul>
+<h3>Global companies hiring here</h3><ul>${GLOBAL_COMPANIES.map((c) => `<li>${esc(c.name)}</li>`).join("")}</ul>
+<p>Main hiring locations: ${country.techHubs.map(esc).join(", ")}.</p>`;
+          break;
+        case "certifications":
+          inner = `<h2>Certifications worth doing in ${esc(country.name)}</h2>
+<ul>${CERTIFICATIONS.map((c) => `<li><strong>${esc(c.name)}</strong> (${esc(c.provider)}) — ${esc(c.why)}</li>`).join("")}</ul>`;
+          break;
+        case "skills":
+          inner = `<h2>Skills in demand in ${esc(country.name)} for 2026</h2>
+<ul>${TOP_SKILLS_2026.map((s) => `<li>${esc(s)}</li>`).join("")}</ul>
+<p>${link("/skill-gap-analyzer", "Run a free skill gap analysis")} to see exactly what you are missing for your target role.</p>`;
+          break;
+        default:
+          inner = `<h2>Career resources for ${esc(country.name)}</h2>
+<ul>
+<li>${link("/quiz", "AI Career Quiz")} — find your best-fit tech role.</li>
+<li>${link("/salary-predictor", "Salary Predictor")} — unlimited 2026 estimates.</li>
+<li>${link("/resume-reviewer", "AI Resume Reviewer")} — ATS score and rewrites.</li>
+<li>${link("/skill-gap-analyzer", "Skill Gap Analyzer")} — personalized learning plan.</li>
+<li>${link("/roadmaps", "Roadmap Library")} — 60+ step-by-step paths.</li>
+<li>${link("/compare", "Compare Careers")} — side-by-side role comparison.</li>
+<li>${link("/blog", "SkillTa Blog")} — country and role-specific salary guides.</li>
+</ul>`;
+      }
+
+      routes.push({
+        path,
+        title,
+        description,
+        keywords: `${country.name} tech jobs, ${country.name} software engineer salary, ${country.name} tech career, tech roadmap ${country.name}, ${section.title} ${country.name} 2026`,
+        type: "article",
+        jsonLd: [
+          getBreadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: country.name, path: `/${country.slug}` },
+            { name: section.title, path },
+          ]),
+        ],
+        body: shell(`<article>
+<h1>${esc(section.title)} in ${esc(country.name)} — Tech Career Guide 2026</h1>
+<p>${esc(country.marketNote)}</p>
+${inner}
+</article>
+<h2>More ${esc(country.name)} guides</h2>
+${sectionNav}
+<p>${link(`/${country.slug}`, `${country.name} tech career guide overview`)}</p>
+${siteNav}`),
+      });
+    }
+  }
+
+  return routes;
+}
+
+
+
 /* ------------------------------------------------------------------ write */
 
 function headFor(route: Route): string {
@@ -420,7 +548,7 @@ function main() {
   const template = readFileSync(templatePath, "utf8");
 
   // Priority order: core pages → roadmaps → editorial blogs → country hubs →
-  // country/role salary blogs. The cap cuts from the bottom.
+  // country/role salary blogs → country sub-sections. The cap cuts from the bottom.
   const blogs = blogRoutes();
   const editorialCount = Math.max(0, blogPosts.length - countryBlogs.length);
   const all = [
@@ -429,6 +557,7 @@ function main() {
     ...blogs.slice(0, editorialCount),
     ...countryRoutes(),
     ...blogs.slice(editorialCount),
+    ...countrySectionRoutes(),
   ];
   const seen = new Set<string>();
   const routes = all.filter((r) => (seen.has(r.path) ? false : (seen.add(r.path), true))).slice(0, MAX_PAGES);
