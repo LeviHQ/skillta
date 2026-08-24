@@ -766,8 +766,129 @@ const SECTION_BUILDERS: Record<SectionKey, (c: Country) => Block[]> = {
   resources: resourcesSection,
 };
 
+/* ------------------------------------------------- shared closing depth */
+
+const SECTION_LABEL: Record<SectionKey, string> = {
+  overview: "tech careers",
+  jobs: "tech jobs",
+  salary: "tech salaries",
+  roadmaps: "learning roadmaps",
+  resume: "tech resumes",
+  interview: "technical interviews",
+  companies: "tech employers",
+  certifications: "certifications",
+  skills: "in-demand skills",
+  resources: "career resources",
+};
+
+/** Section-specific FAQ — different questions per section and per country. */
+function sectionFaq(c: Country, key: SectionKey): Block {
+  const topRole = ROLES[0];
+  const band = getRoleSalaryBand(c, topRole.key);
+  const mid = formatLocalSalary(c, band.mid);
+  const common = [
+    {
+      q: `How reliable are the ${c.name} figures on this page?`,
+      a: `They are 2026 market-band estimates built from public compensation datasets and job postings, expressed as annual gross in ${c.currency} before tax. Use them as a negotiating anchor, not a guarantee — company type and role scope move a band more than the job title does. Cross-check your own number with the free [salary predictor](/salary-predictor).`,
+    },
+    {
+      q: `Do I need to live in ${listSentence(c.techHubs.slice(0, 2))} to get hired?`,
+      a: `No, but it still helps. Hiring density is highest in ${hubList(c)}, and hybrid roles there usually pay above the national band. Fully remote roles have narrowed that gap, and your ${c.timezone} overlap with the employer's core hours matters more than your postcode for distributed teams.`,
+    },
+  ];
+
+  const specific: Record<SectionKey, { q: string; a: string }[]> = {
+    overview: [
+      { q: `Is ${c.name} a good market to start a tech career in 2026?`, a: `${tierNote(c)} For a first job, the fastest route is usually a services or consultancy employer, then a move to a product company within two years once you have shipped something measurable.` },
+      { q: `Which role should I target first?`, a: `Pick by fit rather than by pay. Take the free [career quiz](/quiz) — it maps your interests to specific roles — then open the matching [roadmap](/roadmaps) and follow it end to end instead of sampling several.` },
+    ],
+    jobs: [
+      { q: `How many applications does a first tech job in ${c.name} take?`, a: `Realistically 40 to 120 tailored applications over eight to sixteen weeks, with referrals converting several times better than cold applications. Untailored volume applying produces worse results than half the applications with a matched CV.` },
+      { q: `Are there entry-level roles at all right now?`, a: `Yes, but they are concentrated in services companies, scale-ups and internal platform teams rather than in high-profile product companies. Local employers such as ${companyList(c)} hire in cohorts — apply when their cycles open rather than continuously.` },
+    ],
+    salary: [
+      { q: `What does a mid-level ${topRole.title.toLowerCase()} earn in ${c.name}?`, a: `Roughly ${mid} a year gross at the midpoint of the band, with the spread driven by company type, city and scope. Product companies and foreign-funded employers sit at the top of the range; services and support functions sit near the bottom.` },
+      { q: `How much raise should I expect when switching jobs?`, a: `Switching typically returns more than an internal review in ${c.name}: a well-timed move with competing interest usually lands a materially higher band, while internal raises track inflation plus performance. That asymmetry is why engineers move every two to three years early in a career.` },
+    ],
+    roadmaps: [
+      { q: `How long does a roadmap realistically take?`, a: `Six to twelve months at ten to fifteen focused hours a week for a first job-ready level, and two to three years to mid-level. Anyone promising faster is measuring course completion rather than employability.` },
+      { q: `Should I follow more than one roadmap?`, a: `No. Finish one, ship two real projects with it, then broaden. Depth in one stack is what interviews test; breadth without depth reads as unfinished on a CV.` },
+    ],
+    resume: [
+      { q: `Should my ${c.name} resume include a photo?`, a: `Follow local convention rather than a global template — some markets expect a photo and personal details, others screen them out. When in doubt, omit it: the ATS never reads it and no employer rejects a candidate for its absence.` },
+      { q: `How do I get past ATS filters?`, a: `Use a single-column layout, standard headings, no tables or text boxes in the header, and the exact skill wording from the job posting. Run the file through the free [AI resume reviewer](/resume-reviewer) for an ATS score and keyword gaps before applying.` },
+    ],
+    interview: [
+      { q: `What does a typical loop look like in ${c.name}?`, a: `Recruiter screen, technical screen, one or two deep technical rounds covering ${listSentence(INTERVIEW_TOPICS.slice(0, 3).map((t) => t.topic.toLowerCase()))}, a system-design round from mid-level upward, and a behavioural round. Expect two to four weeks end to end at most employers.` },
+      { q: `How much DSA practice is enough?`, a: `Around 120 to 180 well-understood problems beats 500 skimmed ones. Prioritise patterns — two pointers, sliding window, graphs, dynamic programming — and be able to narrate your reasoning out loud, because that is what interviewers actually score.` },
+    ],
+    companies: [
+      { q: `Local employer or global company — which pays better in ${c.name}?`, a: `Global product companies usually pay above the local band and interview harder; local employers such as ${companyList(c)} hire in higher volume and are the more reliable route to a first offer. Many strong careers start at the second and move to the first.` },
+      { q: `How do I get a referral?`, a: `Engage genuinely before asking — comment on engineering posts, attend meetups in ${c.techHubs[0]}, contribute to a project the team uses. A referral from someone who has seen your work converts far better than a cold message asking for one.` },
+    ],
+    certifications: [
+      { q: `Do certifications actually get you hired in ${c.name}?`, a: `They rarely win an offer on their own, but they do pass filters in cloud, security and data roles, and they help career switchers with no degree signal. Pair every certification with a project that proves you can apply it.` },
+      { q: `Which one should I take first?`, a: `Match it to the role you want, not to the cheapest option: ${listSentence(CERTIFICATIONS.slice(0, 3).map((x) => x.name))} cover the highest-demand paths. Confirm the target role first with the [skill gap analyzer](/skill-gap-analyzer).` },
+    ],
+    skills: [
+      { q: `Which skills matter most in ${c.name} in 2026?`, a: `${listSentence(TOP_SKILLS_2026.slice(0, 5).map((s) => s.skill))} appear most often in local postings, with AI-adjacent tooling now expected alongside core engineering rather than instead of it.` },
+      { q: `Will AI replace these roles?`, a: `It is compressing routine work and raising the expected output per engineer, which hits generalists hardest and specialists least. The durable defence is depth plus judgment: system design, debugging, data modelling and communication are all harder to automate than syntax.` },
+    ],
+    resources: [
+      { q: `Free resources or paid courses?`, a: `Free material is sufficient for almost every roadmap on this site; pay only for structure, feedback or accountability if you struggle to keep momentum alone. Spend on the portfolio and interview practice, not on more content.` },
+      { q: `How do I stay current without drowning?`, a: `Pick two sources and one community, review them weekly, and ignore the rest. Depth compounds; feed-scrolling does not.` },
+    ],
+  };
+
+  return { t: "faq", items: [...rotate(specific[key] ?? [], c.slug), ...common] };
+}
+
+function closingBlocks(c: Country, key: SectionKey): Block[] {
+  const label = SECTION_LABEL[key];
+  return [
+    { t: "h2", text: `Cost of living, tax and what the numbers actually mean` },
+    {
+      t: "p",
+      text: `Every figure on this page is annual gross in ${c.currency}. Take-home pay depends on ${c.name}'s income tax bands, social contributions and any employer-side benefits, so two identical gross offers can differ meaningfully in what reaches your account. Before comparing an offer against another country, convert both to purchasing power rather than exchange rate: a lower headline number in a cheaper city frequently leaves more disposable income than a headline number in ${c.techHubs[0]}.`,
+    },
+    {
+      t: "ul",
+      items: [
+        `**Housing** is the largest single variable between ${hubList(c)} and smaller cities, and it moves effective pay more than a one-level promotion does.`,
+        `**Employer type** matters as much as title — funded product companies, global captives and local services firms pay noticeably different bands for the same work.`,
+        `**Equity and bonus** are worth discounting heavily unless the company is public or you understand the terms in detail.`,
+        `**Remote arbitrage** works both ways: employers increasingly band remote pay by location, so confirm the policy before assuming a hub salary from outside the hub.`,
+      ],
+    },
+    { t: "h2", text: `Working internationally from ${c.name}` },
+    {
+      t: "p",
+      text: `Two routes exist and they are very different. Relocation means employer sponsorship, a visa process measured in months, and a compensation reset to the destination market's band. Remote employment means keeping your ${c.timezone} base while being paid against another market's band, usually through a contractor arrangement or an employer-of-record. The remote route is faster and reversible; the relocation route pays more and takes longer. Whichever you pursue, English written communication and a public body of work do more to open the door than any certificate — hiring managers abroad cannot verify your degree easily, but they can read your repositories.`,
+    },
+    { t: "h2", text: `Free SkillTa tools for ${label} in ${c.name}` },
+    {
+      t: "ul",
+      items: [
+        `[Career quiz](/quiz) — a short diagnostic that maps your interests and strengths to specific tech roles.`,
+        `[Salary predictor](/salary-predictor) — unlimited 2026 estimates by role, experience and city.`,
+        `[Roadmap library](/roadmaps) — 60+ step-by-step learning paths with phases, resources and projects.`,
+        `[Compare careers](/compare) — salary, difficulty, demand and growth for any two roles side by side.`,
+        `[AI resume reviewer](/resume-reviewer) — ATS score, keyword gaps and rewritten bullet points.`,
+        `[Skill gap analyzer](/skill-gap-analyzer) — a personalised eight-week plan from your current skills to a target role.`,
+      ],
+    },
+    { t: "h2", text: `Frequently asked questions about ${label} in ${c.name}` },
+    sectionFaq(c, key),
+    {
+      t: "p",
+      text: `Continue with the rest of the ${c.name} guide: [overview](/${c.slug}), [top tech jobs](/${c.slug}/top-tech-jobs), [salary explorer](/${c.slug}/salary-explorer), [tech roadmaps](/${c.slug}/tech-roadmaps), [resume guide](/${c.slug}/resume-guide), [interview preparation](/${c.slug}/interview-preparation), [top companies](/${c.slug}/top-companies), [certifications](/${c.slug}/certifications), [skills in demand](/${c.slug}/skills-in-demand) and [career resources](/${c.slug}/career-resources).`,
+    },
+  ];
+}
+
 /** Long-form, country-specific content for a page section. */
 export function countryDeepBlocks(country: Country, sectionKey: SectionKey): Block[] {
   const build = SECTION_BUILDERS[sectionKey] ?? overviewSection;
-  return build(country);
+  return [...build(country), ...closingBlocks(country, sectionKey)];
 }
+
