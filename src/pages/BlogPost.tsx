@@ -30,6 +30,8 @@ import { motion } from "framer-motion";
 import AdsterraNativeBanner from "@/components/AdsterraNativeBanner";
 import AdsterraResponsiveBanner from "@/components/AdsterraResponsiveBanner";
 import ResumeReviewerCTA from "@/components/ResumeReviewerCTA";
+import DeepContent from "@/components/DeepContent";
+import { blogDeepBlocks } from "@/lib/deepContent";
 
 // ---------- helpers ----------
 const slugify = (s: string) =>
