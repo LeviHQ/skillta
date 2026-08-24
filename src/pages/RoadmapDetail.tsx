@@ -8,6 +8,8 @@ import AdsterraNativeBanner from "@/components/AdsterraNativeBanner";
 import AdsterraResponsiveBanner from "@/components/AdsterraResponsiveBanner";
 import ResumeReviewerCTA from "@/components/ResumeReviewerCTA";
 import SkillGapAnalyzerCTA from "@/components/SkillGapAnalyzerCTA";
+import DeepContent from "@/components/DeepContent";
+import { roadmapDeepBlocks } from "@/lib/deepContent";
 import { getCourseSchema, getBreadcrumbSchema } from "@/lib/seo";
 
 export default function RoadmapDetail() {
@@ -668,6 +670,11 @@ export default function RoadmapDetail() {
               <p className="text-sm text-muted-foreground">{career.growthPotential}</p>
             </div>
           </motion.div>
+        </div>
+
+        {/* In-depth guide — shared with the prerendered HTML */}
+        <div className="max-w-3xl mx-auto no-print">
+          <DeepContent blocks={roadmapDeepBlocks(career)} />
         </div>
 
         <div className="max-w-3xl mx-auto no-print">

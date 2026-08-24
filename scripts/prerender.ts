@@ -43,6 +43,10 @@ import {
   getSoftwareAppSchema,
   getItemListSchema,
 } from "../src/lib/seo";
+import { blocksToHtml } from "../src/lib/deepContent/types";
+import { countryDeepBlocks } from "../src/lib/deepContent/country";
+import { roadmapDeepBlocks } from "../src/lib/deepContent/roadmap";
+import { blogDeepBlocks } from "../src/lib/deepContent/blog";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const DIST = resolve(ROOT, "dist");
@@ -285,6 +289,7 @@ function blogRoutes(): Route[] {
 <p><time datetime="${esc(post.date)}">${esc(post.date)}</time> · ${esc(post.readTime)} · ${esc(post.category)}</p>
 <p>${esc(post.description)}</p>
 ${mdToHtml(post.content)}
+${blocksToHtml(blogDeepBlocks(post))}
 </article>
 <p>${link("/blog", "More career guides")} · ${link("/quiz", "Take the free career quiz")} · ${link("/roadmaps", "Browse roadmaps")}</p>
 ${siteNav}`),
@@ -337,6 +342,7 @@ ${career.roadmap
   .join("\n")}
 <h2>Reality check</h2>
 <p>${esc(career.realityCheck.honestNote)}</p>
+${blocksToHtml(roadmapDeepBlocks(career))}
 </article>
 <p>${link("/roadmaps", "All roadmaps")} · ${link("/quiz", "Is this career right for me?")} · ${link("/compare", "Compare with other careers")}</p>
 ${siteNav}`),
@@ -383,6 +389,7 @@ ${[
   .join("\n")}
 </ul>
 <p>Currency: ${esc(country.currency)} · Timezone: ${esc(country.timezone)} · Language: ${esc(country.language)}</p>
+${blocksToHtml(countryDeepBlocks(country, "overview"))}
 </article>
 ${siteNav}`),
     };
@@ -490,6 +497,7 @@ function countrySectionRoutes(): Route[] {
 <h1>${esc(section.title)} in ${esc(country.name)} — Tech Career Guide 2026</h1>
 <p>${esc(country.marketNote)}</p>
 ${inner}
+${blocksToHtml(countryDeepBlocks(country, section.key))}
 </article>
 <h2>More ${esc(country.name)} guides</h2>
 ${sectionNav}

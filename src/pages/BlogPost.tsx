@@ -30,6 +30,8 @@ import { motion } from "framer-motion";
 import AdsterraNativeBanner from "@/components/AdsterraNativeBanner";
 import AdsterraResponsiveBanner from "@/components/AdsterraResponsiveBanner";
 import ResumeReviewerCTA from "@/components/ResumeReviewerCTA";
+import DeepContent from "@/components/DeepContent";
+import { blogDeepBlocks } from "@/lib/deepContent";
 
 // ---------- helpers ----------
 const slugify = (s: string) =>
@@ -217,6 +219,7 @@ export default function BlogPost() {
   const faqs = useMemo(() => buildFAQs(post), [post]);
   const service = useMemo(() => getServiceForCategory(post.category), [post.category]);
   const enhancedContent = useMemo(() => autoInternalLink(post.content), [post.content]);
+  const deepBlocks = useMemo(() => blogDeepBlocks(post), [post]);
 
   // Related: prefer same category, then same country, then latest
   const related = useMemo(() => {
@@ -482,6 +485,10 @@ export default function BlogPost() {
             <div className={proseClass}>
               <ReactMarkdown remarkPlugins={[remarkGfm]} components={mdComponents}>{second}</ReactMarkdown>
             </div>
+
+            {/* In-depth guide — shared with the prerendered HTML */}
+            <DeepContent blocks={deepBlocks} />
+
 
             {/* FAQ */}
             <section className="mt-14" aria-labelledby="faq-heading">
