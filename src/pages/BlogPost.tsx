@@ -217,6 +217,7 @@ export default function BlogPost() {
   const faqs = useMemo(() => buildFAQs(post), [post]);
   const service = useMemo(() => getServiceForCategory(post.category), [post.category]);
   const enhancedContent = useMemo(() => autoInternalLink(post.content), [post.content]);
+  const deepBlocks = useMemo(() => blogDeepBlocks(post), [post]);
 
   // Related: prefer same category, then same country, then latest
   const related = useMemo(() => {
