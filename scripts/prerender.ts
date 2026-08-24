@@ -22,6 +22,16 @@ import { blogPosts } from "../src/data/blogPosts";
 import { countryBlogs } from "../src/data/countryBlogs";
 import { COUNTRIES } from "../src/data/countries";
 import {
+  SECTIONS,
+  ROLES,
+  TOP_SKILLS_2026,
+  ROADMAP_CARDS,
+  CERTIFICATIONS,
+  GLOBAL_COMPANIES,
+  INTERVIEW_TOPICS,
+  getRoleSalaryBand,
+} from "../src/data/countrySections";
+import {
   SITE_CONFIG,
   getBaseUrl,
   PAGE_SEO,
