@@ -8,6 +8,8 @@ import AdsterraNativeBanner from "@/components/AdsterraNativeBanner";
 import AdsterraResponsiveBanner from "@/components/AdsterraResponsiveBanner";
 import ResumeReviewerCTA from "@/components/ResumeReviewerCTA";
 import SkillGapAnalyzerCTA from "@/components/SkillGapAnalyzerCTA";
+import DeepContent from "@/components/DeepContent";
+import { roadmapDeepBlocks } from "@/lib/deepContent";
 import { getCourseSchema, getBreadcrumbSchema } from "@/lib/seo";
 
 export default function RoadmapDetail() {
