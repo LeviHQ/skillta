@@ -19,6 +19,7 @@ import { fileURLToPath } from "node:url";
 
 import { careers } from "../src/data/careers";
 import { blogPosts } from "../src/data/blogPosts";
+import { countryBlogs } from "../src/data/countryBlogs";
 import { COUNTRIES } from "../src/data/countries";
 import {
   SITE_CONFIG,
@@ -418,7 +419,17 @@ function main() {
 
   const template = readFileSync(templatePath, "utf8");
 
-  const all = [...staticRoutes(), ...roadmapRoutes(), ...blogRoutes(), ...countryRoutes()];
+  // Priority order: core pages → roadmaps → editorial blogs → country hubs →
+  // country/role salary blogs. The cap cuts from the bottom.
+  const blogs = blogRoutes();
+  const editorialCount = Math.max(0, blogPosts.length - countryBlogs.length);
+  const all = [
+    ...staticRoutes(),
+    ...roadmapRoutes(),
+    ...blogs.slice(0, editorialCount),
+    ...countryRoutes(),
+    ...blogs.slice(editorialCount),
+  ];
   const seen = new Set<string>();
   const routes = all.filter((r) => (seen.has(r.path) ? false : (seen.add(r.path), true))).slice(0, MAX_PAGES);
 
