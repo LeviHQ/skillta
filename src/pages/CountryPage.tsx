@@ -14,6 +14,8 @@ import {
   formatLocalSalary,
 } from "@/data/countrySections";
 import CountryDocLayout from "@/components/CountryDocLayout";
+import DeepContent from "@/components/DeepContent";
+import { countryDeepBlocks } from "@/lib/deepContent";
 import AdsterraResponsiveBanner from "@/components/AdsterraResponsiveBanner";
 import AdsterraNativeBanner from "@/components/AdsterraNativeBanner";
 import ResumeReviewerCTA from "@/components/ResumeReviewerCTA";
