@@ -29,44 +29,34 @@ export default function AdsterraResponsiveBanner({ className = "" }: { className
     const host = hostRef.current;
     if (!host) return;
 
-    let cleanup: (() => void) | undefined;
+    let timer: number | undefined;
 
-    function inject() {
-    // Reset container
-    host.innerHTML = "";
+    const inject = () => {
+      host.innerHTML = "";
 
-    const configScript = document.createElement("script");
-    configScript.type = "text/javascript";
-    configScript.text = `atOptions = { 'key' : '${cfg.key}', 'format' : 'iframe', 'height' : ${cfg.height}, 'width' : ${cfg.width}, 'params' : {} };`;
+      const configScript = document.createElement("script");
+      configScript.type = "text/javascript";
+      configScript.text = `atOptions = { 'key' : '${cfg.key}', 'format' : 'iframe', 'height' : ${cfg.height}, 'width' : ${cfg.width}, 'params' : {} };`;
 
-    const invokeScript = document.createElement("script");
-    invokeScript.type = "text/javascript";
-    invokeScript.src = `https://www.highperformanceformat.com/${cfg.key}/invoke.js`;
-    invokeScript.async = true;
+      const invokeScript = document.createElement("script");
+      invokeScript.type = "text/javascript";
+      invokeScript.src = `https://www.highperformanceformat.com/${cfg.key}/invoke.js`;
+      invokeScript.async = true;
 
-    host.appendChild(configScript);
-    host.appendChild(invokeScript);
-    }
+      host.appendChild(configScript);
+      host.appendChild(invokeScript);
+    };
 
-    // Defer the ad request until the slot is close to the viewport.
-    if (typeof IntersectionObserver !== "undefined") {
-      const obs = new IntersectionObserver(
-        (entries) => {
-          if (entries.some((e) => e.isIntersecting)) {
-            obs.disconnect();
-            inject();
-          }
-        },
-        { rootMargin: "300px" },
-      );
-      obs.observe(host);
-      cleanup = () => obs.disconnect();
-    } else {
-      inject();
-    }
+    // Request the ad on every mount so impressions are not lost when the user
+    // never scrolls to the slot; slight delay keeps first paint fast.
+    const idle =
+      (window as unknown as { requestIdleCallback?: (cb: () => void, o?: object) => number })
+        .requestIdleCallback;
+    if (idle) idle(() => inject(), { timeout: 1200 } as object);
+    else timer = window.setTimeout(inject, 400);
 
     return () => {
-      cleanup?.();
+      if (timer) window.clearTimeout(timer);
       host.innerHTML = "";
     };
   }, [cfg.key, cfg.width, cfg.height]);
