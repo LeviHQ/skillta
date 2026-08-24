@@ -548,7 +548,7 @@ function main() {
   const template = readFileSync(templatePath, "utf8");
 
   // Priority order: core pages → roadmaps → editorial blogs → country hubs →
-  // country/role salary blogs. The cap cuts from the bottom.
+  // country/role salary blogs → country sub-sections. The cap cuts from the bottom.
   const blogs = blogRoutes();
   const editorialCount = Math.max(0, blogPosts.length - countryBlogs.length);
   const all = [
@@ -557,6 +557,7 @@ function main() {
     ...blogs.slice(0, editorialCount),
     ...countryRoutes(),
     ...blogs.slice(editorialCount),
+    ...countrySectionRoutes(),
   ];
   const seen = new Set<string>();
   const routes = all.filter((r) => (seen.has(r.path) ? false : (seen.add(r.path), true))).slice(0, MAX_PAGES);
