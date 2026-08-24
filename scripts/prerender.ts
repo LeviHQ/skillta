@@ -48,8 +48,11 @@ const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const DIST = resolve(ROOT, "dist");
 const BASE = getBaseUrl();
 
-/** Hard cap — raise this gradually once the first batch is verified in GSC. */
-const MAX_PAGES = Number(process.env.PRERENDER_MAX ?? 150);
+/**
+ * Hard cap — safety valve only. Publish limits are 50,000 files / 3 GiB, so the
+ * full site (~1,300 routes) sits far below. Lower via PRERENDER_MAX if needed.
+ */
+const MAX_PAGES = Number(process.env.PRERENDER_MAX ?? 5000);
 
 interface Route {
   path: string;
