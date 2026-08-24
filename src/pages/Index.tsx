@@ -132,8 +132,8 @@ export default function Index() {
         </section>
       )}
 
-      {/* Sponsored - Native Banner */}
-      <DeferredSection minHeight={220}>
+      {/* Sponsored - Native Banner (mounted eagerly so the slot always renders) */}
+      <DeferredSection minHeight={220} eager>
         <AdsterraNativeBanner />
       </DeferredSection>
 

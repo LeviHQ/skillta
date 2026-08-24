@@ -66,8 +66,8 @@
           document.body.appendChild(s);
         }
         function schedule() {
-          if (window.requestIdleCallback) window.requestIdleCallback(loadSocialBar, { timeout: 4000 });
-          else setTimeout(loadSocialBar, 2500);
+          if (window.requestIdleCallback) window.requestIdleCallback(loadSocialBar, { timeout: 1500 });
+          else setTimeout(loadSocialBar, 800);
         }
         if (document.readyState === 'complete') schedule();
         else window.addEventListener('load', schedule, { once: true });
