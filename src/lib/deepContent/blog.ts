@@ -43,7 +43,40 @@ export function blogDeepBlocks(post: BlogPost): Block[] {
         "**Freelancers and contractors** setting rates against employed-market bands.",
       ],
     },
+    { t: "h2", text: `What employers are actually screening for` },
+    {
+      t: "p",
+      text: `Job descriptions are wish lists; screening criteria are much narrower. In practice a hiring loop for ${topic} filters on four things in order: does the CV show relevant, recent, measurable work; can the candidate reason out loud through an unfamiliar problem; do they understand the fundamentals underneath the tools they list; and can they communicate a trade-off to a non-specialist. Everything else — years of experience, degree, certification count — is a tiebreaker, not a gate.`,
+    },
+    {
+      t: "table",
+      caption: "How each stage is actually judged",
+      head: ["Stage", "What they are testing", "What passes", "What fails"],
+      rows: [
+        ["CV screen", "Relevance and evidence", "Outcome bullets with numbers, keywords matched to the posting", "Technology lists with no results attached"],
+        ["Recruiter call", "Motivation and fit", "A clear one-line story about why this role, this company", "Vague answers and no questions asked back"],
+        ["Technical screen", "Fundamentals under mild pressure", "Thinking narrated out loud, clarifying questions first", "Silent coding, then a wrong answer with no reasoning shown"],
+        ["Deep round", "Depth and judgment", "Concrete examples from real work, honest trade-offs", "Textbook answers with no lived detail"],
+        ["Final / behavioural", "Ownership and communication", "Situation, action, measurable result", "Blaming past teams or drifting off the question"],
+      ],
+    },
+    { t: "h2", text: "Money: how to read a compensation range" },
+    {
+      t: "p",
+      text: `A posted range is not a distribution — it is a budget. The midpoint is roughly what a well-prepared candidate at the expected level receives; the top of the band is reserved for people arriving with competing offers, unusual scope, or a scarce specialisation. That means the two levers that move your number are level and leverage, in that order. Negotiating five per cent inside a band is a smaller win than being hired one level higher, and the level is decided in the interview, not in the offer call.`,
+    },
+    {
+      t: "ul",
+      items: [
+        "**Compare total compensation**, not base — bonus, equity, pension and benefits diverge sharply between company types.",
+        "**Discount equity heavily** unless the company is public or you understand the strike price, vesting and liquidity terms.",
+        "**Ask what band the role is budgeted at** rather than stating your expectation first.",
+        "**Never negotiate from your previous salary** — anchor on the market band for the scope you are being hired for.",
+        "**Take 48 hours** to review any written offer. It is standard and it does not put the offer at risk.",
+      ],
+    },
     { t: "h2", text: "Practical action plan" },
+
     {
       t: "table",
       caption: "A 90-day plan you can start this week",
