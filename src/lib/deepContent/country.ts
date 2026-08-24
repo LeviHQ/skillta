@@ -784,8 +784,7 @@ const SECTION_LABEL: Record<SectionKey, string> = {
 /** Section-specific FAQ — different questions per section and per country. */
 function sectionFaq(c: Country, key: SectionKey): Block {
   const topRole = ROLES[0];
-  const band = getRoleSalaryBand(c, topRole.key);
-  const mid = formatLocalSalary(c, band.mid);
+  const mid = getRoleSalaryBand(c, topRole).mid;
   const common = [
     {
       q: `How reliable are the ${c.name} figures on this page?`,
@@ -807,7 +806,7 @@ function sectionFaq(c: Country, key: SectionKey): Block {
       { q: `Are there entry-level roles at all right now?`, a: `Yes, but they are concentrated in services companies, scale-ups and internal platform teams rather than in high-profile product companies. Local employers such as ${companyList(c)} hire in cohorts — apply when their cycles open rather than continuously.` },
     ],
     salary: [
-      { q: `What does a mid-level ${topRole.title.toLowerCase()} earn in ${c.name}?`, a: `Roughly ${mid} a year gross at the midpoint of the band, with the spread driven by company type, city and scope. Product companies and foreign-funded employers sit at the top of the range; services and support functions sit near the bottom.` },
+      { q: `What does a mid-level ${topRole.role.toLowerCase()} earn in ${c.name}?`, a: `Roughly ${mid} a year gross at the midpoint of the band, with the spread driven by company type, city and scope. Product companies and foreign-funded employers sit at the top of the range; services and support functions sit near the bottom.` },
       { q: `How much raise should I expect when switching jobs?`, a: `Switching typically returns more than an internal review in ${c.name}: a well-timed move with competing interest usually lands a materially higher band, while internal raises track inflation plus performance. That asymmetry is why engineers move every two to three years early in a career.` },
     ],
     roadmaps: [
@@ -819,7 +818,7 @@ function sectionFaq(c: Country, key: SectionKey): Block {
       { q: `How do I get past ATS filters?`, a: `Use a single-column layout, standard headings, no tables or text boxes in the header, and the exact skill wording from the job posting. Run the file through the free [AI resume reviewer](/resume-reviewer) for an ATS score and keyword gaps before applying.` },
     ],
     interview: [
-      { q: `What does a typical loop look like in ${c.name}?`, a: `Recruiter screen, technical screen, one or two deep technical rounds covering ${listSentence(INTERVIEW_TOPICS.slice(0, 3).map((t) => t.topic.toLowerCase()))}, a system-design round from mid-level upward, and a behavioural round. Expect two to four weeks end to end at most employers.` },
+      { q: `What does a typical loop look like in ${c.name}?`, a: `Recruiter screen, technical screen, one or two deep technical rounds covering ${listSentence(INTERVIEW_TOPICS.coding.slice(0, 3).map((t) => t.split("—")[0].trim().toLowerCase()))}, a system-design round from mid-level upward, and a behavioural round. Expect two to four weeks end to end at most employers.` },
       { q: `How much DSA practice is enough?`, a: `Around 120 to 180 well-understood problems beats 500 skimmed ones. Prioritise patterns — two pointers, sliding window, graphs, dynamic programming — and be able to narrate your reasoning out loud, because that is what interviewers actually score.` },
     ],
     companies: [
@@ -831,7 +830,7 @@ function sectionFaq(c: Country, key: SectionKey): Block {
       { q: `Which one should I take first?`, a: `Match it to the role you want, not to the cheapest option: ${listSentence(CERTIFICATIONS.slice(0, 3).map((x) => x.name))} cover the highest-demand paths. Confirm the target role first with the [skill gap analyzer](/skill-gap-analyzer).` },
     ],
     skills: [
-      { q: `Which skills matter most in ${c.name} in 2026?`, a: `${listSentence(TOP_SKILLS_2026.slice(0, 5).map((s) => s.skill))} appear most often in local postings, with AI-adjacent tooling now expected alongside core engineering rather than instead of it.` },
+      { q: `Which skills matter most in ${c.name} in 2026?`, a: `${listSentence(TOP_SKILLS_2026.slice(0, 5))} appear most often in local postings, with AI-adjacent tooling now expected alongside core engineering rather than instead of it.` },
       { q: `Will AI replace these roles?`, a: `It is compressing routine work and raising the expected output per engineer, which hits generalists hardest and specialists least. The durable defence is depth plus judgment: system design, debugging, data modelling and communication are all harder to automate than syntax.` },
     ],
     resources: [
