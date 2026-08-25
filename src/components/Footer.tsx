@@ -151,27 +151,47 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Featured Badge */}
+        {/* Featured Badges */}
         <div className="mt-10 flex flex-col items-center justify-center gap-3">
           <p className="text-xs text-muted-foreground uppercase tracking-widest font-medium">
             As featured on
           </p>
-          <a
-            href="https://launchbuff.com/products/skillta-dz3ysa"
-            target="_blank"
-            rel="noopener noreferrer"
-            title="Featured on LaunchBuff"
-            className="inline-block rounded-xl bg-white/5 border border-border/60 hover:border-primary/40 hover:bg-white/10 transition-all duration-300 p-2"
-          >
-            <img
-              src="https://launchbuff.com/badge-featured-light.svg"
-              alt="Featured on LaunchBuff"
-              width={256}
-              height={80}
-              loading="lazy"
-              className="h-12 w-auto md:h-16 object-contain"
-            />
-          </a>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+            <a
+              href="https://launchbuff.com/products/skillta-dz3ysa"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Featured on LaunchBuff"
+              className="inline-block rounded-xl bg-white/5 border border-border/60 hover:border-primary/40 hover:bg-white/10 transition-all duration-300 p-2"
+            >
+              <img
+                src="https://launchbuff.com/badge-featured-light.svg"
+                alt="Featured on LaunchBuff"
+                width={256}
+                height={80}
+                loading="lazy"
+                className="h-12 w-auto md:h-16 object-contain"
+              />
+            </a>
+            <a
+              href="https://launchpadly.co/startup/skillta?ref=badge"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-launchpadly-badge="skillta"
+              data-launchpadly-badge-variant="light"
+              title="Listed on Launchpadly Startup Directory"
+              className="inline-block rounded-xl bg-white/5 border border-border/60 hover:border-primary/40 hover:bg-white/10 transition-all duration-300 p-2"
+            >
+              <img
+                src="https://launchpadly.co/embed/badges/startup/skillta.svg?variant=light"
+                alt="Launchpadly Startup Directory"
+                width={220}
+                height={48}
+                loading="lazy"
+                className="h-12 w-auto md:h-16 object-contain"
+              />
+            </a>
+          </div>
         </div>
 
         {/* Divider */}
