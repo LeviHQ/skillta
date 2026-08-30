@@ -156,7 +156,7 @@ export default function Footer() {
           <p className="text-xs text-muted-foreground uppercase tracking-widest font-medium">
             As featured on
           </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+          <div className="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-3 sm:gap-4">
             <a
               href="https://launchbuff.com/products/skillta-dz3ysa"
               target="_blank"
@@ -187,6 +187,22 @@ export default function Footer() {
                 alt="Launchpadly Startup Directory"
                 width={220}
                 height={48}
+                loading="lazy"
+                className="h-12 w-auto md:h-16 object-contain"
+              />
+            </a>
+            <a
+              href="https://launchnest.io/p/skillta"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="SkillTa on LaunchNest"
+              className="inline-block rounded-xl bg-white/5 border border-border/60 hover:border-primary/40 hover:bg-white/10 transition-all duration-300 p-2"
+            >
+              <img
+                src="https://launchnest.io/badge/skillta.svg?variant=featured&theme=light"
+                alt="SkillTa on LaunchNest"
+                width={220}
+                height={56}
                 loading="lazy"
                 className="h-12 w-auto md:h-16 object-contain"
               />
