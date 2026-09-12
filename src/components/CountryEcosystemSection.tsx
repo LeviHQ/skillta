@@ -322,7 +322,7 @@ export default function CountryEcosystemSection() {
           <div className="mt-8 pt-6 border-t border-border">
             <div className="flex items-center justify-between mb-3">
               <div className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground">
-                Featured countries · 50 live
+                Top 10 countries · 50 live
               </div>
               <Link
                 to="/usa"
