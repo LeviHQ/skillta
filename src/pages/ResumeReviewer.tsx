@@ -616,7 +616,7 @@ export default function ResumeReviewer() {
             <div className="mt-5 flex flex-col sm:flex-row gap-3">
               <button
                 onClick={handleSubmit}
-                disabled={loading || (!!user && locked)}
+                disabled={loading || (!!user && !!plan && limitReached)}
                 className="flex-1 flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-gradient-primary text-primary-foreground font-semibold hover:opacity-95 transition-opacity disabled:opacity-60 disabled:cursor-not-allowed"
               >
                 {loading ? (
@@ -625,7 +625,7 @@ export default function ResumeReviewer() {
                   </>
                 ) : noPlan ? (
                   <>
-                    <Sparkles className="w-4 h-4" /> Subscription required
+                    <Sparkles className="w-4 h-4" /> Activate Free Plan to Review
                   </>
                 ) : limitReached ? (
                   <>
