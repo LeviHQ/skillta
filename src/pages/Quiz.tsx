@@ -205,7 +205,7 @@ export default function Quiz() {
               </button>
               <button
                 onClick={next}
-                disabled={!isAnswered || locked}
+                disabled={!isAnswered || limitReached}
                 className="flex items-center gap-2 px-6 py-3 rounded-lg bg-gradient-primary text-primary-foreground text-sm font-semibold disabled:opacity-40 disabled:cursor-not-allowed hover:opacity-90 transition-opacity"
               >
                 {noPlan ? (

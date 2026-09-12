@@ -323,7 +323,7 @@ export default function SkillGapAnalyzer() {
                 </>
               ) : noPlan ? (
                 <>
-                  <Target className="w-4 h-4" /> Subscription required
+                  <Target className="w-4 h-4" /> Activate Free Plan to Analyse
                 </>
               ) : limitReached ? (
                 <>
