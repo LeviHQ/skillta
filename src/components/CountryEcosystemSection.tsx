@@ -38,6 +38,34 @@ const sections = [
 const featuredFlags = COUNTRIES;
 
 export default function CountryEcosystemSection() {
+  const [countryOpen, setCountryOpen] = useState(false);
+  const [countryQuery, setCountryQuery] = useState("");
+  const countryRef = useRef<HTMLDivElement>(null);
+  const countryInputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (countryOpen && countryInputRef.current) countryInputRef.current.focus();
+  }, [countryOpen]);
+
+  useEffect(() => {
+    function onDoc(e: MouseEvent) {
+      if (!countryRef.current) return;
+      if (!countryRef.current.contains(e.target as Node)) setCountryOpen(false);
+    }
+    document.addEventListener("mousedown", onDoc);
+    return () => document.removeEventListener("mousedown", onDoc);
+  }, []);
+
+  const filteredCountries = useMemo(() => {
+    const q = countryQuery.trim().toLowerCase();
+    if (!q) return COUNTRIES;
+    return COUNTRIES.filter(
+      (c) => c.name.toLowerCase().includes(q) || c.slug.includes(q)
+    );
+  }, [countryQuery]);
+
+  const showEmpty = countryQuery.trim().length > 0 && filteredCountries.length === 0;
+
   return (
     <section className="relative py-24 overflow-hidden bg-background">
       {/* Ambient glass orbs */}
