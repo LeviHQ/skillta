@@ -1,7 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect, lazy, Suspense } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, LogIn, UserPlus } from "lucide-react";
+import { LogIn, UserPlus } from "lucide-react";
 import HeroSection from "@/components/HeroSection";
 import { useAuth } from "@/contexts/AuthContext";
 const SignInModal = lazy(() => import("@/components/SignInModal"));
@@ -30,14 +30,6 @@ const homeFaqs = [
   { question: "How many career paths does SkillTa cover?", answer: "SkillTa covers 50+ tech career paths including frontend, backend, data science, cybersecurity, AI/ML, DevOps, game development, blockchain, and many more." },
 ];
 
-const features = [
-  { icon: Sparkles, title: "AI Career Quiz", description: "10 smart questions to discover your ideal tech career path", color: "text-primary" },
-  { icon: Map, title: "Personalized Roadmaps", description: "Step-by-step learning paths with resources and project ideas", color: "text-accent" },
-  { icon: Shield, title: "Reality Check", description: "Honest insights on difficulty, competition, and salary expectations", color: "text-warning" },
-  { icon: BookOpen, title: "Roadmap Library", description: "Browse curated roadmaps for 9+ tech careers anytime", color: "text-info" },
-  { icon: TrendingUp, title: "Career Analysis", description: "Deep dive into demand, growth potential, and required skills", color: "text-success" },
-  { icon: Zap, title: "Download as PDF", description: "Save your personalized roadmap and share it anywhere", color: "text-primary" },
-];
 
 export default function Index() {
   const { user } = useAuth();
@@ -125,10 +117,6 @@ export default function Index() {
       <DeferredSection minHeight={600}>
         <WhoIsItForSection />
       </DeferredSection>
-
-
-
-
 
       {/* Pricing */}
       <DeferredSection minHeight={700} eager={hash === "#pricing"}>
