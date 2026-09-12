@@ -112,12 +112,14 @@ export default function HeroSection() {
                 Start Free Quiz
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
-              <Link
-                to="/roadmaps"
-                className="inline-flex items-center px-8 py-4 rounded-xl border border-border bg-card/50 backdrop-blur-sm font-semibold hover:bg-secondary hover:border-primary/30 transition-all"
+              <button
+                type="button"
+                onClick={() => setPerksOpen(true)}
+                className="group inline-flex items-center gap-2 px-8 py-4 rounded-xl border border-border bg-card/50 backdrop-blur-sm font-semibold hover:bg-secondary hover:border-primary/30 transition-all"
               >
-                View Roadmaps
-              </Link>
+                <Gift className="w-4 h-4 text-accent group-hover:scale-110 transition-transform" />
+                All Free Services
+              </button>
             </div>
 
             <div className="flex justify-center mb-10">
