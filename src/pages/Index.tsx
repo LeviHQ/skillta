@@ -112,9 +112,9 @@ export default function Index() {
         <CountryEcosystemSection />
       </DeferredSection>
 
-      {/* Who Is It For */}
+      {/* How to use — interactive journey map */}
       <DeferredSection minHeight={600}>
-        <WhoIsItForSection />
+        <JourneyMapSection />
       </DeferredSection>
 
       {/* Pricing */}
@@ -122,9 +122,9 @@ export default function Index() {
         <PricingSection />
       </DeferredSection>
 
-      {/* How to use — interactive journey map */}
+      {/* Who Is It For */}
       <DeferredSection minHeight={600}>
-        <JourneyMapSection />
+        <WhoIsItForSection />
       </DeferredSection>
 
 
