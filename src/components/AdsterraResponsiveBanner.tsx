@@ -29,7 +29,7 @@ export default function AdsterraResponsiveBanner({ className = "" }: { className
     const host = hostRef.current;
     if (!host) return;
 
-    let timer: number | undefined;
+    let raf: number | undefined;
 
     const inject = () => {
       host.innerHTML = "";
@@ -47,16 +47,12 @@ export default function AdsterraResponsiveBanner({ className = "" }: { className
       host.appendChild(invokeScript);
     };
 
-    // Request the ad on every mount so impressions are not lost when the user
-    // never scrolls to the slot; slight delay keeps first paint fast.
-    const idle =
-      (window as unknown as { requestIdleCallback?: (cb: () => void, o?: object) => number })
-        .requestIdleCallback;
-    if (idle) idle(() => inject(), { timeout: 1200 } as object);
-    else timer = window.setTimeout(inject, 400);
+    // Request the ad immediately on mount (next frame) — no idle wait, so the
+    // banner appears as fast as the network allows.
+    raf = window.requestAnimationFrame(inject);
 
     return () => {
-      if (timer) window.clearTimeout(timer);
+      if (raf) window.cancelAnimationFrame(raf);
       host.innerHTML = "";
     };
   }, [cfg.key, cfg.width, cfg.height]);

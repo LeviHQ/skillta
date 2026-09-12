@@ -16,7 +16,7 @@ export default function AdsterraNativeBanner({ className = "" }: { className?: s
     const host = hostRef.current;
     if (!host) return;
 
-    let timer: number | undefined;
+    let raf: number | undefined;
 
     const inject = () => {
       // Ensure a fresh container each mount.
@@ -29,16 +29,12 @@ export default function AdsterraNativeBanner({ className = "" }: { className?: s
       host.appendChild(script);
     };
 
-    // Load on every mount (no viewport gate) so every pageview counts as an
-    // impression. A tiny idle/timeout delay keeps it off the LCP critical path.
-    const idle =
-      (window as unknown as { requestIdleCallback?: (cb: () => void, o?: object) => number })
-        .requestIdleCallback;
-    if (idle) idle(() => inject(), { timeout: 1200 } as object);
-    else timer = window.setTimeout(inject, 400);
+    // Fire immediately on mount (next frame) so the ad request starts as early
+    // as possible. async + preconnect keep it off the render critical path.
+    raf = window.requestAnimationFrame(inject);
 
     return () => {
-      if (timer) window.clearTimeout(timer);
+      if (raf) window.cancelAnimationFrame(raf);
       host.innerHTML = "";
     };
   }, []);
