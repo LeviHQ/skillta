@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   Globe2,
+  Globe,
   Sparkles,
   Briefcase,
   Coins,
@@ -36,6 +38,34 @@ const sections = [
 const featuredFlags = COUNTRIES;
 
 export default function CountryEcosystemSection() {
+  const [countryOpen, setCountryOpen] = useState(false);
+  const [countryQuery, setCountryQuery] = useState("");
+  const countryRef = useRef<HTMLDivElement>(null);
+  const countryInputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (countryOpen && countryInputRef.current) countryInputRef.current.focus();
+  }, [countryOpen]);
+
+  useEffect(() => {
+    function onDoc(e: MouseEvent) {
+      if (!countryRef.current) return;
+      if (!countryRef.current.contains(e.target as Node)) setCountryOpen(false);
+    }
+    document.addEventListener("mousedown", onDoc);
+    return () => document.removeEventListener("mousedown", onDoc);
+  }, []);
+
+  const filteredCountries = useMemo(() => {
+    const q = countryQuery.trim().toLowerCase();
+    if (!q) return COUNTRIES;
+    return COUNTRIES.filter(
+      (c) => c.name.toLowerCase().includes(q) || c.slug.includes(q)
+    );
+  }, [countryQuery]);
+
+  const showEmpty = countryQuery.trim().length > 0 && filteredCountries.length === 0;
+
   return (
     <section className="relative py-24 overflow-hidden bg-background">
       {/* Ambient glass orbs */}
@@ -164,12 +194,90 @@ export default function CountryEcosystemSection() {
                 >
                   Explore USA Ecosystem <ArrowRight className="w-4 h-4" />
                 </Link>
-                <Link
-                  to="/india"
-                  className="inline-flex items-center gap-2 px-5 py-3 rounded-xl border border-primary/30 text-sm font-semibold text-foreground hover:border-primary/60 hover:bg-primary/5 transition-colors"
-                >
-                  Explore India Ecosystem
-                </Link>
+                <div ref={countryRef} className="relative">
+                  <button
+                    type="button"
+                    onClick={() => setCountryOpen((v) => !v)}
+                    className="inline-flex items-center gap-2 px-5 py-3 rounded-xl border border-primary/30 text-sm font-semibold text-foreground hover:border-primary/60 hover:bg-primary/5 transition-colors"
+                    aria-haspopup="menu"
+                    aria-expanded={countryOpen}
+                  >
+                    <Globe className="w-4 h-4 text-primary" />
+                    Explore Your Country Ecosystem
+                  </button>
+
+                  <AnimatePresence>
+                    {countryOpen && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 8, scale: 0.98 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: 8, scale: 0.98 }}
+                        transition={{ duration: 0.15 }}
+                        className="absolute left-0 top-full mt-2 w-80 glass border border-border rounded-xl shadow-2xl overflow-hidden z-20"
+                        role="menu"
+                      >
+                        <div className="p-3 border-b border-border bg-primary/5">
+                          <div className="relative">
+                            <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
+                            <input
+                              ref={countryInputRef}
+                              value={countryQuery}
+                              onChange={(e) => setCountryQuery(e.target.value)}
+                              placeholder="Search 50+ countries..."
+                              className="w-full pl-10 pr-3 py-2 rounded-lg bg-background/70 backdrop-blur border border-border text-sm focus:outline-none focus:border-primary/60 focus:ring-1 focus:ring-primary/30"
+                            />
+                          </div>
+                          <p className="text-[10px] text-muted-foreground mt-2 tracking-wide uppercase">
+                            Complete tech ecosystem per country
+                          </p>
+                        </div>
+
+                        <div className="max-h-[280px] overflow-y-auto scrollbar-thin py-1">
+                          {filteredCountries.map((c) => (
+                            <Link
+                              key={c.slug}
+                              to={`/${c.slug}`}
+                              onClick={() => setCountryOpen(false)}
+                              className="flex items-center gap-3 px-4 py-3 hover:bg-primary/10 transition-colors group border-b border-border/40 last:border-0"
+                            >
+                              <span className="text-2xl leading-none">{c.flag}</span>
+                              <div className="flex-1 min-w-0">
+                                <div className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors truncate">
+                                  {c.name}
+                                </div>
+                                <div className="text-[10px] text-muted-foreground truncate">
+                                  {c.techHubs.slice(0, 2).join(" · ")}
+                                </div>
+                              </div>
+                              <span className="text-[10px] font-mono text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity">
+                                /{c.slug}
+                              </span>
+                            </Link>
+                          ))}
+                          {showEmpty && (
+                            <div className="m-3 p-4 rounded-lg bg-gradient-to-br from-primary/15 to-primary/5 border border-primary/30">
+                              <div className="flex items-start gap-2">
+                                <Sparkles className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                                <div>
+                                  <div className="text-sm font-semibold text-foreground mb-1">
+                                    We're working on <span className="text-primary">{countryQuery}</span> too!
+                                  </div>
+                                  <p className="text-xs text-muted-foreground">
+                                    Your country will be added soon. Meanwhile, explore any of our 50 supported countries.
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                          )}
+                        </div>
+
+                        <div className="p-2 border-t border-border bg-background/40 text-[10px] text-muted-foreground text-center">
+                          Scroll for more · 50 countries live
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
               </div>
 
               <div className="flex items-center gap-2 mt-4 text-[11px] text-muted-foreground">
