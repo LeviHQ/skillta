@@ -3,6 +3,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Globe2,
+  Globe,
   Sparkles,
   Briefcase,
   Coins,
