@@ -27,10 +27,14 @@
       />
     </noscript>
 
-    <!-- Warm up third-party origins used after first paint -->
+    <!-- Warm up third-party ad origins so the request starts with 0 handshake cost -->
     <link rel="dns-prefetch" href="https://pl30419480.effectivecpmnetwork.com" />
     <link rel="dns-prefetch" href="https://pl30370123.effectivecpmnetwork.com" />
     <link rel="dns-prefetch" href="https://www.highperformanceformat.com" />
+    <link rel="preconnect" href="https://pl30370123.effectivecpmnetwork.com" crossorigin />
+    <link rel="preconnect" href="https://www.highperformanceformat.com" crossorigin />
+    <link rel="preconnect" href="https://pl30419480.effectivecpmnetwork.com" crossorigin />
+    <link rel="preload" as="script" href="https://pl30370123.effectivecpmnetwork.com/60755eda0a41ea29dfd0ba6b7f935205/invoke.js" crossorigin />
 
     <!-- Fallback title only. All SEO meta tags (description, keywords, robots, og:*, twitter:*) are managed per-route by react-helmet-async via SEOHead.tsx to avoid duplicates. Social crawlers that don't run JS will still see the title; og:image fallback added below with property attr so Helmet can override it. -->
     <title>SkillTa — Find Your Perfect Tech Career Path</title>
