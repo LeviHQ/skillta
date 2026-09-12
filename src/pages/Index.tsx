@@ -11,8 +11,7 @@ import DeferredSection from "@/components/DeferredSection";
 // keeping them out of the critical path without changing the layout.
 const TestimonialSection = lazy(() => import("@/components/TestimonialSection"));
 const PricingSection = lazy(() => import("@/components/PricingSection"));
-const HowToUseSection = lazy(() => import("@/components/HowToUseSection"));
-const AccuracySection = lazy(() => import("@/components/AccuracySection"));
+const JourneyMapSection = lazy(() => import("@/components/JourneyMapSection"));
 const WhoIsItForSection = lazy(() => import("@/components/WhoIsItForSection"));
 const FAQSection = lazy(() => import("@/components/FAQSection"));
 const FreeServicesSection = lazy(() => import("@/components/FreeServicesSection"));
@@ -123,18 +122,11 @@ export default function Index() {
         <PricingSection />
       </DeferredSection>
 
-      {/* How to use */}
+      {/* How to use — interactive journey map */}
       <DeferredSection minHeight={600}>
-        <HowToUseSection />
+        <JourneyMapSection />
       </DeferredSection>
 
-
-
-
-      {/* Accuracy */}
-      <DeferredSection minHeight={600}>
-        <AccuracySection />
-      </DeferredSection>
 
       {/* Testimonials */}
       <DeferredSection minHeight={600}>
