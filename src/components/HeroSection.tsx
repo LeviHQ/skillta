@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Sparkles, Gift } from "lucide-react";
 import FreePerksModal from "./FreePerksModal";
-import HeroServiceOrbit from "./HeroServiceOrbit";
+
 
 
 const rotatingWords = ["Tech Career", "Dream Job", "Future Path", "Passion"];
