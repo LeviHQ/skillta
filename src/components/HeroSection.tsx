@@ -67,10 +67,8 @@ export default function HeroSection() {
       />
 
       <div className="container mx-auto px-6 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 xl:gap-16 items-center max-w-6xl mx-auto">
-          {/* Left: message */}
+        <div className="max-w-3xl mx-auto text-center">
           <motion.div
-            className="text-center lg:text-left"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: "easeOut" }}
@@ -101,13 +99,12 @@ export default function HeroSection() {
               </span>
             </h1>
 
-
-            <p className="text-base md:text-lg text-muted-foreground mb-8 max-w-lg mx-auto lg:mx-0 leading-relaxed">
+            <p className="text-base md:text-lg text-muted-foreground mb-8 max-w-xl mx-auto leading-relaxed">
               Don't just guess your future. Use AI-driven roadmaps, skill gap analysis and real salary
               data to land your dream tech role — free to start.
             </p>
 
-            <div className="flex flex-wrap gap-4 justify-center lg:justify-start mb-5">
+            <div className="flex flex-wrap gap-4 justify-center mb-5">
               <Link
                 to="/quiz"
                 className="group inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-gradient-primary text-primary-foreground font-semibold shadow-glow hover:scale-[1.03] active:scale-[0.98] transition-transform"
@@ -123,7 +120,7 @@ export default function HeroSection() {
               </Link>
             </div>
 
-            <div className="flex justify-center lg:justify-start mb-10">
+            <div className="flex justify-center mb-10">
               <motion.button
                 type="button"
                 onClick={() => setPerksOpen(true)}
@@ -148,9 +145,8 @@ export default function HeroSection() {
               </motion.button>
             </div>
 
-
             <div className="border-t border-border/60 pt-8">
-              <div className="rounded-2xl border border-border/60 bg-card/50 backdrop-blur-sm p-4 max-w-md mx-auto lg:mx-0">
+              <div className="rounded-2xl border border-border/60 bg-card/50 backdrop-blur-sm p-4 max-w-md mx-auto">
                 <div className="flex items-center gap-2 mb-3">
                   <span className="relative flex h-2 w-2">
                     <span className="absolute inline-flex h-full w-full rounded-full bg-success opacity-75 animate-ping" />
@@ -191,19 +187,9 @@ export default function HeroSection() {
             </div>
 
           </motion.div>
-
-          {/* Right: animated free-service orbit */}
-          <motion.div
-            className="relative"
-            initial={{ opacity: 0, scale: 0.92 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.7, delay: 0.15, ease: "easeOut" }}
-          >
-            <HeroServiceOrbit />
-          </motion.div>
-
         </div>
       </div>
+
 
       {/* Bottom fade */}
       <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background to-transparent pointer-events-none" />
