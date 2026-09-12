@@ -123,18 +123,11 @@ export default function Index() {
         <PricingSection />
       </DeferredSection>
 
-      {/* How to use */}
+      {/* How to use — interactive journey map */}
       <DeferredSection minHeight={600}>
-        <HowToUseSection />
+        <JourneyMapSection />
       </DeferredSection>
 
-
-
-
-      {/* Accuracy */}
-      <DeferredSection minHeight={600}>
-        <AccuracySection />
-      </DeferredSection>
 
       {/* Testimonials */}
       <DeferredSection minHeight={600}>
