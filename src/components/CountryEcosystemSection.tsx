@@ -34,8 +34,8 @@ const sections = [
   { Icon: BookOpen, label: "Career Resources", desc: "Blogs · Videos · Communities" },
 ];
 
-// Link every country hub from the homepage so no country page is an orphan.
-const featuredFlags = COUNTRIES;
+// Show only the top 10 country hubs here; the full list lives in the picker and footer.
+const featuredFlags = COUNTRIES.slice(0, 10);
 
 export default function CountryEcosystemSection() {
   const [countryOpen, setCountryOpen] = useState(false);
