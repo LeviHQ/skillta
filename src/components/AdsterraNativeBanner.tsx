@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 
 const AD_KEY = "60755eda0a41ea29dfd0ba6b7f935205";
 const AD_SRC = `https://pl30370123.effectivecpmnetwork.com/${AD_KEY}/invoke.js`;
@@ -12,29 +12,22 @@ const CONTAINER_ID = `container-${AD_KEY}`;
 export default function AdsterraNativeBanner({ className = "" }: { className?: string }) {
   const hostRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const host = hostRef.current;
     if (!host) return;
 
-    let raf: number | undefined;
+    // Set up the slot synchronously after DOM commit. The matching preload in
+    // index.html means this usually reuses an already-started network request.
+    host.innerHTML = `<div id="${CONTAINER_ID}"></div>`;
 
-    const inject = () => {
-      // Ensure a fresh container each mount.
-      host.innerHTML = `<div id="${CONTAINER_ID}"></div>`;
-
-      const script = document.createElement("script");
-      script.src = AD_SRC;
-      script.async = true;
-      script.setAttribute("data-cfasync", "false");
-      host.appendChild(script);
-    };
-
-    // Fire immediately on mount (next frame) so the ad request starts as early
-    // as possible. async + preconnect keep it off the render critical path.
-    raf = window.requestAnimationFrame(inject);
+    const script = document.createElement("script");
+    script.src = AD_SRC;
+    script.async = true;
+    script.fetchPriority = "high";
+    script.setAttribute("data-cfasync", "false");
+    host.appendChild(script);
 
     return () => {
-      if (raf) window.cancelAnimationFrame(raf);
       host.innerHTML = "";
     };
   }, []);
