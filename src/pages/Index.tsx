@@ -6,6 +6,7 @@ import HeroSection from "@/components/HeroSection";
 import { useAuth } from "@/contexts/AuthContext";
 const SignInModal = lazy(() => import("@/components/SignInModal"));
 import DeferredSection from "@/components/DeferredSection";
+import AdsterraNativeBanner from "@/components/AdsterraNativeBanner";
 
 // Below-the-fold sections are code-split and mounted on approach,
 // keeping them out of the critical path without changing the layout.
@@ -16,7 +17,6 @@ const WhoIsItForSection = lazy(() => import("@/components/WhoIsItForSection"));
 const FAQSection = lazy(() => import("@/components/FAQSection"));
 const FreeServicesSection = lazy(() => import("@/components/FreeServicesSection"));
 const CountryEcosystemSection = lazy(() => import("@/components/CountryEcosystemSection"));
-const AdsterraNativeBanner = lazy(() => import("@/components/AdsterraNativeBanner"));
 import SEOHead from "@/components/SEOHead";
 import { PAGE_SEO, getWebApplicationSchema, getEducationalOrgSchema, getWebsiteSchema, getHowToSchema, getFAQSchema, getOrganizationSchema, getSoftwareAppSchema, getItemListSchema } from "@/lib/seo";
 

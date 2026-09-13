@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
 
 const DESKTOP = {
@@ -25,34 +25,26 @@ export default function AdsterraResponsiveBanner({ className = "" }: { className
   const hostRef = useRef<HTMLDivElement>(null);
   const cfg = isMobile ? MOBILE : DESKTOP;
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const host = hostRef.current;
     if (!host) return;
 
-    let raf: number | undefined;
+    host.innerHTML = "";
 
-    const inject = () => {
-      host.innerHTML = "";
+    const configScript = document.createElement("script");
+    configScript.type = "text/javascript";
+    configScript.text = `atOptions = { 'key' : '${cfg.key}', 'format' : 'iframe', 'height' : ${cfg.height}, 'width' : ${cfg.width}, 'params' : {} };`;
 
-      const configScript = document.createElement("script");
-      configScript.type = "text/javascript";
-      configScript.text = `atOptions = { 'key' : '${cfg.key}', 'format' : 'iframe', 'height' : ${cfg.height}, 'width' : ${cfg.width}, 'params' : {} };`;
+    const invokeScript = document.createElement("script");
+    invokeScript.type = "text/javascript";
+    invokeScript.src = `https://www.highperformanceformat.com/${cfg.key}/invoke.js`;
+    invokeScript.async = true;
+    invokeScript.fetchPriority = "high";
 
-      const invokeScript = document.createElement("script");
-      invokeScript.type = "text/javascript";
-      invokeScript.src = `https://www.highperformanceformat.com/${cfg.key}/invoke.js`;
-      invokeScript.async = true;
-
-      host.appendChild(configScript);
-      host.appendChild(invokeScript);
-    };
-
-    // Request the ad immediately on mount (next frame) — no idle wait, so the
-    // banner appears as fast as the network allows.
-    raf = window.requestAnimationFrame(inject);
+    host.appendChild(configScript);
+    host.appendChild(invokeScript);
 
     return () => {
-      if (raf) window.cancelAnimationFrame(raf);
       host.innerHTML = "";
     };
   }, [cfg.key, cfg.width, cfg.height]);

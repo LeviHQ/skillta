@@ -34,7 +34,10 @@
     <link rel="preconnect" href="https://pl30370123.effectivecpmnetwork.com" crossorigin />
     <link rel="preconnect" href="https://www.highperformanceformat.com" crossorigin />
     <link rel="preconnect" href="https://pl30419480.effectivecpmnetwork.com" crossorigin />
-    <link rel="preload" as="script" href="https://pl30370123.effectivecpmnetwork.com/60755eda0a41ea29dfd0ba6b7f935205/invoke.js" crossorigin />
+    <link rel="preload" as="script" href="https://pl30370123.effectivecpmnetwork.com/60755eda0a41ea29dfd0ba6b7f935205/invoke.js" fetchpriority="high" />
+    <link rel="preload" as="script" href="https://www.highperformanceformat.com/a42c2ea43dd437aedb9ba40f5951e8db/invoke.js" media="(min-width: 768px)" fetchpriority="high" />
+    <link rel="preload" as="script" href="https://www.highperformanceformat.com/5f4b601eb578235607f2ac7582fc0a8c/invoke.js" media="(max-width: 767px)" fetchpriority="high" />
+    <link rel="preload" as="script" href="https://pl30419480.effectivecpmnetwork.com/9c/44/ec/9c44eccf7f12896784490412afba4c7b.js" fetchpriority="high" />
 
     <!-- Fallback title only. All SEO meta tags (description, keywords, robots, og:*, twitter:*) are managed per-route by react-helmet-async via SEOHead.tsx to avoid duplicates. Social crawlers that don't run JS will still see the title; og:image fallback added below with property attr so Helmet can override it. -->
     <title>SkillTa — Find Your Perfect Tech Career Path</title>
@@ -60,21 +63,15 @@
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
 
-    <!--Adsterra Social Bar Script — injected after load so it never blocks parsing/LCP-->
+    <!-- Adsterra Social Bar — request immediately, execute asynchronously. -->
     <script>
       (function () {
-        function loadSocialBar() {
-          var s = document.createElement('script');
-          s.src = 'https://pl30419480.effectivecpmnetwork.com/9c/44/ec/9c44eccf7f12896784490412afba4c7b.js';
-          s.async = true;
-          document.body.appendChild(s);
-        }
-        function schedule() {
-          if (window.requestIdleCallback) window.requestIdleCallback(loadSocialBar, { timeout: 1500 });
-          else setTimeout(loadSocialBar, 800);
-        }
-        if (document.readyState === 'complete') schedule();
-        else window.addEventListener('load', schedule, { once: true });
+        var s = document.createElement('script');
+        s.src = 'https://pl30419480.effectivecpmnetwork.com/9c/44/ec/9c44eccf7f12896784490412afba4c7b.js';
+        s.async = true;
+        s.fetchPriority = 'high';
+        s.setAttribute('data-cfasync', 'false');
+        document.body.appendChild(s);
       })();
     </script>
   </body>
