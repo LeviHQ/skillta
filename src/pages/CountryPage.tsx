@@ -21,6 +21,7 @@ import AdsterraNativeBanner from "@/components/AdsterraNativeBanner";
 import ResumeReviewerCTA from "@/components/ResumeReviewerCTA";
 import SupportBanner from "@/components/SupportBanner";
 import { getBaseUrl } from "@/lib/seo";
+import { getCountryMeta } from "@/lib/countryMeta";
 import { CheckCircle2, TrendingUp, Award, Building2, GraduationCap, FileText, MessageSquare, Rocket, Sparkles, ExternalLink } from "lucide-react";
 
 export default function CountryPage() {
@@ -34,8 +35,7 @@ export default function CountryPage() {
 
   const baseUrl = getBaseUrl();
   const path = sectionSlug ? `/${country.slug}/${sectionSlug}` : `/${country.slug}`;
-  const title = `${country.name} Tech Career Guide 2026 — ${currentSection.title} | SkillTa`;
-  const description = `${currentSection.title} for tech professionals in ${country.name}. Roles, salaries, roadmaps, resume tips, interview prep, top companies, certifications and more — updated for 2026.`;
+  const { title, description } = getCountryMeta(currentSection.key, country.name);
 
   return (
     <>
