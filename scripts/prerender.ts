@@ -31,6 +31,7 @@ import {
   INTERVIEW_TOPICS,
   getRoleSalaryBand,
 } from "../src/data/countrySections";
+import { getCountryMeta } from "../src/lib/countryMeta";
 import {
   SITE_CONFIG,
   getBaseUrl,
@@ -351,8 +352,7 @@ ${siteNav}`),
 
 function countryRoutes(): Route[] {
   return COUNTRIES.map((country) => {
-    const title = `${country.name} Tech Career Guide 2026 — Overview | SkillTa`;
-    const description = `Overview for tech professionals in ${country.name}. Roles, salaries, roadmaps, resume tips, interview prep, top companies, certifications and more — updated for 2026.`;
+    const { title, description } = getCountryMeta("overview", country.name);
     return {
       path: `/${country.slug}`,
       title,
@@ -410,8 +410,7 @@ function countrySectionRoutes(): Route[] {
 
       const path = `/${country.slug}/${section.slug}`;
       // Titles/descriptions must match CountryPage.tsx exactly.
-      const title = `${country.name} Tech Career Guide 2026 — ${section.title} | SkillTa`;
-      const description = `${section.title} for tech professionals in ${country.name}. Roles, salaries, roadmaps, resume tips, interview prep, top companies, certifications and more — updated for 2026.`;
+      const { title, description } = getCountryMeta(section.key, country.name);
 
       let inner = "";
       switch (section.key) {
