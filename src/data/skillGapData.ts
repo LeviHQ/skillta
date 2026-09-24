@@ -178,7 +178,7 @@ export const TARGET_ROLES: TargetRole[] = [
       s("Pandas", "important", "framework", 3, "Pandas 10 min guide", "Clean & analyze dataset"),
       s("Data Visualization", "core", "framework", 4, "Storytelling with Data (book)", "Portfolio dashboard", ["matplotlib", "seaborn"]),
       s("Power BI", "important", "tools", 4, "MS Learn Power BI path", "Live dashboard"),
-      s("Tableau", "nice-to-have", "tools", 5, "Tableau free training", "Public visualization"),
+      s("Tableau", "nice-to-have", "tools", 5, "Tableau training", "Public visualization"),
       s("Business Communication", "important", "soft", 5, "HBR articles", "Present a data story"),
       s("Git", "important", "tools", 6, "Pro Git", "GitHub notebook portfolio"),
     ],
@@ -370,7 +370,7 @@ export const TARGET_ROLES: TargetRole[] = [
     weeks: 6,
     skills: [
       s("Testing Fundamentals", "core", "fundamentals", 1, "ISTQB Foundation syllabus", "Write test cases"),
-      s("Manual Testing", "core", "testing", 1, "Ministry of Testing free content", "Test a live app"),
+      s("Manual Testing", "core", "testing", 1, "Ministry of Testing content", "Test a live app"),
       s("SQL", "important", "database", 2, "Mode SQL", "Validate DB after tests"),
       s("JavaScript", "important", "language", 3, "javascript.info", "Basics"),
       s("Selenium", "important", "testing", 4, "Selenium Python bindings", "Automate login flow"),

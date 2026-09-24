@@ -5,7 +5,7 @@ const faqs = [
   {
     question: "How long does the career quiz take?",
     answer:
-      "The AI Career Quiz takes approximately 5-10 minutes. It includes 10 smart questions designed to understand your interests, skills, and career goals. You don't need to sign up or provide personal information to take it.",
+      "The AI Career Quiz takes approximately 5-10 minutes. It includes 10 smart questions designed to understand your interests, skills, and career goals. Unlock full results with a Pro or Lifetime plan.",
   },
   {
     question: "Can I retake the quiz if my interests change?",
@@ -13,9 +13,9 @@ const faqs = [
       "Absolutely! You can retake the quiz anytime. If you're signed in, all your quiz results are saved to your dashboard so you can compare different paths and track your career journey over time.",
   },
   {
-    question: "Are the learning roadmaps free?",
+    question: "Are the learning roadmaps included?",
     answer:
-      "Yes, all SkillTa roadmaps are completely free. The personalized roadmaps, career analysis, PDF downloads, and the entire roadmap library are available at no cost. We believe career guidance should be accessible to everyone.",
+      "Roadmaps are included in your SkillTa Pro or Lifetime access. We provide high-quality, ad-free guidance for a one-time low cost, ensuring you get the most accurate and updated career paths without the noise of ads.",
   },
   {
     question: "How accurate is the AI recommendation?",
