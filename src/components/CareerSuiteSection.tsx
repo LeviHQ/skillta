@@ -65,7 +65,7 @@ const services = [
   },
 ];
 
-export default function FreeServicesSection() {
+export default function CareerSuiteSection() {
   return (
     <section className="py-24 bg-background relative overflow-hidden">
       {/* Soft glowing background orbs */}

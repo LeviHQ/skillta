@@ -15,7 +15,7 @@ export interface UserPlan {
 interface PlanContextType {
   plan: UserPlan | null;
   /** Legacy name kept for callers: now opens the pricing section to purchase access. */
-  activateFreePlan: () => Promise<UserPlan | null>;
+  showPricing: () => Promise<UserPlan | null>;
   startCheckout: (plan: PlanName) => Promise<void>;
   cancelPlan: () => Promise<void>;
   todayUsage: number;
@@ -84,7 +84,7 @@ export function PlanProvider({ children }: { children: ReactNode }) {
     refreshPlan();
   }, [refreshPlan]);
 
-  const activateFreePlan = useCallback(async (): Promise<UserPlan | null> => {
+  const showPricing = useCallback(async (): Promise<UserPlan | null> => {
     const el = document.getElementById("pricing");
     if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
     else window.location.href = "/#pricing";
@@ -124,7 +124,7 @@ export function PlanProvider({ children }: { children: ReactNode }) {
     <PlanContext.Provider
       value={{
         plan,
-        activateFreePlan,
+        showPricing,
         startCheckout,
         cancelPlan,
         todayUsage,

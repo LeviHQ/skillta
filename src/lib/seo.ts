@@ -3,8 +3,8 @@ export const SITE_CONFIG = {
   name: "SkillTa",
   url: "https://www.skillta.tech",
   tagline: "Find Your Perfect Tech Career Path",
-  description: "AI-powered career guidance for tech. Take our free quiz to discover your ideal career path — frontend, backend, data science, AI/ML, cybersecurity & more. Get a personalized roadmap with 50+ career paths, salary insights & free resources.",
-  keywords: "tech career quiz, career path finder, best tech careers 2026, learn to code, career guidance for programmers, tech career roadmap, which tech career is right for me, free career test, software developer roadmap, career aptitude test, ai engineer roadmap, how to become developer, tech career after 12th, programming language to learn, web development roadmap, tech job no experience",
+  description: "AI-powered career guidance for tech. Take our quiz to discover your ideal career path — frontend, backend, data science, AI/ML, cybersecurity & more. Get a personalized roadmap with 50+ career paths, salary insights & resources.",
+  keywords: "tech career quiz, career path finder, best tech careers 2026, learn to code, career guidance for programmers, tech career roadmap, which tech career is right for me, career test, software developer roadmap, career aptitude test, ai engineer roadmap, how to become developer, tech career after 12th, programming language to learn, web development roadmap, tech job no experience",
   author: "SkillTa",
   twitterHandle: "@SkilltaTech",
   locale: "en_US",
@@ -28,15 +28,15 @@ export interface PageSEO {
 
 export const PAGE_SEO: Record<string, PageSEO> = {
   home: {
-    title: "SkillTa — Free AI Career Quiz & Roadmaps 2026",
-    description: "Free AI-powered career quiz + personalized roadmaps for 50+ tech careers. Find your ideal path in 5 minutes. For students, freshers & switchers.",
-    keywords: "tech career quiz, career path finder, best tech careers 2026, learn to code free, career guidance for programmers, tech career roadmap, which tech career is right for me, free career test, software developer roadmap, career aptitude test, ai career quiz, tech career for beginners, career quiz for students, free tech career guidance, best career in tech 2026, how to start tech career",
+    title: "SkillTa — AI Career Quiz & Roadmaps 2026",
+    description: "AI-powered career quiz + personalized roadmaps for 50+ tech careers. Find your ideal path in 5 minutes. For students, freshers & switchers.",
+    keywords: "tech career quiz, career path finder, best tech careers 2026, learn to code, career guidance for programmers, tech career roadmap, which tech career is right for me, career test, software developer roadmap, career aptitude test, ai career quiz, tech career for beginners, career quiz for students, free tech career guidance, best career in tech 2026, how to start tech career",
     path: "/",
   },
   quiz: {
-    title: "Free AI Career Quiz 2026 — Find Your Tech Path",
-    description: "Answer 10 questions to discover your ideal tech career. AI-powered match with a personalized learning roadmap. Free, no signup needed.",
-    keywords: "tech career quiz free, which tech career is right for me, career aptitude test online free, coding career quiz, AI career recommendation, tech skills assessment, career quiz for students, career quiz for freshers, free career test 2026, career personality quiz, tech career finder, what tech career suits me",
+    title: "AI Career Quiz 2026 — Find Your Tech Path",
+    description: "Answer 10 questions to discover your ideal tech career. AI-powered match with a personalized learning roadmap. Included with Pro.",
+    keywords: "tech career quiz free, which tech career is right for me, career aptitude test online free, coding career quiz, AI career recommendation, tech skills assessment, career quiz for students, career quiz for freshers, career test 2026, career personality quiz, tech career finder, what tech career suits me",
     path: "/quiz",
   },
   results: {
@@ -47,8 +47,8 @@ export const PAGE_SEO: Record<string, PageSEO> = {
     noIndex: true,
   },
   roadmaps: {
-    title: "50+ Free Tech Career Roadmaps 2026 | SkillTa",
-    description: "Curated step-by-step roadmaps for 50+ tech careers. Free resources, projects, salary info & timelines. Updated for 2026.",
+    title: "50+ Tech Career Roadmaps 2026 | SkillTa",
+    description: "Curated step-by-step roadmaps for 50+ tech careers. Curated resources, projects, salary info & timelines. Updated for 2026.",
     keywords: "tech career roadmap 2026, learning path free, how to become a developer, frontend roadmap 2026, backend roadmap, data science roadmap, cybersecurity roadmap, DevOps roadmap, ai ml roadmap, web development roadmap, career learning path free, developer roadmap, programming roadmap for beginners",
     path: "/roadmaps",
   },
@@ -133,7 +133,7 @@ export function getEducationalOrgSchema() {
     "@type": "EducationalOrganization",
     name: SITE_CONFIG.name,
     url: baseUrl,
-    description: "Free AI-powered career guidance platform helping students, freshers & career switchers discover their ideal tech career path with personalized roadmaps",
+    description: "AI-powered career guidance platform helping students, freshers & career switchers discover their ideal tech career path with personalized roadmaps",
     sameAs: ["https://x.com/SkilltaTech"],
     logo: `${baseUrl}/favicon.png`,
   };
@@ -194,7 +194,7 @@ export function getSoftwareAppSchema() {
       reviewCount: "1250",
       bestRating: "5",
     },
-    description: "Free AI-powered tech career quiz that recommends the perfect career path based on your skills, interests & personality. Takes only 5 minutes.",
+    description: "AI-powered tech career quiz that recommends the perfect career path based on your skills, interests & personality. Takes only 5 minutes.",
   };
 }
 
@@ -271,7 +271,7 @@ export function getCourseSchema(career: { title: string; description: string; id
       url: baseUrl,
     },
     url: `${baseUrl}/roadmaps/${career.id}`,
-    isAccessibleForFree: true,
+    isAccessibleForFree: false,
     inLanguage: "en",
     courseMode: "online",
     educationalLevel: "Beginner to Advanced",
@@ -323,7 +323,7 @@ export function getHowToSchema() {
       {
         "@type": "HowToStep",
         position: 1,
-        name: "Take the Free AI Career Quiz",
+        name: "Take the AI Career Quiz",
         text: "Answer 10 smart questions about your interests, skills, and personality. No signup required.",
         url: `${baseUrl}/quiz`,
       },
@@ -337,7 +337,7 @@ export function getHowToSchema() {
         "@type": "HowToStep",
         position: 3,
         name: "Follow Your Custom Roadmap",
-        text: "Get a step-by-step learning path with free resources, project ideas, timelines, and download it as PDF.",
+        text: "Get a step-by-step learning path with resources, project ideas, timelines, and download it as PDF.",
         url: `${baseUrl}/roadmaps`,
       },
     ],

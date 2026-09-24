@@ -15,7 +15,7 @@ const PricingSection = lazy(() => import("@/components/PricingSection"));
 const JourneyMapSection = lazy(() => import("@/components/JourneyMapSection"));
 const WhoIsItForSection = lazy(() => import("@/components/WhoIsItForSection"));
 const FAQSection = lazy(() => import("@/components/FAQSection"));
-const FreeServicesSection = lazy(() => import("@/components/FreeServicesSection"));
+const CareerSuiteSection = lazy(() => import("@/components/CareerSuiteSection"));
 const CountryEcosystemSection = lazy(() => import("@/components/CountryEcosystemSection"));
 import SEOHead from "@/components/SEOHead";
 import { PAGE_SEO, getWebApplicationSchema, getEducationalOrgSchema, getWebsiteSchema, getHowToSchema, getFAQSchema, getOrganizationSchema, getSoftwareAppSchema, getItemListSchema } from "@/lib/seo";
@@ -105,7 +105,7 @@ export default function Index() {
 
       {/* Free Services showcase */}
       <DeferredSection minHeight={600}>
-        <FreeServicesSection />
+        <CareerSuiteSection />
       </DeferredSection>
 
       {/* Country Ecosystem launch */}

@@ -6,7 +6,7 @@ const KofiButton = () => {
       rel="noopener noreferrer"
       className="fixed bottom-5 left-5 z-[9999] bg-yellow-400 text-gray-900 px-4 py-3 rounded-full font-semibold shadow-lg hover:scale-105 transition-transform"
     >
-      ☕ Keep SkillTa Free
+      ☕ Support SkillTa
     </a>
   );
 };

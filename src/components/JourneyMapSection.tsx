@@ -29,14 +29,14 @@ const STAGES: Stage[] = [
   {
     id: "start",
     step: 1,
-    title: "Start Free",
+    title: "Get Started",
     short: "Sign in & activate",
     detail:
-      "Sign in with Google and activate the Free plan in one click. No card, no trial trap — you get daily free attempts across every SkillTa tool.",
-    points: ["Google sign-in", "Free plan in 1 click", "3 free attempts / day"],
+      "Sign in with Google and choose your access plan in one click. No card, no trial trap — you get daily free attempts across every SkillTa tool.",
+    points: ["Google sign-in", "Unlimited Pro Access", "Unlimited with Pro"],
     time: "1 min",
     href: "/#pricing",
-    cta: "Activate free plan",
+    cta: "Get Pro Access",
     x: 90,
     y: 300,
     tone: "primary",

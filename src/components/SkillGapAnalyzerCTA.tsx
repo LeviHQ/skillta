@@ -13,7 +13,7 @@ export default function SkillGapAnalyzerCTA({ variant = "default" }: { variant?:
         className="inline-flex items-center gap-2 text-accent hover:text-accent/80 font-semibold underline underline-offset-4"
       >
         <Target className="w-4 h-4" />
-        Find your skill gaps — free
+        Find your skill gaps
         <ArrowRight className="w-4 h-4" />
       </Link>
     );
@@ -28,7 +28,7 @@ export default function SkillGapAnalyzerCTA({ variant = "default" }: { variant?:
         </div>
         <div className="flex-1">
           <div className="flex items-center gap-2 text-xs uppercase tracking-widest text-accent/80 font-semibold mb-1">
-            <Sparkles className="w-3 h-3" /> Free · Algorithm-driven
+            <Sparkles className="w-3 h-3" /> Pro · Algorithm-driven
           </div>
           <h4 className="text-lg md:text-xl font-bold text-foreground">
             Don't know what to learn next?
