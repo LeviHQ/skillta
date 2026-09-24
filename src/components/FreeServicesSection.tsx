@@ -81,7 +81,7 @@ export default function FreeServicesSection() {
         >
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 mb-4">
             <Sparkles className="w-3.5 h-3.5 text-primary" />
-            <span className="text-xs font-semibold text-primary uppercase tracking-wider">Everything you get with the Free Plan</span>
+            <span className="text-xs font-semibold text-primary uppercase tracking-wider">Everything included in SkillTa Pro &amp; Lifetime</span>
           </div>
           <h2 className="text-3xl md:text-5xl font-bold mb-4">
             Everything SkillTa gives you <span className="text-gradient">for free</span>
