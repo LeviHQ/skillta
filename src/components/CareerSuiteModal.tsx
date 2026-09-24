@@ -73,7 +73,7 @@ export default function CareerSuiteModal({ open, onClose }: Props) {
                 The SkillTa <span className="text-gradient">Career Suite</span>
               </h2>
               <p className="text-sm text-muted-foreground">
-                No card, no trial games — sign in and start using everything below today.
+                Unlock the full power of SkillTa with Pro or Lifetime access.
               </p>
             </div>
 

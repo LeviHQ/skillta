@@ -64,7 +64,7 @@ export const trendingCareers: Career[] = [
         { name: "Python + async", description: "FastAPI, asyncio, pydantic" },
         { name: "LLM basics", description: "Tokens, context, temperature, structured output" },
         { name: "Frontend for AI", description: "Next.js, Vercel AI SDK, streaming UI" },
-      ], resources: ["Vercel AI SDK docs", "FastAPI docs", "Full Stack LLM Bootcamp (free)"], projects: ["Streaming chatbot with Next.js", "PDF summarizer"] },
+      ], resources: ["Vercel AI SDK docs", "FastAPI docs", "Full Stack LLM Bootcamp"], projects: ["Streaming chatbot with Next.js", "PDF summarizer"] },
       { phase: 2, title: "RAG & Agents", duration: "2-3 months", items: [
         { name: "Advanced RAG", description: "Hybrid search, re-ranking, HyDE, contextual retrieval" },
         { name: "Agents & tool use", description: "Function calling, planning, multi-agent orchestration" },
@@ -102,7 +102,7 @@ export const trendingCareers: Career[] = [
         { name: "Ownership & borrowing", description: "Rust's core memory model, lifetimes" },
         { name: "Traits & generics", description: "Zero-cost abstractions, trait objects" },
         { name: "Error handling", description: "Result, Option, ? operator, thiserror, anyhow" },
-      ], resources: ["The Rust Book (free)", "Rustlings exercises", "Rust By Example"], projects: ["CLI tool", "File parser", "Simple HTTP client"] },
+      ], resources: ["The Rust Book", "Rustlings exercises", "Rust By Example"], projects: ["CLI tool", "File parser", "Simple HTTP client"] },
       { phase: 2, title: "Async & Concurrency", duration: "2-3 months", items: [
         { name: "async/await", description: "Futures, tokio runtime, executors" },
         { name: "Channels & tasks", description: "Message passing, JoinHandle, spawn" },
@@ -183,7 +183,7 @@ export const trendingCareers: Career[] = [
         { name: "Qubits & gates", description: "H, X, Z, CNOT, entanglement, superposition" },
         { name: "Circuit model", description: "Building circuits in Qiskit / Cirq" },
         { name: "Foundational algorithms", description: "Deutsch–Jozsa, Grover, Bernstein–Vazirani, QFT" },
-      ], resources: ["IBM Qiskit textbook (free)", "Quantum Country by Andy Matuschak"], projects: ["Grover search implementation", "Teleportation demo"] },
+      ], resources: ["IBM Qiskit textbook", "Quantum Country by Andy Matuschak"], projects: ["Grover search implementation", "Teleportation demo"] },
       { phase: 3, title: "Applied Quantum", duration: "3-5 months", items: [
         { name: "Hybrid algorithms", description: "VQE, QAOA, quantum ML with PennyLane" },
         { name: "Error correction basics", description: "Noise models, surface codes intro" },
