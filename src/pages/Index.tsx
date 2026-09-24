@@ -21,8 +21,8 @@ import SEOHead from "@/components/SEOHead";
 import { PAGE_SEO, getWebApplicationSchema, getEducationalOrgSchema, getWebsiteSchema, getHowToSchema, getFAQSchema, getOrganizationSchema, getSoftwareAppSchema, getItemListSchema } from "@/lib/seo";
 
 const homeFaqs = [
-  { question: "How long does the career quiz take?", answer: "The AI Career Quiz takes approximately 5-10 minutes. It includes 10 smart questions designed to understand your interests, skills, and career goals. You don't need to sign up or provide personal information to take it." },
-  { question: "Are the learning roadmaps free?", answer: "Yes, all SkillTa roadmaps are completely free. The personalized roadmaps, career analysis, PDF downloads, and the entire roadmap library are available at no cost." },
+  { question: "How long does the career quiz take?", answer: "The AI Career Quiz takes approximately 5-10 minutes. It includes 10 smart questions designed to understand your interests, skills, and career goals. Unlock full results with a Pro or Lifetime plan." },
+  { question: "Are the learning roadmaps included?", answer: "Roadmaps are included in your SkillTa Pro or Lifetime access. We provide high-quality, ad-free guidance for a one-time low cost." },
   { question: "How accurate is the AI recommendation?", answer: "Our AI is trained on data from 10,000+ tech professionals and uses machine learning to match your profile with career paths. It has a 92% accuracy rate in recommending suitable tech careers." },
   { question: "Do I need prior tech experience?", answer: "No, SkillTa is designed for everyone—from complete beginners to career switchers. The quiz adapts to your current level and recommends learning paths accordingly." },
   { question: "Can I download my roadmap as PDF?", answer: "Yes! Once you get your personalized roadmap, you can download it as a PDF with all the learning resources, project ideas, and timeline included." },
@@ -103,7 +103,7 @@ export default function Index() {
         <AdsterraNativeBanner />
       </DeferredSection> */}
 
-      {/* Free Services showcase */}
+      {/* Career Suite showcase */}
       <DeferredSection minHeight={600}>
         <CareerSuiteSection />
       </DeferredSection>

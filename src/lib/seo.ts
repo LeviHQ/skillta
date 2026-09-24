@@ -30,7 +30,7 @@ export const PAGE_SEO: Record<string, PageSEO> = {
   home: {
     title: "SkillTa — AI Career Quiz & Roadmaps 2026",
     description: "AI-powered career quiz + personalized roadmaps for 50+ tech careers. Find your ideal path in 5 minutes. For students, freshers & switchers.",
-    keywords: "tech career quiz, career path finder, best tech careers 2026, learn to code, career guidance for programmers, tech career roadmap, which tech career is right for me, career test, software developer roadmap, career aptitude test, ai career quiz, tech career for beginners, career quiz for students, free tech career guidance, best career in tech 2026, how to start tech career",
+    keywords: "tech career quiz, career path finder, best tech careers 2026, learn to code, career guidance for programmers, tech career roadmap, which tech career is right for me, career test, software developer roadmap, career aptitude test, ai career quiz, tech career for beginners, career quiz for students, tech career guidance, best career in tech 2026, how to start tech career",
     path: "/",
   },
   quiz: {
@@ -53,9 +53,9 @@ export const PAGE_SEO: Record<string, PageSEO> = {
     path: "/roadmaps",
   },
   about: {
-    title: "About SkillTa — Free AI Career Guidance for Tech",
-    description: "SkillTa helps aspiring tech professionals find their ideal career path with honest, data-driven AI guidance. Free career quiz, 50+ roadmaps, salary insights, and personalized recommendations for students, freshers & career switchers.",
-    keywords: "about skillta, tech career guidance platform, career mentoring for students, free tech career quiz, ai career guidance, career path discovery tool",
+    title: "About SkillTa — AI Career Guidance for Tech",
+    description: "SkillTa helps aspiring tech professionals find their ideal career path with honest, data-driven AI guidance. Career quiz, 50+ roadmaps, salary insights, and personalized recommendations for students, freshers & career switchers.",
+    keywords: "about skillta, tech career guidance platform, career mentoring for students, tech career quiz, ai career guidance, career path discovery tool",
     path: "/about",
   },
   contact: {
@@ -218,7 +218,7 @@ export function getItemListSchema() {
     "@context": "https://schema.org",
     "@type": "ItemList",
     name: "Top Tech Career Paths 2026",
-    description: "Most popular tech career paths with free roadmaps",
+    description: "Most popular tech career paths with detailed roadmaps",
     numberOfItems: careers.length,
     itemListElement: careers.map((career, i) => ({
       "@type": "ListItem",
@@ -317,14 +317,14 @@ export function getHowToSchema() {
     "@context": "https://schema.org",
     "@type": "HowTo",
     name: "How to Find Your Perfect Tech Career in 2026",
-    description: "Use SkillTa's free AI-powered quiz to discover your ideal tech career path in under 5 minutes. Works for students, freshers & career switchers.",
+    description: "Use SkillTa's AI-powered quiz to discover your ideal tech career path in under 5 minutes. Works for students, freshers & career switchers.",
     totalTime: "PT5M",
     step: [
       {
         "@type": "HowToStep",
         position: 1,
         name: "Take the AI Career Quiz",
-        text: "Answer 10 smart questions about your interests, skills, and personality. No signup required.",
+        text: "Answer 10 smart questions about your interests, skills, and personality. Start with Pro.",
         url: `${baseUrl}/quiz`,
       },
       {
