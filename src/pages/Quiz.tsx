@@ -257,7 +257,7 @@ export default function Quiz() {
       <CongratsModal
         open={showCongrats}
         onClose={() => setShowCongrats(false)}
-        planName="Free"
+        planName={plan?.name ?? "Pro"}
         expiresAt={congratsExpiry}
       />
     </>

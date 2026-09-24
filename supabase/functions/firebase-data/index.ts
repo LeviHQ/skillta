@@ -8,8 +8,8 @@ const JWKS = createRemoteJWKSet(
   new URL("https://www.googleapis.com/robot/v1/metadata/jwk/securetoken@system.gserviceaccount.com"),
 );
 
-const PLAN_LIMITS: Record<string, number> = { Free: 3, Pro: 999, Premium: 9999 };
-const ALLOWED_PLANS = new Set(["Free", "Pro", "Premium"]);
+const PLAN_LIMITS: Record<string, number> = { Pro: 3, Lifetime: 3 };
+const DEFAULT_LIMIT = 3;
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -166,7 +166,7 @@ Deno.serve(async (req) => {
       if (new Date(planRow.expires_at).getTime() < Date.now()) {
         return json({ error: "plan_expired", message: "Your plan has expired." }, 403);
       }
-      const limit = PLAN_LIMITS[planRow.name] ?? PLAN_LIMITS.Free;
+      const limit = PLAN_LIMITS[planRow.name] ?? DEFAULT_LIMIT;
       const used = await getUsageToday(uid);
       if (used >= limit) {
         return json({ error: "limit_reached", message: "Daily quiz limit reached.", used, limit }, 429);
@@ -238,7 +238,7 @@ Deno.serve(async (req) => {
         skillGapUsage,
         resumeDailyLimit: 3,
         skillGapDailyLimit: 3,
-        dailyLimit: planRow ? PLAN_LIMITS[planRow.name] ?? PLAN_LIMITS.Free : PLAN_LIMITS.Free,
+        dailyLimit: planRow ? PLAN_LIMITS[planRow.name] ?? DEFAULT_LIMIT : DEFAULT_LIMIT,
       });
     }
 
@@ -291,40 +291,8 @@ Deno.serve(async (req) => {
 
 
     if (action === "activatePlan") {
-      // Only Free plan can be self-activated. Paid plans must come from a payment webhook.
-      const requested = typeof body.planName === "string" ? body.planName : "Free";
-      if (requested !== "Free") {
-        return json({ error: "Only the Free plan can be activated from the client." }, 403);
-      }
-      if (!ALLOWED_PLANS.has(requested)) {
-        return json({ error: "Invalid plan" }, 400);
-      }
-      const now = new Date();
-      const expires = new Date(now);
-      expires.setMonth(expires.getMonth() + 1);
-
-      const { data, error } = await supabase
-        .from("user_plans")
-        .upsert(
-          {
-            firebase_uid: uid,
-            name: requested,
-            activated_at: now.toISOString(),
-            expires_at: expires.toISOString(),
-          },
-          { onConflict: "firebase_uid" },
-        )
-        .select()
-        .single();
-      if (error) throw error;
-      return json({
-        plan: {
-          name: data.name,
-          activatedAt: data.activated_at,
-          expiresAt: data.expires_at,
-        },
-        dailyLimit: PLAN_LIMITS[data.name] ?? PLAN_LIMITS.Free,
-      });
+      // Plans are activated only by the Dodo payment webhook.
+      return json({ error: "Plans are activated after payment." }, 403);
     }
 
     if (action === "cancelPlan") {

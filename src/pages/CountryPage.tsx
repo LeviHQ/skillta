@@ -336,7 +336,7 @@ export default function CountryPage() {
             <Sparkles className="w-4 h-4 text-primary mt-0.5" />
             <div>
               <div className="text-sm font-semibold text-foreground">Get an instant ATS score</div>
-              <p className="text-xs text-muted-foreground mb-3">Upload your resume and get an ATS score, keyword gaps and bullet rewrites — free (3/day).</p>
+              <p className="text-xs text-muted-foreground mb-3">Upload your resume and get an ATS score, keyword gaps and bullet rewrites — 3 reviews/day.</p>
               <Link to="/resume-reviewer" className="inline-block px-4 py-2 rounded-lg bg-gradient-primary text-primary-foreground text-xs font-semibold">
                 Try AI Resume Reviewer →
               </Link>

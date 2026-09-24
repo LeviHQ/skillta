@@ -20,7 +20,10 @@ const MOBILE = {
  * Loads invoke.js inside an isolated container per mount to prevent
  * duplicate ads and clean up on unmount / route change.
  */
+/* ADS DISABLED (paid plans launched). To re-enable: delete the early `return null` line below. */
 export default function AdsterraResponsiveBanner({ className = "" }: { className?: string }) {
+  // eslint-disable-next-line no-constant-condition
+  if (true) return null;
   const isMobile = useIsMobile();
   const hostRef = useRef<HTMLDivElement>(null);
   const cfg = isMobile ? MOBILE : DESKTOP;

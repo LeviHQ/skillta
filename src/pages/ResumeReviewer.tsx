@@ -223,7 +223,7 @@ export default function ResumeReviewer() {
       return;
     }
     if (limitReached) {
-      setError(`Daily limit reached — you've used all ${resumeDailyLimit} free resume reviews today. Your quota resets tomorrow at 00:00 UTC.`);
+      setError(`Daily limit reached — you've used all ${resumeDailyLimit} resume reviews today. Your quota resets tomorrow at 00:00 UTC.`);
       return;
     }
     if (!resolvedRole) {
@@ -497,7 +497,7 @@ export default function ResumeReviewer() {
               className="max-w-3xl mx-auto text-center"
             >
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/15 border border-primary/30 text-primary text-xs font-semibold mb-4">
-                <Sparkles className="w-3.5 h-3.5" /> 100% Free · Sign in required
+                <Sparkles className="w-3.5 h-3.5" /> Included in SkillTa Pro & Lifetime
               </div>
               <h1 className="text-3xl md:text-5xl font-bold text-foreground mb-4">
                 AI <span className="text-gradient">Resume Reviewer</span>
@@ -609,7 +609,7 @@ export default function ResumeReviewer() {
             {user && plan && (
               <div className="mt-4 inline-flex items-center gap-2 text-xs text-muted-foreground">
                 <Sparkles className="w-3.5 h-3.5 text-primary" />
-                {Math.max(0, resumeDailyLimit - resumeUsage)} of {resumeDailyLimit} free reviews left today
+                {Math.max(0, resumeDailyLimit - resumeUsage)} of {resumeDailyLimit} reviews left today
               </div>
             )}
 
@@ -625,7 +625,7 @@ export default function ResumeReviewer() {
                   </>
                 ) : noPlan ? (
                   <>
-                    <Sparkles className="w-4 h-4" /> Activate Free Plan to Review
+                    <Sparkles className="w-4 h-4" /> Unlock Access to Review
                   </>
                 ) : limitReached ? (
                   <>
@@ -814,7 +814,7 @@ export default function ResumeReviewer() {
       <SignInModal
         open={showSignIn}
         onClose={() => { setShowSignIn(false); clearAll(); }}
-        message="Please sign in to get your free AI-powered resume review."
+        message="Please sign in to get your AI-powered resume review."
       />
       <SubscribeRequiredModal
         open={showSubscribe}
@@ -830,7 +830,7 @@ export default function ResumeReviewer() {
       <CongratsModal
         open={showCongrats}
         onClose={() => setShowCongrats(false)}
-        planName="Free"
+        planName={plan?.name ?? "Pro"}
         expiresAt={congratsExpiry}
       />
 

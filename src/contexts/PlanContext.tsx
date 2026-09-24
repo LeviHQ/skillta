@@ -4,7 +4,7 @@ import { useAuth } from "./AuthContext";
 
 const loadSupabase = () => import("@/integrations/supabase/client").then((m) => m.supabase);
 
-export type PlanName = "Free" | "Pro" | "Premium";
+export type PlanName = "Pro" | "Lifetime";
 
 export interface UserPlan {
   name: PlanName;
@@ -14,7 +14,9 @@ export interface UserPlan {
 
 interface PlanContextType {
   plan: UserPlan | null;
+  /** Legacy name kept for callers: now opens the pricing section to purchase access. */
   activateFreePlan: () => Promise<UserPlan | null>;
+  startCheckout: (plan: PlanName) => Promise<void>;
   cancelPlan: () => Promise<void>;
   todayUsage: number;
   dailyLimit: number;
@@ -30,11 +32,8 @@ interface PlanContextType {
 
 const PlanContext = createContext<PlanContextType | null>(null);
 
-const PLAN_LIMITS: Record<PlanName, number> = {
-  Free: 3,
-  Pro: 999,
-  Premium: 9999,
-};
+const DEFAULT_LIMIT = 3;
+const PLAN_LIMITS: Record<PlanName, number> = { Pro: 3, Lifetime: 3 };
 
 async function callFirebaseData(user: User, body: Record<string, unknown>) {
   const token = await user.getIdToken();
@@ -51,7 +50,7 @@ export function PlanProvider({ children }: { children: ReactNode }) {
   const { user } = useAuth();
   const [plan, setPlan] = useState<UserPlan | null>(null);
   const [todayUsage, setTodayUsage] = useState(0);
-  const [serverLimit, setServerLimit] = useState<number>(PLAN_LIMITS.Free);
+  const [serverLimit, setServerLimit] = useState<number>(DEFAULT_LIMIT);
   const [resumeUsage, setResumeUsage] = useState(0);
   const [resumeDailyLimit, setResumeDailyLimit] = useState(3);
   const [skillGapUsage, setSkillGapUsage] = useState(0);
@@ -63,14 +62,14 @@ export function PlanProvider({ children }: { children: ReactNode }) {
       setTodayUsage(0);
       setResumeUsage(0);
       setSkillGapUsage(0);
-      setServerLimit(PLAN_LIMITS.Free);
+      setServerLimit(DEFAULT_LIMIT);
       return;
     }
     try {
       const data = await callFirebaseData(user, { action: "getPlan" });
       setPlan(data?.plan ?? null);
       setTodayUsage(typeof data?.usage === "number" ? data.usage : 0);
-      setServerLimit(typeof data?.dailyLimit === "number" ? data.dailyLimit : PLAN_LIMITS.Free);
+      setServerLimit(typeof data?.dailyLimit === "number" ? data.dailyLimit : DEFAULT_LIMIT);
       setResumeUsage(typeof data?.resumeUsage === "number" ? data.resumeUsage : 0);
       setResumeDailyLimit(typeof data?.resumeDailyLimit === "number" ? data.resumeDailyLimit : 3);
       setSkillGapUsage(typeof data?.skillGapUsage === "number" ? data.skillGapUsage : 0);
@@ -86,29 +85,22 @@ export function PlanProvider({ children }: { children: ReactNode }) {
   }, [refreshPlan]);
 
   const activateFreePlan = useCallback(async (): Promise<UserPlan | null> => {
-    if (!user) return null;
-    try {
-      const data = await callFirebaseData(user, { action: "activatePlan", planName: "Free" });
-      const newPlan: UserPlan = data.plan;
-      setPlan(newPlan);
-      setServerLimit(typeof data?.dailyLimit === "number" ? data.dailyLimit : PLAN_LIMITS.Free);
-      try {
-        const token = await user.getIdToken();
-        const supabase = await loadSupabase();
-        supabase.functions
-          .invoke("send-plan-receipt", {
-            body: {},
-            headers: { Authorization: `Bearer ${token}` },
-          })
-          .catch((e) => console.error("Plan receipt email failed", e));
-      } catch (e) {
-        console.error("Plan receipt email failed", e);
-      }
-      return newPlan;
-    } catch (err) {
-      console.error("Failed to activate plan", err);
-      return null;
-    }
+    const el = document.getElementById("pricing");
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    else window.location.href = "/#pricing";
+    return null;
+  }, []);
+
+  const startCheckout = useCallback(async (planName: PlanName) => {
+    if (!user) throw new Error("Sign in required");
+    const token = await user.getIdToken();
+    const supabase = await loadSupabase();
+    const { data, error } = await supabase.functions.invoke("dodo-checkout", {
+      body: { plan: planName, returnOrigin: window.location.origin },
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    if (error || !data?.url) throw error ?? new Error("Checkout unavailable");
+    window.location.href = data.url;
   }, [user]);
 
   const cancelPlan = useCallback(async () => {
@@ -126,13 +118,14 @@ export function PlanProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const isExpired = plan ? new Date(plan.expiresAt).getTime() < Date.now() : false;
-  const dailyLimit = plan ? PLAN_LIMITS[plan.name] : serverLimit;
+  const dailyLimit = plan ? PLAN_LIMITS[plan.name] ?? DEFAULT_LIMIT : serverLimit;
 
   return (
     <PlanContext.Provider
       value={{
         plan,
         activateFreePlan,
+        startCheckout,
         cancelPlan,
         todayUsage,
         dailyLimit,

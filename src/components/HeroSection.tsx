@@ -101,7 +101,7 @@ export default function HeroSection() {
 
             <p className="text-base md:text-lg text-muted-foreground mb-8 max-w-xl mx-auto leading-relaxed">
               Don't just guess your future. Use AI-driven roadmaps, skill gap analysis and real salary
-              data to land your dream tech role — free to start.
+              data to land your dream tech role.
             </p>
 
             <div className="flex flex-wrap gap-4 justify-center mb-5">
@@ -109,7 +109,7 @@ export default function HeroSection() {
                 to="/quiz"
                 className="group inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-gradient-primary text-primary-foreground font-semibold shadow-glow hover:scale-[1.03] active:scale-[0.98] transition-transform"
               >
-                Start Free Quiz
+                Start Career Quiz
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
               <button
@@ -118,7 +118,7 @@ export default function HeroSection() {
                 className="group inline-flex items-center gap-2 px-8 py-4 rounded-xl border border-border bg-card/50 backdrop-blur-sm font-semibold hover:bg-secondary hover:border-primary/30 transition-all"
               >
                 <Gift className="w-4 h-4 text-accent group-hover:scale-110 transition-transform" />
-                All Free Services
+                Explore All Tools
               </button>
             </div>
 

@@ -9,7 +9,10 @@ const CONTAINER_ID = `container-${AD_KEY}`;
  * Renders the fixed container id the script expects and (re)loads invoke.js
  * on mount so the ad refreshes across SPA navigations.
  */
+/* ADS DISABLED (paid plans launched). To re-enable: delete the early `return null` line below. */
 export default function AdsterraNativeBanner({ className = "" }: { className?: string }) {
+  // eslint-disable-next-line no-constant-condition
+  if (true) return null;
   const hostRef = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {

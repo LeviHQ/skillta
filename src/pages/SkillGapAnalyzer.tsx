@@ -90,7 +90,7 @@ export default function SkillGapAnalyzer() {
       return;
     }
     if (limitReached) {
-      setError(`Daily limit reached — you've used all ${DAILY_LIMIT} free analyses today. Your quota resets tomorrow.`);
+      setError(`Daily limit reached — you've used all ${DAILY_LIMIT} analyses today. Your quota resets tomorrow.`);
       return;
     }
     if (skills.length < 2) {
@@ -194,7 +194,7 @@ export default function SkillGapAnalyzer() {
         <div className="container mx-auto px-6 max-w-5xl text-center">
           <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-accent/10 border border-accent/30 mb-5">
             <Target className="w-3.5 h-3.5 text-accent" />
-            <span className="text-xs font-semibold text-accent uppercase tracking-wider">Sign-in required · 3 free/day</span>
+            <span className="text-xs font-semibold text-accent uppercase tracking-wider">Pro & Lifetime · 3 analyses/day</span>
           </motion.div>
           <motion.h1 initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.05 }} className="text-3xl md:text-5xl font-bold mb-4">
             Skill Gap <span className="text-gradient">Analyzer</span>
@@ -205,7 +205,7 @@ export default function SkillGapAnalyzer() {
           {user && (
             <div className="mt-5 inline-flex items-center gap-2 text-xs text-muted-foreground">
               <Zap className="w-3.5 h-3.5 text-accent" />
-              {remaining} of {DAILY_LIMIT} free analyses left today
+              {remaining} of {DAILY_LIMIT} analyses left today
             </div>
           )}
         </div>
@@ -323,7 +323,7 @@ export default function SkillGapAnalyzer() {
                 </>
               ) : noPlan ? (
                 <>
-                  <Target className="w-4 h-4" /> Activate Free Plan to Analyse
+                  <Target className="w-4 h-4" /> Unlock Access to Analyse
                 </>
               ) : limitReached ? (
                 <>
@@ -521,7 +521,7 @@ export default function SkillGapAnalyzer() {
       <SignInModal
         open={showSignIn}
         onClose={handleSignInClose}
-        message="Sign in with Google to run your free skill-gap analysis (3 free per day)."
+        message="Sign in with Google to run your skill-gap analysis."
       />
       <SubscribeRequiredModal
         open={showSubscribe}
@@ -537,7 +537,7 @@ export default function SkillGapAnalyzer() {
       <CongratsModal
         open={showCongrats}
         onClose={() => setShowCongrats(false)}
-        planName="Free"
+        planName={plan?.name ?? "Pro"}
         expiresAt={congratsExpiry}
       />
 
