@@ -101,7 +101,7 @@ export default function HeroSection() {
 
             <p className="text-base md:text-lg text-muted-foreground mb-8 max-w-xl mx-auto leading-relaxed">
               Don't just guess your future. Use AI-driven roadmaps, skill gap analysis and real salary
-              data to land your dream tech role — free to start.
+              data to land your dream tech role.
             </p>
 
             <div className="flex flex-wrap gap-4 justify-center mb-5">

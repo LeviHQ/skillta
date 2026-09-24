@@ -97,7 +97,7 @@ export default function CountryInternalLinks({ country, currentKey }: Props) {
       <div className="glass rounded-2xl border border-border p-5 md:p-6">
         <h2 className="flex items-center gap-2 text-sm font-semibold text-foreground mb-4">
           <Sparkles className="w-4 h-4 text-primary" />
-          Free SkillTa tools for {country.name}
+          SkillTa tools for {country.name}
         </h2>
         <div className="flex flex-wrap gap-2">
           {tools.map((t) => (

@@ -58,7 +58,7 @@ export default function LimitReachedModal({ open, onClose, dailyLimit }: Props) 
           </h3>
 
           <p className="text-muted-foreground text-sm leading-relaxed mb-4">
-            You've used all <span className="text-primary font-semibold">{dailyLimit} free quizzes</span> for today.
+            You've used all <span className="text-primary font-semibold">{dailyLimit} daily quizzes</span> for today.
             Upgrade your plan for unlimited access, or come back tomorrow.
           </p>
 
