@@ -249,7 +249,7 @@ function jobsSection(c: Country): Block[] {
     { t: "h2", text: `Which role should you pick?` },
     {
       t: "p",
-      text: `Pick on three axes: what you can sustain learning for twelve months, what the ${c.name} market is actually hiring for, and what pays enough to justify the switch. If you enjoy visible output, frontend and mobile fit. If you enjoy systems and correctness, backend, cloud and DevOps fit. If you enjoy analysis and ambiguity, data and AI roles fit. The ${"[free career quiz](/quiz)"} maps your answers to a shortlist in about five minutes.`,
+      text: `Pick on three axes: what you can sustain learning for twelve months, what the ${c.name} market is actually hiring for, and what pays enough to justify the switch. If you enjoy visible output, frontend and mobile fit. If you enjoy systems and correctness, backend, cloud and DevOps fit. If you enjoy analysis and ambiguity, data and AI roles fit. The ${"[AI career quiz](/quiz)"} maps your answers to a shortlist in about five minutes.`,
     },
     ...mistakesBlocks(c),
     {
@@ -369,7 +369,7 @@ function roadmapsSection(c: Country): Block[] {
     },
     {
       t: "callout",
-      title: "Free tools:",
+      title: "Pro tools:",
       text: `Pair any roadmap with the [career quiz](/quiz) to confirm fit, the [skill gap analyzer](/skill-gap-analyzer) to prioritise what to learn next, and the [salary predictor](/salary-predictor) to sanity-check the outcome for ${c.name}.`,
     },
     {
@@ -446,8 +446,8 @@ function resumeSection(c: Country): Block[] {
     },
     {
       t: "callout",
-      title: "Free check:",
-      text: "The [SkillTa AI Resume Reviewer](/resume-reviewer) scores your CV against ATS rules, flags missing keywords for your target role and rewrites weak bullets — three free reviews every day.",
+      title: "AI check:",
+      text: "The [SkillTa AI Resume Reviewer](/resume-reviewer) scores your CV against ATS rules, flags missing keywords for your target role and rewrites weak bullets — unlimited reviews with Pro.",
     },
     { t: "h2", text: "Cover letters and outreach" },
     {

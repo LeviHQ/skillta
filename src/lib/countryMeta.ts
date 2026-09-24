@@ -63,12 +63,12 @@ export const COUNTRY_META_TEMPLATES: Record<SectionKey, Template> = {
   overview: {
     title: (c) => `${c} Tech Salaries 2026: Real Pay Data & Trends`,
     meta: (c) =>
-      `See real 2026 tech salary data for ${c} — compare roles, cities and experience levels. Free, data-backed insights. Explore now →`,
+      `See real 2026 tech salary data for ${c} — compare roles, cities and experience levels. Real, data-backed insights. Explore now →`,
   },
   salary: {
     title: (c) => `${c} Salary Explorer 2026 — Compare Tech Roles & Pay`,
     meta: (c) =>
-      `Compare tech salaries across ${c} by role, city and experience level. Interactive, up-to-date salary explorer. Try it free →`,
+      `Compare tech salaries across ${c} by role, city and experience level. Interactive, up-to-date salary explorer. Explore now →`,
   },
   jobs: {
     title: (c) => `Top Tech Jobs in ${c} (2026) — Live Listings`,
@@ -88,7 +88,7 @@ export const COUNTRY_META_TEMPLATES: Record<SectionKey, Template> = {
   resources: {
     title: (c) => `${c} Tech Career Resources & Guides (2026)`,
     meta: (c) =>
-      `Free guides, tools and resources to grow your tech career in ${c} — from salary data to skill roadmaps. Browse now →`,
+      `Expert guides, tools and resources to grow your tech career in ${c} — from salary data to skill roadmaps. Browse now →`,
   },
   roadmaps: {
     title: (c) => `Tech Career Roadmaps for ${c} (2026)`,

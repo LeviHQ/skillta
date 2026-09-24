@@ -36,7 +36,7 @@ export const PAGE_SEO: Record<string, PageSEO> = {
   quiz: {
     title: "AI Career Quiz 2026 — Find Your Tech Path",
     description: "Answer 10 questions to discover your ideal tech career. AI-powered match with a personalized learning roadmap. Included with Pro.",
-    keywords: "tech career quiz free, which tech career is right for me, career aptitude test online free, coding career quiz, AI career recommendation, tech skills assessment, career quiz for students, career quiz for freshers, career test 2026, career personality quiz, tech career finder, what tech career suits me",
+    keywords: "tech career quiz, which tech career is right for me, career aptitude test online, coding career quiz, AI career recommendation, tech skills assessment, career quiz for students, career quiz for freshers, career test 2026, career personality quiz, tech career finder, what tech career suits me",
     path: "/quiz",
   },
   results: {
@@ -49,7 +49,7 @@ export const PAGE_SEO: Record<string, PageSEO> = {
   roadmaps: {
     title: "50+ Tech Career Roadmaps 2026 | SkillTa",
     description: "Curated step-by-step roadmaps for 50+ tech careers. Curated resources, projects, salary info & timelines. Updated for 2026.",
-    keywords: "tech career roadmap 2026, learning path free, how to become a developer, frontend roadmap 2026, backend roadmap, data science roadmap, cybersecurity roadmap, DevOps roadmap, ai ml roadmap, web development roadmap, career learning path free, developer roadmap, programming roadmap for beginners",
+    keywords: "tech career roadmap 2026, learning path, how to become a developer, frontend roadmap 2026, backend roadmap, data science roadmap, cybersecurity roadmap, DevOps roadmap, ai ml roadmap, web development roadmap, career learning path, developer roadmap, programming roadmap for beginners",
     path: "/roadmaps",
   },
   about: {
