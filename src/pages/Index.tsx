@@ -33,7 +33,8 @@ const homeFaqs = [
 export default function Index() {
   const { user } = useAuth();
   const [showSignIn, setShowSignIn] = useState(false);
-  const { hash } = useLocation();
+  const location = useLocation();
+  const { hash } = location;
 
   useEffect(() => {
     if (!hash) return;
@@ -97,10 +98,10 @@ export default function Index() {
       )}
 
 
-      {/* Sponsored - Native Banner (mounted eagerly so the slot always renders) */}
+      {/* ADS DISABLED — Sponsored Native Banner. Uncomment to re-enable.
       <DeferredSection minHeight={220} eager>
         <AdsterraNativeBanner />
-      </DeferredSection>
+      </DeferredSection> */}
 
       {/* Free Services showcase */}
       <DeferredSection minHeight={600}>
@@ -112,14 +113,14 @@ export default function Index() {
         <CountryEcosystemSection />
       </DeferredSection>
 
+      {/* Pricing */}
+      <DeferredSection minHeight={700} eager={hash === "#pricing" || location.search.includes("payment=")}>
+        <PricingSection />
+      </DeferredSection>
+
       {/* How to use — interactive journey map */}
       <DeferredSection minHeight={600}>
         <JourneyMapSection />
-      </DeferredSection>
-
-      {/* Pricing */}
-      <DeferredSection minHeight={700} eager={hash === "#pricing"}>
-        <PricingSection />
       </DeferredSection>
 
       {/* Who Is It For */}

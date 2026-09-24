@@ -53,7 +53,9 @@ export default function CongratsModal({ open, onClose, planName, expiresAt }: Co
             <p className="text-foreground/90 mb-2 font-medium">
               Your <span className="text-primary font-bold">{planName} Plan</span> is now active
             </p>
-            {formattedExpiry && (
+            {planName === "Lifetime" ? (
+              <p className="text-sm text-muted-foreground mb-6">Lifetime access — never expires</p>
+            ) : formattedExpiry && (
               <p className="text-sm text-muted-foreground mb-6">
                 Valid until <span className="text-foreground font-semibold">{formattedExpiry}</span>
               </p>
@@ -63,13 +65,13 @@ export default function CongratsModal({ open, onClose, planName, expiresAt }: Co
               <p className="text-xs text-muted-foreground mb-2">You now have access to:</p>
               <ul className="text-sm text-foreground/85 space-y-1.5">
                 <li className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-primary shrink-0" /> Career Quiz (3 attempts / day)
+                  <CheckCircle2 className="w-4 h-4 text-primary shrink-0" /> AI Career Quiz & Resume Reviewer
                 </li>
                 <li className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-primary shrink-0" /> Basic career roadmaps
+                  <CheckCircle2 className="w-4 h-4 text-primary shrink-0" /> Skill Gap Analyzer & Salary Predictor
                 </li>
                 <li className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-primary shrink-0" /> Saathi AI assistant
+                  <CheckCircle2 className="w-4 h-4 text-primary shrink-0" /> All roadmaps & country ecosystems
                 </li>
               </ul>
             </div>

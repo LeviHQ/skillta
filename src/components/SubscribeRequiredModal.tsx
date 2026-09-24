@@ -30,10 +30,11 @@ export default function SubscribeRequiredModal({ open, onClose, onGetStartedFree
           <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mb-5">
             <Lock className="w-7 h-7 text-primary" />
           </div>
-          <h3 className="text-xl font-bold text-foreground mb-2">Subscription Required</h3>
+          <h3 className="text-xl font-bold text-foreground mb-2">Unlock SkillTa Access</h3>
           <p className="text-muted-foreground text-sm leading-relaxed mb-6">
-            To access the career quiz you need an active SkillTa subscription. Start with our{" "}
-            <span className="text-primary font-semibold">Free plan</span> — no payment required.
+            This tool is part of the SkillTa Career Suite. Choose{" "}
+            <span className="text-primary font-semibold">Pro (1 year, $3)</span> or{" "}
+            <span className="text-primary font-semibold">Lifetime ($10)</span> for full access.
           </p>
 
           <button
@@ -43,7 +44,7 @@ export default function SubscribeRequiredModal({ open, onClose, onGetStartedFree
             }}
             className="w-full py-3 rounded-xl font-semibold text-sm bg-gradient-primary text-primary-foreground hover:opacity-90 transition-all flex items-center justify-center gap-2 mb-3"
           >
-            <Sparkles className="w-4 h-4" /> Get Started — Free Plan
+            <Sparkles className="w-4 h-4" /> View Plans
           </button>
 
           <button
