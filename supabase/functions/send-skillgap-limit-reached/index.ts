@@ -48,7 +48,7 @@ serve(async (req) => {
       <tr><td style="padding:32px 40px 8px;">
         <p style="margin:0;font-size:18px;color:#1a1a2e;font-weight:600;">Hey ${name}! 👋</p>
         <p style="margin:12px 0 0;font-size:15px;color:#555770;line-height:1.7;">
-          You've used all <strong>${dailyLimit} free Skill Gap Analyses</strong> for today. Love that you're mapping out your growth path — that's how careers get built. 🚀
+          You've used all <strong>${dailyLimit} Skill Gap Analyses</strong> for today. Love that you're mapping out your growth path — that's how careers get built. 🚀
         </p>
         <p style="margin:12px 0 0;font-size:15px;color:#555770;line-height:1.7;">
           <strong>Come back tomorrow</strong> to run more analyses. Your daily limit resets at midnight (UTC).
@@ -56,7 +56,7 @@ serve(async (req) => {
       </td></tr>
       <tr><td style="padding:20px 40px 8px;">
         <div style="background:#f8f9fc;border-radius:12px;padding:22px;">
-          <p style="margin:0 0 12px;font-size:15px;font-weight:700;color:#1a1a2e;">💡 While you wait, explore other free tools</p>
+          <p style="margin:0 0 12px;font-size:15px;font-weight:700;color:#1a1a2e;">💡 While you wait, explore other tools</p>
           <p style="margin:6px 0;font-size:14px;color:#555770;line-height:1.7;">
             🎯 <a href="https://www.skillta.tech/quiz" style="color:#7c3aed;text-decoration:none;font-weight:600;">AI Career Quiz</a><br/>
             📄 <a href="https://www.skillta.tech/resume-reviewer" style="color:#7c3aed;text-decoration:none;font-weight:600;">AI Resume Reviewer</a><br/>

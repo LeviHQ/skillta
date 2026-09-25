@@ -8,31 +8,31 @@ const JWKS = createRemoteJWKSet(
   new URL("https://www.googleapis.com/robot/v1/metadata/jwk/securetoken@system.gserviceaccount.com"),
 );
 
-const PLAN_LIMITS: Record<string, number> = { Free: 3, Pro: 999, Premium: 9999 };
+const PLAN_LIMITS: Record<string, number> = { Pro: 3, Lifetime: 3 };
+const PLAN_PRICES: Record<string, string> = { Pro: "$3.00 one-time", Lifetime: "$10.00 one-time" };
+const PLAN_DURATION: Record<string, string> = { Pro: "1 Year (365 days)", Lifetime: "Lifetime — never expires" };
 const PLAN_FEATURES: Record<string, string[]> = {
-  Free: [
-    "3 AI Career Quiz attempts per day",
-    "Unlimited Salary Predictor (AI-powered, 2026 market data)",
-    "Unlimited Interview Prep sessions",
-    "Full Roadmap Library — 60+ tech career paths",
-    "Unlimited Compare Careers side-by-side",
-    "AI Resume Reviewer — 3 free reviews/day (instant ATS score, keyword gaps, bullet rewrites)",
-    "Saathi AI career assistant",
-    "Save all results to your dashboard",
-  ],
   Pro: [
-    "Unlimited AI career quiz attempts",
-    "Everything in Free, without limits",
-    "Priority quiz result analysis",
-    "Advanced Saathi AI career assistant",
-    "Early access to new roadmaps & blogs",
+    "AI Career Quiz with detailed match report — 3 attempts/day",
+    "AI Resume Reviewer with PDF report — 3 reviews/day",
+    "Skill Gap Analyzer — 3 analyses/day",
+    "AI Salary Predictor with 2026 market data",
+    "50+ Country Tech Ecosystems",
+    "Full Roadmap Library with PDF export",
+    "Career Comparison tool",
+    "Saathi AI career assistant",
+    "Saved dashboard history",
   ],
-  Premium: [
-    "Everything in Pro",
-    "1:1 mentor sessions",
-    "Personalized career plan",
-    "Resume & profile review",
-    "Premium learning resources",
+  Lifetime: [
+    "Everything in SkillTa Pro",
+    "Access never expires — pay once, use forever",
+    "Every future tool & update included",
+    "AI Career Quiz, Resume Reviewer & Skill Gap Analyzer — 3/day each",
+    "AI Salary Predictor with 2026 market data",
+    "50+ Country Tech Ecosystems",
+    "Full Roadmap Library with PDF export",
+    "Career Comparison tool",
+    "Saathi AI career assistant",
   ],
 };
 
@@ -108,8 +108,10 @@ serve(async (req) => {
     const recipient = token.email;
     const userName = escapeHtml((token.name || 'there').slice(0, 100));
     const planName = escapeHtml(planRow.name);
-    const dailyLimit = PLAN_LIMITS[planRow.name] ?? PLAN_LIMITS.Free;
-    const features = PLAN_FEATURES[planRow.name] ?? PLAN_FEATURES.Free;
+    const dailyLimit = PLAN_LIMITS[planRow.name] ?? 3;
+    const features = PLAN_FEATURES[planRow.name] ?? PLAN_FEATURES.Pro;
+    const planPrice = PLAN_PRICES[planRow.name] ?? "One-time payment";
+    const planDuration = PLAN_DURATION[planRow.name] ?? "1 Year (365 days)";
 
     const fmt = (iso: string) =>
       new Date(iso).toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' });
@@ -146,10 +148,10 @@ serve(async (req) => {
           <p style="margin:0 0 14px;font-size:15px;font-weight:700;color:#1a1a2e;">📋 Subscription Details</p>
           <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="font-size:14px;color:#1a1a2e;">
             <tr><td style="padding:6px 0;color:#777;">Plan</td><td style="padding:6px 0;text-align:right;font-weight:600;">${planName}</td></tr>
-            <tr><td style="padding:6px 0;color:#777;">Price</td><td style="padding:6px 0;text-align:right;font-weight:600;">$0.00 / month</td></tr>
+            <tr><td style="padding:6px 0;color:#777;">Price</td><td style="padding:6px 0;text-align:right;font-weight:600;">${planPrice}</td></tr>
             <tr><td style="padding:6px 0;color:#777;">Started On</td><td style="padding:6px 0;text-align:right;font-weight:600;">${activatedAtStr}</td></tr>
             <tr><td style="padding:6px 0;color:#777;">Expires On</td><td style="padding:6px 0;text-align:right;font-weight:600;">${expiresAtStr}</td></tr>
-            <tr><td style="padding:6px 0;color:#777;">Billing Cycle</td><td style="padding:6px 0;text-align:right;font-weight:600;">1 Month</td></tr>
+            <tr><td style="padding:6px 0;color:#777;">Access Duration</td><td style="padding:6px 0;text-align:right;font-weight:600;">${planDuration}</td></tr>
             <tr><td style="padding:6px 0;color:#777;">Status</td><td style="padding:6px 0;text-align:right;font-weight:600;color:#26c6b0;">Active</td></tr>
             <tr><td style="padding:6px 0;color:#777;">Daily Limit</td><td style="padding:6px 0;text-align:right;font-weight:600;">${dailyLimit}</td></tr>
           </table>
