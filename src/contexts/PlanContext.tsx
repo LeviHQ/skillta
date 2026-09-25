@@ -15,6 +15,7 @@ export interface UserPlan {
 interface PlanContextType {
   plan: UserPlan | null;
   /** Legacy name kept for callers: now opens the pricing section to purchase access. */
+  activateFreePlan: () => Promise<UserPlan | null>;
   showPricing: () => Promise<UserPlan | null>;
   startCheckout: (plan: PlanName) => Promise<void>;
   cancelPlan: () => Promise<void>;
@@ -124,6 +125,7 @@ export function PlanProvider({ children }: { children: ReactNode }) {
     <PlanContext.Provider
       value={{
         plan,
+        activateFreePlan: showPricing,
         showPricing,
         startCheckout,
         cancelPlan,
