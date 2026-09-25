@@ -6,8 +6,8 @@ const JWKS = createRemoteJWKSet(
   new URL("https://www.googleapis.com/robot/v1/metadata/jwk/securetoken@system.gserviceaccount.com"),
 );
 const PRODUCTS: Record<string, string> = {
-  Pro: "pdt_0NoK0Q3K4Bm69EjSjx8O5",
-  Lifetime: "pdt_0NoK0gZk1HuEgKL9F3PkG",
+  Pro: "pdt_0NoKHWH7YXxZX1V9JAuwa",
+  Lifetime: "pdt_0NoKHjuBgK7EBmomBH2uj",
 };
 const DODO_BASE = (Deno.env.get("DODO_MODE") ?? "test") === "live"
   ? "https://live.dodopayments.com"
