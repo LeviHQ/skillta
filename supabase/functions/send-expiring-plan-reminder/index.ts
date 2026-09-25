@@ -39,20 +39,20 @@ function buildHtml(name: string, planName: string, expiresAt: string) {
           Just a quick heads-up — your <strong style="color:#7c3aed;">${planH} Plan</strong> expires on <strong>${dateH}</strong>. After that, quiz saves &amp; the daily quota will pause until you re-activate.
         </p>
         <p style="margin:12px 0 0;font-size:15px;color:#555770;line-height:1.7;">
-          If you want to keep exploring your career path without a break, re-activate the plan in one tap — it's still free.
+          If you want to keep exploring your career path without a break, renew your Pro access in one tap — just $3 for another full year.
         </p>
       </td></tr>
       <tr><td style="padding:24px 40px 8px;text-align:center;">
-        <a href="https://www.skillta.tech/dashboard" style="display:inline-block;background:linear-gradient(135deg,#26c6b0,#7c3aed);color:#fff;text-decoration:none;font-size:16px;font-weight:600;padding:14px 36px;border-radius:10px;">Re-activate My Plan →</a>
+        <a href="https://www.skillta.tech/#pricing" style="display:inline-block;background:linear-gradient(135deg,#26c6b0,#7c3aed);color:#fff;text-decoration:none;font-size:16px;font-weight:600;padding:14px 36px;border-radius:10px;">Renew My Plan →</a>
       </td></tr>
       <tr><td style="padding:20px 40px 8px;">
         <div style="background:#f8f9fc;border-radius:12px;padding:22px;">
           <p style="margin:0 0 12px;font-size:14px;font-weight:700;color:#1a1a2e;">Everything you'll keep on renewal</p>
           <p style="margin:6px 0;font-size:13px;color:#555770;line-height:1.7;">
-            ✅ 3 AI Career Quiz attempts / day<br/>
-            ✅ Unlimited Salary Predictor &amp; Interview Prep<br/>
+            ✅ AI Career Quiz — 3 attempts / day<br/>
+            ✅ AI Salary Predictor &amp; Interview Prep<br/>
             ✅ Full 60+ Roadmap Library &amp; Compare Careers<br/>
-            ✅ AI Resume Reviewer — 3 free reviews/day<br/>
+            ✅ AI Resume Reviewer — 3 reviews/day<br/>
             ✅ Saved dashboard history
           </p>
         </div>

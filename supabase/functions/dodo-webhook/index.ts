@@ -4,8 +4,8 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js@2.45.0";
 const supabase = createClient(Deno.env.get("SUPABASE_URL")!, Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!);
 const LIFETIME_EXPIRY = "9999-12-31T23:59:59.000Z";
 const PRODUCT_TO_PLAN: Record<string, "Pro" | "Lifetime"> = {
-  pdt_0NoK0Q3K4Bm69EjSjx8O5: "Pro",
-  pdt_0NoK0gZk1HuEgKL9F3PkG: "Lifetime",
+  pdt_0NoKHWH7YXxZX1V9JAuwa: "Pro",
+  pdt_0NoKHjuBgK7EBmomBH2uj: "Lifetime",
 };
 
 async function verify(id: string, ts: string, sigHeader: string, body: string) {
@@ -78,7 +78,11 @@ Deno.serve(async (req) => {
     finalPlan = "Lifetime";
     expiresAt = LIFETIME_EXPIRY;
   } else {
-    const base = existing && new Date(existing.expires_at) > now ? new Date(existing.expires_at) : now;
+    // Only stack 365 days onto an existing ACTIVE Pro plan.
+    // Legacy/unknown/expired plans always start fresh from purchase time.
+    const base = existing && existing.name === "Pro" && new Date(existing.expires_at) > now
+      ? new Date(existing.expires_at)
+      : now;
     base.setUTCDate(base.getUTCDate() + 365);
     expiresAt = base.toISOString();
   }
