@@ -5,7 +5,7 @@ const steps = [
   {
     icon: UserPlus,
     title: "Sign in & Activate",
-    description: "Sign in with Google and activate your Free plan in one click — no card required.",
+    description: "Sign in with Google and unlock full access with Pro ($3/yr) or Lifetime ($10) in one click.",
     color: "text-primary",
   },
   {

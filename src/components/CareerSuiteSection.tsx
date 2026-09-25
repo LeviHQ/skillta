@@ -6,7 +6,7 @@ const services = [
   {
     title: "AI Career Quiz",
     description: "10 smart questions to find your best-fit tech career with a 92% match accuracy.",
-    limit: "Unlimited with Pro",
+    limit: "Included in Plan",
     path: "/quiz",
     Icon: Brain,
     gradient: "from-success/25 to-success/5",
@@ -16,7 +16,7 @@ const services = [
   {
     title: "Salary Predictor",
     description: "AI-driven salary ranges from real 2025-26 market data — India & global.",
-    limit: "Unlimited with Pro",
+    limit: "Included in Plan",
     path: "/salary-predictor",
     Icon: TrendingUp,
     gradient: "from-accent/25 to-accent/5",
@@ -26,7 +26,7 @@ const services = [
   {
     title: "Roadmap Library",
     description: "60+ curated step-by-step roadmaps with resources, projects and salary info.",
-    limit: "Unlimited with Pro",
+    limit: "Included in Plan",
     path: "/roadmaps",
     Icon: BookOpen,
     gradient: "from-info/25 to-info/5",
@@ -36,7 +36,7 @@ const services = [
   {
     title: "Compare Careers",
     description: "Side-by-side comparison of any two tech careers — salary, demand, difficulty.",
-    limit: "Unlimited with Pro",
+    limit: "Included in Plan",
     path: "/compare",
     Icon: ArrowLeftRight,
     gradient: "from-warning/25 to-warning/5",
@@ -46,7 +46,7 @@ const services = [
   {
     title: "AI Resume Reviewer",
     description: "Instant ATS score, keyword gaps and bullet rewrites — tuned for 2026 tech hiring.",
-    limit: "Unlimited with Pro",
+    limit: "Included in Plan",
     path: "/resume-reviewer",
     Icon: FileText,
     gradient: "from-primary/25 to-primary/5",
@@ -56,7 +56,7 @@ const services = [
   {
     title: "Skill Gap Analyzer",
     description: "Match your current skills against any tech role. Get missing skills + a weekly study plan.",
-    limit: "Unlimited with Pro",
+    limit: "Included in Plan",
     path: "/skill-gap-analyzer",
     Icon: Target,
     gradient: "from-info/25 to-info/5",
@@ -83,11 +83,11 @@ export default function CareerSuiteSection() {
             <Sparkles className="w-3.5 h-3.5 text-primary" />
             <span className="text-xs font-semibold text-primary uppercase tracking-wider">Everything included in SkillTa Pro &amp; Lifetime</span>
           </div>
-          <h2 className="text-3xl md:text-5xl font-bold mb-4">
-            Everything SkillTa is <span className="text-gradient">Included in Pro</span>
+            <h2 className="text-3xl md:text-5xl font-bold mb-4">
+            Complete Career Suite <span className="text-gradient">Included in Pro & Lifetime</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-base md:text-lg">
-            Unlock the full power of SkillTa with Pro or Lifetime access. — no paywalls, no ads. Just career clarity built for students, freshers and switchers.
+            Unlock the full power of SkillTa with Pro ($3/yr) or Lifetime ($10) — all tools, roadmaps, and global intelligence included. No hidden paywalls, no ads.
           </p>
         </motion.div>
 

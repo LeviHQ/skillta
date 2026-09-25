@@ -84,7 +84,7 @@ export default function CountryEcosystemSection() {
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass border border-primary/30 shadow-glow">
             <Rocket className="w-3.5 h-3.5 text-primary animate-pulse" />
             <span className="text-[11px] font-mono uppercase tracking-widest text-primary">
-              New Launch · Free Forever
+              New Launch · 50+ Countries
             </span>
           </div>
         </motion.div>
@@ -102,10 +102,11 @@ export default function CountryEcosystemSection() {
             <br className="hidden md:block" /> in One Place 🌍
           </h2>
           <p className="text-muted-foreground text-base md:text-lg leading-relaxed">
-            50+ countries. Everything a tech aspirant needs — jobs, salaries,
-            roadmaps, resume rules, interview questions, top companies,
-            certifications and more — all localized, all free.
-          </p>
+  50+ countries. Everything a tech aspirant needs — jobs, salaries,
+  roadmaps, resume rules, interview questions, top companies,
+  certifications and more — all localized, all included.
+</p>
+
         </motion.div>
 
         {/* Main glass card */}
@@ -282,7 +283,7 @@ export default function CountryEcosystemSection() {
 
               <div className="flex items-center gap-2 mt-4 text-[11px] text-muted-foreground">
                 <BadgeCheck className="w-3.5 h-3.5 text-success" />
-                100% free · No sign-in · Updated for 2026
+                Included in Pro & Lifetime · Updated for 2026
               </div>
             </div>
 

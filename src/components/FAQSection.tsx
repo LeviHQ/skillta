@@ -2,6 +2,16 @@ import { motion } from "framer-motion";
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
 
 const faqs = [
+    {
+    question: "What is the difference between Pro and Lifetime plans?",
+    answer:
+      "Both plans give you the exact same full access to the complete SkillTa suite: AI Career Quiz, AI Resume Reviewer, Skill Gap Analyzer, 50+ Country Tech Ecosystem, and all 50+ roadmaps with PDF export. The only difference is duration: Pro gives 1 full year ($3) while Lifetime gives permanent access forever ($10) with all future updates.",
+  },
+  {
+    question: "Is this a subscription or a one-time payment?",
+    answer:
+      "Both Pro ($3) and Lifetime ($10) are 100% one-time payments. There are no hidden fees, no auto-debit renewals, and no surprise charges. When your Pro year ends, you choose whether to renew.",
+  },
   {
     question: "How long does the career quiz take?",
     answer:

@@ -1,4 +1,13 @@
+import { useLocation } from "react-router-dom";
+
 const KofiButton = () => {
+  const location = useLocation();
+
+  // Landing page (homepage) par hide kar do
+  if (location.pathname === "/") {
+    return null;
+  }
+
   return (
     <a
       href="https://ko-fi.com/A0A620ZLB9"

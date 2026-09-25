@@ -30,10 +30,10 @@ const STAGES: Stage[] = [
     id: "start",
     step: 1,
     title: "Get Started",
-    short: "Sign in & activate",
+    short: "Sign in & unlock",
     detail:
-      "Sign in with Google and choose your access plan in one click. No card, no trial trap — you get daily free attempts across every SkillTa tool.",
-    points: ["Google sign-in", "Unlimited Pro Access", "Unlimited with Pro"],
+      "Sign in with Google and unlock full access with Pro ($3/yr) or Lifetime ($10). Instant activation across every AI career guidance tool.",
+    points: ["Google sign-in", "Pro ($3/yr) or Lifetime ($10)", "Full Career Suite"],
     time: "1 min",
     href: "/#pricing",
     cta: "Get Pro Access",
