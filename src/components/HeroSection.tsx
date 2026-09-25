@@ -118,7 +118,7 @@ export default function HeroSection() {
                 className="group inline-flex items-center gap-2 px-8 py-4 rounded-xl border border-border bg-card/50 backdrop-blur-sm font-semibold hover:bg-secondary hover:border-primary/30 transition-all"
               >
                 <Gift className="w-4 h-4 text-accent group-hover:scale-110 transition-transform" />
-                Explore All Tools
+                Compare Our Plans
               </button>
             </div>
 
@@ -133,14 +133,14 @@ export default function HeroSection() {
                 <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-accent/25 to-transparent" />
                 <Gift className="w-4 h-4 text-accent relative shrink-0" />
                 <span className="text-sm sm:text-base font-semibold text-foreground relative">
-                  What SkillTa gives you{" "}
+                  Choose your{" "}
                   <span className="font-extrabold text-accent underline decoration-accent/60 decoration-2 underline-offset-4">
-                    for FREE
+                    SkillTa access plan
                   </span>
                 </span>
 
                 <span className="relative shrink-0 text-[11px] font-bold uppercase tracking-wide text-accent-foreground bg-accent px-2 py-0.5 rounded-full">
-                  7 tools
+                  From $3
                 </span>
                 <ArrowRight className="w-3.5 h-3.5 text-accent relative shrink-0 group-hover:translate-x-1 transition-transform" />
 
