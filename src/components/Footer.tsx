@@ -162,7 +162,7 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               title="Featured on LaunchBuff"
-              className="inline-block rounded-xl bg-white/5 border border-border/60 hover:border-primary/40 hover:bg-white/10 transition-all duration-300 p-2"
+              className="inline-block rounded-xl bg-muted/50 border border-border/60 hover:border-primary/40 hover:bg-muted transition-all duration-300 p-2"
             >
               <img
                 src="https://launchbuff.com/badge-featured-light.svg"
@@ -180,7 +180,7 @@ export default function Footer() {
               data-launchpadly-badge="skillta"
               data-launchpadly-badge-variant="light"
               title="Listed on Launchpadly Startup Directory"
-              className="inline-block rounded-xl bg-white/5 border border-border/60 hover:border-primary/40 hover:bg-white/10 transition-all duration-300 p-2"
+              className="inline-block rounded-xl bg-muted/50 border border-border/60 hover:border-primary/40 hover:bg-muted transition-all duration-300 p-2"
             >
               <img
                 src="https://launchpadly.co/embed/badges/startup/skillta.svg?variant=light"
@@ -196,7 +196,7 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               title="SkillTa on LaunchNest"
-              className="inline-block rounded-xl bg-white/5 border border-border/60 hover:border-primary/40 hover:bg-white/10 transition-all duration-300 p-2"
+              className="inline-block rounded-xl bg-muted/50 border border-border/60 hover:border-primary/40 hover:bg-muted transition-all duration-300 p-2"
             >
               <img
                 src="https://launchnest.io/badge/skillta.svg?variant=featured&theme=light"

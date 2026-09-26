@@ -7,6 +7,65 @@
 
 @layer base {
   :root {
+    color-scheme: light;
+    --background: 210 25% 98%;
+    --foreground: 222 28% 12%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 28% 12%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 28% 12%;
+
+    --primary: 174 72% 32%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 214 25% 93%;
+    --secondary-foreground: 222 24% 18%;
+
+    --muted: 214 24% 94%;
+    --muted-foreground: 217 14% 40%;
+
+    --accent: 262 68% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 70% 47%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 216 22% 85%;
+    --input: 216 22% 82%;
+    --ring: 174 72% 32%;
+    --overlay: 222 28% 8%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 222 24% 18%;
+    --sidebar-primary: 174 72% 32%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 214 25% 93%;
+    --sidebar-accent-foreground: 222 24% 18%;
+    --sidebar-border: 216 22% 85%;
+    --sidebar-ring: 174 72% 32%;
+
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+    --gradient-hero: linear-gradient(160deg, hsl(210 25% 98%) 0%, hsl(190 34% 94%) 50%, hsl(220 30% 97%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%), hsl(214 28% 96%));
+    --shadow-glow: 0 0 40px -10px hsl(174 72% 32% / 0.22);
+    --shadow-card: 0 4px 24px -4px hsl(222 28% 12% / 0.12);
+    --glass-background: 0 0% 100%;
+    --glass-border: 216 22% 80%;
+
+    --success: 142 62% 34%;
+    --success-foreground: 0 0% 100%;
+    --warning: 38 92% 42%;
+    --warning-foreground: 38 92% 10%;
+    --info: 210 82% 46%;
+    --info-foreground: 0 0% 100%;
+  }
+
+  .dark {
+    color-scheme: dark;
     --background: 220 20% 7%;
     --foreground: 210 20% 92%;
 
@@ -34,6 +93,7 @@
     --border: 220 14% 18%;
     --input: 220 14% 18%;
     --ring: 174 72% 50%;
+    --overlay: 220 20% 2%;
 
     --radius: 0.75rem;
 
@@ -47,11 +107,13 @@
     --sidebar-ring: 174 72% 50%;
 
     /* Custom tokens */
-    --gradient-primary: linear-gradient(135deg, hsl(174, 72%, 50%), hsl(262, 70%, 58%));
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
     --gradient-hero: linear-gradient(160deg, hsl(220, 20%, 7%) 0%, hsl(220, 25%, 12%) 50%, hsl(220, 20%, 7%) 100%);
     --gradient-card: linear-gradient(145deg, hsl(220, 18%, 12%), hsl(220, 18%, 9%));
     --shadow-glow: 0 0 40px -10px hsl(174 72% 50% / 0.3);
     --shadow-card: 0 4px 24px -4px hsl(0 0% 0% / 0.4);
+    --glass-background: 220 18% 10%;
+    --glass-border: 220 14% 20%;
 
     --success: 142 70% 45%;
     --success-foreground: 142 70% 95%;
@@ -70,6 +132,7 @@
   body {
     @apply bg-background text-foreground font-sans antialiased;
     font-family: 'Space Grotesk', system-ui, sans-serif;
+    min-height: 100vh;
   }
 
   code, pre, .font-mono {
@@ -106,15 +169,15 @@
   }
 
   .glass {
-    background: hsl(220 18% 10% / 0.7);
+    background: hsl(var(--glass-background) / 0.78);
     backdrop-filter: blur(16px);
-    border: 1px solid hsl(220 14% 20% / 0.5);
+    border: 1px solid hsl(var(--glass-border) / 0.55);
   }
 
   .grid-pattern {
     background-image: 
-      linear-gradient(hsl(220 14% 18% / 0.3) 1px, transparent 1px),
-      linear-gradient(90deg, hsl(220 14% 18% / 0.3) 1px, transparent 1px);
+      linear-gradient(hsl(var(--border) / 0.45) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--border) / 0.45) 1px, transparent 1px);
     background-size: 60px 60px;
   }
 
@@ -124,8 +187,8 @@
 }
 
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 40px -10px hsl(174 72% 50% / 0.3); }
-  50% { box-shadow: 0 0 60px -5px hsl(174 72% 50% / 0.5); }
+  0%, 100% { box-shadow: var(--shadow-glow); }
+  50% { box-shadow: 0 0 60px -5px hsl(var(--primary) / 0.4); }
 }
 
 /* Scrollbar */
@@ -133,14 +196,14 @@
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: hsl(220, 20%, 7%);
+  background: hsl(var(--background));
 }
 ::-webkit-scrollbar-thumb {
-  background: hsl(220, 14%, 22%);
+  background: hsl(var(--border));
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: hsl(220, 14%, 30%);
+  background: hsl(var(--muted-foreground));
 }
 
 /* Print styles for PDF */
