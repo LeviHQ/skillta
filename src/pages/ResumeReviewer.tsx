@@ -78,7 +78,7 @@ function ScoreRing({ score, label }: { score: number; label: string }) {
     <div className="flex flex-col items-center">
       <div className="relative w-28 h-28">
         <svg className="w-28 h-28 -rotate-90" viewBox="0 0 100 100">
-          <circle cx="50" cy="50" r={r} stroke="rgba(255,255,255,0.08)" strokeWidth="8" fill="none" />
+          <circle cx="50" cy="50" r={r} stroke="hsl(var(--border))" strokeWidth="8" fill="none" />
           <motion.circle
             cx="50" cy="50" r={r} stroke={stroke} strokeWidth="8" fill="none"
             strokeLinecap="round"
