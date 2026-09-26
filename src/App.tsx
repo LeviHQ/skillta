@@ -12,6 +12,7 @@ import DeferredThirdParty from "./components/DeferredThirdParty";
 // Home stays in the main bundle: it is the LCP route for most traffic.
 import Index from "./pages/Index";
 import ScrollToTop from "./components/ScrollToTop";
+import { ThemeProvider } from "./components/ThemeProvider";
 
 // Toast layers are async: nothing can be toasted before hydration finishes.
 const Toaster = lazy(() => import("@/components/ui/toaster").then((m) => ({ default: m.Toaster })));
@@ -55,11 +56,12 @@ const RouteFallback = () => (
 );
 
 const App = () => (
-  <HelmetProvider>
-    <QueryClientProvider client={queryClient}>
-      <AuthProvider>
-        <PlanProvider>
-          <TooltipProvider>
+  <ThemeProvider>
+    <HelmetProvider>
+      <QueryClientProvider client={queryClient}>
+        <AuthProvider>
+          <PlanProvider>
+            <TooltipProvider>
             <Suspense fallback={null}>
               <Toaster />
               <Sonner />
@@ -97,11 +99,12 @@ const App = () => (
               <DeferredThirdParty />
               <InstallPrompt />
             </BrowserRouter>
-          </TooltipProvider>
-        </PlanProvider>
-      </AuthProvider>
-    </QueryClientProvider>
-  </HelmetProvider>
+            </TooltipProvider>
+          </PlanProvider>
+        </AuthProvider>
+      </QueryClientProvider>
+    </HelmetProvider>
+  </ThemeProvider>
 );
 
 export default App;

@@ -7,6 +7,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import { usePlan } from "@/contexts/PlanContext";
 import SignInModal from "./SignInModal";
 import CountryDropdown from "./CountryDropdown";
+import { ThemeToggle } from "./ThemeToggle";
 
 
 const navLinks = [
@@ -145,8 +146,7 @@ export default function Navbar() {
           </div>
 
           <div className="hidden md:flex items-center gap-3">
-
-
+            <ThemeToggle />
             {user ? (
               <>
                 {plan && (
@@ -185,13 +185,16 @@ export default function Navbar() {
           </div>
 
           {/* Mobile toggle */}
-          <button
-            className="md:hidden text-foreground"
-            onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label={mobileOpen ? "Close menu" : "Open menu"}
-          >
-            {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+          <div className="flex items-center gap-2 md:hidden">
+            <ThemeToggle />
+            <button
+              className="flex h-9 w-9 items-center justify-center rounded-md text-foreground transition-colors hover:bg-primary/10 hover:text-primary"
+              onClick={() => setMobileOpen(!mobileOpen)}
+              aria-label={mobileOpen ? "Close menu" : "Open menu"}
+            >
+              {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile menu */}
