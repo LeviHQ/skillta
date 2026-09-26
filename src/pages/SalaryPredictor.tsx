@@ -67,6 +67,7 @@ export default function SalaryPredictor() {
   const [error, setError] = useState<string | null>(null);
   const [showSignIn, setShowSignIn] = useState(false);
   const [showSubscribe, setShowSubscribe] = useState(false);
+  const [pendingSubmit, setPendingSubmit] = useState(false);
   const { user } = useAuth();
   const { plan, isExpired, activateFreePlan } = usePlan();
   const hasAccess = !!user && !!plan && !isExpired && (plan.name === "Pro" || plan.name === "Lifetime");
@@ -78,6 +79,7 @@ export default function SalaryPredictor() {
     e.preventDefault();
     setError(null);
     if (!user) {
+      setPendingSubmit(true);
       setShowSignIn(true);
       return;
     }
@@ -331,7 +333,16 @@ export default function SalaryPredictor() {
         </div>
         <SignInModal
           open={showSignIn}
-          onClose={() => setShowSignIn(false)}
+          onClose={() => {
+            setShowSignIn(false);
+            setPendingSubmit(false);
+          }}
+          onSuccess={() => {
+            setShowSignIn(false);
+            if (!hasAccess) {
+              setShowSubscribe(true);
+            }
+          }}
         />
         <SubscribeRequiredModal
           open={showSubscribe}
