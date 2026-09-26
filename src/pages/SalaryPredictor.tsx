@@ -8,6 +8,10 @@ import ResumeReviewerCTA from "@/components/ResumeReviewerCTA";
 import SkillGapAnalyzerCTA from "@/components/SkillGapAnalyzerCTA";
 import AdsterraResponsiveBanner from "@/components/AdsterraResponsiveBanner";
 import { z } from "zod";
+import SignInModal from "@/components/SignInModal";
+import SubscribeRequiredModal from "@/components/SubscribeRequiredModal";
+import { useAuth } from "@/contexts/AuthContext";
+import { usePlan } from "@/contexts/PlanContext";
 
 const schema = z.object({
   role: z.string().trim().min(2).max(80),
@@ -61,12 +65,26 @@ export default function SalaryPredictor() {
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<Prediction | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [showSignIn, setShowSignIn] = useState(false);
+  const [showSubscribe, setShowSubscribe] = useState(false);
+  const { user } = useAuth();
+  const { plan, isExpired, activateFreePlan } = usePlan();
+  const hasAccess = !!user && !!plan && !isExpired && (plan.name === "Pro" || plan.name === "Lifetime");
+
 
   const update = (k: string, v: string) => setForm((f) => ({ ...f, [k]: v }));
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
+    if (!user) {
+      setShowSignIn(true);
+      return;
+    }
+    if (!hasAccess) {
+      setShowSubscribe(true);
+      return;
+    }
     const parsed = schema.safeParse(form);
     if (!parsed.success) {
       setError(parsed.error.issues[0]?.message || "Please fill all required fields correctly.");
@@ -311,6 +329,17 @@ export default function SalaryPredictor() {
             <Heart className="w-4 h-4" /> Support SkillTa on Ko-fi
           </a>
         </div>
+        <SignInModal
+          open={showSignIn}
+          onClose={() => setShowSignIn(false)}
+        />
+        <SubscribeRequiredModal
+          open={showSubscribe}
+          onClose={() => setShowSubscribe(false)}
+          onGetStartedFree={async () => {
+            await activateFreePlan();
+          }}
+        />
       </div>
     </>
   );
