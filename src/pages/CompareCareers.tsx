@@ -7,10 +7,21 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import ResumeReviewerCTA from "@/components/ResumeReviewerCTA";
 import AdsterraResponsiveBanner from "@/components/AdsterraResponsiveBanner";
+import SignInModal from "@/components/SignInModal";
+import SubscribeRequiredModal from "@/components/SubscribeRequiredModal";
+import { useAuth } from "@/contexts/AuthContext";
+import { usePlan } from "@/contexts/PlanContext";
+import { Lock } from "lucide-react";
 
 export default function CompareCareers() {
   const [career1Id, setCareer1Id] = useState<string>("");
   const [career2Id, setCareer2Id] = useState<string>("");
+  const [showSignIn, setShowSignIn] = useState(false);
+  const [showSubscribe, setShowSubscribe] = useState(false);
+  const { user } = useAuth();
+  const { plan, isExpired, activateFreePlan } = usePlan();
+  const hasAccess = !!user && !!plan && !isExpired && (plan.name === "Pro" || plan.name === "Lifetime");
+
 
   const allCareers = careers;
   const career1 = useMemo(() => allCareers.find(c => c.id === career1Id), [career1Id]);
@@ -76,8 +87,34 @@ export default function CompareCareers() {
         </div>
       </section>
 
-      {/* Comparison */}
-      {bothSelected && (
+            {/* Comparison */}
+      {bothSelected && !hasAccess && (
+        <section className="container mx-auto px-6 pb-20">
+          <div className="max-w-2xl mx-auto text-center glass rounded-2xl p-8 border border-primary/30 space-y-4">
+            <div className="w-14 h-14 mx-auto rounded-full bg-primary/10 flex items-center justify-center">
+              <Lock className="w-7 h-7 text-primary" />
+            </div>
+            <h3 className="text-2xl font-bold text-foreground">Unlock Side-by-Side Career Comparison</h3>
+            <p className="text-muted-foreground text-sm max-w-md mx-auto">
+              Get full salary breakdown (India vs Global), realistic entry barrier, learning curve, day-in-the-life comparison, and future outlook with SkillTa Pro or Lifetime.
+            </p>
+            <button
+              onClick={() => {
+                if (!user) {
+                  setShowSignIn(true);
+                } else {
+                  setShowSubscribe(true);
+                }
+              }}
+              className="px-6 py-3 rounded-lg bg-gradient-primary text-primary-foreground font-semibold text-sm hover:opacity-90 transition inline-flex items-center gap-2 shadow-glow"
+            >
+              {!user ? "Sign In to Compare" : "Upgrade to Unlock Comparison"}
+            </button>
+          </div>
+        </section>
+      )}
+
+      {bothSelected && hasAccess && (
         <motion.section
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -204,6 +241,23 @@ export default function CompareCareers() {
           <p className="text-lg">Select two careers above to compare them side by side</p>
         </div>
       )}
+      <SignInModal
+        open={showSignIn}
+        onClose={() => setShowSignIn(false)}
+        onSuccess={() => {
+          setShowSignIn(false);
+          if (!hasAccess) {
+            setShowSubscribe(true);
+          }
+        }}
+      />
+      <SubscribeRequiredModal
+        open={showSubscribe}
+        onClose={() => setShowSubscribe(false)}
+        onGetStartedFree={async () => {
+          await activateFreePlan();
+        }}
+      />
     </div>
   );
 }
