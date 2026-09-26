@@ -6,7 +6,7 @@ import { usePlan } from "@/contexts/PlanContext";
 import { careers } from "@/data/careers";
 import {
   User, LogOut, TrendingUp, Clock, Star, ArrowRight,
-  BarChart3, History, Sparkles, Target, BookOpen, CreditCard, Zap, XCircle, CheckCircle2
+  BarChart3, History, Sparkles, Target, BookOpen, CreditCard, Zap, XCircle, CheckCircle2,ChevronLeft, ChevronRight
 } from "lucide-react";
 import SEOHead from "@/components/SEOHead";
 import { PAGE_SEO } from "@/lib/seo";
@@ -29,6 +29,10 @@ export default function Dashboard() {
   const [history, setHistory] = useState<QuizResult[]>([]);
   const [loading, setLoading] = useState(true);
   const [showCancelConfirm, setShowCancelConfirm] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const ITEMS_PER_PAGE = 5;
+  const totalPages = Math.ceil(history.length / ITEMS_PER_PAGE) || 1;
+  const paginatedHistory = history.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE);
 
   useEffect(() => {
     if (!user) {
@@ -423,9 +427,22 @@ export default function Dashboard() {
           transition={{ delay: 0.4 }}
         >
           <div className="p-6 rounded-2xl bg-gradient-card border border-border">
-            <div className="flex items-center gap-2 mb-6">
-              <History className="w-5 h-5 text-primary" />
-              <h2 className="text-lg font-bold text-foreground">Quiz History</h2>
+            <div className="flex items-center justify-between mb-6 flex-wrap gap-2">
+              <div className="flex items-center gap-2">
+                <History className="w-5 h-5 text-primary" />
+                <h2 className="text-lg font-bold text-foreground">Quiz History</h2>
+                {history.length > 0 && (
+                  <span className="text-xs px-2.5 py-0.5 rounded-full bg-secondary border border-border text-muted-foreground font-mono">
+                    {history.length} total
+                  </span>
+                )}
+              </div>
+
+              {totalPages > 1 && (
+                <p className="text-xs text-muted-foreground font-mono">
+                  Showing {(currentPage - 1) * ITEMS_PER_PAGE + 1}–{Math.min(currentPage * ITEMS_PER_PAGE, history.length)} of {history.length}
+                </p>
+              )}
             </div>
 
             {loading ? (
@@ -433,39 +450,68 @@ export default function Dashboard() {
                 <div className="w-6 h-6 border-2 border-primary border-t-transparent rounded-full animate-spin" />
               </div>
             ) : history.length > 0 ? (
-              <div className="space-y-3">
-                {history.map((h, i) => {
-                  const c = careers.find((cr) => cr.id === h.topCareer);
-                  const date = h.createdAt ? new Date(h.createdAt) : new Date();
-                  return (
-                    <div
-                      key={h.id || i}
-                      className="flex items-center gap-4 p-4 rounded-xl bg-secondary/30 border border-border hover:border-primary/30 transition-colors"
+              <>
+                <div className="space-y-3">
+                  {paginatedHistory.map((h, i) => {
+                    const c = careers.find((cr) => cr.id === h.topCareer);
+                    const date = h.createdAt ? new Date(h.createdAt) : new Date();
+                    return (
+                      <div
+                        key={h.id || i}
+                        className="flex items-center gap-4 p-4 rounded-xl bg-secondary/30 border border-border hover:border-primary/30 transition-colors"
+                      >
+                        <span className="text-2xl">{c?.icon || "📋"}</span>
+                        <div className="flex-1 min-w-0">
+                          <p className="text-sm font-semibold text-foreground">{c?.title || h.topCareer}</p>
+                          <p className="text-xs text-muted-foreground">
+                            {date.toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" })}
+                            {" · "}
+                            {date.toLocaleTimeString("en-IN", { hour: "2-digit", minute: "2-digit" })}
+                          </p>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <span className="text-xs font-semibold text-primary px-2 py-1 rounded-md bg-primary/10">
+                            {h.topMatchPercentage}%
+                          </span>
+                          {c && (
+                            <Link
+                              to={`/roadmaps/${c.id}`}
+                              className="text-xs px-3 py-1 rounded-md border border-border hover:border-primary/40 text-muted-foreground hover:text-primary transition-colors"
+                            >
+                              Roadmap
+                            </Link>
+                          )}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+
+                {/* Pagination Controls */}
+                {totalPages > 1 && (
+                  <div className="flex items-center justify-between mt-6 pt-4 border-t border-border/60">
+                    <button
+                      onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
+                      disabled={currentPage === 1}
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-border text-xs font-medium text-foreground hover:bg-secondary disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
                     >
-                      <span className="text-2xl">{c?.icon || "📋"}</span>
-                      <div className="flex-1 min-w-0">
-                        <p className="text-sm font-semibold text-foreground">{c?.title || h.topCareer}</p>
-                        <p className="text-xs text-muted-foreground">
-                          {date.toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" })}
-                          {" · "}
-                          {date.toLocaleTimeString("en-IN", { hour: "2-digit", minute: "2-digit" })}
-                        </p>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <span className="text-xs font-semibold text-primary px-2 py-1 rounded-md bg-primary/10">{h.topMatchPercentage}%</span>
-                        {c && (
-                          <Link
-                            to={`/roadmaps/${c.id}`}
-                            className="text-xs px-3 py-1 rounded-md border border-border hover:border-primary/40 text-muted-foreground hover:text-primary transition-colors"
-                          >
-                            Roadmap
-                          </Link>
-                        )}
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
+                      <ChevronLeft className="w-3.5 h-3.5" /> Previous
+                    </button>
+
+                    <span className="text-xs text-muted-foreground font-mono">
+                      Page {currentPage} of {totalPages}
+                    </span>
+
+                    <button
+                      onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
+                      disabled={currentPage === totalPages}
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-border text-xs font-medium text-foreground hover:bg-secondary disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+                    >
+                      Next <ChevronRight className="w-3.5 h-3.5" />
+                    </button>
+                  </div>
+                )}
+              </>
             ) : (
               <div className="text-center py-8">
                 <Clock className="w-8 h-8 text-muted-foreground/30 mx-auto mb-3" />
