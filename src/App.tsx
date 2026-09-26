@@ -11,6 +11,7 @@ import Footer from "./components/Footer";
 import DeferredThirdParty from "./components/DeferredThirdParty";
 // Home stays in the main bundle: it is the LCP route for most traffic.
 import Index from "./pages/Index";
+import ScrollToTop from "./components/ScrollToTop";
 
 // Toast layers are async: nothing can be toasted before hydration finishes.
 const Toaster = lazy(() => import("@/components/ui/toaster").then((m) => ({ default: m.Toaster })));
@@ -64,6 +65,7 @@ const App = () => (
               <Sonner />
             </Suspense>
             <BrowserRouter>
+            <ScrollToTop />
               <Navbar />
               <main className="min-h-screen pt-16">
                 <Suspense fallback={<RouteFallback />}>
