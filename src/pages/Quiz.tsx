@@ -32,12 +32,6 @@ export default function Quiz() {
   const noPlan = !!user && !plan;
   const limitReached = !!plan && todayUsage >= dailyLimit;
   const locked = noPlan || limitReached;
-
-  // Auto-show appropriate modal
-  useEffect(() => {
-    if (noPlan) setShowSubscribeModal(true);
-    else if (limitReached) setShowLimitModal(true);
-  }, [noPlan, limitReached]);
   
   // Generate random questions once on mount
   const quizQuestions = useMemo(() => {
