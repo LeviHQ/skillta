@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { calculateCareerScores, QuizAnswers, Career } from "@/data/careers";
@@ -11,6 +11,8 @@ import SupportBanner from "@/components/SupportBanner";
 import ResumeReviewerCTA from "@/components/ResumeReviewerCTA";
 import SkillGapAnalyzerCTA from "@/components/SkillGapAnalyzerCTA";
 import SupportModal from "@/components/SupportModal";
+import { AchievementBadge } from "@/components/badges/AchievementBadge";
+import { BadgeShareActions } from "@/components/badges/BadgeShareActions";
 
 interface CareerResult {
   career: Career;
@@ -25,6 +27,7 @@ export default function Results() {
   const [results, setResults] = useState<CareerResult[]>([]);
   const [saved, setSaved] = useState(false);
   const [showSupport, setShowSupport] = useState(false);
+  const [badgeEl, setBadgeEl] = useState<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const stored = sessionStorage.getItem("quizAnswers");
@@ -242,6 +245,50 @@ export default function Results() {
               </div>
             </div>
             <p className="text-sm text-muted-foreground mt-4">{top.career.growthPotential}</p>
+          </div>
+        </motion.div>
+
+        {/* Shareable Achievement Badge */}
+        <motion.div
+          className="max-w-md mx-auto mb-16 flex flex-col items-center"
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.58 }}
+        >
+          <div className="text-center mb-4">
+            <span className="text-xs font-semibold tracking-wider uppercase text-primary px-3 py-1 rounded-full bg-primary/10 border border-primary/20">
+              Share Your Achievement
+            </span>
+            <h2 className="text-xl font-bold mt-2 text-foreground">
+              Your 9:16 Story Badge
+            </h2>
+            <p className="text-xs text-muted-foreground mt-1">
+              Download as image or share directly to LinkedIn & X
+            </p>
+          </div>
+
+          <AchievementBadge
+            type="quiz"
+            payload={{
+              topCareer: top.career.id,
+              topMatchPercentage: top.matchPercentage,
+              allResults: results.slice(0, 3).map((r) => ({
+                careerId: r.career.id,
+                title: r.career.title,
+                matchPercentage: r.matchPercentage,
+              })),
+            }}
+            userName={user?.displayName ?? "SkillTa Explorer"}
+            userPhoto={user?.photoURL ?? null}
+            ref={setBadgeEl}
+          />
+
+          <div className="mt-5 w-full flex justify-center">
+            <BadgeShareActions
+              badgeElement={badgeEl}
+              fileName={`skillta-${top.career.id}-badge.png`}
+              shareText={`I just matched ${top.matchPercentage}% with ${top.career.title} on SkillTa! 🚀 Discover your verified tech career path at skillta.tech`}
+            />
           </div>
         </motion.div>
 

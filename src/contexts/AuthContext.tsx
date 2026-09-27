@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState, ReactNode } from "react";
 import type { User } from "firebase/auth";
+import type { SkillTaBadgeRecord } from "@/components/badges/types";
 
 // Firebase Auth and the Supabase client are heavy and are not needed for the
 // first paint, so both are pulled in dynamically once the browser is idle.
@@ -32,6 +33,7 @@ interface AuthContextType {
   signOut: () => Promise<void>;
   saveQuizResult: (result: Omit<QuizResult, "id" | "createdAt">) => Promise<void>;
   getQuizHistory: () => Promise<QuizResult[]>;
+  getBadges: () => Promise<SkillTaBadgeRecord[]>;
 }
 
 const AuthContext = createContext<AuthContextType | null>(null);
@@ -150,8 +152,25 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   };
 
+  const getBadges = async (): Promise<SkillTaBadgeRecord[]> => {
+  if (!user) return [];
+  try {
+    const data = await callFirebaseData(user, { action: "getBadges" });
+    const rows = (data?.badges ?? []) as any[];
+    return rows.map((r) => ({
+      id: r.id,
+      badgeType: r.badge_type,
+      payload: r.payload,
+      createdAt: r.created_at,
+    }));
+  } catch (error) {
+    console.error("Failed to fetch badges:", error);
+    return [];
+  }
+};
+
   return (
-    <AuthContext.Provider value={{ user, loading, signInWithGoogle, signOut, saveQuizResult, getQuizHistory }}>
+    <AuthContext.Provider value={{ user, loading, signInWithGoogle, signOut, saveQuizResult, getQuizHistory, getBadges }}>
       {children}
     </AuthContext.Provider>
   );

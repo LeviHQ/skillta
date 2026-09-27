@@ -6,12 +6,15 @@ import { usePlan } from "@/contexts/PlanContext";
 import { careers } from "@/data/careers";
 import {
   User, LogOut, TrendingUp, Clock, Star, ArrowRight,
-  BarChart3, History, Sparkles, Target, BookOpen, CreditCard, Zap, XCircle, CheckCircle2,ChevronLeft, ChevronRight
+  BarChart3, History, Sparkles, Target, BookOpen, CreditCard, Zap, XCircle, CheckCircle2,ChevronLeft, ChevronRight, Award, Share2
 } from "lucide-react";
 import SEOHead from "@/components/SEOHead";
 import { PAGE_SEO } from "@/lib/seo";
 import ResumeReviewerCTA from "@/components/ResumeReviewerCTA";
 import SkillGapAnalyzerCTA from "@/components/SkillGapAnalyzerCTA";
+import { AchievementBadge } from "@/components/badges/AchievementBadge";
+import { BadgeShareActions } from "@/components/badges/BadgeShareActions";
+import { SkillTaBadgeRecord } from "@/components/badges/types";
 
 interface QuizResult {
   id?: string;
@@ -23,7 +26,12 @@ interface QuizResult {
 }
 
 export default function Dashboard() {
-  const { user, signOut, getQuizHistory } = useAuth();
+  const { user, signOut, getQuizHistory, getBadges } = useAuth();
+  const [badges, setBadges] = useState<SkillTaBadgeRecord[]>([]);
+  const [badgesLoading, setBadgesLoading] = useState(true);
+  const [badgeFilter, setBadgeFilter] = useState<"all" | "quiz" | "resume">("all");
+  const [activeModalBadge, setActiveModalBadge] = useState<SkillTaBadgeRecord | null>(null);
+  const [modalBadgeEl, setModalBadgeEl] = useState<HTMLDivElement | null>(null);
   const { plan, cancelPlan, todayUsage, dailyLimit, resumeUsage, resumeDailyLimit, skillGapUsage, skillGapDailyLimit } = usePlan();
   const navigate = useNavigate();
   const [history, setHistory] = useState<QuizResult[]>([]);
@@ -43,9 +51,18 @@ export default function Dashboard() {
       setHistory(h);
       setLoading(false);
     });
+    getBadges().then((b) => {
+    setBadges(b);
+    setBadgesLoading(false);
+  });
   }, [user]);
 
   if (!user) return null;
+
+    const filteredBadges = badges.filter((b) => {
+    if (badgeFilter === "all") return true;
+    return b.badgeType === badgeFilter;
+  });
 
   const latestResult = history[0];
   const topCareer = latestResult ? careers.find((c) => c.id === latestResult.topCareer) : null;
@@ -250,6 +267,128 @@ export default function Dashboard() {
             <p className="text-2xl font-bold text-foreground">{allRecommended.size}</p>
             <p className="text-xs text-muted-foreground">Careers Explored</p>
           </div>
+        </motion.div>
+
+                {/* ================= My Achievement Badges ================= */}
+        <motion.div
+          className="mb-10 p-6 rounded-2xl bg-gradient-card border border-border"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.15 }}
+        >
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center">
+                <Award className="w-5 h-5 text-primary" />
+              </div>
+              <div>
+                <h2 className="text-xl font-bold text-foreground flex items-center gap-2">
+                  My Achievement Badges
+                  <span className="text-xs px-2 py-0.5 rounded-full bg-primary/20 text-primary font-mono">
+                    {badges.length}
+                  </span>
+                </h2>
+                <p className="text-xs text-muted-foreground">
+                  Verified credential cards for your career milestones & resume
+                </p>
+              </div>
+            </div>
+
+            {/* Filter Tabs */}
+            <div className="flex items-center gap-1.5 p-1 rounded-xl bg-secondary/60 border border-border self-start sm:self-auto">
+              {(["all", "quiz", "resume"] as const).map((tab) => (
+                <button
+                  key={tab}
+                  type="button"
+                  onClick={() => setBadgeFilter(tab)}
+                  className={`px-3 py-1 text-xs font-semibold rounded-lg capitalize transition-all ${
+                    badgeFilter === tab
+                      ? "bg-primary text-primary-foreground shadow-sm"
+                      : "text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  {tab === "all" ? "All Badges" : tab === "quiz" ? "Career DNA" : "Resume IQ"}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {badgesLoading ? (
+            <div className="text-center py-12 text-sm text-muted-foreground">
+              Loading your verified badges...
+            </div>
+          ) : filteredBadges.length === 0 ? (
+            <div className="text-center py-10 px-4 rounded-xl border border-dashed border-border/80 bg-secondary/20">
+              <Award className="w-10 h-10 text-muted-foreground/40 mx-auto mb-2" />
+              <p className="text-sm font-medium text-foreground">No badges earned yet</p>
+              <p className="text-xs text-muted-foreground mt-1 max-w-sm mx-auto">
+                Take the AI Career Quiz or analyze your Resume to earn shareable 9:16 achievement cards!
+              </p>
+              <div className="flex items-center justify-center gap-3 mt-4">
+                <Link
+                  to="/quiz"
+                  className="px-3 py-1.5 rounded-lg bg-primary text-primary-foreground text-xs font-semibold hover:opacity-90"
+                >
+                  Take Quiz
+                </Link>
+                <Link
+                  to="/resume-reviewer"
+                  className="px-3 py-1.5 rounded-lg bg-secondary text-foreground border border-border text-xs font-semibold hover:bg-secondary/80"
+                >
+                  Review Resume
+                </Link>
+              </div>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+              {filteredBadges.map((badge) => {
+                const isQuiz = badge.badgeType === "quiz";
+                const p = badge.payload as any;
+                const score = isQuiz ? p.matchPercentage : p.atsScore;
+                const title = isQuiz ? p.careerTitle : (p.targetRole || "Resume Review");
+                const date = new Date(badge.createdAt).toLocaleDateString("en-US", {
+                  month: "short",
+                  day: "numeric",
+                  year: "numeric",
+                });
+
+                return (
+                  <div
+                    key={badge.id}
+                    onClick={() => setActiveModalBadge(badge)}
+                    className="group cursor-pointer p-4 rounded-xl border border-border bg-card/60 hover:border-primary/40 hover:bg-card transition-all"
+                  >
+                    <div className="flex items-center justify-between mb-3">
+                      <span
+                        className={`text-[10px] font-mono px-2 py-0.5 rounded-md uppercase font-semibold ${
+                          isQuiz
+                            ? "bg-teal-500/10 text-teal-400 border border-teal-500/20"
+                            : "bg-purple-500/10 text-purple-400 border border-purple-500/20"
+                        }`}
+                      >
+                        {isQuiz ? "Career DNA" : "Resume IQ"}
+                      </span>
+                      <span className="text-[11px] text-muted-foreground">{date}</span>
+                    </div>
+
+                    <div className="flex items-baseline gap-2 mb-1">
+                      <span className="text-2xl font-black text-foreground font-mono">{score}%</span>
+                      <span className="text-xs text-muted-foreground">
+                        {isQuiz ? "Match" : "ATS Score"}
+                      </span>
+                    </div>
+
+                    <p className="text-sm font-semibold text-foreground truncate mb-3">{title}</p>
+
+                    <div className="pt-2 border-t border-border/50 flex items-center justify-between text-xs text-primary group-hover:translate-x-0.5 transition-transform">
+                      <span>View & Share</span>
+                      <Share2 className="w-3.5 h-3.5" />
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          )}
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -521,6 +660,100 @@ export default function Dashboard() {
           </div>
         </motion.div>
       </div>
+            {/* My Achievement Badges Section */}
+      <motion.div
+        className="mt-12 mb-12"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.3 }}
+      >
+        <div className="p-6 md:p-8 rounded-2xl bg-gradient-card border border-border">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+            <div className="flex items-center gap-2">
+              <Award className="w-5 h-5 text-primary" />
+              <h2 className="text-xl font-bold text-foreground">My Achievement Badges</h2>
+              <span className="text-xs font-mono px-2 py-0.5 rounded-full bg-primary/10 text-primary border border-primary/20">
+                {badges.length}
+              </span>
+            </div>
+
+            {/* Category Tabs */}
+            <div className="flex items-center gap-1.5 p-1 rounded-xl bg-secondary/60 border border-border self-start sm:self-auto">
+              <button
+                onClick={() => setBadgeFilter("all")}
+                className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors ${
+                  badgeFilter === "all"
+                    ? "bg-primary text-primary-foreground shadow-sm"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                All ({badges.length})
+              </button>
+              <button
+                onClick={() => setBadgeFilter("quiz")}
+                className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors ${
+                  badgeFilter === "quiz"
+                    ? "bg-primary text-primary-foreground shadow-sm"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                Career DNA ({badges.filter((b) => b.badgeType === "quiz").length})
+              </button>
+              <button
+                onClick={() => setBadgeFilter("resume")}
+                className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors ${
+                  badgeFilter === "resume"
+                    ? "bg-primary text-primary-foreground shadow-sm"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                Resume IQ ({badges.filter((b) => b.badgeType === "resume").length})
+              </button>
+            </div>
+          </div>
+
+          {badgesLoading ? (
+            <div className="flex items-center justify-center py-12">
+              <div className="w-6 h-6 border-2 border-primary border-t-transparent rounded-full animate-spin" />
+            </div>
+          ) : filteredBadges.length > 0 ? (
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+              {filteredBadges.map((badge) => (
+                <div
+                  key={badge.id}
+                  onClick={() => setActiveModalBadge(badge)}
+                  className="group relative cursor-pointer rounded-xl border border-border/70 bg-secondary/30 p-2.5 transition-all hover:border-primary/50 hover:bg-secondary/60"
+                >
+                  <AchievementBadge
+                    type={badge.badgeType}
+                    payload={badge.payload}
+                    userName={user.displayName}
+                    userPhoto={user.photoURL}
+                    createdAt={badge.createdAt}
+                    compact={true}
+                  />
+                  <div className="mt-2.5 flex items-center justify-between px-1">
+                    <span className="text-[10px] uppercase tracking-wider font-semibold text-primary">
+                      {badge.badgeType === "quiz" ? "Career DNA" : "Resume IQ"}
+                    </span>
+                    <span className="text-[10px] text-muted-foreground font-mono">
+                      {new Date(badge.createdAt).toLocaleDateString("en-IN", { month: "short", day: "numeric" })}
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-10">
+              <Award className="w-10 h-10 text-muted-foreground/30 mx-auto mb-3" />
+              <p className="text-sm font-semibold text-foreground">No badges yet in this category</p>
+              <p className="text-xs text-muted-foreground mt-1">
+                Complete an AI Career Quiz or analyze your Resume to earn your verified shareable badges!
+              </p>
+            </div>
+          )}
+        </div>
+      </motion.div>
 
       {/* Cancel confirmation */}
       {showCancelConfirm && (

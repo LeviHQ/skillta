@@ -24,6 +24,8 @@ import SubscribeRequiredModal from "@/components/SubscribeRequiredModal";
 import CongratsModal from "@/components/CongratsModal";
 import { useAuth } from "@/contexts/AuthContext";
 import { usePlan } from "@/contexts/PlanContext";
+import { AchievementBadge } from "@/components/badges/AchievementBadge";
+import { BadgeShareActions } from "@/components/badges/BadgeShareActions";
 
 
 interface RewriteItem {
@@ -164,6 +166,7 @@ export default function ResumeReviewer() {
   const [showCongrats, setShowCongrats] = useState(false);
   const [congratsExpiry, setCongratsExpiry] = useState<string | undefined>();
   const fileRef = useRef<HTMLInputElement>(null);
+  const [badgeEl, setBadgeEl] = useState<HTMLDivElement | null>(null);
   const { user } = useAuth();
   const { plan, resumeUsage, resumeDailyLimit, activateFreePlan, refreshPlan } = usePlan();
 
@@ -665,6 +668,44 @@ export default function ResumeReviewer() {
                 >
                   <Download className="w-4 h-4" /> Download Report (PDF)
                 </button>
+              </div>
+                      {/* 9:16 Shareable Resume Badge */}
+              <div className="glass border border-border rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-8">
+                <div className="flex-1 text-center md:text-left space-y-2">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-primary/10 text-primary border border-primary/20">
+                    <Sparkles className="w-3.5 h-3.5" /> Shareable 9:16 Story Badge
+                  </span>
+                  <h3 className="text-xl md:text-2xl font-bold font-heading text-foreground">
+                    Your Resume Audit Card is Ready
+                  </h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed max-w-xl">
+                    One-click download or share to LinkedIn and X. Show recruiters and peers your ATS readiness, rank, and strengths.
+                  </p>
+                </div>
+
+                <div className="flex flex-col items-center gap-4 flex-shrink-0">
+                  <div className="w-[260px] shadow-2xl rounded-2xl overflow-hidden ring-1 ring-border/50">
+                    <AchievementBadge
+                      ref={setBadgeEl}
+                      type="resume"
+                      userName={user?.displayName || user?.email?.split("@")[0] || "Candidate"}
+                      userPhoto={user?.photoURL || undefined}
+                      payload={{
+                        atsScore: review.atsScore,
+                        verdict: review.verdict,
+                        strengths: (review.strengths || []).slice(0, 3),
+                        targetRole: roleSelect === "custom" ? customRole : (roleSelect || "Tech Professional"),
+                        roleFit: review.roleFit,
+                      }}
+                    />
+                  </div>
+
+                  <BadgeShareActions
+                    badgeElement={badgeEl}
+                    fileName={`skillta-resume-${review.atsScore}ats.png`}
+                    shareText={`My resume scored ${review.atsScore}/100 ATS on SkillTa! 🎯 Audit your resume at skillta.tech/resume-reviewer`}
+                  />
+                </div>
               </div>
               {/* Score card */}
               <motion.div
