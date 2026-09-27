@@ -6,7 +6,7 @@ export const SITE_CONFIG = {
   description: "AI-powered career guidance for tech. Take our quiz to discover your ideal career path — frontend, backend, data science, AI/ML, cybersecurity & more. Get a personalized roadmap with 50+ career paths, salary insights & resources.",
   keywords: "tech career quiz, career path finder, best tech careers 2026, learn to code, career guidance for programmers, tech career roadmap, which tech career is right for me, career test, software developer roadmap, career aptitude test, ai engineer roadmap, how to become developer, tech career after 12th, programming language to learn, web development roadmap, tech job no experience",
   author: "SkillTa",
-  twitterHandle: "@SkilltaTech",
+  twitterHandle: "@AdarshMi18",
   locale: "en_US",
   themeColor: "#6366f1",
   ogImage: "/og-image.png",
@@ -134,7 +134,7 @@ export function getEducationalOrgSchema() {
     name: SITE_CONFIG.name,
     url: baseUrl,
     description: "AI-powered career guidance platform helping students, freshers & career switchers discover their ideal tech career path with personalized roadmaps",
-    sameAs: ["https://x.com/SkilltaTech"],
+    sameAs: ["https://x.com/AdarshMi18"],
     logo: `${baseUrl}/favicon.png`,
   };
 }
@@ -165,7 +165,7 @@ export function getOrganizationSchema() {
     url: baseUrl,
     logo: `${baseUrl}/favicon.png`,
     description: SITE_CONFIG.description,
-    sameAs: ["https://x.com/SkilltaTech"],
+    sameAs: ["https://x.com/AdarshMi18"],
     contactPoint: {
       "@type": "ContactPoint",
       email: "adarshmishra70931@gmail.com",

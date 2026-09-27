@@ -4,7 +4,7 @@
 > Free tools for career discovery, roadmaps, salary intelligence, resume review, skill-gap analysis, and country-specific interview preparation guides — trusted by aspiring engineers, developers, and tech professionals worldwide.
 
 🌐 **Live Website:** [https://www.skillta.tech](https://www.skillta.tech)
-🐦 **X (Twitter):** [@SkilltaTech](https://x.com/SkilltaTech)
+🐦 **X (Twitter):** [@AdarshMi18](https://x.com/AdarshMi18)
 📧 **Contact:** [adarshmishra70931@gmail.com](mailto:adarshmishra70931@gmail.com)
 
 ---
@@ -129,7 +129,7 @@ Full sitemap: [https://www.skillta.tech/sitemap.xml](https://www.skillta.tech/si
 ## 🤝 Get Involved
 
 - 💬 **Have feedback?** [Contact the founder directly](https://www.skillta.tech/contact)
-- 🐦 **Follow on X:** [@SkilltaTech](https://x.com/SkilltaTech) for career tips, updates, and tech insights
+- 🐦 **Follow on X:** [@AdarshMi18](https://x.com/AdarshMi18) for career tips, updates, and tech insights
 - 📧 **Partnerships / Media:** [adarshmishra70931@gmail.com](mailto:adarshmishra70931@gmail.com)
 - 🐛 **Report a bug:** Use the contact form on the website
 
@@ -150,7 +150,7 @@ Full sitemap: [https://www.skillta.tech/sitemap.xml](https://www.skillta.tech/si
 If SkillTa helped you find clarity in your career journey, the best way to support us is:
 
 1. ⭐ **Share the website** with friends, classmates, or your community
-2. 🐦 **Follow us on X:** [@SkilltaTech](https://x.com/SkilltaTech)
+2. 🐦 **Follow us on X:** [@AdarshMi18](https://x.com/AdarshMi18)
 3. 📝 **Write about us** on your blog, LinkedIn, or Dev.to
 4. 💬 **Send feedback** through our [contact page](https://www.skillta.tech/contact)
 
