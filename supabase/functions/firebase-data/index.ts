@@ -172,14 +172,23 @@ Deno.serve(async (req) => {
         return json({ error: "limit_reached", message: "Daily quiz limit reached.", used, limit }, 429);
       }
 
-      const { error } = await supabase.from("quiz_results").insert({
+      const { data: quizResult, error } = await supabase.from("quiz_results").insert({
         firebase_uid: uid,
         answers,
         top_career: topCareer,
         top_match_percentage: topMatchPercentage,
         all_results: allResults,
-      });
+      }).select("id, created_at").single();
       if (error) throw error;
+
+      const { error: badgeError } = await supabase.from("badges").insert({
+        firebase_uid: uid,
+        badge_type: "quiz",
+        source_id: quizResult.id,
+        payload: { topCareer, topMatchPercentage, allResults },
+        created_at: quizResult.created_at,
+      });
+      if (badgeError) console.error("quiz badge insert error", badgeError);
 
       // Fire-and-forget: notify user when they exhaust their daily quota.
       if (used + 1 >= limit && token.email) {
@@ -216,6 +225,16 @@ Deno.serve(async (req) => {
         .order("created_at", { ascending: false });
       if (error) throw error;
       return json({ results: data ?? [] });
+    }
+
+    if (action === "getBadges") {
+      const { data, error } = await supabase
+        .from("badges")
+        .select("id,badge_type,payload,created_at")
+        .eq("firebase_uid", uid)
+        .order("created_at", { ascending: false });
+      if (error) throw error;
+      return json({ badges: data ?? [] });
     }
 
     if (action === "getPlan") {

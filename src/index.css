@@ -184,6 +184,81 @@
   .animate-pulse-glow {
     animation: pulse-glow 2.5s ease-in-out infinite;
   }
+
+  .badge-preview-shell {
+    width: min(100%, 360px);
+    aspect-ratio: 9 / 16;
+  }
+
+  .badge-preview-shell-featured {
+    width: min(100%, 390px);
+  }
+
+  .skillta-badge {
+    --background: 220 24% 6%;
+    --foreground: 210 25% 96%;
+    --card: 220 20% 10%;
+    --card-foreground: 210 25% 96%;
+    --primary: 174 72% 50%;
+    --primary-foreground: 220 24% 6%;
+    --secondary: 220 16% 16%;
+    --secondary-foreground: 210 20% 88%;
+    --muted: 220 14% 14%;
+    --muted-foreground: 215 15% 64%;
+    --accent: 262 72% 62%;
+    --accent-foreground: 210 25% 96%;
+    --border: 220 14% 23%;
+    position: relative;
+    isolation: isolate;
+    width: 360px;
+    height: 640px;
+    overflow: hidden;
+    border: 1px solid hsl(var(--border));
+    border-radius: 12px;
+    background: hsl(var(--background));
+    box-shadow: 0 24px 70px -24px hsl(220 50% 2% / 0.85);
+  }
+
+  .skillta-badge-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    padding: 24px;
+  }
+
+  .skillta-badge-grid {
+    position: absolute;
+    inset: 0;
+    opacity: 0.22;
+    background-image:
+      linear-gradient(hsl(var(--border) / 0.55) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--border) / 0.55) 1px, transparent 1px);
+    background-size: 36px 36px;
+    mask-image: linear-gradient(to bottom, black, transparent 65%);
+  }
+
+  .skillta-badge-glow {
+    position: absolute;
+    width: 220px;
+    height: 220px;
+    border-radius: 999px;
+    filter: blur(74px);
+    opacity: 0.18;
+  }
+
+  .skillta-badge-glow-primary {
+    right: -90px;
+    top: 90px;
+    background: hsl(var(--primary));
+  }
+
+  .skillta-badge-glow-accent {
+    bottom: -70px;
+    left: -100px;
+    background: hsl(var(--accent));
+  }
 }
 
 @keyframes pulse-glow {

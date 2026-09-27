@@ -228,6 +228,27 @@ Deno.serve(async (req) => {
       if (error) console.error("usage insert error", error);
     });
 
+    if (uid) {
+      const reviewData = review as {
+        atsScore?: number;
+        verdict?: string;
+        strengths?: string[];
+        roleFit?: { role?: string; fitScore?: number; reasoning?: string };
+      };
+      const { error: badgeError } = await supabase.from("badges").insert({
+        firebase_uid: uid,
+        badge_type: "resume",
+        payload: {
+          atsScore: reviewData.atsScore ?? 0,
+          verdict: reviewData.verdict ?? "Resume review completed",
+          strengths: Array.isArray(reviewData.strengths) ? reviewData.strengths.slice(0, 4) : [],
+          targetRole: targetRole || reviewData.roleFit?.role || "Tech Professional",
+          roleFit: reviewData.roleFit ?? null,
+        },
+      });
+      if (badgeError) console.error("resume badge insert error", badgeError);
+    }
+
     return new Response(JSON.stringify({ review, used: used + 1, limit }), {
       status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" },
     });

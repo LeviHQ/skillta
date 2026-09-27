@@ -14,6 +14,33 @@ export type Database = {
   }
   public: {
     Tables: {
+      badges: {
+        Row: {
+          badge_type: string
+          created_at: string
+          firebase_uid: string
+          id: string
+          payload: Json
+          source_id: string | null
+        }
+        Insert: {
+          badge_type: string
+          created_at?: string
+          firebase_uid: string
+          id?: string
+          payload?: Json
+          source_id?: string | null
+        }
+        Update: {
+          badge_type?: string
+          created_at?: string
+          firebase_uid?: string
+          id?: string
+          payload?: Json
+          source_id?: string | null
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           created_at: string
