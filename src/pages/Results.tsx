@@ -260,7 +260,7 @@ export default function Results() {
               Share Your Achievement
             </span>
             <h2 className="text-xl font-bold mt-2 text-foreground">
-              Your 9:16 Story Badge
+              Your Achievement Badge
             </h2>
             <p className="text-xs text-muted-foreground mt-1">
               Download as image or share directly to LinkedIn & X

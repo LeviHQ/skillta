@@ -354,8 +354,8 @@ export default function Dashboard() {
             <div className="text-center py-10 px-4 rounded-xl border border-dashed border-border/80 bg-secondary/20">
               <Award className="w-10 h-10 text-muted-foreground/40 mx-auto mb-2" />
               <p className="text-sm font-medium text-foreground">No badges earned yet</p>
-              <p className="text-xs text-muted-foreground mt-1 max-w-sm mx-auto">
-                Take the AI Career Quiz or analyze your Resume to earn shareable 9:16 achievement cards!
+                            <p className="text-xs text-muted-foreground mt-1 max-w-sm mx-auto">
+                Take the AI Career Quiz or analyze your Resume to earn shareable achievement badges!
               </p>
               <div className="flex items-center justify-center gap-3 mt-4">
                 <Link

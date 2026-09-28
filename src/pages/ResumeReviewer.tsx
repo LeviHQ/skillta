@@ -672,8 +672,8 @@ export default function ResumeReviewer() {
                       {/* 9:16 Shareable Resume Badge */}
               <div className="glass border border-border rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-8">
                 <div className="flex-1 text-center md:text-left space-y-2">
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-primary/10 text-primary border border-primary/20">
-                    <Sparkles className="w-3.5 h-3.5" /> Shareable 9:16 Story Badge
+                                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-primary/10 text-primary border border-primary/20">
+                    <Sparkles className="w-3.5 h-3.5" /> Verified Achievement Badge
                   </span>
                   <h3 className="text-xl md:text-2xl font-bold font-heading text-foreground">
                     Your Resume Audit Card is Ready
@@ -684,7 +684,7 @@ export default function ResumeReviewer() {
                 </div>
 
                 <div className="flex flex-col items-center gap-4 flex-shrink-0">
-                  <div className="w-full max-w-[360px] shadow-2xl rounded-xl ring-1 ring-border/50">
+                                    <div className="w-full max-w-[380px] shadow-2xl rounded-xl ring-1 ring-border/50">
                     <AchievementBadge
                       ref={setBadgeEl}
                       type="resume"
