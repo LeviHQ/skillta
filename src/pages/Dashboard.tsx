@@ -344,8 +344,11 @@ export default function Dashboard() {
               {filteredBadges.map((badge) => {
                 const isQuiz = badge.badgeType === "quiz";
                 const p = badge.payload as any;
-                const score = isQuiz ? p.matchPercentage : p.atsScore;
-                const title = isQuiz ? p.careerTitle : (p.targetRole || "Resume Review");
+                const careerObj = isQuiz && p.topCareer ? careers.find((c) => c.id === p.topCareer) : null;
+                const score = isQuiz ? (p.topMatchPercentage ?? p.matchPercentage ?? 0) : (p.atsScore ?? 0);
+                const title = isQuiz
+                ? (careerObj?.title || p.careerTitle || p.allResults?.[0]?.title || p.topCareer || "Career Match")
+                : (p.targetRole || p.roleFit?.role || "Resume Review");
                 const date = new Date(badge.createdAt).toLocaleDateString("en-US", {
                   month: "short",
                   day: "numeric",
