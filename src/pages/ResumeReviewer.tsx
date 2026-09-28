@@ -161,6 +161,7 @@ export default function ResumeReviewer() {
   const [error, setError] = useState<string | null>(null);
   const [review, setReview] = useState<Review | null>(null);
   const [fileName, setFileName] = useState<string | null>(null);
+  const [isReadingFile, setIsReadingFile] = useState(false);
   const [showSignIn, setShowSignIn] = useState(false);
   const [showSubscribe, setShowSubscribe] = useState(false);
   const [showCongrats, setShowCongrats] = useState(false);
@@ -184,12 +185,14 @@ export default function ResumeReviewer() {
     setReview(null);
     setError(null);
     setFileName(null);
+    setIsReadingFile(false);
     if (fileRef.current) fileRef.current.value = "";
   };
 
-  const handleFile = async (file: File) => {
+    const handleFile = async (file: File) => {
     setError(null);
     setFileName(file.name);
+    setIsReadingFile(true);
     try {
       let text = "";
       if (file.type === "application/pdf" || file.name.toLowerCase().endsWith(".pdf")) {
@@ -199,22 +202,27 @@ export default function ResumeReviewer() {
       } else {
         setError("Unsupported file. Please upload a PDF or TXT, or paste the text directly.");
         setFileName(null);
+        setIsReadingFile(false);
         return;
       }
       if (!text || text.length < 80) {
         setError("Could not extract enough text. Try pasting directly.");
+        setIsReadingFile(false);
         return;
       }
       setResume(text);
     } catch (e) {
       console.error(e);
       setError("Failed to read file. Please paste the text instead.");
+    } finally {
+      setIsReadingFile(false);
     }
   };
 
   const resolvedRole = (roleSelect === "__custom__" ? customRole : roleSelect).trim();
 
   const handleSubmit = async () => {
+    if (isReadingFile) return;
     setError(null);
     setReview(null);
     if (!user) {
@@ -556,24 +564,35 @@ export default function ResumeReviewer() {
                   }}
                 />
                 <button
-                  onClick={() => fileRef.current?.click()}
-                  className="w-full md:w-auto flex items-center justify-center gap-2 px-5 py-3 rounded-lg border border-primary/40 text-primary hover:bg-primary/10 transition-colors text-sm font-semibold"
-                >
-                  <Upload className="w-4 h-4" /> Upload PDF / TXT
-                </button>
+  onClick={() => fileRef.current?.click()}
+  disabled={isReadingFile}
+  className="w-full md:w-auto flex items-center justify-center gap-2 px-5 py-3 rounded-lg border border-primary/40 text-primary hover:bg-primary/10 transition-colors text-sm font-semibold disabled:opacity-60 disabled:cursor-not-allowed"
+>
+  {isReadingFile ? <Loader2 className="w-4 h-4 animate-spin" /> : <Upload className="w-4 h-4" />}
+  {isReadingFile ? "Extracting Text…" : "Upload PDF / TXT"}
+</button>
               </div>
             </div>
 
-            {fileName && (
+                        {fileName && (
               <div className="mb-3 flex items-center gap-2 text-xs text-muted-foreground">
-                <FileText className="w-3.5 h-3.5 text-primary" />
-                <span>Loaded: <span className="text-foreground font-medium">{fileName}</span></span>
-                <button
-                  onClick={() => { setFileName(null); setResume(""); if (fileRef.current) fileRef.current.value = ""; }}
-                  className="ml-1 text-muted-foreground hover:text-rose-400"
-                >
-                  <X className="w-3.5 h-3.5" />
-                </button>
+                {isReadingFile ? (
+                  <>
+                    <Loader2 className="w-3.5 h-3.5 animate-spin text-primary" />
+                    <span>Reading resume text from <span className="text-foreground font-medium">{fileName}</span>…</span>
+                  </>
+                ) : (
+                  <>
+                    <FileText className="w-3.5 h-3.5 text-primary" />
+                    <span>Loaded: <span className="text-foreground font-medium">{fileName}</span></span>
+                    <button
+                      onClick={() => { setFileName(null); setResume(""); if (fileRef.current) fileRef.current.value = ""; }}
+                      className="ml-1 text-muted-foreground hover:text-rose-400"
+                    >
+                      <X className="w-3.5 h-3.5" />
+                    </button>
+                  </>
+                )}
               </div>
             )}
 
@@ -616,15 +635,19 @@ export default function ResumeReviewer() {
               </div>
             )}
 
-            <div className="mt-5 flex flex-col sm:flex-row gap-3">
+                        <div className="mt-5 flex flex-col sm:flex-row gap-3">
               <button
                 onClick={handleSubmit}
-                disabled={loading || (!!user && !!plan && limitReached)}
+                disabled={loading || isReadingFile || (!!user && !!plan && limitReached)}
                 className="flex-1 flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-gradient-primary text-primary-foreground font-semibold hover:opacity-95 transition-opacity disabled:opacity-60 disabled:cursor-not-allowed"
               >
                 {loading ? (
                   <>
                     <Loader2 className="w-4 h-4 animate-spin" /> Analyzing your resume…
+                  </>
+                ) : isReadingFile ? (
+                  <>
+                    <Loader2 className="w-4 h-4 animate-spin" /> Reading PDF…
                   </>
                 ) : noPlan ? (
                   <>
