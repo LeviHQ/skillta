@@ -684,7 +684,7 @@ export default function ResumeReviewer() {
                 </div>
 
                 <div className="flex flex-col items-center gap-4 flex-shrink-0">
-                  <div className="w-[260px] shadow-2xl rounded-2xl overflow-hidden ring-1 ring-border/50">
+                  <div className="w-full max-w-[360px] shadow-2xl rounded-xl ring-1 ring-border/50">
                     <AchievementBadge
                       ref={setBadgeEl}
                       type="resume"
@@ -694,7 +694,7 @@ export default function ResumeReviewer() {
                         atsScore: review.atsScore,
                         verdict: review.verdict,
                         strengths: (review.strengths || []).slice(0, 3),
-                        targetRole: roleSelect === "custom" ? customRole : (roleSelect || "Tech Professional"),
+                        targetRole: roleSelect === "__custom__" ? customRole : (roleSelect || "Tech Professional"),
                         roleFit: review.roleFit,
                       }}
                     />

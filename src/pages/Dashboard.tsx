@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useAuth } from "@/contexts/AuthContext";
@@ -6,7 +6,7 @@ import { usePlan } from "@/contexts/PlanContext";
 import { careers } from "@/data/careers";
 import {
   User, LogOut, TrendingUp, Clock, Star, ArrowRight,
-  BarChart3, History, Sparkles, Target, BookOpen, CreditCard, Zap, XCircle, CheckCircle2,ChevronLeft, ChevronRight, Award, Share2
+  BarChart3, History, Sparkles, Target, BookOpen, CreditCard, Zap, XCircle, CheckCircle2, ChevronLeft, ChevronRight, Award, Share2, X
 } from "lucide-react";
 import SEOHead from "@/components/SEOHead";
 import { PAGE_SEO } from "@/lib/seo";
@@ -15,6 +15,9 @@ import SkillGapAnalyzerCTA from "@/components/SkillGapAnalyzerCTA";
 import { AchievementBadge } from "@/components/badges/AchievementBadge";
 import { BadgeShareActions } from "@/components/badges/BadgeShareActions";
 import { SkillTaBadgeRecord } from "@/components/badges/types";
+import { Button } from "@/components/ui/button";
+
+const BADGES_PER_PAGE = 4;
 
 interface QuizResult {
   id?: string;
@@ -30,6 +33,7 @@ export default function Dashboard() {
   const [badges, setBadges] = useState<SkillTaBadgeRecord[]>([]);
   const [badgesLoading, setBadgesLoading] = useState(true);
   const [badgeFilter, setBadgeFilter] = useState<"all" | "quiz" | "resume">("all");
+  const [badgePage, setBadgePage] = useState(1);
   const [activeModalBadge, setActiveModalBadge] = useState<SkillTaBadgeRecord | null>(null);
   const [modalBadgeEl, setModalBadgeEl] = useState<HTMLDivElement | null>(null);
   const { plan, cancelPlan, todayUsage, dailyLimit, resumeUsage, resumeDailyLimit, skillGapUsage, skillGapDailyLimit } = usePlan();
@@ -57,12 +61,41 @@ export default function Dashboard() {
   });
   }, [user]);
 
-  if (!user) return null;
+  const filteredBadges = useMemo(
+    () =>
+      [...badges]
+        .filter((badge) => badgeFilter === "all" || badge.badgeType === badgeFilter)
+        .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()),
+    [badges, badgeFilter],
+  );
+  const totalBadgePages = Math.max(1, Math.ceil(filteredBadges.length / BADGES_PER_PAGE));
+  const paginatedBadges = filteredBadges.slice(
+    (badgePage - 1) * BADGES_PER_PAGE,
+    badgePage * BADGES_PER_PAGE,
+  );
 
-    const filteredBadges = badges.filter((b) => {
-    if (badgeFilter === "all") return true;
-    return b.badgeType === badgeFilter;
-  });
+  useEffect(() => {
+    setBadgePage(1);
+  }, [badgeFilter]);
+
+  useEffect(() => {
+    if (!activeModalBadge) return;
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setActiveModalBadge(null);
+        setModalBadgeEl(null);
+      }
+    };
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", closeOnEscape);
+    return () => {
+      document.body.style.overflow = originalOverflow;
+      window.removeEventListener("keydown", closeOnEscape);
+    };
+  }, [activeModalBadge]);
+
+  if (!user) return null;
 
   const latestResult = history[0];
   const topCareer = latestResult ? careers.find((c) => c.id === latestResult.topCareer) : null;
@@ -340,8 +373,9 @@ export default function Dashboard() {
               </div>
             </div>
           ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-              {filteredBadges.map((badge) => {
+            <div>
+              <div className="grid auto-cols-[minmax(240px,1fr)] grid-flow-col gap-4 overflow-x-auto pb-2 snap-x snap-mandatory lg:grid-flow-row lg:grid-cols-4 lg:auto-cols-auto lg:overflow-visible">
+              {paginatedBadges.map((badge) => {
                 const isQuiz = badge.badgeType === "quiz";
                 const p = badge.payload as any;
                 const careerObj = isQuiz && p.topCareer ? careers.find((c) => c.id === p.topCareer) : null;
@@ -359,7 +393,15 @@ export default function Dashboard() {
                   <div
                     key={badge.id}
                     onClick={() => setActiveModalBadge(badge)}
-                    className="group cursor-pointer p-4 rounded-xl border border-border bg-card/60 hover:border-primary/40 hover:bg-card transition-all"
+                    className="group min-w-0 cursor-pointer snap-start p-4 rounded-xl border border-border bg-card/60 hover:border-primary/40 hover:bg-card transition-all"
+                    role="button"
+                    tabIndex={0}
+                    onKeyDown={(event) => {
+                      if (event.key === "Enter" || event.key === " ") {
+                        event.preventDefault();
+                        setActiveModalBadge(badge);
+                      }
+                    }}
                   >
                     <div className="flex items-center justify-between mb-3">
                       <span
@@ -390,6 +432,35 @@ export default function Dashboard() {
                   </div>
                 );
               })}
+              </div>
+
+              {totalBadgePages > 1 && (
+                <div className="mt-5 flex items-center justify-between border-t border-border/60 pt-4">
+                  <p className="text-xs text-muted-foreground">
+                    Page <span className="font-semibold text-foreground">{badgePage}</span> of {totalBadgePages}
+                  </p>
+                  <div className="flex items-center gap-2">
+                    <Button
+                      type="button"
+                      variant="outline"
+                      size="sm"
+                      onClick={() => setBadgePage((page) => Math.max(1, page - 1))}
+                      disabled={badgePage === 1}
+                    >
+                      <ChevronLeft className="h-4 w-4" /> Previous
+                    </Button>
+                    <Button
+                      type="button"
+                      variant="outline"
+                      size="sm"
+                      onClick={() => setBadgePage((page) => Math.min(totalBadgePages, page + 1))}
+                      disabled={badgePage === totalBadgePages}
+                    >
+                      Next <ChevronRight className="h-4 w-4" />
+                    </Button>
+                  </div>
+                </div>
+              )}
             </div>
           )}
         </motion.div>
@@ -706,7 +777,7 @@ export default function Dashboard() {
 
             {/* Badge Preview & Share Modal */}
       {activeModalBadge && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-5" role="dialog" aria-modal="true" aria-label="Achievement badge preview">
           <div
             className="absolute inset-0 bg-background/85 backdrop-blur-sm"
             onClick={() => {
@@ -717,20 +788,25 @@ export default function Dashboard() {
           <motion.div
             initial={{ scale: 0.92, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            className="relative z-10 w-full max-w-sm flex flex-col items-center gap-4 max-h-[95vh] overflow-y-auto p-2"
+            className="relative z-10 flex max-h-[96vh] w-full max-w-[430px] flex-col items-center gap-3 overflow-y-auto rounded-lg border border-border bg-background p-3 shadow-card sm:p-4"
           >
-            <div className="w-full flex justify-end">
-              <button
+            <div className="flex w-full items-center justify-between">
+              <div>
+                <p className="text-sm font-semibold text-foreground">Achievement badge</p>
+                <p className="text-xs text-muted-foreground">Preview, download, or share</p>
+              </div>
+              <Button
                 type="button"
+                variant="ghost"
+                size="icon"
                 onClick={() => {
                   setActiveModalBadge(null);
                   setModalBadgeEl(null);
                 }}
-                className="p-2 rounded-full bg-secondary/80 text-foreground hover:bg-secondary transition-colors"
                 aria-label="Close badge modal"
               >
-                <XCircle className="w-5 h-5" />
-              </button>
+                <X className="h-5 w-5" />
+              </Button>
             </div>
 
             <AchievementBadge
@@ -739,6 +815,8 @@ export default function Dashboard() {
               userName={user?.displayName || "Tech Professional"}
               userPhoto={user?.photoURL || undefined}
               payload={activeModalBadge.payload as any}
+              createdAt={activeModalBadge.createdAt}
+              compact
             />
 
             <BadgeShareActions
@@ -746,7 +824,7 @@ export default function Dashboard() {
               fileName={`skillta-${activeModalBadge.badgeType}-badge.png`}
               shareText={
                 activeModalBadge.badgeType === "quiz"
-                  ? `I matched ${(activeModalBadge.payload as any).matchPercentage}% as ${(activeModalBadge.payload as any).careerTitle} on SkillTa! 🚀 Discover your tech career path at skillta.tech`
+                  ? `I matched ${(activeModalBadge.payload as any).topMatchPercentage ?? (activeModalBadge.payload as any).matchPercentage ?? 0}% with ${(activeModalBadge.payload as any).allResults?.[0]?.title ?? careers.find((career) => career.id === (activeModalBadge.payload as any).topCareer)?.title ?? (activeModalBadge.payload as any).careerTitle ?? "a tech career"} on SkillTa. Discover your path at skillta.tech`
                   : `My resume scored ${(activeModalBadge.payload as any).atsScore}/100 ATS on SkillTa! 🎯 Audit your resume at skillta.tech/resume-reviewer`
               }
             />
