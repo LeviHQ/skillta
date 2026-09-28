@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Download, Linkedin, Loader2, Share2 } from "lucide-react";
 import { toBlob } from "html-to-image";
 import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
 
 interface BadgeShareActionsProps {
   badgeElement: HTMLDivElement | null;
@@ -77,16 +78,51 @@ export function BadgeShareActions({ badgeElement, fileName, shareText }: BadgeSh
     }
   };
 
-  const shareTo = async (network: "x" | "linkedin") => {
+    const shareTo = async (network: "x" | "linkedin") => {
     setWorking(network);
     try {
       const blob = await createImage();
+      
+      // 1. Badge image auto-download karein
       downloadBlob(blob, fileName);
-      await navigator.clipboard?.writeText(shareText).catch(() => undefined);
-      const url = network === "x"
-        ? `https://x.com/intent/post?text=${encodeURIComponent(shareText)}`
-        : `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent("https://skillta.tech")}`;
+
+      // 2. Image ko clipboard me copy karein (taaki user direct Ctrl+V ya Paste kar sake)
+      let copiedToClipboard = false;
+      try {
+        if (navigator.clipboard && window.ClipboardItem) {
+          await navigator.clipboard.write([
+            new ClipboardItem({ [blob.type]: blob }),
+          ]);
+          copiedToClipboard = true;
+        }
+      } catch {
+        // Clipboard write fallback: text copy kar dega agar image format clipboard me restrict ho
+        await navigator.clipboard?.writeText(shareText).catch(() => undefined);
+      }
+
+      // 3. Platform URL open karein (LinkedIn ke liye new post feed prefill URL)
+      const url =
+        network === "x"
+          ? `https://x.com/intent/post?text=${encodeURIComponent(shareText)}`
+          : `https://www.linkedin.com/feed/?shareActive=true&text=${encodeURIComponent(shareText)}`;
+      
       window.open(url, "_blank", "noopener,noreferrer");
+
+      // 4. User ko popup toast notification dikhayein
+      if (copiedToClipboard) {
+        toast.success("Badge copied to clipboard & downloaded!", {
+          description: "Just press Ctrl+V (or Paste) in your post to attach the badge image.",
+          duration: 6000,
+        });
+      } else {
+        toast.info("Badge image downloaded!", {
+          description: "Attach the downloaded image file to your post.",
+          duration: 6000,
+        });
+      }
+    } catch (err: any) {
+      console.error(err);
+      toast.error("Could not prepare badge image.");
     } finally {
       setWorking(null);
     }
