@@ -10,8 +10,23 @@ interface BadgeShareActionsProps {
 }
 
 async function renderBadge(element: HTMLDivElement) {
+  await document.fonts?.ready;
+  const images = Array.from(element.querySelectorAll("img"));
+  await Promise.all(
+    images.map(async (image) => {
+      if (image.complete) return image.decode?.().catch(() => undefined);
+      await new Promise<void>((resolve) => {
+        image.addEventListener("load", () => resolve(), { once: true });
+        image.addEventListener("error", () => resolve(), { once: true });
+      });
+    }),
+  );
   const blob = await toBlob(element, {
     pixelRatio: 3,
+    width: 360,
+    height: 640,
+    canvasWidth: 1080,
+    canvasHeight: 1920,
     cacheBust: true,
     backgroundColor: "hsl(220 24% 6%)",
   });
