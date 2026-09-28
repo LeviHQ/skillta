@@ -56,69 +56,72 @@ export const AchievementBadge = forwardRef<HTMLDivElement, AchievementBadgeProps
               </div>
             </header>
 
-            <div className="mt-10 flex flex-col items-center text-center">
-              <div className="relative">
-                <div className="absolute -inset-2 rounded-full border border-primary/30" />
+                        <div className="mt-3 flex items-center gap-3.5 text-left">
+              <div className="relative shrink-0">
+                <div className="absolute -inset-1.5 rounded-full border border-primary/30" />
                 {userPhoto ? (
-                  <img src={userPhoto} alt="" className="relative h-20 w-20 rounded-full border-2 border-primary object-cover" crossOrigin="anonymous" referrerPolicy="no-referrer" />
+                  <img src={userPhoto} alt="" className="relative h-14 w-14 rounded-full border-2 border-primary object-cover" crossOrigin="anonymous" referrerPolicy="no-referrer" />
                 ) : (
-                  <div className="relative flex h-20 w-20 items-center justify-center rounded-full border-2 border-primary bg-secondary text-xl font-bold text-primary">
+                  <div className="relative flex h-14 w-14 items-center justify-center rounded-full border-2 border-primary bg-secondary text-base font-bold text-primary">
                     {initials(userName)}
                   </div>
                 )}
-                <span className="absolute -bottom-1 -right-1 flex h-7 w-7 items-center justify-center rounded-full border-2 border-background bg-primary text-primary-foreground">
-                  <CheckCircle2 className="h-4 w-4" />
+                <span className="absolute -bottom-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full border-2 border-background bg-primary text-primary-foreground">
+                  <CheckCircle2 className="h-3 w-3" />
                 </span>
               </div>
-              <p className="mt-5 text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
-                {userName || "SkillTa Explorer"}
-              </p>
-              <h2 className="mt-2 max-w-[310px] text-[28px] font-bold leading-[1.08] text-foreground">
-                {isQuiz ? "My top career match" : "My resume readiness"}
-              </h2>
+              <div className="min-w-0 flex-1">
+                <p className="text-[10px] uppercase tracking-[0.16em] text-muted-foreground truncate">
+                  {userName || "SkillTa Explorer"}
+                </p>
+                <h2 className="mt-0.5 text-[18px] font-bold leading-tight text-foreground truncate">
+                  {isQuiz ? "Career Match Milestone" : "Resume Readiness Milestone"}
+                </h2>
+              </div>
             </div>
 
-            <div className="mt-7 grid grid-cols-[1fr_122px] gap-3">
-              <div className="flex min-h-[132px] flex-col justify-between rounded-md border border-border bg-card/75 p-4">
-                <div className="flex items-center gap-2 text-primary">
-                  {isQuiz ? <Compass className="h-4 w-4" /> : <Target className="h-4 w-4" />}
-                  <span className="text-[9px] font-semibold uppercase tracking-[0.16em]">
+                        <div className="mt-3 grid grid-cols-[1fr_105px] gap-2.5">
+              <div className="flex flex-col justify-between rounded-md border border-border bg-card/75 p-3">
+                <div className="flex items-center gap-1.5 text-primary">
+                  {isQuiz ? <Compass className="h-3.5 w-3.5" /> : <Target className="h-3.5 w-3.5" />}
+                  <span className="text-[8px] font-semibold uppercase tracking-[0.15em]">
                     {isQuiz ? "Best-fit path" : "Target role"}
                   </span>
                 </div>
-                <p className="mt-3 text-[20px] font-bold leading-tight text-foreground">{title}</p>
-                <p className="mt-2 line-clamp-2 text-[10px] leading-relaxed text-muted-foreground">
+                <p className="my-1 text-[16px] font-bold leading-tight text-foreground line-clamp-1">{title}</p>
+                <p className="line-clamp-1 text-[9px] text-muted-foreground">
                   {isQuiz ? career?.tagline : resume?.verdict}
                 </p>
               </div>
-              <div className="flex min-h-[132px] flex-col items-center justify-center rounded-md border border-primary/30 bg-primary/10">
-                <span className="text-[43px] font-bold leading-none text-primary">{score}%</span>
-                <span className="mt-2 text-[9px] font-semibold uppercase tracking-[0.15em] text-muted-foreground">
+              <div className="flex flex-col items-center justify-center rounded-md border border-primary/30 bg-primary/10 p-2">
+                <span className="text-[34px] font-bold leading-none text-primary">{score}%</span>
+                <span className="mt-1 text-[8px] font-semibold uppercase tracking-[0.12em] text-muted-foreground">
                   {isQuiz ? "Match score" : "ATS score"}
                 </span>
               </div>
             </div>
 
-            <div className="mt-3 rounded-md border border-accent/30 bg-accent/10 p-4">
+                        <div className="mt-2.5 rounded-md border border-accent/30 bg-accent/10 px-3 py-2.5">
               <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2 text-accent">
-                  <Award className="h-4 w-4" />
-                  <span className="text-[9px] font-semibold uppercase tracking-[0.16em]">Achievement rank</span>
+                <div className="flex items-center gap-1.5 text-accent">
+                  <Award className="h-3.5 w-3.5" />
+                  <span className="text-[8px] font-semibold uppercase tracking-[0.15em]">Achievement rank</span>
                 </div>
-                <Sparkles className="h-4 w-4 text-primary" />
+                <Sparkles className="h-3.5 w-3.5 text-primary" />
               </div>
-              <p className="mt-2 text-[24px] font-bold text-foreground">{rank}</p>
-              <p className="mt-1 text-[9px] text-muted-foreground">
-                {isQuiz ? "Career clarity milestone unlocked" : "Resume readiness milestone unlocked"}
-              </p>
+              <div className="mt-1 flex items-baseline justify-between">
+                <p className="text-[18px] font-bold text-foreground">{rank}</p>
+                <p className="text-[8px] text-muted-foreground">
+                  {isQuiz ? "Career clarity unlocked" : "Resume readiness unlocked"}
+                </p>
+              </div>
             </div>
 
-            <footer className="mt-auto flex items-end justify-between border-t border-border/70 pt-4">
+                        <footer className="mt-auto flex items-center justify-between border-t border-border/70 pt-2.5">
               <div>
-                <p className="text-[9px] text-muted-foreground">Earned on {dateLabel}</p>
-                <p className="mt-1 text-[11px] font-semibold text-foreground">{isQuiz ? "Discover your path" : "Check your resume readiness"}</p>
+                <p className="text-[8px] text-muted-foreground">Earned on {dateLabel}</p>
               </div>
-              <p className="text-[13px] font-bold text-primary">skillta.tech</p>
+              <p className="text-[12px] font-bold text-primary">skillta.tech</p>
             </footer>
           </div>
         </div>

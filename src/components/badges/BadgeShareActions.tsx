@@ -21,12 +21,12 @@ async function renderBadge(element: HTMLDivElement) {
       });
     }),
   );
-  const blob = await toBlob(element, {
+    const blob = await toBlob(element, {
     pixelRatio: 3,
-    width: 360,
-    height: 640,
+    width: 380,
+    height: 380,
     canvasWidth: 1080,
-    canvasHeight: 1920,
+    canvasHeight: 1080,
     cacheBust: true,
     backgroundColor: "hsl(220 24% 6%)",
   });
