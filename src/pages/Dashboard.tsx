@@ -61,8 +61,6 @@ export default function Dashboard() {
   });
   }, [user]);
 
-  if (!user) return null;
-
   const filteredBadges = useMemo(
     () =>
       [...badges]
@@ -96,6 +94,8 @@ export default function Dashboard() {
       window.removeEventListener("keydown", closeOnEscape);
     };
   }, [activeModalBadge]);
+
+  if (!user) return null;
 
   const latestResult = history[0];
   const topCareer = latestResult ? careers.find((c) => c.id === latestResult.topCareer) : null;
