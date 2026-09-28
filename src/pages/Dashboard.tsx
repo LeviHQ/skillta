@@ -701,6 +701,56 @@ export default function Dashboard() {
         </div>
       )}
 
+            {/* Badge Preview & Share Modal */}
+      {activeModalBadge && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+          <div
+            className="absolute inset-0 bg-background/85 backdrop-blur-sm"
+            onClick={() => {
+              setActiveModalBadge(null);
+              setModalBadgeEl(null);
+            }}
+          />
+          <motion.div
+            initial={{ scale: 0.92, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            className="relative z-10 w-full max-w-sm flex flex-col items-center gap-4 max-h-[95vh] overflow-y-auto p-2"
+          >
+            <div className="w-full flex justify-end">
+              <button
+                type="button"
+                onClick={() => {
+                  setActiveModalBadge(null);
+                  setModalBadgeEl(null);
+                }}
+                className="p-2 rounded-full bg-secondary/80 text-foreground hover:bg-secondary transition-colors"
+                aria-label="Close badge modal"
+              >
+                <XCircle className="w-5 h-5" />
+              </button>
+            </div>
+
+            <AchievementBadge
+              ref={setModalBadgeEl}
+              type={activeModalBadge.badgeType}
+              userName={user?.displayName || "Tech Professional"}
+              userPhoto={user?.photoURL || undefined}
+              payload={activeModalBadge.payload as any}
+            />
+
+            <BadgeShareActions
+              badgeElement={modalBadgeEl}
+              fileName={`skillta-${activeModalBadge.badgeType}-badge.png`}
+              shareText={
+                activeModalBadge.badgeType === "quiz"
+                  ? `I matched ${(activeModalBadge.payload as any).matchPercentage}% as ${(activeModalBadge.payload as any).careerTitle} on SkillTa! 🚀 Discover your tech career path at skillta.tech`
+                  : `My resume scored ${(activeModalBadge.payload as any).atsScore}/100 ATS on SkillTa! 🎯 Audit your resume at skillta.tech/resume-reviewer`
+              }
+            />
+          </motion.div>
+        </div>
+      )}
+
       <div className="container mx-auto px-6 pb-10 relative z-10">
         <ResumeReviewerCTA />
         <SkillGapAnalyzerCTA />
