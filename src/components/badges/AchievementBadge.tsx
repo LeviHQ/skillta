@@ -1,5 +1,5 @@
 import { forwardRef } from "react";
-import { Award, CheckCircle2, Compass, Sparkles, Target, TrendingUp } from "lucide-react";
+import { Award, CheckCircle2, Compass, Sparkles, Target} from "lucide-react";
 import { careers } from "@/data/careers";
 import { getAchievementRank, QuizBadgePayload, ResumeBadgePayload } from "./types";
 
@@ -29,7 +29,6 @@ export const AchievementBadge = forwardRef<HTMLDivElement, AchievementBadgeProps
     const rank = getAchievementRank(score);
     const career = quiz ? careers.find((item) => item.id === quiz.topCareer) : null;
     const title = career?.title || resume?.targetRole || resume?.roleFit?.role || "Tech Professional";
-    const highlights = resume?.strengths?.slice(0, 3) ?? career?.requiredSkills?.slice(0, 3) ?? [];
     const dateLabel = new Date(createdAt || Date.now()).toLocaleDateString("en-US", {
       month: "short",
       day: "numeric",
@@ -113,28 +112,6 @@ export const AchievementBadge = forwardRef<HTMLDivElement, AchievementBadgeProps
                 {isQuiz ? "Career clarity milestone unlocked" : "Resume readiness milestone unlocked"}
               </p>
             </div>
-
-            {!isQuiz && (
-  <div className="mt-3 rounded-md border border-border bg-card/65 p-4">
-    <div className="mb-3 flex items-center gap-2 text-[9px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
-      <TrendingUp className="h-3.5 w-3.5 text-primary" />
-      Standout signals
-    </div>
-
-    <div className="space-y-2">
-      {highlights.map((item, index) => (
-        <div
-          key={`${item}-${index}`}
-          className="flex items-start gap-2 text-[10px] leading-snug text-foreground"
-        >
-          <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
-          <span className="line-clamp-2">{item}</span>
-        </div>
-      ))}
-    </div>
-  </div>
-)}
-
 
             <footer className="mt-auto flex items-end justify-between border-t border-border/70 pt-4">
               <div>
