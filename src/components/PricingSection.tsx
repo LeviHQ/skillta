@@ -6,7 +6,7 @@ import { usePlan, type PlanName } from "@/contexts/PlanContext";
 import SignInModal from "./SignInModal";
 import CongratsModal from "./CongratsModal";
 
-const features = [
+const proFeatures = [
   "AI Career Quiz with detailed match report",
   "AI Resume Reviewer with PDF report",
   "Skill Gap Analyzer",
@@ -15,6 +15,15 @@ const features = [
   "All career roadmaps with PDF export",
   "Career comparison tool",
   "Smart daily usage limits on every tool",
+  "365 days of full access",
+];
+
+const lifetimeFeatures = [
+  "Everything included in SkillTa Pro",
+  "Access never expires — pay once, use forever",
+  "All future AI tools & feature updates included",
+  "50+ country ecosystems & upcoming global data",
+  "Priority processing & early access to new releases",
 ];
 
 const plans: {
@@ -146,16 +155,28 @@ export default function PricingSection() {
                   <span className="text-muted-foreground ml-2 text-sm">{tier.period}</span>
                 </div>
                 <ul className="space-y-3 mb-8 flex-1">
-                  {features.map((f) => (
-                    <li key={f} className="flex items-start gap-2 text-sm text-foreground/85">
-                      <Check className="w-4 h-4 text-primary shrink-0 mt-0.5" /> {f}
-                    </li>
-                  ))}
-                  <li className="flex items-start gap-2 text-sm font-semibold text-foreground">
-                    <Check className="w-4 h-4 text-primary shrink-0 mt-0.5" />
-                    {tier.name === "Lifetime" ? "Access never expires" : "365 days of access"}
-                  </li>
-                </ul>
+  {tier.name === "Pro" ? (
+    proFeatures.map((f, idx) => (
+      <li 
+        key={f} 
+        className={`flex items-start gap-2 text-sm ${idx === proFeatures.length - 1 ? "font-semibold text-foreground" : "text-foreground/85"}`}
+      >
+        <Check className="w-4 h-4 text-primary shrink-0 mt-0.5" />
+        <span>{f}</span>
+      </li>
+    ))
+  ) : (
+    lifetimeFeatures.map((f, idx) => (
+      <li 
+        key={f} 
+        className={`flex items-start gap-2 text-sm ${idx === 0 ? "font-bold text-primary" : "text-foreground/90 font-medium"}`}
+      >
+        <Check className="w-4 h-4 text-primary shrink-0 mt-0.5" />
+        <span>{f}</span>
+      </li>
+    ))
+  )}
+</ul>
                 {isActive && (
                   <p className="flex items-center justify-center gap-1.5 text-xs text-primary mb-3">
                     <CheckCircle2 className="w-4 h-4" /> {expiryLabel}
