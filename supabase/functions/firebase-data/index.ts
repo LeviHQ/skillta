@@ -309,6 +309,113 @@ Deno.serve(async (req) => {
     }
 
 
+    // ---------- Resume Version Control ----------
+    if (action === "listResumeVersions") {
+      const { data, error } = await supabase
+        .from("resume_versions")
+        .select("id,version_number,title,target_role,ats_score,jd_summary,notes,file_name,file_size,mime_type,created_at")
+        .eq("firebase_uid", uid)
+        .order("created_at", { ascending: false });
+      if (error) throw error;
+      return json({ versions: data ?? [] });
+    }
+
+    if (action === "createResumeVersion") {
+      const planRow = await getPlanRow(uid);
+      if (!planRow) return json({ error: "no_plan", message: "Subscribe to a plan to use Resume Version Control." }, 403);
+
+      const str = (v: unknown, max: number) => (typeof v === "string" ? v.trim().slice(0, max) : "");
+      const title = str(body.title, 120);
+      const targetRole = str(body.targetRole, 120);
+      const jdSummary = str(body.jdSummary, 1500) || null;
+      const notes = str(body.notes, 500) || null;
+      const fileName = str(body.fileName, 200).replace(/[^\w.\- ()]/g, "_");
+      const mimeType = str(body.mimeType, 100);
+      const atsScore = Number(body.atsScore);
+      const fileBase64 = typeof body.fileBase64 === "string" ? body.fileBase64 : "";
+      const ALLOWED: Record<string, string> = {
+        "application/pdf": "pdf",
+        "application/vnd.openxmlformats-officedocument.wordprocessingml.document": "docx",
+        "application/msword": "doc",
+        "text/plain": "txt",
+      };
+      if (!targetRole || !fileName || !fileBase64 || !ALLOWED[mimeType] ||
+          !Number.isInteger(atsScore) || atsScore < 0 || atsScore > 100) {
+        return json({ error: "invalid", message: "Please fill all required fields with valid values." }, 400);
+      }
+      let bytes: Uint8Array;
+      try {
+        const bin = atob(fileBase64);
+        bytes = new Uint8Array(bin.length);
+        for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+      } catch {
+        return json({ error: "invalid", message: "Could not read the file." }, 400);
+      }
+      if (bytes.length === 0 || bytes.length > 5 * 1024 * 1024) {
+        return json({ error: "invalid", message: "File must be under 5 MB." }, 400);
+      }
+      const { count } = await supabase
+        .from("resume_versions")
+        .select("id", { count: "exact", head: true })
+        .eq("firebase_uid", uid);
+      if ((count ?? 0) >= 100) return json({ error: "invalid", message: "You can store up to 100 versions." }, 400);
+
+      const { data: last } = await supabase
+        .from("resume_versions")
+        .select("version_number")
+        .eq("firebase_uid", uid)
+        .order("version_number", { ascending: false })
+        .limit(1)
+        .maybeSingle();
+      const versionNumber = (last?.version_number ?? 0) + 1;
+      const filePath = `${uid}/${crypto.randomUUID()}.${ALLOWED[mimeType]}`;
+      const { error: upErr } = await supabase.storage
+        .from("resume-versions")
+        .upload(filePath, bytes, { contentType: mimeType, upsert: false });
+      if (upErr) throw upErr;
+
+      const { data: row, error } = await supabase.from("resume_versions").insert({
+        firebase_uid: uid,
+        version_number: versionNumber,
+        title: title || `Version ${versionNumber}`,
+        target_role: targetRole,
+        ats_score: atsScore,
+        jd_summary: jdSummary,
+        notes,
+        file_path: filePath,
+        file_name: fileName,
+        file_size: bytes.length,
+        mime_type: mimeType,
+      }).select("id,version_number,title,target_role,ats_score,jd_summary,notes,file_name,file_size,mime_type,created_at").single();
+      if (error) {
+        await supabase.storage.from("resume-versions").remove([filePath]);
+        throw error;
+      }
+      return json({ version: row });
+    }
+
+    if (action === "getResumeVersionUrl" || action === "deleteResumeVersion") {
+      const id = typeof body.id === "string" ? body.id : "";
+      const { data: row } = await supabase
+        .from("resume_versions")
+        .select("id,file_path,file_name")
+        .eq("firebase_uid", uid)
+        .eq("id", id)
+        .maybeSingle();
+      if (!row) return json({ error: "not_found" }, 404);
+      if (action === "getResumeVersionUrl") {
+        const { data, error } = await supabase.storage
+          .from("resume-versions")
+          .createSignedUrl(row.file_path, 60, { download: row.file_name });
+        if (error) throw error;
+        return json({ url: data.signedUrl });
+      }
+      await supabase.storage.from("resume-versions").remove([row.file_path]);
+      const { error } = await supabase.from("resume_versions").delete().eq("id", row.id).eq("firebase_uid", uid);
+      if (error) throw error;
+      return json({ ok: true });
+    }
+
     if (action === "activatePlan") {
       // Plans are activated only by the Dodo payment webhook.
       return json({ error: "Plans are activated after payment." }, 403);
