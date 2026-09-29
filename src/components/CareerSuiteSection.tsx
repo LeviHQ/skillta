@@ -77,7 +77,7 @@ const services = [
     title: "More Features on the Way",
     description: "New AI career tools, mock simulations, and market intelligence features are actively in development.",
     limit: "Coming Soon",
-    path: "",
+    path: "#",
     Icon: Sparkles,
     gradient: "from-primary/15 via-accent/10 to-transparent",
     ring: "ring-primary/20",
