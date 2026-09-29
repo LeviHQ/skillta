@@ -74,14 +74,15 @@ const services = [
     accent: "text-accent",
   },
   {
-    title: "AI Mock Interviewer",
-    description: "Real-time technical & HR interview simulations with role-specific AI feedback.",
+    title: "More Features on the Way",
+    description: "New AI career tools, mock simulations, and market intelligence features are actively in development.",
     limit: "Coming Soon",
-    path: "#",
-    Icon: Rocket,
-    gradient: "from-primary/20 via-accent/15 to-transparent",
+    path: "",
+    Icon: Sparkles,
+    gradient: "from-primary/15 via-accent/10 to-transparent",
     ring: "ring-primary/20",
     accent: "text-primary",
+    isComingSoon: true,
   },
 ];
 
@@ -122,9 +123,9 @@ export default function CareerSuiteSection() {
               whileHover={{ y: -6 }}
             >
               <Link
-                to={s.path}
-                className={`group relative block h-full p-6 rounded-2xl bg-gradient-to-br ${s.gradient} border border-border hover:border-primary/40 transition-all overflow-hidden`}
-              >
+  to={s.path}
+  className={`group relative block h-full p-6 rounded-2xl bg-gradient-to-br ${s.gradient} border border-border hover:border-primary/40 transition-all overflow-hidden ${s.path === "#" ? "pointer-events-none" : ""}`}
+>
                 <div className={`absolute -right-8 -top-8 w-32 h-32 rounded-full bg-current opacity-[0.06] ${s.accent} blur-2xl group-hover:opacity-[0.12] transition-opacity`} />
 
                 <div className={`w-12 h-12 rounded-xl bg-background/60 border border-border ring-1 ${s.ring} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
@@ -139,9 +140,11 @@ export default function CareerSuiteSection() {
                 </div>
                 <p className="text-sm text-muted-foreground leading-relaxed mb-5">{s.description}</p>
 
-                <span className={`inline-flex items-center gap-1.5 text-sm font-semibold ${s.accent} group-hover:gap-3 transition-all`}>
-                  Open now <ArrowRight className="w-4 h-4" />
-                </span>
+                {s.path !== "#" && (
+  <span className={`inline-flex items-center gap-1.5 text-sm font-semibold ${s.accent} group-hover:gap-3 transition-all`}>
+    Open now <ArrowRight className="w-4 h-4" />
+  </span>
+)}
               </Link>
             </motion.div>
           ))}
