@@ -8,6 +8,13 @@
       "when": 1790527871576,
       "tag": "0000_create_private_badges",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1790668381408,
+      "tag": "0001_create_resume_versions",
+      "breakpoints": true
     }
   ]
 }
