@@ -102,6 +102,10 @@ export default function Footer() {
               <Link to="/skill-gap-analyzer" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                 Skill Gap Analyzer
               </Link>
+              <Link to="/resume-version-control" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                Resume Version Control
+              </Link>
+
             </nav>
 
             <h4 className="font-semibold text-foreground mt-8 mb-4 text-xs uppercase tracking-widest">

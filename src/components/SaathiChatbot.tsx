@@ -22,6 +22,7 @@ const chatTree: Record<string, ChatNode> = {
       { label: "💰 Salary Predictor", nextId: "salary_help" },
       { label: "🎤 Interview Prep", nextId: "interview_help" },
       { label: "📄 AI Resume Reviewer", nextId: "resume_help" },
+      { label: "🗂️ Resume Version Control", nextId: "rvc_help" },
       { label: "🎯 Skill Gap Analyzer", nextId: "skillgap_help" },
       { label: "⚖️ Compare Careers", nextId: "compare_help" },
       { label: "🌍 Country Ecosystem (NEW)", nextId: "country_help" },
@@ -123,6 +124,20 @@ const chatTree: Record<string, ChatNode> = {
     id: "resume_go",
     message: "Opening the AI Resume Reviewer — paste your resume or upload a PDF! 📄",
     action: { label: "📄 AI Resume Reviewer", path: "/resume-reviewer" },
+  },
+  rvc_help: {
+    id: "rvc_help",
+    message: "Resume Version Control is your GitHub-style ATS commit history! Save each iteration, track ATS deltas, and download previous resumes anytime. 🗂️",
+    options: [
+      { label: "Open Version Control", nextId: "rvc_go" },
+      { label: "Review my resume first", nextId: "resume_go" },
+      { label: "See other services", nextId: "root" },
+    ],
+  },
+  rvc_go: {
+    id: "rvc_go",
+    message: "Taking you to Resume Version Control — track your progress and manage versions! 🚀",
+    action: { label: "🗂️ Resume Version Control", path: "/resume-version-control" },
   },
   skillgap_help: {
     id: "skillgap_help",

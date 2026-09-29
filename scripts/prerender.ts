@@ -262,6 +262,19 @@ ${siteNav}`),
       "The SkillTa Story",
       ["Built for students and freshers", "Free core tools, forever", "Honest, data-driven guidance"],
     ),
+    tool(
+      "/resume-version-control",
+      "Resume Version Control — Track ATS Score Evolution | SkillTa",
+      "GitHub-style commit timeline for your resume. Track ATS score evolution, file history, and role-specific versions with secure cloud storage.",
+      "resume version control, resume commit history, track ats score, resume changelog, resume iteration tracker",
+      "Resume Version Control",
+      [
+        "GitHub-style dated commit timeline",
+        "ATS score delta tracking (+/- score improvements)",
+        "Role-specific resume versions & job descriptions",
+        "Secure cloud file storage with instant 1-click download",
+      ],
+    ),
   );
 
   return routes;

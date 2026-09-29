@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Brain, TrendingUp, MessageSquare, BookOpen, ArrowLeftRight, ArrowRight, Sparkles, FileText, Target } from "lucide-react";
+import { Brain, TrendingUp, MessageSquare, BookOpen, ArrowLeftRight, ArrowRight, Sparkles, FileText, Target, GitCommit, Rocket } from "lucide-react";
 
 const services = [
   {
@@ -62,6 +62,26 @@ const services = [
     gradient: "from-info/25 to-info/5",
     ring: "ring-info/30",
     accent: "text-info",
+  },
+  {
+    title: "Resume Version Control",
+    description: "GitHub-style commit timeline to track ATS score evolution, file history, and role targets over time.",
+    limit: "Included in Plan",
+    path: "/resume-version-control",
+    Icon: GitCommit,
+    gradient: "from-accent/25 to-accent/5",
+    ring: "ring-accent/30",
+    accent: "text-accent",
+  },
+  {
+    title: "AI Mock Interviewer",
+    description: "Real-time technical & HR interview simulations with role-specific AI feedback.",
+    limit: "Coming Soon",
+    path: "#",
+    Icon: Rocket,
+    gradient: "from-primary/20 via-accent/15 to-transparent",
+    ring: "ring-primary/20",
+    accent: "text-primary",
   },
 ];
 

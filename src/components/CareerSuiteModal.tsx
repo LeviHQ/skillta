@@ -11,6 +11,7 @@ import {
   Gift,
   ArrowRight,
   X,
+  GitCommit,
 } from "lucide-react";
 
 const perks = [
@@ -20,6 +21,7 @@ const perks = [
   { title: "Compare Careers", desc: "Two roles side-by-side: salary, demand, difficulty.", limit: "Unlimited", path: "/compare", Icon: ArrowLeftRight, accent: "text-warning", bg: "bg-warning/15" },
   { title: "AI Resume Reviewer", desc: "ATS score, keyword gaps and bullet rewrites.", limit: "Unlimited", path: "/resume-reviewer", Icon: FileText, accent: "text-primary", bg: "bg-primary/15" },
   { title: "Skill Gap Analyzer", desc: "Missing skills + a weekly study plan for any role.", limit: "Unlimited", path: "/skill-gap-analyzer", Icon: Target, accent: "text-info", bg: "bg-info/15" },
+  { title: "Resume Version Control", desc: "Commit-style ATS evolution history & file tracking.", limit: "Unlimited", path: "/resume-version-control", Icon: GitCommit, accent: "text-accent", bg: "bg-accent/15" },
   { title: "Saathi AI Assistant", desc: "Guided navigation and instant career answers.", limit: "Included", path: "/", Icon: MessageSquare, accent: "text-accent", bg: "bg-accent/15" },
 ];
 

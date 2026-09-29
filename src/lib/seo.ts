@@ -92,6 +92,12 @@ export const PAGE_SEO: Record<string, PageSEO> = {
     keywords: "tech career blog 2026, career guidance articles, tech salary guide india, coding career tips, developer career advice, best tech careers 2026, learn coding blog, tech career for freshers, programming career guide, how to get tech job",
     path: "/blog",
   },
+  resumeVersionControl: {
+    title: "Resume Version Control — Track ATS Score Evolution | SkillTa",
+    description: "GitHub-style commit timeline for your resume. Track ATS score evolution, file history, and role-specific versions with secure cloud storage.",
+    keywords: "resume version control, resume commit history, track ats score, resume changelog, resume iteration tracker, resume diff, resume storage, tech resume builder",
+    path: "/resume-version-control",
+  },
 };
 
 // Generate JSON-LD structured data

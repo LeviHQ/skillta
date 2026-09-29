@@ -33,6 +33,7 @@ const Blog = lazy(() => import("./pages/Blog"));
 const BlogPost = lazy(() => import("./pages/BlogPost"));
 const Story = lazy(() => import("./pages/Story"));
 const SalaryPredictor = lazy(() => import("./pages/SalaryPredictor"));
+const ResumeVersionControl = lazy(() => import("./pages/ResumeVersionControl"));
 const ResumeReviewer = lazy(() => import("./pages/ResumeReviewer"));
 const SkillGapAnalyzer = lazy(() => import("./pages/SkillGapAnalyzer"));
 const CountryPage = lazy(() => import("./pages/CountryPage"));
@@ -88,6 +89,7 @@ const App = () => (
                     <Route path="/story" element={<Story />} />
                     <Route path="/salary-predictor" element={<SalaryPredictor />} />
                     <Route path="/resume-reviewer" element={<ResumeReviewer />} />
+                    <Route path="/resume-version-control" element={<ResumeVersionControl />} />
                     <Route path="/skill-gap-analyzer" element={<SkillGapAnalyzer />} />
                     <Route path="/:country" element={<CountryPage />} />
                     <Route path="/:country/:section" element={<CountryPage />} />
