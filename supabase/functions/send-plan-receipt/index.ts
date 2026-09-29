@@ -15,6 +15,7 @@ const PLAN_FEATURES: Record<string, string[]> = {
   Pro: [
     "AI Career Quiz with detailed match report — 3 attempts/day",
     "AI Resume Reviewer with PDF report — 3 reviews/day",
+    "Resume Version Control & history tracking",
     "Skill Gap Analyzer — 3 analyses/day",
     "AI Salary Predictor with 2026 market data",
     "50+ Country Tech Ecosystems",
@@ -28,6 +29,7 @@ const PLAN_FEATURES: Record<string, string[]> = {
     "Access never expires — pay once, use forever",
     "Every future tool & update included",
     "AI Career Quiz, Resume Reviewer & Skill Gap Analyzer — 3/day each",
+    "Resume Version Control & history tracking",
     "AI Salary Predictor with 2026 market data",
     "50+ Country Tech Ecosystems",
     "Full Roadmap Library with PDF export",
@@ -167,7 +169,7 @@ serve(async (req) => {
         <a href="https://www.skillta.tech/dashboard" style="display:inline-block;background:linear-gradient(135deg,#26c6b0,#7c3aed);color:#ffffff;text-decoration:none;font-size:16px;font-weight:600;padding:14px 36px;border-radius:10px;">
           Go to Your Dashboard →
         </a>
-        <p style="margin:14px 0 0;font-size:12px;color:#999;">You can upgrade or cancel anytime from your dashboard.</p>
+          <p style="margin:14px 0 0;font-size:12px;color:#999;">One-time payment with no auto-debit traps or recurring charges.</p>
       </td></tr>
       <tr><td style="background:#f8f9fc;padding:24px 40px;text-align:center;border-top:1px solid #e8e9f0;">
         <p style="margin:0;font-size:13px;font-weight:600;color:#7c3aed;">— Team SkillTa 💜</p>

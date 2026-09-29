@@ -34,7 +34,7 @@ async function sendReceipt(email: string, name: string, plan: string, expiresAt:
     <tr><td style="padding:6px 0;color:#9aa3ad">Amount paid</td><td style="text-align:right">${amount}</td></tr>
     <tr><td style="padding:6px 0;color:#9aa3ad">Access</td><td style="text-align:right">${validity}</td></tr>
   </table>
-  <p>Included: AI Career Quiz, AI Resume Reviewer, Skill Gap Analyzer, Salary Predictor, Country Tech Ecosystems and all career roadmaps.</p>
+    <p>Included: AI Career Quiz, AI Resume Reviewer, Resume Version Control, Skill Gap Analyzer, Salary Predictor, Country Tech Ecosystems and all career roadmaps.</p>
   <p><a href="https://www.skillta.tech/dashboard" style="display:inline-block;background:#2dd4bf;color:#0b0d10;padding:12px 22px;border-radius:10px;text-decoration:none;font-weight:bold">Open your dashboard</a></p>
   <p style="color:#9aa3ad;font-size:12px">SkillTa · skillta.tech</p></div>`;
   await fetch("https://api.resend.com/emails", {

@@ -9,6 +9,7 @@ import CongratsModal from "./CongratsModal";
 const proFeatures = [
   "AI Career Quiz with detailed match report",
   "AI Resume Reviewer with PDF report",
+  "Resume Version Control & history tracking",
   "Skill Gap Analyzer",
   "AI Salary Predictor",
   "50+ country tech ecosystems",

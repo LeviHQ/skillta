@@ -36,7 +36,7 @@ const STAGES: Stage[] = [
     points: ["Google sign-in", "Pro ($3/yr) or Lifetime ($10)", "Full Career Suite"],
     time: "1 min",
     href: "/#pricing",
-    cta: "Get Pro Access",
+    cta: "Choose Plan",
     x: 90,
     y: 300,
     tone: "primary",
@@ -101,14 +101,14 @@ const STAGES: Stage[] = [
     y: 150,
     tone: "accent",
   },
-  {
+    {
     id: "resume",
     step: 6,
-    title: "Resume Reviewer",
-    short: "Get past the filter",
+    title: "Resume & Version Control",
+    short: "Audit & track resumes",
     detail:
-      "AI reviews your resume like a recruiter and an ATS at once: formatting, keywords, impact lines and red flags — with a rewritten version of weak bullet points.",
-    points: ["ATS score", "Line-by-line feedback", "Downloadable report"],
+      "AI reviews your resume like a recruiter and ATS at once. Track ATS score evolution and store revisions with GitHub-style Resume Version Control.",
+    points: ["ATS audit report", "Version control tracking", "Line-by-line feedback"],
     time: "10 min",
     href: "/resume-reviewer",
     cta: "Review my resume",
