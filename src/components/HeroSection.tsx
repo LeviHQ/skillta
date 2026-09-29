@@ -1,12 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, Sparkles, Gift } from "lucide-react";
-import FreePerksModal from "./FreePerksModal";
-
-
-
-const rotatingWords = ["Tech Career", "Dream Job", "Future Path", "Passion"];
+import { ArrowRight, Sparkles } from "lucide-react";
 
 const liveFeed = [
   { emoji: "🧑‍💻", who: "Aarav from Bengaluru", action: "generated an AI Engineer roadmap", when: "just now" },
@@ -19,17 +14,8 @@ const liveFeed = [
 ];
 
 export default function HeroSection() {
-  const [wordIndex, setWordIndex] = useState(0);
   const [feedIndex, setFeedIndex] = useState(0);
   const [liveUsers, setLiveUsers] = useState(1284);
-  const [perksOpen, setPerksOpen] = useState(false);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setWordIndex((prev) => (prev + 1) % rotatingWords.length);
-    }, 2500);
-    return () => clearInterval(interval);
-  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -54,17 +40,9 @@ export default function HeroSection() {
       {/* Grid pattern */}
       <div className="absolute inset-0 grid-pattern opacity-30" />
 
-      {/* Ambient orbs */}
-      <motion.div
-        className="absolute top-1/4 -left-20 w-[420px] h-[420px] bg-primary/10 rounded-full blur-[120px]"
-        animate={{ scale: [1, 1.15, 1], opacity: [0.5, 0.85, 0.5] }}
-        transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-      />
-      <motion.div
-        className="absolute bottom-0 -right-20 w-[420px] h-[420px] bg-accent/10 rounded-full blur-[120px]"
-        animate={{ scale: [1.15, 1, 1.15], opacity: [0.5, 0.85, 0.5] }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-      />
+            {/* Ambient orbs - static blur for smooth 60fps on mobile */}
+      <div className="pointer-events-none absolute top-1/4 -left-20 w-[360px] sm:w-[420px] h-[360px] sm:h-[420px] bg-primary/10 rounded-full blur-[100px] opacity-60" />
+      <div className="pointer-events-none absolute bottom-0 -right-20 w-[360px] sm:w-[420px] h-[360px] sm:h-[420px] bg-accent/10 rounded-full blur-[100px] opacity-60" />
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-3xl mx-auto text-center">
@@ -81,22 +59,9 @@ export default function HeroSection() {
               <Sparkles className="w-3.5 h-3.5 text-primary" />
             </div>
 
-            <h1 className="text-5xl md:text-6xl xl:text-7xl font-bold leading-[1.1] mb-6 tracking-tight">
-              <span className="block">Discover Your</span>
-              <span className="relative block h-[1.25em] overflow-hidden">
-                <AnimatePresence mode="wait">
-                  <motion.span
-                    key={wordIndex}
-                    className="text-gradient absolute inset-x-0 top-0 block whitespace-nowrap leading-[1.25] pb-[0.12em]"
-                    initial={{ y: "100%", opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    exit={{ y: "-100%", opacity: 0 }}
-                    transition={{ duration: 0.45, ease: "easeOut" }}
-                  >
-                    {rotatingWords[wordIndex]}
-                  </motion.span>
-                </AnimatePresence>
-              </span>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-[1.15] mb-6 tracking-tight">
+              Discover Your{" "}
+            <span className="text-gradient block sm:inline">Dream Tech Career</span>
             </h1>
 
             <p className="text-base md:text-lg text-muted-foreground mb-8 max-w-xl mx-auto leading-relaxed">
@@ -104,47 +69,20 @@ export default function HeroSection() {
               data to land your dream tech role.
             </p>
 
-            <div className="flex flex-wrap gap-4 justify-center mb-5">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center mb-10">
               <Link
                 to="/quiz"
-                className="group inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-gradient-primary text-primary-foreground font-semibold shadow-glow hover:scale-[1.03] active:scale-[0.98] transition-transform"
+                className="w-full sm:w-auto group inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl bg-gradient-primary text-primary-foreground font-semibold shadow-glow hover:scale-[1.02] active:scale-[0.98] transition-transform"
               >
                 Start Career Quiz
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
-              <button
-                type="button"
-                onClick={() => setPerksOpen(true)}
-                className="group inline-flex items-center gap-2 px-8 py-4 rounded-xl border border-border bg-card/50 backdrop-blur-sm font-semibold hover:bg-secondary hover:border-primary/30 transition-all"
+              <a
+                href="#pricing"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl border border-border bg-card/40 backdrop-blur-sm font-semibold hover:bg-secondary hover:border-primary/30 transition-all text-muted-foreground hover:text-foreground"
               >
-                <Gift className="w-4 h-4 text-accent group-hover:scale-110 transition-transform" />
-                Compare Our Plans
-              </button>
-            </div>
-
-            <div className="flex justify-center mb-10">
-              <motion.button
-                type="button"
-                onClick={() => setPerksOpen(true)}
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.98 }}
-                className="group relative inline-flex items-center gap-2.5 px-5 py-3 rounded-full border border-accent/40 bg-accent/10 backdrop-blur-sm overflow-hidden"
-              >
-                <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-accent/25 to-transparent" />
-                <Gift className="w-4 h-4 text-accent relative shrink-0" />
-                <span className="text-sm sm:text-base font-semibold text-foreground relative">
-                  Choose your{" "}
-                  <span className="font-extrabold text-accent underline decoration-accent/60 decoration-2 underline-offset-4">
-                    SkillTa access plan
-                  </span>
-                </span>
-
-                <span className="relative shrink-0 text-[11px] font-bold uppercase tracking-wide text-accent-foreground bg-accent px-2 py-0.5 rounded-full">
-                  From $3
-                </span>
-                <ArrowRight className="w-3.5 h-3.5 text-accent relative shrink-0 group-hover:translate-x-1 transition-transform" />
-
-              </motion.button>
+                View Plans & Pricing
+              </a>
             </div>
 
             <div className="border-t border-border/60 pt-8">
@@ -195,8 +133,6 @@ export default function HeroSection() {
 
       {/* Bottom fade */}
       <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background to-transparent pointer-events-none" />
-
-      <FreePerksModal open={perksOpen} onClose={() => setPerksOpen(false)} />
     </section>
   );
 }
