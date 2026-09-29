@@ -116,6 +116,54 @@ export type Database = {
         }
         Relationships: []
       }
+      resume_versions: {
+        Row: {
+          ats_score: number
+          created_at: string
+          file_name: string
+          file_path: string
+          file_size: number
+          firebase_uid: string
+          id: string
+          jd_summary: string | null
+          mime_type: string
+          notes: string | null
+          target_role: string
+          title: string
+          version_number: number
+        }
+        Insert: {
+          ats_score: number
+          created_at?: string
+          file_name: string
+          file_path: string
+          file_size: number
+          firebase_uid: string
+          id?: string
+          jd_summary?: string | null
+          mime_type: string
+          notes?: string | null
+          target_role: string
+          title: string
+          version_number: number
+        }
+        Update: {
+          ats_score?: number
+          created_at?: string
+          file_name?: string
+          file_path?: string
+          file_size?: number
+          firebase_uid?: string
+          id?: string
+          jd_summary?: string | null
+          mime_type?: string
+          notes?: string | null
+          target_role?: string
+          title?: string
+          version_number?: number
+        }
+        Relationships: []
+      }
       skill_gap_usage: {
         Row: {
           created_at: string
