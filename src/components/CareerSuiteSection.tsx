@@ -132,12 +132,12 @@ export default function CareerSuiteSection() {
                   <s.Icon className={`w-6 h-6 ${s.accent}`} />
                 </div>
 
-                <div className="flex items-center gap-2 mb-2">
-                  <h3 className="text-lg font-bold text-foreground">{s.title}</h3>
-                  <span className={`px-2 py-0.5 rounded-full text-[10px] font-semibold ${s.accent} bg-background/60 border border-border`}>
-                    {s.limit}
-                  </span>
-                </div>
+                <div className="flex flex-wrap items-center gap-2 mb-2">
+  <h3 className="text-lg font-bold text-foreground">{s.title}</h3>
+  <span className={`shrink-0 px-2 py-0.5 rounded-full text-[10px] font-semibold ${s.accent} bg-background/60 border border-border`}>
+    {s.limit}
+  </span>
+</div>
                 <p className="text-sm text-muted-foreground leading-relaxed mb-5">{s.description}</p>
 
                 {s.path !== "#" && (
