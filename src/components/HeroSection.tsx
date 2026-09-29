@@ -60,8 +60,8 @@ export default function HeroSection() {
             </div>
 
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-[1.15] mb-6 tracking-tight">
-              Discover Your{" "}
-            <span className="text-gradient block sm:inline">Dream Tech Career</span>
+              Discover Your
+              <span className="text-gradient block mt-1 sm:mt-2">Dream Tech Career</span>
             </h1>
 
             <p className="text-base md:text-lg text-muted-foreground mb-8 max-w-xl mx-auto leading-relaxed">
@@ -69,17 +69,17 @@ export default function HeroSection() {
               data to land your dream tech role.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center mb-10">
+                        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center mb-10">
               <Link
                 to="/quiz"
-                className="w-full sm:w-auto group inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl bg-gradient-primary text-primary-foreground font-semibold shadow-glow hover:scale-[1.02] active:scale-[0.98] transition-transform"
+                className="w-auto min-w-[200px] group inline-flex items-center justify-center gap-2 px-7 py-3 rounded-xl bg-gradient-primary text-primary-foreground font-semibold shadow-glow hover:scale-[1.02] active:scale-[0.98] transition-transform"
               >
                 Start Career Quiz
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
               <a
                 href="#pricing"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl border border-border bg-card/40 backdrop-blur-sm font-semibold hover:bg-secondary hover:border-primary/30 transition-all text-muted-foreground hover:text-foreground"
+                className="w-auto min-w-[200px] inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl border border-border bg-card/40 backdrop-blur-sm font-semibold hover:bg-secondary hover:border-primary/30 transition-all text-muted-foreground hover:text-foreground"
               >
                 View Plans & Pricing
               </a>
