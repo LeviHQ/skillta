@@ -3,6 +3,7 @@ import { useState, useEffect, lazy, Suspense } from "react";
 import { motion } from "framer-motion";
 import { LogIn, UserPlus } from "lucide-react";
 import HeroSection from "@/components/HeroSection";
+import SampleResultsSection from "@/components/SampleResultsSection";
 import { useAuth } from "@/contexts/AuthContext";
 const SignInModal = lazy(() => import("@/components/SignInModal"));
 import DeferredSection from "@/components/DeferredSection";
@@ -114,6 +115,9 @@ export default function Index() {
       <DeferredSection minHeight={600}>
         <CountryEcosystemSection />
       </DeferredSection>
+
+      {/* Representative product outputs, shown before purchase options */}
+      <SampleResultsSection />
 
       {/* Pricing */}
       <DeferredSection minHeight={700} eager={hash === "#pricing" || location.search.includes("payment=")}>

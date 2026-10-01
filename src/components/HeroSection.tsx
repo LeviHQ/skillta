@@ -1,155 +1,87 @@
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, Sparkles } from "lucide-react";
-
-const liveFeed = [
-  { emoji: "🧑‍💻", who: "Aarav from Bengaluru", action: "generated an AI Engineer roadmap", when: "just now" },
-  { emoji: "👩‍💻", who: "Sophia from London", action: "scored 88/100 on Career DNA Quiz", when: "14 seconds ago" },
-  { emoji: "🧑‍🎓", who: "Daniel from Toronto", action: "analyzed his resume ATS score", when: "28 seconds ago" },
-  { emoji: "👨‍💻", who: "Rohan from Mumbai", action: "unlocked Full Stack Developer roadmap", when: "41 seconds ago" },
-  { emoji: "👩‍🔬", who: "Elena from Berlin", action: "predicted Data Scientist salary trends", when: "55 seconds ago" },
-  { emoji: "👨‍🔧", who: "Meera from Pune", action: "compared Frontend vs Full Stack", when: "1 minute ago" },
-  { emoji: "🧕", who: "Fatima from Dubai", action: "ran a skill gap analysis for DevOps", when: "1 minute ago" },
-  { emoji: "🧑‍🚀", who: "Lucas from Amsterdam", action: "shared his SkillTa Achievement Badge", when: "2 minutes ago" },
-  { emoji: "👩‍💼", who: "Ananya from Hyderabad", action: "audited resume for Product Management", when: "2 minutes ago" },
-  { emoji: "🧑‍💻", who: "Marcus from San Francisco", action: "explored Cloud Architect career path", when: "2 minutes ago" },
-  { emoji: "👩‍💻", who: "Priya from Delhi", action: "completed AI Career Diagnostic Quiz", when: "3 minutes ago" },
-  { emoji: "👨‍🎓", who: "Liam from Sydney", action: "found top match: Cybersecurity Analyst", when: "3 minutes ago" },
-  { emoji: "🧑‍🔬", who: "Kenji from Tokyo", action: "analyzed Machine Learning salary data", when: "4 minutes ago" },
-  { emoji: "👩‍🎨", who: "Zara from Manchester", action: "compared UI/UX Designer vs Product Designer", when: "4 minutes ago" },
-  { emoji: "👨‍💼", who: "Vikram from Gurgaon", action: "unlocked Lifetime Access Pass", when: "5 minutes ago" },
-  { emoji: "🧑‍💻", who: "Mateo from Barcelona", action: "generated Backend Node.js roadmap", when: "5 minutes ago" },
-  { emoji: "👩‍🎓", who: "Chloe from Dublin", action: "scored 92 ATS score on tech resume", when: "6 minutes ago" },
-  { emoji: "👨‍💻", who: "Aditya from Noida", action: "bridged Python skill gap for Data Analyst", when: "6 minutes ago" },
-  { emoji: "👩‍💻", who: "Hanna from Stockholm", action: "completed career quiz & matched DevOps", when: "7 minutes ago" },
-  { emoji: "🧑‍💼", who: "Rahul from Chennai", action: "explored Blockchain Engineer path", when: "7 minutes ago" },
-  { emoji: "👨‍🔬", who: "Oliver from Austin", action: "checked salary benchmarks for ML Engineer", when: "8 minutes ago" },
-  { emoji: "👩‍🔧", who: "Sneha from Kolkata", action: "analyzed resume for Software Engineer role", when: "9 minutes ago" },
-  { emoji: "🧑‍🚀", who: "David from Singapore", action: "unlocked 1-Year SkillTa Pro plan", when: "9 minutes ago" },
-  { emoji: "👩‍💼", who: "Nour from Cairo", action: "completed career roadmap milestone", when: "10 minutes ago" },
-];
+import { motion } from "framer-motion";
+import { ArrowDown, ArrowRight, BarChart3, Check, Sparkles } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export default function HeroSection() {
-  const [feedIndex, setFeedIndex] = useState(0);
-  const [liveUsers, setLiveUsers] = useState(1284);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setFeedIndex((prev) => (prev + 1) % liveFeed.length);
-    }, 3200);
-    return () => clearInterval(interval);
-  }, []);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setLiveUsers((prev) => {
-        const next = prev + Math.floor(Math.random() * 15) - 6;
-        return Math.min(1680, Math.max(1120, next));
-      });
-    }, 4000);
-    return () => clearInterval(interval);
-  }, []);
-
-
   return (
-    <section className="relative bg-gradient-hero overflow-hidden py-20 lg:py-28">
-      {/* Grid pattern */}
-      <div className="absolute inset-0 grid-pattern opacity-30" />
-
-            {/* Ambient orbs - static blur for smooth 60fps on mobile */}
-      <div className="pointer-events-none absolute top-1/4 -left-20 w-[360px] sm:w-[420px] h-[360px] sm:h-[420px] bg-primary/10 rounded-full blur-[100px] opacity-60" />
-      <div className="pointer-events-none absolute bottom-0 -right-20 w-[360px] sm:w-[420px] h-[360px] sm:h-[420px] bg-accent/10 rounded-full blur-[100px] opacity-60" />
-
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="max-w-3xl mx-auto text-center">
+    <section className="relative overflow-hidden border-b border-border bg-gradient-hero py-16 sm:py-20 lg:py-24">
+      <div className="absolute inset-0 grid-pattern opacity-25" />
+      <div className="container relative z-10 mx-auto px-6">
+        <div className="mx-auto max-w-5xl text-center">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-primary/30 bg-primary/5 backdrop-blur-sm mb-6">
-              <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-              <span className="text-[11px] font-mono font-bold uppercase tracking-widest text-primary">
-                AI-Powered Career Guidance
+            <div className="mb-7 inline-flex items-center gap-2 rounded-md border border-primary/30 bg-primary/5 px-3 py-1.5">
+              <Sparkles className="h-3.5 w-3.5 text-primary" />
+              <span className="font-mono text-[11px] font-bold uppercase text-primary">
+                Your career intelligence workspace
               </span>
-              <Sparkles className="w-3.5 h-3.5 text-primary" />
             </div>
 
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-[1.15] mb-6 tracking-tight">
-              Discover Your
-              <span className="text-gradient block mt-1 sm:mt-2">Dream Tech Career</span>
+            <h1 className="mx-auto max-w-4xl text-4xl font-bold leading-[1.08] text-foreground sm:text-5xl md:text-7xl">
+              Build a tech career with
+              <span className="mt-2 block text-gradient">clarity, proof, and momentum.</span>
             </h1>
 
-            <p className="text-base md:text-lg text-muted-foreground mb-8 max-w-xl mx-auto leading-relaxed">
-              Don't just guess your future. Use AI-driven roadmaps, skill gap analysis and real salary
-              data to land your dream tech role.
+            <p className="mx-auto mb-8 mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">
+              Find your best-fit role, audit your resume, close skill gaps, and track every improvement
+              from one focused career suite.
             </p>
 
-                        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center mb-10">
-              <Link
-                to="/quiz"
-                className="w-auto min-w-[200px] group inline-flex items-center justify-center gap-2 px-7 py-3 rounded-xl bg-gradient-primary text-primary-foreground font-semibold shadow-glow hover:scale-[1.02] active:scale-[0.98] transition-transform"
-              >
-                Start Career Quiz
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
-              <a
-                href="#pricing"
-                className="w-auto min-w-[200px] inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl border border-border bg-card/40 backdrop-blur-sm font-semibold hover:bg-secondary hover:border-primary/30 transition-all text-muted-foreground hover:text-foreground"
-              >
-                View Plans & Pricing
-              </a>
+            <div className="mb-11 flex flex-wrap items-center justify-center gap-3">
+              <Button asChild size="lg" className="group shadow-glow">
+                <Link to="/quiz">
+                  Start Career Quiz
+                  <ArrowRight className="transition-transform group-hover:translate-x-1" />
+                </Link>
+              </Button>
+              <Button asChild size="lg" variant="outline" className="bg-card/70">
+                <a href="#sample-results">
+                  Explore Sample Results
+                  <ArrowDown />
+                </a>
+              </Button>
             </div>
 
-            <div className="border-t border-border/60 pt-8">
-              <div className="rounded-2xl border border-border/60 bg-card/50 backdrop-blur-sm p-4 max-w-md mx-auto">
-                <div className="flex items-center gap-2 mb-3">
-                  <span className="relative flex h-2 w-2">
-                    <span className="absolute inline-flex h-full w-full rounded-full bg-success opacity-75 animate-ping" />
-                    <span className="relative inline-flex h-2 w-2 rounded-full bg-success" />
-                  </span>
-                  <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-success">
-                    Live activity
-                  </span>
-                  <span className="ml-auto text-[10px] font-mono text-muted-foreground">
-                    {liveUsers.toLocaleString()} online now
-                  </span>
-                </div>
-
-                <div className="relative h-11 overflow-hidden">
-                  <AnimatePresence mode="wait">
-                    <motion.div
-                      key={feedIndex}
-                      initial={{ opacity: 0, y: 14 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -14 }}
-                      transition={{ duration: 0.35, ease: "easeOut" }}
-                      className="absolute inset-0 flex items-center gap-3"
-                    >
-                      <div className="w-7 h-7 shrink-0 rounded-full bg-secondary border border-border flex items-center justify-center text-sm">
-                        {liveFeed[feedIndex].emoji}
+            <div className="mx-auto max-w-4xl border-t border-border pt-8">
+              <div className="grid overflow-hidden rounded-lg border border-border bg-card text-left shadow-card md:grid-cols-[1.1fr_0.9fr]">
+                <div className="border-b border-border p-5 sm:p-6 md:border-b-0 md:border-r">
+                  <div className="mb-6 flex items-center justify-between gap-3">
+                    <div className="flex items-center gap-2">
+                      <div className="flex h-9 w-9 items-center justify-center rounded-md bg-primary/10">
+                        <BarChart3 className="h-4 w-4 text-primary" />
                       </div>
-                      <p className="text-sm text-muted-foreground text-left leading-tight">
-                        <span className="text-foreground font-semibold">{liveFeed[feedIndex].who}</span>{" "}
-                        {liveFeed[feedIndex].action}
-                        <span className="block text-[10px] font-mono text-muted-foreground/70">
-                          {liveFeed[feedIndex].when}
-                        </span>
-                      </p>
-                    </motion.div>
-                  </AnimatePresence>
+                      <div>
+                        <p className="text-sm font-bold text-foreground">Career DNA Report</p>
+                        <p className="font-mono text-[10px] uppercase text-muted-foreground">Illustrative preview</p>
+                      </div>
+                    </div>
+                    <span className="font-mono text-xl font-bold text-primary">92%</span>
+                  </div>
+                  <div className="h-2 overflow-hidden rounded-full bg-muted">
+                    <div className="h-full w-[92%] rounded-full bg-gradient-primary" />
+                  </div>
+                  <div className="mt-4 flex items-center justify-between gap-4">
+                    <span className="text-sm text-muted-foreground">Top career match</span>
+                    <span className="text-sm font-bold text-foreground">AI Engineer</span>
+                  </div>
+                </div>
+                <div className="grid gap-3 p-5 sm:grid-cols-3 sm:p-6 md:grid-cols-1">
+                  {["Role match explained", "Skill gaps prioritized", "Roadmap ready to follow"].map((item) => (
+                    <div key={item} className="flex items-center gap-2 text-sm text-foreground/85">
+                      <Check className="h-4 w-4 shrink-0 text-success" />
+                      {item}
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
-
           </motion.div>
         </div>
       </div>
-
-
-      {/* Bottom fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background to-transparent pointer-events-none" />
     </section>
   );
 }
