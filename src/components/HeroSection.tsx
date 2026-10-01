@@ -38,12 +38,17 @@ export default function HeroSection() {
                   <ArrowRight className="transition-transform group-hover:translate-x-1" />
                 </Link>
               </Button>
-              <Button asChild size="lg" variant="outline" className="bg-card/70">
-                <a href="#sample-results">
-                  Explore Sample Results
-                  <ArrowDown />
-                </a>
-              </Button>
+              <Button
+              size="lg"
+              variant="outline"
+              className="bg-card/70"
+              onClick={() => {
+                document.getElementById("sample-results")?.scrollIntoView({ behavior: "smooth" });
+              }}
+              >
+  Explore Sample Results
+  <ArrowDown />
+</Button>
             </div>
 
             <div className="mx-auto max-w-4xl border-t border-border pt-8">

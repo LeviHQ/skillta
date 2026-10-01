@@ -5,10 +5,15 @@ export default function ScrollToTop() {
   const { pathname } = useLocation();
 
   useEffect(() => {
+    // Mobile browsers ko purana scroll restore karne se roke
+    if ("scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+    }
+
     window.scrollTo({
       top: 0,
       left: 0,
-      behavior: "instant", // bina kisi delay ke turant top par le jayega
+      behavior: "instant",
     });
   }, [pathname]);
 
