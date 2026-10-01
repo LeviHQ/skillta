@@ -11,6 +11,7 @@ const sampleReports = [
     accent: "text-primary",
     border: "group-hover:border-primary/45",
     score: 92,
+    width: "w-[92%]",
     scoreLabel: "Career match",
     details: ["Python & analytical thinking", "12-month learning roadmap"],
   },
@@ -22,6 +23,7 @@ const sampleReports = [
     accent: "text-accent",
     border: "group-hover:border-accent/45",
     score: 84,
+    width: "w-[84%]",
     scoreLabel: "ATS score",
     details: ["6 high-impact improvements", "Role-specific keyword gaps"],
   },
@@ -33,6 +35,7 @@ const sampleReports = [
     accent: "text-info",
     border: "group-hover:border-info/45",
     score: 18,
+    width: "w-[76%]",
     scorePrefix: "+",
     scoreLabel: "Point improvement",
     details: ["Three versions compared", "Previous files ready to download"],
@@ -93,10 +96,7 @@ export default function SampleResultsSection() {
                 </div>
 
                 <div className="my-5 h-1.5 overflow-hidden rounded-full bg-muted">
-                  <div
-                    className="h-full rounded-full bg-gradient-primary"
-                    style={{ width: `${sample.scorePrefix ? 76 : sample.score}%` }}
-                  />
+                  <div className={`h-full rounded-full bg-gradient-primary ${sample.width}`} />
                 </div>
 
                 <h3 className="text-xl font-bold text-foreground">{sample.title}</h3>
