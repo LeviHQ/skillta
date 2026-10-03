@@ -53,7 +53,10 @@ Compare your current skills against your target role's requirements. Get a **per
 ### 8. 📝 [Tech Career Blog](https://www.skillta.tech/blog)
 **70+ SEO-optimized long-form articles** on trending tech topics, country-specific salary guides, career switching, upskilling, and 2026 tech trends. Filter by country/category.
 
-### 9. 🤖 Saathi Chatbot
+### 9. 🔄 [Resume Version Control](https://www.skillta.tech/resume-version-control)
+GitHub-style commit timeline for your resume. Track ATS score evolution, file history, and role-specific versions with secure cloud storage, one-click downloads, and iteration analytics.
+
+### 10. 🤖 Saathi Chatbot
 An in-app decision-tree assistant that guides users through SkillTa's features and answers common career questions.
 
 ---
@@ -82,8 +85,8 @@ An in-app decision-tree assistant that guides users through SkillTa's features a
 - 📜 [Terms of Service](https://www.skillta.tech/terms)
 - 🔒 [Privacy Policy](https://www.skillta.tech/privacy)
 
-### Free Services
-- [Career Quiz](https://www.skillta.tech/quiz) · [Roadmaps](https://www.skillta.tech/roadmaps) · [Salary Predictor](https://www.skillta.tech/salary-predictor) · [Compare Careers](https://www.skillta.tech/compare-careers) · [Resume Reviewer](https://www.skillta.tech/resume-reviewer) · [Skill Gap Analyzer](https://www.skillta.tech/skill-gap-analyzer)
+### Services & Career Suite
+- [Career Quiz](https://www.skillta.tech/quiz) · [Roadmaps](https://www.skillta.tech/roadmaps) · [Salary Predictor](https://www.skillta.tech/salary-predictor) · [Compare Careers](https://www.skillta.tech/compare-careers) · [Resume Reviewer](https://www.skillta.tech/resume-reviewer) · [Skill Gap Analyzer](https://www.skillta.tech/skill-gap-analyzer) · [Resume Version Control](https://www.skillta.tech/resume-version-control)
 
 ### Popular Country Hubs
 - 🇺🇸 [Tech Careers in USA](https://www.skillta.tech/usa) · 🇬🇧 [UK](https://www.skillta.tech/uk) · 🇨🇦 [Canada](https://www.skillta.tech/canada) · 🇦🇺 [Australia](https://www.skillta.tech/australia) · 🇩🇪 [Germany](https://www.skillta.tech/germany) · 🇮🇳 [India](https://www.skillta.tech/india) · 🇸🇬 [Singapore](https://www.skillta.tech/singapore) · 🇦🇪 [UAE](https://www.skillta.tech/uae)
@@ -121,7 +124,7 @@ Full sitemap: [https://www.skillta.tech/sitemap.xml](https://www.skillta.tech/si
 - 🗺️ **50+ tech career roadmaps** with PDF exports
 - 📝 **70+ SEO-optimized blog articles**
 - 🎯 **500+ localized country × topic pages**
-- 🛠️ **7 core free services** for career growth
+- 🛠️ **8 core services** for career growth
 - 🌐 **650+ URLs** in the sitemap
 
 ---
