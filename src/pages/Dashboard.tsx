@@ -627,6 +627,14 @@ export default function Dashboard() {
                   <BookOpen className="w-5 h-5 text-muted-foreground group-hover:text-foreground" />
                   <span className="text-sm font-medium text-muted-foreground group-hover:text-foreground transition-colors">Browse Roadmaps</span>
                 </Link>
+                <Link to="/resume-reviewer" className="flex items-center gap-3 p-3 rounded-xl hover:bg-secondary/50 transition-colors group">
+                  <FileText className="w-5 h-5 text-muted-foreground group-hover:text-foreground" />
+                  <span className="text-sm font-medium text-muted-foreground group-hover:text-foreground transition-colors">Review My Resume</span>
+                </Link>
+                <Link to="/resume-version-control" className="flex items-center gap-3 p-3 rounded-xl hover:bg-secondary/50 transition-colors group">
+                  <GitBranch className="w-5 h-5 text-muted-foreground group-hover:text-foreground" />
+                  <span className="text-sm font-medium text-muted-foreground group-hover:text-foreground transition-colors">Resume Version Control</span>
+                </Link>
               </div>
             </div>
           </motion.div>
