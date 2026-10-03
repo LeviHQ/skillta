@@ -7,6 +7,7 @@ import { careers } from "@/data/careers";
 import {
   User, LogOut, TrendingUp, Clock, Star, ArrowRight,
   BarChart3, History, Sparkles, Target, BookOpen, CreditCard, Zap, XCircle, CheckCircle2, ChevronLeft, ChevronRight, Award, Share2, X
+  FileText as FileTextIcon, GitBranch,
 } from "lucide-react";
 import SEOHead from "@/components/SEOHead";
 import { PAGE_SEO } from "@/lib/seo";
@@ -628,7 +629,7 @@ export default function Dashboard() {
                   <span className="text-sm font-medium text-muted-foreground group-hover:text-foreground transition-colors">Browse Roadmaps</span>
                 </Link>
                 <Link to="/resume-reviewer" className="flex items-center gap-3 p-3 rounded-xl hover:bg-secondary/50 transition-colors group">
-                  <FileText className="w-5 h-5 text-muted-foreground group-hover:text-foreground" />
+                  <FileTextIcon className="w-5 h-5 text-muted-foreground group-hover:text-foreground" />
                   <span className="text-sm font-medium text-muted-foreground group-hover:text-foreground transition-colors">Review My Resume</span>
                 </Link>
                 <Link to="/resume-version-control" className="flex items-center gap-3 p-3 rounded-xl hover:bg-secondary/50 transition-colors group">
