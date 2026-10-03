@@ -6,7 +6,7 @@ import { usePlan } from "@/contexts/PlanContext";
 import { careers } from "@/data/careers";
 import {
   User, LogOut, TrendingUp, Clock, Star, ArrowRight,
-  BarChart3, History, Sparkles, Target, BookOpen, CreditCard, Zap, XCircle, CheckCircle2, ChevronLeft, ChevronRight, Award, Share2, X
+  BarChart3, History, Sparkles, Target, BookOpen, CreditCard, Zap, XCircle, CheckCircle2, ChevronLeft, ChevronRight, Award, Share2, X,
   FileText as FileTextIcon, GitBranch,
 } from "lucide-react";
 import SEOHead from "@/components/SEOHead";
