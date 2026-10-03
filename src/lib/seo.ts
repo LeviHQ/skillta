@@ -128,6 +128,10 @@ export function getWebApplicationSchema() {
       "Career comparison tool",
       "PDF roadmap download",
       "Personalized career recommendations",
+      "AI Resume Reviewer with ATS scoring",
+      "Skill Gap Analyzer & learning paths",
+      "Resume Version Control & ATS commit history",
+      "Tech Career Salary Predictor",
     ],
   };
 }
