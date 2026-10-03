@@ -756,6 +756,12 @@ export default function ResumeReviewer() {
                         Best fit: <span className="text-foreground font-semibold">{review.roleFit.role}</span> — {review.roleFit.reasoning}
                       </p>
                     )}
+                    <a
+                      href="/resume-version-control"
+                      className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline"
+                    >
+                      Save this score in Resume Version Control →
+                    </a>
                   </div>
                 </div>
               </motion.div>

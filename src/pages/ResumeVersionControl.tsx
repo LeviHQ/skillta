@@ -261,6 +261,11 @@ export default function ResumeVersionControl() {
       />
 
       <section className="container mx-auto px-4 pt-12 pb-8 max-w-5xl">
+        <nav aria-label="Breadcrumb" className="mb-4 text-xs text-muted-foreground">
+          <Link to="/" className="hover:text-foreground">Home</Link>
+          <span className="mx-1.5">/</span>
+          <span className="text-foreground">Resume Version Control</span>
+        </nav>
         <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-xs font-medium text-primary mb-4">
           <GitBranch className="w-3.5 h-3.5" /> New in SkillTa
         </div>
@@ -446,6 +451,24 @@ export default function ResumeVersionControl() {
                 <summary className="cursor-pointer font-medium text-foreground">{f.question}</summary>
                 <p className="mt-2 text-sm text-muted-foreground">{f.answer}</p>
               </details>
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-12">
+          <h2 className="font-display text-2xl font-bold text-foreground mb-4">Explore related career tools</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {[
+              { to: "/resume-reviewer", t: "AI Resume Reviewer", d: "Get your ATS score and actionable feedback before saving a new version.", c: "Review Resume →" },
+              { to: "/skill-gap-analyzer", t: "Skill Gap Analyzer", d: "Find the missing skills for your target role and plan what to learn next.", c: "Analyze Skills →" },
+              { to: "/quiz", t: "AI Career Quiz", d: "Discover the tech careers that best match your strengths and interests.", c: "Take Quiz →" },
+              { to: "/salary-predictor", t: "Salary Predictor", d: "Estimate salary ranges for your target role across India and global markets.", c: "Check Salary →" },
+            ].map((l) => (
+              <Link key={l.to} to={l.to} className="group rounded-xl border border-border bg-card p-5 hover:border-primary/40 transition-colors">
+                <h3 className="font-semibold text-foreground">{l.t}</h3>
+                <p className="mt-1 text-sm text-muted-foreground">{l.d}</p>
+                <span className="mt-3 inline-block text-xs font-medium text-primary group-hover:translate-x-0.5 transition-transform">{l.c}</span>
+              </Link>
             ))}
           </div>
         </div>
