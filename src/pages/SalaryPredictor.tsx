@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet-async";
 import { Loader2, TrendingUp, Sparkles, Target, BookOpen, ShieldCheck, Heart, ArrowUpRight } from "lucide-react";
@@ -128,6 +129,11 @@ export default function SalaryPredictor() {
 
       <AdsterraResponsiveBanner />
       <div className="container mx-auto px-4 sm:px-6 py-10 max-w-5xl">
+        <nav aria-label="Breadcrumb" className="mb-6 text-xs text-muted-foreground">
+          <Link to="/" className="hover:text-foreground transition-colors">Home</Link>
+          <span className="mx-1.5">/</span>
+          <span className="text-foreground font-medium">Salary Predictor</span>
+        </nav>
         <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-10">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold mb-4">
             <Sparkles className="w-3.5 h-3.5" /> AI-powered • 2025-2026 market data

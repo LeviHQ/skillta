@@ -51,6 +51,13 @@ export default function Blog() {
       <section className="relative py-16 md:py-20 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-accent/5 via-transparent to-transparent" />
         <div className="container mx-auto px-6 relative">
+          {/* Breadcrumb */}
+          <nav aria-label="Breadcrumb" className="mb-6 text-xs text-muted-foreground text-center">
+            <Link to="/" className="hover:text-foreground">Home</Link>
+            <span className="mx-1.5">/</span>
+            <span className="text-foreground">Blog</span>
+          </nav>
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}

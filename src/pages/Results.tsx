@@ -81,6 +81,14 @@ export default function Results() {
     <div className="min-h-screen bg-gradient-hero relative">
       <SEOHead {...PAGE_SEO.results} />
       <div className="container mx-auto px-6 py-12 relative z-10">
+        {/* Breadcrumb */}
+        <nav aria-label="Breadcrumb" className="mb-6 text-xs text-muted-foreground max-w-3xl mx-auto">
+          <Link to="/" className="hover:text-foreground">Home</Link>
+          <span className="mx-1.5">/</span>
+          <Link to="/quiz" className="hover:text-foreground">AI Career Quiz</Link>
+          <span className="mx-1.5">/</span>
+          <span className="text-foreground">Results</span>
+        </nav>
 
         {/* Signed in banner */}
         {user && (

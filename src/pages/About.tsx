@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Compass, Target, Heart, Lightbulb } from "lucide-react";
 import SEOHead from "@/components/SEOHead";
@@ -13,6 +14,13 @@ export default function About() {
       />
       <AdsterraResponsiveBanner />
       <div className="container mx-auto px-6 py-16 relative z-10">
+        {/* Breadcrumb */}
+        <nav aria-label="Breadcrumb" className="mb-6 text-xs text-muted-foreground max-w-3xl mx-auto">
+          <Link to="/" className="hover:text-foreground">Home</Link>
+          <span className="mx-1.5">/</span>
+          <span className="text-foreground">About</span>
+        </nav>
+
         <motion.div
           className="max-w-3xl mx-auto"
           initial={{ opacity: 0, y: 20 }}

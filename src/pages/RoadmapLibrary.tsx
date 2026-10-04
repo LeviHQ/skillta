@@ -84,6 +84,12 @@ export default function RoadmapLibrary() {
       />
       <AdsterraResponsiveBanner />
       <div className="container mx-auto px-6 py-16 relative z-10">
+        {/* Breadcrumb */}
+        <nav aria-label="Breadcrumb" className="mb-6 text-xs text-muted-foreground text-center">
+          <Link to="/" className="hover:text-foreground">Home</Link>
+          <span className="mx-1.5">/</span>
+          <span className="text-foreground">Career Roadmaps</span>
+        </nav>
         <motion.div
           className="text-center mb-12"
           initial={{ opacity: 0, y: 20 }}

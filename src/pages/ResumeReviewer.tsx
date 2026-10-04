@@ -1,6 +1,7 @@
 import { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet-async";
+import { Link } from "react-router-dom";
 import {
   FileText,
   Upload,
@@ -502,6 +503,12 @@ export default function ResumeReviewer() {
         <section className="relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-transparent to-transparent" />
           <div className="container mx-auto px-6 pt-16 pb-10 relative">
+            <nav aria-label="Breadcrumb" className="mb-6 text-xs text-muted-foreground max-w-3xl mx-auto text-left">
+              <Link to="/" className="hover:text-foreground transition-colors">Home</Link>
+              <span className="mx-1.5">/</span>
+              <span className="text-foreground font-medium">AI Resume Reviewer</span>
+            </nav>
+
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}

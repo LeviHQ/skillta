@@ -1,12 +1,14 @@
 import { motion } from "framer-motion";
 import { Mail, Github, Linkedin, Heart, Sparkles, MapPin, Code2 } from "lucide-react";
 import SEOHead from "@/components/SEOHead";
+import { Link } from "react-router-dom";
 import { PAGE_SEO, getBreadcrumbSchema } from "@/lib/seo";
 //import founderPhoto from "@/assets/adarsh-founder.jpg.asset.json";
 import founderPhoto from "@/assets/MyProfile.jpg";
 import AdsterraResponsiveBanner from "@/components/AdsterraResponsiveBanner";
 
 const EMAIL = "adarshmishra70931@gmail.com";
+const X_TWITTER = "https://x.com/AdarshMi18";
 const GITHUB = "https://github.com/Code-By-Adarsh";
 const LINKEDIN = "https://www.linkedin.com/in/adarsh-jayprakash-mishra";
 const GMAIL_COMPOSE = `https://mail.google.com/mail/?view=cm&fs=1&to=${EMAIL}`;
@@ -23,6 +25,15 @@ export default function Contact() {
       <AdsterraResponsiveBanner />
       <div className="min-h-screen py-16 px-4">
         <div className="container mx-auto max-w-3xl">
+          {/* Breadcrumb */}
+          <nav aria-label="Breadcrumb" className="flex items-center justify-center gap-2 text-xs text-muted-foreground mb-6">
+            <Link to="/" className="hover:text-foreground transition-colors">
+              Home
+            </Link>
+            <span>/</span>
+            <span className="text-foreground font-medium">Contact</span>
+          </nav>
+
           {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -86,27 +97,52 @@ export default function Contact() {
             </div>
           </motion.div>
 
-          {/* Primary Contact — Email */}
-          <motion.a
-            href={GMAIL_COMPOSE}
-            target="_blank"
-            rel="noopener noreferrer"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="group flex items-center gap-4 p-5 rounded-2xl border border-border bg-card/60 backdrop-blur-sm hover:border-primary/50 hover:bg-card/80 transition-all mb-6"
-          >
-            <div className="w-12 h-12 rounded-xl bg-primary/15 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
-              <Mail className="w-6 h-6 text-primary" />
-            </div>
-            <div className="flex-1 min-w-0">
-              <h3 className="text-sm font-semibold text-foreground">Email me directly</h3>
-              <p className="text-sm text-muted-foreground truncate">{EMAIL}</p>
-            </div>
-            <span className="text-xs text-primary font-medium opacity-0 group-hover:opacity-100 transition-opacity hidden sm:inline">
-              Open Gmail →
-            </span>
-          </motion.a>
+          {/* Primary Contacts — Email & X */}
+          <div className="grid sm:grid-cols-2 gap-4 mb-6">
+            <motion.a
+              href={GMAIL_COMPOSE}
+              target="_blank"
+              rel="noopener noreferrer"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              className="group flex items-center gap-4 p-5 rounded-2xl border border-border bg-card/60 backdrop-blur-sm hover:border-primary/50 hover:bg-card/80 transition-all"
+            >
+              <div className="w-12 h-12 rounded-xl bg-primary/15 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                <Mail className="w-6 h-6 text-primary" />
+              </div>
+              <div className="flex-1 min-w-0">
+                <h3 className="text-sm font-semibold text-foreground">Email me directly</h3>
+                <p className="text-xs text-muted-foreground truncate">{EMAIL}</p>
+              </div>
+              <span className="text-xs text-primary font-medium opacity-0 group-hover:opacity-100 transition-opacity hidden sm:inline">
+                Gmail →
+              </span>
+            </motion.a>
+
+            <motion.a
+              href={X_TWITTER}
+              target="_blank"
+              rel="noopener noreferrer"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.25 }}
+              className="group flex items-center gap-4 p-5 rounded-2xl border border-border bg-card/60 backdrop-blur-sm hover:border-primary/50 hover:bg-card/80 transition-all"
+            >
+              <div className="w-12 h-12 rounded-xl bg-primary/15 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                <svg className="w-5 h-5 text-primary" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                </svg>
+              </div>
+              <div className="flex-1 min-w-0">
+                <h3 className="text-sm font-semibold text-foreground">DM on X</h3>
+                <p className="text-xs text-muted-foreground truncate">@AdarshMi18</p>
+              </div>
+              <span className="text-xs text-primary font-medium opacity-0 group-hover:opacity-100 transition-opacity hidden sm:inline">
+                Open X →
+              </span>
+            </motion.a>
+          </div>
 
           {/* Socials */}
           <motion.div

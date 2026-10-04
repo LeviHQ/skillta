@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { getRandomQuestions, QuizQuestion } from "@/data/quizQuestionBank";
 import { ChevronLeft, ChevronRight, Shuffle, Lock } from "lucide-react";
@@ -111,6 +111,12 @@ export default function Quiz() {
         <AdsterraResponsiveBanner />
         <div className="container mx-auto px-6 py-12 relative z-10">
           <h1 className="sr-only">Career Quiz</h1>
+          {/* Breadcrumb */}
+          <nav aria-label="Breadcrumb" className="mb-6 text-xs text-muted-foreground max-w-2xl mx-auto">
+            <Link to="/" className="hover:text-foreground">Home</Link>
+            <span className="mx-1.5">/</span>
+            <span className="text-foreground">AI Career Quiz</span>
+          </nav>
           {/* Progress */}
           <div className="max-w-2xl mx-auto mb-8">
             <div className="flex items-center justify-between mb-3">

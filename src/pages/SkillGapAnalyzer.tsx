@@ -192,6 +192,11 @@ export default function SkillGapAnalyzer() {
       {/* HERO */}
       <section className="pt-16 pb-10 border-b border-border bg-gradient-to-b from-accent/5 to-background">
         <div className="container mx-auto px-6 max-w-5xl text-center">
+          <nav aria-label="Breadcrumb" className="mb-6 text-xs text-muted-foreground text-left">
+            <Link to="/" className="hover:text-foreground transition-colors">Home</Link>
+            <span className="mx-1.5">/</span>
+            <span className="text-foreground font-medium">Skill Gap Analyzer</span>
+          </nav>
           <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-accent/10 border border-accent/30 mb-5">
             <Target className="w-3.5 h-3.5 text-accent" />
             <span className="text-xs font-semibold text-accent uppercase tracking-wider">Pro & Lifetime · 3 analyses/day</span>
