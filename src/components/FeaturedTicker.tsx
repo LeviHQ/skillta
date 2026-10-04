@@ -28,6 +28,12 @@ const BADGES: DirectoryBadge[] = [
     alt: "Featured on Fazier",
   },
   {
+    name: "ScrollLaunch",
+    href: "https://www.scrolllaunch.com/products/skillta?ref=badge",
+    imgSrc: "https://www.scrolllaunch.com/api/badge/skillta",
+    alt: "Featured on ScrollLaunch",
+  },
+  {
     name: "LaunchBuff",
     href: "https://launchbuff.com/products/skillta-dz3ysa",
     imgSrc: "https://launchbuff.com/badge-featured-light.svg",
