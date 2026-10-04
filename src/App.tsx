@@ -5,7 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { PlanProvider } from "@/contexts/PlanContext";
-import { InstallPrompt } from "./components/InstallPrompt";
+//import { InstallPrompt } from "./components/InstallPrompt";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import DeferredThirdParty from "./components/DeferredThirdParty";
@@ -99,7 +99,7 @@ const App = () => (
               </main>
               <Footer />
               <DeferredThirdParty />
-              <InstallPrompt />
+              {/* <InstallPrompt /> */}
             </BrowserRouter>
             </TooltipProvider>
           </PlanProvider>
