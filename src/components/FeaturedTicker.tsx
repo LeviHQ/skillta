@@ -34,6 +34,12 @@ const BADGES: DirectoryBadge[] = [
     alt: "Featured on ScrollLaunch",
   },
   {
+    name: "CodeHype",
+    href: "https://codehype.ai/product/skillta?utm_source=codehype_badge",
+    imgSrc: "https://codehype.ai/badges/skillta.svg?variant=find-us&v=20",
+    alt: "Featured on CodeHype",
+  },
+  {
     name: "LaunchBuff",
     href: "https://launchbuff.com/products/skillta-dz3ysa",
     imgSrc: "https://launchbuff.com/badge-featured-light.svg",
@@ -45,12 +51,12 @@ const BADGES: DirectoryBadge[] = [
     imgSrc: "https://launchnest.io/badge/skillta.svg?variant=featured&theme=light",
     alt: "Featured on LaunchNest",
   },
-  {
-    name: "Launchpadly",
-    href: "https://launchpadly.co/startup/skillta?ref=badge",
-    imgSrc: "https://launchpadly.co/embed/badges/startup/skillta.svg?variant=light",
-    alt: "Featured on Launchpadly",
-  },
+//   {
+//     name: "Launchpadly",
+//     href: "https://launchpadly.co/startup/skillta?ref=badge",
+//     imgSrc: "https://launchpadly.co/embed/badges/startup/skillta.svg?variant=light",
+//     alt: "Featured on Launchpadly",
+//   },
 ];
 
 export function FeaturedTicker() {
