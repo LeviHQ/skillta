@@ -52,7 +52,7 @@ export default function Blog() {
         <div className="absolute inset-0 bg-gradient-to-b from-accent/5 via-transparent to-transparent" />
         <div className="container mx-auto px-6 relative">
           {/* Breadcrumb */}
-          <nav aria-label="Breadcrumb" className="mb-6 flex flex-wrap items-center justify-end gap-1.5 text-right text-xs text-muted-foreground">
+          <nav aria-label="Breadcrumb" className="mb-6 flex flex-wrap items-center justify-start gap-1.5 text-left text-xs text-muted-foreground">
             <Link to="/" className="hover:text-foreground">Home</Link>
             <span className="mx-1.5">/</span>
             <span className="text-foreground">Blog</span>

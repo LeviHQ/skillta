@@ -467,7 +467,7 @@ export default function RoadmapDetail() {
       <AdsterraResponsiveBanner />
       <div className="container mx-auto px-6 py-12 relative z-10">
         {/* Breadcrumb */}
-        <nav aria-label="Breadcrumb" className="mb-4 flex flex-wrap items-center justify-end gap-1.5 text-right text-xs text-muted-foreground no-print">
+        <nav aria-label="Breadcrumb" className="mb-4 flex flex-wrap items-center justify-start gap-1.5 text-left text-xs text-muted-foreground no-print">
           <Link to="/" className="hover:text-foreground">Home</Link>
           <span className="mx-1.5">/</span>
           <Link to="/roadmaps" className="hover:text-foreground">Roadmaps</Link>

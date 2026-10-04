@@ -22,7 +22,7 @@ export default function CountryDocLayout({ country, currentKey, children }: Prop
 
   return (
     <div className="container mx-auto px-4 md:px-6 py-8">
-      <nav aria-label="Breadcrumb" className="mb-6 flex flex-wrap items-center justify-end gap-1.5 text-right text-xs text-muted-foreground">
+      <nav aria-label="Breadcrumb" className="mb-6 flex flex-wrap items-center justify-start gap-1.5 text-left text-xs text-muted-foreground">
         <Link to="/" className="hover:text-foreground transition-colors">Home</Link>
         <span>/</span>
         {currentKey !== "overview" && (

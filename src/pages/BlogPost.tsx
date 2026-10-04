@@ -332,7 +332,7 @@ export default function BlogPost() {
             className="min-w-0"
           >
             {/* Breadcrumb */}
-            <nav aria-label="Breadcrumb" className="mb-6 flex flex-wrap items-center justify-end gap-2 text-right text-xs text-muted-foreground">
+            <nav aria-label="Breadcrumb" className="mb-6 flex flex-wrap items-center justify-start gap-2 text-left text-xs text-muted-foreground">
               <Link to="/" className="hover:text-primary">Home</Link>
               <span>/</span>
               <Link to="/blog" className="hover:text-primary">Blog</Link>

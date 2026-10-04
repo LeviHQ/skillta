@@ -112,7 +112,7 @@ export default function Quiz() {
         <div className="container mx-auto px-6 py-12 relative z-10">
           <h1 className="sr-only">Career Quiz</h1>
           {/* Breadcrumb */}
-          <nav aria-label="Breadcrumb" className="mb-6 flex flex-wrap items-center justify-end gap-1.5 text-right text-xs text-muted-foreground">
+          <nav aria-label="Breadcrumb" className="mb-6 flex flex-wrap items-center justify-start gap-1.5 text-left text-xs text-muted-foreground">
             <Link to="/" className="hover:text-foreground">Home</Link>
             <span className="mx-1.5">/</span>
             <span className="text-foreground">AI Career Quiz</span>

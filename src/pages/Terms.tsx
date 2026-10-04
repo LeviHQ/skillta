@@ -11,7 +11,7 @@ export default function Terms() {
       />
       <div className="min-h-screen py-16 px-4">
         <div className="container mx-auto max-w-3xl">
-          <nav aria-label="Breadcrumb" className="mb-6 flex flex-wrap items-center justify-end gap-1.5 text-right text-xs text-muted-foreground">
+          <nav aria-label="Breadcrumb" className="mb-6 flex flex-wrap items-center justify-start gap-1.5 text-left text-xs text-muted-foreground">
             <Link to="/" className="hover:text-foreground transition-colors">Home</Link>
             <span>/</span>
             <span className="text-foreground font-medium">Terms of Service</span>

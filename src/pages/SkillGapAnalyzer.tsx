@@ -192,7 +192,7 @@ export default function SkillGapAnalyzer() {
       {/* HERO */}
       <section className="pt-16 pb-10 border-b border-border bg-gradient-to-b from-accent/5 to-background">
         <div className="container mx-auto px-6 max-w-5xl text-center">
-          <nav aria-label="Breadcrumb" className="mb-6 flex flex-wrap items-center justify-end gap-1.5 text-right text-xs text-muted-foreground">
+          <nav aria-label="Breadcrumb" className="mb-6 flex flex-wrap items-center justify-start gap-1.5 text-left text-xs text-muted-foreground">
             <Link to="/" className="hover:text-foreground transition-colors">Home</Link>
             <span className="mx-1.5">/</span>
             <span className="text-foreground font-medium">Skill Gap Analyzer</span>
