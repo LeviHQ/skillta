@@ -82,7 +82,7 @@ export default function Results() {
       <SEOHead {...PAGE_SEO.results} />
       <div className="container mx-auto px-6 py-12 relative z-10">
         {/* Breadcrumb */}
-        <nav aria-label="Breadcrumb" className="mb-6 text-xs text-muted-foreground max-w-3xl mx-auto">
+        <nav aria-label="Breadcrumb" className="mb-6 flex flex-wrap items-center justify-end gap-1.5 text-right text-xs text-muted-foreground">
           <Link to="/" className="hover:text-foreground">Home</Link>
           <span className="mx-1.5">/</span>
           <Link to="/quiz" className="hover:text-foreground">AI Career Quiz</Link>
