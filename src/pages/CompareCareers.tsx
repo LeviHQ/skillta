@@ -48,7 +48,7 @@ export default function CompareCareers() {
       <section className="relative py-16 md:py-20 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent" />
         <div className="container mx-auto px-6 relative">
-          <nav aria-label="Breadcrumb" className="mb-6 text-xs text-muted-foreground max-w-3xl mx-auto">
+          <nav aria-label="Breadcrumb" className="mb-6 flex flex-wrap items-center justify-end gap-1.5 text-right text-xs text-muted-foreground">
             <Link to="/" className="hover:text-foreground transition-colors">Home</Link>
             <span className="mx-1.5">/</span>
             <span className="text-foreground font-medium">Compare Careers</span>

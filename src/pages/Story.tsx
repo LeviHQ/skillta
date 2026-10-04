@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import { Heart, Sparkles, Target, Users, Coffee } from "lucide-react";
 import SEOHead from "@/components/SEOHead";
 import AdsterraResponsiveBanner from "@/components/AdsterraResponsiveBanner";
@@ -12,6 +13,11 @@ export default function Story() {
       />
       <AdsterraResponsiveBanner />
       <div className="container mx-auto px-6 max-w-3xl">
+        <nav aria-label="Breadcrumb" className="mb-6 flex flex-wrap items-center justify-end gap-1.5 text-right text-xs text-muted-foreground">
+          <Link to="/" className="hover:text-foreground transition-colors">Home</Link>
+          <span>/</span>
+          <span className="text-foreground font-medium">Our Story</span>
+        </nav>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

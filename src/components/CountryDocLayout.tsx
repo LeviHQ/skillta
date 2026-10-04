@@ -22,6 +22,19 @@ export default function CountryDocLayout({ country, currentKey, children }: Prop
 
   return (
     <div className="container mx-auto px-4 md:px-6 py-8">
+      <nav aria-label="Breadcrumb" className="mb-6 flex flex-wrap items-center justify-end gap-1.5 text-right text-xs text-muted-foreground">
+        <Link to="/" className="hover:text-foreground transition-colors">Home</Link>
+        <span>/</span>
+        {currentKey !== "overview" && (
+          <>
+            <Link to={`/${country.slug}`} className="hover:text-foreground transition-colors">{country.name}</Link>
+            <span>/</span>
+          </>
+        )}
+        <span className="text-foreground font-medium">
+          {currentKey === "overview" ? country.name : current.title}
+        </span>
+      </nav>
       {/* Country header */}
       <div className="glass rounded-2xl border border-border p-5 mb-6 flex items-center gap-4">
         <div className="text-5xl">{country.flag}</div>

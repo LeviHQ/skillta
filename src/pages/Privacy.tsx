@@ -11,6 +11,11 @@ export default function Privacy() {
       />
       <div className="min-h-screen py-16 px-4">
         <div className="container mx-auto max-w-3xl">
+          <nav aria-label="Breadcrumb" className="mb-6 flex flex-wrap items-center justify-end gap-1.5 text-right text-xs text-muted-foreground">
+            <Link to="/" className="hover:text-foreground transition-colors">Home</Link>
+            <span>/</span>
+            <span className="text-foreground font-medium">Privacy Policy</span>
+          </nav>
           <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-2">Privacy Policy</h1>
           <p className="text-sm text-muted-foreground mb-10">Last updated: March 9, 2026</p>
 

@@ -261,7 +261,7 @@ export default function ResumeVersionControl() {
       />
 
       <section className="container mx-auto px-4 pt-12 pb-8 max-w-5xl">
-        <nav aria-label="Breadcrumb" className="mb-4 text-xs text-muted-foreground">
+        <nav aria-label="Breadcrumb" className="mb-4 flex flex-wrap items-center justify-end gap-1.5 text-right text-xs text-muted-foreground">
           <Link to="/" className="hover:text-foreground">Home</Link>
           <span className="mx-1.5">/</span>
           <span className="text-foreground">Resume Version Control</span>
