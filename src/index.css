@@ -322,3 +322,23 @@ font[style*="background: yellow"] {
 #google_translate_element {
   display: none !important;
 }
+
+/* Smooth Marquee Ticker */
+@keyframes ticker-marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-ticker {
+  display: flex;
+  width: max-content;
+  animation: ticker-marquee 25s linear infinite;
+}
+
+.animate-ticker:hover {
+  animation-play-state: paused;
+}

@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowDown, ArrowRight, BarChart3, Check, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { FeaturedTicker } from "@/components/FeaturedTicker";
 
 export default function HeroSection() {
   return (
@@ -50,6 +51,9 @@ export default function HeroSection() {
   <ArrowDown />
 </Button>
             </div>
+
+            {/* Featured Marquee Ticker */}
+            <FeaturedTicker />
 
             <div className="mx-auto max-w-4xl border-t border-border pt-8">
               <div className="grid overflow-hidden rounded-lg border border-border bg-card text-left shadow-card md:grid-cols-[1.1fr_0.9fr]">
