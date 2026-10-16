@@ -16,8 +16,8 @@ export default function SupportModal({ open, onClose }: SupportModalProps) {
           </div>
           <DialogTitle>Enjoyed your career match?</DialogTitle>
           <DialogDescription className="pt-2 leading-relaxed">
-            SkillTa freely helps students and we don't want to add ads to the site. Your quiz used real AI compute, API and hosting costs.
-            If you can spare $3 on Ko-fi, it directly pays for our API, AI bills, domain and marketing — so we can keep SkillTa free and ad-free for the next student.
+            SkillTa is supported by plan purchases, guest advertising, and optional donations.
+            A contribution on Ko-fi helps cover AI usage, hosting, and development. Active Pro and Lifetime plans include an ad-free, clean experience; donations are separate from plan purchases.
           </DialogDescription>
         </DialogHeader>
         <div className="flex flex-col gap-2 pt-2">

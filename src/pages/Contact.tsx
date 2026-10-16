@@ -198,7 +198,7 @@ export default function Contact() {
             <p className="text-sm text-muted-foreground max-w-lg mx-auto leading-relaxed">
               Every quiz you take, every roadmap you open, every blog you share — it genuinely means
               the world to a solo builder. You're the reason SkillTa exists, and the reason it
-              stays free and ad-free. Keep learning, keep building. I'm rooting for you. 🚀
+              stays helpful and independent. Keep learning, keep building. I'm rooting for you. 🚀
             </p>
             <p className="text-xs text-primary/80 font-medium mt-4">— Adarsh</p>
           </motion.div>

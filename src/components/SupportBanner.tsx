@@ -7,20 +7,20 @@ interface SupportBannerProps {
 
 const MESSAGES: Record<string, { title: string; body: string }> = {
   quiz: {
-    title: "Help keep SkillTa free for students",
-    body: "SkillTa is built to help students freely — no paywalls, no ads. If we can't cover our API, AI, domain and marketing costs from donations, we'll be forced to add ads. A small tip on Ko-fi keeps this project clean and free for everyone.",
+    title: "Support career guidance for students",
+    body: "SkillTa is supported by plan purchases, guest advertising, and optional donations. A tip on Ko-fi helps cover AI usage, hosting, and ongoing development. Pro and Lifetime access remains ad-free.",
   },
   results: {
     title: "Loved your career match? Support SkillTa",
-    body: "Your result took real AI compute, domain hosting and hours of work. We don't want to run ads on your career journey. If SkillTa helped you today, a small $3 donation on Ko-fi keeps the AI running and the site ad-free.",
+    body: "If SkillTa helped you today, an optional donation on Ko-fi supports AI usage, hosting, and improvements to the career tools. Active Pro and Lifetime users enjoy an ad-free, clean experience.",
   },
   about: {
-    title: "We want SkillTa to stay free — forever",
-    body: "SkillTa was built to help students find the right career without hype or paywalls. To avoid running ads, we depend on tiny donations to pay for API cost, AI bills, domain and marketing. If our mission speaks to you, please consider supporting us on Ko-fi.",
+    title: "Help SkillTa stay independent",
+    body: "SkillTa helps students find a career direction without the hype. Plan purchases and guest advertising support the platform; optional donations help fund further improvements.",
   },
   default: {
     title: "Support SkillTa",
-    body: "Help us keep SkillTa free and ad-free for every student. Even $3 goes a long way.",
+    body: "Help us improve SkillTa for students. Optional donations support development, while Pro and Lifetime plans include an ad-free, clean experience.",
   },
 };
 
@@ -43,7 +43,7 @@ export default function SupportBanner({ variant = "default", className = "" }: S
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 bg-yellow-400 text-gray-900 px-4 py-2 rounded-full text-sm font-semibold hover:scale-105 transition-transform"
           >
-            ☕ Keep SkillTa Free · Donate $3
+            ☕ Support SkillTa · Donate $3
           </a>
         </div>
       </div>

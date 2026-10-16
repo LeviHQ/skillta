@@ -102,7 +102,6 @@ export function PlanProvider({ children }: { children: ReactNode }) {
   }, [refreshPlan]);
 
   useEffect(() => {
-    setAdClock(Date.now());
     if (plan?.name !== "Pro") return;
     const remaining = Date.parse(plan.expiresAt) - Date.now();
     if (!Number.isFinite(remaining) || remaining <= 0) return;

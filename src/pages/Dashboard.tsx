@@ -188,6 +188,9 @@ export default function Dashboard() {
                 <div className="p-4 rounded-xl bg-secondary/40 border border-border">
                   <p className="text-xs text-muted-foreground mb-1">Current Plan</p>
                   <p className="text-xl font-bold text-foreground">{plan.name}</p>
+                  {(plan.name === "Lifetime" || (plan.name === "Pro" && Date.parse(plan.expiresAt) > Date.now())) && (
+                    <p className="text-xs text-primary mt-1">Ad-free, clean experience</p>
+                  )}
                   <p className="text-xs text-muted-foreground mt-1">
                     Active till {new Date(plan.expiresAt).toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" })}
                   </p>
