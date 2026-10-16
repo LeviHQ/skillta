@@ -9,7 +9,7 @@ export default function Story() {
     <div className="min-h-screen py-16 bg-background">
       <SEOHead
         title="Our Story — SkillTa"
-        description="The story behind SkillTa — why we're building a ad-free, high-quality AI career guidance platform for students."
+        description="The story behind SkillTa — why we're building high-quality AI career guidance with ad-free Pro and Lifetime access for students."
       />
       <AdsterraResponsiveBanner />
       <div className="container mx-auto px-6 max-w-3xl">
@@ -30,7 +30,7 @@ export default function Story() {
             The <span className="text-gradient">SkillTa</span> Story
           </h1>
           <p className="text-muted-foreground text-lg">
-            Why we built an honest, ad-free AI career platform — and why we need your help to keep it that way.
+            Why we built an honest AI career platform — and how your support helps us keep building.
           </p>
         </motion.div>
 
@@ -56,10 +56,9 @@ export default function Story() {
               <h2 className="text-xl font-bold">Our mission</h2>
             </div>
             <p>
-              SkillTa exists to make career guidance <strong>honest, high-quality, and ad-free</strong> for every
-              student. No paywalls hiding the real advice. No "premium consultants" upselling you. No
-              creepy ads following you across the internet. Just a 10-question AI quiz, a personalized
-              roadmap, and a library of 50+ tech career paths — all included in our simple Pro and Lifetime plans.
+              SkillTa exists to make career guidance <strong>honest and high-quality</strong> for students.
+              Our Pro and Lifetime plans include the Career Suite and an ad-free, clean experience.
+              Guests and users without an active plan may see advertisements, helping support the platform.
             </p>
           </section>
 
@@ -85,22 +84,20 @@ export default function Story() {
               <h2 className="text-xl font-bold">Why we're asking for your help</h2>
             </div>
             <p className="mb-3">
-              We have a choice to make. If we can't cover these costs through small donations from
-              students who found SkillTa useful, we will be <strong>forced to integrate ads</strong> —
-              banner ads, popup ads, sponsored career recommendations. We don't want that. You don't
-              want that. Ads would ruin the honest, clean experience we've built.
+              Plan purchases, guest advertising, and optional donations help cover the ongoing costs
+              of SkillTa. Active Pro and Lifetime users always receive an <strong>ad-free, clean experience</strong>.
+              A donation supports development; it is separate from purchasing a plan.
             </p>
             <p>
-              A single ₹250 (~$3) donation on Ko-fi covers roughly a full day of AI costs for one
-              student's complete career analysis. If even 1 out of every 100 students who use SkillTa
-              donates once, we can stay 100% independent and 100% ad-free — forever.
+              Every contribution on Ko-fi helps fund AI usage, hosting, and improvements to our career tools.
+              Thank you for supporting an independent project.
             </p>
           </section>
 
           <section className="p-6 rounded-2xl bg-gradient-card border border-border">
             <h2 className="text-xl font-bold mb-3">What your donation unlocks (for everyone)</h2>
             <ul className="space-y-2 text-sm text-muted-foreground list-disc pl-5">
-              <li>No ads. Ever.</li>
+              <li>Continued development of a focused career platform with ad-free Pro and Lifetime access.</li>
               <li>Better AI models for more accurate career matches.</li>
               <li>More career roadmaps, blog guides, and comparison tools.</li>
               <li>Subsidized access for students in need through our mission fund.</li>

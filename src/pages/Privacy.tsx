@@ -17,7 +17,7 @@ export default function Privacy() {
             <span className="text-foreground font-medium">Privacy Policy</span>
           </nav>
           <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-2">Privacy Policy</h1>
-          <p className="text-sm text-muted-foreground mb-10">Last updated: March 9, 2026</p>
+          <p className="text-sm text-muted-foreground mb-10">Last updated: October 16, 2026</p>
 
           <div className="space-y-8 text-muted-foreground text-sm leading-relaxed">
             <section>
@@ -54,6 +54,7 @@ export default function Privacy() {
             <section>
               <h2 className="text-lg font-semibold text-foreground mb-3">5. Cookies</h2>
               <p>We use cookies and similar technologies to enhance your experience, analyze usage, and assist in our marketing efforts. You can manage cookie preferences through your browser settings.</p>
+              <p className="mt-2">Guests and users without an active paid plan may see ads served by Adsterra. Advertising providers may process device information, IP addresses, and cookies or similar technologies under their own privacy policies. Active Pro and Lifetime users receive an ad-free experience. We do not send your resume files, quiz answers, or account details to the advertising provider.</p>
             </section>
 
             <section>

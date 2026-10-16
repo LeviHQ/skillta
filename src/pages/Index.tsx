@@ -22,7 +22,7 @@ import SEOHead from "@/components/SEOHead";
 import { PAGE_SEO, getWebApplicationSchema, getEducationalOrgSchema, getWebsiteSchema, getHowToSchema, getFAQSchema, getOrganizationSchema, getSoftwareAppSchema, getItemListSchema } from "@/lib/seo";
 
 const homeFaqs = [
-    { question: "What is the difference between Pro and Lifetime plans?", answer: "Both plans give identical full access to the AI Career Quiz, AI Resume Reviewer, Skill Gap Analyzer, and 50+ Country Ecosystem. Pro gives 1 year access ($3) while Lifetime gives permanent access ($10)." },
+    { question: "What is the difference between Pro and Lifetime plans?", answer: "Both plans give identical full access to the AI Career Quiz, AI Resume Reviewer, Skill Gap Analyzer, and 50+ Country Ecosystem, plus an ad-free, clean experience. Pro gives 1 year access ($3) while Lifetime gives permanent access ($10)." },
   { question: "Is this a subscription or a one-time payment?", answer: "Both Pro ($3) and Lifetime ($10) are one-time payments with no auto-debit or recurring subscription trap." },
   { question: "How long does the career quiz take?", answer: "The AI Career Quiz takes approximately 5-10 minutes. It includes 10 smart questions designed to understand your interests, skills, and career goals. Unlock full results with a Pro or Lifetime plan." },
   { question: "Are the learning roadmaps included?", answer: "Roadmaps are included in your SkillTa Pro or Lifetime access. We provide high-quality, ad-free guidance for a one-time low cost." },
@@ -101,10 +101,7 @@ export default function Index() {
       )}
 
 
-      {/* ADS DISABLED — Sponsored Native Banner. Uncomment to re-enable.
-      <DeferredSection minHeight={220} eager>
-        <AdsterraNativeBanner />
-      </DeferredSection> */}
+      <AdsterraNativeBanner />
 
       {/* Career Suite showcase */}
       <DeferredSection minHeight={600}>

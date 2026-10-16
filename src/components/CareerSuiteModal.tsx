@@ -75,7 +75,7 @@ export default function CareerSuiteModal({ open, onClose }: Props) {
                 The SkillTa <span className="text-gradient">Career Suite</span>
               </h2>
               <p className="text-sm text-muted-foreground">
-                Unlock the full power of SkillTa with Pro or Lifetime access.
+                Unlock the full power of SkillTa with Pro or Lifetime access, including an ad-free, clean experience.
               </p>
             </div>
 

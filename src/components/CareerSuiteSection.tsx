@@ -108,7 +108,7 @@ export default function CareerSuiteSection() {
             Complete Career Suite <span className="text-gradient">Included in Pro & Lifetime</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-base md:text-lg">
-            Unlock the full power of SkillTa with Pro ($3/yr) or Lifetime ($10) — all tools, roadmaps, and global intelligence included. No hidden paywalls, no ads.
+            Unlock the full power of SkillTa with Pro ($3/yr) or Lifetime ($10) — all tools, roadmaps, and global intelligence included, with an ad-free, clean experience.
           </p>
         </motion.div>
 
@@ -156,7 +156,7 @@ export default function CareerSuiteSection() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
         >
-          All tools are included in your Pro or Lifetime plan — no hidden costs, no ads.
+          All tools are included in your Pro or Lifetime plan, along with an ad-free, clean experience.
         </motion.p>
       </div>
     </section>

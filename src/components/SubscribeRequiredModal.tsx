@@ -34,7 +34,7 @@ export default function SubscribeRequiredModal({ open, onClose, onGetStartedFree
           <p className="text-muted-foreground text-sm leading-relaxed mb-6">
             This tool is part of the SkillTa Career Suite. Choose{" "}
             <span className="text-primary font-semibold">Pro (1 year, $3)</span> or{" "}
-            <span className="text-primary font-semibold">Lifetime ($10)</span> for full access.
+             <span className="text-primary font-semibold">Lifetime ($10)</span> for full access and an ad-free, clean experience.
           </p>
 
           <button

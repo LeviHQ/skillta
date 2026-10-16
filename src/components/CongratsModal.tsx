@@ -65,6 +65,9 @@ export default function CongratsModal({ open, onClose, planName, expiresAt }: Co
               <p className="text-xs text-muted-foreground mb-2">You now have access to:</p>
               <ul className="text-sm text-foreground/85 space-y-1.5">
                 <li className="flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-primary shrink-0" /> Ad-free, clean experience
+                </li>
+                <li className="flex items-center gap-2">
                   <CheckCircle2 className="w-4 h-4 text-primary shrink-0" /> AI Career Quiz & Resume Reviewer
                 </li>
                 <li className="flex items-center gap-2">

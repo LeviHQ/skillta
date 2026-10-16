@@ -1,4 +1,5 @@
 import { useLayoutEffect, useRef } from "react";
+import { usePlan } from "@/contexts/PlanContext";
 
 const AD_KEY = "60755eda0a41ea29dfd0ba6b7f935205";
 const AD_SRC = `https://pl30370123.effectivecpmnetwork.com/${AD_KEY}/invoke.js`;
@@ -9,18 +10,15 @@ const CONTAINER_ID = `container-${AD_KEY}`;
  * Renders the fixed container id the script expects and (re)loads invoke.js
  * on mount so the ad refreshes across SPA navigations.
  */
-/* ADS DISABLED (paid plans launched). To re-enable: delete the early `return null` line below. */
 export default function AdsterraNativeBanner({ className = "" }: { className?: string }) {
-  // eslint-disable-next-line no-constant-condition
-  if (true) return null;
+  const { adsAllowed } = usePlan();
   const hostRef = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
     const host = hostRef.current;
-    if (!host) return;
+    if (!adsAllowed || !host) return;
 
-    // Set up the slot synchronously after DOM commit. The matching preload in
-    // index.html means this usually reuses an already-started network request.
+    // Only request advertising after the user's entitlement is resolved.
     host.innerHTML = `<div id="${CONTAINER_ID}"></div>`;
 
     const script = document.createElement("script");
@@ -33,10 +31,12 @@ export default function AdsterraNativeBanner({ className = "" }: { className?: s
     return () => {
       host.innerHTML = "";
     };
-  }, []);
+  }, [adsAllowed]);
+
+  if (!adsAllowed) return null;
 
   return (
-    <div className={`w-full my-8 flex justify-center ${className}`}>
+    <div className={`w-full my-8 flex justify-center ${className}`} aria-label="Advertisement">
       <div className="w-full max-w-3xl px-4">
         <p className="text-[10px] uppercase tracking-widest text-muted-foreground/70 mb-2 text-center">
           Sponsored
