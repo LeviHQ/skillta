@@ -1,6 +1,7 @@
-import { createContext, useContext, useEffect, useState, ReactNode, useCallback } from "react";
+import { createContext, useContext, useEffect, useState, useRef, ReactNode, useCallback } from "react";
 import type { User } from "firebase/auth";
 import { useAuth } from "./AuthContext";
+import { shouldShowAds } from "@/lib/adEligibility";
 
 const loadSupabase = () => import("@/integrations/supabase/client").then((m) => m.supabase);
 
@@ -14,6 +15,7 @@ export interface UserPlan {
 
 interface PlanContextType {
   plan: UserPlan | null;
+  adsAllowed: boolean;
   /** Legacy name kept for callers: now opens the pricing section to purchase access. */
   activateFreePlan: () => Promise<UserPlan | null>;
   showPricing: () => Promise<UserPlan | null>;
@@ -48,7 +50,11 @@ async function callFirebaseData(user: User, body: Record<string, unknown>) {
 }
 
 export function PlanProvider({ children }: { children: ReactNode }) {
-  const { user } = useAuth();
+  const { user, loading: authLoading } = useAuth();
+  const [planStatus, setPlanStatus] = useState<"loading" | "ready" | "error">("loading");
+  const [resolvedUserId, setResolvedUserId] = useState<string | null>(null);
+  const requestSequence = useRef(0);
+  const [adClock, setAdClock] = useState(Date.now());
   const [plan, setPlan] = useState<UserPlan | null>(null);
   const [todayUsage, setTodayUsage] = useState(0);
   const [serverLimit, setServerLimit] = useState<number>(DEFAULT_LIMIT);
@@ -58,7 +64,10 @@ export function PlanProvider({ children }: { children: ReactNode }) {
   const [skillGapDailyLimit, setSkillGapDailyLimit] = useState(3);
 
   const refreshPlan = useCallback(async () => {
+    const sequence = ++requestSequence.current;
     if (!user) {
+      setResolvedUserId(null);
+      setPlanStatus("ready");
       setPlan(null);
       setTodayUsage(0);
       setResumeUsage(0);
@@ -66,9 +75,13 @@ export function PlanProvider({ children }: { children: ReactNode }) {
       setServerLimit(DEFAULT_LIMIT);
       return;
     }
+    setPlanStatus("loading");
     try {
       const data = await callFirebaseData(user, { action: "getPlan" });
+      if (sequence !== requestSequence.current) return;
       setPlan(data?.plan ?? null);
+      setResolvedUserId(user.uid);
+      setPlanStatus("ready");
       setTodayUsage(typeof data?.usage === "number" ? data.usage : 0);
       setServerLimit(typeof data?.dailyLimit === "number" ? data.dailyLimit : DEFAULT_LIMIT);
       setResumeUsage(typeof data?.resumeUsage === "number" ? data.resumeUsage : 0);
@@ -76,14 +89,31 @@ export function PlanProvider({ children }: { children: ReactNode }) {
       setSkillGapUsage(typeof data?.skillGapUsage === "number" ? data.skillGapUsage : 0);
       setSkillGapDailyLimit(typeof data?.skillGapDailyLimit === "number" ? data.skillGapDailyLimit : 3);
     } catch (err) {
+      if (sequence !== requestSequence.current) return;
       console.error("Failed to fetch plan", err);
       setPlan(null);
+      setPlanStatus("error");
     }
   }, [user]);
 
   useEffect(() => {
     refreshPlan();
+    return () => { requestSequence.current++; };
   }, [refreshPlan]);
+
+  useEffect(() => {
+    setAdClock(Date.now());
+    if (plan?.name !== "Pro") return;
+    const remaining = Date.parse(plan.expiresAt) - Date.now();
+    if (!Number.isFinite(remaining) || remaining <= 0) return;
+    const timer = window.setTimeout(() => setAdClock(Date.now()), Math.min(remaining + 1, 2_147_483_647));
+    return () => window.clearTimeout(timer);
+  }, [plan, adClock]);
+
+  const adsAllowed = shouldShowAds({
+    authLoading, userId: user?.uid ?? null, resolvedUserId, planStatus, plan,
+    now: Math.max(adClock, Date.now()),
+  });
 
   const showPricing = useCallback(async (): Promise<UserPlan | null> => {
     const el = document.getElementById("pricing");
@@ -125,6 +155,7 @@ export function PlanProvider({ children }: { children: ReactNode }) {
     <PlanContext.Provider
       value={{
         plan,
+        adsAllowed,
         activateFreePlan: showPricing,
         showPricing,
         startCheckout,
