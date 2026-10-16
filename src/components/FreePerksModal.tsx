@@ -22,6 +22,7 @@ const features = [
   "All career roadmaps with PDF export",
   "Career comparison tool",
   "Smart daily usage limits on every tool",
+  "Ad-free, clean experience",
 ];
 
 const plans: {

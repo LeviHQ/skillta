@@ -16,11 +16,13 @@ const proFeatures = [
   "All career roadmaps with PDF export",
   "Career comparison tool",
   "Smart daily usage limits on every tool",
+  "Ad-free, clean experience",
   "365 days of full access",
 ];
 
 const lifetimeFeatures = [
   "Everything included in SkillTa Pro",
+  "Ad-free, clean experience forever",
   "Access never expires — pay once, use forever",
   "All future AI tools & feature updates included",
   "50+ country ecosystems & upcoming global data",
