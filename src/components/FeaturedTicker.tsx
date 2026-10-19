@@ -16,12 +16,6 @@ const BADGES: DirectoryBadge[] = [
     alt: "SkillTa on Product Hunt",
   },
   {
-    name: "Uneed",
-    href: "https://www.uneed.best/tool/skillta",
-    imgSrc: "https://www.uneed.best/EMBED3.png",
-    alt: "Launching Soon on Uneed",
-  },
-  {
     name: "Fazier",
     href: "https://fazier.com/launches/www.skillta.tech",
     imgSrc: "https://fazier.com/api/v1//public/badges/launch_badges.svg?badge_type=featured&theme=light",
@@ -51,12 +45,12 @@ const BADGES: DirectoryBadge[] = [
     imgSrc: "https://launchnest.io/badge/skillta.svg?variant=featured&theme=light",
     alt: "Featured on LaunchNest",
   },
-//   {
-//     name: "Launchpadly",
-//     href: "https://launchpadly.co/startup/skillta?ref=badge",
-//     imgSrc: "https://launchpadly.co/embed/badges/startup/skillta.svg?variant=light",
-//     alt: "Featured on Launchpadly",
-//   },
+  {
+    name: "Launchpadly",
+    href: "https://launchpadly.co/startup/skillta?ref=badge",
+    imgSrc: "https://launchpadly.co/embed/badges/startup/skillta.svg?variant=light",
+    alt: "Featured on Launchpadly",
+  },
 ];
 
 export function FeaturedTicker() {
