@@ -1,7 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { careers } from "@/data/careers";
-import { ArrowLeft, Download, Clock, TrendingUp, DollarSign, AlertTriangle, BookOpen, Wrench, FolderOpen } from "lucide-react";
+import { ArrowLeft, Download, Clock, TrendingUp, DollarSign, AlertTriangle, BookOpen, Wrench, FolderOpen, ExternalLink } from "lucide-react";
 import { useRef } from "react";
 import SEOHead from "@/components/SEOHead";
 import AdsterraNativeBanner from "@/components/AdsterraNativeBanner";
@@ -11,6 +11,7 @@ import SkillGapAnalyzerCTA from "@/components/SkillGapAnalyzerCTA";
 import DeepContent from "@/components/DeepContent";
 import ExternalReferenceText from "@/components/ExternalReferenceText";
 import { roadmapDeepBlocks } from "@/lib/deepContent";
+import { referenceParts } from "@/lib/externalReferences";
 import { getCourseSchema, getBreadcrumbSchema } from "@/lib/seo";
 
 export default function RoadmapDetail() {
@@ -584,17 +585,34 @@ export default function RoadmapDetail() {
                       </div>
 
                       {/* Resources */}
-                      <div className="mb-4">
-                        <div className="flex items-center gap-2 mb-2">
-                          <BookOpen className="w-3.5 h-3.5 text-info" />
-                          <p className="text-xs font-semibold text-info uppercase tracking-wider">Resources</p>
-                        </div>
-                        <div className="flex flex-wrap gap-2">
-                          {phase.resources.map((r) => (
-                            <span key={r} className="text-xs px-2 py-1 rounded bg-info/10 text-info"><ExternalReferenceText text={r} /></span>
-                          ))}
-                        </div>
-                      </div>
+<div className="mb-4">
+  <div className="flex items-center gap-2 mb-2">
+    <BookOpen className="w-3.5 h-3.5 text-info" />
+    <p className="text-xs font-semibold text-info uppercase tracking-wider">Resources</p>
+  </div>
+  <div className="flex flex-wrap gap-2">
+    {phase.resources.map((r) => {
+      const parts = referenceParts(r);
+      const href = parts.find((p) => p.href)?.href;
+      return href ? (
+        <a
+          key={r}
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-1.5 text-xs px-2.5 py-1 rounded bg-info/10 text-info hover:bg-info/20 hover:text-info transition-colors cursor-pointer"
+        >
+          <span>{r}</span>
+          <ExternalLink className="w-3 h-3 opacity-70" />
+        </a>
+      ) : (
+        <span key={r} className="text-xs px-2.5 py-1 rounded bg-info/10 text-info">
+          {r}
+        </span>
+      );
+    })}
+  </div>
+</div>
 
                       {/* Projects */}
                       <div>
