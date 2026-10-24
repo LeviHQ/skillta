@@ -20,4 +20,8 @@ describe("official external resource resolution", () => {
     expect(tree.children[0].children?.[0].type).toBe("text");
     expect(tree.children[1].value).toBe("Gartner");
   });
+  it("preserves raw URLs rather than linking names inside them", () => {
+    expect(referenceParts("https://www.coursera.org/learn/react and www.leetcode.com/problems"))
+      .toEqual([{ text: "https://www.coursera.org/learn/react and www.leetcode.com/problems" }]);
+  });
 });
