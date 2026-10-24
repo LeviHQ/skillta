@@ -28,6 +28,12 @@ export const externalReferences: Record<string, string> = {
   CS50: "https://cs50.harvard.edu/",
   "fast.ai": "https://www.fast.ai/",
   "DeepLearning.AI": "https://www.deeplearning.ai/",
+  "OpenAI Cookbook": "https://cookbook.openai.com/",
+  "Anthropic Docs": "https://docs.anthropic.com/",
+  "TypeScript Handbook": "https://www.typescriptlang.org/docs/",
+  "The Rust Book": "https://doc.rust-lang.org/book/",
+  "Kubernetes Documentation": "https://kubernetes.io/docs/",
+  "Qiskit Textbook": "https://qiskit.org/learn",
 };
 
 const escape = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
