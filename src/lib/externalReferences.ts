@@ -39,13 +39,15 @@ export const externalReferences: Record<string, string> = {
 const escape = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 const names = Object.keys(externalReferences).sort((a, b) => b.length - a.length);
 const destinations = new Map(Object.entries(externalReferences).map(([name, url]) => [name.toLowerCase(), url]));
+const namePattern = new RegExp(`(?<![\\w/])(?:${names.map(escape).join("|")})(?![\\w])`, "gi");
 
 export function referenceParts(text: string): { text: string; href?: string }[] {
-  const pattern = new RegExp(`(?<![\\w/])(?:${names.map(escape).join("|")})(?![\\w])`, "gi");
   const parts: { text: string; href?: string }[] = [];
   let start = 0;
-  for (const match of text.matchAll(pattern)) {
+  const urls = Array.from(text.matchAll(/(?:https?:\/\/|www\.)[^\s<>]+/gi));
+  for (const match of text.matchAll(namePattern)) {
     const index = match.index ?? 0;
+    if (urls.some((url) => index >= (url.index ?? 0) && index < (url.index ?? 0) + url[0].length)) continue;
     if (index > start) parts.push({ text: text.slice(start, index) });
     parts.push({ text: match[0], href: destinations.get(match[0].toLowerCase()) });
     start = index + match[0].length;
