@@ -85,7 +85,7 @@ export default function Privacy() {
 
             <section>
               <h2 className="text-lg font-semibold text-foreground mb-3">10. Contact Us</h2>
-              <p>For questions or concerns about this Privacy Policy, contact us at <a href="mailto:support@skillta.tech" className="text-primary hover:underline">support@skillta.tech</a>.</p>
+              <p>For questions or concerns about this Privacy Policy, contact us at <a href="mailto:adarshmishra70931@gmail.com" className="text-primary hover:underline">adarshmishra70931@gmail.com</a>.</p>
             </section>
           </div>
 

@@ -62,7 +62,7 @@ export default function Terms() {
 
             <section>
               <h2 className="text-lg font-semibold text-foreground mb-3">9. Contact</h2>
-              <p>If you have questions about these Terms, please contact us at <a href="mailto:support@skillta.tech" className="text-primary hover:underline">support@skillta.tech</a>.</p>
+              <p>If you have questions about these Terms, please contact us at <a href="mailto:adarshmishra70931@gmail.com" className="text-primary hover:underline">adarshmishra70931@gmail.com</a>.</p>
             </section>
           </div>
 
