@@ -88,7 +88,7 @@ Practice these on SkillTa's [Interview Prep](/interview-prep).
 - 🗺️ [See the full AI/ML roadmap](/roadmaps)
 - 💰 [Predict your salary](/salary-predictor) with your city + skills
 
-Agentic AI won't stay uncrowded forever. The people winning offers in mid-2026 started building in early 2027. Start today. 🚀
+Agentic AI won't stay uncrowded forever. The people winning offers in late 2027 started building early. Start today. 🚀
 `,
   },
   {
@@ -122,7 +122,7 @@ In 2027, "AI Engineer" splits into two very different tracks. Applying to the wr
 | MLOps (Kubeflow, MLflow) | ⚠️ Basic | 🔥 Core |
 | Statistics & math | ⚠️ Basic | 🔥 Core |
 
-## Salary Reality (Mid-2026)
+## Salary Reality (2027)
 
 - **GenAI Engineer** — India ₹18–65 LPA · US $140–260K · Faster to reach mid-level
 - **ML Engineer** — India ₹22–90 LPA · US $160–320K · Slower ramp, higher ceiling
