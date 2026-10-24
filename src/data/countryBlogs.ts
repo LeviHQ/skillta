@@ -1,6 +1,6 @@
-// Auto-generated country × role salary blogs for SEO (2026).
+// Auto-generated country × role salary blogs for SEO (2027).
 // Data compiled from Levels.fyi, Glassdoor, Payscale, Stack Overflow Dev Survey 2025,
-// and LinkedIn Talent Insights 2026 (approximate averages, subject to market swing).
+// and LinkedIn Talent Insights 2027 (approximate averages, subject to market swing).
 import type { BlogPost } from "./blogPosts";
 
 type Range = [number, number, number, number]; // entry, mid, senior, lead (thousands / year in local ccy)
@@ -152,7 +152,7 @@ const ROLES: RoleCfg[] = [
     key: "software-engineer",
     role: "Software Engineer",
     slugRole: "software-engineer",
-    keywordsExtra: "software developer salary, backend engineer pay, tech salary report 2026",
+    keywordsExtra: "software developer salary, backend engineer pay, tech salary report 2027",
     duties: [
       "Design and implement production services (usually REST/gRPC APIs)",
       "Own code quality: reviews, tests, CI, observability",
@@ -174,7 +174,7 @@ const ROLES: RoleCfg[] = [
     key: "qa-engineer",
     role: "QA Engineer",
     slugRole: "qa-engineer",
-    keywordsExtra: "quality assurance salary, sdet pay, test automation engineer 2026",
+    keywordsExtra: "quality assurance salary, sdet pay, test automation engineer 2027",
     duties: [
       "Design test strategy across unit, integration, and E2E layers",
       "Own automation suites (Playwright, Cypress, Selenium, k6)",
@@ -196,7 +196,7 @@ const ROLES: RoleCfg[] = [
     key: "data-scientist",
     role: "Data Scientist",
     slugRole: "data-scientist",
-    keywordsExtra: "data science salary, ml scientist pay, applied scientist 2026",
+    keywordsExtra: "data science salary, ml scientist pay, applied scientist 2027",
     duties: [
       "Frame business questions into modeling problems",
       "Build and validate models (regression, tree ensembles, embeddings)",
@@ -218,7 +218,7 @@ const ROLES: RoleCfg[] = [
     key: "devops-engineer",
     role: "DevOps Engineer",
     slugRole: "devops-engineer",
-    keywordsExtra: "sre salary, platform engineer pay, kubernetes engineer 2026",
+    keywordsExtra: "sre salary, platform engineer pay, kubernetes engineer 2027",
     duties: [
       "Design and operate CI/CD pipelines",
       "Run Kubernetes clusters, service mesh, observability stack",
@@ -240,7 +240,7 @@ const ROLES: RoleCfg[] = [
     key: "ai-ml-engineer",
     role: "AI/ML Engineer",
     slugRole: "ai-ml-engineer",
-    keywordsExtra: "machine learning engineer salary, llm engineer pay, genai engineer 2026",
+    keywordsExtra: "machine learning engineer salary, llm engineer pay, genai engineer 2027",
     duties: [
       "Train, fine-tune, and evaluate ML/LLM models",
       "Ship model serving infra (Triton, vLLM, Ray Serve)",
@@ -262,7 +262,7 @@ const ROLES: RoleCfg[] = [
     key: "frontend-developer",
     role: "Frontend Developer",
     slugRole: "frontend-developer",
-    keywordsExtra: "react developer salary, ui engineer pay, nextjs developer 2026",
+    keywordsExtra: "react developer salary, ui engineer pay, nextjs developer 2027",
     duties: [
       "Build accessible, performant user interfaces (React/Next.js/Vue)",
       "Own component libraries and design-system tokens",
@@ -284,7 +284,7 @@ const ROLES: RoleCfg[] = [
     key: "cloud-architect",
     role: "Cloud Architect",
     slugRole: "cloud-architect",
-    keywordsExtra: "aws architect salary, gcp architect pay, azure solutions architect 2026",
+    keywordsExtra: "aws architect salary, gcp architect pay, azure solutions architect 2027",
     duties: [
       "Design cloud landing zones and multi-account strategy",
       "Set standards for IAM, networking, and data residency",
@@ -306,7 +306,7 @@ const ROLES: RoleCfg[] = [
     key: "cybersecurity-analyst",
     role: "Cybersecurity Analyst",
     slugRole: "cybersecurity-analyst",
-    keywordsExtra: "security engineer salary, soc analyst pay, application security 2026",
+    keywordsExtra: "security engineer salary, soc analyst pay, application security 2027",
     duties: [
       "Monitor SIEM/EDR and triage security incidents",
       "Run threat hunts and purple-team exercises",
@@ -328,7 +328,7 @@ const ROLES: RoleCfg[] = [
     key: "product-manager",
     role: "Technical Product Manager",
     slugRole: "product-manager",
-    keywordsExtra: "tpm salary, ai product manager pay, senior pm 2026",
+    keywordsExtra: "tpm salary, ai product manager pay, senior pm 2027",
     duties: [
       "Own product strategy for a technical surface (API, platform, ML)",
       "Write PRDs, run discovery, prioritize the backlog",
@@ -350,7 +350,7 @@ const ROLES: RoleCfg[] = [
     key: "fullstack-developer",
     role: "Full Stack Developer",
     slugRole: "fullstack-developer",
-    keywordsExtra: "full stack engineer salary, mern developer pay, t3 stack 2026",
+    keywordsExtra: "full stack engineer salary, mern developer pay, t3 stack 2027",
     duties: [
       "Own features end-to-end: UI, API, DB, deploy",
       "Ship on modern stacks (Next.js + tRPC + Postgres, or T3)",
@@ -398,19 +398,19 @@ function buildContent(country: CountryCfg, role: RoleCfg): string {
   const progressionList = role.progression.map((p, i) => `${i + 1}. **${p}**`).join("\n");
 
   return `
-## ${role.role} Salary in ${country.name} 2026 — At a Glance
+## ${role.role} Salary in ${country.name} 2027 — At a Glance
 
-If you are targeting a **${role.role}** role in ${country.name} in 2026, the market has shifted meaningfully since 2024. Post-2025 correction, salaries stabilized and roles tied to AI, cloud, and platform work rebounded fastest. Below is a full breakdown compiled from Levels.fyi, Glassdoor, Payscale, Stack Overflow's 2025 Developer Survey, and live LinkedIn Talent Insights pulls for early 2026.
+If you are targeting a **${role.role}** role in ${country.name} in 2027, the market has shifted meaningfully since 2024. Post-2025 correction, salaries stabilized and roles tied to AI, cloud, and platform work rebounded fastest. Below is a full breakdown compiled from Levels.fyi, Glassdoor, Payscale, Stack Overflow's 2025 Developer Survey, and live LinkedIn Talent Insights pulls for early 2027.
 
-> **Quick answer:** the national average total comp for a mid-level ${role.role} in ${country.name} in 2026 sits around **${fmt(mid, country)} ${country.ccy}/year**. Entry ${fmt(entry, country)}. Senior ${fmt(senior, country)}. Staff/Lead ${fmt(lead, country)}.
+> **Quick answer:** the national average total comp for a mid-level ${role.role} in ${country.name} in 2027 sits around **${fmt(mid, country)} ${country.ccy}/year**. Entry ${fmt(entry, country)}. Senior ${fmt(senior, country)}. Staff/Lead ${fmt(lead, country)}.
 
 ## What a ${role.role} Actually Does
 
 ${dutiesList}
 
-The role in ${country.name} increasingly overlaps with AI tooling — expect at least 20–30% of your workflow in 2026 to involve LLM copilots, agentic pipelines, or model-quality work regardless of your specialty.
+The role in ${country.name} increasingly overlaps with AI tooling — expect at least 20–30% of your workflow in 2027 to involve LLM copilots, agentic pipelines, or model-quality work regardless of your specialty.
 
-## ${role.role} Salary Bands by Experience (${country.name}, 2026)
+## ${role.role} Salary Bands by Experience (${country.name}, 2027)
 
 | Level | Years | Total Comp (${country.ccy}) |
 |-------|-------|-----------------------------|
@@ -423,19 +423,19 @@ ${country.taxNote}
 
 ## City-wise ${role.role} Salary in ${country.name}
 
-Location still moves the needle by 25–40% even in a remote-friendly 2026 market.
+Location still moves the needle by 25–40% even in a remote-friendly 2027 market.
 
 | City | Entry | Mid | Senior |
 |------|-------|-----|--------|
 ${cityRows}
 
-## Top Companies Hiring ${role.role}s in ${country.name} (2026)
+## Top Companies Hiring ${role.role}s in ${country.name} (2027)
 
 ${companyList}
 
 Non-tech industries (banking, insurance, healthcare, defense) are the sleeper option — they often match FAANG base with better hours, especially at senior levels.
 
-## Skills That Command a Premium in 2026
+## Skills That Command a Premium in 2027
 
 ${skillsList}
 
@@ -452,7 +452,7 @@ ${progressionList}
 ## How to Increase Your ${role.role} Salary in ${country.name}
 
 1. **Get a competing offer every 18–24 months** — the single biggest lever, worth 15–30% at each move.
-2. **Specialize in a rising surface** — AI infra, platform, security, or data quality in 2026.
+2. **Specialize in a rising surface** — AI infra, platform, security, or data quality in 2027.
 3. **Build public artifacts** — one strong OSS contribution or conference talk beats three certifications.
 4. **Negotiate total comp, not base** — equity refresh, sign-on, and bonus targets are where offers actually differ.
 5. **Track your levels** — use Levels.fyi and locality data before every conversation.
@@ -472,7 +472,7 @@ ${progressionList}
 
 ## FAQ
 
-**Is ${role.role} still a good career in ${country.name} in 2026?**
+**Is ${role.role} still a good career in ${country.name} in 2027?**
 Yes. Even after the 2024–25 correction, demand for ${role.role}s in ${country.name} is up year-over-year, particularly at senior levels. Entry-level competition is tighter than in 2022, so a portfolio matters more than a degree.
 
 **How long does it take to reach senior ${role.role} in ${country.name}?**
@@ -483,7 +483,7 @@ Usually within 5–15% of the metro band. Fully-remote roles from US-HQ employer
 
 ---
 
-*Data compiled early 2026 from Levels.fyi, Glassdoor, Payscale, Stack Overflow Dev Survey 2025, and LinkedIn Talent Insights. Individual offers vary; use this as a negotiation baseline, not a guarantee.*
+*Data compiled early 2027 from Levels.fyi, Glassdoor, Payscale, Stack Overflow Dev Survey 2025, and LinkedIn Talent Insights. Individual offers vary; use this as a negotiation baseline, not a guarantee.*
 `;
 }
 
@@ -498,7 +498,7 @@ const COUNTRY_HOOKS: Record<string, { titleHook: string; descHook: string; extra
   uk: {
     titleHook: "London vs Remote, IR35 & Big Tech Bands",
     descHook: "London vs regional pay, IR35 contractor day-rates and Big Tech UK bands",
-    extraKw: "london tech salary, ir35 contractor rates, uk tech jobs 2026, big tech london pay",
+    extraKw: "london tech salary, ir35 contractor rates, uk tech jobs 2027, big tech london pay",
   },
   canada: {
     titleHook: "Toronto, Vancouver & PR-Pathway Employers",
@@ -525,16 +525,16 @@ const COUNTRY_HOOKS: Record<string, { titleHook: string; descHook: string; extra
 // 10 title templates — indexed by role slot so each role has its own signature
 // phrasing. Combined with the country hook this yields 60 unique titles.
 const TITLE_TEMPLATES: ((role: string, country: string, hook: string) => string)[] = [
-  (r, c, h) => `${r} Salary in ${c} (2026): Entry-Level, Senior & Lead Pay — ${h}`,
-  (r, c, h) => `${r} Salary in ${c} 2026: ${h} & Full Compensation Breakdown`,
-  (r, c, h) => `How Much Does a ${r} Earn in ${c}? 2026 Report (${h})`,
-  (r, c, h) => `${r} Jobs in ${c} 2026: Average Salary, ${h} & Top Employers`,
-  (r, c, h) => `${r} Salary Guide — ${c} 2026: Bands, Bonuses, Equity & ${h}`,
-  (r, c, h) => `${c} ${r} Salary 2026: ${h} + City-Wise Pay & Negotiation Tips`,
-  (r, c, h) => `${r} Pay in ${c} (2026): ${h} and the Full Career-Ladder Breakdown`,
-  (r, c, h) => `${r} Compensation in ${c} 2026: ${h} & Skills That Boost Your Offer`,
-  (r, c, h) => `Is ${r} Worth It in ${c} in 2026? Salary Data, Demand & ${h}`,
-  (r, c, h) => `${r} Salary in ${c} 2026 — ${h}, Remote Rates & Contractor Pay`,
+  (r, c, h) => `${r} Salary in ${c} (2027): Entry-Level, Senior & Lead Pay — ${h}`,
+  (r, c, h) => `${r} Salary in ${c} 2027: ${h} & Full Compensation Breakdown`,
+  (r, c, h) => `How Much Does a ${r} Earn in ${c}? 2027 Report (${h})`,
+  (r, c, h) => `${r} Jobs in ${c} 2027: Average Salary, ${h} & Top Employers`,
+  (r, c, h) => `${r} Salary Guide — ${c} 2027: Bands, Bonuses, Equity & ${h}`,
+  (r, c, h) => `${c} ${r} Salary 2027: ${h} + City-Wise Pay & Negotiation Tips`,
+  (r, c, h) => `${r} Pay in ${c} (2027): ${h} and the Full Career-Ladder Breakdown`,
+  (r, c, h) => `${r} Compensation in ${c} 2027: ${h} & Skills That Boost Your Offer`,
+  (r, c, h) => `Is ${r} Worth It in ${c} in 2027? Salary Data, Demand & ${h}`,
+  (r, c, h) => `${r} Salary in ${c} 2027 — ${h}, Remote Rates & Contractor Pay`,
 ];
 
 // 10 description templates — same idea; also weave in real numbers so each
@@ -544,25 +544,25 @@ const DESC_TEMPLATES: ((ctx: {
   entry: string; mid: string; senior: string; lead: string;
 }) => string)[] = [
   ({ role, country, hook, entry, mid, senior }) =>
-    `Complete 2026 ${role} salary breakdown for ${country}: entry ${entry}, mid ${mid}, senior ${senior}. City-wise pay, ${hook}, top employers & premium skills covered.`,
+    `Complete 2027 ${role} salary breakdown for ${country}: entry ${entry}, mid ${mid}, senior ${senior}. City-wise pay, ${hook}, top employers & premium skills covered.`,
   ({ role, country, hook, mid, senior }) =>
-    `${role} pay in ${country} for 2026 — mid-level ${mid}, senior tops ${senior}. See ${hook}, hiring companies and skills that unlock a 30% raise.`,
+    `${role} pay in ${country} for 2027 — mid-level ${mid}, senior tops ${senior}. See ${hook}, hiring companies and skills that unlock a 30% raise.`,
   ({ role, country, hook, entry, lead }) =>
-    `How much does a ${role} really make in ${country} in 2026? Full report with ${hook}, entry ${entry} to lead ${lead} bands, bonuses & equity insights.`,
+    `How much does a ${role} really make in ${country} in 2027? Full report with ${hook}, entry ${entry} to lead ${lead} bands, bonuses & equity insights.`,
   ({ role, country, hook, mid }) =>
-    `${role} jobs in ${country} pay around ${mid} mid-level in 2026. Explore ${hook}, top hiring firms, remote rates and negotiation tactics.`,
+    `${role} jobs in ${country} pay around ${mid} mid-level in 2027. Explore ${hook}, top hiring firms, remote rates and negotiation tactics.`,
   ({ role, country, hook, entry, lead }) =>
-    `2026 ${role} salary guide for ${country}: bands from ${entry} to ${lead}, ${hook}, in-demand skills and how to climb the career ladder faster.`,
+    `2027 ${role} salary guide for ${country}: bands from ${entry} to ${lead}, ${hook}, in-demand skills and how to climb the career ladder faster.`,
   ({ role, country, hook, senior }) =>
-    `Detailed ${country} ${role} salary data for 2026 — city-wise numbers up to ${senior} for seniors, ${hook}, and step-by-step negotiation tips.`,
+    `Detailed ${country} ${role} salary data for 2027 — city-wise numbers up to ${senior} for seniors, ${hook}, and step-by-step negotiation tips.`,
   ({ role, country, hook, mid, senior }) =>
-    `${role} pay in ${country} (2026): ${mid} mid, ${senior} senior. Career ladder, ${hook} and premium skills that command 20–35% higher offers.`,
+    `${role} pay in ${country} (2027): ${mid} mid, ${senior} senior. Career ladder, ${hook} and premium skills that command 20–35% higher offers.`,
   ({ role, country, hook }) =>
-    `Everything on ${role} compensation in ${country} for 2026 — ${hook}, top skills, contractor day-rates and side-by-side city salary data.`,
+    `Everything on ${role} compensation in ${country} for 2027 — ${hook}, top skills, contractor day-rates and side-by-side city salary data.`,
   ({ role, country, hook, entry, lead }) =>
-    `Should you pursue ${role} in ${country} in 2026? Latest salary bands (${entry}–${lead}), demand trends and ${hook} — all in one guide.`,
+    `Should you pursue ${role} in ${country} in 2027? Latest salary bands (${entry}–${lead}), demand trends and ${hook} — all in one guide.`,
   ({ role, country, hook }) =>
-    `${role} salary in ${country} 2026 — full data on ${hook}, remote pay, contractor rates and the skills separating mid from senior offers.`,
+    `${role} salary in ${country} 2027 — full data on ${hook}, remote pay, contractor rates and the skills separating mid from senior offers.`,
 ];
 
 function templateIndex(country: CountryCfg, role: RoleCfg): number {
@@ -574,13 +574,13 @@ function templateIndex(country: CountryCfg, role: RoleCfg): number {
 }
 
 function buildTitle(country: CountryCfg, role: RoleCfg): string {
-  const hook = COUNTRY_HOOKS[country.key]?.titleHook ?? "2026 Data";
+  const hook = COUNTRY_HOOKS[country.key]?.titleHook ?? "2027 Data";
   return TITLE_TEMPLATES[templateIndex(country, role)](role.role, country.name, hook);
 }
 
 function buildDescription(country: CountryCfg, role: RoleCfg): string {
   const [entry, mid, senior, lead] = role.ranges[country.key];
-  const hook = COUNTRY_HOOKS[country.key]?.descHook ?? "2026 market data";
+  const hook = COUNTRY_HOOKS[country.key]?.descHook ?? "2027 market data";
   return DESC_TEMPLATES[templateIndex(country, role)]({
     role: role.role,
     country: country.name,
@@ -599,7 +599,7 @@ function countryHubPath(country: CountryCfg): string {
 
 function buildKeywords(country: CountryCfg, role: RoleCfg): string {
   const extra = COUNTRY_HOOKS[country.key]?.extraKw ?? "";
-  return `${role.role.toLowerCase()} salary ${country.name.toLowerCase()} 2026, ${role.role.toLowerCase()} pay ${country.name.toLowerCase()}, ${role.keywordsExtra}, ${extra}, tech salary ${country.name.toLowerCase()} 2026`;
+  return `${role.role.toLowerCase()} salary ${country.name.toLowerCase()} 2027, ${role.role.toLowerCase()} pay ${country.name.toLowerCase()}, ${role.keywordsExtra}, ${extra}, tech salary ${country.name.toLowerCase()} 2027`;
 }
 
 const posts: BlogPost[] = [];

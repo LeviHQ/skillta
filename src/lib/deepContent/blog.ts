@@ -24,7 +24,7 @@ export function blogDeepBlocks(post: BlogPost): Block[] {
   const isCountry = Boolean(post.country);
 
   const blocks: Block[] = [
-    { t: "h2", text: `Why ${topic} matters in 2026` },
+    { t: "h2", text: `Why ${topic} matters in 2027` },
     {
       t: "p",
       text: `${post.description} The context behind that has shifted quickly. Hiring in this area contracted for generalists after 2023 and expanded for specialists, which means the advice that worked five years ago — learn broadly, apply widely — now produces worse results than picking one area and going deep. Everything below is written with that in mind.`,
@@ -104,7 +104,7 @@ export function blogDeepBlocks(post: BlogPost): Block[] {
       t: "faq",
       items: [
         {
-          q: `Is ${topic} still worth pursuing in 2026?`,
+          q: `Is ${topic} still worth pursuing in 2027?`,
           a: `Yes, with the caveat that generalist entry has become harder while specialist demand keeps rising. The realistic route is to pick one lane, build visible proof, and target employers whose stack you actually match.`,
         },
         {
@@ -115,7 +115,7 @@ export function blogDeepBlocks(post: BlogPost): Block[] {
           q: isSalary ? "How accurate are these salary figures?" : "How current is this guide?",
           a: isSalary
             ? "They are market-band estimates compiled from public compensation datasets and job postings, expressed as annual gross. Treat them as a negotiating anchor rather than a guarantee — company type and scope move a band more than job title does."
-            : `It reflects the 2026 market and is revised as hiring patterns shift. Where numbers appear, they are estimates from public data and job postings rather than fixed figures.`,
+            : `It reflects the 2027 market and is revised as hiring patterns shift. Where numbers appear, they are estimates from public data and job postings rather than fixed figures.`,
         },
         {
           q: "What should I do first?",
@@ -129,7 +129,7 @@ export function blogDeepBlocks(post: BlogPost): Block[] {
       items: [
         `[Browse all 60+ tech career roadmaps](/roadmaps) — step-by-step paths with phases, resources and portfolio projects.`,
         `[Compare two careers side by side](/compare) — salary, difficulty, demand and growth in one view.`,
-        `[Free salary predictor](/salary-predictor) — unlimited 2026 estimates by role, city and experience.`,
+        `[Free salary predictor](/salary-predictor) — unlimited 2027 estimates by role, city and experience.`,
         `[AI resume reviewer](/resume-reviewer) — ATS score, keyword gaps and rewritten bullets.`,
         isCountry ? `[More ${post.category} guides](/blog) — country and role-specific salary breakdowns.` : `[More career guides on the blog](/blog).`,
       ],

@@ -45,7 +45,7 @@ const services = [
   },
   {
     title: "AI Resume Reviewer",
-    description: "Instant ATS score, keyword gaps and bullet rewrites — tuned for 2026 tech hiring.",
+    description: "Instant ATS score, keyword gaps and bullet rewrites — tuned for 2027 tech hiring.",
     limit: "Included in Plan",
     path: "/resume-reviewer",
     Icon: FileText,

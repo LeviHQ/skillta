@@ -61,52 +61,52 @@ interface Template {
 
 export const COUNTRY_META_TEMPLATES: Record<SectionKey, Template> = {
   overview: {
-    title: (c) => `${c} Tech Salaries 2026: Real Pay Data & Trends`,
+    title: (c) => `${c} Tech Salaries 2027: Real Pay Data & Trends`,
     meta: (c) =>
-      `See real 2026 tech salary data for ${c} — compare roles, cities and experience levels. Real, data-backed insights. Explore now →`,
+      `See real 2027 tech salary data for ${c} — compare roles, cities and experience levels. Real, data-backed insights. Explore now →`,
   },
   salary: {
-    title: (c) => `${c} Salary Explorer 2026 — Compare Tech Roles & Pay`,
+    title: (c) => `${c} Salary Explorer 2027 — Compare Tech Roles & Pay`,
     meta: (c) =>
       `Compare tech salaries across ${c} by role, city and experience level. Interactive, up-to-date salary explorer. Explore now →`,
   },
   jobs: {
-    title: (c) => `Top Tech Jobs in ${c} (2026) — Live Listings`,
+    title: (c) => `Top Tech Jobs in ${c} (2027) — Live Listings`,
     meta: (c) =>
       `Browse the latest tech job openings in ${c}. Updated listings across software, QA, DevOps, AI/ML and more. Find your next role →`,
   },
   companies: {
-    title: (c) => `Top Tech Companies in ${c} (2026)`,
+    title: (c) => `Top Tech Companies in ${c} (2027)`,
     meta: (c) =>
       `Discover the leading tech employers in ${c} — company profiles, hiring trends and what they pay. Start exploring →`,
   },
   certifications: {
-    title: (c) => `Best Tech Certifications in ${c} (2026)`,
+    title: (c) => `Best Tech Certifications in ${c} (2027)`,
     meta: (c) =>
       `Which certifications actually boost tech salaries in ${c}? See the top-rated picks by role and ROI. Check the list →`,
   },
   resources: {
-    title: (c) => `${c} Tech Career Resources & Guides (2026)`,
+    title: (c) => `${c} Tech Career Resources & Guides (2027)`,
     meta: (c) =>
       `Expert guides, tools and resources to grow your tech career in ${c} — from salary data to skill roadmaps. Browse now →`,
   },
   roadmaps: {
-    title: (c) => `Tech Career Roadmaps for ${c} (2026)`,
+    title: (c) => `Tech Career Roadmaps for ${c} (2027)`,
     meta: (c) =>
       `Step-by-step career roadmaps for tech roles in ${c} — skills, timelines and salary milestones. Plan your path →`,
   },
   interview: {
-    title: (c) => `${c} Tech Interview Prep Guide (2026)`,
+    title: (c) => `${c} Tech Interview Prep Guide (2027)`,
     meta: (c) =>
       `Prepare for tech interviews in ${c} with real questions, salary benchmarks and negotiation tips. Get ready →`,
   },
   skills: {
-    title: (c) => `Most In-Demand Tech Skills in ${c} (2026)`,
+    title: (c) => `Most In-Demand Tech Skills in ${c} (2027)`,
     meta: (c) =>
       `See which tech skills employers in ${c} are hiring for right now, ranked by demand and salary impact. View the list →`,
   },
   resume: {
-    title: (c) => `Tech Resume Guide for ${c} (2026)`,
+    title: (c) => `Tech Resume Guide for ${c} (2027)`,
     meta: (c) =>
       `Build a tech resume that gets noticed in ${c} — formats, keywords and examples tailored to local hiring. Get the guide →`,
   },

@@ -9,7 +9,7 @@ import {
   CERTIFICATIONS,
   GLOBAL_COMPANIES,
   INTERVIEW_TOPICS,
-  TOP_SKILLS_2026,
+  TOP_SKILLS_2027,
   getRoleSalaryBand,
   formatLocalSalary,
 } from "@/data/countrySections";
@@ -42,7 +42,7 @@ export default function CountryPage() {
       <Helmet>
         <title>{title}</title>
         <meta name="description" content={description} />
-        <meta name="keywords" content={`${country.name} tech jobs, ${country.name} software engineer salary, ${country.name} tech career, tech roadmap ${country.name}, ${currentSection.title} ${country.name} 2026`} />
+        <meta name="keywords" content={`${country.name} tech jobs, ${country.name} software engineer salary, ${country.name} tech career, tech roadmap ${country.name}, ${currentSection.title} ${country.name} 2027`} />
         <link rel="canonical" href={`${baseUrl}${path}`} />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
@@ -142,7 +142,7 @@ export default function CountryPage() {
         <H3><Rocket className="w-4 h-4 text-primary" /> Related SkillTa tools</H3>
         <div className="grid sm:grid-cols-2 gap-2">
           <ToolLink to="/quiz" title="AI Career Quiz" desc="Find your best-fit tech role in 5 minutes." />
-          <ToolLink to="/salary-predictor" title="Salary Predictor" desc="Real 2026 salary estimates for your role & city." />
+          <ToolLink to="/salary-predictor" title="Salary Predictor" desc="Real 2027 salary estimates for your role & city." />
           <ToolLink to="/resume-reviewer" title="AI Resume Reviewer" desc="ATS score + rewrites for your resume." />
           <ToolLink to="/skill-gap-analyzer" title="Skill Gap Analyzer" desc="See exactly what to learn for your target role." />
         </div>
@@ -157,7 +157,7 @@ export default function CountryPage() {
         <H2>The most in-demand tech roles in {country.name}</H2>
         <P>
           These are the tech roles hiring aggressively across {country.techHubs.slice(0, 2).join(" and ")} and remote in
-          2026 — with realistic salary bands, growth outlook and the exact skills you need to land them.
+          2027 — with realistic salary bands, growth outlook and the exact skills you need to land them.
         </P>
 
         <div className="grid gap-3 mt-4">
@@ -201,10 +201,10 @@ export default function CountryPage() {
     return (
       <div>
         <div className="text-xs uppercase tracking-widest text-primary font-mono mb-2">03 · Salary Explorer</div>
-        <H2>Tech salaries in {country.name} — Junior, Mid & Senior (2026)</H2>
+        <H2>Tech salaries in {country.name} — Junior, Mid & Senior (2027)</H2>
         <P>
           Salaries below are gross yearly compensation in <b>{country.currency}</b>, calibrated to {country.name}'s market
-          in 2026. Actual numbers vary by city ({country.techHubs.join(", ")}), company tier and remote status.
+          in 2027. Actual numbers vary by city ({country.techHubs.join(", ")}), company tier and remote status.
         </P>
 
         <div className="overflow-x-auto border border-border rounded-xl">
@@ -302,7 +302,7 @@ export default function CountryPage() {
         <H2>How to write a resume that gets shortlisted in {country.name}</H2>
         <P>
           Recruiters in {country.name} scan resumes for {isUS ? "impact-first bullets with measurable outcomes" : isEU ? "structured, honest experience with EU-friendly formatting" : "clarity, English fluency and demonstrable projects"}.
-          Here's exactly how to format yours in 2026.
+          Here's exactly how to format yours in 2027.
         </P>
 
         <H3><FileText className="w-4 h-4 text-primary" /> {country.name}-specific format</H3>
@@ -400,7 +400,7 @@ export default function CountryPage() {
       <div>
         <div className="text-xs uppercase tracking-widest text-primary font-mono mb-2">07 · Top Companies</div>
         <H2>Top tech companies hiring in {country.name}</H2>
-        <P>These are the companies where {country.name}-based engineers are landing offers in 2026 — global giants + local unicorns.</P>
+        <P>These are the companies where {country.name}-based engineers are landing offers in 2027 — global giants + local unicorns.</P>
 
         <H3><Building2 className="w-4 h-4 text-primary" /> Local & regional leaders</H3>
         <div className="grid sm:grid-cols-2 gap-2 mb-6">
@@ -436,7 +436,7 @@ export default function CountryPage() {
       <div>
         <div className="text-xs uppercase tracking-widest text-primary font-mono mb-2">08 · Certifications</div>
         <H2>Certifications that actually get you hired in {country.name}</H2>
-        <P>Not every certification is worth your time. These are the ones {country.name} recruiters and hiring managers actively look for in 2026.</P>
+        <P>Not every certification is worth your time. These are the ones {country.name} recruiters and hiring managers actively look for in 2027.</P>
 
         <div className="grid gap-3 mt-4">
           {CERTIFICATIONS.map((c) => (
@@ -465,11 +465,11 @@ export default function CountryPage() {
     return (
       <div>
         <div className="text-xs uppercase tracking-widest text-primary font-mono mb-2">09 · Skills in Demand</div>
-        <H2>Top 20 tech skills in demand in {country.name} (2026)</H2>
+        <H2>Top 20 tech skills in demand in {country.name} (2027)</H2>
         <P>Ranked by job posting frequency across {country.techHubs[0]} and remote listings.</P>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 mt-4">
-          {TOP_SKILLS_2026.map((s, i) => (
+          {TOP_SKILLS_2027.map((s, i) => (
             <div key={s} className="flex items-center gap-2 p-3 rounded-lg border border-border bg-background/40">
               <span className="text-xs font-mono text-primary w-6">{String(i + 1).padStart(2, "0")}</span>
               <span className="text-sm text-foreground">{s}</span>

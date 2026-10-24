@@ -45,7 +45,7 @@ export const ROLES: RoleData[] = [
   { role: "Product Manager", demand: "Very High", growth: "+16% YoY", skills: ["Roadmapping", "Analytics", "User research", "Prioritization"], usdBase: [85000, 140000, 210000] },
 ];
 
-export const TOP_SKILLS_2026 = [
+export const TOP_SKILLS_2027 = [
   "React / Next.js",
   "TypeScript",
   "Python",

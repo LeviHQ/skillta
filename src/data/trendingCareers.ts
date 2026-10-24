@@ -1,6 +1,6 @@
 import type { Career } from "./careers";
 
-// 10 new trending tech careers for 2026 (GenAI, Quantum, Rust, Web3 infra, etc.)
+// 10 new trending tech careers for 2027 (GenAI, Quantum, Rust, Web3 infra, etc.)
 export const trendingCareers: Career[] = [
   {
     id: "prompt-engineer",
@@ -58,7 +58,7 @@ export const trendingCareers: Career[] = [
     demandLevel: "Very High",
     salaryIndia: "₹12-30 LPA (entry) → ₹35-80 LPA (senior)",
     salaryGlobal: "$110K-160K (entry) → $200K-400K+ (senior)",
-    growthPotential: "One of the fastest-growing roles of 2026. Path to Staff AI Engineer or AI startup founder.",
+    growthPotential: "One of the fastest-growing roles of 2027. Path to Staff AI Engineer or AI startup founder.",
     roadmap: [
       { phase: 1, title: "Foundations", duration: "1-2 months", items: [
         { name: "Python + async", description: "FastAPI, asyncio, pydantic" },

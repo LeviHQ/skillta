@@ -30,7 +30,7 @@ const sections = [
   { Icon: MessageSquare, label: "Interview Prep", desc: "Coding · System Design · Behavioral" },
   { Icon: Building2, label: "Top Companies", desc: "Local giants + global tech hiring" },
   { Icon: Award, label: "Certifications", desc: "AWS · GCP · Azure · Cisco · more" },
-  { Icon: Wrench, label: "Skills in Demand", desc: "Top 20 skills for 2026 hiring" },
+  { Icon: Wrench, label: "Skills in Demand", desc: "Top 20 skills for 2027 hiring" },
   { Icon: BookOpen, label: "Career Resources", desc: "Blogs · Videos · Communities" },
 ];
 
@@ -283,7 +283,7 @@ export default function CountryEcosystemSection() {
 
               <div className="flex items-center gap-2 mt-4 text-[11px] text-muted-foreground">
                 <BadgeCheck className="w-3.5 h-3.5 text-success" />
-                Included in Pro & Lifetime · Updated for 2026
+                Included in Pro & Lifetime · Updated for 2027
               </div>
             </div>
 

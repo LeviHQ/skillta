@@ -522,7 +522,7 @@ export default function ResumeReviewer() {
               </h1>
               <p className="text-muted-foreground text-base md:text-lg">
                 Get a brutally honest ATS score, section-wise feedback, missing keywords, and
-                bullet-point rewrites — powered by SkillTa AI, tuned for 2026 tech hiring.
+                bullet-point rewrites — powered by SkillTa AI, tuned for 2027 tech hiring.
               </p>
             </motion.div>
           </div>

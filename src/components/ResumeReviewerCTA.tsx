@@ -31,7 +31,7 @@ export default function ResumeReviewerCTA({ variant = "default" }: { variant?: "
             <Sparkles className="w-3 h-3" /> Free · AI-powered
           </div>
           <h4 className="text-lg md:text-xl font-bold text-foreground">
-            Is your resume ready for 2026 hiring?
+            Is your resume ready for 2027 hiring?
           </h4>
           <p className="text-sm text-muted-foreground mt-1">
             Get an instant AI ATS score, missing keywords and bullet rewrites — tuned for tech recruiters.

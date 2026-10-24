@@ -177,7 +177,7 @@ export default function Blog() {
             animate={{ opacity: 1 }}
             className="max-w-4xl mx-auto text-sm text-muted-foreground mt-4"
           >
-            Showing <span className="text-foreground font-semibold">{visiblePosts.length}</span> 2026 tech salary guides for{" "}
+            Showing <span className="text-foreground font-semibold">{visiblePosts.length}</span> 2027 tech salary guides for{" "}
             <span className="text-foreground font-semibold">
               {currentCountry.flag} {currentCountry.name}
             </span>
