@@ -41,7 +41,7 @@ const weekPlan = (career: Career): Block => {
 
 const salaryTable = (career: Career): Block => ({
   t: "table",
-  caption: `${career.title} salary bands, 2026`,
+  caption: `${career.title} salary bands, 2027`,
   head: ["Level", "Experience", "India", "Global (USD)", "What the role owns"],
   rows: [
     ["Entry / junior", "0–2 years", career.salaryIndia.split("→")[0].trim(), career.salaryGlobal.split("→")[0].trim(), "Well-scoped tasks with close review"],
@@ -109,7 +109,7 @@ export function roadmapDeepBlocks(career: Career): Block[] {
       title: "Honest difficulty:",
       text: `${career.realityCheck.honestNote} Competition is rated ${career.realityCheck.competition.toLowerCase()} and the entry barrier ${career.realityCheck.entryBarrier.toLowerCase()}, with realistic time to job-ready around ${career.realityCheck.learningTime}.`,
     },
-    { t: "h2", text: `${career.title} salary in 2026` },
+    { t: "h2", text: `${career.title} salary in 2027` },
     {
       t: "p",
       text: `Compensation for ${lower}s reflects scope more than years served. ${career.growthPotential} The bands below are annual gross figures; product companies pay above them, services and agency employers below.`,
@@ -208,7 +208,7 @@ export function roadmapDeepBlocks(career: Career): Block[] {
           a: `${career.estimatedTime} for someone starting from scratch and studying ${LEARNING_HOURS[career.learningDifficulty]}. People coming from an adjacent technical role usually move faster because they already understand how teams ship software.`,
         },
         {
-          q: `Is ${career.title} a good career in 2026?`,
+          q: `Is ${career.title} a good career in 2027?`,
           a: `Demand is rated ${career.demandLevel.toLowerCase()}. ${career.growthPotential}`,
         },
         {

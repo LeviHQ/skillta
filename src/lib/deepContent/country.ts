@@ -7,7 +7,7 @@
 import type { Country } from "@/data/countries";
 import {
   ROLES,
-  TOP_SKILLS_2026,
+  TOP_SKILLS_2027,
   ROADMAP_CARDS,
   CERTIFICATIONS,
   GLOBAL_COMPANIES,
@@ -37,7 +37,7 @@ const tierNote = (c: Country) => {
 
 const salaryTable = (c: Country, roles = ROLES): Block => ({
   t: "table",
-  caption: `Annual gross tech salary bands in ${c.name} (${c.currency}, 2026 estimates)`,
+  caption: `Annual gross tech salary bands in ${c.name} (${c.currency}, 2027 estimates)`,
   head: ["Role", "Junior (0–2 yrs)", "Mid (3–5 yrs)", "Senior (6+ yrs)", "Demand", "YoY growth"],
   rows: roles.map((r) => {
     const b = getRoleSalaryBand(c, r);
@@ -128,7 +128,7 @@ const remoteBlocks = (c: Country): Block[] => [
   { t: "h2", text: `Remote and hybrid work in ${c.name}` },
   {
     t: "p",
-    text: `Remote hiring reshaped the ${c.name} market between 2020 and 2026. Today most postings fall into three buckets: fully remote roles paying against a national band, hybrid roles requiring two or three office days in ${listSentence(c.techHubs.slice(0, 2))}, and onsite roles at enterprises and hardware-adjacent employers. Timezone matters more than location — ${c.timezone} overlaps well with some markets and poorly with others, and that overlap is often the deciding factor in a remote hiring decision.`,
+    text: `Remote hiring reshaped the ${c.name} market between 2020 and 2027. Today most postings fall into three buckets: fully remote roles paying against a national band, hybrid roles requiring two or three office days in ${listSentence(c.techHubs.slice(0, 2))}, and onsite roles at enterprises and hardware-adjacent employers. Timezone matters more than location — ${c.timezone} overlaps well with some markets and poorly with others, and that overlap is often the deciding factor in a remote hiring decision.`,
   },
   {
     t: "ul",
@@ -224,7 +224,7 @@ function overviewSection(c: Country): Block[] {
           a: `Nine to fourteen months of consistent effort is the honest range for a complete beginner. People already working in adjacent roles — QA, support, analytics, IT — often move in six to nine months because they already understand how software teams operate.`,
         },
         {
-          q: `Is the ${c.name} tech market still hiring in 2026?`,
+          q: `Is the ${c.name} tech market still hiring in 2027?`,
           a: `Yes, but selectively. Generalist junior hiring contracted after 2023, while AI, data, cloud, security and platform engineering kept expanding. The practical implication is to specialise earlier than candidates did five years ago.`,
         },
         {
@@ -260,7 +260,7 @@ function jobsSection(c: Country): Block[] {
           a: `QA automation, technical support engineering and data analysis have the lowest entry barrier, because employers accept demonstrated tooling skill in place of years of experience. All three are also legitimate on-ramps into engineering within eighteen months.`,
         },
         {
-          q: `Are there entry-level tech jobs in ${c.name} in 2026?`,
+          q: `Are there entry-level tech jobs in ${c.name} in 2027?`,
           a: `Yes, but they are concentrated in ${listSentence(c.techHubs.slice(0, 3))} and in companies that run structured graduate programmes. Applying within the first week of a posting materially improves response rates.`,
         },
         {
@@ -275,7 +275,7 @@ function jobsSection(c: Country): Block[] {
 function salarySection(c: Country): Block[] {
   const senior = ROLES.map((r) => ({ r, b: getRoleSalaryBand(c, r) }));
   return [
-    { t: "h2", text: `Tech salaries in ${c.name} — the complete 2026 picture` },
+    { t: "h2", text: `Tech salaries in ${c.name} — the complete 2027 picture` },
     {
       t: "p",
       text: `All figures below are annual gross amounts in ${c.currency}, before income tax and statutory contributions. They represent the middle of the market: well-funded product companies pay above these bands, and services or agency employers typically pay below them. ${tierNote(c)}`,
@@ -592,7 +592,7 @@ function certificationsSection(c: Country): Block[] {
       t: "p",
       text: `Honestly: they help in three situations and not much otherwise. They help when you are switching careers and need a credible signal, when an employer or client contractually requires one — common in cloud, security and public-sector work in ${c.name} — and when you need external structure to finish learning something. They do not substitute for a portfolio, and no certification alone will get a software engineering offer.`,
     },
-    { t: "h2", text: "Certifications worth your money in 2026" },
+    { t: "h2", text: "Certifications worth your money in 2027" },
     {
       t: "table",
       caption: `Certification value for the ${c.name} job market`,
@@ -639,16 +639,16 @@ function certificationsSection(c: Country): Block[] {
 
 function skillsSection(c: Country): Block[] {
   return [
-    { t: "h2", text: `The skills ${c.name} employers are paying for in 2026` },
+    { t: "h2", text: `The skills ${c.name} employers are paying for in 2027` },
     {
       t: "p",
-      text: `Skill demand shifted meaningfully between 2024 and 2026. AI integration moved from a specialist concern to a baseline expectation, cloud and infrastructure-as-code became standard for backend roles, and security awareness is now screened for in ordinary engineering interviews. The list below reflects what appears most often in ${c.name} job postings, ordered by frequency.`,
+      text: `Skill demand shifted meaningfully between 2024 and 2027. AI integration moved from a specialist concern to a baseline expectation, cloud and infrastructure-as-code became standard for backend roles, and security awareness is now screened for in ordinary engineering interviews. The list below reflects what appears most often in ${c.name} job postings, ordered by frequency.`,
     },
     {
       t: "table",
       caption: `In-demand skills and what they are worth in ${c.name}`,
       head: ["Skill", "Where it is used", "Salary effect", "Time to working proficiency"],
-      rows: TOP_SKILLS_2026.map((skill, i) => [
+      rows: TOP_SKILLS_2027.map((skill, i) => [
         skill,
         pick(["Web and product teams", "Platform and infrastructure", "Data and AI teams", "Security and compliance", "Backend services", "Mobile and cross-platform"], `${c.slug}-${skill}`, i),
         pick(["+5–10%", "+8–14%", "+10–18%", "+12–20%"], `${c.slug}-${skill}-p`, i),
@@ -714,12 +714,12 @@ function resourcesSection(c: Country): Block[] {
       t: "ul",
       items: [
         "**[AI Career Quiz](/quiz)** — a diagnostic that maps your interests, strengths and constraints to a shortlist of realistic roles. Three free attempts every day.",
-        "**[Salary Predictor](/salary-predictor)** — unlimited estimates by role, experience level and city, using the same 2026 market bands as this guide.",
+        "**[Salary Predictor](/salary-predictor)** — unlimited estimates by role, experience level and city, using the same 2027 market bands as this guide.",
         "**[AI Resume Reviewer](/resume-reviewer)** — ATS score, keyword gaps and rewritten bullet points, three free reviews daily.",
         "**[Skill Gap Analyzer](/skill-gap-analyzer)** — compares your current skills with your target role and returns a prioritised eight-week plan.",
         "**[Roadmap Library](/roadmaps)** — 60+ step-by-step paths with phases, resources and portfolio projects.",
         "**[Compare Careers](/compare)** — side-by-side comparison of any two roles on salary, difficulty, demand and growth.",
-        "**[Blog](/blog)** — country and role-specific salary guides updated for 2026.",
+        "**[Blog](/blog)** — country and role-specific salary guides updated for 2027.",
       ],
     },
     { t: "h2", text: "External resources worth your time" },
@@ -788,7 +788,7 @@ function sectionFaq(c: Country, key: SectionKey): Block {
   const common = [
     {
       q: `How reliable are the ${c.name} figures on this page?`,
-      a: `They are 2026 market-band estimates built from public compensation datasets and job postings, expressed as annual gross in ${c.currency} before tax. Use them as a negotiating anchor, not a guarantee — company type and role scope move a band more than the job title does. Cross-check your own number with the free [salary predictor](/salary-predictor).`,
+      a: `They are 2027 market-band estimates built from public compensation datasets and job postings, expressed as annual gross in ${c.currency} before tax. Use them as a negotiating anchor, not a guarantee — company type and role scope move a band more than the job title does. Cross-check your own number with the free [salary predictor](/salary-predictor).`,
     },
     {
       q: `Do I need to live in ${listSentence(c.techHubs.slice(0, 2))} to get hired?`,
@@ -798,7 +798,7 @@ function sectionFaq(c: Country, key: SectionKey): Block {
 
   const specific: Record<SectionKey, { q: string; a: string }[]> = {
     overview: [
-      { q: `Is ${c.name} a good market to start a tech career in 2026?`, a: `${tierNote(c)} For a first job, the fastest route is usually a services or consultancy employer, then a move to a product company within two years once you have shipped something measurable.` },
+      { q: `Is ${c.name} a good market to start a tech career in 2027?`, a: `${tierNote(c)} For a first job, the fastest route is usually a services or consultancy employer, then a move to a product company within two years once you have shipped something measurable.` },
       { q: `Which role should I target first?`, a: `Pick by fit rather than by pay. Take the free [career quiz](/quiz) — it maps your interests to specific roles — then open the matching [roadmap](/roadmaps) and follow it end to end instead of sampling several.` },
     ],
     jobs: [
@@ -830,7 +830,7 @@ function sectionFaq(c: Country, key: SectionKey): Block {
       { q: `Which one should I take first?`, a: `Match it to the role you want, not to the cheapest option: ${listSentence(CERTIFICATIONS.slice(0, 3).map((x) => x.name))} cover the highest-demand paths. Confirm the target role first with the [skill gap analyzer](/skill-gap-analyzer).` },
     ],
     skills: [
-      { q: `Which skills matter most in ${c.name} in 2026?`, a: `${listSentence(TOP_SKILLS_2026.slice(0, 5))} appear most often in local postings, with AI-adjacent tooling now expected alongside core engineering rather than instead of it.` },
+      { q: `Which skills matter most in ${c.name} in 2027?`, a: `${listSentence(TOP_SKILLS_2027.slice(0, 5))} appear most often in local postings, with AI-adjacent tooling now expected alongside core engineering rather than instead of it.` },
       { q: `Will AI replace these roles?`, a: `It is compressing routine work and raising the expected output per engineer, which hits generalists hardest and specialists least. The durable defence is depth plus judgment: system design, debugging, data modelling and communication are all harder to automate than syntax.` },
     ],
     resources: [
@@ -869,7 +869,7 @@ function closingBlocks(c: Country, key: SectionKey): Block[] {
       t: "ul",
       items: [
         `[Career quiz](/quiz) — a short diagnostic that maps your interests and strengths to specific tech roles.`,
-        `[Salary predictor](/salary-predictor) — unlimited 2026 estimates by role, experience and city.`,
+        `[Salary predictor](/salary-predictor) — unlimited 2027 estimates by role, experience and city.`,
         `[Roadmap library](/roadmaps) — 60+ step-by-step learning paths with phases, resources and projects.`,
         `[Compare careers](/compare) — salary, difficulty, demand and growth for any two roles side by side.`,
         `[AI resume reviewer](/resume-reviewer) — ATS score, keyword gaps and rewritten bullet points.`,

@@ -74,7 +74,7 @@ const chatTree: Record<string, ChatNode> = {
   },
   roadmap_help: {
     id: "roadmap_help",
-    message: "Roadmap Library has 60+ tech career roadmaps (including 2026 trending: GenAI, Prompt Engineer, Rust, Web3 & more). Each has skills, tools, timeline, resources + downloadable PDF. 🗺️",
+    message: "Roadmap Library has 60+ tech career roadmaps (including 2027 trending: GenAI, Prompt Engineer, Rust, Web3 & more). Each has skills, tools, timeline, resources + downloadable PDF. 🗺️",
     options: [
       { label: "Open Roadmap Library", nextId: "roadmap_go" },
       { label: "Find my match first", nextId: "quiz_go" },
@@ -167,7 +167,7 @@ const chatTree: Record<string, ChatNode> = {
   },
   country_help: {
     id: "country_help",
-    message: "🌍 Country Ecosystem is our newest FREE launch! Pick your country from the navbar 'Country' tab (50+ available) and get a full doc-style page: top tech jobs, local salaries (Junior/Mid/Senior), roadmaps, country-specific resume rules, interview loops, top companies, certifications and in-demand skills for 2026. All localized, no sign-in needed.",
+    message: "🌍 Country Ecosystem is our newest FREE launch! Pick your country from the navbar 'Country' tab (50+ available) and get a full doc-style page: top tech jobs, local salaries (Junior/Mid/Senior), roadmaps, country-specific resume rules, interview loops, top companies, certifications and in-demand skills for 2027. All localized, no sign-in needed.",
     options: [
       { label: "Open USA ecosystem", nextId: "country_usa_go" },
       { label: "Open India ecosystem", nextId: "country_india_go" },

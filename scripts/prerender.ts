@@ -24,7 +24,7 @@ import { COUNTRIES } from "../src/data/countries";
 import {
   SECTIONS,
   ROLES,
-  TOP_SKILLS_2026,
+  TOP_SKILLS_2027,
   ROADMAP_CARDS,
   CERTIFICATIONS,
   GLOBAL_COMPANIES,
@@ -161,12 +161,12 @@ function staticRoutes(): Route[] {
   const routes: Route[] = [
     page(
       "home",
-      shell(`<h1>SkillTa — Free AI Career Quiz &amp; Tech Career Roadmaps 2026</h1>
+      shell(`<h1>SkillTa — Free AI Career Quiz &amp; Tech Career Roadmaps 2027</h1>
 <p>${esc(SITE_CONFIG.description)}</p>
 <h2>Free services</h2>
 ${list([
   `${link("/quiz", "AI Career Quiz")} — 3 free attempts every day`,
-  `${link("/salary-predictor", "Salary Predictor")} — unlimited 2026 salary estimates`,
+  `${link("/salary-predictor", "Salary Predictor")} — unlimited 2027 salary estimates`,
   `${link("/roadmaps", "Roadmap Library")} — 60+ free step-by-step tech roadmaps`,
   `${link("/compare", "Compare Careers")} — side-by-side role comparison`,
   `${link("/resume-reviewer", "AI Resume Reviewer")} — ATS score and rewrites`,
@@ -175,20 +175,20 @@ ${list([
 <h2>Popular roadmaps</h2>
 ${list(careers.slice(0, 12).map((c) => link(`/roadmaps/${c.id}`, `${c.title} Roadmap`)))}
 <h2>Country tech career guides</h2>
-${list(COUNTRIES.slice(0, 12).map((c) => link(`/${c.slug}`, `${c.name} Tech Career Guide 2026`)))}
+${list(COUNTRIES.slice(0, 12).map((c) => link(`/${c.slug}`, `${c.name} Tech Career Guide 2027`)))}
 ${siteNav}`),
       [getWebsiteSchema(), getOrganizationSchema(), getSoftwareAppSchema(), getItemListSchema()],
     ),
     page(
       "quiz",
-      shell(`<h1>Free AI Career Quiz 2026</h1>
+      shell(`<h1>Free AI Career Quiz 2027</h1>
 <p>${esc(PAGE_SEO.quiz.description)}</p>
 <p>${link("/roadmaps", "Browse roadmaps")} · ${link("/compare", "Compare careers")}</p>${siteNav}`),
       [getSoftwareAppSchema()],
     ),
     page(
       "roadmaps",
-      shell(`<h1>60+ Free Tech Career Roadmaps (2026)</h1>
+      shell(`<h1>60+ Free Tech Career Roadmaps (2027)</h1>
 <p>${esc(PAGE_SEO.roadmaps.description)}</p>
 ${list(careers.map((c) => `${link(`/roadmaps/${c.id}`, c.title)} — ${esc(c.tagline)}`))}
 ${siteNav}`),
@@ -196,7 +196,7 @@ ${siteNav}`),
     ),
     page(
       "compare",
-      shell(`<h1>Compare Tech Careers — Salary, Skills &amp; Demand (2026)</h1>
+      shell(`<h1>Compare Tech Careers — Salary, Skills &amp; Demand (2027)</h1>
 <p>${esc(PAGE_SEO.compare.description)}</p>
 ${list(careers.slice(0, 20).map((c) => `${link(`/roadmaps/${c.id}`, c.title)} — ${esc(c.salaryGlobal)}`))}
 ${siteNav}`),
@@ -232,17 +232,17 @@ ${siteNav}`),
   routes.push(
     tool(
       "/salary-predictor",
-      "Free Tech Salary Predictor 2026 — Role, City & Experience | SkillTa",
-      "Estimate your 2026 tech salary by role, experience, city and skills. Free, unlimited and based on real market bands.",
-      "tech salary predictor 2026, software engineer salary calculator, it salary estimator, developer salary by city",
-      "Tech Salary Predictor 2026",
-      ["Unlimited free predictions", "Role, city and experience aware", "Skill premium adjustments", "Backed by 2026 market bands"],
+      "Free Tech Salary Predictor 2027 — Role, City & Experience | SkillTa",
+      "Estimate your 2027 tech salary by role, experience, city and skills. Free, unlimited and based on real market bands.",
+      "tech salary predictor 2027, software engineer salary calculator, it salary estimator, developer salary by city",
+      "Tech Salary Predictor 2027",
+      ["Unlimited free predictions", "Role, city and experience aware", "Skill premium adjustments", "Backed by 2027 market bands"],
     ),
     tool(
       "/resume-reviewer",
-      "Free AI Resume Reviewer — ATS Score & Rewrites 2026 | SkillTa",
+      "Free AI Resume Reviewer — ATS Score & Rewrites 2027 | SkillTa",
       "Upload your resume and get an instant ATS score, section-by-section feedback and rewritten bullet points. 3 free reviews every day.",
-      "ai resume reviewer free, ats resume checker, resume score online, tech resume review 2026",
+      "ai resume reviewer free, ats resume checker, resume score online, tech resume review 2027",
       "AI Resume Reviewer",
       ["Instant ATS compatibility score", "Bullet point rewrites", "Keyword gap detection", "Downloadable PDF report"],
     ),
@@ -331,7 +331,7 @@ function roadmapRoutes(): Route[] {
       ]),
     ],
     body: shell(`<article>
-<h1>${esc(career.title)} Roadmap 2026</h1>
+<h1>${esc(career.title)} Roadmap 2027</h1>
 <p>${esc(career.tagline)}</p>
 <p>${esc(career.description)}</p>
 <h2>Key facts</h2>
@@ -379,7 +379,7 @@ function countryRoutes(): Route[] {
         ]),
       ],
       body: shell(`<article>
-<h1>${esc(country.name)} Tech Career Guide 2026</h1>
+<h1>${esc(country.name)} Tech Career Guide 2027</h1>
 <p>${esc(country.marketNote)}</p>
 <h2>Tech hubs</h2>
 <ul>${country.techHubs.map((h) => `<li>${esc(h)}</li>`).join("")}</ul>
@@ -433,7 +433,7 @@ function countrySectionRoutes(): Route[] {
 <p>Hiring hubs: ${country.techHubs.map(esc).join(", ")}.</p>`;
           break;
         case "salary":
-          inner = `<h2>${esc(country.name)} tech salaries 2026 (${esc(country.currency)})</h2>
+          inner = `<h2>${esc(country.name)} tech salaries 2027 (${esc(country.currency)})</h2>
 <ul>${ROLES.map((r) => {
             const b = getRoleSalaryBand(country, r);
             return `<li><strong>${esc(r.role)}</strong> — junior ${esc(b.junior)}, mid ${esc(b.mid)}, senior ${esc(b.senior)} per year.</li>`;
@@ -475,15 +475,15 @@ function countrySectionRoutes(): Route[] {
 <ul>${CERTIFICATIONS.map((c) => `<li><strong>${esc(c.name)}</strong> (${esc(c.provider)}) — ${esc(c.why)}</li>`).join("")}</ul>`;
           break;
         case "skills":
-          inner = `<h2>Skills in demand in ${esc(country.name)} for 2026</h2>
-<ul>${TOP_SKILLS_2026.map((s) => `<li>${esc(s)}</li>`).join("")}</ul>
+          inner = `<h2>Skills in demand in ${esc(country.name)} for 2027</h2>
+<ul>${TOP_SKILLS_2027.map((s) => `<li>${esc(s)}</li>`).join("")}</ul>
 <p>${link("/skill-gap-analyzer", "Run a free skill gap analysis")} to see exactly what you are missing for your target role.</p>`;
           break;
         default:
           inner = `<h2>Career resources for ${esc(country.name)}</h2>
 <ul>
 <li>${link("/quiz", "AI Career Quiz")} — find your best-fit tech role.</li>
-<li>${link("/salary-predictor", "Salary Predictor")} — unlimited 2026 estimates.</li>
+<li>${link("/salary-predictor", "Salary Predictor")} — unlimited 2027 estimates.</li>
 <li>${link("/resume-reviewer", "AI Resume Reviewer")} — ATS score and rewrites.</li>
 <li>${link("/skill-gap-analyzer", "Skill Gap Analyzer")} — personalized learning plan.</li>
 <li>${link("/roadmaps", "Roadmap Library")} — 60+ step-by-step paths.</li>
@@ -496,7 +496,7 @@ function countrySectionRoutes(): Route[] {
         path,
         title,
         description,
-        keywords: `${country.name} tech jobs, ${country.name} software engineer salary, ${country.name} tech career, tech roadmap ${country.name}, ${section.title} ${country.name} 2026`,
+        keywords: `${country.name} tech jobs, ${country.name} software engineer salary, ${country.name} tech career, tech roadmap ${country.name}, ${section.title} ${country.name} 2027`,
         type: "article",
         jsonLd: [
           getBreadcrumbSchema([
@@ -506,7 +506,7 @@ function countrySectionRoutes(): Route[] {
           ]),
         ],
         body: shell(`<article>
-<h1>${esc(section.title)} in ${esc(country.name)} — Tech Career Guide 2026</h1>
+<h1>${esc(section.title)} in ${esc(country.name)} — Tech Career Guide 2027</h1>
 <p>${esc(country.marketNote)}</p>
 ${inner}
 ${blocksToHtml(countryDeepBlocks(country, section.key))}

@@ -146,10 +146,10 @@ function buildFAQs(post: (typeof blogPosts)[number]) {
     {
       question: "How accurate are SkillTa's salary and career insights?",
       answer:
-        "Salary bands are sourced from public 2026 datasets (Levels.fyi, Glassdoor, LinkedIn Salary, StackOverflow) and localized per country. Career recommendations use a scoring algorithm across 10 quiz dimensions.",
+        "Salary bands are sourced from public 2027 datasets (Levels.fyi, Glassdoor, LinkedIn Salary, StackOverflow) and localized per country. Career recommendations use a scoring algorithm across 10 quiz dimensions.",
     },
     {
-      question: "Do I need experience to start a tech career in 2026?",
+      question: "Do I need experience to start a tech career in 2027?",
       answer:
         "No. Most roadmaps on SkillTa are built for absolute beginners. The average learner ships their first hireable project in 4–6 months of consistent study.",
     },
@@ -159,11 +159,11 @@ function buildFAQs(post: (typeof blogPosts)[number]) {
     base.unshift({
       question: `How is ${post.title.replace(/salary.*/i, "salary").trim()} calculated?`,
       answer:
-        "We use median public compensation data for 2026 (base + bonus + stock) and adjust for city, company tier, and years of experience. Use our free Salary Predictor for a personalized estimate.",
+        "We use median public compensation data for 2027 (base + bonus + stock) and adjust for city, company tier, and years of experience. Use our free Salary Predictor for a personalized estimate.",
     });
   if (cat.includes("ai") || cat.includes("ml"))
     base.unshift({
-      question: "Do I need a PhD to work in AI/ML in 2026?",
+      question: "Do I need a PhD to work in AI/ML in 2027?",
       answer:
         "Not for most roles. Applied AI, MLOps, agentic AI and prompt engineering are open to strong self-taught engineers with a solid portfolio.",
     });
@@ -383,7 +383,7 @@ export default function BlogPost() {
                 </div>
                 <div>
                   <p className="text-sm font-semibold text-foreground">SkillTa Editorial</p>
-                  <p className="text-xs text-muted-foreground">AI-assisted, human-reviewed for 2026</p>
+                  <p className="text-xs text-muted-foreground">AI-assisted, human-reviewed for 2027</p>
                 </div>
               </div>
               <div className="flex items-center gap-2">

@@ -76,7 +76,7 @@ export default function CountryInternalLinks({ country, currentKey }: Props) {
         <div className="glass rounded-2xl border border-border p-5 md:p-6">
           <h2 className="flex items-center gap-2 text-sm font-semibold text-foreground mb-4">
             <FileText className="w-4 h-4 text-primary" />
-            {country.name} salary guides 2026
+            {country.name} salary guides 2027
           </h2>
           <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-2">
             {relatedBlogs.map((p) => (

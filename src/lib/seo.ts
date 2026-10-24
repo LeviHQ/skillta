@@ -4,7 +4,7 @@ export const SITE_CONFIG = {
   url: "https://www.skillta.tech",
   tagline: "Find Your Perfect Tech Career Path",
   description: "AI-powered career guidance for tech. Take our quiz to discover your ideal career path — frontend, backend, data science, AI/ML, cybersecurity & more. Get a personalized roadmap with 50+ career paths, salary insights & resources.",
-  keywords: "tech career quiz, career path finder, best tech careers 2026, learn to code, career guidance for programmers, tech career roadmap, which tech career is right for me, career test, software developer roadmap, career aptitude test, ai engineer roadmap, how to become developer, tech career after 12th, programming language to learn, web development roadmap, tech job no experience",
+  keywords: "tech career quiz, career path finder, best tech careers 2027, learn to code, career guidance for programmers, tech career roadmap, which tech career is right for me, career test, software developer roadmap, career aptitude test, ai engineer roadmap, how to become developer, tech career after 12th, programming language to learn, web development roadmap, tech job no experience",
   author: "SkillTa",
   twitterHandle: "@AdarshMi18",
   locale: "en_US",
@@ -28,15 +28,15 @@ export interface PageSEO {
 
 export const PAGE_SEO: Record<string, PageSEO> = {
   home: {
-    title: "SkillTa — AI Career Quiz & Roadmaps 2026",
+    title: "SkillTa — AI Career Quiz & Roadmaps 2027",
     description: "AI-powered career quiz + personalized roadmaps for 50+ tech careers. Find your ideal path in 5 minutes. For students, freshers & switchers.",
-    keywords: "tech career quiz, career path finder, best tech careers 2026, learn to code, career guidance for programmers, tech career roadmap, which tech career is right for me, career test, software developer roadmap, career aptitude test, ai career quiz, tech career for beginners, career quiz for students, tech career guidance, best career in tech 2026, how to start tech career",
+    keywords: "tech career quiz, career path finder, best tech careers 2027, learn to code, career guidance for programmers, tech career roadmap, which tech career is right for me, career test, software developer roadmap, career aptitude test, ai career quiz, tech career for beginners, career quiz for students, tech career guidance, best career in tech 2027, how to start tech career",
     path: "/",
   },
   quiz: {
-    title: "AI Career Quiz 2026 — Find Your Tech Path",
+    title: "AI Career Quiz 2027 — Find Your Tech Path",
     description: "Answer 10 questions to discover your ideal tech career. AI-powered match with a personalized learning roadmap. Included with Pro.",
-    keywords: "tech career quiz, which tech career is right for me, career aptitude test online, coding career quiz, AI career recommendation, tech skills assessment, career quiz for students, career quiz for freshers, career test 2026, career personality quiz, tech career finder, what tech career suits me",
+    keywords: "tech career quiz, which tech career is right for me, career aptitude test online, coding career quiz, AI career recommendation, tech skills assessment, career quiz for students, career quiz for freshers, career test 2027, career personality quiz, tech career finder, what tech career suits me",
     path: "/quiz",
   },
   results: {
@@ -47,9 +47,9 @@ export const PAGE_SEO: Record<string, PageSEO> = {
     noIndex: true,
   },
   roadmaps: {
-    title: "50+ Tech Career Roadmaps 2026 | SkillTa",
-    description: "Curated step-by-step roadmaps for 50+ tech careers. Curated resources, projects, salary info & timelines. Updated for 2026.",
-    keywords: "tech career roadmap 2026, learning path, how to become a developer, frontend roadmap 2026, backend roadmap, data science roadmap, cybersecurity roadmap, DevOps roadmap, ai ml roadmap, web development roadmap, career learning path, developer roadmap, programming roadmap for beginners",
+    title: "50+ Tech Career Roadmaps 2027 | SkillTa",
+    description: "Curated step-by-step roadmaps for 50+ tech careers. Curated resources, projects, salary info & timelines. Updated for 2027.",
+    keywords: "tech career roadmap 2027, learning path, how to become a developer, frontend roadmap 2027, backend roadmap, data science roadmap, cybersecurity roadmap, DevOps roadmap, ai ml roadmap, web development roadmap, career learning path, developer roadmap, programming roadmap for beginners",
     path: "/roadmaps",
   },
   about: {
@@ -81,15 +81,15 @@ export const PAGE_SEO: Record<string, PageSEO> = {
     path: "/terms",
   },
   compare: {
-    title: "Compare Tech Careers 2026 — Salary, Skills & Demand",
+    title: "Compare Tech Careers 2027 — Salary, Skills & Demand",
     description: "Side-by-side comparison of 50+ tech careers. Compare salary, difficulty, skills & demand. Frontend vs Backend, AI vs DevOps & more.",
-    keywords: "compare tech careers 2026, frontend vs backend, data science vs cybersecurity, ai vs devops, career comparison tool, tech career salary comparison india, which tech career is better, career comparison 2026, web developer vs data scientist, software engineer vs data analyst",
+    keywords: "compare tech careers 2027, frontend vs backend, data science vs cybersecurity, ai vs devops, career comparison tool, tech career salary comparison india, which tech career is better, career comparison 2027, web developer vs data scientist, software engineer vs data analyst",
     path: "/compare",
   },
   blog: {
-    title: "Tech Career Blog 2026 — Guides & Salary Tips",
-    description: "Expert guides, salary insights & career comparisons. Everything freshers & students need to succeed in tech. Updated for 2026.",
-    keywords: "tech career blog 2026, career guidance articles, tech salary guide india, coding career tips, developer career advice, best tech careers 2026, learn coding blog, tech career for freshers, programming career guide, how to get tech job",
+    title: "Tech Career Blog 2027 — Guides & Salary Tips",
+    description: "Expert guides, salary insights & career comparisons. Everything freshers & students need to succeed in tech. Updated for 2027.",
+    keywords: "tech career blog 2027, career guidance articles, tech salary guide india, coding career tips, developer career advice, best tech careers 2027, learn coding blog, tech career for freshers, programming career guide, how to get tech job",
     path: "/blog",
   },
   resumeVersionControl: {
@@ -227,7 +227,7 @@ export function getItemListSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    name: "Top Tech Career Paths 2026",
+    name: "Top Tech Career Paths 2027",
     description: "Most popular tech career paths with detailed roadmaps",
     numberOfItems: careers.length,
     itemListElement: careers.map((career, i) => ({
@@ -273,7 +273,7 @@ export function getCourseSchema(career: { title: string; description: string; id
   return {
     "@context": "https://schema.org",
     "@type": "Course",
-    name: `${career.title} Career Roadmap 2026`,
+    name: `${career.title} Career Roadmap 2027`,
     description: career.description,
     provider: {
       "@type": "Organization",
@@ -326,7 +326,7 @@ export function getHowToSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "HowTo",
-    name: "How to Find Your Perfect Tech Career in 2026",
+    name: "How to Find Your Perfect Tech Career in 2027",
     description: "Use SkillTa's AI-powered quiz to discover your ideal tech career path in under 5 minutes. Works for students, freshers & career switchers.",
     totalTime: "PT5M",
     step: [
