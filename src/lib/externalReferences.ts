@@ -1,5 +1,6 @@
 /** Official resource destinations, not claims that a specific report was consulted. */
 export const externalReferences: Record<string, string> = {
+  // Salary, Career & Market Research
   "Levels.fyi": "https://www.levels.fyi/",
   Glassdoor: "https://www.glassdoor.com/",
   AmbitionBox: "https://www.ambitionbox.com/",
@@ -11,13 +12,17 @@ export const externalReferences: Record<string, string> = {
   "Stack Overflow Developer Survey": "https://survey.stackoverflow.co/",
   "Stack Overflow": "https://stackoverflow.com/",
   StackOverflow: "https://stackoverflow.com/",
+
+  // Coding Practice & Interview Prep
   LeetCode: "https://leetcode.com/",
+  NeetCode: "https://neetcode.io/",
   Pramp: "https://www.pramp.com/",
   Exponent: "https://www.tryexponent.com/",
-  "Hugging Face": "https://huggingface.co/learn",
-  "React Docs": "https://react.dev/learn",
-  "MDN Web Docs": "https://developer.mozilla.org/",
-  MDN: "https://developer.mozilla.org/",
+  "Interview Query": "https://www.interviewquery.com/",
+  "Frontend Mentor": "https://www.frontendmentor.io/",
+  StrataScratch: "https://www.stratascratch.com/",
+
+  // Major Learning Platforms & University Courses
   freeCodeCamp: "https://www.freecodecamp.org/learn/",
   Coursera: "https://www.coursera.org/",
   Udemy: "https://www.udemy.com/",
@@ -28,12 +33,76 @@ export const externalReferences: Record<string, string> = {
   CS50: "https://cs50.harvard.edu/",
   "fast.ai": "https://www.fast.ai/",
   "DeepLearning.AI": "https://www.deeplearning.ai/",
-  "OpenAI Cookbook": "https://cookbook.openai.com/",
-  "Anthropic Docs": "https://docs.anthropic.com/",
+  Scrimba: "https://scrimba.com/",
+  DataCamp: "https://www.datacamp.com/",
+  Pluralsight: "https://www.pluralsight.com/",
+  KodeKloud: "https://kodekloud.com/",
+  "Test Automation University": "https://testautomationu.applitools.com/",
+  "Linux Journey": "https://linuxjourney.com/",
+
+  // Web, Frontend & Languages Docs
+  "React Docs": "https://react.dev/learn",
+  "MDN Web Docs": "https://developer.mozilla.org/",
+  MDN: "https://developer.mozilla.org/",
+  "Next.js docs": "https://nextjs.org/docs",
   "TypeScript Handbook": "https://www.typescriptlang.org/docs/",
   "The Rust Book": "https://doc.rust-lang.org/book/",
+  "Node.js docs": "https://nodejs.org/en/docs",
+  "Tailwind docs": "https://tailwindcss.com/docs",
+  "FastAPI docs": "https://fastapi.tiangolo.com/",
+  "Go Tour": "https://go.dev/tour/",
+  "Python for Data Science": "https://www.python.org/doc/",
+  "web.dev": "https://web.dev/",
+
+  // AI, ML & LLMs
+  "Hugging Face": "https://huggingface.co/learn",
+  "OpenAI Cookbook": "https://cookbook.openai.com/",
+  "Anthropic Docs": "https://docs.anthropic.com/",
+  "PyTorch tutorials": "https://pytorch.org/tutorials/",
+  "Scikit-learn docs": "https://scikit-learn.org/stable/",
+  "LangChain docs": "https://python.langchain.com/docs/",
+  "LlamaIndex docs": "https://docs.llamaindex.ai/",
+  "Pinecone docs": "https://docs.pinecone.io/",
+  "Papers With Code": "https://paperswithcode.com/",
+  "MLflow docs": "https://mlflow.org/docs/latest/",
+
+  // Cloud, DevOps & Containers
   "Kubernetes Documentation": "https://kubernetes.io/docs/",
+  "Kubernetes docs": "https://kubernetes.io/docs/",
+  "Docker docs": "https://docs.docker.com/",
+  "Terraform docs": "https://developer.hashicorp.com/terraform/docs",
+  "AWS docs": "https://docs.aws.amazon.com/",
+  "GitHub Actions docs": "https://docs.github.com/en/actions",
+  "Prometheus docs": "https://prometheus.io/docs/",
+  "Grafana tutorials": "https://grafana.com/tutorials/",
+  "Ansible docs": "https://docs.ansible.com/",
+  "PostgreSQL docs": "https://www.postgresql.org/docs/",
+  "Redis docs": "https://redis.io/docs/",
+  "MongoDB University": "https://learn.mongodb.com/",
+
+  // Cybersecurity & Ethical Hacking
+  HackTheBox: "https://www.hackthebox.com/",
+  "Hack The Box": "https://www.hackthebox.com/",
+  TryHackMe: "https://tryhackme.com/",
+  "PortSwigger Web Security Academy": "https://portswigger.net/web-security",
+  OWASP: "https://owasp.org/",
+  "OWASP docs": "https://owasp.org/projects/",
+  HackerOne: "https://www.hackerone.com/",
+  Bugcrowd: "https://www.bugcrowd.com/",
+  CTFtime: "https://ctftime.org/",
+  Wireshark: "https://www.wireshark.org/docs/",
+
+  // Mobile & System Architecture
+  "Android Developer docs": "https://developer.android.com/docs",
+  "Apple Developer docs": "https://developer.apple.com/documentation/",
+  "Flutter docs": "https://docs.flutter.dev/",
+  "System Design Primer": "https://github.com/donnemartin/system-design-primer",
+
+  // Quantum Computing & Web3
   "Qiskit Textbook": "https://qiskit.org/learn",
+  "Solidity docs": "https://docs.soliditylang.org/",
+  CryptoZombies: "https://cryptozombies.io/",
+  OpenZeppelin: "https://docs.openzeppelin.com/",
 };
 
 const escape = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
