@@ -9,6 +9,7 @@ import AdsterraResponsiveBanner from "@/components/AdsterraResponsiveBanner";
 import ResumeReviewerCTA from "@/components/ResumeReviewerCTA";
 import SkillGapAnalyzerCTA from "@/components/SkillGapAnalyzerCTA";
 import DeepContent from "@/components/DeepContent";
+import ExternalReferenceText from "@/components/ExternalReferenceText";
 import { roadmapDeepBlocks } from "@/lib/deepContent";
 import { getCourseSchema, getBreadcrumbSchema } from "@/lib/seo";
 
@@ -590,7 +591,7 @@ export default function RoadmapDetail() {
                         </div>
                         <div className="flex flex-wrap gap-2">
                           {phase.resources.map((r) => (
-                            <span key={r} className="text-xs px-2 py-1 rounded bg-info/10 text-info">{r}</span>
+                            <span key={r} className="text-xs px-2 py-1 rounded bg-info/10 text-info"><ExternalReferenceText text={r} /></span>
                           ))}
                         </div>
                       </div>

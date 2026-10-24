@@ -32,6 +32,7 @@ import AdsterraResponsiveBanner from "@/components/AdsterraResponsiveBanner";
 import ResumeReviewerCTA from "@/components/ResumeReviewerCTA";
 import DeepContent from "@/components/DeepContent";
 import { blogDeepBlocks } from "@/lib/deepContent";
+import { remarkExternalReferences } from "@/lib/externalReferences";
 
 // ---------- helpers ----------
 const slugify = (s: string) =>
@@ -261,7 +262,7 @@ export default function BlogPost() {
 
   const mdComponents = {
     a: ({ href, children }: { href?: string; children?: React.ReactNode }) => {
-      if (href?.startsWith("/")) {
+      if (href?.startsWith("/") && !href.startsWith("//")) {
         return (
           <Link to={href} className="text-primary hover:underline">
             {children}
@@ -269,7 +270,7 @@ export default function BlogPost() {
         );
       }
       return (
-        <a href={href} target="_blank" rel="noopener noreferrer">
+        <a href={href} target={href && /^(https?:)?\/\//i.test(href) ? "_blank" : undefined} rel={href && /^(https?:)?\/\//i.test(href) ? "noopener noreferrer" : undefined}>
           {children}
         </a>
       );
@@ -456,7 +457,7 @@ export default function BlogPost() {
 
             {/* Content — first half */}
             <div className={proseClass}>
-              <ReactMarkdown remarkPlugins={[remarkGfm]} components={mdComponents}>{first}</ReactMarkdown>
+              <ReactMarkdown remarkPlugins={[remarkGfm, remarkExternalReferences]} components={mdComponents}>{first}</ReactMarkdown>
             </div>
 
             {/* Contextual mid-article service CTA */}
@@ -483,7 +484,7 @@ export default function BlogPost() {
 
             {/* Content — second half */}
             <div className={proseClass}>
-              <ReactMarkdown remarkPlugins={[remarkGfm]} components={mdComponents}>{second}</ReactMarkdown>
+              <ReactMarkdown remarkPlugins={[remarkGfm, remarkExternalReferences]} components={mdComponents}>{second}</ReactMarkdown>
             </div>
 
             {/* In-depth guide — shared with the prerendered HTML */}
