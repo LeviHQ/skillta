@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { SITE_CONFIG, getBaseUrl } from "@/lib/seo";
+import { markdownPath } from "@/lib/markdown/format";
+import { isPublicPath } from "@/lib/markdown/policy";
 
 interface SEOHeadProps {
   title: string;
@@ -57,6 +59,8 @@ export default function SEOHead({
     <Helmet>
       <title>{title}</title>
       <meta name="description" content={description} />
+      {!noIndex && isPublicPath(path) && <meta name="ai-summary" content={description} />}
+      {!noIndex && isPublicPath(path) && <link rel="alternate" type="text/markdown" href={`${baseUrl}${markdownPath(path)}`} />}
       {keywords && <meta name="keywords" content={keywords} />}
       <meta name="author" content={SITE_CONFIG.author} />
       <meta name="googlebot" content={noIndex ? "noindex, nofollow" : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"} />

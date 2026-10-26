@@ -48,6 +48,8 @@ import { blocksToHtml } from "../src/lib/deepContent/types";
 import { countryDeepBlocks } from "../src/lib/deepContent/country";
 import { roadmapDeepBlocks } from "../src/lib/deepContent/roadmap";
 import { blogDeepBlocks } from "../src/lib/deepContent/blog";
+import { markdownPath } from "../src/lib/markdown/format";
+import { isPublicPath } from "../src/lib/markdown/policy";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const DIST = resolve(ROOT, "dist");
@@ -532,6 +534,8 @@ function headFor(route: Route): string {
   const tags = [
     `<title>${esc(route.title)}</title>`,
     `<meta name="description" content="${esc(route.description)}" />`,
+    isPublicPath(route.path) ? `<meta name="ai-summary" content="${esc(route.description)}" />` : "",
+    isPublicPath(route.path) ? `<link rel="alternate" type="text/markdown" href="${esc(`${BASE}${markdownPath(route.path)}`)}" />` : "",
     route.keywords ? `<meta name="keywords" content="${esc(route.keywords)}" />` : "",
     `<meta name="author" content="${esc(SITE_CONFIG.author)}" />`,
     `<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />`,

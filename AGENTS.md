@@ -1,5 +1,7 @@
 # Project architecture rules
 
+- AI-readable exports use an enumerated public Markdown registry and shared authored content at build time; never fetch user histories or publish personalized outputs. Static hosting serves suffix alternates; request-time negotiation requires a separately supported edge host.
+
 - External learning/source references use a shared official-destination registry and text-only Markdown transformation; existing links and code remain intact to avoid guessing specific report citations.
 
 - Theme state uses `next-themes` with class-based light/dark tokens and defaults to light, so every screen shares one persisted preference while retaining user choice.

@@ -8,6 +8,7 @@ export default function Story() {
   return (
     <div className="min-h-screen py-16 bg-background">
       <SEOHead
+        path="/story"
         title="Our Story — SkillTa"
         description="The story behind SkillTa — why we're building high-quality AI career guidance with ad-free Pro and Lifetime access for students."
       />
