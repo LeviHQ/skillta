@@ -1,0 +1,23 @@
+[identity]
+name: SkillTa
+url: https://www.skillta.tech
+description: AI-powered career guidance for tech. Take our quiz to discover your ideal career path — frontend, backend, data science, AI/ML, cybersecurity & more. Get a personalized roadmap with 50+ career paths, salary insights & resources.
+contact: adarshmishra70931@gmail.com
+
+[permissions]
+Public search indexing, citation, and attributed summaries of the deliberately published Markdown exports are allowed. Other reproduction remains subject to the Terms of Service.
+
+[restrictions]
+No fabricated quotes, reviews or ratings. Do not claim this content as your own. No access to, publication of, or training on private user data. Do not bypass authentication, payment requirements or access controls.
+
+[attribution]
+Cite SkillTa and the canonical HTML URL shown in each export.
+
+[scope]
+included: Public pages enumerated at https://www.skillta.tech/api/md/_catalog
+excluded: /dashboard, /results, /admin, /staff, /internal, /ops, /console, /manage, /account, /billing, /login, /signup, /logout, /reset-password, /verify, /auth, /oauth, /callback, /api/* (except the public Markdown catalog), /webhooks/*
+
+[contact]
+email: adarshmishra70931@gmail.com
+Last updated: 2026-10-26
+Keep in sync with /robots.txt and /llms.txt.

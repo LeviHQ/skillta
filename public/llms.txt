@@ -1,19 +1,88 @@
 # SkillTa
 
-> SkillTa is an AI-powered career guidance platform that helps students, freshers, and career switchers find their perfect tech career path. Take our AI career quiz and get personalized roadmaps for 50+ tech careers including frontend, backend, data science, AI/ML, cybersecurity, and DevOps.
+> AI-powered career guidance for tech. Take our quiz to discover your ideal career path — frontend, backend, data science, AI/ML, cybersecurity & more. Get a personalized roadmap with 50+ career paths, salary insights & resources.
 
-## Pages
+Contact: adarshmishra70931@gmail.com. Access plans are described on the homepage.
 
-- [Home](/): Discover your ideal tech career with SkillTa's AI quiz and curated roadmaps.
-- [Career Quiz](/quiz): Interactive quiz that matches your skills, interests, and goals to the best tech career paths.
-- [Quiz Results](/results): Personalized career recommendations and matching scores based on your quiz answers.
-- [Roadmap Library](/roadmaps): Browse 50+ detailed career roadmaps with learning paths, skills, and milestones.
-- [Roadmap Detail](/roadmap/:slug): In-depth roadmap for a specific tech career including phases, resources, and timelines.
-- [Career Comparison](/compare): Side-by-side comparison of tech careers across salary, demand, difficulty, and growth metrics.
-- [Blog](/blog): Articles and guides on trending tech careers, industry insights, and career tips.
-- [About](/about): Mission, vision, and the team behind SkillTa.
-- [Pricing](/pricing): Pro and Lifetime plans for personalized career guidance.
-- [Dashboard](/dashboard): User profile, saved roadmaps, quiz history, and progress tracking.
-- [Contact](/contact): Reach out for support, partnerships, or feedback.
-- [Privacy Policy](/privacy): How SkillTa collects, uses, and protects your data.
-- [Terms of Service](/terms): Rules and guidelines for using SkillTa.
+Keep in sync with /robots.txt and /ai.txt.
+
+## Core pages
+
+- [SkillTa — AI Career Quiz & Roadmaps 2027](https://www.skillta.tech/index.md): AI-powered career quiz + personalized roadmaps for 50+ tech careers. Find your ideal path in 5 minutes. For students, freshers & switchers.
+- [AI Career Quiz 2027 — Find Your Tech Path](https://www.skillta.tech/quiz.md): Answer 10 questions to discover your ideal tech career. AI-powered match with a personalized learning roadmap. Included with Pro.
+- [50+ Tech Career Roadmaps 2027 | SkillTa](https://www.skillta.tech/roadmaps.md): Curated step-by-step roadmaps for 50+ tech careers. Curated resources, projects, salary info & timelines. Updated for 2027.
+- [About SkillTa — AI Career Guidance for Tech](https://www.skillta.tech/about.md): SkillTa helps aspiring tech professionals find their ideal career path with honest, data-driven AI guidance. Career quiz, 50+ roadmaps, salary insights, and personalized recommendations for students, freshers & career switchers.
+- [Contact SkillTa — Career Guidance Support & Feedback](https://www.skillta.tech/contact.md): Have questions about your tech career path? Need guidance on choosing a career? Reach out to the SkillTa team. We respond within 24-48 hours.
+- [Compare Tech Careers 2027 — Salary, Skills & Demand](https://www.skillta.tech/compare.md): Side-by-side comparison of 50+ tech careers. Compare salary, difficulty, skills & demand. Frontend vs Backend, AI vs DevOps & more.
+- [Tech Career Blog 2027 — Guides & Salary Tips](https://www.skillta.tech/blog.md): Expert guides, salary insights & career comparisons. Everything freshers & students need to succeed in tech. Updated for 2027.
+- [The SkillTa Story](https://www.skillta.tech/story.md): Why SkillTa was built and how plan purchases and guest advertising support the platform.
+- [Tech Salary Predictor](https://www.skillta.tech/salary-predictor.md): Estimate tech salary by role, experience, location and skills.
+- [AI Resume Reviewer](https://www.skillta.tech/resume-reviewer.md): Review a resume for ATS compatibility, keyword gaps and improvement suggestions.
+- [Resume Version Control — Track ATS Score Evolution | SkillTa](https://www.skillta.tech/resume-version-control.md): GitHub-style commit timeline for your resume. Track ATS score evolution, file history, and role-specific versions with secure cloud storage.
+- [Skill Gap Analyzer](https://www.skillta.tech/skill-gap-analyzer.md): Compare current skills with a target tech role and identify a learning plan.
+
+## Career roadmaps
+
+- [Frontend Developer Roadmap](https://www.skillta.tech/roadmaps/frontend-developer.md): Craft beautiful, interactive user experiences
+- [Backend Developer Roadmap](https://www.skillta.tech/roadmaps/backend-developer.md): Build the engines that power applications
+- [Data Scientist Roadmap](https://www.skillta.tech/roadmaps/data-scientist.md): Turn data into actionable intelligence
+- [Cybersecurity Specialist Roadmap](https://www.skillta.tech/roadmaps/cybersecurity-specialist.md): Protect systems and hunt vulnerabilities
+- [UI/UX Designer Roadmap](https://www.skillta.tech/roadmaps/uiux-designer.md): Design experiences people love to use
+- [DevOps Engineer Roadmap](https://www.skillta.tech/roadmaps/devops-engineer.md): Bridge development and operations seamlessly
+- [QA Automation Engineer Roadmap](https://www.skillta.tech/roadmaps/qa-automation.md): Ensure software quality through intelligent testing
+- [Mobile App Developer Roadmap](https://www.skillta.tech/roadmaps/mobile-developer.md): Build apps that live in everyone's pocket
+- [Full-Stack Developer Roadmap](https://www.skillta.tech/roadmaps/fullstack-developer.md): Master both frontend and backend development
+- [Cloud Architect Roadmap](https://www.skillta.tech/roadmaps/cloud-architect.md): Design and manage scalable cloud infrastructure
+- [AI/ML Engineer Roadmap](https://www.skillta.tech/roadmaps/ai-ml-engineer.md): Build intelligent systems that learn and adapt
+- [Blockchain Developer Roadmap](https://www.skillta.tech/roadmaps/blockchain-developer.md): Build decentralized applications and smart contracts
+
+## Recent articles
+
+- [Software Engineer Salary in USA (2027): Entry-Level, Senior & Lead Pay — FAANG, State-Wise Pay & H1B Insights](https://www.skillta.tech/blog/software-engineer-salary-in-usa-2026.md): Complete 2027 Software Engineer salary breakdown for USA: entry $110K USD, mid $165K USD, senior $235K USD. City-wise pay, FAANG bands, state-wise pay (California, Texas, NY) and H1B-friendly employers, top employers & premium skills covered.
+- [QA Engineer Salary in USA 2027: FAANG, State-Wise Pay & H1B Insights & Full Compensation Breakdown](https://www.skillta.tech/blog/qa-engineer-salary-in-usa-2026.md): QA Engineer pay in USA for 2027 — mid-level $112K USD, senior tops $158K USD. See FAANG bands, state-wise pay (California, Texas, NY) and H1B-friendly employers, hiring companies and skills that unlock a 30% raise.
+- [How Much Does a Data Scientist Earn in USA? 2027 Report (FAANG, State-Wise Pay & H1B Insights)](https://www.skillta.tech/blog/data-scientist-salary-in-usa-2026.md): How much does a Data Scientist really make in USA in 2027? Full report with FAANG bands, state-wise pay (California, Texas, NY) and H1B-friendly employers, entry $118K USD to lead $335K USD bands, bonuses & equity insights.
+- [DevOps Engineer Jobs in USA 2027: Average Salary, FAANG, State-Wise Pay & H1B Insights & Top Employers](https://www.skillta.tech/blog/devops-engineer-salary-in-usa-2026.md): DevOps Engineer jobs in USA pay around $162K USD mid-level in 2027. Explore FAANG bands, state-wise pay (California, Texas, NY) and H1B-friendly employers, top hiring firms, remote rates and negotiation tactics.
+- [AI/ML Engineer Salary Guide — USA 2027: Bands, Bonuses, Equity & FAANG, State-Wise Pay & H1B Insights](https://www.skillta.tech/blog/ai-ml-engineer-salary-in-usa-2026.md): 2027 AI/ML Engineer salary guide for USA: bands from $138K USD to $420K USD, FAANG bands, state-wise pay (California, Texas, NY) and H1B-friendly employers, in-demand skills and how to climb the career ladder faster.
+- [USA Frontend Developer Salary 2027: FAANG, State-Wise Pay & H1B Insights + City-Wise Pay & Negotiation Tips](https://www.skillta.tech/blog/frontend-developer-salary-in-usa-2026.md): Detailed USA Frontend Developer salary data for 2027 — city-wise numbers up to $192K USD for seniors, FAANG bands, state-wise pay (California, Texas, NY) and H1B-friendly employers, and step-by-step negotiation tips.
+- [Cloud Architect Pay in USA (2027): FAANG, State-Wise Pay & H1B Insights and the Full Career-Ladder Breakdown](https://www.skillta.tech/blog/cloud-architect-salary-in-usa-2026.md): Cloud Architect pay in USA (2027): $200K USD mid, $280K USD senior. Career ladder, FAANG bands, state-wise pay (California, Texas, NY) and H1B-friendly employers and premium skills that command 20–35% higher offers.
+- [Cybersecurity Analyst Compensation in USA 2027: FAANG, State-Wise Pay & H1B Insights & Skills That Boost Your Offer](https://www.skillta.tech/blog/cybersecurity-analyst-salary-in-usa-2026.md): Everything on Cybersecurity Analyst compensation in USA for 2027 — FAANG bands, state-wise pay (California, Texas, NY) and H1B-friendly employers, top skills, contractor day-rates and side-by-side city salary data.
+- [Is Technical Product Manager Worth It in USA in 2027? Salary Data, Demand & FAANG, State-Wise Pay & H1B Insights](https://www.skillta.tech/blog/product-manager-salary-in-usa-2026.md): Should you pursue Technical Product Manager in USA in 2027? Latest salary bands ($135K USD–$360K USD), demand trends and FAANG bands, state-wise pay (California, Texas, NY) and H1B-friendly employers — all in one guide.
+- [Full Stack Developer Salary in USA 2027 — FAANG, State-Wise Pay & H1B Insights, Remote Rates & Contractor Pay](https://www.skillta.tech/blog/fullstack-developer-salary-in-usa-2026.md): Full Stack Developer salary in USA 2027 — full data on FAANG bands, state-wise pay (California, Texas, NY) and H1B-friendly employers, remote pay, contractor rates and the skills separating mid from senior offers.
+- [Software Engineer Jobs in UK 2027: Average Salary, London vs Remote, IR35 & Big Tech Bands & Top Employers](https://www.skillta.tech/blog/software-engineer-salary-in-uk-2026.md): Software Engineer jobs in UK pay around £78K GBP mid-level in 2027. Explore London vs regional pay, IR35 contractor day-rates and Big Tech UK bands, top hiring firms, remote rates and negotiation tactics.
+- [QA Engineer Salary Guide — UK 2027: Bands, Bonuses, Equity & London vs Remote, IR35 & Big Tech Bands](https://www.skillta.tech/blog/qa-engineer-salary-in-uk-2026.md): 2027 QA Engineer salary guide for UK: bands from £36K GBP to £125K GBP, London vs regional pay, IR35 contractor day-rates and Big Tech UK bands, in-demand skills and how to climb the career ladder faster.
+- [UK Data Scientist Salary 2027: London vs Remote, IR35 & Big Tech Bands + City-Wise Pay & Negotiation Tips](https://www.skillta.tech/blog/data-scientist-salary-in-uk-2026.md): Detailed UK Data Scientist salary data for 2027 — city-wise numbers up to £135K GBP for seniors, London vs regional pay, IR35 contractor day-rates and Big Tech UK bands, and step-by-step negotiation tips.
+- [DevOps Engineer Pay in UK (2027): London vs Remote, IR35 & Big Tech Bands and the Full Career-Ladder Breakdown](https://www.skillta.tech/blog/devops-engineer-salary-in-uk-2026.md): DevOps Engineer pay in UK (2027): £85K GBP mid, £128K GBP senior. Career ladder, London vs regional pay, IR35 contractor day-rates and Big Tech UK bands and premium skills that command 20–35% higher offers.
+- [AI/ML Engineer Compensation in UK 2027: London vs Remote, IR35 & Big Tech Bands & Skills That Boost Your Offer](https://www.skillta.tech/blog/ai-ml-engineer-salary-in-uk-2026.md): Everything on AI/ML Engineer compensation in UK for 2027 — London vs regional pay, IR35 contractor day-rates and Big Tech UK bands, top skills, contractor day-rates and side-by-side city salary data.
+- [Is Frontend Developer Worth It in UK in 2027? Salary Data, Demand & London vs Remote, IR35 & Big Tech Bands](https://www.skillta.tech/blog/frontend-developer-salary-in-uk-2026.md): Should you pursue Frontend Developer in UK in 2027? Latest salary bands (£44K GBP–£155K GBP), demand trends and London vs regional pay, IR35 contractor day-rates and Big Tech UK bands — all in one guide.
+- [Cloud Architect Salary in UK 2027 — London vs Remote, IR35 & Big Tech Bands, Remote Rates & Contractor Pay](https://www.skillta.tech/blog/cloud-architect-salary-in-uk-2026.md): Cloud Architect salary in UK 2027 — full data on London vs regional pay, IR35 contractor day-rates and Big Tech UK bands, remote pay, contractor rates and the skills separating mid from senior offers.
+- [Cybersecurity Analyst Salary in UK (2027): Entry-Level, Senior & Lead Pay — London vs Remote, IR35 & Big Tech Bands](https://www.skillta.tech/blog/cybersecurity-analyst-salary-in-uk-2026.md): Complete 2027 Cybersecurity Analyst salary breakdown for UK: entry £52K GBP, mid £80K GBP, senior £122K GBP. City-wise pay, London vs regional pay, IR35 contractor day-rates and Big Tech UK bands, top employers & premium skills covered.
+- [Technical Product Manager Salary in UK 2027: London vs Remote, IR35 & Big Tech Bands & Full Compensation Breakdown](https://www.skillta.tech/blog/product-manager-salary-in-uk-2026.md): Technical Product Manager pay in UK for 2027 — mid-level £100K GBP, senior tops £152K GBP. See London vs regional pay, IR35 contractor day-rates and Big Tech UK bands, hiring companies and skills that unlock a 30% raise.
+- [How Much Does a Full Stack Developer Earn in UK? 2027 Report (London vs Remote, IR35 & Big Tech Bands)](https://www.skillta.tech/blog/fullstack-developer-salary-in-uk-2026.md): How much does a Full Stack Developer really make in UK in 2027? Full report with London vs regional pay, IR35 contractor day-rates and Big Tech UK bands, entry £46K GBP to lead £165K GBP bands, bonuses & equity insights.
+
+## Country guides
+
+- [USA Tech Salaries 2027: Real Pay Data & Trends | Skillta](https://www.skillta.tech/usa.md): See real 2027 tech salary data for United States — compare roles, cities and experience levels. Real, data-backed insights. Explore now →
+- [India Tech Salaries 2027: Real Pay Data & Trends | Skillta](https://www.skillta.tech/india.md): See real 2027 tech salary data for India — compare roles, cities and experience levels. Real, data-backed insights. Explore now →
+- [UK Tech Salaries 2027: Real Pay Data & Trends | Skillta](https://www.skillta.tech/united-kingdom.md): See real 2027 tech salary data for United Kingdom — compare roles, cities and experience levels. Real, data-backed insights. Explore now →
+- [Canada Tech Salaries 2027: Real Pay Data & Trends | Skillta](https://www.skillta.tech/canada.md): See real 2027 tech salary data for Canada — compare roles, cities and experience levels. Real, data-backed insights. Explore now →
+- [Germany Tech Salaries 2027: Real Pay Data & Trends | Skillta](https://www.skillta.tech/germany.md): See real 2027 tech salary data for Germany — compare roles, cities and experience levels. Real, data-backed insights. Explore now →
+- [Australia Tech Salaries 2027: Real Pay Data & Trends](https://www.skillta.tech/australia.md): See real 2027 tech salary data for Australia — compare roles, cities and experience levels. Real, data-backed insights. Explore now →
+- [Netherlands Tech Salaries 2027: Real Pay Data & Trends](https://www.skillta.tech/netherlands.md): See real 2027 tech salary data for Netherlands — compare roles, cities and experience levels. Real, data-backed insights. Explore now →
+- [Singapore Tech Salaries 2027: Real Pay Data & Trends](https://www.skillta.tech/singapore.md): See real 2027 tech salary data for Singapore — compare roles, cities and experience levels. Real, data-backed insights. Explore now →
+- [France Tech Salaries 2027: Real Pay Data & Trends | Skillta](https://www.skillta.tech/france.md): See real 2027 tech salary data for France — compare roles, cities and experience levels. Real, data-backed insights. Explore now →
+- [Japan Tech Salaries 2027: Real Pay Data & Trends | Skillta](https://www.skillta.tech/japan.md): See real 2027 tech salary data for Japan — compare roles, cities and experience levels. Real, data-backed insights. Explore now →
+- [Switzerland Tech Salaries 2027: Real Pay Data & Trends](https://www.skillta.tech/switzerland.md): See real 2027 tech salary data for Switzerland — compare roles, cities and experience levels. Real, data-backed insights. Explore now →
+- [Sweden Tech Salaries 2027: Real Pay Data & Trends | Skillta](https://www.skillta.tech/sweden.md): See real 2027 tech salary data for Sweden — compare roles, cities and experience levels. Real, data-backed insights. Explore now →
+
+## Machine-readable
+
+- [Full content](https://www.skillta.tech/llms-full.txt): Selected public pages within the size limit.
+- [Markdown catalog](https://www.skillta.tech/api/md/_catalog): Complete list of available public Markdown pages.
+- [Sitemap](https://www.skillta.tech/sitemap.xml): Canonical HTML URLs.
+- [AI usage policy](https://www.skillta.tech/ai.txt): Scope and attribution.
+
+## Optional
+
+- [Terms of Service — SkillTa](https://www.skillta.tech/terms.md): Read the Terms of Service for SkillTa, the AI-powered tech career guidance platform.
+- [Privacy Policy — SkillTa](https://www.skillta.tech/privacy.md): Learn how SkillTa collects, uses, and protects your personal data. Your privacy matters to us.
+
