@@ -1,6 +1,7 @@
 // Centralized SEO configuration — domain-agnostic
 export const SITE_CONFIG = {
   name: "SkillTa",
+  contactEmail: "adarshmishra70931@gmail.com",
   url: "https://www.skillta.tech",
   tagline: "Find Your Perfect Tech Career Path",
   description: "AI-powered career guidance for tech. Take our quiz to discover your ideal career path — frontend, backend, data science, AI/ML, cybersecurity & more. Get a personalized roadmap with 50+ career paths, salary insights & resources.",
@@ -178,7 +179,7 @@ export function getOrganizationSchema() {
     sameAs: ["https://x.com/AdarshMi18"],
     contactPoint: {
       "@type": "ContactPoint",
-      email: "adarshmishra70931@gmail.com",
+      email: SITE_CONFIG.contactEmail,
       contactType: "customer support",
     },
   };
