@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Mail, Heart, ArrowUpRight } from "lucide-react";
+import { Mail, Heart, ArrowUpRight, ShieldCheck, Lock, CreditCard } from "lucide-react";
 import logo from "@/assets/logo.png";
 
 export default function Footer() {
@@ -152,6 +152,27 @@ export default function Footer() {
                 Contact Us
               </Link>
             </nav>
+          </div>
+        </div>
+
+        {/* Security & Trust Badges Section */}
+        <div className="border-t border-border mt-12 pt-8 text-center">
+          <h4 className="text-xs uppercase tracking-widest font-semibold text-foreground mb-1.5">
+            Security & Trust Badges
+          </h4>
+          <p className="text-xs text-muted-foreground max-w-md mx-auto mb-6">
+            Independently verified and monitored for secure career guidance and data privacy.
+          </p>
+
+          {/* Badges Container */}
+          <div className="flex flex-wrap items-center justify-center gap-6 md:gap-8">
+            {/* FlawPilot Badge */}
+            <img
+              src="https://badge.flawpilot.com/scan?id=b2412173-b0e4-4ca9-ae08-671d695479a1"
+              alt="FlawPilot Score: 88/100, Trusted"
+              className="h-12 md:h-14 w-auto object-contain"
+              loading="lazy"
+            />
           </div>
         </div>
 
