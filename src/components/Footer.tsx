@@ -167,12 +167,17 @@ export default function Footer() {
           {/* Badges Container */}
           <div className="flex flex-wrap items-center justify-center gap-6 md:gap-8">
             {/* FlawPilot Badge */}
+            {/*}
             <img
               src="https://badge.flawpilot.com/scan?id=b2412173-b0e4-4ca9-ae08-671d695479a1"
               alt="FlawPilot Score: 88/100, Trusted"
               className="h-12 md:h-14 w-auto object-contain"
               loading="lazy"
             />
+*/}
+
+            {/* Fazier Badge */}
+            <a href="https://fazier.com/launches/skillta" target="_blank"><img src="https://fazier.com/api/v1/public/badges/embed_image.svg?launch_id=14362&badge_type=featured&variant=3&theme=neutral" width="270" alt="Fazier badge" /></a>
           </div>
         </div>
 
