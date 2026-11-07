@@ -38,6 +38,9 @@ const ResumeReviewer = lazy(() => import("./pages/ResumeReviewer"));
 const SkillGapAnalyzer = lazy(() => import("./pages/SkillGapAnalyzer"));
 const CountryPage = lazy(() => import("./pages/CountryPage"));
 const NotFound = lazy(() => import("./pages/NotFound"));
+const Research = lazy(() => import("./pages/Research"));
+const TechCareerResearch = lazy(() => import("./pages/TechCareerResearch"));
+const FAQ = lazy(() => import("./pages/FAQ"));
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -91,6 +94,9 @@ const App = () => (
                     <Route path="/resume-reviewer" element={<ResumeReviewer />} />
                     <Route path="/resume-version-control" element={<ResumeVersionControl />} />
                     <Route path="/skill-gap-analyzer" element={<SkillGapAnalyzer />} />
+                    <Route path="/research" element={<Research />} />
+                    <Route path="/research/tech-careers" element={<TechCareerResearch />} />
+                    <Route path="/faq" element={<FAQ />} />
                     <Route path="/:country" element={<CountryPage />} />
                     <Route path="/:country/:section" element={<CountryPage />} />
                     <Route path="*" element={<NotFound />} />

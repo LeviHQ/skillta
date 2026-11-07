@@ -13,6 +13,7 @@ import ExternalReferenceText from "@/components/ExternalReferenceText";
 import { roadmapDeepBlocks } from "@/lib/deepContent";
 import { referenceParts } from "@/lib/externalReferences";
 import { getCourseSchema, getBreadcrumbSchema } from "@/lib/seo";
+import { getCareerFacts, getRoadmapDescription } from "@/lib/researchStats";
 
 export default function RoadmapDetail() {
   const { careerId } = useParams();
@@ -454,7 +455,7 @@ export default function RoadmapDetail() {
     <div className="min-h-screen bg-gradient-hero relative">
       <SEOHead
         title={`${career.title} Roadmap — Step-by-Step Learning Path | SkillTa`}
-        description={`Complete ${career.title} roadmap: ${career.tagline}. Learn ${career.requiredSkills.slice(0, 4).join(", ")} and more. Includes resources, projects, salary info & reality check.`}
+        description={getRoadmapDescription(career)}
         keywords={`${career.title.toLowerCase()} roadmap, how to become a ${career.title.toLowerCase()}, ${career.requiredSkills.slice(0, 3).join(", ").toLowerCase()}`}
         path={`/roadmaps/${career.id}`}
         jsonLd={[
@@ -505,6 +506,13 @@ export default function RoadmapDetail() {
             <p className="text-lg text-muted-foreground mb-6">{career.tagline}</p>
             <p className="text-sm text-muted-foreground max-w-2xl mx-auto">{career.description}</p>
           </motion.div>
+
+          <section aria-labelledby="at-a-glance" className="max-w-3xl mx-auto border-y border-border py-6 mb-8">
+            <h2 id="at-a-glance" className="text-xl font-semibold mb-4">At a Glance</h2>
+            <dl className="grid grid-cols-2 sm:grid-cols-5 gap-5">{Object.entries(getCareerFacts(career)).map(([label, value]) => <div key={label}><dt className="text-xs text-muted-foreground capitalize">{label === "projects" || label === "resources" ? `${label} entries` : label}</dt><dd className="text-2xl font-mono mt-1">{value}</dd></div>)}</dl>
+            <p className="text-xs text-muted-foreground mt-5">Counts refer to this authored roadmap; repeated projects and resources count per occurrence.</p>
+            <Link to="/research/tech-careers" className="inline-block text-sm text-primary mt-3 hover:underline">View career catalog research →</Link>
+          </section>
 
           {/* Quick Stats */}
           <motion.div

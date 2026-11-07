@@ -1,5 +1,7 @@
 # Project architecture rules
 
+- Public research uses pure, deduplicated authored-catalog calculations shared by React, static HTML, Markdown, FAQ and discovery; label shares describe editorial content, never measured labor markets. Source-version dates change only with verified source edits.
+
 - AI-readable exports use an enumerated public Markdown registry and shared authored content at build time; never fetch user histories or publish personalized outputs. Static hosting serves suffix alternates; request-time negotiation requires a separately supported edge host.
 
 - External learning/source references use a shared official-destination registry and text-only Markdown transformation; existing links and code remain intact to avoid guessing specific report citations.
