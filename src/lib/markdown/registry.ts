@@ -9,6 +9,8 @@ import { getCountryMeta } from '../countryMeta';
 import { PAGE_SEO, SITE_CONFIG } from '../seo';
 import { absoluteLinks, absoluteUrl, blocksToMarkdown, bullets, link, markdownPath, table } from './format';
 import { STATIC_PUBLIC_PATHS } from './policy';
+import { getResearchStats, getCareerFacts, getRoadmapDescription, getCatalogSummary, cleanCareerRows, CATALOG_MODIFIED, REPORT_YEAR } from '../researchStats';
+import { researchTitle, researchDescription, renderResearchMarkdown, renderFaqMarkdown, RESEARCH_PATH } from '../researchContent';
 
 export interface MarkdownPage {
   path: string;
@@ -32,22 +34,25 @@ export function createMarkdownRegistry(staticContent: StaticContent = {}): Markd
   const pages: MarkdownPage[] = STATIC_PUBLIC_PATHS.map((path) => {
     const seo = Object.values(PAGE_SEO).find((value) => value.path === path);
     const fallback = tools[path];
-    const title = seo?.title ?? fallback?.[0] ?? SITE_CONFIG.name;
-    const description = seo?.description ?? fallback?.[1] ?? SITE_CONFIG.description;
+    const title = path === RESEARCH_PATH ? researchTitle() : path === '/research' ? 'SkillTa Research — Public Career Catalog Data' : path === '/faq' ? 'Tech Career Catalog FAQ — SkillTa' : path === '/roadmaps' ? `${getResearchStats().totalCareers} Tech Career Roadmaps (${REPORT_YEAR}) | SkillTa` : seo?.title ?? fallback?.[0] ?? SITE_CONFIG.name;
+    const description = path === RESEARCH_PATH ? researchDescription() : path === '/research' ? "Explore SkillTa's authored career catalog statistics, with calculated counts, editorial-label breakdowns and transparent methodology." : path === '/faq' ? "Answers about SkillTa's career counts, editorial labels, learning resources, public data sources and research citations." : path === '/roadmaps' ? getCatalogSummary() : seo?.description ?? fallback?.[1] ?? SITE_CONFIG.description;
     const render = () => {
       if (path === '/') return `${staticContent.home ?? SITE_CONFIG.description}\n\n## Career Suite\n\n${bullets(featureNames)}\n\n${staticContent.pricing ?? ''}\n\n${staticContent.faq ?? ''}`;
-      if (path === '/roadmaps') return bullets(careers.map((career) => `${link(career.title, `/roadmaps/${career.id}`)} — ${career.tagline}`));
+      if (path === RESEARCH_PATH) return renderResearchMarkdown();
+      if (path === '/faq') return renderFaqMarkdown();
+      if (path === '/research') return `${link(researchTitle(), RESEARCH_PATH)}\n\n${researchDescription()}\n\nSource version: ${CATALOG_MODIFIED}. Catalog counts, not a labor-market survey.`;
+      if (path === '/roadmaps') return `${getCatalogSummary()}\n\n${link('Career catalog research', RESEARCH_PATH)}\n\n${bullets(cleanCareerRows(careers).map((career) => `${link(career.title, `/roadmaps/${career.id}`)} — ${career.tagline}`))}`;
       if (path === '/blog') return bullets(blogPosts.filter((post) => !post.country).map((post) => `${link(post.title, `/blog/${post.slug}`)} — ${post.description}`));
       if (staticContent[path]) return staticContent[path];
       if (path === '/contact') return `${description}\n\n${link('Email support', `mailto:${SITE_CONFIG.contactEmail}`)}`;
       // Tool pages describe the public interface only; inputs and outputs stay private.
       return `${description}\n\nPersonalized tools require sign-in and an active Pro or Lifetime plan.\n\n${link('Access plans', '/#pricing')}`;
     };
-    return { path, title, description, group: path === '/terms' || path === '/privacy' ? 'legal' : 'core', render };
+    return { path, title, description, updated: ['/research', RESEARCH_PATH, '/faq', '/roadmaps'].includes(path) ? CATALOG_MODIFIED : undefined, group: path === '/terms' || path === '/privacy' ? 'legal' : 'core', render };
   });
   for (const career of careers) pages.push({
-    path: `/roadmaps/${career.id}`, title: `${career.title} Roadmap`, description: career.tagline, group: 'roadmaps',
-    render: () => `${career.description}\n\n## Key facts\n\n${table(['Metric', 'Value'], [['Difficulty', career.learningDifficulty], ['Time to job-ready', career.estimatedTime], ['Demand', career.demandLevel], ['Salary (India)', career.salaryIndia], ['Salary (Global)', career.salaryGlobal], ['Growth', career.growthPotential]])}\n\n## Required skills\n\n${bullets(career.requiredSkills)}\n\n## Learning roadmap\n\n${career.roadmap.map((phase) => `### Phase ${phase.phase}: ${phase.title} (${phase.duration})\n\n${bullets(phase.items.map((item) => `**${item.name}** — ${item.description}`))}\n\nResources:\n\n${bullets(phase.resources)}\n\nProjects:\n\n${bullets(phase.projects)}`).join('\n\n')}\n\n## Reality check\n\n${career.realityCheck.honestNote}\n\n${blocksToMarkdown(roadmapDeepBlocks(career))}`,
+    path: `/roadmaps/${career.id}`, title: `${career.title} Roadmap`, description: getRoadmapDescription(career), updated: CATALOG_MODIFIED, group: 'roadmaps',
+    render: () => `${career.description}\n\n## At a Glance\n\n${table(['Metric', 'Count'], Object.entries(getCareerFacts(career)).map(([label, value]) => [label, String(value)]))}\n\nCounts are entries in this authored roadmap, not unique projects or providers.\n\n${link('Career catalog research', RESEARCH_PATH)}\n\n## Key facts\n\n${table(['Metric', 'Value'], [['Difficulty', career.learningDifficulty], ['Time to job-ready', career.estimatedTime], ['Demand', career.demandLevel], ['Salary (India)', career.salaryIndia], ['Salary (Global)', career.salaryGlobal], ['Growth', career.growthPotential]])}\n\n## Required skills\n\n${bullets(career.requiredSkills)}\n\n## Learning roadmap\n\n${career.roadmap.map((phase) => `### Phase ${phase.phase}: ${phase.title} (${phase.duration})\n\n${bullets(phase.items.map((item) => `**${item.name}** — ${item.description}`))}\n\nResources:\n\n${bullets(phase.resources)}\n\nProjects:\n\n${bullets(phase.projects)}`).join('\n\n')}\n\n## Reality check\n\n${career.realityCheck.honestNote}\n\n${blocksToMarkdown(roadmapDeepBlocks(career))}`,
   });
   for (const post of blogPosts) pages.push({
     path: `/blog/${post.slug}`, title: post.title, description: post.description, updated: post.date, group: 'blog',

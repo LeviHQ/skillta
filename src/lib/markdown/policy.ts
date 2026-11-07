@@ -1,5 +1,5 @@
 /** Public page families only. Private results are never described or exported. */
-export const STATIC_PUBLIC_PATHS = ['/', '/quiz', '/roadmaps', '/about', '/terms', '/privacy', '/contact', '/compare', '/blog', '/story', '/salary-predictor', '/resume-reviewer', '/resume-version-control', '/skill-gap-analyzer'] as const;
+export const STATIC_PUBLIC_PATHS = ['/', '/quiz', '/roadmaps', '/about', '/terms', '/privacy', '/contact', '/compare', '/blog', '/story', '/salary-predictor', '/resume-reviewer', '/resume-version-control', '/skill-gap-analyzer', '/research', '/research/tech-careers', '/faq'] as const;
 export const SKIPPED_ROUTES: Record<string, string> = {
   '/results': 'Personalized quiz results',
   '/dashboard': 'Private account history',
