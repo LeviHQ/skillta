@@ -3,9 +3,18 @@
  * Every number is computed from the source data — never hardcode a figure
  * here; if the data changes, the published numbers change with it.
  */
-import { careers } from "@/data/careers";
-import { COUNTRIES } from "@/data/countries";
-import { TARGET_ROLES } from "@/data/skillGapData";
+import { careers, type Career } from "../data/careers";
+import { COUNTRIES } from "../data/countries";
+import { TARGET_ROLES } from "../data/skillGapData";
+
+// Latest recorded source change across careers/additionalCareers/trendingCareers.
+export const CATALOG_MODIFIED = "2026-10-24";
+export const REPORT_YEAR = Number(CATALOG_MODIFIED.slice(0, 4));
+export const MIN_STUDY_SIZE = 20;
+
+export function cleanCareerRows(rows: readonly Career[]): Career[] {
+  return [...new Map(rows.filter((row) => row.id.trim() && row.title.trim() && row.roadmap.length).map((row) => [row.id, row])).values()];
+}
 
 export interface ResearchStats {
   totalCareers: number;
@@ -33,9 +42,11 @@ function countBy<T>(items: T[], key: (item: T) => string): Record<string, number
   return out;
 }
 
-const pct = (part: number, whole: number) => Math.round((part / whole) * 1000) / 10;
+export const percentage = (part: number, whole: number) => whole ? Math.round((part / whole) * 1000) / 10 : 0;
+const pct = percentage;
 
-export function getResearchStats(): ResearchStats {
+export function computeStudy(rows: readonly Career[]): ResearchStats {
+  const careers = cleanCareerRows(rows);
   let totalPhases = 0;
   let totalTopics = 0;
   let totalProjects = 0;
@@ -71,6 +82,39 @@ export function getResearchStats(): ResearchStats {
     pctHighOrVeryHighDemand: pct((demand["High"] ?? 0) + (demand["Very High"] ?? 0), total),
     pctLowEntryBarrier: pct(entryBarrier["Low"] ?? 0, total),
   };
+}
+
+export function getResearchStats(): ResearchStats {
+  return computeStudy(careers);
+}
+
+export function getResearchFindings(stats: ResearchStats) {
+  if (stats.totalCareers < MIN_STUDY_SIZE) return [];
+  const n = stats.totalCareers;
+  return [
+    { id: "catalog-size", title: "Career catalog coverage", text: `SkillTa's authored catalog contains ${n} distinct tech career roadmaps with ${stats.totalPhases} learning phases and ${stats.totalTopics} topic entries.` },
+    { id: "learning-difficulty", title: "Learning difficulty", text: `${(stats.difficulty.Hard ?? 0) + (stats.difficulty["Very Hard"] ?? 0)} of ${n} careers (${stats.pctHardOrVeryHard}%) in SkillTa's catalog are labeled Hard or Very Hard to learn.` },
+    { id: "demand-labels", title: "Demand labels", text: `${(stats.demand.High ?? 0) + (stats.demand["Very High"] ?? 0)} of ${n} careers (${stats.pctHighOrVeryHighDemand}%) in SkillTa's catalog have an editorial High or Very High demand label; this is not a measured share of job vacancies.` },
+    { id: "entry-barriers", title: "Low entry barriers", text: `${stats.entryBarrier.Low ?? 0} of ${n} careers (${stats.pctLowEntryBarrier}%) in SkillTa's catalog have an editorial Low entry-barrier label.` },
+    { id: "project-coverage", title: "Project coverage", text: `Across ${n} career roadmaps, SkillTa lists ${stats.totalProjects} project entries in ${stats.totalPhases} phases. Repeated project ideas are counted once per occurrence, not as unique projects.` },
+    { id: "resource-coverage", title: "Learning-resource coverage", text: `Across ${n} career roadmaps, SkillTa lists ${stats.totalResources} learning-resource entries. Repeated resources are counted once per occurrence, not as unique providers.` },
+  ];
+}
+
+export function getRoadmapDescription(career: Career) {
+  const facts = getCareerFacts(career);
+  return `${career.title} roadmap: ${facts.phases} phases, ${facts.topics} topics, ${facts.projects} project entries and ${facts.resources} resource entries. Difficulty: ${career.learningDifficulty}. Timeline: ${career.estimatedTime}.`;
+}
+
+export function getCatalogSummary() {
+  const rows = cleanCareerRows(careers);
+  const stats = computeStudy(rows);
+  return `${stats.totalCareers} tech career roadmaps, listed in editorial catalog order rather than ranked by job prospects. ${stats.pctLowEntryBarrier}% carry a Low entry-barrier label. The first three are ${rows.slice(0, 3).map((row) => row.title).join(", ")}. Source last changed: ${CATALOG_MODIFIED}.`;
+}
+
+export function getCareerCatalogSchema() {
+  const rows = cleanCareerRows(careers);
+  return { "@context": "https://schema.org", "@type": "ItemList", name: `${rows.length} Tech Career Roadmaps (${REPORT_YEAR})`, itemListOrder: "https://schema.org/ItemListUnordered", numberOfItems: rows.length, itemListElement: rows.map((row, i) => ({ "@type": "ListItem", position: i + 1, name: row.title, url: `https://www.skillta.tech/roadmaps/${row.id}` })) };
 }
 
 /** Per-career quotable counts for the roadmap "At a Glance" block. */
