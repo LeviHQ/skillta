@@ -1,3 +1,10 @@
+# AI citation research pages (approved continuation)
+- [ ] Finish shared, pure catalog statistics and focused tests.
+- [ ] Add research hub, tech-career report and anchored FAQ.
+- [ ] Add roadmap facts and exact-count catalog summary.
+- [ ] Integrate Markdown, discovery, prerender, sitemap and footer links.
+- [ ] Verify generated content and desktop/mobile public reading flows.
+
 # AI-readable public content
 - [ ] Generate public Markdown pages, discovery files, and catalog from shared content.
 - [ ] Add public-only head signals and static hosting headers without changing the user experience.
