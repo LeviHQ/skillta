@@ -15,6 +15,9 @@ import {
 } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import AdsterraResponsiveBanner from "@/components/AdsterraResponsiveBanner";
+import { cleanCareerRows, getCatalogSummary, getCareerCatalogSchema, REPORT_YEAR } from "@/lib/researchStats";
+
+const catalog = cleanCareerRows(careers);
 
 
 export default function RoadmapLibrary() {
@@ -25,7 +28,7 @@ export default function RoadmapLibrary() {
   const [entryBarrierFilter, setEntryBarrierFilter] = useState<string>("all");
 
   const filteredCareers = useMemo(() => {
-    return careers.filter((career) => {
+    return catalog.filter((career) => {
       // Search filter
       const matchesSearch =
         searchQuery === "" ||
@@ -80,7 +83,9 @@ export default function RoadmapLibrary() {
     <div className="min-h-screen bg-gradient-hero relative">
       <SEOHead
         {...PAGE_SEO.roadmaps}
-        jsonLd={getBreadcrumbSchema([{ name: "Home", path: "/" }, { name: "Roadmaps", path: "/roadmaps" }])}
+        title={`${catalog.length} Tech Career Roadmaps (${REPORT_YEAR}) | SkillTa`}
+        description={getCatalogSummary()}
+        jsonLd={[getCareerCatalogSchema(), getBreadcrumbSchema([{ name: "Home", path: "/" }, { name: "Roadmaps", path: "/roadmaps" }])]}
       />
       <AdsterraResponsiveBanner />
       <div className="container mx-auto px-6 py-16 relative z-10">
@@ -96,11 +101,12 @@ export default function RoadmapLibrary() {
           animate={{ opacity: 1, y: 0 }}
         >
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            Tech Career <span className="text-gradient">Roadmaps</span>
+            {catalog.length} Tech Career <span className="text-gradient">Roadmaps</span> ({REPORT_YEAR})
           </h1>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Browse {careers.length}+ detailed roadmaps for in-demand tech careers. Filter by difficulty, demand, duration, and more.
+            {getCatalogSummary()}
           </p>
+          <Link to="/research/tech-careers" className="inline-block mt-4 text-sm text-primary hover:underline">Career catalog statistics & methodology →</Link>
         </motion.div>
 
         {/* Filters Section */}
@@ -191,7 +197,7 @@ export default function RoadmapLibrary() {
 
           {/* Results Count */}
           <div className="mt-4 text-sm text-muted-foreground">
-            Showing <span className="font-semibold text-foreground">{filteredCareers.length}</span> of {careers.length} roadmaps
+            Showing <span className="font-semibold text-foreground">{filteredCareers.length}</span> of {catalog.length} roadmaps
           </div>
         </motion.div>
 

@@ -142,6 +142,8 @@ export default function Footer() {
               <Link to="/about" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                 About Us
               </Link>
+              <Link to="/research" className="text-sm text-muted-foreground hover:text-primary transition-colors">Research</Link>
+              <Link to="/faq" className="text-sm text-muted-foreground hover:text-primary transition-colors">Career Catalog FAQ</Link>
               <Link to="/terms" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                 Terms of Service
               </Link>
