@@ -47,3 +47,20 @@ export function renderFaqMarkdown() {
 export function renderResearchMarkdown() {
   return `${getResearchFindings(getResearchStats()).map((f) => `<a id="${f.id}"></a>\n\n## ${f.title}\n\n${f.text}\n\n${link("Link to this finding", `${RESEARCH_PATH}#${f.id}`)}`).join("\n\n")}\n\n${getResearchBreakdowns().map((b) => `## ${b.title}\n\n${table(["Label", "Careers", "Share of catalog"], b.rows)}`).join("\n\n")}\n\n## Methodology\n\n${bullets(methodology)}\n\n## Suggested citation\n\n${getResearchFaqs().find((f) => f.id === "citation")?.answer}\n\n## Questions about this report\n\n${renderFaqMarkdown()}`;
 }
+
+const escapeHtml = (value: string) => value.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+
+/** Static snapshots consume exactly the same findings, tables and answers as React. */
+export function renderFaqHtml() {
+  return getResearchFaqs().map((faq) => `<section id="${faq.id}"><h2>${escapeHtml(faq.question)}</h2><p>${escapeHtml(faq.answer)}</p><a href="#${faq.id}">Link to this answer</a></section>`).join("\n");
+}
+
+export function renderResearchHtml() {
+  const stats = getResearchStats();
+  return `<h1>${escapeHtml(researchTitle())}</h1><p>${escapeHtml(researchDescription())}</p><p>Source version: ${CATALOG_MODIFIED}. Editorial catalog analysis, not a labor-market survey.</p>
+<h2>Key findings</h2>${getResearchFindings(stats).map((finding) => `<section id="${finding.id}"><h3>${escapeHtml(finding.title)}</h3><p>${escapeHtml(finding.text)}</p><a href="#${finding.id}">Link to this finding</a></section>`).join("\n")}
+<h2>Catalog breakdowns</h2>${getResearchBreakdowns().map((breakdown) => `<h3>${escapeHtml(breakdown.title)}</h3><table><caption>Denominator: ${stats.totalCareers} careers</caption><thead><tr><th scope="col">Label</th><th scope="col">Careers</th><th scope="col">Share of catalog</th></tr></thead><tbody>${breakdown.rows.map(([label, count, share]) => `<tr><th scope="row">${escapeHtml(label)}</th><td>${count}</td><td>${share}</td></tr>`).join("")}</tbody></table>`).join("\n")}
+<section id="methodology"><h2>Methodology &amp; limitations</h2><ul>${methodology.map((text) => `<li>${escapeHtml(text)}</li>`).join("")}</ul></section>
+<section id="suggested-citation"><h2>Suggested citation</h2><p>${escapeHtml(getResearchFaqs().find((faq) => faq.id === "citation")?.answer ?? "")}</p></section>
+<h2>Questions about this report</h2>${renderFaqHtml()}<nav><a href="/research">All research</a> · <a href="/roadmaps">Career roadmap library</a> · <a href="/faq">All research questions</a></nav>`;
+}

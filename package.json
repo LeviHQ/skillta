@@ -12,6 +12,8 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "prerender": "tsx scripts/prerender.ts",
+    "generate:markdown": "tsx scripts/generate-markdown.ts",
+    "prebuild": "tsx scripts/generate-markdown.ts",
     "postbuild": "tsx scripts/prerender.ts"
   },
   "dependencies": {
