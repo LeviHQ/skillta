@@ -148,7 +148,7 @@ ${["/", "/quiz", "/roadmaps", "/compare", "/blog", "/research", "/faq", "/salary
 
 /* ----------------------------------------------------------------- routes */
 
-function staticRoutes(): Route[] {
+export function staticRoutes(): Route[] {
   const page = (key: keyof typeof PAGE_SEO, body: string, jsonLd?: object[]): Route => {
     const s = PAGE_SEO[key];
     return {
@@ -327,7 +327,7 @@ ${siteNav}`),
   });
 }
 
-function roadmapRoutes(): Route[] {
+export function roadmapRoutes(): Route[] {
   return cleanCareerRows(careers).map((career) => ({
     path: `/roadmaps/${career.id}`,
     title: `${career.title} Roadmap — Step-by-Step Learning Path | SkillTa`,
@@ -541,7 +541,7 @@ ${siteNav}`),
 
 /* ------------------------------------------------------------------ write */
 
-function headFor(route: Route): string {
+export function headFor(route: Route): string {
   const url = `${BASE}${route.path === "/" ? "/" : route.path}`;
   const ogImage = `${BASE}${SITE_CONFIG.ogImage}`;
   const tags = [
@@ -604,6 +604,7 @@ function main() {
     // Strip the fallback head tags the SPA shell ships with, then inject ours.
     let html = template
       .replace(/<title>[\s\S]*?<\/title>/i, "")
+      .replace(/<meta\s+(?:name="(?:description|twitter:(?:card|title|description))"|property="og:(?:title|description|type)")[^>]*>/gi, "")
       .replace(/<meta\s+property="og:image"[^>]*>/gi, "")
       .replace(/<meta\s+name="twitter:image"[^>]*>/gi, "");
 
@@ -620,9 +621,11 @@ function main() {
   console.log(`[prerender] ${written} pages written to dist/ (cap ${MAX_PAGES}).`);
 }
 
-try {
-  main();
-} catch (err) {
-  // Never fail the production build because of SEO prerendering.
-  console.warn("[prerender] skipped due to error:", err);
+if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+  try {
+    main();
+  } catch (err) {
+    // Never fail the production build because of SEO prerendering.
+    console.warn("[prerender] skipped due to error:", err);
+  }
 }
