@@ -1,10 +1,25 @@
 # Low-Code/No-Code Developer Roadmap
 
-> Build powerful apps without traditional coding
+> Low-Code/No-Code Developer roadmap: 5 phases, 15 topics, 15 project entries and 15 resource entries. Difficulty: Easy. Timeline: 2-5 months to job-ready.
 
 Canonical: https://www.skillta.tech/roadmaps/low-code-developer
+Last updated: 2026-10-24
 
 Low-code developers use visual development platforms to build business applications rapidly. You bridge the gap between business needs and technology solutions.
+
+## At a Glance
+
+| Metric | Count |
+| --- | --- |
+| phases | 5 |
+| topics | 15 |
+| projects | 15 |
+| resources | 15 |
+| skills | 7 |
+
+Counts are entries in this authored roadmap, not unique projects or providers.
+
+[Career catalog research](https://www.skillta.tech/research/tech-careers)
 
 ## Key facts
 

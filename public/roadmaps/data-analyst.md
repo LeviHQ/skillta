@@ -1,10 +1,25 @@
 # Data Analyst Roadmap
 
-> Transform raw data into business insights
+> Data Analyst roadmap: 5 phases, 15 topics, 15 project entries and 15 resource entries. Difficulty: Easy. Timeline: 4-8 months to job-ready.
 
 Canonical: https://www.skillta.tech/roadmaps/data-analyst
+Last updated: 2026-10-24
 
 Data analysts collect, process, and analyze data to help organizations make better decisions. You turn numbers into narratives that drive action.
+
+## At a Glance
+
+| Metric | Count |
+| --- | --- |
+| phases | 5 |
+| topics | 15 |
+| projects | 15 |
+| resources | 15 |
+| skills | 7 |
+
+Counts are entries in this authored roadmap, not unique projects or providers.
+
+[Career catalog research](https://www.skillta.tech/research/tech-careers)
 
 ## Key facts
 

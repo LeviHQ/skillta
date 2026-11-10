@@ -1,10 +1,25 @@
 # AI Prompt Engineer Roadmap
 
-> Design prompts and workflows that make LLMs deliver real business value
+> AI Prompt Engineer roadmap: 4 phases, 12 topics, 10 project entries and 12 resource entries. Difficulty: Moderate. Timeline: 4-8 months to job-ready.
 
 Canonical: https://www.skillta.tech/roadmaps/prompt-engineer
+Last updated: 2026-10-24
 
 Prompt engineers craft, test, and productionize prompts for LLMs like GPT, Claude and Gemini. You design system prompts, evals, RAG pipelines, and guardrails that turn general-purpose AI into reliable products.
+
+## At a Glance
+
+| Metric | Count |
+| --- | --- |
+| phases | 4 |
+| topics | 12 |
+| projects | 10 |
+| resources | 12 |
+| skills | 7 |
+
+Counts are entries in this authored roadmap, not unique projects or providers.
+
+[Career catalog research](https://www.skillta.tech/research/tech-careers)
 
 ## Key facts
 

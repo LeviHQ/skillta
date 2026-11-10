@@ -1,10 +1,25 @@
 # Database Administrator Roadmap
 
-> Manage and optimize data storage systems
+> Database Administrator roadmap: 5 phases, 15 topics, 15 project entries and 15 resource entries. Difficulty: Moderate. Timeline: 8-14 months to job-ready.
 
 Canonical: https://www.skillta.tech/roadmaps/database-administrator
+Last updated: 2026-10-24
 
 Database Administrators (DBAs) ensure databases are fast, secure, and always available. You're the guardian of an organization's most valuable asset — its data.
+
+## At a Glance
+
+| Metric | Count |
+| --- | --- |
+| phases | 5 |
+| topics | 15 |
+| projects | 15 |
+| resources | 15 |
+| skills | 7 |
+
+Counts are entries in this authored roadmap, not unique projects or providers.
+
+[Career catalog research](https://www.skillta.tech/research/tech-careers)
 
 ## Key facts
 

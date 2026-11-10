@@ -1,10 +1,25 @@
 # Quantum Software Engineer Roadmap
 
-> Program quantum computers with Qiskit, Cirq and Q#
+> Quantum Software Engineer roadmap: 4 phases, 12 topics, 7 project entries and 10 resource entries. Difficulty: Very Hard. Timeline: 12-24 months to job-ready.
 
 Canonical: https://www.skillta.tech/roadmaps/quantum-software-engineer
+Last updated: 2026-10-24
 
 Quantum software engineers write algorithms for quantum hardware (IBM, IonQ, Rigetti, Quantinuum). You build QC libraries, hybrid classical-quantum apps, and tools that will matter more as hardware scales.
+
+## At a Glance
+
+| Metric | Count |
+| --- | --- |
+| phases | 4 |
+| topics | 12 |
+| projects | 7 |
+| resources | 10 |
+| skills | 7 |
+
+Counts are entries in this authored roadmap, not unique projects or providers.
+
+[Career catalog research](https://www.skillta.tech/research/tech-careers)
 
 ## Key facts
 

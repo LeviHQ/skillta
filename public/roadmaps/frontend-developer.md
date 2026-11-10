@@ -1,10 +1,25 @@
 # Frontend Developer Roadmap
 
-> Craft beautiful, interactive user experiences
+> Frontend Developer roadmap: 5 phases, 15 topics, 15 project entries and 15 resource entries. Difficulty: Moderate. Timeline: 6-12 months to job-ready.
 
 Canonical: https://www.skillta.tech/roadmaps/frontend-developer
+Last updated: 2026-10-24
 
 Frontend developers bring designs to life. You'll build the visual and interactive parts of websites and apps that users directly interact with.
+
+## At a Glance
+
+| Metric | Count |
+| --- | --- |
+| phases | 5 |
+| topics | 15 |
+| projects | 15 |
+| resources | 15 |
+| skills | 7 |
+
+Counts are entries in this authored roadmap, not unique projects or providers.
+
+[Career catalog research](https://www.skillta.tech/research/tech-careers)
 
 ## Key facts
 

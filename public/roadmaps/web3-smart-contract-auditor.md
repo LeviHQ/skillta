@@ -1,10 +1,25 @@
 # Smart Contract Auditor Roadmap
 
-> Find vulnerabilities in Solidity contracts before hackers do
+> Smart Contract Auditor roadmap: 4 phases, 12 topics, 7 project entries and 13 resource entries. Difficulty: Very Hard. Timeline: 12-18 months to job-ready.
 
 Canonical: https://www.skillta.tech/roadmaps/web3-smart-contract-auditor
+Last updated: 2026-10-24
 
 Smart contract auditors review DeFi, NFT and DAO contracts for exploits. Every hack costs millions — good auditors are worth their weight in ETH. Top firms are Trail of Bits, ConsenSys Diligence, OpenZeppelin, Certora.
+
+## At a Glance
+
+| Metric | Count |
+| --- | --- |
+| phases | 4 |
+| topics | 12 |
+| projects | 7 |
+| resources | 13 |
+| skills | 7 |
+
+Counts are entries in this authored roadmap, not unique projects or providers.
+
+[Career catalog research](https://www.skillta.tech/research/tech-careers)
 
 ## Key facts
 

@@ -1,10 +1,25 @@
 # Developer Productivity Engineer Roadmap
 
-> Build tools and platforms that make hundreds of engineers 10x faster
+> Developer Productivity Engineer roadmap: 4 phases, 12 topics, 4 project entries and 8 resource entries. Difficulty: Hard. Timeline: Requires 2-4 years dev experience.
 
 Canonical: https://www.skillta.tech/roadmaps/developer-productivity-engineer
+Last updated: 2026-10-24
 
 DevProd (aka Dev Experience, Platform Engineering) teams own internal tooling: CI/CD, monorepos, IDEs, code-gen, AI copilots for internal use. Highest-leverage engineering role at scale-ups.
+
+## At a Glance
+
+| Metric | Count |
+| --- | --- |
+| phases | 4 |
+| topics | 12 |
+| projects | 4 |
+| resources | 8 |
+| skills | 7 |
+
+Counts are entries in this authored roadmap, not unique projects or providers.
+
+[Career catalog research](https://www.skillta.tech/research/tech-careers)
 
 ## Key facts
 

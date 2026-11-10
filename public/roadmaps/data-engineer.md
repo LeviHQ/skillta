@@ -1,10 +1,25 @@
 # Data Engineer Roadmap
 
-> Build the pipelines that power data-driven decisions
+> Data Engineer roadmap: 5 phases, 15 topics, 15 project entries and 15 resource entries. Difficulty: Hard. Timeline: 10-16 months to job-ready.
 
 Canonical: https://www.skillta.tech/roadmaps/data-engineer
+Last updated: 2026-10-24
 
 Data engineers design and maintain the infrastructure for collecting, storing, and processing data at scale. You make data accessible and reliable for entire organizations.
+
+## At a Glance
+
+| Metric | Count |
+| --- | --- |
+| phases | 5 |
+| topics | 15 |
+| projects | 15 |
+| resources | 15 |
+| skills | 7 |
+
+Counts are entries in this authored roadmap, not unique projects or providers.
+
+[Career catalog research](https://www.skillta.tech/research/tech-careers)
 
 ## Key facts
 

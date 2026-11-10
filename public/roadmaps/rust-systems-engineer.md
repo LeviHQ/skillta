@@ -1,10 +1,25 @@
 # Rust Systems Engineer Roadmap
 
-> Build fast, safe, memory-efficient systems in Rust
+> Rust Systems Engineer roadmap: 4 phases, 12 topics, 8 project entries and 11 resource entries. Difficulty: Very Hard. Timeline: 9-15 months to job-ready.
 
 Canonical: https://www.skillta.tech/roadmaps/rust-systems-engineer
+Last updated: 2026-10-24
 
 Rust engineers build the next generation of infrastructure: browsers, databases, blockchains, OS kernels, dev tools and high-performance services. Rust replaces C/C++ where safety and speed both matter.
+
+## At a Glance
+
+| Metric | Count |
+| --- | --- |
+| phases | 4 |
+| topics | 12 |
+| projects | 8 |
+| resources | 11 |
+| skills | 7 |
+
+Counts are entries in this authored roadmap, not unique projects or providers.
+
+[Career catalog research](https://www.skillta.tech/research/tech-careers)
 
 ## Key facts
 

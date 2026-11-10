@@ -1,10 +1,25 @@
 # Flutter Developer Roadmap
 
-> Build beautiful cross-platform apps from a single codebase
+> Flutter Developer roadmap: 5 phases, 15 topics, 15 project entries and 15 resource entries. Difficulty: Moderate. Timeline: 6-12 months to job-ready.
 
 Canonical: https://www.skillta.tech/roadmaps/flutter-developer
+Last updated: 2026-10-24
 
 Flutter developers build natively compiled applications for mobile, web, and desktop from a single Dart codebase. You ship everywhere without sacrificing quality.
+
+## At a Glance
+
+| Metric | Count |
+| --- | --- |
+| phases | 5 |
+| topics | 15 |
+| projects | 15 |
+| resources | 15 |
+| skills | 7 |
+
+Counts are entries in this authored roadmap, not unique projects or providers.
+
+[Career catalog research](https://www.skillta.tech/research/tech-careers)
 
 ## Key facts
 

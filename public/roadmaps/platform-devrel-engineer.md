@@ -1,10 +1,25 @@
 # AI/Developer Relations Engineer Roadmap
 
-> Bridge product and developer community for AI, cloud and dev-tool companies
+> AI/Developer Relations Engineer roadmap: 4 phases, 12 topics, 5 project entries and 8 resource entries. Difficulty: Hard. Timeline: Requires 2-4 years dev experience + content presence.
 
 Canonical: https://www.skillta.tech/roadmaps/platform-devrel-engineer
+Last updated: 2026-10-24
 
 DevRel engineers write docs, build demos, give talks, and champion developer feedback. In the AI era they are the visible face of API companies (OpenAI, Anthropic, Vercel, Supabase, Cloudflare, LangChain).
+
+## At a Glance
+
+| Metric | Count |
+| --- | --- |
+| phases | 4 |
+| topics | 12 |
+| projects | 5 |
+| resources | 8 |
+| skills | 7 |
+
+Counts are entries in this authored roadmap, not unique projects or providers.
+
+[Career catalog research](https://www.skillta.tech/research/tech-careers)
 
 ## Key facts
 

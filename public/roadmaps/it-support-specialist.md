@@ -1,10 +1,25 @@
 # IT Support Specialist Roadmap
 
-> Be the first line of defense for tech problems
+> IT Support Specialist roadmap: 5 phases, 15 topics, 15 project entries and 15 resource entries. Difficulty: Easy. Timeline: 2-4 months to job-ready.
 
 Canonical: https://www.skillta.tech/roadmaps/it-support-specialist
+Last updated: 2026-10-24
 
 IT Support specialists help users resolve technology issues, manage hardware/software, and maintain IT systems. You're the superhero who keeps everyone productive.
+
+## At a Glance
+
+| Metric | Count |
+| --- | --- |
+| phases | 5 |
+| topics | 15 |
+| projects | 15 |
+| resources | 15 |
+| skills | 7 |
+
+Counts are entries in this authored roadmap, not unique projects or providers.
+
+[Career catalog research](https://www.skillta.tech/research/tech-careers)
 
 ## Key facts
 
