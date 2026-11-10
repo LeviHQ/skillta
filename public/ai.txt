@@ -19,5 +19,5 @@ excluded: /dashboard, /results, /admin, /staff, /internal, /ops, /console, /mana
 
 [contact]
 email: adarshmishra70931@gmail.com
-Last updated: 2026-10-26
+Last updated: 2026-11-10
 Keep in sync with /robots.txt and /llms.txt.

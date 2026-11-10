@@ -1,10 +1,25 @@
 # Bioinformatics Engineer Roadmap
 
-> Apply computing to solve biological problems
+> Bioinformatics Engineer roadmap: 5 phases, 15 topics, 15 project entries and 15 resource entries. Difficulty: Hard. Timeline: 12-18 months to job-ready.
 
 Canonical: https://www.skillta.tech/roadmaps/bioinformatics-engineer
+Last updated: 2026-10-24
 
 Bioinformatics engineers develop software tools and pipelines to analyze biological data — from genomics to drug discovery. You're at the intersection of biology and computer science.
+
+## At a Glance
+
+| Metric | Count |
+| --- | --- |
+| phases | 5 |
+| topics | 15 |
+| projects | 15 |
+| resources | 15 |
+| skills | 7 |
+
+Counts are entries in this authored roadmap, not unique projects or providers.
+
+[Career catalog research](https://www.skillta.tech/research/tech-careers)
 
 ## Key facts
 

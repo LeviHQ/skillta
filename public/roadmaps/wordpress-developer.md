@@ -1,10 +1,25 @@
 # WordPress Developer Roadmap
 
-> Build and customize websites powering 40% of the web
+> WordPress Developer roadmap: 5 phases, 15 topics, 15 project entries and 15 resource entries. Difficulty: Easy. Timeline: 3-6 months to job-ready.
 
 Canonical: https://www.skillta.tech/roadmaps/wordpress-developer
+Last updated: 2026-10-24
 
 WordPress developers build custom themes, plugins, and solutions on the world's most popular CMS. From blogs to enterprise sites, WordPress runs 40%+ of all websites.
+
+## At a Glance
+
+| Metric | Count |
+| --- | --- |
+| phases | 5 |
+| topics | 15 |
+| projects | 15 |
+| resources | 15 |
+| skills | 7 |
+
+Counts are entries in this authored roadmap, not unique projects or providers.
+
+[Career catalog research](https://www.skillta.tech/research/tech-careers)
 
 ## Key facts
 

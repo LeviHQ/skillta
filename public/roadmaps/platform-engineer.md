@@ -1,10 +1,25 @@
 # Platform Engineer Roadmap
 
-> Build internal developer platforms that accelerate teams
+> Platform Engineer roadmap: 5 phases, 15 topics, 15 project entries and 15 resource entries. Difficulty: Very Hard. Timeline: 14-20 months to job-ready.
 
 Canonical: https://www.skillta.tech/roadmaps/platform-engineer
+Last updated: 2026-10-24
 
 Platform engineers create the tools, workflows, and infrastructure that enable development teams to ship faster. You're the force multiplier for engineering organizations.
+
+## At a Glance
+
+| Metric | Count |
+| --- | --- |
+| phases | 5 |
+| topics | 15 |
+| projects | 15 |
+| resources | 15 |
+| skills | 7 |
+
+Counts are entries in this authored roadmap, not unique projects or providers.
+
+[Career catalog research](https://www.skillta.tech/research/tech-careers)
 
 ## Key facts
 

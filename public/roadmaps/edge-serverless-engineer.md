@@ -1,10 +1,25 @@
 # Edge / Serverless Engineer Roadmap
 
-> Build ultra-low-latency apps on Cloudflare Workers, Vercel Edge and Deno Deploy
+> Edge / Serverless Engineer roadmap: 4 phases, 12 topics, 7 project entries and 10 resource entries. Difficulty: Moderate. Timeline: 4-8 months to job-ready.
 
 Canonical: https://www.skillta.tech/roadmaps/edge-serverless-engineer
+Last updated: 2026-10-24
 
 Edge engineers deploy code to hundreds of PoPs around the world for global sub-50ms responses. You design for cold-start-free runtimes, edge KV/D1/R2, and stateless functions.
+
+## At a Glance
+
+| Metric | Count |
+| --- | --- |
+| phases | 4 |
+| topics | 12 |
+| projects | 7 |
+| resources | 10 |
+| skills | 7 |
+
+Counts are entries in this authored roadmap, not unique projects or providers.
+
+[Career catalog research](https://www.skillta.tech/research/tech-careers)
 
 ## Key facts
 

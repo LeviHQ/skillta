@@ -1,10 +1,25 @@
 # AI Product Manager Roadmap
 
-> Ship AI-native products with clear user value, real evals and honest UX
+> AI Product Manager roadmap: 4 phases, 12 topics, 4 project entries and 10 resource entries. Difficulty: Hard. Timeline: Requires 2-4 years product / tech experience.
 
 Canonical: https://www.skillta.tech/roadmaps/ai-product-manager
+Last updated: 2026-10-24
 
 AI PMs own the roadmap of AI-powered products: chat, copilots, agents, image/video tools. You balance model capabilities, latency, cost and UX in ways classical PMs never had to.
+
+## At a Glance
+
+| Metric | Count |
+| --- | --- |
+| phases | 4 |
+| topics | 12 |
+| projects | 4 |
+| resources | 10 |
+| skills | 7 |
+
+Counts are entries in this authored roadmap, not unique projects or providers.
+
+[Career catalog research](https://www.skillta.tech/research/tech-careers)
 
 ## Key facts
 

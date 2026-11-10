@@ -1,10 +1,25 @@
 # Technical Writer Roadmap
 
-> Make complex technology understandable
+> Technical Writer roadmap: 5 phases, 15 topics, 15 project entries and 15 resource entries. Difficulty: Easy. Timeline: 4-8 months to job-ready.
 
 Canonical: https://www.skillta.tech/roadmaps/technical-writer
+Last updated: 2026-10-24
 
 Technical writers create documentation, tutorials, API references, and guides that help developers and users understand complex software products.
+
+## At a Glance
+
+| Metric | Count |
+| --- | --- |
+| phases | 5 |
+| topics | 15 |
+| projects | 15 |
+| resources | 15 |
+| skills | 7 |
+
+Counts are entries in this authored roadmap, not unique projects or providers.
+
+[Career catalog research](https://www.skillta.tech/research/tech-careers)
 
 ## Key facts
 

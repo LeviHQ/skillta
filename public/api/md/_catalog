@@ -1,7 +1,7 @@
 {
   "site": "SkillTa",
-  "generated": "2026-10-26",
-  "count": 655,
+  "generated": "2026-11-10",
+  "count": 658,
   "routes": [
     {
       "path": "/",
@@ -21,9 +21,10 @@
     },
     {
       "path": "/roadmaps",
-      "title": "50+ Tech Career Roadmaps 2027 | SkillTa",
-      "description": "Curated step-by-step roadmaps for 50+ tech careers. Curated resources, projects, salary info & timelines. Updated for 2027.",
+      "title": "60 Tech Career Roadmaps (2026) | SkillTa",
+      "description": "60 tech career roadmaps, listed in editorial catalog order rather than ranked by job prospects. 31.7% carry a Low entry-barrier label. The first three are Frontend Developer, Backend Developer, Data Scientist. Source last changed: 2026-10-24.",
       "group": "core",
+      "updated": "2026-10-24",
       "markdown": "https://www.skillta.tech/roadmaps.md",
       "canonical": "https://www.skillta.tech/roadmaps"
     },
@@ -116,482 +117,569 @@
       "canonical": "https://www.skillta.tech/skill-gap-analyzer"
     },
     {
+      "path": "/research",
+      "title": "SkillTa Research — Public Career Catalog Data",
+      "description": "Explore SkillTa's authored career catalog statistics, with calculated counts, editorial-label breakdowns and transparent methodology.",
+      "group": "core",
+      "updated": "2026-10-24",
+      "markdown": "https://www.skillta.tech/research.md",
+      "canonical": "https://www.skillta.tech/research"
+    },
+    {
+      "path": "/research/tech-careers",
+      "title": "Tech Career Statistics 2026: 60 Analyzed",
+      "description": "SkillTa's 60-career catalog: 58.3% labeled Hard/Very Hard, 290 phases and 815 project entries. Editorial data, not a labor-market survey.",
+      "group": "core",
+      "updated": "2026-10-24",
+      "markdown": "https://www.skillta.tech/research/tech-careers.md",
+      "canonical": "https://www.skillta.tech/research/tech-careers"
+    },
+    {
+      "path": "/faq",
+      "title": "Tech Career Catalog FAQ — SkillTa",
+      "description": "Answers about SkillTa's career counts, editorial labels, learning resources, public data sources and research citations.",
+      "group": "core",
+      "updated": "2026-10-24",
+      "markdown": "https://www.skillta.tech/faq.md",
+      "canonical": "https://www.skillta.tech/faq"
+    },
+    {
       "path": "/roadmaps/frontend-developer",
       "title": "Frontend Developer Roadmap",
-      "description": "Craft beautiful, interactive user experiences",
+      "description": "Frontend Developer roadmap: 5 phases, 15 topics, 15 project entries and 15 resource entries. Difficulty: Moderate. Timeline: 6-12 months to job-ready.",
       "group": "roadmaps",
+      "updated": "2026-10-24",
       "markdown": "https://www.skillta.tech/roadmaps/frontend-developer.md",
       "canonical": "https://www.skillta.tech/roadmaps/frontend-developer"
     },
     {
       "path": "/roadmaps/backend-developer",
       "title": "Backend Developer Roadmap",
-      "description": "Build the engines that power applications",
+      "description": "Backend Developer roadmap: 5 phases, 15 topics, 15 project entries and 15 resource entries. Difficulty: Hard. Timeline: 8-14 months to job-ready.",
       "group": "roadmaps",
+      "updated": "2026-10-24",
       "markdown": "https://www.skillta.tech/roadmaps/backend-developer.md",
       "canonical": "https://www.skillta.tech/roadmaps/backend-developer"
     },
     {
       "path": "/roadmaps/data-scientist",
       "title": "Data Scientist Roadmap",
-      "description": "Turn data into actionable intelligence",
+      "description": "Data Scientist roadmap: 5 phases, 15 topics, 15 project entries and 15 resource entries. Difficulty: Very Hard. Timeline: 12-18 months to job-ready.",
       "group": "roadmaps",
+      "updated": "2026-10-24",
       "markdown": "https://www.skillta.tech/roadmaps/data-scientist.md",
       "canonical": "https://www.skillta.tech/roadmaps/data-scientist"
     },
     {
       "path": "/roadmaps/cybersecurity-specialist",
       "title": "Cybersecurity Specialist Roadmap",
-      "description": "Protect systems and hunt vulnerabilities",
+      "description": "Cybersecurity Specialist roadmap: 5 phases, 15 topics, 15 project entries and 15 resource entries. Difficulty: Hard. Timeline: 10-16 months to job-ready.",
       "group": "roadmaps",
+      "updated": "2026-10-24",
       "markdown": "https://www.skillta.tech/roadmaps/cybersecurity-specialist.md",
       "canonical": "https://www.skillta.tech/roadmaps/cybersecurity-specialist"
     },
     {
       "path": "/roadmaps/uiux-designer",
       "title": "UI/UX Designer Roadmap",
-      "description": "Design experiences people love to use",
+      "description": "UI/UX Designer roadmap: 5 phases, 15 topics, 15 project entries and 15 resource entries. Difficulty: Moderate. Timeline: 6-10 months to job-ready.",
       "group": "roadmaps",
+      "updated": "2026-10-24",
       "markdown": "https://www.skillta.tech/roadmaps/uiux-designer.md",
       "canonical": "https://www.skillta.tech/roadmaps/uiux-designer"
     },
     {
       "path": "/roadmaps/devops-engineer",
       "title": "DevOps Engineer Roadmap",
-      "description": "Bridge development and operations seamlessly",
+      "description": "DevOps Engineer roadmap: 5 phases, 15 topics, 15 project entries and 15 resource entries. Difficulty: Hard. Timeline: 10-14 months to job-ready.",
       "group": "roadmaps",
+      "updated": "2026-10-24",
       "markdown": "https://www.skillta.tech/roadmaps/devops-engineer.md",
       "canonical": "https://www.skillta.tech/roadmaps/devops-engineer"
     },
     {
       "path": "/roadmaps/qa-automation",
       "title": "QA Automation Engineer Roadmap",
-      "description": "Ensure software quality through intelligent testing",
+      "description": "QA Automation Engineer roadmap: 5 phases, 15 topics, 15 project entries and 15 resource entries. Difficulty: Moderate. Timeline: 6-10 months to job-ready.",
       "group": "roadmaps",
+      "updated": "2026-10-24",
       "markdown": "https://www.skillta.tech/roadmaps/qa-automation.md",
       "canonical": "https://www.skillta.tech/roadmaps/qa-automation"
     },
     {
       "path": "/roadmaps/mobile-developer",
       "title": "Mobile App Developer Roadmap",
-      "description": "Build apps that live in everyone's pocket",
+      "description": "Mobile App Developer roadmap: 5 phases, 15 topics, 15 project entries and 15 resource entries. Difficulty: Moderate. Timeline: 8-12 months to job-ready.",
       "group": "roadmaps",
+      "updated": "2026-10-24",
       "markdown": "https://www.skillta.tech/roadmaps/mobile-developer.md",
       "canonical": "https://www.skillta.tech/roadmaps/mobile-developer"
     },
     {
       "path": "/roadmaps/fullstack-developer",
       "title": "Full-Stack Developer Roadmap",
-      "description": "Master both frontend and backend development",
+      "description": "Full-Stack Developer roadmap: 5 phases, 15 topics, 15 project entries and 15 resource entries. Difficulty: Hard. Timeline: 12-18 months to job-ready.",
       "group": "roadmaps",
+      "updated": "2026-10-24",
       "markdown": "https://www.skillta.tech/roadmaps/fullstack-developer.md",
       "canonical": "https://www.skillta.tech/roadmaps/fullstack-developer"
     },
     {
       "path": "/roadmaps/cloud-architect",
       "title": "Cloud Architect Roadmap",
-      "description": "Design and manage scalable cloud infrastructure",
+      "description": "Cloud Architect roadmap: 5 phases, 15 topics, 15 project entries and 15 resource entries. Difficulty: Very Hard. Timeline: 14-20 months to job-ready.",
       "group": "roadmaps",
+      "updated": "2026-10-24",
       "markdown": "https://www.skillta.tech/roadmaps/cloud-architect.md",
       "canonical": "https://www.skillta.tech/roadmaps/cloud-architect"
     },
     {
       "path": "/roadmaps/ai-ml-engineer",
       "title": "AI/ML Engineer Roadmap",
-      "description": "Build intelligent systems that learn and adapt",
+      "description": "AI/ML Engineer roadmap: 5 phases, 15 topics, 15 project entries and 15 resource entries. Difficulty: Very Hard. Timeline: 14-20 months to job-ready.",
       "group": "roadmaps",
+      "updated": "2026-10-24",
       "markdown": "https://www.skillta.tech/roadmaps/ai-ml-engineer.md",
       "canonical": "https://www.skillta.tech/roadmaps/ai-ml-engineer"
     },
     {
       "path": "/roadmaps/blockchain-developer",
       "title": "Blockchain Developer Roadmap",
-      "description": "Build decentralized applications and smart contracts",
+      "description": "Blockchain Developer roadmap: 5 phases, 15 topics, 15 project entries and 15 resource entries. Difficulty: Hard. Timeline: 10-16 months to job-ready.",
       "group": "roadmaps",
+      "updated": "2026-10-24",
       "markdown": "https://www.skillta.tech/roadmaps/blockchain-developer.md",
       "canonical": "https://www.skillta.tech/roadmaps/blockchain-developer"
     },
     {
       "path": "/roadmaps/game-developer",
       "title": "Game Developer Roadmap",
-      "description": "Create immersive gaming experiences",
+      "description": "Game Developer roadmap: 5 phases, 15 topics, 15 project entries and 15 resource entries. Difficulty: Hard. Timeline: 12-18 months to job-ready.",
       "group": "roadmaps",
+      "updated": "2026-10-24",
       "markdown": "https://www.skillta.tech/roadmaps/game-developer.md",
       "canonical": "https://www.skillta.tech/roadmaps/game-developer"
     },
     {
       "path": "/roadmaps/data-engineer",
       "title": "Data Engineer Roadmap",
-      "description": "Build the pipelines that power data-driven decisions",
+      "description": "Data Engineer roadmap: 5 phases, 15 topics, 15 project entries and 15 resource entries. Difficulty: Hard. Timeline: 10-16 months to job-ready.",
       "group": "roadmaps",
+      "updated": "2026-10-24",
       "markdown": "https://www.skillta.tech/roadmaps/data-engineer.md",
       "canonical": "https://www.skillta.tech/roadmaps/data-engineer"
     },
     {
       "path": "/roadmaps/technical-writer",
       "title": "Technical Writer Roadmap",
-      "description": "Make complex technology understandable",
+      "description": "Technical Writer roadmap: 5 phases, 15 topics, 15 project entries and 15 resource entries. Difficulty: Easy. Timeline: 4-8 months to job-ready.",
       "group": "roadmaps",
+      "updated": "2026-10-24",
       "markdown": "https://www.skillta.tech/roadmaps/technical-writer.md",
       "canonical": "https://www.skillta.tech/roadmaps/technical-writer"
     },
     {
       "path": "/roadmaps/site-reliability-engineer",
       "title": "Site Reliability Engineer Roadmap",
-      "description": "Keep systems running at planet scale",
+      "description": "Site Reliability Engineer roadmap: 5 phases, 15 topics, 15 project entries and 15 resource entries. Difficulty: Very Hard. Timeline: 14-20 months to job-ready.",
       "group": "roadmaps",
+      "updated": "2026-10-24",
       "markdown": "https://www.skillta.tech/roadmaps/site-reliability-engineer.md",
       "canonical": "https://www.skillta.tech/roadmaps/site-reliability-engineer"
     },
     {
       "path": "/roadmaps/product-manager-tech",
       "title": "Technical Product Manager Roadmap",
-      "description": "Lead products from idea to launch",
+      "description": "Technical Product Manager roadmap: 5 phases, 15 topics, 15 project entries and 15 resource entries. Difficulty: Moderate. Timeline: 8-14 months to job-ready.",
       "group": "roadmaps",
+      "updated": "2026-10-24",
       "markdown": "https://www.skillta.tech/roadmaps/product-manager-tech.md",
       "canonical": "https://www.skillta.tech/roadmaps/product-manager-tech"
     },
     {
       "path": "/roadmaps/embedded-systems",
       "title": "Embedded Systems Engineer Roadmap",
-      "description": "Program the hardware that runs the world",
+      "description": "Embedded Systems Engineer roadmap: 5 phases, 15 topics, 15 project entries and 15 resource entries. Difficulty: Very Hard. Timeline: 12-18 months to job-ready.",
       "group": "roadmaps",
+      "updated": "2026-10-24",
       "markdown": "https://www.skillta.tech/roadmaps/embedded-systems.md",
       "canonical": "https://www.skillta.tech/roadmaps/embedded-systems"
     },
     {
       "path": "/roadmaps/solutions-architect",
       "title": "Solutions Architect Roadmap",
-      "description": "Design end-to-end technology solutions for businesses",
+      "description": "Solutions Architect roadmap: 5 phases, 15 topics, 15 project entries and 15 resource entries. Difficulty: Very Hard. Timeline: 18-24 months to job-ready.",
       "group": "roadmaps",
+      "updated": "2026-10-24",
       "markdown": "https://www.skillta.tech/roadmaps/solutions-architect.md",
       "canonical": "https://www.skillta.tech/roadmaps/solutions-architect"
     },
     {
       "path": "/roadmaps/database-administrator",
       "title": "Database Administrator Roadmap",
-      "description": "Manage and optimize data storage systems",
+      "description": "Database Administrator roadmap: 5 phases, 15 topics, 15 project entries and 15 resource entries. Difficulty: Moderate. Timeline: 8-14 months to job-ready.",
       "group": "roadmaps",
+      "updated": "2026-10-24",
       "markdown": "https://www.skillta.tech/roadmaps/database-administrator.md",
       "canonical": "https://www.skillta.tech/roadmaps/database-administrator"
     },
     {
       "path": "/roadmaps/network-engineer",
       "title": "Network Engineer Roadmap",
-      "description": "Build and maintain the infrastructure that connects everything",
+      "description": "Network Engineer roadmap: 5 phases, 15 topics, 15 project entries and 15 resource entries. Difficulty: Hard. Timeline: 10-16 months to job-ready.",
       "group": "roadmaps",
+      "updated": "2026-10-24",
       "markdown": "https://www.skillta.tech/roadmaps/network-engineer.md",
       "canonical": "https://www.skillta.tech/roadmaps/network-engineer"
     },
     {
       "path": "/roadmaps/platform-engineer",
       "title": "Platform Engineer Roadmap",
-      "description": "Build internal developer platforms that accelerate teams",
+      "description": "Platform Engineer roadmap: 5 phases, 15 topics, 15 project entries and 15 resource entries. Difficulty: Very Hard. Timeline: 14-20 months to job-ready.",
       "group": "roadmaps",
+      "updated": "2026-10-24",
       "markdown": "https://www.skillta.tech/roadmaps/platform-engineer.md",
       "canonical": "https://www.skillta.tech/roadmaps/platform-engineer"
     },
     {
       "path": "/roadmaps/mlops-engineer",
       "title": "MLOps Engineer Roadmap",
-      "description": "Operationalize machine learning at scale",
+      "description": "MLOps Engineer roadmap: 5 phases, 15 topics, 15 project entries and 15 resource entries. Difficulty: Very Hard. Timeline: 14-18 months to job-ready.",
       "group": "roadmaps",
+      "updated": "2026-10-24",
       "markdown": "https://www.skillta.tech/roadmaps/mlops-engineer.md",
       "canonical": "https://www.skillta.tech/roadmaps/mlops-engineer"
     },
     {
       "path": "/roadmaps/data-analyst",
       "title": "Data Analyst Roadmap",
-      "description": "Transform raw data into business insights",
+      "description": "Data Analyst roadmap: 5 phases, 15 topics, 15 project entries and 15 resource entries. Difficulty: Easy. Timeline: 4-8 months to job-ready.",
       "group": "roadmaps",
+      "updated": "2026-10-24",
       "markdown": "https://www.skillta.tech/roadmaps/data-analyst.md",
       "canonical": "https://www.skillta.tech/roadmaps/data-analyst"
     },
     {
       "path": "/roadmaps/business-intelligence-analyst",
       "title": "Business Intelligence Analyst Roadmap",
-      "description": "Build dashboards and reports that drive decisions",
+      "description": "Business Intelligence Analyst roadmap: 5 phases, 15 topics, 15 project entries and 15 resource entries. Difficulty: Moderate. Timeline: 6-10 months to job-ready.",
       "group": "roadmaps",
+      "updated": "2026-10-24",
       "markdown": "https://www.skillta.tech/roadmaps/business-intelligence-analyst.md",
       "canonical": "https://www.skillta.tech/roadmaps/business-intelligence-analyst"
     },
     {
       "path": "/roadmaps/ar-vr-developer",
       "title": "AR/VR Developer Roadmap",
-      "description": "Build immersive augmented and virtual reality experiences",
+      "description": "AR/VR Developer roadmap: 5 phases, 15 topics, 15 project entries and 15 resource entries. Difficulty: Hard. Timeline: 12-18 months to job-ready.",
       "group": "roadmaps",
+      "updated": "2026-10-24",
       "markdown": "https://www.skillta.tech/roadmaps/ar-vr-developer.md",
       "canonical": "https://www.skillta.tech/roadmaps/ar-vr-developer"
     },
     {
       "path": "/roadmaps/robotics-engineer",
       "title": "Robotics Engineer Roadmap",
-      "description": "Build intelligent machines that interact with the physical world",
+      "description": "Robotics Engineer roadmap: 5 phases, 15 topics, 15 project entries and 15 resource entries. Difficulty: Very Hard. Timeline: 18-24 months to job-ready.",
       "group": "roadmaps",
+      "updated": "2026-10-24",
       "markdown": "https://www.skillta.tech/roadmaps/robotics-engineer.md",
       "canonical": "https://www.skillta.tech/roadmaps/robotics-engineer"
     },
     {
       "path": "/roadmaps/computer-vision-engineer",
       "title": "Computer Vision Engineer Roadmap",
-      "description": "Teach machines to see and understand the visual world",
+      "description": "Computer Vision Engineer roadmap: 5 phases, 15 topics, 15 project entries and 15 resource entries. Difficulty: Very Hard. Timeline: 14-20 months to job-ready.",
       "group": "roadmaps",
+      "updated": "2026-10-24",
       "markdown": "https://www.skillta.tech/roadmaps/computer-vision-engineer.md",
       "canonical": "https://www.skillta.tech/roadmaps/computer-vision-engineer"
     },
     {
       "path": "/roadmaps/nlp-engineer",
       "title": "NLP Engineer Roadmap",
-      "description": "Build AI that understands and generates human language",
+      "description": "NLP Engineer roadmap: 5 phases, 15 topics, 15 project entries and 15 resource entries. Difficulty: Very Hard. Timeline: 14-18 months to job-ready.",
       "group": "roadmaps",
+      "updated": "2026-10-24",
       "markdown": "https://www.skillta.tech/roadmaps/nlp-engineer.md",
       "canonical": "https://www.skillta.tech/roadmaps/nlp-engineer"
     },
     {
       "path": "/roadmaps/ios-developer",
       "title": "iOS Developer Roadmap",
-      "description": "Build beautiful apps for Apple's ecosystem",
+      "description": "iOS Developer roadmap: 5 phases, 15 topics, 15 project entries and 15 resource entries. Difficulty: Moderate. Timeline: 8-14 months to job-ready.",
       "group": "roadmaps",
+      "updated": "2026-10-24",
       "markdown": "https://www.skillta.tech/roadmaps/ios-developer.md",
       "canonical": "https://www.skillta.tech/roadmaps/ios-developer"
     },
     {
       "path": "/roadmaps/android-developer",
       "title": "Android Developer Roadmap",
-      "description": "Build apps for billions of Android users worldwide",
+      "description": "Android Developer roadmap: 5 phases, 15 topics, 15 project entries and 15 resource entries. Difficulty: Moderate. Timeline: 8-14 months to job-ready.",
       "group": "roadmaps",
+      "updated": "2026-10-24",
       "markdown": "https://www.skillta.tech/roadmaps/android-developer.md",
       "canonical": "https://www.skillta.tech/roadmaps/android-developer"
     },
     {
       "path": "/roadmaps/flutter-developer",
       "title": "Flutter Developer Roadmap",
-      "description": "Build beautiful cross-platform apps from a single codebase",
+      "description": "Flutter Developer roadmap: 5 phases, 15 topics, 15 project entries and 15 resource entries. Difficulty: Moderate. Timeline: 6-12 months to job-ready.",
       "group": "roadmaps",
+      "updated": "2026-10-24",
       "markdown": "https://www.skillta.tech/roadmaps/flutter-developer.md",
       "canonical": "https://www.skillta.tech/roadmaps/flutter-developer"
     },
     {
       "path": "/roadmaps/wordpress-developer",
       "title": "WordPress Developer Roadmap",
-      "description": "Build and customize websites powering 40% of the web",
+      "description": "WordPress Developer roadmap: 5 phases, 15 topics, 15 project entries and 15 resource entries. Difficulty: Easy. Timeline: 3-6 months to job-ready.",
       "group": "roadmaps",
+      "updated": "2026-10-24",
       "markdown": "https://www.skillta.tech/roadmaps/wordpress-developer.md",
       "canonical": "https://www.skillta.tech/roadmaps/wordpress-developer"
     },
     {
       "path": "/roadmaps/low-code-developer",
       "title": "Low-Code/No-Code Developer Roadmap",
-      "description": "Build powerful apps without traditional coding",
+      "description": "Low-Code/No-Code Developer roadmap: 5 phases, 15 topics, 15 project entries and 15 resource entries. Difficulty: Easy. Timeline: 2-5 months to job-ready.",
       "group": "roadmaps",
+      "updated": "2026-10-24",
       "markdown": "https://www.skillta.tech/roadmaps/low-code-developer.md",
       "canonical": "https://www.skillta.tech/roadmaps/low-code-developer"
     },
     {
       "path": "/roadmaps/iot-developer",
       "title": "IoT Developer Roadmap",
-      "description": "Connect physical devices to the digital world",
+      "description": "IoT Developer roadmap: 5 phases, 15 topics, 15 project entries and 15 resource entries. Difficulty: Hard. Timeline: 10-16 months to job-ready.",
       "group": "roadmaps",
+      "updated": "2026-10-24",
       "markdown": "https://www.skillta.tech/roadmaps/iot-developer.md",
       "canonical": "https://www.skillta.tech/roadmaps/iot-developer"
     },
     {
       "path": "/roadmaps/penetration-tester",
       "title": "Penetration Tester Roadmap",
-      "description": "Hack systems legally to make them more secure",
+      "description": "Penetration Tester roadmap: 5 phases, 15 topics, 15 project entries and 15 resource entries. Difficulty: Hard. Timeline: 10-16 months to job-ready.",
       "group": "roadmaps",
+      "updated": "2026-10-24",
       "markdown": "https://www.skillta.tech/roadmaps/penetration-tester.md",
       "canonical": "https://www.skillta.tech/roadmaps/penetration-tester"
     },
     {
       "path": "/roadmaps/digital-forensics-analyst",
       "title": "Digital Forensics Analyst Roadmap",
-      "description": "Investigate cybercrimes and analyze digital evidence",
+      "description": "Digital Forensics Analyst roadmap: 5 phases, 15 topics, 15 project entries and 15 resource entries. Difficulty: Hard. Timeline: 10-16 months to job-ready.",
       "group": "roadmaps",
+      "updated": "2026-10-24",
       "markdown": "https://www.skillta.tech/roadmaps/digital-forensics-analyst.md",
       "canonical": "https://www.skillta.tech/roadmaps/digital-forensics-analyst"
     },
     {
       "path": "/roadmaps/salesforce-developer",
       "title": "Salesforce Developer Roadmap",
-      "description": "Build on the world's #1 CRM platform",
+      "description": "Salesforce Developer roadmap: 5 phases, 15 topics, 15 project entries and 15 resource entries. Difficulty: Moderate. Timeline: 6-12 months to job-ready.",
       "group": "roadmaps",
+      "updated": "2026-10-24",
       "markdown": "https://www.skillta.tech/roadmaps/salesforce-developer.md",
       "canonical": "https://www.skillta.tech/roadmaps/salesforce-developer"
     },
     {
       "path": "/roadmaps/developer-advocate",
       "title": "Developer Advocate Roadmap",
-      "description": "Be the bridge between developers and products",
+      "description": "Developer Advocate roadmap: 5 phases, 15 topics, 15 project entries and 15 resource entries. Difficulty: Moderate. Timeline: Variable — requires prior dev experience.",
       "group": "roadmaps",
+      "updated": "2026-10-24",
       "markdown": "https://www.skillta.tech/roadmaps/developer-advocate.md",
       "canonical": "https://www.skillta.tech/roadmaps/developer-advocate"
     },
     {
       "path": "/roadmaps/engineering-manager",
       "title": "Engineering Manager Roadmap",
-      "description": "Lead engineering teams to deliver exceptional products",
+      "description": "Engineering Manager roadmap: 5 phases, 15 topics, 15 project entries and 15 resource entries. Difficulty: Hard. Timeline: Requires 4-6 years engineering experience.",
       "group": "roadmaps",
+      "updated": "2026-10-24",
       "markdown": "https://www.skillta.tech/roadmaps/engineering-manager.md",
       "canonical": "https://www.skillta.tech/roadmaps/engineering-manager"
     },
     {
       "path": "/roadmaps/api-developer",
       "title": "API Developer Roadmap",
-      "description": "Build the interfaces that connect software systems",
+      "description": "API Developer roadmap: 5 phases, 15 topics, 15 project entries and 15 resource entries. Difficulty: Moderate. Timeline: 6-12 months to job-ready.",
       "group": "roadmaps",
+      "updated": "2026-10-24",
       "markdown": "https://www.skillta.tech/roadmaps/api-developer.md",
       "canonical": "https://www.skillta.tech/roadmaps/api-developer"
     },
     {
       "path": "/roadmaps/seo-specialist",
       "title": "Technical SEO Specialist Roadmap",
-      "description": "Optimize websites to rank higher in search engines",
+      "description": "Technical SEO Specialist roadmap: 5 phases, 15 topics, 15 project entries and 15 resource entries. Difficulty: Easy. Timeline: 4-8 months to job-ready.",
       "group": "roadmaps",
+      "updated": "2026-10-24",
       "markdown": "https://www.skillta.tech/roadmaps/seo-specialist.md",
       "canonical": "https://www.skillta.tech/roadmaps/seo-specialist"
     },
     {
       "path": "/roadmaps/systems-administrator",
       "title": "Systems Administrator Roadmap",
-      "description": "Keep IT infrastructure running smoothly",
+      "description": "Systems Administrator roadmap: 5 phases, 15 topics, 15 project entries and 15 resource entries. Difficulty: Moderate. Timeline: 6-12 months to job-ready.",
       "group": "roadmaps",
+      "updated": "2026-10-24",
       "markdown": "https://www.skillta.tech/roadmaps/systems-administrator.md",
       "canonical": "https://www.skillta.tech/roadmaps/systems-administrator"
     },
     {
       "path": "/roadmaps/scrum-master",
       "title": "Scrum Master Roadmap",
-      "description": "Facilitate agile teams to deliver value efficiently",
+      "description": "Scrum Master roadmap: 5 phases, 15 topics, 15 project entries and 15 resource entries. Difficulty: Easy. Timeline: 3-6 months to job-ready.",
       "group": "roadmaps",
+      "updated": "2026-10-24",
       "markdown": "https://www.skillta.tech/roadmaps/scrum-master.md",
       "canonical": "https://www.skillta.tech/roadmaps/scrum-master"
     },
     {
       "path": "/roadmaps/it-support-specialist",
       "title": "IT Support Specialist Roadmap",
-      "description": "Be the first line of defense for tech problems",
+      "description": "IT Support Specialist roadmap: 5 phases, 15 topics, 15 project entries and 15 resource entries. Difficulty: Easy. Timeline: 2-4 months to job-ready.",
       "group": "roadmaps",
+      "updated": "2026-10-24",
       "markdown": "https://www.skillta.tech/roadmaps/it-support-specialist.md",
       "canonical": "https://www.skillta.tech/roadmaps/it-support-specialist"
     },
     {
       "path": "/roadmaps/graphics-programmer",
       "title": "Graphics Programmer Roadmap",
-      "description": "Push pixels and polygons to create stunning visuals",
+      "description": "Graphics Programmer roadmap: 5 phases, 15 topics, 15 project entries and 15 resource entries. Difficulty: Very Hard. Timeline: 18-24 months to job-ready.",
       "group": "roadmaps",
+      "updated": "2026-10-24",
       "markdown": "https://www.skillta.tech/roadmaps/graphics-programmer.md",
       "canonical": "https://www.skillta.tech/roadmaps/graphics-programmer"
     },
     {
       "path": "/roadmaps/quantitative-developer",
       "title": "Quantitative Developer Roadmap",
-      "description": "Build high-performance trading and financial systems",
+      "description": "Quantitative Developer roadmap: 5 phases, 15 topics, 15 project entries and 15 resource entries. Difficulty: Very Hard. Timeline: 18-24 months to job-ready.",
       "group": "roadmaps",
+      "updated": "2026-10-24",
       "markdown": "https://www.skillta.tech/roadmaps/quantitative-developer.md",
       "canonical": "https://www.skillta.tech/roadmaps/quantitative-developer"
     },
     {
       "path": "/roadmaps/bioinformatics-engineer",
       "title": "Bioinformatics Engineer Roadmap",
-      "description": "Apply computing to solve biological problems",
+      "description": "Bioinformatics Engineer roadmap: 5 phases, 15 topics, 15 project entries and 15 resource entries. Difficulty: Hard. Timeline: 12-18 months to job-ready.",
       "group": "roadmaps",
+      "updated": "2026-10-24",
       "markdown": "https://www.skillta.tech/roadmaps/bioinformatics-engineer.md",
       "canonical": "https://www.skillta.tech/roadmaps/bioinformatics-engineer"
     },
     {
       "path": "/roadmaps/accessibility-specialist",
       "title": "Accessibility Specialist Roadmap",
-      "description": "Make technology usable by everyone",
+      "description": "Accessibility Specialist roadmap: 5 phases, 15 topics, 15 project entries and 15 resource entries. Difficulty: Moderate. Timeline: 6-10 months to job-ready.",
       "group": "roadmaps",
+      "updated": "2026-10-24",
       "markdown": "https://www.skillta.tech/roadmaps/accessibility-specialist.md",
       "canonical": "https://www.skillta.tech/roadmaps/accessibility-specialist"
     },
     {
       "path": "/roadmaps/solutions-engineer",
       "title": "Solutions Engineer Roadmap",
-      "description": "Bridge the gap between sales and engineering",
+      "description": "Solutions Engineer roadmap: 5 phases, 15 topics, 15 project entries and 15 resource entries. Difficulty: Moderate. Timeline: Requires 2-4 years dev experience.",
       "group": "roadmaps",
+      "updated": "2026-10-24",
       "markdown": "https://www.skillta.tech/roadmaps/solutions-engineer.md",
       "canonical": "https://www.skillta.tech/roadmaps/solutions-engineer"
     },
     {
       "path": "/roadmaps/prompt-engineer",
       "title": "AI Prompt Engineer Roadmap",
-      "description": "Design prompts and workflows that make LLMs deliver real business value",
+      "description": "AI Prompt Engineer roadmap: 4 phases, 12 topics, 10 project entries and 12 resource entries. Difficulty: Moderate. Timeline: 4-8 months to job-ready.",
       "group": "roadmaps",
+      "updated": "2026-10-24",
       "markdown": "https://www.skillta.tech/roadmaps/prompt-engineer.md",
       "canonical": "https://www.skillta.tech/roadmaps/prompt-engineer"
     },
     {
       "path": "/roadmaps/generative-ai-engineer",
       "title": "Generative AI Engineer Roadmap",
-      "description": "Build end-to-end products powered by LLMs, diffusion and multimodal models",
+      "description": "Generative AI Engineer roadmap: 4 phases, 12 topics, 8 project entries and 11 resource entries. Difficulty: Hard. Timeline: 6-12 months to job-ready.",
       "group": "roadmaps",
+      "updated": "2026-10-24",
       "markdown": "https://www.skillta.tech/roadmaps/generative-ai-engineer.md",
       "canonical": "https://www.skillta.tech/roadmaps/generative-ai-engineer"
     },
     {
       "path": "/roadmaps/rust-systems-engineer",
       "title": "Rust Systems Engineer Roadmap",
-      "description": "Build fast, safe, memory-efficient systems in Rust",
+      "description": "Rust Systems Engineer roadmap: 4 phases, 12 topics, 8 project entries and 11 resource entries. Difficulty: Very Hard. Timeline: 9-15 months to job-ready.",
       "group": "roadmaps",
+      "updated": "2026-10-24",
       "markdown": "https://www.skillta.tech/roadmaps/rust-systems-engineer.md",
       "canonical": "https://www.skillta.tech/roadmaps/rust-systems-engineer"
     },
     {
       "path": "/roadmaps/web3-smart-contract-auditor",
       "title": "Smart Contract Auditor Roadmap",
-      "description": "Find vulnerabilities in Solidity contracts before hackers do",
+      "description": "Smart Contract Auditor roadmap: 4 phases, 12 topics, 7 project entries and 13 resource entries. Difficulty: Very Hard. Timeline: 12-18 months to job-ready.",
       "group": "roadmaps",
+      "updated": "2026-10-24",
       "markdown": "https://www.skillta.tech/roadmaps/web3-smart-contract-auditor.md",
       "canonical": "https://www.skillta.tech/roadmaps/web3-smart-contract-auditor"
     },
     {
       "path": "/roadmaps/quantum-software-engineer",
       "title": "Quantum Software Engineer Roadmap",
-      "description": "Program quantum computers with Qiskit, Cirq and Q#",
+      "description": "Quantum Software Engineer roadmap: 4 phases, 12 topics, 7 project entries and 10 resource entries. Difficulty: Very Hard. Timeline: 12-24 months to job-ready.",
       "group": "roadmaps",
+      "updated": "2026-10-24",
       "markdown": "https://www.skillta.tech/roadmaps/quantum-software-engineer.md",
       "canonical": "https://www.skillta.tech/roadmaps/quantum-software-engineer"
     },
     {
       "path": "/roadmaps/platform-devrel-engineer",
       "title": "AI/Developer Relations Engineer Roadmap",
-      "description": "Bridge product and developer community for AI, cloud and dev-tool companies",
+      "description": "AI/Developer Relations Engineer roadmap: 4 phases, 12 topics, 5 project entries and 8 resource entries. Difficulty: Hard. Timeline: Requires 2-4 years dev experience + content presence.",
       "group": "roadmaps",
+      "updated": "2026-10-24",
       "markdown": "https://www.skillta.tech/roadmaps/platform-devrel-engineer.md",
       "canonical": "https://www.skillta.tech/roadmaps/platform-devrel-engineer"
     },
     {
       "path": "/roadmaps/mlops-platform-engineer",
       "title": "AI Platform / MLOps Engineer Roadmap",
-      "description": "Build the infrastructure that trains, deploys and monitors AI models at scale",
+      "description": "AI Platform / MLOps Engineer roadmap: 4 phases, 12 topics, 5 project entries and 9 resource entries. Difficulty: Hard. Timeline: 9-15 months to job-ready.",
       "group": "roadmaps",
+      "updated": "2026-10-24",
       "markdown": "https://www.skillta.tech/roadmaps/mlops-platform-engineer.md",
       "canonical": "https://www.skillta.tech/roadmaps/mlops-platform-engineer"
     },
     {
       "path": "/roadmaps/edge-serverless-engineer",
       "title": "Edge / Serverless Engineer Roadmap",
-      "description": "Build ultra-low-latency apps on Cloudflare Workers, Vercel Edge and Deno Deploy",
+      "description": "Edge / Serverless Engineer roadmap: 4 phases, 12 topics, 7 project entries and 10 resource entries. Difficulty: Moderate. Timeline: 4-8 months to job-ready.",
       "group": "roadmaps",
+      "updated": "2026-10-24",
       "markdown": "https://www.skillta.tech/roadmaps/edge-serverless-engineer.md",
       "canonical": "https://www.skillta.tech/roadmaps/edge-serverless-engineer"
     },
     {
       "path": "/roadmaps/developer-productivity-engineer",
       "title": "Developer Productivity Engineer Roadmap",
-      "description": "Build tools and platforms that make hundreds of engineers 10x faster",
+      "description": "Developer Productivity Engineer roadmap: 4 phases, 12 topics, 4 project entries and 8 resource entries. Difficulty: Hard. Timeline: Requires 2-4 years dev experience.",
       "group": "roadmaps",
+      "updated": "2026-10-24",
       "markdown": "https://www.skillta.tech/roadmaps/developer-productivity-engineer.md",
       "canonical": "https://www.skillta.tech/roadmaps/developer-productivity-engineer"
     },
     {
       "path": "/roadmaps/ai-product-manager",
       "title": "AI Product Manager Roadmap",
-      "description": "Ship AI-native products with clear user value, real evals and honest UX",
+      "description": "AI Product Manager roadmap: 4 phases, 12 topics, 4 project entries and 10 resource entries. Difficulty: Hard. Timeline: Requires 2-4 years product / tech experience.",
       "group": "roadmaps",
+      "updated": "2026-10-24",
       "markdown": "https://www.skillta.tech/roadmaps/ai-product-manager.md",
       "canonical": "https://www.skillta.tech/roadmaps/ai-product-manager"
     },

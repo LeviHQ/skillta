@@ -1,10 +1,25 @@
 # Solutions Architect Roadmap
 
-> Design end-to-end technology solutions for businesses
+> Solutions Architect roadmap: 5 phases, 15 topics, 15 project entries and 15 resource entries. Difficulty: Very Hard. Timeline: 18-24 months to job-ready.
 
 Canonical: https://www.skillta.tech/roadmaps/solutions-architect
+Last updated: 2026-10-24
 
 Solutions Architects design comprehensive technical solutions that align with business requirements. You bridge the gap between stakeholders and engineering teams.
+
+## At a Glance
+
+| Metric | Count |
+| --- | --- |
+| phases | 5 |
+| topics | 15 |
+| projects | 15 |
+| resources | 15 |
+| skills | 7 |
+
+Counts are entries in this authored roadmap, not unique projects or providers.
+
+[Career catalog research](https://www.skillta.tech/research/tech-careers)
 
 ## Key facts
 

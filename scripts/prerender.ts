@@ -50,6 +50,9 @@ import { roadmapDeepBlocks } from "../src/lib/deepContent/roadmap";
 import { blogDeepBlocks } from "../src/lib/deepContent/blog";
 import { markdownPath } from "../src/lib/markdown/format";
 import { isPublicPath } from "../src/lib/markdown/policy";
+import { cleanCareerRows, getCatalogSummary, getCareerCatalogSchema, getCareerFacts, getRoadmapDescription, REPORT_YEAR } from "../src/lib/researchStats";
+import { researchTitle, researchDescription, getResearchSchemas, getResearchFaqs, renderResearchHtml, renderFaqHtml, RESEARCH_PATH } from "../src/lib/researchContent";
+import { getFAQSchema } from "../src/lib/seo";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const DIST = resolve(ROOT, "dist");
@@ -138,14 +141,14 @@ function shell(inner: string) {
 }
 
 const siteNav = `<nav aria-label="Primary"><ul>
-${["/", "/quiz", "/roadmaps", "/compare", "/blog", "/salary-predictor", "/resume-reviewer", "/skill-gap-analyzer", "/about", "/contact"]
+${["/", "/quiz", "/roadmaps", "/compare", "/blog", "/research", "/faq", "/salary-predictor", "/resume-reviewer", "/skill-gap-analyzer", "/about", "/contact"]
   .map((p) => `<li>${link(p, p === "/" ? "Home" : p.replace(/^\//, "").replace(/-/g, " "))}</li>`)
   .join("\n")}
 </ul></nav>`;
 
 /* ----------------------------------------------------------------- routes */
 
-function staticRoutes(): Route[] {
+export function staticRoutes(): Route[] {
   const page = (key: keyof typeof PAGE_SEO, body: string, jsonLd?: object[]): Route => {
     const s = PAGE_SEO[key];
     return {
@@ -190,11 +193,11 @@ ${siteNav}`),
     ),
     page(
       "roadmaps",
-      shell(`<h1>60+ Free Tech Career Roadmaps (2027)</h1>
-<p>${esc(PAGE_SEO.roadmaps.description)}</p>
-${list(careers.map((c) => `${link(`/roadmaps/${c.id}`, c.title)} — ${esc(c.tagline)}`))}
+      shell(`<h1>${cleanCareerRows(careers).length} Tech Career Roadmaps (${REPORT_YEAR})</h1>
+<p>${esc(getCatalogSummary())}</p><p>${link(RESEARCH_PATH, "Career catalog statistics & methodology")}</p>
+${list(cleanCareerRows(careers).map((c) => `${link(`/roadmaps/${c.id}`, c.title)} — ${esc(c.tagline)}`))}
 ${siteNav}`),
-      [getItemListSchema()],
+      [getCareerCatalogSchema()],
     ),
     page(
       "compare",
@@ -222,6 +225,17 @@ ${siteNav}`),
     page("privacy", shell(`<h1>Privacy Policy</h1><p>${esc(PAGE_SEO.privacy.description)}</p>${siteNav}`)),
     page("terms", shell(`<h1>Terms of Service</h1><p>${esc(PAGE_SEO.terms.description)}</p>${siteNav}`)),
   ];
+
+  const roadmapList = routes.find((route) => route.path === "/roadmaps");
+  if (roadmapList) {
+    roadmapList.title = `${cleanCareerRows(careers).length} Tech Career Roadmaps (${REPORT_YEAR}) | SkillTa`;
+    roadmapList.description = getCatalogSummary();
+  }
+  routes.push(
+    { path: "/research", title: "SkillTa Research — Public Career Catalog Data", description: "Explore SkillTa's authored career catalog statistics, with calculated counts, editorial-label breakdowns and transparent methodology.", body: shell(`<h1>SkillTa Research</h1><p>Counts and editorial assessments from SkillTa's public career catalog. No private user data.</p><h2>${link(RESEARCH_PATH, researchTitle())}</h2><p>${esc(researchDescription())}</p>${siteNav}`) },
+    { path: RESEARCH_PATH, title: researchTitle(), description: researchDescription(), jsonLd: [...getResearchSchemas(), getBreadcrumbSchema([{ name: "Home", path: "/" }, { name: "Research", path: "/research" }, { name: "Tech Careers", path: RESEARCH_PATH }])], body: shell(`${renderResearchHtml()}${siteNav}`) },
+    { path: "/faq", title: "Tech Career Catalog FAQ — SkillTa", description: "Answers about SkillTa's career counts, editorial labels, learning resources, public data sources and research citations.", jsonLd: [getFAQSchema(getResearchFaqs()), getBreadcrumbSchema([{ name: "Home", path: "/" }, { name: "FAQ", path: "/faq" }])], body: shell(`<h1>Tech Career Catalog FAQ</h1>${renderFaqHtml()}<p>${link(RESEARCH_PATH, "Read the full report")}</p>${siteNav}`) },
+  );
 
   const tool = (path: string, title: string, description: string, keywords: string, h1: string, points: string[]): Route => ({
     path,
@@ -313,13 +327,11 @@ ${siteNav}`),
   });
 }
 
-function roadmapRoutes(): Route[] {
-  return careers.map((career) => ({
+export function roadmapRoutes(): Route[] {
+  return cleanCareerRows(careers).map((career) => ({
     path: `/roadmaps/${career.id}`,
     title: `${career.title} Roadmap — Step-by-Step Learning Path | SkillTa`,
-    description: `Complete ${career.title} roadmap: ${career.tagline}. Learn ${career.requiredSkills
-      .slice(0, 4)
-      .join(", ")} and more. Includes resources, projects, salary info & reality check.`,
+    description: getRoadmapDescription(career),
     keywords: `${career.title.toLowerCase()} roadmap, how to become a ${career.title.toLowerCase()}, ${career.requiredSkills
       .slice(0, 3)
       .join(", ")
@@ -336,6 +348,7 @@ function roadmapRoutes(): Route[] {
 <h1>${esc(career.title)} Roadmap 2027</h1>
 <p>${esc(career.tagline)}</p>
 <p>${esc(career.description)}</p>
+<section aria-labelledby="at-a-glance"><h2 id="at-a-glance">At a Glance</h2><dl>${Object.entries(getCareerFacts(career)).map(([label, value]) => `<dt>${esc(label)}</dt><dd>${value}</dd>`).join("")}</dl><p>Counts are entries in this authored roadmap, not unique projects or providers.</p><p>${link(RESEARCH_PATH, "Career catalog research")}</p></section>
 <h2>Key facts</h2>
 <ul>
 <li>Difficulty: ${esc(career.learningDifficulty)}</li>
@@ -528,7 +541,7 @@ ${siteNav}`),
 
 /* ------------------------------------------------------------------ write */
 
-function headFor(route: Route): string {
+export function headFor(route: Route): string {
   const url = `${BASE}${route.path === "/" ? "/" : route.path}`;
   const ogImage = `${BASE}${SITE_CONFIG.ogImage}`;
   const tags = [
@@ -591,6 +604,7 @@ function main() {
     // Strip the fallback head tags the SPA shell ships with, then inject ours.
     let html = template
       .replace(/<title>[\s\S]*?<\/title>/i, "")
+      .replace(/<meta\s+(?:name="(?:description|twitter:(?:card|title|description))"|property="og:(?:title|description|type)")[^>]*>/gi, "")
       .replace(/<meta\s+property="og:image"[^>]*>/gi, "")
       .replace(/<meta\s+name="twitter:image"[^>]*>/gi, "");
 
@@ -607,9 +621,11 @@ function main() {
   console.log(`[prerender] ${written} pages written to dist/ (cap ${MAX_PAGES}).`);
 }
 
-try {
-  main();
-} catch (err) {
-  // Never fail the production build because of SEO prerendering.
-  console.warn("[prerender] skipped due to error:", err);
+if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+  try {
+    main();
+  } catch (err) {
+    // Never fail the production build because of SEO prerendering.
+    console.warn("[prerender] skipped due to error:", err);
+  }
 }

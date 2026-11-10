@@ -50,7 +50,7 @@ export function createMarkdownRegistry(staticContent: StaticContent = {}): Markd
     };
     return { path, title, description, updated: ['/research', RESEARCH_PATH, '/faq', '/roadmaps'].includes(path) ? CATALOG_MODIFIED : undefined, group: path === '/terms' || path === '/privacy' ? 'legal' : 'core', render };
   });
-  for (const career of careers) pages.push({
+  for (const career of cleanCareerRows(careers)) pages.push({
     path: `/roadmaps/${career.id}`, title: `${career.title} Roadmap`, description: getRoadmapDescription(career), updated: CATALOG_MODIFIED, group: 'roadmaps',
     render: () => `${career.description}\n\n## At a Glance\n\n${table(['Metric', 'Count'], Object.entries(getCareerFacts(career)).map(([label, value]) => [label, String(value)]))}\n\nCounts are entries in this authored roadmap, not unique projects or providers.\n\n${link('Career catalog research', RESEARCH_PATH)}\n\n## Key facts\n\n${table(['Metric', 'Value'], [['Difficulty', career.learningDifficulty], ['Time to job-ready', career.estimatedTime], ['Demand', career.demandLevel], ['Salary (India)', career.salaryIndia], ['Salary (Global)', career.salaryGlobal], ['Growth', career.growthPotential]])}\n\n## Required skills\n\n${bullets(career.requiredSkills)}\n\n## Learning roadmap\n\n${career.roadmap.map((phase) => `### Phase ${phase.phase}: ${phase.title} (${phase.duration})\n\n${bullets(phase.items.map((item) => `**${item.name}** — ${item.description}`))}\n\nResources:\n\n${bullets(phase.resources)}\n\nProjects:\n\n${bullets(phase.projects)}`).join('\n\n')}\n\n## Reality check\n\n${career.realityCheck.honestNote}\n\n${blocksToMarkdown(roadmapDeepBlocks(career))}`,
   });

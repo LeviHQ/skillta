@@ -1,10 +1,25 @@
 # Technical SEO Specialist Roadmap
 
-> Optimize websites to rank higher in search engines
+> Technical SEO Specialist roadmap: 5 phases, 15 topics, 15 project entries and 15 resource entries. Difficulty: Easy. Timeline: 4-8 months to job-ready.
 
 Canonical: https://www.skillta.tech/roadmaps/seo-specialist
+Last updated: 2026-10-24
 
 Technical SEO specialists optimize website architecture, performance, and content to improve search engine rankings. You're the reason websites get found.
+
+## At a Glance
+
+| Metric | Count |
+| --- | --- |
+| phases | 5 |
+| topics | 15 |
+| projects | 15 |
+| resources | 15 |
+| skills | 7 |
+
+Counts are entries in this authored roadmap, not unique projects or providers.
+
+[Career catalog research](https://www.skillta.tech/research/tech-careers)
 
 ## Key facts
 

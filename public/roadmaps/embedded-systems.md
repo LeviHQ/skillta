@@ -1,10 +1,25 @@
 # Embedded Systems Engineer Roadmap
 
-> Program the hardware that runs the world
+> Embedded Systems Engineer roadmap: 5 phases, 15 topics, 15 project entries and 15 resource entries. Difficulty: Very Hard. Timeline: 12-18 months to job-ready.
 
 Canonical: https://www.skillta.tech/roadmaps/embedded-systems
+Last updated: 2026-10-24
 
 Embedded systems engineers write software for hardware devices — from IoT sensors to automotive systems, medical devices, and robotics.
+
+## At a Glance
+
+| Metric | Count |
+| --- | --- |
+| phases | 5 |
+| topics | 15 |
+| projects | 15 |
+| resources | 15 |
+| skills | 7 |
+
+Counts are entries in this authored roadmap, not unique projects or providers.
+
+[Career catalog research](https://www.skillta.tech/research/tech-careers)
 
 ## Key facts
 

@@ -46,8 +46,15 @@
     <!-- Ad scripts are requested only after guest/unpaid eligibility resolves in React.
          Keep unconditional ad preloads disabled so paid users make no ad requests. -->
 
-    <!-- Fallback title only. All SEO meta tags (description, keywords, robots, og:*, twitter:*) are managed per-route by react-helmet-async via SEOHead.tsx to avoid duplicates. Social crawlers that don't run JS will still see the title; og:image fallback added below with property attr so Helmet can override it. -->
-    <title>SkillTa — Find Your Perfect Tech Career Path</title>
+    <!-- App-level fallback metadata; prerender replaces these for public routes. -->
+    <title>SkillTa — AI Career Guidance & Tech Roadmaps</title>
+    <meta name="description" content="Explore tech career roadmaps, public career catalog research, and AI-powered career guidance with SkillTa." />
+    <meta property="og:title" content="SkillTa — AI Career Guidance & Tech Roadmaps" />
+    <meta property="og:description" content="Explore tech career roadmaps, public career catalog research, and AI-powered career guidance with SkillTa." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="SkillTa — AI Career Guidance & Tech Roadmaps" />
+    <meta name="twitter:description" content="Explore tech career roadmaps, public career catalog research, and AI-powered career guidance with SkillTa." />
     <meta property="og:image" content="https://www.skillta.tech/og-image.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />

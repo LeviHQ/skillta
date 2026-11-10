@@ -1,10 +1,25 @@
 # Cloud Architect Roadmap
 
-> Design and manage scalable cloud infrastructure
+> Cloud Architect roadmap: 5 phases, 15 topics, 15 project entries and 15 resource entries. Difficulty: Very Hard. Timeline: 14-20 months to job-ready.
 
 Canonical: https://www.skillta.tech/roadmaps/cloud-architect
+Last updated: 2026-10-24
 
 Cloud architects design the infrastructure that powers modern applications. You decide how companies build, deploy, and scale their technology in the cloud.
+
+## At a Glance
+
+| Metric | Count |
+| --- | --- |
+| phases | 5 |
+| topics | 15 |
+| projects | 15 |
+| resources | 15 |
+| skills | 7 |
+
+Counts are entries in this authored roadmap, not unique projects or providers.
+
+[Career catalog research](https://www.skillta.tech/research/tech-careers)
 
 ## Key facts
 

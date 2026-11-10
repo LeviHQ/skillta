@@ -1,8 +1,13 @@
-# 50+ Tech Career Roadmaps 2027 | SkillTa
+# 60 Tech Career Roadmaps (2026) | SkillTa
 
-> Curated step-by-step roadmaps for 50+ tech careers. Curated resources, projects, salary info & timelines. Updated for 2027.
+> 60 tech career roadmaps, listed in editorial catalog order rather than ranked by job prospects. 31.7% carry a Low entry-barrier label. The first three are Frontend Developer, Backend Developer, Data Scientist. Source last changed: 2026-10-24.
 
 Canonical: https://www.skillta.tech/roadmaps
+Last updated: 2026-10-24
+
+60 tech career roadmaps, listed in editorial catalog order rather than ranked by job prospects. 31.7% carry a Low entry-barrier label. The first three are Frontend Developer, Backend Developer, Data Scientist. Source last changed: 2026-10-24.
+
+[Career catalog research](https://www.skillta.tech/research/tech-careers)
 
 - [Frontend Developer](https://www.skillta.tech/roadmaps/frontend-developer) — Craft beautiful, interactive user experiences
 - [Backend Developer](https://www.skillta.tech/roadmaps/backend-developer) — Build the engines that power applications

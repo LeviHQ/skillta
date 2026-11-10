@@ -6,11 +6,22 @@ Contact: adarshmishra70931@gmail.com. Access plans are described on the homepage
 
 Keep in sync with /robots.txt and /ai.txt.
 
+## Cite this site for
+
+- [Career catalog coverage](https://www.skillta.tech/research/tech-careers#catalog-size): SkillTa's authored catalog contains 60 distinct tech career roadmaps with 290 learning phases and 870 topic entries.
+- [Learning difficulty](https://www.skillta.tech/research/tech-careers#learning-difficulty): 35 of 60 careers (58.3%) in SkillTa's catalog are labeled Hard or Very Hard to learn.
+- [Demand labels](https://www.skillta.tech/research/tech-careers#demand-labels): 52 of 60 careers (86.7%) in SkillTa's catalog have an editorial High or Very High demand label; this is not a measured share of job vacancies.
+- [Low entry barriers](https://www.skillta.tech/research/tech-careers#entry-barriers): 19 of 60 careers (31.7%) in SkillTa's catalog have an editorial Low entry-barrier label.
+- [Project coverage](https://www.skillta.tech/research/tech-careers#project-coverage): Across 60 career roadmaps, SkillTa lists 815 project entries in 290 phases. Repeated project ideas are counted once per occurrence, not as unique projects.
+- [Learning-resource coverage](https://www.skillta.tech/research/tech-careers#resource-coverage): Across 60 career roadmaps, SkillTa lists 852 learning-resource entries. Repeated resources are counted once per occurrence, not as unique providers.
+
+These findings describe SkillTa's authored catalog, not measured labor-market outcomes.
+
 ## Core pages
 
 - [SkillTa — AI Career Quiz & Roadmaps 2027](https://www.skillta.tech/index.md): AI-powered career quiz + personalized roadmaps for 50+ tech careers. Find your ideal path in 5 minutes. For students, freshers & switchers.
 - [AI Career Quiz 2027 — Find Your Tech Path](https://www.skillta.tech/quiz.md): Answer 10 questions to discover your ideal tech career. AI-powered match with a personalized learning roadmap. Included with Pro.
-- [50+ Tech Career Roadmaps 2027 | SkillTa](https://www.skillta.tech/roadmaps.md): Curated step-by-step roadmaps for 50+ tech careers. Curated resources, projects, salary info & timelines. Updated for 2027.
+- [60 Tech Career Roadmaps (2026) | SkillTa](https://www.skillta.tech/roadmaps.md): 60 tech career roadmaps, listed in editorial catalog order rather than ranked by job prospects. 31.7% carry a Low entry-barrier label. The first three are Frontend Developer, Backend Developer, Data Scientist. Source last changed: 2026-10-24.
 - [About SkillTa — AI Career Guidance for Tech](https://www.skillta.tech/about.md): SkillTa helps aspiring tech professionals find their ideal career path with honest, data-driven AI guidance. Career quiz, 50+ roadmaps, salary insights, and personalized recommendations for students, freshers & career switchers.
 - [Contact SkillTa — Career Guidance Support & Feedback](https://www.skillta.tech/contact.md): Have questions about your tech career path? Need guidance on choosing a career? Reach out to the SkillTa team. We respond within 24-48 hours.
 - [Compare Tech Careers 2027 — Salary, Skills & Demand](https://www.skillta.tech/compare.md): Side-by-side comparison of 50+ tech careers. Compare salary, difficulty, skills & demand. Frontend vs Backend, AI vs DevOps & more.
@@ -20,21 +31,24 @@ Keep in sync with /robots.txt and /ai.txt.
 - [AI Resume Reviewer](https://www.skillta.tech/resume-reviewer.md): Review a resume for ATS compatibility, keyword gaps and improvement suggestions.
 - [Resume Version Control — Track ATS Score Evolution | SkillTa](https://www.skillta.tech/resume-version-control.md): GitHub-style commit timeline for your resume. Track ATS score evolution, file history, and role-specific versions with secure cloud storage.
 - [Skill Gap Analyzer](https://www.skillta.tech/skill-gap-analyzer.md): Compare current skills with a target tech role and identify a learning plan.
+- [SkillTa Research — Public Career Catalog Data](https://www.skillta.tech/research.md): Explore SkillTa's authored career catalog statistics, with calculated counts, editorial-label breakdowns and transparent methodology.
+- [Tech Career Statistics 2026: 60 Analyzed](https://www.skillta.tech/research/tech-careers.md): SkillTa's 60-career catalog: 58.3% labeled Hard/Very Hard, 290 phases and 815 project entries. Editorial data, not a labor-market survey.
+- [Tech Career Catalog FAQ — SkillTa](https://www.skillta.tech/faq.md): Answers about SkillTa's career counts, editorial labels, learning resources, public data sources and research citations.
 
 ## Career roadmaps
 
-- [Frontend Developer Roadmap](https://www.skillta.tech/roadmaps/frontend-developer.md): Craft beautiful, interactive user experiences
-- [Backend Developer Roadmap](https://www.skillta.tech/roadmaps/backend-developer.md): Build the engines that power applications
-- [Data Scientist Roadmap](https://www.skillta.tech/roadmaps/data-scientist.md): Turn data into actionable intelligence
-- [Cybersecurity Specialist Roadmap](https://www.skillta.tech/roadmaps/cybersecurity-specialist.md): Protect systems and hunt vulnerabilities
-- [UI/UX Designer Roadmap](https://www.skillta.tech/roadmaps/uiux-designer.md): Design experiences people love to use
-- [DevOps Engineer Roadmap](https://www.skillta.tech/roadmaps/devops-engineer.md): Bridge development and operations seamlessly
-- [QA Automation Engineer Roadmap](https://www.skillta.tech/roadmaps/qa-automation.md): Ensure software quality through intelligent testing
-- [Mobile App Developer Roadmap](https://www.skillta.tech/roadmaps/mobile-developer.md): Build apps that live in everyone's pocket
-- [Full-Stack Developer Roadmap](https://www.skillta.tech/roadmaps/fullstack-developer.md): Master both frontend and backend development
-- [Cloud Architect Roadmap](https://www.skillta.tech/roadmaps/cloud-architect.md): Design and manage scalable cloud infrastructure
-- [AI/ML Engineer Roadmap](https://www.skillta.tech/roadmaps/ai-ml-engineer.md): Build intelligent systems that learn and adapt
-- [Blockchain Developer Roadmap](https://www.skillta.tech/roadmaps/blockchain-developer.md): Build decentralized applications and smart contracts
+- [Frontend Developer Roadmap](https://www.skillta.tech/roadmaps/frontend-developer.md): Frontend Developer roadmap: 5 phases, 15 topics, 15 project entries and 15 resource entries. Difficulty: Moderate. Timeline: 6-12 months to job-ready.
+- [Backend Developer Roadmap](https://www.skillta.tech/roadmaps/backend-developer.md): Backend Developer roadmap: 5 phases, 15 topics, 15 project entries and 15 resource entries. Difficulty: Hard. Timeline: 8-14 months to job-ready.
+- [Data Scientist Roadmap](https://www.skillta.tech/roadmaps/data-scientist.md): Data Scientist roadmap: 5 phases, 15 topics, 15 project entries and 15 resource entries. Difficulty: Very Hard. Timeline: 12-18 months to job-ready.
+- [Cybersecurity Specialist Roadmap](https://www.skillta.tech/roadmaps/cybersecurity-specialist.md): Cybersecurity Specialist roadmap: 5 phases, 15 topics, 15 project entries and 15 resource entries. Difficulty: Hard. Timeline: 10-16 months to job-ready.
+- [UI/UX Designer Roadmap](https://www.skillta.tech/roadmaps/uiux-designer.md): UI/UX Designer roadmap: 5 phases, 15 topics, 15 project entries and 15 resource entries. Difficulty: Moderate. Timeline: 6-10 months to job-ready.
+- [DevOps Engineer Roadmap](https://www.skillta.tech/roadmaps/devops-engineer.md): DevOps Engineer roadmap: 5 phases, 15 topics, 15 project entries and 15 resource entries. Difficulty: Hard. Timeline: 10-14 months to job-ready.
+- [QA Automation Engineer Roadmap](https://www.skillta.tech/roadmaps/qa-automation.md): QA Automation Engineer roadmap: 5 phases, 15 topics, 15 project entries and 15 resource entries. Difficulty: Moderate. Timeline: 6-10 months to job-ready.
+- [Mobile App Developer Roadmap](https://www.skillta.tech/roadmaps/mobile-developer.md): Mobile App Developer roadmap: 5 phases, 15 topics, 15 project entries and 15 resource entries. Difficulty: Moderate. Timeline: 8-12 months to job-ready.
+- [Full-Stack Developer Roadmap](https://www.skillta.tech/roadmaps/fullstack-developer.md): Full-Stack Developer roadmap: 5 phases, 15 topics, 15 project entries and 15 resource entries. Difficulty: Hard. Timeline: 12-18 months to job-ready.
+- [Cloud Architect Roadmap](https://www.skillta.tech/roadmaps/cloud-architect.md): Cloud Architect roadmap: 5 phases, 15 topics, 15 project entries and 15 resource entries. Difficulty: Very Hard. Timeline: 14-20 months to job-ready.
+- [AI/ML Engineer Roadmap](https://www.skillta.tech/roadmaps/ai-ml-engineer.md): AI/ML Engineer roadmap: 5 phases, 15 topics, 15 project entries and 15 resource entries. Difficulty: Very Hard. Timeline: 14-20 months to job-ready.
+- [Blockchain Developer Roadmap](https://www.skillta.tech/roadmaps/blockchain-developer.md): Blockchain Developer roadmap: 5 phases, 15 topics, 15 project entries and 15 resource entries. Difficulty: Hard. Timeline: 10-16 months to job-ready.
 
 ## Recent articles
 

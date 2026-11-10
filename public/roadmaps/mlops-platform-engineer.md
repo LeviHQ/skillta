@@ -1,10 +1,25 @@
 # AI Platform / MLOps Engineer Roadmap
 
-> Build the infrastructure that trains, deploys and monitors AI models at scale
+> AI Platform / MLOps Engineer roadmap: 4 phases, 12 topics, 5 project entries and 9 resource entries. Difficulty: Hard. Timeline: 9-15 months to job-ready.
 
 Canonical: https://www.skillta.tech/roadmaps/mlops-platform-engineer
+Last updated: 2026-10-24
 
 AI Platform engineers own the pipes that make ML/GenAI usable in production — GPUs, orchestration, model registries, feature stores, inference platforms, evals. High leverage, high demand.
+
+## At a Glance
+
+| Metric | Count |
+| --- | --- |
+| phases | 4 |
+| topics | 12 |
+| projects | 5 |
+| resources | 9 |
+| skills | 8 |
+
+Counts are entries in this authored roadmap, not unique projects or providers.
+
+[Career catalog research](https://www.skillta.tech/research/tech-careers)
 
 ## Key facts
 
