@@ -32,7 +32,7 @@ export default function AdsterraResponsiveBanner({ className = "" }: { className
     const host = hostRef.current;
     if (!adsAllowed || !host) return;
 
-    // Container reset taaki duplicates na banein
+    // Reset container to avoid duplicate ads on re-render
     host.innerHTML = "";
 
     const configScript = document.createElement("script");
@@ -55,20 +55,19 @@ export default function AdsterraResponsiveBanner({ className = "" }: { className
 
   if (!adsAllowed) return null;
 
-    return (
+  return (
     <div
       className={`w-full flex justify-center my-7 md:my-8 overflow-hidden ${className}`}
       aria-label="Advertisement"
     >
-      <iframe
-        key={cfg.key}
-        title="Sponsored banner"
-        width={cfg.width}
-        height={cfg.height}
-        className="max-w-full border-0 shrink-0"
-        sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"
-        referrerPolicy="strict-origin-when-cross-origin"
-        srcDoc={`<!doctype html><html><head><style>html,body{margin:0;padding:0;overflow:hidden}</style></head><body><script>var atOptions={key:'${cfg.key}',format:'iframe',height:${cfg.height},width:${cfg.width},params:{}};</script><script async data-cfasync="false" src="https://www.highperformanceformat.com/${cfg.key}/invoke.js"></script></body></html>`}
+      <div
+        ref={hostRef}
+        style={{
+          width: `${cfg.width}px`,
+          height: `${cfg.height}px`,
+          maxWidth: "100%",
+        }}
+        className="flex justify-center items-center overflow-hidden shrink-0"
       />
     </div>
   );
