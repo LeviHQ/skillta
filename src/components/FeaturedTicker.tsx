@@ -89,6 +89,8 @@ export function FeaturedTicker() {
               <img
                 src={badge.imgSrc}
                 alt={badge.alt}
+                width="160"
+                height="40"
                 className="h-10 sm:h-11 w-auto max-w-[220px] object-contain drop-shadow-xs"
                 loading="lazy"
               />

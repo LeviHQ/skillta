@@ -14,7 +14,7 @@ export default function AdsterraNativeBanner({ className = "" }: { className?: s
   const { adsAllowed } = usePlan();
   const hostRef = useRef<HTMLDivElement>(null);
 
-  useLayoutEffect(() => {
+    useLayoutEffect(() => {
     const host = hostRef.current;
     if (!adsAllowed || !host) return;
 
@@ -28,7 +28,21 @@ export default function AdsterraNativeBanner({ className = "" }: { className?: s
     script.setAttribute("data-cfasync", "false");
     host.appendChild(script);
 
+    // Safeguard third-party placeholder anchors from triggering crawl/accessibility penalties
+    const observer = new MutationObserver(() => {
+      host.querySelectorAll("a").forEach((a) => {
+        if (!a.getAttribute("aria-label")) {
+          a.setAttribute("aria-label", "Sponsored link");
+        }
+        if (a.getAttribute("href") === "//") {
+          a.setAttribute("href", "#sponsored");
+        }
+      });
+    });
+    observer.observe(host, { childList: true, subtree: true });
+
     return () => {
+      observer.disconnect();
       host.innerHTML = "";
     };
   }, [adsAllowed]);
