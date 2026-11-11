@@ -4,6 +4,7 @@
 
 - AI-readable exports use an enumerated public Markdown registry and shared authored content at build time; never fetch user histories or publish personalized outputs. Static hosting serves suffix alternates; request-time negotiation requires a separately supported edge host.
 - Generate public Markdown before production builds and prerender research from shared pure content helpers, so published files and crawler snapshots stay consistent with the visible report.
+- Include both source and script test files in the default test suite, so publication checks cannot silently be skipped.
 
 - External learning/source references use a shared official-destination registry and text-only Markdown transformation; existing links and code remain intact to avoid guessing specific report citations.
 
