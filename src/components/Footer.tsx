@@ -202,19 +202,19 @@ export default function Footer() {
               />
             </a>
 
-            {/* ScrollLaunch */}
+                        {/* ScrollLaunch */}
             <a
               href="https://www.scrolllaunch.com/products/skillta?ref=badge"
               target="_blank"
-              rel="noopener noreferrer"
+              rel="noopener"
               className="inline-flex items-center justify-center transition-opacity hover:opacity-100 opacity-90"
             >
               <img
-                src="https://www.scrolllaunch.com/api/badge/skillta"
-                alt="Featured on ScrollLaunch"
-                width="160"
-                height="40"
-                className="h-9 sm:h-10 w-auto object-contain"
+                src="https://www.scrolllaunch.com/api/badge/skillta?variant=featured&theme=light"
+                alt="SkillTa - Featured on ScrollLaunch"
+                width="220"
+                height="48"
+                className="h-10 sm:h-11 w-auto object-contain"
                 loading="lazy"
               />
             </a>

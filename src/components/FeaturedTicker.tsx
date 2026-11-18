@@ -24,8 +24,8 @@ const BADGES: DirectoryBadge[] = [
   {
     name: "ScrollLaunch",
     href: "https://www.scrolllaunch.com/products/skillta?ref=badge",
-    imgSrc: "https://www.scrolllaunch.com/api/badge/skillta",
-    alt: "Featured on ScrollLaunch",
+    imgSrc: "https://www.scrolllaunch.com/api/badge/skillta?variant=featured&theme=light",
+    alt: "SkillTa - Featured on ScrollLaunch",
   },
   {
     name: "CodeHype",
