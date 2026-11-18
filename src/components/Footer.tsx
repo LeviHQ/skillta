@@ -157,29 +157,135 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Security & Trust Badges Section */}
+        {/* Featured & Recognized Badges Section */}
         <div className="border-t border-border mt-12 pt-8 text-center">
           <h4 className="text-xs uppercase tracking-widest font-semibold text-foreground mb-1.5">
-            Security & Trust Badges
+            Featured & Recognized On
           </h4>
-          <p className="text-xs text-muted-foreground max-w-md mx-auto mb-6">
-            Independently verified and monitored for secure career guidance and data privacy.
+          <p className="text-xs text-muted-foreground max-w-lg mx-auto mb-6">
+            Independently verified and listed across premier developer platforms and product launch directories.
           </p>
 
           {/* Badges Container */}
-          <div className="flex flex-wrap items-center justify-center gap-6 md:gap-8">
-            {/* FlawPilot Badge */}
-            {/*}
-            <img
-              src="https://badge.flawpilot.com/scan?id=b2412173-b0e4-4ca9-ae08-671d695479a1"
-              alt="FlawPilot Score: 88/100, Trusted"
-              className="h-12 md:h-14 w-auto object-contain"
-              loading="lazy"
-            />
-*/}
+          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 max-w-5xl mx-auto">
+            {/* Product Hunt */}
+            <a
+              href="https://www.producthunt.com/products/skillta?utm_source=badge-follow&utm_medium=badge&utm_source=badge-skillta"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center transition-opacity hover:opacity-100 opacity-90"
+            >
+              <img
+                src="https://api.producthunt.com/widgets/embed-image/v1/follow.svg?product_id=1242760&theme=light"
+                alt="SkillTa on Product Hunt"
+                width="160"
+                height="40"
+                className="h-9 sm:h-10 w-auto object-contain"
+                loading="lazy"
+              />
+            </a>
 
-            {/* Fazier Badge */}
-            <a href="https://fazier.com/launches/skillta" target="_blank"><img src="https://fazier.com/api/v1/public/badges/embed_image.svg?launch_id=14362&badge_type=featured&variant=3&theme=neutral" width="270" alt="Fazier badge" /></a>
+            {/* Fazier */}
+            <a
+              href="https://fazier.com/launches/www.skillta.tech"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center transition-opacity hover:opacity-100 opacity-90"
+            >
+              <img
+                src="https://fazier.com/api/v1//public/badges/launch_badges.svg?badge_type=featured&theme=light"
+                alt="Featured on Fazier"
+                width="160"
+                height="40"
+                className="h-9 sm:h-10 w-auto object-contain"
+                loading="lazy"
+              />
+            </a>
+
+            {/* ScrollLaunch */}
+            <a
+              href="https://www.scrolllaunch.com/products/skillta?ref=badge"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center transition-opacity hover:opacity-100 opacity-90"
+            >
+              <img
+                src="https://www.scrolllaunch.com/api/badge/skillta"
+                alt="Featured on ScrollLaunch"
+                width="160"
+                height="40"
+                className="h-9 sm:h-10 w-auto object-contain"
+                loading="lazy"
+              />
+            </a>
+
+            {/* CodeHype */}
+            <a
+              href="https://codehype.ai/product/skillta?utm_source=codehype_badge"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center transition-opacity hover:opacity-100 opacity-90"
+            >
+              <img
+                src="https://codehype.ai/badges/skillta.svg?variant=find-us&v=20"
+                alt="Featured on CodeHype"
+                width="160"
+                height="40"
+                className="h-9 sm:h-10 w-auto object-contain"
+                loading="lazy"
+              />
+            </a>
+
+            {/* LaunchBuff */}
+            <a
+              href="https://launchbuff.com/products/skillta-dz3ysa"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center transition-opacity hover:opacity-100 opacity-90"
+            >
+              <img
+                src="https://launchbuff.com/badge-featured-light.svg"
+                alt="Featured on LaunchBuff"
+                width="160"
+                height="40"
+                className="h-9 sm:h-10 w-auto object-contain"
+                loading="lazy"
+              />
+            </a>
+
+            {/* LaunchNest */}
+            <a
+              href="https://launchnest.io/p/skillta"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center transition-opacity hover:opacity-100 opacity-90"
+            >
+              <img
+                src="https://launchnest.io/badge/skillta.svg?variant=featured&theme=light"
+                alt="Featured on LaunchNest"
+                width="160"
+                height="40"
+                className="h-9 sm:h-10 w-auto object-contain"
+                loading="lazy"
+              />
+            </a>
+
+            {/* Launchpadly */}
+            <a
+              href="https://launchpadly.co/startup/skillta?ref=badge"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center transition-opacity hover:opacity-100 opacity-90"
+            >
+              <img
+                src="https://launchpadly.co/embed/badges/startup/skillta.svg?variant=light"
+                alt="Featured on Launchpadly"
+                width="160"
+                height="40"
+                className="h-9 sm:h-10 w-auto object-contain"
+                loading="lazy"
+              />
+            </a>
           </div>
         </div>
 
