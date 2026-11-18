@@ -144,7 +144,33 @@ const siteNav = `<nav aria-label="Primary"><ul>
 ${["/", "/quiz", "/roadmaps", "/compare", "/blog", "/research", "/faq", "/salary-predictor", "/resume-reviewer", "/skill-gap-analyzer", "/about", "/contact"]
   .map((p) => `<li>${link(p, p === "/" ? "Home" : p.replace(/^\//, "").replace(/-/g, " "))}</li>`)
   .join("\n")}
-</ul></nav>`;
+</ul></nav>
+<section aria-label="Featured Badges" style="margin-top: 2rem;">
+  <p>Featured on:</p>
+  <p>
+    <a href="https://www.scrolllaunch.com/products/skillta?ref=badge" target="_blank" rel="noopener">
+      <img src="https://www.scrolllaunch.com/api/badge/skillta?variant=featured&theme=light" alt="SkillTa - Featured on ScrollLaunch" width="220" height="48" />
+    </a>
+    <a href="https://www.producthunt.com/products/skillta?utm_source=badge-follow&utm_medium=badge&utm_source=badge-skillta" target="_blank" rel="noopener noreferrer">
+      <img src="https://api.producthunt.com/widgets/embed-image/v1/follow.svg?product_id=1242760&theme=light" alt="SkillTa on Product Hunt" width="160" height="40" />
+    </a>
+    <a href="https://fazier.com/launches/www.skillta.tech" target="_blank" rel="noopener noreferrer">
+      <img src="https://fazier.com/api/v1//public/badges/launch_badges.svg?badge_type=featured&theme=light" alt="Featured on Fazier" width="160" height="40" />
+    </a>
+    <a href="https://codehype.ai/product/skillta?utm_source=codehype_badge" target="_blank" rel="noopener noreferrer">
+      <img src="https://codehype.ai/badges/skillta.svg?variant=find-us&v=20" alt="Featured on CodeHype" width="160" height="40" />
+    </a>
+    <a href="https://launchbuff.com/products/skillta-dz3ysa" target="_blank" rel="noopener noreferrer">
+      <img src="https://launchbuff.com/badge-featured-light.svg" alt="Featured on LaunchBuff" width="160" height="40" />
+    </a>
+    <a href="https://launchnest.io/p/skillta" target="_blank" rel="noopener noreferrer">
+      <img src="https://launchnest.io/badge/skillta.svg?variant=featured&theme=light" alt="Featured on LaunchNest" width="160" height="40" />
+    </a>
+    <a href="https://launchpadly.co/startup/skillta?ref=badge" target="_blank" rel="noopener noreferrer">
+      <img src="https://launchpadly.co/embed/badges/startup/skillta.svg?variant=light" alt="Featured on Launchpadly" width="160" height="40" />
+    </a>
+  </p>
+</section>`;
 
 /* ----------------------------------------------------------------- routes */
 
