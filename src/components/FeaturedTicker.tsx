@@ -52,10 +52,10 @@ const BADGES: DirectoryBadge[] = [
     alt: "Featured on Launchpadly",
   },
   {
-    name: "Powered by Startup Fast",
-    href: "https://startupfa.st",
+    name: "Startup Fast",
+    href: "https://www.startupfa.st/projects/skillta",
     imgSrc: "https://startupfa.st/images/badges/powered-by-light.svg",
-    alt: "Powered by Startup Fast",
+    alt: "Featured on Startup Fast",
   },
 ];
 

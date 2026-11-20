@@ -169,8 +169,8 @@ ${["/", "/quiz", "/roadmaps", "/compare", "/blog", "/research", "/faq", "/salary
     <a href="https://launchpadly.co/startup/skillta?ref=badge" target="_blank" rel="noopener noreferrer">
       <img src="https://launchpadly.co/embed/badges/startup/skillta.svg?variant=light" alt="Featured on Launchpadly" width="160" height="40" />
     </a>
-    <a href="https://startupfa.st" target="_blank" rel="noopener noreferrer">
-      <img  src="https://startupfa.st/images/badges/powered-by-light.svg"  alt="Powered by Startup Fast"  width="160" height="40" />
+    <a href="https://www.startupfa.st/projects/skillta" target="_blank" rel="noopener noreferrer">
+      <img  src="https://startupfa.st/images/badges/powered-by-light.svg"  alt="Featured on Startup Fast"  width="160" height="40" />
     </a>
   </p>
 </section>`;
