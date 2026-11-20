@@ -184,6 +184,9 @@ ${["/", "/quiz", "/roadmaps", "/compare", "/blog", "/research", "/faq", "/salary
     <a href="https://startupfa.me/s/skillta?utm_source=www.skillta.tech" target="_blank" rel="noopener noreferrer">
       <img src="https://startupfa.me/badges/featured-badge.webp" alt="SkillTa - Featured on Startup Fame" width="160" height="40" />
     </a>
+    <a href="https://ufind.best/products/skillta" target="_blank" rel="noopener">
+      <img src="https://ufind.best/badges/ufind-best-badge-light.svg" alt="Featured on ufind.best" width="160" height="40" />
+    </a>
   </p>
 </section>`;
 

@@ -83,6 +83,12 @@ const BADGES: DirectoryBadge[] = [
     imgSrc: "https://startupfa.me/badges/featured-badge.webp",
     alt: "SkillTa - Featured on Startup Fame",
   },
+  {
+    name: "ufind.best",
+    href: "https://ufind.best/products/skillta",
+    imgSrc: "https://ufind.best/badges/ufind-best-badge-light.svg",
+    alt: "Featured on ufind.best",
+  },
 ];
 
 export function FeaturedTicker() {

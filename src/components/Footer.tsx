@@ -371,6 +371,23 @@ export default function Footer() {
                 loading="lazy"
               />
             </a>
+
+            {/* ufind.best */}
+            <a
+              href="https://ufind.best/products/skillta"
+              target="_blank"
+              rel="noopener"
+              className="inline-flex items-center justify-center transition-opacity hover:opacity-100 opacity-90"
+            >
+              <img
+                src="https://ufind.best/badges/ufind-best-badge-light.svg"
+                alt="Featured on ufind.best"
+                width="160"
+                height="40"
+                className="h-10 sm:h-11 w-auto object-contain"
+                loading="lazy"
+              />
+            </a>
           </div>
         </div>
 
