@@ -6,6 +6,7 @@ interface DirectoryBadge {
   title?: string;
   width?: number;
   height?: number;
+  className?: string;
 }
 
 // Yahan bas apne badges add/update karte jao
@@ -63,6 +64,12 @@ const BADGES: DirectoryBadge[] = [
     href: "https://twelve.tools",
     imgSrc: "https://twelve.tools/badge0-white.svg",
     alt: "Featured on Twelve Tools",
+  },
+  {
+    name: "Findly",
+    href: "https://findly.tools/skillta?utm_source=skillta",
+    imgSrc: "https://findly.tools/badges/findly-tools-badge-light.svg",
+    alt: "Featured on Findly.tools",
   },
 ];
 

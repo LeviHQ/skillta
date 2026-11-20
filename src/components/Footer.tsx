@@ -320,6 +320,23 @@ export default function Footer() {
                 loading="lazy"
               />
             </a>
+
+            {/* Findly */}
+            <a
+              href="https://findly.tools/skillta?utm_source=skillta"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center transition-opacity hover:opacity-100 opacity-90"
+            >
+              <img
+                src="https://findly.tools/badges/findly-tools-badge-light.svg"
+                alt="Featured on Findly.tools"
+                width="160"
+                height="40"
+                className="h-9 sm:h-10 w-auto object-contain"
+                loading="lazy"
+              />
+            </a>
           </div>
         </div>
 

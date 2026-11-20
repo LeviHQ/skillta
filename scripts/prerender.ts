@@ -175,6 +175,9 @@ ${["/", "/quiz", "/roadmaps", "/compare", "/blog", "/research", "/faq", "/salary
     <a href="https://twelve.tools" target="_blank" rel="noopener noreferrer">
       <img src="https://twelve.tools/badge0-white.svg" alt="Featured on Twelve Tools" width="160" height="40" />
     </a>
+    <a href="https://findly.tools/skillta?utm_source=skillta" target="_blank" rel="noopener noreferrer">
+      <img src="https://findly.tools/badges/findly-tools-badge-light.svg" alt="Featured on Findly.tools" width="160" height="55" />
+    </a>
   </p>
 </section>`;
 
