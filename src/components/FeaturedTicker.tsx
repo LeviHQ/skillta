@@ -57,9 +57,12 @@ const BADGES: DirectoryBadge[] = [
     href: "https://startupfa.st/projects/skillta",
     imgSrc: "https://startupfa.st/badge-light.png",
     alt: "Featured on Startup Fast",
-    title: "Featured on Startup Fast",
-    width: 160,
-    height: 40,
+  },
+  {
+    name: "Twelve Tools",
+    href: "https://twelve.tools",
+    imgSrc: "https://twelve.tools/badge0-white.svg",
+    alt: "Featured on Twelve Tools",
   },
 ];
 

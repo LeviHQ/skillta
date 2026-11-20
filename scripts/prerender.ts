@@ -169,8 +169,11 @@ ${["/", "/quiz", "/roadmaps", "/compare", "/blog", "/research", "/faq", "/salary
     <a href="https://launchpadly.co/startup/skillta?ref=badge" target="_blank" rel="noopener noreferrer">
       <img src="https://launchpadly.co/embed/badges/startup/skillta.svg?variant=light" alt="Featured on Launchpadly" width="160" height="40" />
     </a>
-    <a href="https://startupfa.st/projects/skillta" target="_blank" title="Featured on Startup Fast">
+    <a href="https://startupfa.st/projects/skillta" target="_blank" rel="noopener noreferrer">
       <img src="https://startupfa.st/badge-light.png" alt="Featured on Startup Fast" width="160" height="40" />
+    </a>
+    <a href="https://twelve.tools" target="_blank" rel="noopener noreferrer">
+      <img src="https://twelve.tools/badge0-white.svg" alt="Featured on Twelve Tools" width="160" height="40" />
     </a>
   </p>
 </section>`;

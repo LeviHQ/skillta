@@ -292,12 +292,28 @@ export default function Footer() {
               href="https://startupfa.st/projects/skillta" 
               target="_blank"
               rel="noopener noreferrer"
-              title="Featured on Startup Fast"
               className="inline-flex items-center justify-center transition-opacity hover:opacity-100 opacity-90"
             >
               <img
                 src="https://startupfa.st/badge-light.png"
                 alt="Featured on Startup Fast"
+                width="160"
+                height="40"
+                className="h-9 sm:h-10 w-auto object-contain"
+                loading="lazy"
+              />
+            </a>
+
+            {/* Twelve Tools */}
+            <a
+              href="https://twelve.tools"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center transition-opacity hover:opacity-100 opacity-90"
+            >
+              <img
+                src="https://twelve.tools/badge0-white.svg"
+                alt="Featured on Twelve Tools"
                 width="160"
                 height="40"
                 className="h-9 sm:h-10 w-auto object-contain"
