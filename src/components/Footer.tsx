@@ -354,6 +354,23 @@ export default function Footer() {
                 loading="lazy"
               />
             </a>
+
+            {/* Startup Fame */}
+            <a
+              href="https://startupfa.me/s/skillta?utm_source=www.skillta.tech"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center transition-opacity hover:opacity-100 opacity-90"
+            >
+              <img
+                src="https://startupfa.me/badges/featured-badge.webp"
+                alt="SkillTa - Featured on Startup Fame"
+                width="160"
+                height="40"
+                className="h-10 sm:h-11 w-auto object-contain"
+                loading="lazy"
+              />
+            </a>
           </div>
         </div>
 

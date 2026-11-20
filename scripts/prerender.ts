@@ -181,6 +181,9 @@ ${["/", "/quiz", "/roadmaps", "/compare", "/blog", "/research", "/faq", "/salary
     <a href="https://dofollow.tools" target="_blank" rel="noopener noreferrer">
       <img src="https://dofollow.tools/badge/badge_light.svg" alt="Featured on Dofollow.Tools" width="160" height="40" />
     </a>
+    <a href="https://startupfa.me/s/skillta?utm_source=www.skillta.tech" target="_blank" rel="noopener noreferrer">
+      <img src="https://startupfa.me/badges/featured-badge.webp" alt="SkillTa - Featured on Startup Fame" width="160" height="40" />
+    </a>
   </p>
 </section>`;
 

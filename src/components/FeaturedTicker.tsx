@@ -77,6 +77,12 @@ const BADGES: DirectoryBadge[] = [
     imgSrc: "https://dofollow.tools/badge/badge_light.svg",
     alt: "Featured on Dofollow.Tools",
   },
+  {
+    name: "Startup Fame",
+    href: "https://startupfa.me/s/skillta?utm_source=www.skillta.tech",
+    imgSrc: "https://startupfa.me/badges/featured-badge.webp",
+    alt: "SkillTa - Featured on Startup Fame",
+  },
 ];
 
 export function FeaturedTicker() {
