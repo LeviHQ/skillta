@@ -289,13 +289,14 @@ export default function Footer() {
 
             {/* Startup Fast */}
             <a 
-              href="https://www.startupfa.st/projects/skillta" 
+              href="https://startupfa.st/projects/skillta" 
               target="_blank"
               rel="noopener noreferrer"
+              title="Featured on Startup Fast"
               className="inline-flex items-center justify-center transition-opacity hover:opacity-100 opacity-90"
             >
               <img
-                src="https://startupfa.st/images/badges/powered-by-light.svg"
+                src="https://startupfa.st/badge-light.png"
                 alt="Featured on Startup Fast"
                 width="160"
                 height="40"

@@ -3,6 +3,7 @@ interface DirectoryBadge {
   href: string;
   imgSrc: string;
   alt: string;
+  title?: string;
   width?: number;
   height?: number;
 }
@@ -53,9 +54,12 @@ const BADGES: DirectoryBadge[] = [
   },
   {
     name: "Startup Fast",
-    href: "https://www.startupfa.st/projects/skillta",
-    imgSrc: "https://startupfa.st/images/badges/powered-by-light.svg",
+    href: "https://startupfa.st/projects/skillta",
+    imgSrc: "https://startupfa.st/badge-light.png",
     alt: "Featured on Startup Fast",
+    title: "Featured on Startup Fast",
+    width: 160,
+    height: 40,
   },
 ];
 
@@ -90,13 +94,14 @@ export function FeaturedTicker() {
               href={badge.href}
               target="_blank"
               rel="noopener noreferrer"
+              title={badge.title}
               className="inline-flex shrink-0 items-center justify-center transition-all duration-200 hover:scale-105 hover:opacity-100 opacity-90"
             >
               <img
                 src={badge.imgSrc}
                 alt={badge.alt}
-                width="160"
-                height="40"
+                width={badge.width ?? 160}
+                height={badge.height ?? 40}
                 className="h-10 sm:h-11 w-auto max-w-[220px] object-contain drop-shadow-xs"
                 loading="lazy"
               />
