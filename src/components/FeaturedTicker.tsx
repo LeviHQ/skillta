@@ -71,6 +71,12 @@ const BADGES: DirectoryBadge[] = [
     imgSrc: "https://findly.tools/badges/findly-tools-badge-light.svg",
     alt: "Featured on Findly.tools",
   },
+  {
+    name: "Dofollow.Tools",
+    href: "https://dofollow.tools",
+    imgSrc: "https://dofollow.tools/badge/badge_light.svg",
+    alt: "Featured on Dofollow.Tools",
+  },
 ];
 
 export function FeaturedTicker() {

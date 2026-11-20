@@ -178,6 +178,9 @@ ${["/", "/quiz", "/roadmaps", "/compare", "/blog", "/research", "/faq", "/salary
     <a href="https://findly.tools/skillta?utm_source=skillta" target="_blank" rel="noopener noreferrer">
       <img src="https://findly.tools/badges/findly-tools-badge-light.svg" alt="Featured on Findly.tools" width="160" height="55" />
     </a>
+    <a href="https://dofollow.tools" target="_blank" rel="noopener noreferrer">
+      <img src="https://dofollow.tools/badge/badge_light.svg" alt="Featured on Dofollow.Tools" width="160" height="40" />
+    </a>
   </p>
 </section>`;
 
