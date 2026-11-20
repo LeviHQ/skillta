@@ -187,6 +187,9 @@ ${["/", "/quiz", "/roadmaps", "/compare", "/blog", "/research", "/faq", "/salary
     <a href="https://ufind.best/products/skillta" target="_blank" rel="noopener">
       <img src="https://ufind.best/badges/ufind-best-badge-light.svg" alt="Featured on ufind.best" width="160" height="40" />
     </a>
+    <a href="https://verifieddr.com/website/skillta-tech" target="_blank" rel="noopener noreferrer">
+      <img src="https://verifieddr.com/badge/skillta-tech.svg?metric=truedr" alt="Verified DR - Verified Domain Rating for skillta.tech" width="160" height="40" />
+    </a>
   </p>
 </section>`;
 

@@ -89,6 +89,12 @@ const BADGES: DirectoryBadge[] = [
     imgSrc: "https://ufind.best/badges/ufind-best-badge-light.svg",
     alt: "Featured on ufind.best",
   },
+  {
+    name: "Verified DR",
+    href: "https://verifieddr.com/website/skillta-tech",
+    imgSrc: "https://verifieddr.com/badge/skillta-tech.svg?metric=truedr",
+    alt: "Verified DR - Verified Domain Rating for skillta.tech",
+  },
 ];
 
 export function FeaturedTicker() {
