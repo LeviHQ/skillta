@@ -51,6 +51,12 @@ const BADGES: DirectoryBadge[] = [
     imgSrc: "https://launchpadly.co/embed/badges/startup/skillta.svg?variant=light",
     alt: "Featured on Launchpadly",
   },
+  {
+    name: "Powered by Startup Fast",
+    href: "https://startupfa.st",
+    imgSrc: "https://startupfa.st/images/badges/powered-by-light.svg",
+    alt: "Powered by Startup Fast",
+  },
 ];
 
 export function FeaturedTicker() {

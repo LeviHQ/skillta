@@ -286,6 +286,23 @@ export default function Footer() {
                 loading="lazy"
               />
             </a>
+
+            {/* Startup Fast */}
+            <a 
+              href="https://startupfa.st" 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center transition-opacity hover:opacity-100 opacity-90"
+            >
+              <img
+                src="https://startupfa.st/images/badges/powered-by-light.svg"
+                alt="Powered by Startup Fast"
+                width="160"
+                height="40"
+                className="h-9 sm:h-10 w-auto object-contain"
+                loading="lazy"
+              />
+            </a>
           </div>
         </div>
 
