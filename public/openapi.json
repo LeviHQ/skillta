@@ -1,0 +1,145 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "SkillTa Public Career Intelligence API",
+    "version": "1.0.0",
+    "description": "Read-only machine endpoints providing structured tech career roadmaps, catalog statistics, and 2027 salary benchmarks. No authentication required for public endpoints.",
+    "contact": {
+      "name": "SkillTa Support",
+      "url": "https://www.skillta.tech/contact",
+      "email": "adarshmishra70931@gmail.com"
+    },
+    "license": {
+      "name": "CC BY-ND 4.0",
+      "url": "https://creativecommons.org/licenses/by-nd/4.0/"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://www.skillta.tech",
+      "description": "SkillTa Production Server"
+    }
+  ],
+  "paths": {
+    "/ai-snapshot.json": {
+      "get": {
+        "summary": "Platform Intelligence & Catalog Snapshot",
+        "description": "Returns verified counts of careers, learning phases, projects, and difficulty distributions.",
+        "operationId": "getAiSnapshot",
+        "responses": {
+          "200": {
+            "description": "Comprehensive numerical snapshot of the SkillTa catalog.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SnapshotResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/md/_catalog": {
+      "get": {
+        "summary": "Full Public Markdown Catalog Registry",
+        "description": "Returns an enumerated JSON array of all public career roadmaps, country guides, and research pages.",
+        "operationId": "getMarkdownCatalog",
+        "responses": {
+          "200": {
+            "description": "Array of public routes and markdown paths.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CatalogEntry"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/mcp.json": {
+      "get": {
+        "summary": "Model Context Protocol Server Manifest",
+        "description": "Returns MCP v1.0.0 server card declaration for AI agent tools and resources.",
+        "operationId": "getMcpCard",
+        "responses": {
+          "200": {
+            "description": "MCP server manifest JSON.",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/llms.txt": {
+      "get": {
+        "summary": "Concise LLM Career Knowledge Summary",
+        "description": "Returns concise plain-text knowledge document formatted per llms.txt standard.",
+        "operationId": "getLlmsSummary",
+        "responses": {
+          "200": {
+            "description": "Plain text LLM summary.",
+            "content": {
+              "text/plain": {}
+            }
+          }
+        }
+      }
+    },
+    "/auth.md": {
+      "get": {
+        "summary": "Public Crawling and Access Policy",
+        "description": "Returns markdown document detailing concurrency limits and permitted uses.",
+        "operationId": "getAuthPolicy",
+        "responses": {
+          "200": {
+            "description": "Markdown authentication and crawling policy.",
+            "content": {
+              "text/markdown": {}
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "SnapshotResponse": {
+        "type": "object",
+        "properties": {
+          "platform": { "type": "string" },
+          "url": { "type": "string" },
+          "version": { "type": "string" },
+          "last_updated": { "type": "string" },
+          "metrics": {
+            "type": "object",
+            "properties": {
+              "career_paths": { "type": "integer" },
+              "curriculum_phases": { "type": "integer" },
+              "topic_entries": { "type": "integer" },
+              "milestone_projects": { "type": "integer" },
+              "learning_resources": { "type": "integer" },
+              "supported_countries": { "type": "integer" },
+              "skill_gap_roles": { "type": "integer" }
+            }
+          }
+        }
+      },
+      "CatalogEntry": {
+        "type": "object",
+        "properties": {
+          "route": { "type": "string" },
+          "markdownPath": { "type": "string" },
+          "title": { "type": "string" },
+          "description": { "type": "string" }
+        }
+      }
+    }
+  }
+}

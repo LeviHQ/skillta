@@ -1,0 +1,85 @@
+{
+  "$schema": "https://modelcontextprotocol.io/schema/server.json",
+  "name": "skillta-career-intelligence",
+  "title": "SkillTa Public Career Intelligence Server",
+  "version": "1.0.0",
+  "description": "Public MCP server providing read-only access to 60 authored tech career roadmaps, 290 learning phases, catalog metrics, and localized 2027 tech salaries across 50 countries.",
+  "homepage": "https://www.skillta.tech",
+  "license": "CC-BY-ND-4.0",
+  "capabilities": {
+    "resources": {
+      "catalog_index": {
+        "uri": "https://www.skillta.tech/api/md/_catalog",
+        "name": "Public Markdown Catalog Manifest",
+        "description": "Full JSON catalog of 60+ public career roadmaps and country guides.",
+        "mimeType": "application/json"
+      },
+      "ai_snapshot": {
+        "uri": "https://www.skillta.tech/ai-snapshot.json",
+        "name": "Curriculum Statistics Snapshot",
+        "description": "Verified counts of careers, phases, projects, resources, and difficulty distribution.",
+        "mimeType": "application/json"
+      },
+      "research_findings": {
+        "uri": "https://www.skillta.tech/research/tech-careers.md",
+        "name": "Tech Career Catalog Research Analysis",
+        "description": "Authored findings analyzing 60 tech careers and 290 roadmap phases.",
+        "mimeType": "text/markdown"
+      },
+      "llms_full": {
+        "uri": "https://www.skillta.tech/llms-full.txt",
+        "name": "Full Plain-Text LLM Index",
+        "description": "Comprehensive plain-text knowledge dump for LLM ingest.",
+        "mimeType": "text/plain"
+      },
+      "methodology_faq": {
+        "uri": "https://www.skillta.tech/faq.md",
+        "name": "Catalog Methodology & FAQ",
+        "description": "Explanations of career counts, learning difficulty labels, and demand criteria.",
+        "mimeType": "text/markdown"
+      }
+    },
+    "tools": [
+      {
+        "name": "get_catalog_statistics",
+        "description": "Returns verified numerical metrics from the SkillTa career catalog (60 careers, 290 phases, 870 topics, 815 projects, 852 resources).",
+        "inputSchema": {
+          "type": "object",
+          "properties": {},
+          "additionalProperties": false
+        }
+      },
+      {
+        "name": "fetch_career_roadmap",
+        "description": "Fetches the full 4-5 phase learning roadmap for a specific tech career (e.g., frontend-developer, ai-ml-engineer, devops-engineer).",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "career_id": {
+              "type": "string",
+              "description": "The URL slug of the career path, such as frontend-developer or data-scientist."
+            }
+          },
+          "required": ["career_id"]
+        }
+      },
+      {
+        "name": "get_country_salary_benchmarks",
+        "description": "Returns localized 2027 tech salary bands and hiring hubs for one of the 50 supported countries.",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "country_slug": {
+              "type": "string",
+              "description": "ISO country slug, such as usa, india, united-kingdom, germany, or canada."
+            }
+          },
+          "required": ["country_slug"]
+        }
+      }
+    ]
+  },
+  "auth": {
+    "type": "none"
+  }
+}

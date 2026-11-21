@@ -1,0 +1,146 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "platform": "SkillTa",
+  "url": "https://www.skillta.tech",
+  "canonical": "https://www.skillta.tech/",
+  "version": "1.0.0",
+  "last_updated": "2026-11-21",
+  "dataset_year": 2027,
+  "description": "AI-powered tech career guidance platform providing 60 authored learning roadmaps, 290 curriculum phases, ATS resume reviewer, diagnostic quiz, and 2027 salary benchmarks across 50 countries.",
+  "metrics": {
+    "career_paths": 60,
+    "curriculum_phases": 290,
+    "topic_entries": 870,
+    "milestone_projects": 815,
+    "learning_resources": 852,
+    "supported_countries": 50,
+    "skill_gap_roles": 15
+  },
+  "catalog_distributions": {
+    "difficulty": {
+      "Moderate": 18,
+      "Hard": 19,
+      "Very Hard": 16,
+      "Easy": 7,
+      "pct_hard_or_very_hard": 58.3
+    },
+    "demand_labels": {
+      "Very High": 29,
+      "High": 23,
+      "Growing": 6,
+      "Moderate": 2,
+      "pct_high_or_very_high": 86.7
+    },
+    "entry_barriers": {
+      "Low": 19,
+      "Medium": 18,
+      "High": 23,
+      "pct_low_entry_barrier": 31.7
+    },
+    "competition_levels": {
+      "Medium": 27,
+      "High": 14,
+      "Low": 14,
+      "Very High": 5
+    }
+  },
+  "featured_career_paths": [
+    {
+      "id": "frontend-developer",
+      "title": "Frontend Developer",
+      "difficulty": "Moderate",
+      "demand": "Very High",
+      "entry_barrier": "Low",
+      "phases_count": 5,
+      "estimated_timeline": "6-12 months to job-ready",
+      "markdown_url": "https://www.skillta.tech/roadmaps/frontend-developer.md"
+    },
+    {
+      "id": "backend-developer",
+      "title": "Backend Developer",
+      "difficulty": "Hard",
+      "demand": "Very High",
+      "entry_barrier": "Medium",
+      "phases_count": 5,
+      "estimated_timeline": "8-14 months to job-ready",
+      "markdown_url": "https://www.skillta.tech/roadmaps/backend-developer.md"
+    },
+    {
+      "id": "data-scientist",
+      "title": "Data Scientist",
+      "difficulty": "Very Hard",
+      "demand": "Very High",
+      "entry_barrier": "High",
+      "phases_count": 5,
+      "estimated_timeline": "12-18 months to job-ready",
+      "markdown_url": "https://www.skillta.tech/roadmaps/data-scientist.md"
+    },
+    {
+      "id": "ai-ml-engineer",
+      "title": "AI / Machine Learning Engineer",
+      "difficulty": "Very Hard",
+      "demand": "Very High",
+      "entry_barrier": "High",
+      "phases_count": 5,
+      "estimated_timeline": "12-18 months to job-ready",
+      "markdown_url": "https://www.skillta.tech/roadmaps/ai-ml-engineer.md"
+    },
+    {
+      "id": "devops-engineer",
+      "title": "DevOps Engineer",
+      "difficulty": "Hard",
+      "demand": "Very High",
+      "entry_barrier": "Medium",
+      "phases_count": 5,
+      "estimated_timeline": "10-14 months to job-ready",
+      "markdown_url": "https://www.skillta.tech/roadmaps/devops-engineer.md"
+    },
+    {
+      "id": "cybersecurity-specialist",
+      "title": "Cybersecurity Specialist",
+      "difficulty": "Hard",
+      "demand": "Very High",
+      "entry_barrier": "High",
+      "phases_count": 5,
+      "estimated_timeline": "10-16 months to job-ready",
+      "markdown_url": "https://www.skillta.tech/roadmaps/cybersecurity-specialist.md"
+    },
+    {
+      "id": "fullstack-developer",
+      "title": "Fullstack Developer",
+      "difficulty": "Hard",
+      "demand": "Very High",
+      "entry_barrier": "Medium",
+      "phases_count": 5,
+      "estimated_timeline": "10-16 months to job-ready",
+      "markdown_url": "https://www.skillta.tech/roadmaps/fullstack-developer.md"
+    },
+    {
+      "id": "cloud-architect",
+      "title": "Cloud Architect",
+      "difficulty": "Very Hard",
+      "demand": "Very High",
+      "entry_barrier": "High",
+      "phases_count": 5,
+      "estimated_timeline": "14-20 months to job-ready",
+      "markdown_url": "https://www.skillta.tech/roadmaps/cloud-architect.md"
+    }
+  ],
+  "supported_countries_sample": [
+    "United States", "India", "United Kingdom", "Canada", "Germany",
+    "Australia", "Netherlands", "Singapore", "France", "Japan",
+    "Brazil", "Sweden", "Switzerland", "United Arab Emirates"
+  ],
+  "endpoints": {
+    "llms_summary": "https://www.skillta.tech/llms.txt",
+    "llms_full": "https://www.skillta.tech/llms-full.txt",
+    "ai_policy": "https://www.skillta.tech/ai.txt",
+    "markdown_catalog": "https://www.skillta.tech/api/md/_catalog",
+    "research_hub": "https://www.skillta.tech/research",
+    "research_markdown": "https://www.skillta.tech/research/tech-careers.md",
+    "methodology_faq": "https://www.skillta.tech/faq.md",
+    "mcp_card": "https://www.skillta.tech/mcp.json",
+    "openapi_spec": "https://www.skillta.tech/openapi.json",
+    "auth_policy": "https://www.skillta.tech/auth.md"
+  }
+}

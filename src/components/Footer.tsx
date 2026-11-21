@@ -445,6 +445,214 @@ export default function Footer() {
           </div>
         </div>
 
+        {/* AI Discovery & Machine Intelligence Bar */}
+        <div className="mt-12 pt-8 border-t border-border/60">
+          <div className="rounded-xl border border-border/60 bg-muted/20 p-5 md:p-6 backdrop-blur-sm">
+            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+              
+              {/* Ask AI About SkillTa */}
+              <div className="space-y-3">
+                <div className="flex items-center gap-2">
+                  <span className="inline-flex items-center justify-center px-1.5 py-0.5 rounded bg-primary/10 text-primary text-[11px] font-bold tracking-wide">
+                    AI
+                  </span>
+                  <span className="text-xs font-semibold uppercase tracking-wider text-foreground">
+                    Ask AI About SkillTa
+                  </span>
+                  <span className="text-[11px] text-muted-foreground hidden sm:inline">
+                    (1-Click Verified Queries)
+                  </span>
+                </div>
+                <div className="flex flex-wrap items-center gap-2">
+                  {/* ChatGPT */}
+                  <a
+                    href="https://chatgpt.com/?q=What+is+SkillTa+(https://www.skillta.tech)+and+how+does+it+help+with+tech+careers%3F"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-medium bg-background/80 hover:bg-background border border-border text-foreground hover:text-primary transition-all hover:border-primary/50 shadow-sm group"
+                  >
+                    <svg className="w-3.5 h-3.5 text-[#10A37F] flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M22.282 9.821a5.985 5.985 0 0 0-.516-4.91 6.046 6.046 0 0 0-6.51-2.9A6.065 6.065 0 0 0 4.981 4.18a5.985 5.985 0 0 0-3.998 2.9 6.046 6.046 0 0 0 .743 7.097 5.98 5.98 0 0 0 .51 4.911 6.051 6.051 0 0 0 6.515 2.9A5.985 5.985 0 0 0 13.26 24a6.056 6.056 0 0 0 5.772-4.206 5.99 5.99 0 0 0 3.997-2.9 6.056 6.056 0 0 0-.747-7.073zM13.26 22.43a4.476 4.476 0 0 1-2.876-1.04l.141-.081 4.779-2.758a.795.795 0 0 0 .392-.681v-6.737l2.02 1.168a.071.071 0 0 1 .038.052v5.583a4.504 4.504 0 0 1-4.494 4.494zM3.6 18.304a4.47 4.47 0 0 1-.535-3.014l.142.085 4.783 2.759a.771.771 0 0 0 .78 0l5.843-3.369v2.332a.08.08 0 0 1-.033.062L9.74 19.95a4.5 4.5 0 0 1-6.14-1.646zm-1.64-10.43a4.477 4.477 0 0 1 2.34-1.975v5.674a.793.793 0 0 0 .392.682l5.842 3.37-2.02 1.168a.076.076 0 0 1-.064.004L3.6 14.007a4.502 4.502 0 0 1-1.64-6.133zm16.505 4.088l-5.84-3.37 2.019-1.168a.077.077 0 0 1 .064-.004l4.85 2.799a4.504 4.504 0 0 1-1.093 1.743zm2.535-3.014a4.476 4.476 0 0 1 .535 3.014l-.142-.085-4.783-2.759a.771.771 0 0 0-.78 0l-5.843 3.369V9.544a.08.08 0 0 1 .033-.062l4.84-2.793a4.5 4.5 0 0 1 6.14 1.646zm-9.5-3.522l-2.02-1.168a.076.076 0 0 1-.038-.052V2.62a4.504 4.504 0 0 1 7.37 2.502l-4.779 2.76a.795.795 0 0 0-.392.68v.01l-.141-.146zm-1.88 4.296l2.84 1.639v3.279l-2.84 1.64-2.84-1.64V11.36z"/>
+                    </svg>
+                    <span>ChatGPT</span>
+                    <ArrowUpRight className="w-3 h-3 text-muted-foreground group-hover:text-primary transition-colors" />
+                  </a>
+
+                  {/* Claude */}
+                  <a
+                    href="https://claude.ai/new?q=What+is+SkillTa+(https://www.skillta.tech)+career+guidance+platform+and+its+2027+roadmaps%3F"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-medium bg-background/80 hover:bg-background border border-border text-foreground hover:text-primary transition-all hover:border-primary/50 shadow-sm group"
+                  >
+                    <svg className="w-3.5 h-3.5 text-[#D97706] flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 2.5c-.4 0-.8.3-.9.7l-1.6 5.5-5.5 1.6c-.4.1-.7.5-.7.9s.3.8.7.9l5.5 1.6 1.6 5.5c.1.4.5.7.9.7s.8-.3.9-.7l1.6-5.5 5.5-1.6c.4-.1.7-.5.7-.9s-.3-.8-.7-.9l-5.5-1.6-1.6-5.5c-.1-.4-.5-.7-.9-.7z" />
+                    </svg>
+                    <span>Claude</span>
+                    <ArrowUpRight className="w-3 h-3 text-muted-foreground group-hover:text-primary transition-colors" />
+                  </a>
+
+                  {/* Perplexity */}
+                  <a
+                    href="https://www.perplexity.ai/search?q=What+is+SkillTa+(https://www.skillta.tech)+career+guidance+platform%3F"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-medium bg-background/80 hover:bg-background border border-border text-foreground hover:text-primary transition-all hover:border-primary/50 shadow-sm group"
+                  >
+                    <svg className="w-3.5 h-3.5 text-[#00A3A6] flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M12 2v20M2 12h20M5 5l14 14M19 5L5 19" />
+                    </svg>
+                    <span>Perplexity</span>
+                    <ArrowUpRight className="w-3 h-3 text-muted-foreground group-hover:text-primary transition-colors" />
+                  </a>
+
+                  {/* Gemini */}
+                  <a
+                    href="https://gemini.google.com/app"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-medium bg-background/80 hover:bg-background border border-border text-foreground hover:text-primary transition-all hover:border-primary/50 shadow-sm group"
+                  >
+                    <svg className="w-3.5 h-3.5 text-[#4E80EE] flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 2C12 7.523 7.523 12 2 12c5.523 0 10 4.477 10 10 0-5.523 4.477-10 10-10-5.523 0-10-4.477-10-10z" />
+                    </svg>
+                    <span>Gemini</span>
+                    <ArrowUpRight className="w-3 h-3 text-muted-foreground group-hover:text-primary transition-colors" />
+                  </a>
+
+                  {/* Copilot */}
+                  <a
+                    href="https://copilot.microsoft.com/?q=What+is+SkillTa+(https://www.skillta.tech)+and+how+does+it+guide+tech+careers%3F"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-medium bg-background/80 hover:bg-background border border-border text-foreground hover:text-primary transition-all hover:border-primary/50 shadow-sm group"
+                  >
+                    <svg className="w-3.5 h-3.5 text-[#0078D4] flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M18.5 7.5a4.5 4.5 0 0 0-7.79-3.18l-5.2 5.2a4.5 4.5 0 0 0 6.36 6.36l1.41-1.41a1 1 0 1 0-1.41-1.41l-1.41 1.41a2.5 2.5 0 0 1-3.54-3.54l5.2-5.2a2.5 2.5 0 1 1 4.33 1.77v1a1 1 0 1 0 2 0v-1zM5.5 16.5a4.5 4.5 0 0 0 7.79 3.18l5.2-5.2a4.5 4.5 0 0 0-6.36-6.36l-1.41 1.41a1 1 0 1 0 1.41 1.41l1.41-1.41a2.5 2.5 0 0 1 3.54 3.54l-5.2 5.2a2.5 2.5 0 1 1-4.33-1.77v-1a1 1 0 1 0-2 0v1z"/>
+                    </svg>
+                    <span>Copilot</span>
+                    <ArrowUpRight className="w-3 h-3 text-muted-foreground group-hover:text-primary transition-colors" />
+                  </a>
+
+                  {/* Grok */}
+                  <a
+                    href="https://x.com/i/grok?text=What+is+SkillTa+(https://www.skillta.tech)+and+how+does+it+guide+software+developers%3F"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-medium bg-background/80 hover:bg-background border border-border text-foreground hover:text-primary transition-all hover:border-primary/50 shadow-sm group"
+                  >
+                    <svg className="w-3.5 h-3.5 text-foreground flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    </svg>
+                    <span>Grok</span>
+                    <ArrowUpRight className="w-3 h-3 text-muted-foreground group-hover:text-primary transition-colors" />
+                  </a>
+
+                  {/* DeepSeek */}
+                  <a
+                    href="https://chat.deepseek.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-medium bg-background/80 hover:bg-background border border-border text-foreground hover:text-primary transition-all hover:border-primary/50 shadow-sm group"
+                  >
+                    <svg className="w-3.5 h-3.5 text-[#1E88E5] flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 14.93V15a1 1 0 0 1 2 0v1.93A8 8 0 0 1 8.07 15H10a1 1 0 0 1 0-2H8.07A8 8 0 0 1 11 8.07V10a1 1 0 0 1 2 0V8.07A8 8 0 0 1 16.93 11H15a1 1 0 0 1 0 2h1.93A8 8 0 0 1 13 16.93z" />
+                    </svg>
+                    <span>DeepSeek</span>
+                    <ArrowUpRight className="w-3 h-3 text-muted-foreground group-hover:text-primary transition-colors" />
+                  </a>
+                </div>
+              </div>
+
+              {/* For AI Agents & Crawlers */}
+              <div className="space-y-3 lg:border-l lg:border-border/60 lg:pl-6">
+                <div className="flex items-center gap-2">
+                  <span className="text-xs font-semibold uppercase tracking-wider text-foreground">
+                    For AI Agents & Crawlers
+                  </span>
+                  <span className="text-[11px] text-muted-foreground">
+                    (Specifications & Endpoints)
+                  </span>
+                </div>
+                <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5 text-xs">
+                  <a
+                    href="/llms.txt"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-muted-foreground hover:text-primary transition-colors font-mono"
+                  >
+                    /llms.txt
+                  </a>
+                  <span className="text-muted-foreground/30">·</span>
+                  <a
+                    href="/llms-full.txt"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-muted-foreground hover:text-primary transition-colors font-mono"
+                  >
+                    /llms-full.txt
+                  </a>
+                  <span className="text-muted-foreground/30">·</span>
+                  <a
+                    href="/ai.txt"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-muted-foreground hover:text-primary transition-colors font-mono"
+                  >
+                    /ai.txt
+                  </a>
+                  <span className="text-muted-foreground/30">·</span>
+                  <a
+                    href="/ai-snapshot.json"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-muted-foreground hover:text-primary transition-colors font-mono"
+                  >
+                    /ai-snapshot.json
+                  </a>
+                  <span className="text-muted-foreground/30">·</span>
+                  <a
+                    href="/mcp.json"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-muted-foreground hover:text-primary transition-colors font-mono"
+                  >
+                    /mcp.json
+                  </a>
+                  <span className="text-muted-foreground/30">·</span>
+                  <a
+                    href="/openapi.json"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-muted-foreground hover:text-primary transition-colors font-mono"
+                  >
+                    /openapi.json
+                  </a>
+                  <span className="text-muted-foreground/30">·</span>
+                  <a
+                    href="/auth.md"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-muted-foreground hover:text-primary transition-colors font-mono"
+                  >
+                    /auth.md
+                  </a>
+                  <span className="text-muted-foreground/30">·</span>
+                  <a
+                    href="/api/md/_catalog"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-muted-foreground hover:text-primary transition-colors font-mono"
+                  >
+                    /api/md/_catalog
+                  </a>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
         {/* Divider */}
         <div className="border-t border-border mt-10 pt-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
