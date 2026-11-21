@@ -11,7 +11,7 @@ export default function Footer() {
         {/* Main Grid */}
         <div className="grid grid-cols-2 md:grid-cols-12 gap-10 md:gap-8">
           {/* Brand Column */}
-          <div className="col-span-2 md:col-span-4">
+          <div className="col-span-2 md:col-span-3">
             <Link to="/" className="flex items-center gap-2.5 mb-5 group">
               <img
                 src={logo}
@@ -133,8 +133,21 @@ export default function Footer() {
             </nav>
           </div>
 
+          {/* Alternatives Column */}
+          <div className="col-span-1 md:col-span-2">
+            <h4 className="font-semibold text-foreground mb-4 text-xs uppercase tracking-widest">
+              Alternatives
+            </h4>
+            <nav className="flex flex-col gap-3">
+              <Link to="/vs/roadmap-sh" className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-1 group">
+                vs Roadmap.sh
+                <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+              </Link>
+            </nav>
+          </div>
+
           {/* Company Column */}
-          <div className="col-span-1 md:col-span-3">
+          <div className="col-span-1 md:col-span-2">
             <h4 className="font-semibold text-foreground mb-4 text-xs uppercase tracking-widest">
               Company
             </h4>

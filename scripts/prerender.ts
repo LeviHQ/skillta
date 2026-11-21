@@ -282,6 +282,20 @@ ${siteNav}`),
     { path: "/research", title: "SkillTa Research — Public Career Catalog Data", description: "Explore SkillTa's authored career catalog statistics, with calculated counts, editorial-label breakdowns and transparent methodology.", body: shell(`<h1>SkillTa Research</h1><p>Counts and editorial assessments from SkillTa's public career catalog. No private user data.</p><h2>${link(RESEARCH_PATH, researchTitle())}</h2><p>${esc(researchDescription())}</p>${siteNav}`) },
     { path: RESEARCH_PATH, title: researchTitle(), description: researchDescription(), jsonLd: [...getResearchSchemas(), getBreadcrumbSchema([{ name: "Home", path: "/" }, { name: "Research", path: "/research" }, { name: "Tech Careers", path: RESEARCH_PATH }])], body: shell(`${renderResearchHtml()}${siteNav}`) },
     { path: "/faq", title: "Tech Career Catalog FAQ — SkillTa", description: "Answers about SkillTa's career counts, editorial labels, learning resources, public data sources and research citations.", jsonLd: [getFAQSchema(getResearchFaqs()), getBreadcrumbSchema([{ name: "Home", path: "/" }, { name: "FAQ", path: "/faq" }])], body: shell(`<h1>Tech Career Catalog FAQ</h1>${renderFaqHtml()}<p>${link(RESEARCH_PATH, "Read the full report")}</p>${siteNav}`) },
+    { path: "/vs/roadmap-sh", title: "SkillTa vs Roadmap.sh — Which Developer Career Platform is Right for You? (2027)", description: "Comprehensive 2027 comparison between SkillTa and Roadmap.sh. Compare learning structures, AI career quizzes, ATS resume reviews, skill gap analysis, and global salary predictors.", keywords: "roadmap sh alternative, skillta vs roadmap.sh, best developer roadmaps, tech career roadmaps 2027, learn coding roadmap", body: shell(`<h1>SkillTa vs Roadmap.sh: Which Platform is Right for You? (2027)</h1> <p>Comparing open-source flowcharts against an AI-powered career guidance suite. Discover how each platform helps software developers and career switchers navigate modern tech careers.</p> <h2>At a Glance Comparison</h2> <ul>
+<li><strong>Learning Structure:</strong> Roadmap.sh uses open-source mindmaps &amp; flowcharts; SkillTa provides a structured 4-phase progressive curriculum with hands-on projects.</li>
+<li><strong>AI Career Guidance Quiz:</strong> Roadmap.sh has no diagnostic quiz; SkillTa features a personalized 10-question AI diagnostic matching personality and skills.</li>
+<li><strong>Skill Gap Analyzer:</strong> Roadmap.sh has none; SkillTa pinpoints missing skills and generates a tailored bridge plan.</li>
+<li><strong>ATS Resume Reviewer:</strong> Roadmap.sh has none; SkillTa offers instant ATS scoring, bullet rewrites, and resume version control.</li>
+<li><strong>2027 Salary Predictor:</strong> Roadmap.sh has none; SkillTa covers real salary bands across 50+ countries and global tech hubs.</li>
+</ul>
+<h2>Frequently Asked Questions</h2>
+<h3>Is SkillTa a complete alternative to Roadmap.sh?</h3>
+<p>Yes. Beyond developer roadmaps, SkillTa provides an end-to-end guidance suite with an AI Career Quiz, ATS Resume Reviewer, and country-wise salary benchmarks.</p>
+<h3>Can I use both platforms together?</h3>
+<p>Absolutely. Many developers explore Roadmap.sh for high-level ecosystem charts and rely on SkillTa to test fit, follow structured phases, and optimize their resumes.</p>
+${siteNav}`),
+    },
   );
 
   const tool = (path: string, title: string, description: string, keywords: string, h1: string, points: string[]): Route => ({
