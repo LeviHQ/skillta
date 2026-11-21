@@ -336,7 +336,7 @@ font[style*="background: yellow"] {
 .animate-ticker {
   display: flex;
   width: max-content;
-  animation: ticker-marquee 25s linear infinite;
+  animation: ticker-marquee 50s linear infinite;
 }
 
 .animate-ticker:hover {
