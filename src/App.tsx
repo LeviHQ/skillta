@@ -44,6 +44,7 @@ const FAQ = lazy(() => import("./pages/FAQ"));
 const RoadmapShAlternative = lazy(() => import("./pages/RoadmapShAlternative"));
 const CareerExplorerAlternative = lazy(() => import("./pages/CareerExplorerAlternative"));
 const CodingBootcampAlternative = lazy(() => import("./pages/CodingBootcampAlternative"));
+const LeetCodeAlternative = lazy(() => import("./pages/LeetCodeAlternative"));
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -103,6 +104,7 @@ const App = () => (
                     <Route path="/vs/roadmap-sh" element={<RoadmapShAlternative />} />
                     <Route path="/vs/careerexplorer" element={<CareerExplorerAlternative />} />
                     <Route path="/vs/coding-bootcamps" element={<CodingBootcampAlternative />} />
+                    <Route path="/vs/leetcode" element={<LeetCodeAlternative />} />
                     <Route path="/:country" element={<CountryPage />} />
                     <Route path="/:country/:section" element={<CountryPage />} />
                     <Route path="*" element={<NotFound />} />

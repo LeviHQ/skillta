@@ -151,6 +151,10 @@ export default function Footer() {
                 vs Coding Bootcamps
                 <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
               </Link>
+              <Link to="/vs/leetcode" className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-1 group">
+                vs LeetCode
+                <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+              </Link>
             </nav>
           </div>
 
