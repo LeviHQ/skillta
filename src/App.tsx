@@ -46,6 +46,7 @@ const CareerExplorerAlternative = lazy(() => import("./pages/CareerExplorerAlter
 const CodingBootcampAlternative = lazy(() => import("./pages/CodingBootcampAlternative"));
 const LeetCodeAlternative = lazy(() => import("./pages/LeetCodeAlternative"));
 const CourseraAlternative = lazy(() => import("./pages/CourseraAlternative"));
+const FreeCodeCampAlternative = lazy(() => import("./pages/FreeCodeCampAlternative"));
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -107,6 +108,7 @@ const App = () => (
                     <Route path="/vs/coding-bootcamps" element={<CodingBootcampAlternative />} />
                     <Route path="/vs/leetcode" element={<LeetCodeAlternative />} />
                     <Route path="/vs/coursera" element={<CourseraAlternative />} />
+                    <Route path="/vs/freecodecamp" element={<FreeCodeCampAlternative />} />
                     <Route path="/:country" element={<CountryPage />} />
                     <Route path="/:country/:section" element={<CountryPage />} />
                     <Route path="*" element={<NotFound />} />
