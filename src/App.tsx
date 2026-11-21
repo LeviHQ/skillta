@@ -42,6 +42,7 @@ const Research = lazy(() => import("./pages/Research"));
 const TechCareerResearch = lazy(() => import("./pages/TechCareerResearch"));
 const FAQ = lazy(() => import("./pages/FAQ"));
 const RoadmapShAlternative = lazy(() => import("./pages/RoadmapShAlternative"));
+const CareerExplorerAlternative = lazy(() => import("./pages/CareerExplorerAlternative"));
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -99,6 +100,7 @@ const App = () => (
                     <Route path="/research/tech-careers" element={<TechCareerResearch />} />
                     <Route path="/faq" element={<FAQ />} />
                     <Route path="/vs/roadmap-sh" element={<RoadmapShAlternative />} />
+                    <Route path="/vs/careerexplorer" element={<CareerExplorerAlternative />} />
                     <Route path="/:country" element={<CountryPage />} />
                     <Route path="/:country/:section" element={<CountryPage />} />
                     <Route path="*" element={<NotFound />} />

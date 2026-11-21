@@ -143,6 +143,10 @@ export default function Footer() {
                 vs Roadmap.sh
                 <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
               </Link>
+              <Link to="/vs/careerexplorer" className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-1 group">
+                vs CareerExplorer
+                <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+              </Link>
             </nav>
           </div>
 
