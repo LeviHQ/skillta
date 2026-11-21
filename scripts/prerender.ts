@@ -349,6 +349,24 @@ ${siteNav}`),
 <p>No. Modern engineering teams prioritize production architecture, system design, and hands-on portfolio projects. SkillTa gives you complete 4-phase roadmaps from fundamentals to deployment.</p>
 ${siteNav}`),
     },
+        {
+      path: "/vs/coursera",
+      title: "SkillTa vs Coursera (2027) — Free Actionable Developer Roadmaps vs Video Courses",
+      description: "Looking for a Coursera alternative? Compare SkillTa vs Coursera. Skip 40-hour video lectures and expensive certificates for free structured 4-phase tech roadmaps, ATS resume reviews, and 2027 salary data.",
+      keywords: "coursera alternative, skillta vs coursera, are coursera certificates worth it 2027, free developer roadmap vs courses, learn tech free",
+      body: shell(`<h1>SkillTa vs Coursera: Actionable Tech Roadmaps vs 40-Hour Video Lectures (2027)</h1> <p>Comparing long, passive video marathons against progressive 4-phase project curricula. Discover why developers escape tutorial hell with SkillTa’s free execution suite.</p> <h2>At a Glance Comparison</h2> <ul>
+<li><strong>Learning Style:</strong> Coursera uses 40-hour passive video lecture marathons; SkillTa delivers progressive 4-phase hands-on milestone roadmaps.</li>
+<li><strong>Certificates &amp; Cost:</strong> Coursera charges $49/month or $399/year for certificates; SkillTa provides 100% free core roadmaps, quizzes, and developer career tools.</li>
+<li><strong>Completion Velocity:</strong> Coursera suffers from video fatigue and tutorial hell; SkillTa breaks down roadmaps into manageable project milestones.</li>
+<li><strong>AI Career Guidance:</strong> Coursera offers generic browsing suggestions; SkillTa features an intelligent 10-question AI Career Quiz.</li>
+<li><strong>ATS Resume Reviewer:</strong> Coursera has none; SkillTa includes AI bullet rewrites, ATS match scoring, and version control.</li>
+<li><strong>2027 Global Salaries:</strong> Coursera has none; SkillTa provides verified developer compensation data across 50+ countries.</li>
+</ul>
+<h2>Frequently Asked Questions</h2>
+<h3>Are Coursera certificates worth paying for in 2027?</h3>
+<p>Modern engineering managers prioritize verifiable GitHub repositories, deployed applications, and ATS-optimized resumes over paid video certificates. SkillTa focuses directly on portfolio building and real-world skills.</p>
+${siteNav}`),
+    },
   );
 
   const tool = (path: string, title: string, description: string, keywords: string, h1: string, points: string[]): Route => ({
