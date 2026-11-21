@@ -34,6 +34,11 @@
     <priority>0.85</priority>
   </url>
   <url>
+    <loc>https://www.skillta.tech/vs/levels-fyi</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
     <loc>https://www.skillta.tech/research/tech-careers</loc>
     <lastmod>2026-10-24</lastmod>
   </url>
