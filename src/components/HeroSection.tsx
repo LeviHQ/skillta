@@ -6,9 +6,61 @@ import { FeaturedTicker } from "@/components/FeaturedTicker";
 
 export default function HeroSection() {
   return (
-    <section className="relative overflow-hidden border-b border-border bg-gradient-hero py-16 sm:py-20 lg:py-24">
+    <section className="relative overflow-hidden border-b border-border bg-gradient-hero">
+      
+      {/* 100% Full Screen Edge-to-Edge Golden Foil Ribbon */}
+      <a
+        href="#pricing"
+        className="group relative z-30 block w-full overflow-hidden border-b border-amber-500/60 shadow-[0_4px_30px_rgba(234,179,8,0.35)]"
+      >
+        <div className="relative w-full bg-gradient-to-r from-[#C59B27] via-[#FFF3B3] to-[#AA771C] px-4 py-3 sm:py-3.5 text-stone-950 shadow-inner">
+          
+          {/* Continuous Slow-Motion Shimmer Sweep */}
+          <motion.div
+            className="absolute inset-0 -skew-x-12 bg-gradient-to-r from-transparent via-white/85 to-transparent pointer-events-none"
+            initial={{ x: "-100%" }}
+            animate={{ x: "200%" }}
+            transition={{
+              repeat: Infinity,
+              duration: 3.5,
+              ease: "easeInOut",
+              repeatDelay: 0.8,
+            }}
+          />
+
+          <div className="container mx-auto flex flex-col md:flex-row items-center justify-between gap-3 text-center md:text-left">
+            
+            {/* Offer details with $1.50 and $5 */}
+            <div className="relative z-10 flex flex-wrap items-center justify-center md:justify-start gap-2 sm:gap-3 text-xs sm:text-sm">
+              <span className="flex items-center gap-1.5 rounded-full bg-stone-950 px-2.5 py-0.5 text-[11px] font-black uppercase tracking-wider text-amber-300 shadow">
+                🎉 NEW YEAR 2027 SALE
+              </span>
+              <span className="font-extrabold uppercase tracking-tight text-stone-950">
+                90% Launch OFF + Extra 50% New Year OFF
+              </span>
+              <span className="hidden lg:inline text-stone-950/40">|</span>
+              <span className="font-bold text-stone-900">
+                Pro at just <span className="font-black text-stone-950 bg-stone-950/15 px-1.5 py-0.5 rounded border border-stone-950/20">$1.50</span> · Lifetime at just <span className="font-black text-stone-950 bg-stone-950/15 px-1.5 py-0.5 rounded border border-stone-950/20">$5</span>
+              </span>
+            </div>
+
+            {/* Code SKILLTA50 and Button */}
+            <div className="relative z-10 flex items-center gap-2 sm:gap-3 flex-shrink-0">
+              <div className="flex items-center gap-1.5 rounded-lg border border-dashed border-stone-950/50 bg-stone-950/15 px-2.5 py-1 font-mono text-xs font-black text-stone-950">
+                <span className="text-[10px] uppercase font-bold text-stone-800">Code:</span>
+                <span className="tracking-wider text-stone-950">SKILLTA50</span>
+              </div>
+              <span className="inline-flex items-center gap-1 rounded-full bg-stone-950 px-3.5 py-1.5 text-xs font-black uppercase tracking-wider text-amber-300 shadow-md group-hover:bg-stone-900 transition-colors">
+                Claim Offer →
+              </span>
+            </div>
+
+          </div>
+        </div>
+      </a>
+
       <div className="absolute inset-0 grid-pattern opacity-25" />
-      <div className="container relative z-10 mx-auto px-6">
+      <div className="container relative z-10 mx-auto px-6 py-12 sm:py-16 lg:py-20">
         <div className="mx-auto max-w-5xl text-center">
           <motion.div
             initial={{ opacity: 0, y: 18 }}
