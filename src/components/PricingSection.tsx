@@ -190,9 +190,8 @@ export default function PricingSection() {
                   {tier.name === "Lifetime" && <InfinityIcon className="w-5 h-5 text-primary" />}
                   <h3 className="text-xl font-bold text-foreground">SkillTa {tier.name}</h3>
                 </div>
-                <p className="text-sm text-muted-foreground mb-6">{tier.description}</p>
-                <div className="mb-6">
-                
+              <p className="text-sm text-muted-foreground mb-6">{tier.description}</p>
+
                 <div className="mb-6">
                   <div className="flex items-baseline flex-wrap gap-2.5">
                     <span className="text-4xl font-bold text-foreground">{tier.price}</span>
@@ -211,9 +210,8 @@ export default function PricingSection() {
                   </p>
                 </div>
 
-                  <span className="text-muted-foreground ml-2 text-sm">{tier.period}</span>
-                </div>
                 <ul className="space-y-3 mb-8 flex-1">
+
   {tier.name === "Pro" ? (
     proFeatures.map((f, idx) => (
       <li 
