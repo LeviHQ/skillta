@@ -63,6 +63,25 @@ export default function FreePerksModal({ open, onClose }: Props) {
   const [loading, setLoading] = useState<PlanName | null>(null);
   const [error, setError] = useState<string | null>(null);
 
+  // Reset button loading state when returning via browser back button (bfcache/pageshow)
+  useEffect(() => {
+    const handleRestore = () => setLoading(null);
+    window.addEventListener("pageshow", handleRestore);
+    window.addEventListener("focus", handleRestore);
+    const handleVisibility = () => {
+      if (document.visibilityState === "visible") {
+        handleRestore();
+      }
+    };
+    document.addEventListener("visibilitychange", handleVisibility);
+
+    return () => {
+      window.removeEventListener("pageshow", handleRestore);
+      window.removeEventListener("focus", handleRestore);
+      document.removeEventListener("visibilitychange", handleVisibility);
+    };
+  }, []);
+
   const buy = async (name: PlanName) => {
     setError(null);
     if (!user) {
