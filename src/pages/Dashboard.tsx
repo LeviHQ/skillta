@@ -236,6 +236,8 @@ export default function Dashboard() {
                   </button>
                 </div>
 
+              </div>
+
               {/* Extra service usage row */}
               <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="p-4 rounded-xl bg-secondary/40 border border-border">
