@@ -32,13 +32,32 @@ const lifetimeFeatures = [
 const plans: {
   name: PlanName;
   price: string;
+  originalPrice: string;
+  discount: string;
   period: string;
   description: string;
   badge?: string;
   highlighted: boolean;
 }[] = [
-  { name: "Pro", price: "$3", period: "/ 1 year", description: "Full SkillTa Career Suite for 12 months.", highlighted: false },
-  { name: "Lifetime", price: "$10", period: "one-time", description: "Full access forever, including every future update.", badge: "Best Value", highlighted: true },
+  {
+    name: "Pro",
+    price: "$3",
+    originalPrice: "$30",
+    discount: "90% OFF",
+    period: "/ 1 year",
+    description: "Full SkillTa Career Suite for 12 months.",
+    highlighted: false,
+  },
+  {
+    name: "Lifetime",
+    price: "$10",
+    originalPrice: "$100",
+    discount: "90% OFF",
+    period: "one-time",
+    description: "Full access forever, including every future update.",
+    badge: "Best Value · 90% OFF",
+    highlighted: true,
+  },
 ];
 
 const trustItems = [
@@ -173,7 +192,25 @@ export default function PricingSection() {
                 </div>
                 <p className="text-sm text-muted-foreground mb-6">{tier.description}</p>
                 <div className="mb-6">
-                  <span className="text-4xl font-bold text-foreground">{tier.price}</span>
+                
+                <div className="mb-6">
+                  <div className="flex items-baseline flex-wrap gap-2.5">
+                    <span className="text-4xl font-bold text-foreground">{tier.price}</span>
+                    <span className="text-lg text-muted-foreground/60 line-through font-semibold">{tier.originalPrice}</span>
+                    <span className="text-muted-foreground text-sm">{tier.period}</span>
+                    <span className={`text-[11px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider ${
+                      tier.highlighted
+                        ? "bg-primary/20 text-primary border border-primary/30"
+                        : "bg-emerald-500/15 text-emerald-500 border border-emerald-500/30"
+                    }`}>
+                      {tier.discount}
+                    </span>
+                  </div>
+                  <p className="text-xs text-muted-foreground/80 mt-1.5">
+                    {tier.name === "Lifetime" ? "Pay once, access forever" : "Billed annually · Cancel anytime"}
+                  </p>
+                </div>
+
                   <span className="text-muted-foreground ml-2 text-sm">{tier.period}</span>
                 </div>
                 <ul className="space-y-3 mb-8 flex-1">
@@ -222,6 +259,10 @@ export default function PricingSection() {
         </div>
 
         {error && <p className="text-center text-sm text-destructive mt-6">{error}</p>}
+
+        <p className="text-center text-xs text-muted-foreground mt-4">
+          Have a student grant or promo code? Enter your code at checkout for extra savings.
+        </p>
 
         <div className="flex flex-wrap justify-center gap-6 mt-12">
           {trustItems.map(({ icon: Icon, text }) => (

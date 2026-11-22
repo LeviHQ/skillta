@@ -28,6 +28,8 @@ const features = [
 const plans: {
   name: PlanName;
   price: string;
+  originalPrice: string;
+  discount: string;
   period: string;
   tagline: string;
   badge?: string;
@@ -36,6 +38,8 @@ const plans: {
   {
     name: "Pro",
     price: "$3",
+    originalPrice: "$30",
+    discount: "90% OFF",
     period: "/ 1 year",
     tagline: "Full SkillTa Career Suite for 12 months.",
     highlighted: false,
@@ -43,9 +47,11 @@ const plans: {
   {
     name: "Lifetime",
     price: "$10",
+    originalPrice: "$100",
+    discount: "90% OFF",
     period: "one-time",
     tagline: "Full access forever, including every future update.",
-    badge: "Best Value",
+    badge: "Best Value · 90% OFF",
     highlighted: true,
   },
 ];
@@ -177,8 +183,14 @@ export default function FreePerksModal({ open, onClose }: Props) {
                     </div>
                     <p className="text-xs text-muted-foreground mb-4">{tier.tagline}</p>
                     <div className="mb-4">
-                      <span className="text-3xl font-bold text-foreground">{tier.price}</span>
-                      <span className="text-muted-foreground ml-2 text-xs">{tier.period}</span>
+                      <div className="flex items-baseline flex-wrap gap-2">
+                        <span className="text-3xl font-bold text-foreground">{tier.price}</span>
+                        <span className="text-base text-muted-foreground/60 line-through font-semibold">{tier.originalPrice}</span>
+                        <span className="text-muted-foreground ml-1 text-xs">{tier.period}</span>
+                        <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-500 border border-emerald-500/30 uppercase">
+                          {tier.discount}
+                        </span>
+                      </div>
                     </div>
                     <ul className="space-y-2 mb-5 flex-1">
                       {features.map((f) => (
