@@ -50,9 +50,13 @@ export default defineConfig(({ mode }) => ({
         ],
         categories: ["education", "productivity"],
       },
-      workbox: {
+        workbox: {
         maximumFileSizeToCacheInBytes: 5 * 1024 * 1024,
-        navigateFallbackDenylist: [/^\/~oauth/],
+        navigateFallbackDenylist: [
+          /^\/~oauth/,
+          /\.(txt|json|xml|md)$/,
+          /^\/api\/md/,
+        ],
         runtimeCaching: [
           {
             urlPattern: /^https:\/\/fonts\.(googleapis|gstatic)\.com\/.*/i,
